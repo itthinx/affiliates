@@ -1,0 +1,1034 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Slovak 2.1.2 v1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-15 21:12+0200\n"
+"PO-Revision-Date: 2012-07-16 09:59+0100\n"
+"Last-Translator: CR3OSK <cr3osk@gmail.com>\n"
+"Language-Team: CR3OSK <cr3osk@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Slovak\n"
+"X-Poedit-Country: SLOVAKIA\n"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-pagination.php:136
+#, php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%1$s z %2$s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:443
+#, php-format
+msgid "%10d Accepted"
+msgstr "%10d Povolené"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:444
+#, php-format
+msgid "%10d Closed"
+msgstr "%10d Zatvorené"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:448
+#, php-format
+msgid "%10d Hits"
+msgstr "%10d Kliknutí"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:445
+#, php-format
+msgid "%10d Pending"
+msgstr "%10d Spracúva sa"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:446
+#, php-format
+msgid "%10d Rejected"
+msgstr "%10d Vylúčené"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:449
+#, php-format
+msgid "%10d Visits"
+msgstr "%10d Návštev"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:271
+#, php-format
+msgid "%d Day Charts"
+msgstr "%d Denné grafy"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:468
+msgid "(inoperative)"
+msgstr "(mimo prevádzky)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:462
+msgid "(removed)"
+msgstr "(odstránené)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:552
+#, php-format
+msgid "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT."
+msgstr "* Dátum he zobrazený podľa časovej zóny servera: %s, ktorý má posun %s hodín od GMT."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1088
+msgid "<em>All time</em> includes data from any affiliates, including deleted affiliates."
+msgstr "<em>Celý čas</em> obsahuje všetky údaje, od všetkých Affiliate-ov vrátane vymazaných."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1086
+msgid "<em>From operative affiliates:</em> includes affiliates that are currently active. This excludes affiliates whose dates are not currently valid as well as those that have been deleted."
+msgstr "<em>Od fungujúcich Affiliate-ov:</em> obsahuje Affiliate-ov ktorí sú momentálne aktívny. Toto vynechá affiliate-ov ktorí už nie sú aktívny, alebo boli vymazaní."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1087
+msgid "<em>From operative and non-operative affiliates:</em> excludes deleted affiliates."
+msgstr "<em>Od aktívnych a neaktívnych affiliate-ov:</em> bez vymazaných affiliate-ov."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1091
+msgid "<em>Hits</em> are HTTP requests for affiliate links."
+msgstr "<em>Kliknutia</em> sú HTTP požiadavky pre affliate linku."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1093
+msgid "<em>Referrals</em> are recorded by request through the use of an API function. See the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">documentation</a> for more information."
+msgstr "<em>Odkazy</em> sú zaznamenané požiadavkou na API funkciu. Bližšie informácie nájdete v <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">dokumentácii</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1092
+msgid "<em>Visits</em> are unique and daily requests for affiliate links."
+msgstr "<em>Návštevy</em> sú unikátne a denné požiadavky na affiliate odkaz."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:318
+#, php-format
+msgid "<p>Please fill in the required information in your <a href=\"%s\">profile</a> first.</p>"
+msgstr "<p>Prosíme ako prvé vyplňte informácie vo Vášom <a href=\"%s\">profile</a>.</p>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:414
+#, php-format
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr "<strong>CHYBA</strong>: Nepodarilo sa Vás registrovať... prosíme kontaktujte <a href=\"mailto:%s\">administrátora</a> !"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:374
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>CHYBA</strong>: Prosíme vložte užívateľské meno."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:384
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr "<strong>CHYBA</strong>: Prosíme napíšte užívateľské meno."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:386
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>CHYBA</strong>: Emailová adresa nie je správna."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:389
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr "<strong>CHYBA</strong>: Táto emailová adresa je už registrovaná, prosíme zvoľte si iné."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:379
+msgid "<strong>ERROR</strong>: This username is already registered, please choose another one."
+msgstr "<strong>CHYBA</strong>: Toto užívateľské meno je už registrované, prosíme zvoľte si iné."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:376
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr "<strong>CHYBA</strong>: Toto užívateľské meno je nesprávne, lebo obsahuje nepovolené znaky. Prosíme vložte platné užívateľské meno."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:441
+msgid "<strong>Referrals:</strong>"
+msgstr "<strong>Odkazy:</strong>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:381
+msgid "A minimum set of permissions will be preserved."
+msgstr "Minimálne nastavenie povolení je rezervované."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:383
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:389
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:294
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:431
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:195
+msgid "Accepted"
+msgstr "Povolené"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:149
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:240
+msgid "Access affiliates"
+msgstr "Na affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:31
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:123
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:127
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:46
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:151
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:157
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:28
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:99
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:48
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:213
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:219
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:31
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:100
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:104
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:29
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:47
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:43
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:412
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:48
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:110
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:214
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:220
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:39
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:53
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:158
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:164
+msgid "Access denied."
+msgstr "Prístup odmietnutý."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:117
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:251
+msgid "Access your profile"
+msgstr "Vstúpte do Vášho profilu."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:77
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "Add"
+msgstr "Pridať"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:46
+msgid "Add a new affiliate"
+msgstr "Pridať nového affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:150
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:241
+msgid "Administer affiliates"
+msgstr "Administrácia affilaite-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:151
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:242
+msgid "Administer options"
+msgstr "Administrácia možností"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:311
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:457
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:513
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:355
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:368
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:355
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:307
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:319
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:472
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:533
+msgid "Affiliate"
+msgstr "Affiliate"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-generator.php:69
+msgid "Affiliate Area"
+msgstr "Affiliate oblasť"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:225
+msgid "Affiliate ID Encoding"
+msgstr "Affiliate ID Dekódovanie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:365
+msgid "Affiliate ID encoding"
+msgstr "Affiliate ID kódovanie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:372
+msgid "Affiliate Id"
+msgstr "Affiliate Id"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:374
+msgid "Affiliate Name"
+msgstr "Meno affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:351
+msgid "Affiliate URL parameter name"
+msgstr "URL parameter názov affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:376
+msgid "Affiliate Username"
+msgstr "Užívateľské meno affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1113
+msgid "Affiliate link"
+msgstr "Affiliate odkaz"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1123
+msgid "Affiliate permalink"
+msgstr "Affiliate trvalý odkaz"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:345
+msgid "Affiliate registration"
+msgstr "Registrácia affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:972
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1056
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1057
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:414
+msgid "Affiliates"
+msgstr "Affiliate-i"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1011
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1012
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:178
+msgid "Affiliates & Referrals"
+msgstr "Affiliate-i a odkazy"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:971
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:32
+msgid "Affiliates Overview"
+msgstr "Prehľad affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:169
+msgid "Affiliates contact form submission"
+msgstr "Odoslanie affiliate kontaktného formulára"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:429
+msgid "Affiliates network data"
+msgstr "Údaje affiliate siete"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1037
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:51
+msgid "Affiliates options"
+msgstr "Možnosti affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:411
+msgid "All time (includes data from deleted affiliates):"
+msgstr "Celý čas (obsahuje aj dáta vymazaných affiliate-ov)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:348
+msgid "Allow affiliate registration"
+msgstr "Povoliť registráciu affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:356
+msgid "Amount"
+msgstr "Množstvo"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:316
+msgid "Amount (use . for decimals):"
+msgstr "Množstvo (pouzite . pre desatinné miesta)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:340
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:363
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:422
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:444
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:138
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:391
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:405
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:348
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:371
+msgid "Apply"
+msgstr "Použiť"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:441
+msgid "By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "Povolením tejto možnosti súhlasíte s tým že preberáte zodpovednosť pre všetky straty údajov a následky."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:150
+#, php-format
+msgid "By signing up, you indicate that you have read and agree to the %s."
+msgstr "Registráciou potvrdzujete že ste čítali, porozumeli a akceptujete %s."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:393
+msgid "CAUTION: If this option is active while the plugin is deactivated, ALL affiliate and referral data will be DELETED. If you want to retrieve data about your affiliates and their referrals and are going to deactivate the plugin, make sure to back up your data or do not enable this option. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "POZOR: Pokiaľ je táto možnosť aktívna, Affiliate rozšírenie sa deaktivuje! Všetci affiliate-i a údaje budú NENÁVRATNE VYMAZANÉ. Keď chcete získať údaje Vašich Affiliate-ov a deaktivujete rozšírenie, predtým si zálohujte všetky údaje a neaktivujte teraz túto možnosť. Povolením tejto možnosti sa stávate zodpovednými za všetky škody a následky spôsobené stratou dát a údajov!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:438
+msgid "CAUTION: If this option is active while the plugin is network deactivated, <strong>ALL affiliate and referral data will be DELETED on all sites of the network</strong>."
+msgstr "POZOR: Pokiaľ je táto možnosť aktívna v Affiliate rozšírení, sieť affiliate-ov bude DEAKTIVOVANÁ, <strong>Všetky affiliate a referenčné údaje budú NENÁVRATNE VYMAZANÉ zo všetkých stránok v sieti</strong>!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:362
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "POZOR: Keď zmeníte toto nastavenie a máte distribuované affiliate odkazy alebo trvalé odkazy, buďte istý že sú tieto aktualizované. Pokiaľ Vaše affiliate meno v linku nie je aktívne, nezaznamenajú sa žiadne  affiliate kliknutia ani referencie na odkazy."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:373
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current encoding, no affiliate hits, visits or referrals will be recorded."
+msgstr "POZOR: Keď zmeníte toto nastavenie a máte distribuované affiliate odkazy alebo trvalé odkazy, buďte istý že sú tieto aktualizované. Pokiaľ Vaše affiliate meno nie je v aktuálnom kódovaní, nezaznamenajú sa žiadne  affiliate kliknutia ani referencie na odkazy."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:79
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:80
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:349
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:431
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:139
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:392
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:357
+msgid "Clear"
+msgstr "Vymazať"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "Click to add a new affiliate"
+msgstr "Kliknite pre pridanie nového affliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:384
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:390
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:316
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:432
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:196
+msgid "Closed"
+msgstr "Zatvorené"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:532
+msgid "Count"
+msgstr "Počet"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:357
+msgid "Currency"
+msgstr "Mena"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:320
+msgid "Currency - 3 letter code, e.g. USD, EUR:"
+msgstr "Mena - 3 znakový kód, napr. UED, EUR:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:546
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:567
+msgid "Data"
+msgstr "Údaje"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:299
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:353
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:529
+msgid "Date"
+msgstr "Dátum"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:310
+msgid "Days"
+msgstr "Dni"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:135
+msgid "Days back"
+msgstr "Dni späť"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:387
+msgid "Deactivation and data persistence"
+msgstr "Deaktivácia a stálosť dát"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:331
+msgid "Default referral status"
+msgstr "Štadardný refferal stav"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:432
+msgid "Delete all affiliate data on network deactivation"
+msgstr "Vymazať všetky affiliate údaje pri deaktivácii siete"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:390
+msgid "Delete all plugin data on deactivation"
+msgstr "Vymazať všetky údaje rozšírenia pri deaktivácii"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:596
+msgid "Description"
+msgstr "Popis"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/constants.php:100
+msgctxt "pseudo-affiliate name"
+msgid "Direct"
+msgstr "Priame"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:322
+msgid "Direct referrals"
+msgstr "Priame referencie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:568
+#, php-format
+msgid "E-mail: %s"
+msgstr "E-mail: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:360
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:499
+msgid "Edit"
+msgstr "Editovať"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:49
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:49
+#, php-format
+msgid "Edit %s"
+msgstr "Editovať %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:68
+msgid "Edit an affiliate"
+msgstr "Editovať affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:80
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:57
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:332
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:356
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:200
+msgid "Email"
+msgstr "Email"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:72
+#, php-format
+msgid "Email : %s"
+msgstr "Email : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:427
+msgid "Expand data"
+msgstr "Rozšíriť údaje"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:425
+msgid "Expand descriptions"
+msgstr "Rozšíriť popis"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:423
+msgid "Expand details"
+msgstr "Rozšíriť detaily"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:345
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:353
+msgid "Expand hits"
+msgstr "Rozšíriť kliknutia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:343
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:351
+msgid "Expand referrals"
+msgstr "Rozšíriť referencie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:327
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:406
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:128
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:369
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:335
+msgid "Filters"
+msgstr "Filtre"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:323
+msgid "First Name"
+msgstr "Priezvisko"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:92
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:333
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:68
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:415
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:131
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:358
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:380
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:341
+msgid "From"
+msgstr "Od"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:74
+#, php-format
+msgid "From : %s"
+msgstr "Od : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:399
+msgid "From operative affiliates:"
+msgstr "Od operujúcich affiliate-ov:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:405
+msgid "From operative and non-operative affiliates:"
+msgstr "From operujúcich a neaktívnych affiliate-ov:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:294
+msgid "Generate"
+msgstr "Generovať"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1106
+msgid "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates."
+msgstr "Tu môžete <strong>pridať</strong>, <strong>editovať</strong> a <strong>odstrániť</strong> affiliate-ov."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:301
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:506
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:280
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:309
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:524
+msgid "Hits"
+msgstr "Kliknutia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:342
+msgid "Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line."
+msgstr "Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:512
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:531
+msgid "IP"
+msgstr "IP"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:354
+msgid "Id"
+msgstr "Id"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:83
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:60
+msgid "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically."
+msgstr "Keď je špecifikované platné <strong>užívateľské meno</strong>, nie je uvedený e-mail, použije sa emailová adresa užívateľa."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:328
+msgid "If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct."
+msgstr "Keď je táto možnosť povolená, keď je referencia a žiadny affiliate link prideliteľný, bude táto referencia zadelená pod PRIAME."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:316
+msgid "If you enter 0, referrals will only be valid until the visitor closes the browser (session)."
+msgstr "Keď pridáte 0, odkazy budú platné len dovtedy, kým návštevník zatvorí prehliadač (session)."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1152
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1175
+msgid "If you find this plugin useful, please consider making a donation:"
+msgstr "Keď si myslíte že toto rozšírenie je Vám na úžitok, prípadne Vám i zarába, prosíme Vás, zvážte DAr. Ďakujeme."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:383
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr "Keď sa neviete prihlásiť, prosíme kontaktujte administrátora."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1151
+msgid "If you require <em>support</em> or <em>customization</em> including <em>referrals integration</em> with your site, you may <a href=\"http://www.itthinx.com/\" target=\"_blank\">contact me here</a>."
+msgstr "Keď potrebujete <em>support</em> alebo <em>zmeny</em> vrátane <em>integrácie odkazov</em> na Vašej stránke, môžete <a href=\"http://www.itthinx.com/\" target=\"_blank\">kontaktovať</a> vývojára rozšírenia."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:133
+msgid "If your affiliates are using affiliate links based on the previous Affiliate URL parameter name, they <strong>NEED</strong> to update their affiliate links."
+msgstr "Keď affiliate-i používajú odkazy STARÉHO parametra v URL, <strong>MUSIA</strong> si aktualizovať svoje affiliate odkazy!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:347
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:429
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:384
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:355
+msgid "Include inoperative affiliates"
+msgstr "Vrátane neoperujúcich affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:386
+msgid "Include removed affiliates"
+msgstr "Vrátane odstránených affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:327
+msgid "It has two purposes:"
+msgstr "Má dve možnosti použitia:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:326
+msgid "Last Name"
+msgstr "Priezvisko"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:508
+msgid "Link"
+msgstr "Odkaz"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:362
+msgid "Links"
+msgstr "Odkazy"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:243
+#, php-format
+msgid "Log in <a href=\"%s\">here</a>."
+msgstr "<a href=\"%s\">Prihlásiť sa tu</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-shortcodes.php:452
+msgid "Log out"
+msgstr "Odhlásiť sa"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:848
+msgid "MD5"
+msgstr "MD5"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:440
+msgid "Make sure to back up your data or do not enable this option."
+msgstr "ZÁLOHUJTE si svoje dáta predtým ako aktivujete túto možnosť!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:985
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:986
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:236
+msgid "Manage Affiliates"
+msgstr "Spravovať affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:202
+msgid "Message"
+msgstr "Správa"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:76
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:53
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:198
+msgid "Name"
+msgstr "Meno"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:71
+#, php-format
+msgid "Name : %s"
+msgstr "Meno : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "New Affiliate"
+msgstr "Nový affiliate"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:566
+#, php-format
+msgid "New affiliate registration on your site %s:"
+msgstr "Reegistrácia nových affiliate-ov na stráke %s:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:847
+msgid "No encoding"
+msgstr "Žiadne kódovanie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:37
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:143
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:37
+msgid "No such affiliate."
+msgstr "Žiadny affiliate."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1101
+msgid "Note that <em>deleted</em> affiliates are not literally deleted but marked as such so that data that has been collected will still be accesible."
+msgstr "Poznámka: <em>Vymazaní</em> affiliate-i nie sú naozaj odstránení, len označení ako vymazani, aby dáta od nich boli stále prístupné."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1132
+msgid "Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate."
+msgstr "Ak návštevník prišiel na stránku pomocou affiliate linku, odkaz sa zaznamená a pridelí affiliate partnerovi."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1038
+msgid "Options"
+msgstr "Možnosti"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:291
+msgid "Page generation"
+msgstr "Generácia stránky"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:385
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:391
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:302
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:433
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:197
+msgid "Pending"
+msgstr "Spracúva sa"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:376
+msgid "Permissions"
+msgstr "Povolenia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:242
+msgid "Please check your email for the confirmation link."
+msgstr "Prosíme skontroľujte si email pre potvrdzovací odkaz/linku."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1172
+msgid "Please get in touch if you need support, consulting or customization."
+msgstr "Prosíme kontaktujte nás, pokiaľ potrebujete konzultáciu alebo zmeny v systéme."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:456
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:354
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:471
+msgid "Post"
+msgstr "Odoslať/Post"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:293
+msgid "Press the button to generate an affiliate area."
+msgstr "Kliknite na tlačidlo pre generovanie affiliate oblasti."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:516
+msgid "Pretty"
+msgstr "Pekné"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:435
+msgid "READ AND UNDERSTAND the following before activating this option:"
+msgstr "PREČÍTAJTE SI NASLEDOVNÉ predtým ako aktivujete túto možnosť:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:303
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:311
+msgid "Ratio"
+msgstr "Pomer"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:307
+msgid "Referral timeout"
+msgstr "Časový limit"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1024
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1025
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:302
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:450
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:229
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:310
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:465
+msgid "Referrals"
+msgstr "Referencie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:128
+msgid "Registration is currently closed."
+msgstr "Registrácia je momentálne pozastavená."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:386
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:392
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:309
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:434
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:198
+msgid "Rejected"
+msgstr "Odmietnuté"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:78
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:361
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:502
+msgid "Remove"
+msgstr "Odstrániť"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:64
+msgid "Remove an affiliate"
+msgstr "Odstrániť affiliate-a"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:359
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:441
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:402
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:367
+msgid "Results per page"
+msgstr "Výsledkov na stranu"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:336
+msgid "Robots"
+msgstr "Roboti"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:248
+msgid "Role"
+msgstr "Rola"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:101
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:399
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:445
+msgid "Save"
+msgstr "Uložiť"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:411
+msgid "Search"
+msgstr "Hľadať"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:206
+msgid "Send"
+msgstr "Poslať"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:519
+msgid "Set"
+msgstr "Nastaviť/ené"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:51
+msgid "Sign Up"
+msgstr "Registrácia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:393
+msgid "Statistics Summary"
+msgstr "Súhrn štatistiky"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:358
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:395
+msgid "Status"
+msgstr "Stav"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:325
+msgid "Store direct referrals"
+msgstr "Ukladať priame referencie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms Page or Post ID"
+msgstr "Stránka Pravidiel a podmienok alebo Post ID"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms and conditions"
+msgstr "Pravidlá a podmienky"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:136
+#, php-format
+msgid "Terms page: <em>%s</em>"
+msgstr "Pravidlá a podmienky používania: <em>%s</em>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1170
+msgid "Thank you for using the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+msgstr "Ďakujeme že používate <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> rozšírenie od <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:240
+msgid "Thanks for signing up!"
+msgstr "Ďakujeme za registráciu!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:211
+msgid "Thanks!"
+msgstr "Ďakujeme!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:130
+#, php-format
+msgid "The Affiliate URL parameter name <strong>has been changed</strong> from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
+msgstr "Affiliate URL parameter <strong>sa zmenil</strong>z <em><strong>%s</strong></em> na <em><strong>%s</strong></em>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:123
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is forbidden</em>."
+msgstr "Affiliate URL parameter sa <strong>nezmenil</strong>, požadovaná zmena <em>ja zakázaná</em>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:120
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is not valid</em>. Only lower case letters and the underscore _ are allowed."
+msgstr "Parameter affiliate URL <strong>sa nezmenil</strong>, požadovaný názov <em>nie je platný</em>. Môžete použiť len malé písmená a podtržník _ ."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1096
+msgid "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals."
+msgstr "Rozšírenie Affiliate poskytuje <em>Affiliate kontakt</em> widget ktorý môže slúžiť pre zaznamenanie LEAD referencie."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1117
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1127
+msgid "The affiliate information is removed once a visitor has landed on your site."
+msgstr "Affiliate informácie sú odstránené akonáhle návštevník prišiel na Vašu stránku."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1078
+msgid "The complete documentation is available on the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates plugin page</a>"
+msgstr "Kompletná dokumentácia je dostupná na stránke <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliate rozšírenia</a>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:356
+#, php-format
+msgid "The current Affiliate URL parameter name is: <b>%s</b>"
+msgstr "Aktuálny parameter Affiliate URL je: <b>%s</b>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:370
+#, php-format
+msgid "The current encoding in effect is: <b>%s</b>"
+msgstr "Aktuálne platné kódovanie je: <b>%s</b>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:359
+#, php-format
+msgid "The default Affiliate URL parameter name is <em>%s</em>."
+msgstr "Štandardný parameter Affiliate URL je <em>%s</em>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:319
+msgid "The default value is 1. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until one day after she or he clicked that affiliate link."
+msgstr "Štandardná hodnota je 1. V tomto prípade, keď príde návštevník na Vašu stránku pomocou affiliate odkazu, referencia bude platná 1 deň po tom ako bolo kliknuté na affiliate odkaz."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:483
+#, php-format
+msgid "There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s"
+msgstr "Existujú rozličné záznamy emailových adries pre affiliate-a, priradené k užívateľovi. Toto môže byť OK, ale v prípade pochybností to skontrolujte. Tento email je pod užívateľom %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:534
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:606
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:530
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:556
+msgid "There are no results."
+msgstr "Nie sú žiadne výsledky."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1108
+msgid "There are two types of links your affiliates may use to link to your site:"
+msgstr "Existujú dva typy odkazov ktoré môže Váš affiliate použiť pri odkazovaní na Vašu stránku:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:324
+msgid "This contact form will request a referral and store the data that has been submitted."
+msgstr "Tento kontaktný formulár bude požadovať referenciu a uloží dáta ktoré boli následne odoslané."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:313
+msgid "This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid."
+msgstr "Toto je počet dní odkedy návštevník vstúpil na Vašu stránku pomocou affiliate odkazu, pre ktoré bude platná referencia."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1126
+msgid "This link uses a nicer URL to record vists you receive through your affiliates."
+msgstr "Tento odkaz používa krajšie URL pre zaznamenanie návštev ktoré získate od affiliate-ov."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1116
+msgid "This link uses a parameter in the URL to record vists you receive through your affiliates."
+msgstr "Tento odkaz používa parameter v URL pre zaznamenanie návštevy ktoré ste získali od affiliate-ov."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:439
+msgid "This option should only be used to clean up after testing."
+msgstr "Tato možnosť by mala byť použitá pri vyčistení údajov po testovaní."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1084
+msgid "This screen offers an overview with basic statistical data."
+msgstr "Táto obrazovka ponúka prehľad so základnými štatistickými údajmi."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:455
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:511
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:470
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:530
+msgid "Time"
+msgstr "Čas"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:121
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:312
+msgid "Title:"
+msgstr "Nadpis:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:330
+msgid "To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate."
+msgstr "Použitie je vhodné ako základný referral nástroj (napr. pri lead generation), pokiaľ chcete evidovať kto Vás kontaktoval alebo navštívil pomocou affiliate-ov."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:331
+msgid "To serve as an example on how to use the API provided by the Affiliates plugin"
+msgstr "Príklad použitia API poskytnúteho s rozšírením"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1097
+#, php-format
+msgid "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
+msgstr "Použitie je nasledovné, umiestnite widget do svojej <a href=\"%s\">widget oblasti</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:512
+msgid "URL Parameter"
+msgstr "Parameter URL"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:136
+msgid "Unless the incoming affiliate links reflect the current Affiliate URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "Pokiaľ prichádzajúce odkazy neobsahujú URL parameter, kliknutia, návštevy ani referencie nebudú zaznamenané!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:96
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:335
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:72
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:417
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:133
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:359
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:382
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:343
+msgid "Until"
+msgstr "Do"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:75
+#, php-format
+msgid "Until : %s"
+msgstr "Do : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:87
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:64
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:329
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:357
+msgid "Username"
+msgstr "Užívateľské meno"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:73
+#, php-format
+msgid "Username : %s"
+msgstr "Užívateľské meno : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:567
+#, php-format
+msgid "Username: %s"
+msgstr "Užívateľské meno : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:308
+msgid "Visitors"
+msgstr "Návštevníci"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:300
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:287
+msgid "Visits"
+msgstr "Návštevy"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:998
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:999
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:171
+msgid "Visits & Referrals"
+msgstr "Návštevy a referencie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:335
+msgid "Website"
+msgstr "Stránka"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:133
+msgid "Write part of the title or the post ID. If left empty, no terms disclaimer will be shown."
+msgstr "Napíšte časť ID Vašej strany. Pokiaľ necháte prázdne, nezobrazia a Pravidlá a podmienky."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:109
+msgid "You are already registered as an affiliate."
+msgstr "Už ste registrovaný ako affiliate."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1118
+#, php-format
+msgid "You may also append the ?%s=... part to links to your posts."
+msgstr "Môžete taktiež pripojiť časť ?%s=... k odkazom na Vaše stránky."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:53
+#, php-format
+msgid "Your site is not using pretty <a href=\"%s\">permalinks</a>. You will only be able to use URL parameter based <span class=\"affiliate-link\">affiliate links</span> but not pretty <span class=\"affiliate-permalink\">affiliate permalinks</span>, unless you change your permalink settings."
+msgstr "Vaša stránka nepoužíva <a href=\"%s\">pekné URL/permalinks</a>. Môžete mať možnosť použiť len URL parameter na základe <span class=\"affiliate-link\">affiliate linku</span> ale nie <span class=\"affiliate-permalink\">pekné URL/affiliate permalinky</span>, pokiaľ si nezmeníte nastavenie permalinkov."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:570
+#, php-format
+msgid "[%s] New Affiliate Registration"
+msgstr "[%s] Nová registrácia affiliate-ov"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:522
+#, php-format
+msgid "you need to adjust your <a href=\"%s\">permalink settings</a>."
+msgstr "musíte si prispôsobiť <a href=\"%s\">nastavenie permalinkov</a>"
+

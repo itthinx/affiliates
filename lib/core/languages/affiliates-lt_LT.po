@@ -1,0 +1,1007 @@
+# Copyright (C) 2012 Affiliates
+# This file is distributed under the same license as the Affiliates package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Affiliates 1.3.6\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/affiliates\n"
+"POT-Creation-Date: 2012-04-03 11:32:48+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-05-01 18:53+0200\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE\n"
+"X-Poedit-Language: Lithuanian\n"
+"X-Poedit-Country: Lithuania\n"
+
+#: lib/core/affiliates-admin-affiliates-add.php:28
+#: lib/core/affiliates-admin-affiliates-add.php:99
+#: lib/core/affiliates-admin-affiliates-add.php:103
+#: lib/core/affiliates-admin-affiliates-edit.php:31
+#: lib/core/affiliates-admin-affiliates-edit.php:123
+#: lib/core/affiliates-admin-affiliates-edit.php:127
+#: lib/core/affiliates-admin-affiliates-remove.php:31
+#: lib/core/affiliates-admin-affiliates-remove.php:100
+#: lib/core/affiliates-admin-affiliates-remove.php:104
+#: lib/core/affiliates-admin-affiliates.php:48
+#: lib/core/affiliates-admin-affiliates.php:110
+#: lib/core/affiliates-admin-affiliates.php:214
+#: lib/core/affiliates-admin-affiliates.php:220
+#: lib/core/affiliates-admin-hits-affiliate.php:39
+#: lib/core/affiliates-admin-hits-affiliate.php:53
+#: lib/core/affiliates-admin-hits-affiliate.php:158
+#: lib/core/affiliates-admin-hits-affiliate.php:164
+#: lib/core/affiliates-admin-hits.php:32
+#: lib/core/affiliates-admin-hits.php:46
+#: lib/core/affiliates-admin-hits.php:151
+#: lib/core/affiliates-admin-hits.php:157
+#: lib/core/affiliates-admin-options.php:43
+#: lib/core/affiliates-admin-referrals.php:32
+#: lib/core/affiliates-admin-referrals.php:46
+#: lib/core/affiliates-admin-referrals.php:200
+#: lib/core/affiliates-admin-referrals.php:206
+#: lib/core/affiliates-admin.php:29
+#: lib/core/affiliates-admin.php:47
+msgid "Access denied."
+msgstr "Prieiga nesuteikta."
+
+#: lib/core/affiliates-admin-affiliates-add.php:46
+msgid "Add a new affiliate"
+msgstr "Pridėti naują partnerį"
+
+#: lib/core/affiliates-admin-affiliates-add.php:53
+#: lib/core/affiliates-admin-affiliates-edit.php:76
+#: lib/core/class-affiliates-contact.php:198
+msgid "Name"
+msgstr "Vardas"
+
+#: lib/core/affiliates-admin-affiliates-add.php:57
+#: lib/core/affiliates-admin-affiliates-edit.php:80
+#: lib/core/affiliates-admin-affiliates.php:356
+#: lib/core/class-affiliates-contact.php:200
+#: lib/core/class-affiliates-registration.php:325
+msgid "Email"
+msgstr "Elektroninio pašto adresas"
+
+#: lib/core/affiliates-admin-affiliates-add.php:60
+#: lib/core/affiliates-admin-affiliates-edit.php:83
+msgid "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically."
+msgstr "Jeigu nurodytas teisingas <strong>Vartotojo vardas</strong>, bet nepateiktas elektroninio pašto adresas, vartotojo elektroninio pašto adresas bus naudojamas automatiškai."
+
+#: lib/core/affiliates-admin-affiliates-add.php:64
+#: lib/core/affiliates-admin-affiliates-edit.php:87
+#: lib/core/affiliates-admin-affiliates.php:357
+#: lib/core/class-affiliates-registration.php:322
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: lib/core/affiliates-admin-affiliates-add.php:68
+#: lib/core/affiliates-admin-affiliates-edit.php:92
+#: lib/core/affiliates-admin-affiliates.php:358
+#: lib/core/affiliates-admin-affiliates.php:380
+#: lib/core/affiliates-admin-hits-affiliate.php:333
+#: lib/core/affiliates-admin-hits.php:333
+#: lib/core/affiliates-admin-referrals.php:393
+#: lib/core/affiliates-admin.php:115
+msgid "From"
+msgstr "Nuo"
+
+#: lib/core/affiliates-admin-affiliates-add.php:72
+#: lib/core/affiliates-admin-affiliates-edit.php:96
+#: lib/core/affiliates-admin-affiliates.php:359
+#: lib/core/affiliates-admin-affiliates.php:382
+#: lib/core/affiliates-admin-hits-affiliate.php:335
+#: lib/core/affiliates-admin-hits.php:335
+#: lib/core/affiliates-admin-referrals.php:395
+#: lib/core/affiliates-admin.php:117
+msgid "Until"
+msgstr "Iki"
+
+#: lib/core/affiliates-admin-affiliates-add.php:77
+#: lib/core/affiliates-admin-affiliates.php:242
+msgid "Add"
+msgstr "Pridėti"
+
+#: lib/core/affiliates-admin-affiliates-add.php:79
+#: lib/core/affiliates-admin-affiliates-edit.php:103
+#: lib/core/affiliates-admin-affiliates-remove.php:80
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:37
+#: lib/core/affiliates-admin-affiliates-edit.php:143
+#: lib/core/affiliates-admin-affiliates-remove.php:37
+msgid "No such affiliate."
+msgstr "Nėra tokio partnerio."
+
+#: lib/core/affiliates-admin-affiliates-edit.php:49
+#: lib/core/affiliates-admin-affiliates-remove.php:49
+msgid "Edit %s"
+msgstr "Redaguoti %s"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:68
+msgid "Edit an affiliate"
+msgstr "Redaguoti kaip partnerį"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:101
+#: lib/core/affiliates-admin-options.php:380
+msgid "Save"
+msgstr "Įrašyti"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:64
+msgid "Remove an affiliate"
+msgstr "Pašalinti partnerį"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:71
+msgid "Name : %s"
+msgstr "Vardas: %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:72
+msgid "Email : %s"
+msgstr "Elektroninio pašto adresas: %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:73
+msgid "Username : %s"
+msgstr "Vartotojo vardas: %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:74
+msgid "From : %s"
+msgstr "Nuo: %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:75
+msgid "Until : %s"
+msgstr "Iki: %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:78
+#: lib/core/affiliates-admin-affiliates.php:361
+#: lib/core/affiliates-admin-affiliates.php:502
+msgid "Remove"
+msgstr "Pašalinti"
+
+#: lib/core/affiliates-admin-affiliates.php:53
+msgid "Your site is not using pretty <a href=\"%s\">permalinks</a>. You will only be able to use URL parameter based <span class=\"affiliate-link\">affiliate links</span> but not pretty <span class=\"affiliate-permalink\">affiliate permalinks</span>, unless you change your permalink settings."
+msgstr "Jūsų puslapis nenaudoja struktūrinių <a href=\"%s\">permanuorodų</a>. Jūs galėsite naudoti tik universaliųjų nuorodų parametrais paremtas  <span class=\"affiliate-link\">partnerių nuorodas</span>, bet ne struktūrines <span class=\"affiliate-link\">partnerių nuorodas</span>, iki tol, kol pakeisite savo permanuorodų nuostatas."
+
+#: lib/core/affiliates-admin-affiliates.php:236
+#: lib/core/wp-init.php:844
+#: lib/core/wp-init.php:845
+msgid "Manage Affiliates"
+msgstr "Valdyti Partnerius"
+
+#: lib/core/affiliates-admin-affiliates.php:242
+msgid "Click to add a new affiliate"
+msgstr "Paspauskite, jeigu norite pridėti naują partnerį"
+
+#: lib/core/affiliates-admin-affiliates.php:242
+msgid "New Affiliate"
+msgstr "Naujas Partneris"
+
+#: lib/core/affiliates-admin-affiliates.php:354
+msgid "Id"
+msgstr "Identifikatorius"
+
+#: lib/core/affiliates-admin-affiliates.php:355
+#: lib/core/affiliates-admin-hits-affiliate.php:299
+#: lib/core/affiliates-admin-hits-affiliate.php:311
+#: lib/core/affiliates-admin-hits-affiliate.php:464
+#: lib/core/affiliates-admin-hits-affiliate.php:525
+#: lib/core/affiliates-admin-hits.php:311
+#: lib/core/affiliates-admin-hits.php:457
+#: lib/core/affiliates-admin-hits.php:513
+#: lib/core/affiliates-admin-referrals.php:335
+#: lib/core/affiliates-admin-referrals.php:348
+msgid "Affiliate"
+msgstr "Partneris"
+
+#: lib/core/affiliates-admin-affiliates.php:360
+#: lib/core/affiliates-admin-affiliates.php:499
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: lib/core/affiliates-admin-affiliates.php:362
+msgid "Links"
+msgstr "Nuorodos"
+
+#: lib/core/affiliates-admin-affiliates.php:369
+#: lib/core/affiliates-admin-hits-affiliate.php:327
+#: lib/core/affiliates-admin-hits.php:327
+#: lib/core/affiliates-admin-referrals.php:386
+#: lib/core/affiliates-admin.php:112
+msgid "Filters"
+msgstr "Filtrai"
+
+#: lib/core/affiliates-admin-affiliates.php:372
+msgid "Affiliate Id"
+msgstr "Partnerio identifikatorius"
+
+#: lib/core/affiliates-admin-affiliates.php:374
+msgid "Affiliate Name"
+msgstr "Partnerio Vardas"
+
+#: lib/core/affiliates-admin-affiliates.php:376
+msgid "Affiliate Username"
+msgstr "Partnerio Vartotojo vardas"
+
+#: lib/core/affiliates-admin-affiliates.php:384
+#: lib/core/affiliates-admin-hits-affiliate.php:347
+#: lib/core/affiliates-admin-hits.php:347
+#: lib/core/affiliates-admin-referrals.php:407
+msgid "Include inoperative affiliates"
+msgstr "Įtraukti neveiksnius partnerius"
+
+#: lib/core/affiliates-admin-affiliates.php:386
+msgid "Include removed affiliates"
+msgstr "Įtraukti pašalintus partnerius"
+
+#: lib/core/affiliates-admin-affiliates.php:391
+#: lib/core/affiliates-admin-affiliates.php:405
+#: lib/core/affiliates-admin-hits-affiliate.php:340
+#: lib/core/affiliates-admin-hits-affiliate.php:363
+#: lib/core/affiliates-admin-hits.php:340
+#: lib/core/affiliates-admin-hits.php:363
+#: lib/core/affiliates-admin-referrals.php:400
+#: lib/core/affiliates-admin-referrals.php:422
+#: lib/core/affiliates-admin.php:120
+msgid "Apply"
+msgstr "Pritaikyti"
+
+#: lib/core/affiliates-admin-affiliates.php:392
+#: lib/core/affiliates-admin-hits-affiliate.php:349
+#: lib/core/affiliates-admin-hits.php:349
+#: lib/core/affiliates-admin-referrals.php:409
+#: lib/core/affiliates-admin.php:121
+msgid "Clear"
+msgstr "Išvalyti"
+
+#: lib/core/affiliates-admin-affiliates.php:402
+#: lib/core/affiliates-admin-hits-affiliate.php:359
+#: lib/core/affiliates-admin-hits.php:359
+#: lib/core/affiliates-admin-referrals.php:419
+msgid "Results per page"
+msgstr "Rezultatai puslapyje"
+
+#: lib/core/affiliates-admin-affiliates.php:462
+msgid "(removed)"
+msgstr "(pašalinta)"
+
+#: lib/core/affiliates-admin-affiliates.php:468
+msgid "(inoperative)"
+msgstr "(neveiksnus)"
+
+#: lib/core/affiliates-admin-affiliates.php:483
+msgid "There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s"
+msgstr "Nėra skirtingų elektroninio pašto adresų partnerio įraše ir priskirto vartotojo paskyroje. Viskas gali veikti, bet jeigu abejojate, pasitikrinkite. Elektroninio pašto adresas vartotojo rinkmenoje yra %s."
+
+#: lib/core/affiliates-admin-affiliates.php:508
+msgid "Link"
+msgstr "Nuoroda"
+
+#: lib/core/affiliates-admin-affiliates.php:512
+msgid "URL Parameter"
+msgstr "Universaliosios nuorodos Parametras"
+
+#: lib/core/affiliates-admin-affiliates.php:516
+msgid "Pretty"
+msgstr "Struktūrinės"
+
+#: lib/core/affiliates-admin-affiliates.php:522
+msgid "you need to adjust your <a href=\"%s\">permalink settings</a>."
+msgstr "Jūs turite suderinti savo <a href=\"%s\">permanuorodų nuostatas</a>."
+
+#: lib/core/affiliates-admin-affiliates.php:530
+#: lib/core/affiliates-admin-hits-affiliate.php:548
+#: lib/core/affiliates-admin-hits.php:534
+#: lib/core/affiliates-admin-referrals.php:584
+msgid "There are no results."
+msgstr "Nėra tinkamų rezultatų."
+
+#: lib/core/affiliates-admin-hits-affiliate.php:178
+#: lib/core/wp-init.php:870
+#: lib/core/wp-init.php:871
+msgid "Affiliates & Referrals"
+msgstr "Partneriai ir Nukreipėjai"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:300
+msgid "Visitors"
+msgstr "Lankytojai"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:301
+#: lib/core/affiliates-admin-hits-affiliate.php:516
+#: lib/core/affiliates-admin-hits.php:301
+#: lib/core/affiliates-admin-hits.php:506
+#: lib/core/affiliates-admin.php:194
+#: lib/core/affiliates-admin.php:203
+msgid "Hits"
+msgstr "Spustelėjimai"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:302
+#: lib/core/affiliates-admin-hits-affiliate.php:457
+#: lib/core/affiliates-admin-hits.php:302
+#: lib/core/affiliates-admin-hits.php:450
+#: lib/core/affiliates-admin-referrals.php:216
+#: lib/core/affiliates-admin.php:228
+#: lib/core/wp-init.php:883
+#: lib/core/wp-init.php:884
+msgid "Referrals"
+msgstr "Nukreipėjai"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:303
+#: lib/core/affiliates-admin-hits.php:303
+msgid "Ratio"
+msgstr "Santykis"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:343
+#: lib/core/affiliates-admin-hits.php:343
+msgid "Expand referrals"
+msgstr "Išskleisti nukreipėjus"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:345
+#: lib/core/affiliates-admin-hits.php:345
+msgid "Expand hits"
+msgstr "Išskleisti spustelėjimus"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:462
+#: lib/core/affiliates-admin-hits-affiliate.php:522
+#: lib/core/affiliates-admin-hits.php:455
+#: lib/core/affiliates-admin-hits.php:511
+msgid "Time"
+msgstr "Laikas"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:463
+#: lib/core/affiliates-admin-hits.php:456
+#: lib/core/affiliates-admin-referrals.php:334
+msgid "Post"
+msgstr "Įrašas"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:521
+#: lib/core/affiliates-admin-hits.php:299
+#: lib/core/affiliates-admin-referrals.php:333
+msgid "Date"
+msgstr "Data"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:523
+#: lib/core/affiliates-admin-hits.php:512
+msgid "IP"
+msgstr "IP adresas"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:524
+msgid "Count"
+msgstr "Skaičiuoklė"
+
+#: lib/core/affiliates-admin-hits.php:171
+#: lib/core/wp-init.php:857
+#: lib/core/wp-init.php:858
+msgid "Visits & Referrals"
+msgstr "Apsilankymai ir Nukreipimai"
+
+#: lib/core/affiliates-admin-hits.php:300
+#: lib/core/affiliates-admin.php:211
+#: lib/core/affiliates-admin.php:220
+msgid "Visits"
+msgstr "Apsilankymai"
+
+#: lib/core/affiliates-admin-hits.php:552
+msgid "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT."
+msgstr "* Data, pateikta serverio laiko zonai: %s, kuris nebuvo perkeltas per %s valandų, atkreipiant dėmesį į laiko juostą."
+
+#: lib/core/affiliates-admin-options.php:51
+#: lib/core/wp-init.php:896
+msgid "Affiliates options"
+msgstr "Partnerių parinktys"
+
+#: lib/core/affiliates-admin-options.php:114
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is not valid</em>. Only lower case letters and the underscore _ are allowed."
+msgstr "Partnerio universaliosios nuorodos parametro pavadinimas <strong>nebuvo pakeistas</strong>, pasiūlytas vardas <em>yra neteisingas</em>. Leistini tik mažosios raidės ir pabraukimo brūkšnys."
+
+#: lib/core/affiliates-admin-options.php:117
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is forbidden</em>."
+msgstr "Partnerio universaliosios nuorodos parametro pavadinimas <strong>nebuvo pakeistas</strong>, pasiūlytas vardas <em>yra uždraustas</em>."
+
+#: lib/core/affiliates-admin-options.php:124
+msgid "The Affiliate URL parameter name <strong>has been changed</strong> from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
+msgstr "Partnerio universaliosios nuorodos parametro pavadinimas <strong>buvo pakeistas</strong> iš <em><strong>%s</strong></em> į <em><strong>%s</strong></em>."
+
+#: lib/core/affiliates-admin-options.php:127
+msgid "If your affiliates are using affiliate links based on the previous Affiliate URL parameter name, they <strong>NEED</strong> to update their affiliate links."
+msgstr "Jeigu Jūsų partneriai naudoja partnerystės nuorodas, susietas su buvusiais Partnerystės universaliųjų nuorodų parametrų pavadinimais, jie <strong>PRIVALO</strong> atnaujinti savo partnerystės nuorodas."
+
+#: lib/core/affiliates-admin-options.php:130
+msgid "Unless the incoming affiliate links reflect the current Affiliate URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "Nebent įeinančios partnerystės nuorodos atspindi dabartinę Partnerystės universaliąją nuorodą, partnerių paspaudimai, apsilankymai ar nukreipimai nebus fiksuojami."
+
+#: lib/core/affiliates-admin-options.php:143
+#: lib/core/affiliates-admin-options.php:230
+msgid "Access affiliates"
+msgstr "Pasiekti partnerius"
+
+#: lib/core/affiliates-admin-options.php:144
+#: lib/core/affiliates-admin-options.php:231
+msgid "Administer affiliates"
+msgstr "Administruoti partnerius"
+
+#: lib/core/affiliates-admin-options.php:145
+#: lib/core/affiliates-admin-options.php:232
+msgid "Administer options"
+msgstr "Administravimo parinktys"
+
+#: lib/core/affiliates-admin-options.php:187
+#: lib/core/affiliates-admin-referrals.php:363
+#: lib/core/affiliates-admin-referrals.php:369
+#: lib/core/affiliates-admin.php:237
+#: lib/core/affiliates-admin.php:313
+msgid "Accepted"
+msgstr "Priimta"
+
+#: lib/core/affiliates-admin-options.php:188
+#: lib/core/affiliates-admin-referrals.php:364
+#: lib/core/affiliates-admin-referrals.php:370
+#: lib/core/affiliates-admin.php:244
+#: lib/core/affiliates-admin.php:314
+msgid "Closed"
+msgstr "Uždaryta"
+
+#: lib/core/affiliates-admin-options.php:189
+#: lib/core/affiliates-admin-referrals.php:365
+#: lib/core/affiliates-admin-referrals.php:371
+#: lib/core/affiliates-admin.php:251
+#: lib/core/affiliates-admin.php:315
+msgid "Pending"
+msgstr "Laukiama"
+
+#: lib/core/affiliates-admin-options.php:190
+#: lib/core/affiliates-admin-referrals.php:366
+#: lib/core/affiliates-admin-referrals.php:372
+#: lib/core/affiliates-admin.php:258
+#: lib/core/affiliates-admin.php:316
+msgid "Rejected"
+msgstr "Atmesta"
+
+#: lib/core/affiliates-admin-options.php:215
+msgid "Affiliate ID Encoding"
+msgstr "Partnerio identifikatoriaus Kodavimas"
+
+#: lib/core/affiliates-admin-options.php:238
+msgid "Role"
+msgstr "Rolė"
+
+#: lib/core/affiliates-admin-options.php:281
+msgid "Page generation"
+msgstr "Puslapio kūrimas"
+
+#: lib/core/affiliates-admin-options.php:283
+msgid "Press the button to generate an affiliate area."
+msgstr "Paspauskite mygtuką, jeigu norite sukurti partnerio sritį."
+
+#: lib/core/affiliates-admin-options.php:284
+msgid "Generate"
+msgstr "Kurti"
+
+#: lib/core/affiliates-admin-options.php:297
+msgid "Referral timeout"
+msgstr "Nukreipėjo sesijos nutraukimas"
+
+#: lib/core/affiliates-admin-options.php:300
+msgid "Days"
+msgstr "Dienomis"
+
+#: lib/core/affiliates-admin-options.php:303
+msgid "This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid."
+msgstr "Tai yra praėjusių dienų kiekis, nuo tada, kai vartotojas pasiekė Jūsų tinklalapį per partnerio nuorodą, kuriai pasiūlytas nukreipėjas bus galiojantis."
+
+#: lib/core/affiliates-admin-options.php:306
+msgid "If you enter 0, referrals will only be valid until the visitor closes the browser (session)."
+msgstr "Jeigu įvedėte 0, nukreipėjai bus galiojantys tik tol, kol vartotojas uždaro naršyklę (nutraukia sesiją)."
+
+#: lib/core/affiliates-admin-options.php:309
+msgid "The default value is 1. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until one day after she or he clicked that affiliate link."
+msgstr "Numatytoji reikšmė yra 1. Šiuo atveju, jeigu vartotojas ateina į Jūsų puslapį per partnerio nuorodą, pasiūlytas nukreipėjas bus galiojantis vieną dieną, po to, kai jis ar ji apsilankė partnerio nuorodoje."
+
+#: lib/core/affiliates-admin-options.php:312
+msgid "Direct referrals"
+msgstr "Tiesioginiai nukreipėjai"
+
+#: lib/core/affiliates-admin-options.php:315
+msgid "Store direct referrals"
+msgstr "Kaupti tiesioginius nukreipėjus"
+
+#: lib/core/affiliates-admin-options.php:318
+msgid "If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct."
+msgstr "Jeigu ši parinktis suaktyvinta, pasiūlius nukreipėją be jokio pridėto partnerio atributo, nukreipėjas bus nustatytas kaip Tiesioginis."
+
+#: lib/core/affiliates-admin-options.php:321
+msgid "Default referral status"
+msgstr "Numatytoji nukreipėjo būsena"
+
+#: lib/core/affiliates-admin-options.php:326
+msgid "Robots"
+msgstr "Robotai"
+
+#: lib/core/affiliates-admin-options.php:332
+msgid "Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line."
+msgstr "Partnerio robotų paspaudimai, atlikti robotų, bus pažymėti ir neįskaičiuoti į bendrą sumą. Pridėkite vieną įrašą kiekvienai eilutei."
+
+#: lib/core/affiliates-admin-options.php:335
+msgid "Affiliate URL parameter name"
+msgstr "Partnerio universaliosios nuorodos parametro pavadinimas"
+
+#: lib/core/affiliates-admin-options.php:340
+msgid "The current Affiliate URL parameter name is: <b>%s</b>"
+msgstr "Dabartinis Partnerio universaliosios nuorodos parametro pavadinimas yra: <b>%s</b>"
+
+#: lib/core/affiliates-admin-options.php:343
+msgid "The default Affiliate URL parameter name is <em>%s</em>."
+msgstr "Numatytasis  Partnerio universaliosios nuorodos parametro pavadinimas yra: <em>%s</em>"
+
+#: lib/core/affiliates-admin-options.php:346
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "DĖMESIO: Jeigu Jūs pakeisite šią nuostatą prieš tai pateikęs partnerio nuorodas ar permanuorodas, įsitikinkite, jog šios yra atnaujintos. Nebent įeinančios partnerio nuorodos atspindi dabartinį universaliosios nuorodos parametro pavadinimą, partnerių paspaudimai, apsilankymai ar nukreipimai nebus fiksuojami."
+
+#: lib/core/affiliates-admin-options.php:349
+msgid "Affiliate ID encoding"
+msgstr "Partnerio identifikatoriaus kodavimas"
+
+#: lib/core/affiliates-admin-options.php:354
+msgid "The current encoding in effect is: <b>%s</b>"
+msgstr "Dabartinis veiksnus kodavimas yra: <b>%s</b>"
+
+#: lib/core/affiliates-admin-options.php:357
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current encoding, no affiliate hits, visits or referrals will be recorded."
+msgstr "DĖMESIO: Jeigu Jūs pakeisite šią nuostatą prieš tai pateikęs partnerio nuorodas ar permanuorodas, įsitikinkite, jog šios yra atnaujintos. Nebent įeinančios partnerio nuorodos atspindi dabartinį kodavimą, partnerių paspaudimai, apsilankymai ar nukreipimai nebus fiksuojami."
+
+#: lib/core/affiliates-admin-options.php:360
+msgid "Permissions"
+msgstr "Leidimai"
+
+#: lib/core/affiliates-admin-options.php:365
+msgid "A minimum set of permissions will be preserved."
+msgstr "Minimalus išsaugomų leidimų rinkinys."
+
+#: lib/core/affiliates-admin-options.php:367
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr "Jeigu užsirakinsite save, prašykite administratoriaus pagalbos."
+
+#: lib/core/affiliates-admin-options.php:370
+msgid "Deactivation and data persistence"
+msgstr "Deaktyvacija ir duomenų išlaikymas"
+
+#: lib/core/affiliates-admin-options.php:373
+msgid "Delete all plugin data on deactivation"
+msgstr "Ištrinti visus papildinio sukurtus duomenis deaktyvuojant"
+
+#: lib/core/affiliates-admin-options.php:376
+msgid "CAUTION: If this option is active while the plugin is deactivated, ALL affiliate and referral data will be DELETED. If you want to retrieve data about your affiliates and their referrals and are going to deactivate the plugin, make sure to back up your data or do not enable this option. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "DĖMESIO: Jeigu ši parinktis yra suaktyvinta, papildinio deaktyvacijos metu VISI partnerių ir nukreipėjų duomenys bus IŠTRINTI. Jeigu norite pasilikti duomenis apie Jūsų partnerius ir jų nukreipimus deaktyvuojant papildinį, įsitikinkite, jog pasidarėte savo duomenų atsarginę kopiją arba nesuaktyvinkite šios parinkties. Suaktyvindamas šią parinktį Jūs sutinkate, jog esate pilnai atsakingas (ir perspėtas) dėl duomenų dingimų ir visų su tuo susijusių pasėkmių."
+
+#: lib/core/affiliates-admin-referrals.php:336
+msgid "Amount"
+msgstr "Kiekis"
+
+#: lib/core/affiliates-admin-referrals.php:337
+msgid "Currency"
+msgstr "Valiuta"
+
+#: lib/core/affiliates-admin-referrals.php:338
+#: lib/core/affiliates-admin-referrals.php:375
+msgid "Status"
+msgstr "Būsena"
+
+#: lib/core/affiliates-admin-referrals.php:401
+msgid "Expand details"
+msgstr "Išskleisti detales"
+
+#: lib/core/affiliates-admin-referrals.php:403
+msgid "Expand descriptions"
+msgstr "Išskleisti aprašymą"
+
+#: lib/core/affiliates-admin-referrals.php:405
+msgid "Expand data"
+msgstr "Išskleisti duomenis"
+
+#: lib/core/affiliates-admin-referrals.php:497
+msgid "Set"
+msgstr "Nustatyti"
+
+#: lib/core/affiliates-admin-referrals.php:524
+#: lib/core/affiliates-admin-referrals.php:545
+msgid "Data"
+msgstr "Duomenys"
+
+#: lib/core/affiliates-admin-referrals.php:574
+msgid "Description"
+msgstr "Aprašymas"
+
+#: lib/core/affiliates-admin.php:32
+#: lib/core/wp-init.php:830
+msgid "Affiliates Overview"
+msgstr "Partnerių Peržiūra"
+
+#: lib/core/affiliates-admin.php:266
+msgid "%d Day Charts"
+msgstr "%d Dienų Grafikai"
+
+#: lib/core/affiliates-admin.php:275
+msgid "Statistics Summary"
+msgstr "Statistikos Suvestinė"
+
+#: lib/core/affiliates-admin.php:281
+msgid "From operative affiliates:"
+msgstr "Nuo veikiančių partnerių:"
+
+#: lib/core/affiliates-admin.php:282
+msgid "There is 1 operative affiliate"
+msgid_plural "There are %d operative affiliates"
+msgstr[0] "Yra 1 veiksnus partneris"
+msgstr[1] "Yra %d veiksnių partnerių"
+
+#: lib/core/affiliates-admin.php:287
+msgid "From operative and non-operative affiliates:"
+msgstr "Nuo veikiančių ir neveiksnių partnerių:"
+
+#: lib/core/affiliates-admin.php:288
+#: lib/core/affiliates-admin.php:294
+msgid "There is 1 affiliate in this set"
+msgid_plural "There are %d affiliates in this set"
+msgstr[0] "Šiame rinkinyje yra 1 partneris"
+msgstr[1] "Šiame rinkinyje yra %d partnerių(-iai)"
+
+#: lib/core/affiliates-admin.php:293
+msgid "All time (includes data from deleted affiliates):"
+msgstr "Viso laiko (įtraukia ir ištrintų partnerių duomenis):"
+
+#: lib/core/affiliates-admin.php:323
+msgid "<strong>Referrals:</strong>"
+msgstr "<strong>Nukreipėjai:</strong>"
+
+#: lib/core/affiliates-admin.php:325
+msgid "%10d Accepted"
+msgstr "%10d Priimti"
+
+#: lib/core/affiliates-admin.php:326
+msgid "%10d Closed"
+msgstr "%10d Uždaryti"
+
+#: lib/core/affiliates-admin.php:327
+msgid "%10d Pending"
+msgstr "%10d Laukiami"
+
+#: lib/core/affiliates-admin.php:328
+msgid "%10d Rejected"
+msgstr "%10d Atmesti"
+
+#: lib/core/affiliates-admin.php:330
+msgid "%10d Hits"
+msgstr "%10d Paspaudimai"
+
+#: lib/core/affiliates-admin.php:331
+msgid "%10d Visits"
+msgstr "%10d Apsilankymai"
+
+#: lib/core/class-affiliates-contact.php:169
+msgid "Affiliates contact form submission"
+msgstr "Partnerių kontaktinės formos pateikimas"
+
+#: lib/core/class-affiliates-contact.php:202
+msgid "Message"
+msgstr "Pranešimas"
+
+#: lib/core/class-affiliates-contact.php:206
+msgid "Send"
+msgstr "Siųsti"
+
+#: lib/core/class-affiliates-contact.php:211
+msgid "Thanks!"
+msgstr "Ačiū"
+
+#: lib/core/class-affiliates-contact.php:312
+#: lib/core/class-affiliates-registration-widget.php:121
+msgid "Title:"
+msgstr "Antraštė:"
+
+#: lib/core/class-affiliates-contact.php:316
+msgid "Amount (use . for decimals):"
+msgstr "Kiekis (naudokite . dešimtainių trupmenų ženklinimui):"
+
+#: lib/core/class-affiliates-contact.php:320
+msgid "Currency - 3 letter code, e.g. USD, EUR:"
+msgstr "Valiuta - 3 raidžių kodas, pvz. USD, EUR, LTL:"
+
+#: lib/core/class-affiliates-contact.php:324
+msgid "This contact form will request a referral and store the data that has been submitted."
+msgstr "Ši kontaktinė forma reikalaus nukreipėjo ir kaups jo pateiktus duomenis."
+
+#: lib/core/class-affiliates-contact.php:327
+msgid "It has two purposes:"
+msgstr "Taip padaryta dėl dviejų tikslų:"
+
+#: lib/core/class-affiliates-contact.php:330
+msgid "To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate."
+msgstr "Kad būtų naudojama kaip įrašo lygio nukreipimo įrankis (pvz. vedančioje kartoje), jeigu norite sekti kas susisiekė su Jumis ir kas aplankė Jūsų tinklalapį, rekomenduojamas partnerio."
+
+#: lib/core/class-affiliates-contact.php:331
+msgid "To serve as an example on how to use the API provided by the Affiliates plugin"
+msgstr "Kad būtų nadojamas kaip pavyzdys, nurodantis kaip naudoti API kodą, pateiktą Affiliates papildinio"
+
+#: lib/core/class-affiliates-generator.php:69
+msgid "Affiliate Area"
+msgstr "Partnerio Sritis"
+
+#: lib/core/class-affiliates-pagination.php:92
+msgid "1 item"
+msgstr "elementai(-ų)"
+
+#: lib/core/class-affiliates-pagination.php:113
+msgid "Go to the first page"
+msgstr "Eiti į pirmą puslapį"
+
+#: lib/core/class-affiliates-pagination.php:120
+msgid "Go to the previous page"
+msgstr "Eiti į buvusį puslapį"
+
+#: lib/core/class-affiliates-pagination.php:129
+msgid "Current page"
+msgstr "Dabartinis puslapis"
+
+#: lib/core/class-affiliates-pagination.php:136
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%1$s iš %2$s"
+
+#: lib/core/class-affiliates-pagination.php:140
+msgid "Go to the next page"
+msgstr "Eiti į sekantį puslapį"
+
+#: lib/core/class-affiliates-pagination.php:147
+msgid "Go to the last page"
+msgstr "Eiti į paskutinį puslapį"
+
+#: lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms and conditions"
+msgstr "Taisyklės ir sąlygos"
+
+#: lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms Page or Post ID"
+msgstr "Taisyklių Puslapis arba Įrašo Identifikatorius"
+
+#: lib/core/class-affiliates-registration-widget.php:133
+msgid "Write part of the title or the post ID. If left empty, no terms disclaimer will be shown."
+msgstr "Parašykite antraštės dalį arba įrašo identifikatorių. Jeigu laukelį paliksite tuščią, jokių taisyklių laikymosi nurodymų rodoma nebus."
+
+#: lib/core/class-affiliates-registration-widget.php:136
+msgid "Terms page: <em>%s</em>"
+msgstr "Taisyklių puslapis: <em>%s</em>"
+
+#: lib/core/class-affiliates-registration.php:51
+msgid "Sign Up"
+msgstr "Užsiregistruoti"
+
+#: lib/core/class-affiliates-registration.php:109
+msgid "You are already registered as an affiliate."
+msgstr "Jūs jau prisiregistravęs kaip partneris."
+
+#: lib/core/class-affiliates-registration.php:117
+#: lib/core/class-affiliates-registration.php:244
+msgid "Access your profile"
+msgstr "Pasiekti Jūsų profilį"
+
+#: lib/core/class-affiliates-registration.php:127
+msgid "Registration is currently closed."
+msgstr "Registracija šiuo metu uždaryta."
+
+#: lib/core/class-affiliates-registration.php:149
+msgid "By signing up, you indicate that you have read and agree to the %s."
+msgstr "Užsiregistruodamas Jūs pripažįstate, jog perskaitėte ir sutikote su %s."
+
+#: lib/core/class-affiliates-registration.php:233
+msgid "Thanks for signing up!"
+msgstr "Ačiū, kad užsiregistravote!"
+
+#: lib/core/class-affiliates-registration.php:235
+msgid "Please check your email for the confirmation link."
+msgstr "Prašome pasitikrinti savo elektroninį paštą. Jame turėtų būti patvirtinimo nuoroda."
+
+#: lib/core/class-affiliates-registration.php:236
+msgid "Log in <a href=\"%s\">here</a>."
+msgstr "Prisijunkite <a href=\"%s\">čia</a>."
+
+#: lib/core/class-affiliates-registration.php:311
+msgid "<p>Please fill in the required information in your <a href=\"%s\">profile</a> first.</p>"
+msgstr "<p>Prašome pirmiausiai užpildyti reikiamą <a href=\"%s\">profilio</a>infromaciją.</p>"
+
+#: lib/core/class-affiliates-registration.php:316
+msgid "First Name"
+msgstr "Vardas"
+
+#: lib/core/class-affiliates-registration.php:319
+msgid "Last Name"
+msgstr "Pavardė"
+
+#: lib/core/class-affiliates-registration.php:328
+msgid "Website"
+msgstr "Tinklalapis"
+
+#: lib/core/class-affiliates-registration.php:367
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>KLAIDA</strong>: Prašome įvesti vartotojo vardą."
+
+#: lib/core/class-affiliates-registration.php:369
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr "<strong>KLAIDA</strong>: Šis vartotojo vardas neteisingas, nes jame yra naudojami neleistini simboliai. Prašome įvesti tinkamą vartotojo vardą."
+
+#: lib/core/class-affiliates-registration.php:372
+msgid "<strong>ERROR</strong>: This username is already registered, please choose another one."
+msgstr "<strong>KLAIDA</strong>: Šis vartotojo vardas yra užimtas, prašome pasirinkti kitą vartotojo vardą."
+
+#: lib/core/class-affiliates-registration.php:377
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr "<strong>KLAIDA</strong>: Prašome įvesti savo elektroninio pašto adresą."
+
+#: lib/core/class-affiliates-registration.php:379
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>KLAIDA</strong>: Pateiktas neteisingas elektroninio pašto adresas."
+
+#: lib/core/class-affiliates-registration.php:382
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr "<strong>KLAIDA</strong>: Šis elektroninio pašto adresas jau užregistruotas, prašome pasirinkti kitą elektroninio pašto adresą."
+
+#: lib/core/class-affiliates-registration.php:407
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr "<strong>KLAIDA</strong>: Neįmanoma Jūsų užregistruoti... Prašome susisiekti su <a href=\"mailto:%s\">svetainės administratoriumi</a> !"
+
+#: lib/core/class-affiliates-registration.php:559
+msgid "New affiliate registration on your site %s:"
+msgstr "Naujo partnerio registravimas Jūsų puslapyje %s:"
+
+#: lib/core/class-affiliates-registration.php:560
+msgid "Username: %s"
+msgstr "Vartotojo vardas: %s"
+
+#: lib/core/class-affiliates-registration.php:561
+msgid "E-mail: %s"
+msgstr "Elektroninio pašto adresas : %s"
+
+#: lib/core/class-affiliates-registration.php:563
+msgid "[%s] New Affiliate Registration"
+msgstr "[%s] Naujo Partnerio Registracija"
+
+#: lib/core/class-affiliates-shortcodes.php:274
+msgid "Log out"
+msgstr "Atsijungti"
+
+#. translators: the name of the pseudo-affiliate
+#: lib/core/constants.php:100
+msgctxt "pseudo-affiliate name"
+msgid "Direct"
+msgstr "Tiesioginis"
+
+#: lib/core/wp-init.php:707
+msgid "No encoding"
+msgstr "Be kodavimo"
+
+#: lib/core/wp-init.php:708
+msgid "MD5"
+msgstr "MD5"
+
+#. #-#-#-#-#  plugin.pot (Affiliates 1.3.6)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: lib/core/wp-init.php:831
+msgid "Affiliates"
+msgstr "Partneriai"
+
+#: lib/core/wp-init.php:897
+msgid "Options"
+msgstr "Parinktys"
+
+#: lib/core/wp-init.php:918
+msgid "The complete documentation is available on the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates plugin page</a>"
+msgstr "Pilna dokumentacija yra prieinama <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates papildinio puslapyje</a>"
+
+#: lib/core/wp-init.php:924
+msgid "This screen offers an overview with basic statistical data."
+msgstr "Šis ekrano vaizdas siūlo Jums apžvelgti pagrindinius statistinius duomenis."
+
+#: lib/core/wp-init.php:926
+msgid "<em>From operative affiliates:</em> includes affiliates that are currently active. This excludes affiliates whose dates are not currently valid as well as those that have been deleted."
+msgstr "<em>Iš veiksnių partnerių:</em> įtraukia partnerius, kurie šiuo metu yra aktyvūs. Tuo pat metu išskiria partnerius, kurių datos nėra teisingos, taip pat tuos, kurie buvo ištrinti."
+
+#: lib/core/wp-init.php:927
+msgid "<em>From operative and non-operative affiliates:</em> excludes deleted affiliates."
+msgstr "<em>Iš veiksnių ir neveiksnių partnerių:</em> išskiria ištrintus partnerius."
+
+#: lib/core/wp-init.php:928
+msgid "<em>All time</em> includes data from any affiliates, including deleted affiliates."
+msgstr "<em>Viso laiko:</em> įtraukia duomenis iš bet kurių partnerių, įskaitant ištrintųjų."
+
+#: lib/core/wp-init.php:931
+msgid "<em>Hits</em> are HTTP requests for affiliate links."
+msgstr "<em>Spustelėjimai:</em> yra partnerių nuorodų HTTP užklausos."
+
+#: lib/core/wp-init.php:932
+msgid "<em>Visits</em> are unique and daily requests for affiliate links."
+msgstr "<em>Apsilankymai</em> yra unikalios ir kasdienės partnerių nuorodų užklausos."
+
+#: lib/core/wp-init.php:933
+msgid "<em>Referrals</em> are recorded by request through the use of an API function. See the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">documentation</a> for more information."
+msgstr "<em>Nukreipėjai</em> yra įrašomi tik to pareikalvus, naudojant API funkciją. Peržiurėkite <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">dokumentaciją</a>, jeigu norite sužinoti daugiau."
+
+#: lib/core/wp-init.php:936
+msgid "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals."
+msgstr "Affiliates papildinys suteikia <em>Affiliates Contact</em> valdiklį, kuris gali būti naudojamas fiksuojant geriausiai veikiančius nukreipėjus."
+
+#: lib/core/wp-init.php:937
+msgid "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
+msgstr "Kad galėtumėte tai naudoti, patalpinkite valdikį vienoje iš savo <a href=\"%s\">valdiklio sričių</a>."
+
+#: lib/core/wp-init.php:941
+msgid "Note that <em>deleted</em> affiliates are not literally deleted but marked as such so that data that has been collected will still be accesible."
+msgstr "Įsiminkite, jog <em>ištrinti</em> partneriai nėra ištrinami iš tikro, bet tik pažymimi kaip tokie, taigi duomenys, kurie buvo surinkti jų veiklos metu išlieka pasiekiami."
+
+#: lib/core/wp-init.php:946
+msgid "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates."
+msgstr "Čia Jūs galite  <strong>pridėti</strong>, <strong>redaguoti</strong> ir <strong>pašalinti</strong> partnerius."
+
+#: lib/core/wp-init.php:948
+msgid "There are two types of links your affiliates may use to link to your site:"
+msgstr "Egzistuoja du nuorodų tipai, kuriuos Jūsų partneriai gali naudoti, nukreipiant vartotojus į Jūsų tinklalapį:"
+
+#: lib/core/wp-init.php:953
+msgid "Affiliate link"
+msgstr "Partnerio nuoroda"
+
+#: lib/core/wp-init.php:956
+msgid "This link uses a parameter in the URL to record vists you receive through your affiliates."
+msgstr "Ši nuoroda naudoja unviersaliosios nuorodos parametrus, fiksuodama Jūsų svetainės aplankymus per Jūsų partnerių nuorodas."
+
+#: lib/core/wp-init.php:957
+#: lib/core/wp-init.php:967
+msgid "The affiliate information is removed once a visitor has landed on your site."
+msgstr "Partnerio informacija yra pašalinama iškart, kai vartotojas pasiekia Jūsų puslapį."
+
+#: lib/core/wp-init.php:958
+msgid "You may also append the ?%s=... part to links to your posts."
+msgstr "Jūs taip pat galite pridėti ?%s=... dalį prie Jūsų įrašų nuorodų."
+
+#: lib/core/wp-init.php:963
+msgid "Affiliate permalink"
+msgstr "Partnerio permanuoroda"
+
+#: lib/core/wp-init.php:966
+msgid "This link uses a nicer URL to record vists you receive through your affiliates."
+msgstr "Ši nuoroda naudoja struktūrinę universaliąją nuoroda, fiksuodama Jūsų svetainės aplankymus per Jūsų partnerių nuorodas."
+
+#: lib/core/wp-init.php:972
+msgid "Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate."
+msgstr "Kai tik vartotojas aplanko Jūsų puslapį per partnerio nuroodą, nukreipėjai gali būti įrašyti ir priskirti partneriui."
+
+#: lib/core/wp-init.php:991
+msgid "If you require <em>support</em> or <em>customization</em> including <em>referrals integration</em> with your site, you may <a href=\"http://www.itthinx.com/\" target=\"_blank\">contact me here</a>."
+msgstr "Jeigu Jums reikalinga <em>pagalba</em> ar <em>individualizacija</em>, tarkime derinant <em>nukreipėjų integraciją</em> į Jūsų puslapį, Jūs galite <a href=\"http://www.itthinx.com/\" target=\"_blank\">surasti mane čia</a>."
+
+#: lib/core/wp-init.php:992
+#: lib/core/wp-init.php:1015
+msgid "If you find this plugin useful, please consider making a donation:"
+msgstr "Jeigu manote, kad šis papildinys yra Jums naudingas, apsvarstykite paaukojimo galimybę:"
+
+#: lib/core/wp-init.php:1010
+msgid "Thank you for using the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+msgstr "Ačiū, kad naudojatės <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> papildiniu, kurį sukūrė <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+
+#: lib/core/wp-init.php:1012
+msgid "Please get in touch if you need support, consulting or customization."
+msgstr "Prašome nesivaržyti susisiekiant su mumis, jeigu Jums reikalinga pagalba, konsultacijos ar individualizacija."
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.itthinx.com/plugins/affiliates"
+msgstr "http://www.itthinx.com/plugins/affiliates"
+
+#. Description of the plugin/theme
+msgid "The Affiliates plugin provides the right tools to maintain a partner referral program."
+msgstr "The Affiliates papildinys suteikia partnerių programų plėtojimui reikalingus įrankius."
+
+#. Author of the plugin/theme
+msgid "itthinx (Karim Rahimpur)"
+msgstr "itthinx (Karim Rahimpur)"
+
+#. Author URI of the plugin/theme
+msgid "http://www.itthinx.com"
+msgstr "http://www.itthinx.com"
+

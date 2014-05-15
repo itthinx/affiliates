@@ -1,0 +1,1401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Affiliates-pl_PL\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-05 21:11+0100\n"
+"PO-Revision-Date: 2013-02-18 18:37+0100\n"
+"Last-Translator: Jolanta <j.i.turzańska@gmail.com>\n"
+"Language-Team: WordPress4U.pl <admin@wordpress4u.pl>\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-pagination.php:136
+#, php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%1$s z %2$s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:443
+#, php-format
+msgid "%10d Accepted"
+msgstr "%10d Zaakceptowane"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:444
+#, php-format
+msgid "%10d Closed"
+msgstr "%10d Wypłacone"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:448
+#, php-format
+msgid "%10d Hits"
+msgstr "%10d Kliknięć"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:445
+#, php-format
+msgid "%10d Pending"
+msgstr "%10d Oczekujące"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:446
+#, php-format
+msgid "%10d Rejected"
+msgstr "%10d Zwrócone"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:449
+#, php-format
+msgid "%10d Visits"
+msgstr "%10d Odwiedzin"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:271
+#, php-format
+msgid "%d Day Charts"
+msgstr "%d dniowy wykres"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:468
+msgid "(inoperative)"
+msgstr "(nieaktywny)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:462
+msgid "(removed)"
+msgstr "[usunięte]"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:550
+#, php-format
+msgid ""
+"* Date is given for the server's time zone : %s, which has an offset of %s "
+"hours with respect to GMT."
+msgstr ""
+"* Data jest oparta na strefie czasowej serwera : %s, która jest przesunięta "
+"o %s godzin w stosunku do czasu GMT."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:195
+msgid "* Required when an amount is provided. Examples: USD, GBP, EUR, ..."
+msgstr "* Wymagane, gdy jest podana kwota. Przykłady: PLN, EUR, USD, ..."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-pagination.php:92
+#, php-format
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] "1 pozycja"
+msgstr[1] "Pozycji: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1199
+msgid ""
+"<em>All time</em> includes data from any affiliates, including deleted "
+"affiliates."
+msgstr ""
+"<em>Cały okres</em> zawiera dane od wszystkich partnerów, w tym usuniętych."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1197
+msgid ""
+"<em>From operative affiliates:</em> includes affiliates that are currently "
+"active. This excludes affiliates whose dates are not currently valid as well "
+"as those that have been deleted."
+msgstr ""
+"<em>Od aktywnych partnerów:</em> zawiera partnerów, którzy aktualnie są "
+"aktywni. Wykluczeni są partnerzy, dla których daty nie są aktualnie ważne, "
+"jak również tych, którzy zostali usunięci."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1198
+msgid ""
+"<em>From operative and non-operative affiliates:</em> excludes deleted "
+"affiliates."
+msgstr ""
+"<em>od aktywnych  i nieaktywnych partnerów:</em> nie uwzględnia usuniętych "
+"partnerów."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1202
+msgid "<em>Hits</em> are HTTP requests for affiliate links."
+msgstr "<em>Kliknięcia</em> to żądanie wywołania HTTP dla linków partnerskich."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1204
+msgid ""
+"<em>Referrals</em> are recorded by request through the use of an API "
+"function. See the <a href=\"http://www.itthinx.com/plugins/affiliates\" "
+"target=\"_blank\">documentation</a> for more information."
+msgstr ""
+"<em>Polecenia</em> są rejestrowane z wykorzystaniem funkcji API. Zobacz <a "
+"href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank"
+"\">dokumentację</a> aby dowiedzieć się więcej."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1203
+msgid "<em>Visits</em> are unique and daily requests for affiliate links."
+msgstr ""
+"<em>Odwiedziny</em> to unikalne i dzienne żądania wywołania strony dla "
+"linków partnerskich."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:324
+#, php-format
+msgid ""
+"<p>Please fill in the required information in your <a href=\"%s\">profile</"
+"a> first.</p>"
+msgstr ""
+"<p>Proszę najpierw podać wymagane informacje w twoim <a href=\"%s\">profilu</"
+"a>.</p>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:420
+#, php-format
+msgid ""
+"<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a "
+"href=\"mailto:%s\">webmaster</a> !"
+msgstr ""
+"<strong>BŁĄD</strong>: Nie mogę Cię zarejestrować... skontaktuj się z <a "
+"href=\"mailto:%s\">webmasterem</a> !"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:380
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>BŁĄD</strong>: Proszę wprowadzić nazwę użytkownika."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:390
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr "<strong>BŁĄD</strong>: Proszę wprowadzić twój adres e-mail."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:392
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>BŁĄD</strong>: Adres e-mail jest nieprawidłowy."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:395
+msgid ""
+"<strong>ERROR</strong>: This email is already registered, please choose "
+"another one."
+msgstr ""
+"<strong>BŁĄD</strong>: Ten e-mail jest już zarejestrowany w naszym systemie. "
+"Proszę wybrać inny."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:385
+msgid ""
+"<strong>ERROR</strong>: This username is already registered, please choose "
+"another one."
+msgstr ""
+"<strong>BŁĄD</strong>: Ta nazwa użytkownika jest już zarejestrowana w "
+"systemie. Proszę wybrać inną."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:382
+msgid ""
+"<strong>ERROR</strong>: This username is invalid because it uses illegal "
+"characters. Please enter a valid username."
+msgstr ""
+"<strong>BŁĄD</strong>: Ta nazwa użytkownika jest nieprawidłowa, ponieważ "
+"zawiera niedozwolone znaki. Proszę wprowadzić poprawną nazwę użytkownika."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:441
+msgid "<strong>Referrals:</strong>"
+msgstr "<strong>Polecenia:</strong>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:418
+msgid "A minimum set of permissions will be preserved."
+msgstr "Zostanie zachowany minimalny zestaw uprawnień."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:432
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:438
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:294
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:431
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:209
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:121
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:200
+msgid "Accepted"
+msgstr "Zaakceptowane"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:156
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:255
+msgid "Access affiliates"
+msgstr "Dostęp dla partnerów"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:31
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:123
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:127
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:46
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:141
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:147
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:28
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:99
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:34
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:70
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:235
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:241
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:31
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:100
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:104
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:29
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:47
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:43
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:449
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:46
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:48
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:110
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:214
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:220
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:39
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:53
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:148
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:154
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:64
+msgid "Access denied."
+msgstr "Dostęp zabroniony."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:117
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:257
+msgid "Access your profile"
+msgstr "Dostęp do Twojego profilu"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:77
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:260
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:262
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "Add"
+msgstr "Dodaj"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:46
+msgid "Add a new affiliate"
+msgstr "Dodaj nowego partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:157
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:256
+msgid "Administer affiliates"
+msgstr "Zarządzaj Partnerami"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:158
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:257
+msgid "Administer options"
+msgstr "Zarządzaj opcjami"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:309
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:455
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:511
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:402
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:417
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:90
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:355
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:305
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:317
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:470
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:531
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:145
+msgid "Affiliate"
+msgstr "Partner"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-generator.php:69
+msgid "Affiliate Area"
+msgstr "Panel Partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:240
+msgid "Affiliate ID Encoding"
+msgstr "Kodowanie ID partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:402
+msgid "Affiliate ID encoding"
+msgstr "Kodowanie ID partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:372
+msgid "Affiliate Id"
+msgstr "ID Partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:374
+msgid "Affiliate Name"
+msgstr "Nazwa partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:388
+msgid "Affiliate URL parameter name"
+msgstr "Identyfikator linku partnerskiego"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:376
+msgid "Affiliate Username"
+msgstr "Nazwa użytkownika Partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1224
+msgid "Affiliate link"
+msgstr "Link partnerski"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1234
+msgid "Affiliate permalink"
+msgstr "Bezpośredni odnośnik partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:372
+msgid "Affiliate registration"
+msgstr "Rejestracja Partnerów"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1083
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1167
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1168
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:451
+msgid "Affiliates"
+msgstr "Partnerzy"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1122
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1123
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:168
+msgid "Affiliates & Referrals"
+msgstr "Partnerzy & Poleceni"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1082
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:32
+msgid "Affiliates Overview"
+msgstr "Przegląd wyników"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:166
+msgid "Affiliates contact form submission"
+msgstr "Partnerzy - przesłanie formularza kontaktowego"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:466
+msgid "Affiliates network data"
+msgstr "Dane sieci partnerskiej"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1148
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:51
+msgid "Affiliates options"
+msgstr "Opcje wtyczki"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:411
+msgid "All time (includes data from deleted affiliates):"
+msgstr "Cały okres (zawiera dane usuniętych partnerów):"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:377
+msgid "Allow affiliate registration"
+msgstr "Zezwól na rejestrację partnerów"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:356
+msgid "Allow duplicate referrals"
+msgstr "Zezwól na dublowanie poleceń"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:360
+msgid ""
+"Allow to record duplicate referrals for the same affiliate (based on amount, "
+"currency, internal type and reference)."
+msgstr ""
+"Zezwól na zapisywanie zdublowanych poleceń dla tego samego partnera (w "
+"oparciu o kwotę, walutę, typ wewnętrzny i odnośnik)."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:463
+msgid "Also search in descriptions"
+msgstr "Szukaj także w opisach"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:403
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:109
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:183
+msgid "Amount"
+msgstr "Kwota"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:313
+msgid "Amount (use . for decimals):"
+msgstr "Kwota (użyj . dla miejsc dziesiętnych)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:338
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:361
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:477
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:499
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:138
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:391
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:405
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:346
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:369
+msgid "Apply"
+msgstr "Zastosuj"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:230
+msgid "Back"
+msgstr "Cofnij"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:478
+msgid ""
+"By enabling this option you agree to be solely responsible for any loss of "
+"data or any other consequences thereof."
+msgstr ""
+"Włączając tą opcję wyrażasz zgodę na wyłączną odpowiedzialność za utratę "
+"danych lub jakichkolwiek innych konsekwencje."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:150
+#, php-format
+msgid "By signing up, you indicate that you have read and agree to the %s."
+msgstr ""
+"Rejestrując się potwierdzasz, że przeczytałeś %s i akceptujesz wszystkie "
+"jego postanowienia."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:430
+msgid ""
+"CAUTION: If this option is active while the plugin is deactivated, ALL "
+"affiliate and referral data will be DELETED. If you want to retrieve data "
+"about your affiliates and their referrals and are going to deactivate the "
+"plugin, make sure to back up your data or do not enable this option. By "
+"enabling this option you agree to be solely responsible for any loss of data "
+"or any other consequences thereof."
+msgstr ""
+"UWAGA: Jeżeli ta opcja jest aktywna w czasie deaktywacji wtyczki, wszystkie "
+"dane partnerów i ich poleceń BĘDĄ USUNIĘTE. Jeżeli chcesz mieć dostęp do "
+"tych danych (albo je odzyskać) po deaktywacji wtyczki upewnij się, że "
+"zrobiłeś kopię bezpieczeństwa lub nie włączaj tej opcji. Wączając tą opcję "
+"wyrażasz zgodę na wyłączną odpowiedzialność za utratę danych lub "
+"jakiekolwiek inne konsekwencje."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:475
+msgid ""
+"CAUTION: If this option is active while the plugin is network deactivated, "
+"<strong>ALL affiliate and referral data will be DELETED on all sites of the "
+"network</strong>."
+msgstr ""
+"UWAGA: Jeżeli ta opcja jest aktywna, podczas deaktywacji wtyczki w sieci, "
+"<strong>wszystkie dane partnerów i ich poleceń będą USUNIĘTE na wszystkich "
+"stronach należących do sieci</strong>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:399
+msgid ""
+"CAUTION: If you change this setting and have distributed affiliate links or "
+"permalinks, make sure that these are updated. Unless the incoming affiliate "
+"links reflect the current URL parameter name, no affiliate hits, visits or "
+"referrals will be recorded."
+msgstr ""
+"UWAGA: Jeżeli zmienisz to ustawienie, a partnerzy korzystają już z linków "
+"zawierających poprzedni identyfikator, upewnij się, że zostali oni "
+"poinformowani o zmianie i zaktualizowali swoje linki. Przekierowania z innym "
+"niż aktualnym identyfikatorem nie będą rejestrowane."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:410
+msgid ""
+"CAUTION: If you change this setting and have distributed affiliate links or "
+"permalinks, make sure that these are updated. Unless the incoming affiliate "
+"links reflect the current encoding, no affiliate hits, visits or referrals "
+"will be recorded."
+msgstr ""
+"UWAGA: Jeżeli zmienisz to ustawienie, a partnerzy korzystają już z linków "
+"zawierających poprzedni identyfikator, upewnij się, że zostali oni "
+"poinformowani o zmianie i zaktualizowali swoje linki. Przekierowania z innym "
+"niż aktualnym identyfikatorem nie będą rejestrowane."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:79
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:80
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:146
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:230
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:347
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:486
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:139
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:392
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:355
+msgid "Clear"
+msgstr "Wyczyść"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "Click to add a new affiliate"
+msgstr "Kliknij, aby dodać nowego Partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:258
+msgid "Click to add a referral manually"
+msgstr "Kliknij, aby dodać nowego Partnera ręcznie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:433
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:439
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:316
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:432
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:210
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:122
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:201
+msgid "Closed"
+msgstr "Wypłacone"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:530
+msgid "Count"
+msgstr "Licz"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:404
+msgid "Currency"
+msgstr "Waluta"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:317
+msgid "Currency - 3 letter code, e.g. USD, EUR:"
+msgstr "Waluta - 3 literowy kod, np. PLN, EUR"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:115
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:191
+msgid "Currency ID"
+msgstr "ID waluty"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:615
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:636
+msgid "Data"
+msgstr "Dane"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:297
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:400
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:527
+msgid "Date"
+msgstr "Data"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:97
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:163
+msgid "Date & Time"
+msgstr "Data & Czas"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:325
+msgid "Days"
+msgstr "Dni"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:135
+msgid "Days back"
+msgstr "Dni wstecz"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:424
+msgid "Deactivation and data persistence"
+msgstr "Deaktywacja i zachowanie danych"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:346
+msgid "Default referral status"
+msgstr "Domyślny status polecenia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:469
+msgid "Delete all affiliate data on network deactivation"
+msgstr "Usuń wszystkie dane partnerów przy deaktywacji sieci"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:427
+msgid "Delete all plugin data on deactivation"
+msgstr "Usuń wszystkie dane wtyczki podczas deaktywacji."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:665
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:173
+msgid "Description"
+msgstr "Opis"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:466
+msgid "Descriptions"
+msgstr "Opisy"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/constants.php:100
+msgctxt "pseudo-affiliate name"
+msgid "Direct"
+msgstr "Bezpośrednie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:337
+msgid "Direct referrals"
+msgstr "Polecenia bezpośrednie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:351
+msgid "Duplicate referrals"
+msgstr "Polecenia zduplikowane"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:574
+#, php-format
+msgid "E-mail: %s"
+msgstr "E-mail: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:587
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:360
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:499
+msgid "Edit"
+msgstr "Edytuj"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:49
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:49
+#, php-format
+msgid "Edit %s"
+msgstr "Edytuj %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:130
+msgid "Edit Referral"
+msgstr "Edytuj polecenie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:68
+msgid "Edit an affiliate"
+msgstr "Edytuj dane Partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:80
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:57
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:338
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:356
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:197
+msgid "Email"
+msgstr "E-mail"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:72
+#, php-format
+msgid "Email : %s"
+msgstr "E-mail : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:482
+msgid "Expand data"
+msgstr "Rozszerz dane"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:480
+msgid "Expand descriptions"
+msgstr "Rozszerz opis"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:478
+msgid "Expand details"
+msgstr "Rozszerz szczegóły"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:343
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:351
+msgid "Expand hits"
+msgstr "Rozszerz kliknięcia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:341
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:349
+msgid "Expand referrals"
+msgstr "Rozszerz polecenia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:325
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:455
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:128
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:369
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:333
+msgid "Filters"
+msgstr "Filtry"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:329
+msgid "First Name"
+msgstr "Imię"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:167
+msgid "Format : YYYY-MM-DD HH:MM:SS"
+msgstr "Format : YYYY-MM-DD HH:MM:SS"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:92
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:331
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:68
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:470
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:131
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:358
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:380
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:339
+msgid "From"
+msgstr "Od"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:74
+#, php-format
+msgid "From : %s"
+msgstr "Od: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:399
+msgid "From operative affiliates:"
+msgstr "Od aktywnych partnerów"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:405
+msgid "From operative and non-operative affiliates:"
+msgstr "Od aktywnych i nieaktywnych partnerów."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:309
+msgid "Generate"
+msgstr "Generuj"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1217
+msgid ""
+"Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</"
+"strong> affiliates."
+msgstr ""
+"Tutaj możesz <strong>dodać</strong>, <strong>edytować</strong> i "
+"<strong>usuwać</strong> partnerów."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:299
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:504
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:280
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:307
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:522
+msgid "Hits"
+msgstr "Kliknięcia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:369
+msgid ""
+"Hits on affiliate links from these robots will be marked or not recorded. "
+"Put one entry on each line."
+msgstr ""
+"Kliknięcia (przekierowania) z linków partnerskich od tych robotów będą "
+"zaznaczone albo nie będą rejestrowane. Wpisz jednego robota na linię."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:64
+msgid "I do not know how to delete what does not exist."
+msgstr "Nie wiem jak usunąć to, co nie istnieje."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:510
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:529
+msgid "IP"
+msgstr "IP"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:354
+msgid "Id"
+msgstr "ID"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:83
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:60
+msgid ""
+"If a valid <strong>Username</strong> is specified and no email is given, the "
+"user's email address will be used automatically."
+msgstr ""
+"Jeżeli podano prawidłową <strong>Nazwę użytkownika</strong> i nie podano "
+"adresu, automatycznie zostanie użyty e-mail użytkownika."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:343
+msgid ""
+"If this option is enabled, whenever a referral is suggested and no affiliate "
+"is attributable to it, the referral will be attributed to Direct."
+msgstr ""
+"Jeżeli ta opcja jest włączona i nie ma żadnego atrybutu partnera w linku, "
+"polecony będzie przypisany jako \"Polecenie bezpośrednie\". "
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:331
+msgid ""
+"If you enter 0, referrals will only be valid until the visitor closes the "
+"browser (session)."
+msgstr ""
+"Jeżeli wprowadzisz 0 polecenie będzie ważne tylko do czasu zamknięcia "
+"przeglądarki przez odwiedzającego (sesja)."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:420
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr ""
+"Jeśli zablokowałeś się, wyślij e-mail do administratora z prośbą o "
+"odblokowanie."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:140
+msgid ""
+"If your affiliates are using affiliate links based on the previous Affiliate "
+"URL parameter name, they <strong>NEED</strong> to update their affiliate "
+"links."
+msgstr ""
+"Jeżeli twoi partnerzy używają linków partnerskich bazujących na poprzednim "
+"identyfikatorze (parametrze URL), <strong>MUSZĄ</strong> zaktualizować swoje "
+"linki partnerskie."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:345
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:484
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:384
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:353
+msgid "Include inoperative affiliates"
+msgstr "Zawrzyj nieaktywnych partnerów"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:386
+msgid "Include removed affiliates"
+msgstr "Zawrzyj usuniętych partnerów"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:324
+msgid "It has two purposes:"
+msgstr "To ma dwa cele:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:332
+msgid "Last Name"
+msgstr "Nazwisko"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:508
+msgid "Link"
+msgstr "Link"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:362
+msgid "Links"
+msgstr "Linki"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:248
+#, php-format
+msgid "Log in <a href=\"%s\">here</a>."
+msgstr "Zaloguj się <a href=\"%s\">tutaj</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-shortcodes.php:502
+msgid "Log out"
+msgstr "Wyloguj się"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:959
+msgid "MD5"
+msgstr "MDS"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:477
+msgid "Make sure to back up your data or do not enable this option."
+msgstr ""
+"Upewnij się, że masz zrobioną kopię bezpieczeństwa, albo nie włączaj tej "
+"opcji."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1096
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1097
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:236
+msgid "Manage Affiliates"
+msgstr "Zarządzaj Partnerami"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:199
+msgid "Message"
+msgstr "Wiadomość"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:76
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:53
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:195
+msgid "Name"
+msgstr "Nazwa"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:71
+#, php-format
+msgid "Name : %s"
+msgstr "Nazwa : %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "New Affiliate"
+msgstr "Nowy Partner"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:128
+msgid "New Referral"
+msgstr "Nowe polecenie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:572
+#, php-format
+msgid "New affiliate registration on your site %s:"
+msgstr "Rejestracja nowego partnera na twojej stronie %s:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:958
+msgid "No encoding"
+msgstr "Brak kodowania"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:37
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:143
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:37
+msgid "No such affiliate."
+msgstr "Nie znaleziono Partnera."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1212
+msgid ""
+"Note that <em>deleted</em> affiliates are not literally deleted but marked "
+"as such so that data that has been collected will still be accesible."
+msgstr ""
+"Należy pamiętać, że <em>usunięci</em> partnerzy nie są dosłownie usunięci, "
+"ale oznakowani tak, że dane, które zostały zebrane będą nadal dostępne."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:384
+msgid "Notify the site admin when a new affiliate is registered"
+msgstr "Powiadom administratora strony o rejestracji nowego partnera."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1243
+msgid ""
+"Once a visitor has landed on your site through an affiliate link, referrals "
+"may be recorded and attributed to the affiliate."
+msgstr ""
+"Kiedy użytkownik odwiedzi twoją stronę za pośrednictwem linku partnerskiego, "
+"zostanie to zarejestrowane i użytkownik zostanie przypisany do partnera "
+"polecającego."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1149
+msgid "Options"
+msgstr "Opcje"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:306
+msgid "Page generation"
+msgstr "Generowanie strony (obszaru partnera)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:434
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:440
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:302
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:433
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:211
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:123
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:202
+msgid "Pending"
+msgstr "Oczekujące"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:413
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:244
+msgid "Please check your email for the confirmation link."
+msgstr "Proszę sprawdzić e-mail. Znajdziesz tam link weryfikacyjny."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:454
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:401
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:469
+msgid "Post"
+msgstr "Z tytułu"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:308
+msgid "Press the button to generate an affiliate area."
+msgstr "Skorzystaj z tego przycisku aby wygenerować stronę partnerską. "
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:516
+msgid "Pretty"
+msgstr "Ładny"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:157
+#, fuzzy
+msgid "Pretty pointless ..."
+msgstr "Pretty pointless ..."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:472
+msgid "READ AND UNDERSTAND the following before activating this option:"
+msgstr "PRZECZYTAJ I ZROZUM poniższe, zanim aktywujesz tą opcję:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:301
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:309
+msgid "Ratio"
+msgstr "Współczynnik konwersji"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:133
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:220
+msgid "Reference"
+msgstr "Referencje"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:322
+msgid "Referral timeout"
+msgstr "Okres życia cookie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1135
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1136
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:300
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:448
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:251
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:308
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:463
+msgid "Referrals"
+msgstr "Polecenia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:128
+msgid "Registration is currently closed."
+msgstr "Rejestracja jest aktualnie wyłączona."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:435
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:441
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:309
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:434
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:212
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:124
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:203
+msgid "Rejected"
+msgstr "Zwrócone"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:594
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:78
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:144
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:361
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:502
+msgid "Remove"
+msgstr "Usuń"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:41
+msgid "Remove a Referral"
+msgstr "Usuń polecenie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:64
+msgid "Remove an affiliate"
+msgstr "Usuń partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:141
+msgid "Remove this referral? This action can not be undone."
+msgstr "Czy usunąć to polecenie? Tego działania nie będzie mozna cofnąć."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:357
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:496
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:402
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:365
+msgid "Results per page"
+msgstr "Wyników na stronę"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:59
+msgid "Return"
+msgstr "Powrót"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:363
+msgid "Robots"
+msgstr "Roboty"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:263
+msgid "Role"
+msgstr "Rola"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:101
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:436
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:482
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:228
+msgid "Save"
+msgstr "Zapisz"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:460
+msgid "Search"
+msgstr "Szukaj"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:203
+msgid "Send"
+msgstr "Wyślij"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:574
+msgid "Set"
+msgstr "Ustaw"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:51
+msgid "Sign Up"
+msgstr "Zarejestruj się"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:393
+msgid "Statistics Summary"
+msgstr "Statystyki zbiorcze"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:405
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:444
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:127
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:207
+msgid "Status"
+msgstr "Status"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:340
+msgid "Store direct referrals"
+msgstr " Rejestruj polecenia bezpośrednie"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms Page or Post ID"
+msgstr "Strona regulaminu lub ID wpisu"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms and conditions"
+msgstr "Regulamin"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:136
+#, php-format
+msgid "Terms page: <em>%s</em>"
+msgstr "Strona regulaminu: <em>%s</em>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1281
+msgid ""
+"Thank you for using the <a href=\"http://www.itthinx.com/plugins/affiliates"
+"\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx."
+"com\" target=\"_blank\">itthinx</a>."
+msgstr ""
+"Dziękujemy za korzystanie z wtyczki <a href=\"http://www.itthinx.com/plugins/"
+"affiliates\" target=\"_blank\">Affiliates</a>, autorstwa <a href=\"http://"
+"www.itthinx.com\" target=\"_blank\">itthinx</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:242
+msgid "Thanks for signing up!"
+msgstr "Dzięki za rejestrację!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:208
+msgid "Thanks!"
+msgstr "Dzięki!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:137
+#, php-format
+msgid ""
+"The Affiliate URL parameter name <strong>has been changed</strong> from "
+"<em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
+msgstr ""
+"Identyfikator partnera (parametr URL) <strong>został zmieniony</strong> z "
+"<em><strong>%s</strong></em> na <em><strong>%s</strong></em>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:129
+msgid ""
+"The Affiliate URL parameter name <strong>has not been changed</strong>, the "
+"suggested name <em>is forbidden</em>."
+msgstr ""
+"Identyfikator partnera (parametr URL) <strong>nie został zmieniony</strong>. "
+"Nazwa sugerowanego identyfikatora <em>jest zabroniona</em>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:126
+msgid ""
+"The Affiliate URL parameter name <strong>has not been changed</strong>, the "
+"suggested name <em>is not valid</em>. Only lower case letters and the "
+"underscore _ are allowed."
+msgstr ""
+"Identyfikator partnera (parametr URL) <strong>nie został zmieniony</strong>. "
+"Nazwa sugerowanego identyfikatora <em>nie jest poprawna</em>. Dozwolone są "
+"tylko małe litery i podkreślnik."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1207
+msgid ""
+"The Affiliates plugin provides the <em>Affiliates Contact</em> widget that "
+"can be used to record lead referrals."
+msgstr ""
+"Wtyczka Affiliate dostarcza widget <em>Affiliates Contact</em>, który może "
+"być użyty do rejestrowania poleceń za wysłanie."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1228
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1238
+msgid ""
+"The affiliate information is removed once a visitor has landed on your site."
+msgstr ""
+"Informacja o partnerze jest usuwana z linku, jak tylko polecony ląduje na "
+"stronie."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1189
+msgid ""
+"The complete documentation is available on the <a href=\"http://www.itthinx."
+"com/plugins/affiliates\" target=\"_blank\">Affiliates plugin page</a>"
+msgstr ""
+"Pełna dokumentacja jest dostepna na <a href=\"http://www.itthinx.com/plugins/"
+"affiliates\" target=\"_blank\">stronie wtyczki</a>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:393
+#, php-format
+msgid "The current Affiliate URL parameter name is: <b>%s</b>"
+msgstr "Aktualny identyfikator linku partnerskiego: <b>%s</b>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:407
+#, php-format
+msgid "The current encoding in effect is: <b>%s</b>"
+msgstr "Aktualne kodowanie ustawione jest na: <b>%s</b>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:396
+#, php-format
+msgid "The default Affiliate URL parameter name is <em>%s</em>."
+msgstr "Domyślny parametr URL partnera to <em>%s</em>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:334
+msgid ""
+"The default value is 1. In this case, if a visitor comes to your site via an "
+"affiliate link, a suggested referral will be valid until one day after she "
+"or he clicked that affiliate link."
+msgstr ""
+"Domyślna wartość wynosi 1. W tym przypadku, jeżeli odwiedzający przychodzi "
+"na twoją stronę za pośrednictwem linku partnerskiego, polecenie będzie ważne "
+"przez 1 dzień od czasu kliknięcia linku partnerskiego."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:80
+msgid "The referral has been created."
+msgstr "Polecenie zostało utworzone."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:57
+msgid "The referral has been removed."
+msgstr "Polecenie zostało usunięte."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:101
+msgid "The referral has been saved."
+msgstr "Polecenie zostało zapisane."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-edit.php:84
+msgid "The referral has not been created. Duplicate?"
+msgstr "Polecenie nie zostało utworzone. Utworzyć duplikat?"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:483
+#, php-format
+msgid ""
+"There are different email addresses on record for the affiliate and the "
+"associated user. This might be ok, but if in doubt please check. The email "
+"address on file for the user is %s"
+msgstr ""
+"Są dwa różne adresy e-mail. Jeden dla partnera, a drugi dla powiązanego z "
+"nim użytkownika. To może być, ok, ale lepiej sprawdzić. Adres na koncie "
+"użytkownika: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:532
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:675
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:530
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:554
+msgid "There are no results."
+msgstr "Brak wyników."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1219
+msgid ""
+"There are two types of links your affiliates may use to link to your site:"
+msgstr ""
+"Są dwa rodzaje linków, które partnerzy mogą użyć do linkowania na twoją "
+"stronę:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:406
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:412
+#, php-format
+msgid "There is 1 affiliate in this set"
+msgid_plural "There are %d affiliates in this set"
+msgstr[0] "W tym zestawie jest 1 partner"
+msgstr[1] "Partnerów w zestawie: %d"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:400
+#, php-format
+msgid "There is 1 operative affiliate"
+msgid_plural "There are %d operative affiliates"
+msgstr[0] "Tutaj jest 1 aktywny partner"
+msgstr[1] "Aktywnych partnerów: %d"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:321
+#, fuzzy
+msgid ""
+"This contact form will request a referral and store the data that has been "
+"submitted."
+msgstr ""
+"This contact form will request a referral and store the data that has been "
+"submitted."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:328
+msgid ""
+"This is the number of days since a visitor accessed your site via an "
+"affiliate link, for which a suggested referral will be valid."
+msgstr ""
+"To jest ilość dni, w czasie których przekierowany za pośrednictwem linku "
+"partnerskiego odwiedzający będzie zaliczany jako klient partnera."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1237
+msgid ""
+"This link uses a nicer URL to record vists you receive through your "
+"affiliates."
+msgstr ""
+"Ten link wykorzystuje przyjazny URL do rejestrowania odwiedzin kierowanych "
+"za pośrednictwem partnerów."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1227
+msgid ""
+"This link uses a parameter in the URL to record vists you receive through "
+"your affiliates."
+msgstr ""
+"Ten link wykorzystuje parametr w URL-u do rejestrowania odwiedzin "
+"kierowanych za pośrednictwem partnerów."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:476
+msgid "This option should only be used to clean up after testing."
+msgstr "Ta opcja powinna być użyta tylko do czyszczenia po testach."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:151
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referral-remove.php:154
+msgid "This referral does not exist."
+msgstr "To polecenie nie istnieje."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1195
+msgid "This screen offers an overview with basic statistical data."
+msgstr "Tern ekran prezentuje przegląd z podstawowymi danymi statystycznymi."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:453
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:509
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:468
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:528
+msgid "Time"
+msgstr "Czas"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:121
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:309
+msgid "Title:"
+msgstr "Tytuł:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:327
+#, fuzzy
+msgid ""
+"To be used as an entry-level referral tool (e.g. in lead generation), if you "
+"want to track who has contacted you and has visited your site through an "
+"affiliate."
+msgstr ""
+"To be used as an entry-level referral tool (e.g. in lead generation), if you "
+"want to track who has contacted you and has visited your site through an "
+"affiliate."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:328
+msgid ""
+"To serve as an example on how to use the API provided by the Affiliates "
+"plugin"
+msgstr ""
+"To służy jako przykład, w jaki sposób korzystać z API dostarczonego przez "
+"plugin Affiliates"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1208
+#, php-format
+msgid ""
+"To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
+msgstr ""
+"Aby tego użyć, umieść widget w jednym z twoichr <a href=\"%s\">obszarów "
+"widgetów</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:512
+msgid "URL Parameter"
+msgstr "Parametr URL"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:143
+#, fuzzy
+msgid ""
+"Unless the incoming affiliate links reflect the current Affiliate URL "
+"parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr ""
+"Unless the incoming affiliate links reflect the current Affiliate URL "
+"parameter name, no affiliate hits, visits or referrals will be recorded."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:96
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:333
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:72
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:472
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:133
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:359
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:382
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:341
+msgid "Until"
+msgstr "Do"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:75
+#, php-format
+msgid "Until : %s"
+msgstr "Do: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:87
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:64
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:335
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:357
+msgid "Username"
+msgstr "Nazwa użytkownika"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:73
+#, php-format
+msgid "Username : %s"
+msgstr "Użytkownik: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:573
+#, php-format
+msgid "Username: %s"
+msgstr "Użytkownik: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:306
+msgid "Visitors"
+msgstr "Odwiedzający"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:298
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:287
+msgid "Visits"
+msgstr "Unikalne odwiedziny"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1109
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1110
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:161
+msgid "Visits & Referrals"
+msgstr "Odwiedziny & Polecenia"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:341
+msgid "Website"
+msgstr "Strona internetowa"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:133
+msgid ""
+"Write part of the title or the post ID. If left empty, no terms disclaimer "
+"will be shown."
+msgstr ""
+"Wpisz część tytułu lub ID wpisu. Jeżeli zostawisz puste, regulacje nie będą "
+"wyświetlane."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:109
+msgid "You are already registered as an affiliate."
+msgstr "Już jesteś zarejestrowany jako Partner."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1229
+#, php-format
+msgid "You may also append the ?%s=... part to links to your posts."
+msgstr "Możesz także dodać ?%s=... jako część linku do wpisu."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:53
+#, php-format
+msgid ""
+"Your site is not using pretty <a href=\"%s\">permalinks</a>. You will only "
+"be able to use URL parameter based <span class=\"affiliate-link\">affiliate "
+"links</span> but not pretty <span class=\"affiliate-permalink\">affiliate "
+"permalinks</span>, unless you change your permalink settings."
+msgstr ""
+"Twoja strona nie używa \"ładnych\" <a href=\"%s\">linków bezpośrednich</a>. "
+"Możesz wykorzystać tylko parametr URL oparty o <span class=\"affiliate-link"
+"\">linki partnerskie</span>, ale nie \"ładne\" <span class=\"affiliate-"
+"permalink\">bezpośrednie odnośniki</span>, chyba, że zmienisz ustawienia "
+"bezposrednich odnośników."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:577
+#, php-format
+msgid "[%s] New Affiliate Registration"
+msgstr "[%s] Rejestracja nowego Partnera"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:522
+#, php-format
+msgid "you need to adjust your <a href=\"%s\">permalink settings</a>."
+msgstr ""
+"powinieneś dostosować ustawienia <a href=\"%s\">bezpośrednich odnośników</a>."

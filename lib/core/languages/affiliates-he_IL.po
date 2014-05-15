@@ -1,0 +1,1293 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Affiliates v2.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-06-17 03:46+0200\n"
+"Last-Translator: Yair  <temani10@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Hebrew\n"
+"X-Poedit-Country: ISRAEL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:28
+#: lib/core/affiliates-admin-affiliates-add.php:99
+#: lib/core/affiliates-admin-affiliates-add.php:103
+#: lib/core/affiliates-admin-affiliates-edit.php:31
+#: lib/core/affiliates-admin-affiliates-edit.php:123
+#: lib/core/affiliates-admin-affiliates-edit.php:127
+#: lib/core/affiliates-admin-affiliates-remove.php:31
+#: lib/core/affiliates-admin-affiliates-remove.php:100
+#: lib/core/affiliates-admin-affiliates-remove.php:104
+#: lib/core/affiliates-admin-affiliates.php:48
+#: lib/core/affiliates-admin-affiliates.php:110
+#: lib/core/affiliates-admin-affiliates.php:214
+#: lib/core/affiliates-admin-affiliates.php:220
+#: lib/core/affiliates-admin-hits-affiliate.php:39
+#: lib/core/affiliates-admin-hits-affiliate.php:53
+#: lib/core/affiliates-admin-hits-affiliate.php:158
+#: lib/core/affiliates-admin-hits-affiliate.php:164
+#: lib/core/affiliates-admin-hits.php:32
+#: lib/core/affiliates-admin-hits.php:46
+#: lib/core/affiliates-admin-hits.php:151
+#: lib/core/affiliates-admin-hits.php:157
+#: lib/core/affiliates-admin-options.php:43
+#: lib/core/affiliates-admin-options.php:412
+#: lib/core/affiliates-admin-referrals.php:32
+#: lib/core/affiliates-admin-referrals.php:48
+#: lib/core/affiliates-admin-referrals.php:213
+#: lib/core/affiliates-admin-referrals.php:219
+#: lib/core/affiliates-admin.php:29
+#: lib/core/affiliates-admin.php:47
+msgid "Access denied."
+msgstr "הגישה נדחתה."
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:46
+msgid "Add a new affiliate"
+msgstr "הוסף שותף חדש"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:53
+#: lib/core/affiliates-admin-affiliates-edit.php:76
+#: lib/core/class-affiliates-contact.php:198
+msgid "Name"
+msgstr "שם"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:57
+#: lib/core/affiliates-admin-affiliates-edit.php:80
+#: lib/core/affiliates-admin-affiliates.php:356
+#: lib/core/class-affiliates-contact.php:200
+#: lib/core/class-affiliates-registration.php:332
+msgid "Email"
+msgstr "מייל"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:60
+#: lib/core/affiliates-admin-affiliates-edit.php:83
+msgid "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically."
+msgstr "אם <strong>שם משתמש תקין</strong> צוין ולא ניתן מייל, כתובת הדואר האלקטרוני של המשתמש ישמש באופן אוטומטי."
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:64
+#: lib/core/affiliates-admin-affiliates-edit.php:87
+#: lib/core/affiliates-admin-affiliates.php:357
+#: lib/core/class-affiliates-registration.php:329
+msgid "Username"
+msgstr "שם משתמש"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:68
+#: lib/core/affiliates-admin-affiliates-edit.php:92
+#: lib/core/affiliates-admin-affiliates.php:358
+#: lib/core/affiliates-admin-affiliates.php:380
+#: lib/core/affiliates-admin-hits-affiliate.php:341
+#: lib/core/affiliates-admin-hits.php:333
+#: lib/core/affiliates-admin-referrals.php:415
+#: lib/core/affiliates-admin.php:115
+msgid "From"
+msgstr "מ"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:72
+#: lib/core/affiliates-admin-affiliates-edit.php:96
+#: lib/core/affiliates-admin-affiliates.php:359
+#: lib/core/affiliates-admin-affiliates.php:382
+#: lib/core/affiliates-admin-hits-affiliate.php:343
+#: lib/core/affiliates-admin-hits.php:335
+#: lib/core/affiliates-admin-referrals.php:417
+#: lib/core/affiliates-admin.php:117
+msgid "Until"
+msgstr "עד ל"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:77
+#: lib/core/affiliates-admin-affiliates.php:242
+msgid "Add"
+msgstr "להוסיף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-add.php:79
+#: lib/core/affiliates-admin-affiliates-edit.php:103
+#: lib/core/affiliates-admin-affiliates-remove.php:80
+msgid "Cancel"
+msgstr "לבטל"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-edit.php:37
+#: lib/core/affiliates-admin-affiliates-edit.php:143
+#: lib/core/affiliates-admin-affiliates-remove.php:37
+msgid "No such affiliate."
+msgstr "אין שותף תואם."
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-edit.php:49
+#: lib/core/affiliates-admin-affiliates-remove.php:49
+#, php-format
+msgid "Edit %s"
+msgstr "עריכת %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-edit.php:68
+msgid "Edit an affiliate"
+msgstr "עריכת שותף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-edit.php:101
+#: lib/core/affiliates-admin-options.php:399
+#: lib/core/affiliates-admin-options.php:445
+msgid "Save"
+msgstr "שמירה"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:64
+msgid "Remove an affiliate"
+msgstr "הסר שותף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:71
+#, php-format
+msgid "Name : %s"
+msgstr "שם: %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:72
+#, php-format
+msgid "Email : %s"
+msgstr "מייל: %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:73
+#, php-format
+msgid "Username : %s"
+msgstr "שם משתמש: %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:74
+#, php-format
+msgid "From : %s"
+msgstr "מ: %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:75
+#, php-format
+msgid "Until : %s"
+msgstr "עד: %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates-remove.php:78
+#: lib/core/affiliates-admin-affiliates.php:361
+#: lib/core/affiliates-admin-affiliates.php:502
+msgid "Remove"
+msgstr "להסיר"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:53
+#, php-format
+msgid "Your site is not using pretty <a href=\"%s\">permalinks</a>. You will only be able to use URL parameter based <span class=\"affiliate-link\">affiliate links</span> but not pretty <span class=\"affiliate-permalink\">affiliate permalinks</span>, unless you change your permalink settings."
+msgstr "האתר שלך אינו משתמש ב<a href=\"%s\">קישורים יפים</a>.  . אתה יכול להשתמש רק בפרמטר של כתובת האתר מבוסס <span class=\"affiliate-link\">קישורי שותפים</span>אבל לא ב <span class=\"affiliate-permalink\">קישורי שותפים יפים</span> , אלא אם תשנה את הגדרות קישורים קבועים שלך."
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:236
+#: lib/core/wp-init.php:999
+#: lib/core/wp-init.php:1000
+msgid "Manage Affiliates"
+msgstr "ניהול שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:242
+msgid "Click to add a new affiliate"
+msgstr "לחץ כדי להוסיף שותפים חדשים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:242
+msgid "New Affiliate"
+msgstr "שותפים חדשים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:354
+msgid "Id"
+msgstr "ID מזהה"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:355
+#: lib/core/affiliates-admin-hits-affiliate.php:307
+#: lib/core/affiliates-admin-hits-affiliate.php:319
+#: lib/core/affiliates-admin-hits-affiliate.php:472
+#: lib/core/affiliates-admin-hits-affiliate.php:533
+#: lib/core/affiliates-admin-hits.php:311
+#: lib/core/affiliates-admin-hits.php:457
+#: lib/core/affiliates-admin-hits.php:513
+#: lib/core/affiliates-admin-referrals.php:355
+#: lib/core/affiliates-admin-referrals.php:368
+msgid "Affiliate"
+msgstr "שותף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:360
+#: lib/core/affiliates-admin-affiliates.php:499
+msgid "Edit"
+msgstr "לערוך"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:362
+msgid "Links"
+msgstr "קישורים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:369
+#: lib/core/affiliates-admin-hits-affiliate.php:335
+#: lib/core/affiliates-admin-hits.php:327
+#: lib/core/affiliates-admin-referrals.php:406
+#: lib/core/affiliates-admin.php:112
+msgid "Filters"
+msgstr "מסננים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:372
+msgid "Affiliate Id"
+msgstr "ID מזהה שותף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:374
+msgid "Affiliate Name"
+msgstr "שם שותף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:376
+msgid "Affiliate Username"
+msgstr "שם משתמש שותף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:384
+#: lib/core/affiliates-admin-hits-affiliate.php:355
+#: lib/core/affiliates-admin-hits.php:347
+#: lib/core/affiliates-admin-referrals.php:429
+msgid "Include inoperative affiliates"
+msgstr "כלול שותף תקין"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:386
+msgid "Include removed affiliates"
+msgstr "כלול שותפים שהוסרו"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:391
+#: lib/core/affiliates-admin-affiliates.php:405
+#: lib/core/affiliates-admin-hits-affiliate.php:348
+#: lib/core/affiliates-admin-hits-affiliate.php:371
+#: lib/core/affiliates-admin-hits.php:340
+#: lib/core/affiliates-admin-hits.php:363
+#: lib/core/affiliates-admin-referrals.php:422
+#: lib/core/affiliates-admin-referrals.php:444
+#: lib/core/affiliates-admin.php:120
+msgid "Apply"
+msgstr "להחיל"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:392
+#: lib/core/affiliates-admin-hits-affiliate.php:357
+#: lib/core/affiliates-admin-hits.php:349
+#: lib/core/affiliates-admin-referrals.php:431
+#: lib/core/affiliates-admin.php:121
+msgid "Clear"
+msgstr "נקה"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:402
+#: lib/core/affiliates-admin-hits-affiliate.php:367
+#: lib/core/affiliates-admin-hits.php:359
+#: lib/core/affiliates-admin-referrals.php:441
+msgid "Results per page"
+msgstr "תוצאות פר עמוד"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:462
+msgid "(removed)"
+msgstr "(נמחק)"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:468
+msgid "(inoperative)"
+msgstr "(לא פועל)"
+
+#@ default
+#: lib/core/affiliates-admin-affiliates.php:483
+#, php-format
+msgid "There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s"
+msgstr "ישנן כתובות מייל שונות בתיעוד שותפים עבור המשתמש המשויך. ייתכן שזה בסדר, אבל אם יש לך ספק כדאי לך לבדוק. כתובת המייל עבור המשתמש היא %s"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:508
+msgid "Link"
+msgstr "קישור"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:512
+msgid "URL Parameter"
+msgstr " פרמטרURL"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:516
+msgid "Pretty"
+msgstr "יפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:522
+#, php-format
+msgid "you need to adjust your <a href=\"%s\">permalink settings</a>."
+msgstr "אתה צריך להתאים את<a href=\\\"%s\\\">הגדרות קישור קבוע</a> שלך."
+
+#@ affiliates
+#: lib/core/affiliates-admin-affiliates.php:530
+#: lib/core/affiliates-admin-hits-affiliate.php:556
+#: lib/core/affiliates-admin-hits.php:534
+#: lib/core/affiliates-admin-referrals.php:606
+msgid "There are no results."
+msgstr "אין תוצאות."
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:178
+#: lib/core/wp-init.php:1025
+#: lib/core/wp-init.php:1026
+msgid "Affiliates & Referrals"
+msgstr "שותפים והפניות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:308
+msgid "Visitors"
+msgstr "מבקרים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:309
+#: lib/core/affiliates-admin-hits-affiliate.php:524
+#: lib/core/affiliates-admin-hits.php:301
+#: lib/core/affiliates-admin-hits.php:506
+#: lib/core/affiliates-admin.php:194
+#: lib/core/affiliates-admin.php:203
+msgid "Hits"
+msgstr "צפיות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:310
+#: lib/core/affiliates-admin-hits-affiliate.php:465
+#: lib/core/affiliates-admin-hits.php:302
+#: lib/core/affiliates-admin-hits.php:450
+#: lib/core/affiliates-admin-referrals.php:229
+#: lib/core/affiliates-admin.php:228
+#: lib/core/wp-init.php:1038
+#: lib/core/wp-init.php:1039
+msgid "Referrals"
+msgstr "הפניות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:311
+#: lib/core/affiliates-admin-hits.php:303
+msgid "Ratio"
+msgstr "יחס"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:351
+#: lib/core/affiliates-admin-hits.php:343
+msgid "Expand referrals"
+msgstr "הרחב הפניות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:353
+#: lib/core/affiliates-admin-hits.php:345
+msgid "Expand hits"
+msgstr "הרחב צפיות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:470
+#: lib/core/affiliates-admin-hits-affiliate.php:530
+#: lib/core/affiliates-admin-hits.php:455
+#: lib/core/affiliates-admin-hits.php:511
+msgid "Time"
+msgstr "זמן"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:471
+#: lib/core/affiliates-admin-hits.php:456
+#: lib/core/affiliates-admin-referrals.php:354
+msgid "Post"
+msgstr "פוסט"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:529
+#: lib/core/affiliates-admin-hits.php:299
+#: lib/core/affiliates-admin-referrals.php:353
+msgid "Date"
+msgstr "תאריך"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:531
+#: lib/core/affiliates-admin-hits.php:512
+msgid "IP"
+msgstr "IP"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits-affiliate.php:532
+msgid "Count"
+msgstr "ספירה"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits.php:171
+#: lib/core/wp-init.php:1012
+#: lib/core/wp-init.php:1013
+msgid "Visits & Referrals"
+msgstr "ביקורים והפניות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits.php:300
+#: lib/core/affiliates-admin.php:211
+#: lib/core/affiliates-admin.php:220
+msgid "Visits"
+msgstr "ביקורים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-hits.php:552
+#, php-format
+msgid "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT."
+msgstr "תאריך * ניתן עבור אזור הזמן של השרת:%s, יש לקזז שעות של%s ביחס ל GMT."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:51
+#: lib/core/wp-init.php:1051
+msgid "Affiliates options"
+msgstr "אפשרויות שותפים "
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:120
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is not valid</em>. Only lower case letters and the underscore _ are allowed."
+msgstr " שם הפרמטר URL  שותפים <strong>לא השתנה,</strong> שם המוצע<em>אינו חוקי.</em> רק אותיות קטנות וקוו_תחתון_ כזה בלבד מותר."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:123
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is forbidden</em>."
+msgstr " שם הפרמטר URL  שותפים <strong>לא השתנה,</strong> השם המוצע<em>אסור בשימוש.</em>"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:130
+#, php-format
+msgid "The Affiliate URL parameter name <strong>has been changed</strong> from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
+msgstr " שם הפרמטר URL  שותפים <strong>שונה </strong> מ <em><strong>%s</strong></em> ל <em><strong>%s</strong></em>."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:133
+msgid "If your affiliates are using affiliate links based on the previous Affiliate URL parameter name, they <strong>NEED</strong> to update their affiliate links."
+msgstr "אם השותפים שלך משתמשים בקישורי שותפים המבוססים על ההגדרה הקודמת, הם <strong>צריכים</strong> לעדכן את קישורי השותפים שלהם."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:136
+msgid "Unless the incoming affiliate links reflect the current Affiliate URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "אלא אם קישורים שותפים נכנסים משקפים פרמטר קישורי שותפים הנוכחית במבנה כתובת האתר שם הפרמטר, צפיות שותפים, ביקורים או הפניות לא יתועדו."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:149
+#: lib/core/affiliates-admin-options.php:240
+msgid "Access affiliates"
+msgstr "גישת שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:150
+#: lib/core/affiliates-admin-options.php:241
+msgid "Administer affiliates"
+msgstr "ניהול שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:151
+#: lib/core/affiliates-admin-options.php:242
+msgid "Administer options"
+msgstr "אפשרויות ניהול"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:195
+#: lib/core/affiliates-admin-referrals.php:383
+#: lib/core/affiliates-admin-referrals.php:389
+#: lib/core/affiliates-admin.php:237
+#: lib/core/affiliates-admin.php:313
+msgid "Accepted"
+msgstr "מקובל"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:196
+#: lib/core/affiliates-admin-referrals.php:384
+#: lib/core/affiliates-admin-referrals.php:390
+#: lib/core/affiliates-admin.php:244
+#: lib/core/affiliates-admin.php:314
+msgid "Closed"
+msgstr "נסגר"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:197
+#: lib/core/affiliates-admin-referrals.php:385
+#: lib/core/affiliates-admin-referrals.php:391
+#: lib/core/affiliates-admin.php:251
+#: lib/core/affiliates-admin.php:315
+msgid "Pending"
+msgstr "תלוי ועומד"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:198
+#: lib/core/affiliates-admin-referrals.php:386
+#: lib/core/affiliates-admin-referrals.php:392
+#: lib/core/affiliates-admin.php:258
+#: lib/core/affiliates-admin.php:316
+msgid "Rejected"
+msgstr "נדחה"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:225
+msgid "Affiliate ID Encoding"
+msgstr "קידוד ID זיהוי שותפים "
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:248
+msgid "Role"
+msgstr "תפקיד"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:291
+msgid "Page generation"
+msgstr "יצירת עמוד"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:293
+msgid "Press the button to generate an affiliate area."
+msgstr "לחצו על הלחצן כדי ליצור איזור שותפים."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:294
+msgid "Generate"
+msgstr "צור"
+
+#@ default
+#: lib/core/affiliates-admin-options.php:307
+msgid "Referral timeout"
+msgstr "פסק זמן להפניה"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:310
+msgid "Days"
+msgstr "ימים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:313
+msgid "This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid."
+msgstr "זהו מספר הימים מאז שהמבקר ניגש לאתר שלך דרך קישור השותפים, לכל הצעת הפניה שתהיה בתוקף."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:316
+msgid "If you enter 0, referrals will only be valid until the visitor closes the browser (session)."
+msgstr "אם תזין 0, הפניות יהיו בתוקף עד שהמבקר סוגר את הדפדפן של (סבב הפעלה נוכחי)."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:319
+msgid "The default value is 1. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until one day after she or he clicked that affiliate link."
+msgstr "ערך ברירת המחדל הוא 1. במקרה כזה, אם המבקר מגיע לאתר שלך דרך הקישור שותפים, הצעת ההפניה תהיה בתוקף עד יום אחד אחרי שהיא או הוא לחץ על קישור השותפים."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:322
+msgid "Direct referrals"
+msgstr "הפניות ישירות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:325
+msgid "Store direct referrals"
+msgstr "אחסן את ההפניות הישירות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:328
+msgid "If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct."
+msgstr "אם אפשרות זו מופעלת, כאשר הפניה מוצעת ואין שותפים שניתן לייחס לה, המערכת תייחס להפניה ישירות."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:331
+msgid "Default referral status"
+msgstr "סטטוס ברירת המחדל להפניה"
+
+#@ default
+#: lib/core/affiliates-admin-options.php:336
+msgid "Robots"
+msgstr "רובוטים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:342
+msgid "Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line."
+msgstr "צפיות של קישורי שותפים של רובוטים הבאים יסומנו כרובוט או שלא יתועדו כלל. שים ערך אחד בכל שורה."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:345
+msgid "Affiliate registration"
+msgstr "הרשמת שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:348
+msgid "Allow affiliate registration"
+msgstr "לאפשר הרשמת שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:351
+msgid "Affiliate URL parameter name"
+msgstr "שם פרמטר URL שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:356
+#, php-format
+msgid "The current Affiliate URL parameter name is: <b>%s</b>"
+msgstr "שם פרמטר URL שותפים הוא  <b>%s</b>"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:359
+#, php-format
+msgid "The default Affiliate URL parameter name is <em>%s</em>."
+msgstr "שם פרמטרURL  ברירת מחדל שותפים הוא  <em>%s</em>."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:362
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "זהירות: אם אתה משנה הגדרה זו ושותפים מפיצים קישורים או permalinks, ודא כי הם מעודכנים. אלא אם כן קישורי שותפים נכנסים תואמים לפרמטר  URL הנוכחי, צפיות ללא שותפים, ביקורים או הפניות יתועדו."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:365
+msgid "Affiliate ID encoding"
+msgstr "קידוד ID מזהה שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:370
+#, php-format
+msgid "The current encoding in effect is: <b>%s</b>"
+msgstr "קידוד הנוכחי בפועל הוא: <b>%s</b>"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:373
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current encoding, no affiliate hits, visits or referrals will be recorded."
+msgstr "זהירות: אם אתה משנה הגדרה זו ושותפים מפיצים קישורים או permalinks, ודא כי הם מעודכנים. אלא אם כן שותפים קישורים נכנסים משקפים את הקידוד הנוכחי, צפיות ללא שותפים, ביקורים או הפניות יתועדו."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:376
+msgid "Permissions"
+msgstr "הרשאות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:381
+msgid "A minimum set of permissions will be preserved."
+msgstr "סט מינימלי של הרשאות יישמרו."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:383
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr "אם אתה נועל את עצמך, בקש מהמנהל עזרה."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:387
+msgid "Deactivation and data persistence"
+msgstr "הפסקת פעילות והתמדת נתונים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:390
+msgid "Delete all plugin data on deactivation"
+msgstr "מחק את כל הנתונים בכיבוי התוסף"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:393
+msgid "CAUTION: If this option is active while the plugin is deactivated, ALL affiliate and referral data will be DELETED. If you want to retrieve data about your affiliates and their referrals and are going to deactivate the plugin, make sure to back up your data or do not enable this option. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "זהירות: אם אפשרות זו פעילה, בעת שהתוסף כבוי כל נתוני שותפים והפניות יימחקו. אם אתה רוצה לשלוף נתונים אודות השותפים שלך והפניות שלהם אחרי כיבוי התוסף, הקפד לגבות את הנתונים שלך או לא להפעיל אפשרות זו. בהפעלת אפשרות זו אתה מסכים להיות האחראי הבלעדי לכל אובדן נתונים או כל השלכות אחרות שלהם."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:414
+#: lib/core/wp-init.php:986
+#: lib/core/wp-init.php:1070
+#: lib/core/wp-init.php:1071
+msgid "Affiliates"
+msgstr "שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:429
+msgid "Affiliates network data"
+msgstr "נתוני רשת שותפים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:432
+msgid "Delete all affiliate data on network deactivation"
+msgstr "מחיקת כל נתוני השותפים בכיבוי הרשת"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:435
+msgid "READ AND UNDERSTAND the following before activating this option:"
+msgstr "יש לקרוא ולהבין היטב את הנקודות הבאות לפני הפעלת אפשרות זו:"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:438
+msgid "CAUTION: If this option is active while the plugin is network deactivated, <strong>ALL affiliate and referral data will be DELETED on all sites of the network</strong>."
+msgstr "זהירות: אם אפשרות זו פעילה, כאשר תוסף זה מכובה, <strong>כל נתוני השותפים והפניות יימחק בכל האתרים שברשת.</strong>"
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:439
+msgid "This option should only be used to clean up after testing."
+msgstr "באפשרות זו עליך להשתמש לניקוי אחרי הבדיקה בלבד."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:440
+msgid "Make sure to back up your data or do not enable this option."
+msgstr "הקפד לגבות את הנתונים שלך או לא להפעיל אפשרות זו כלל."
+
+#@ affiliates
+#: lib/core/affiliates-admin-options.php:441
+msgid "By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "על ידי הפעלת אפשרות זו אתה מסכים להיות האחראי הבלעדי לכל אובדן נתונים או כל השלכות אחרות ."
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:356
+msgid "Amount"
+msgstr "כמות"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:357
+msgid "Currency"
+msgstr "מטבע"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:358
+#: lib/core/affiliates-admin-referrals.php:395
+msgid "Status"
+msgstr "מצב"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:411
+msgid "Search"
+msgstr "חיפוש"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:423
+msgid "Expand details"
+msgstr "פרטים מורחבים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:425
+msgid "Expand descriptions"
+msgstr "תיאורים מורחבים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:427
+msgid "Expand data"
+msgstr "נתונים מורחבים"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:519
+msgid "Set"
+msgstr "הגדר"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:546
+#: lib/core/affiliates-admin-referrals.php:567
+msgid "Data"
+msgstr "נתונים"
+
+#@ domain
+#: lib/core/affiliates-admin-referrals.php:551
+msgid "title"
+msgstr "כותרת"
+
+#@ affiliates
+#: lib/core/affiliates-admin-referrals.php:596
+msgid "Description"
+msgstr "תאור"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:32
+#: lib/core/wp-init.php:985
+msgid "Affiliates Overview"
+msgstr "שותפים סקירה כללית"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:266
+#, php-format
+msgid "%d Day Charts"
+msgstr "תרשים יום %d "
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:275
+msgid "Statistics Summary"
+msgstr "סיכום סטטיסטיקות "
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:281
+msgid "From operative affiliates:"
+msgstr "משותפים פעילים:"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:282
+#, php-format
+msgid "There is 1 operative affiliate"
+msgid_plural "There are %d operative affiliates"
+msgstr[0] "יש  שותף 1 פעיל"
+msgstr[1] "יש %d שותפים פעילים"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:287
+msgid "From operative and non-operative affiliates:"
+msgstr "משותפים פעילים ולא פעילים:"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:288
+#: lib/core/affiliates-admin.php:294
+#, php-format
+msgid "There is 1 affiliate in this set"
+msgid_plural "There are %d affiliates in this set"
+msgstr[0] "יש  שותף 1 במערכה הזו"
+msgstr[1] "ישנם %d שותפים במערכה זו"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:293
+msgid "All time (includes data from deleted affiliates):"
+msgstr "כל זמן (כולל נתוני חברות שנמחקו):"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:323
+msgid "<strong>Referrals:</strong>"
+msgstr "<strong>הפניות:</strong>"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:325
+#, php-format
+msgid "%10d Accepted"
+msgstr "%10d מקובלים"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:326
+#, php-format
+msgid "%10d Closed"
+msgstr "%10d נסגרו"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:327
+#, php-format
+msgid "%10d Pending"
+msgstr "%10d בהמתנה"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:328
+#, php-format
+msgid "%10d Rejected"
+msgstr "%10d נדחה"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:330
+#, php-format
+msgid "%10d Hits"
+msgstr "%10d צפיות"
+
+#@ affiliates
+#: lib/core/affiliates-admin.php:331
+#, php-format
+msgid "%10d Visits"
+msgstr "%10d ביקורים"
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:169
+msgid "Affiliates contact form submission"
+msgstr "הגשות טופס יצירת קשר שותפים"
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:202
+msgid "Message"
+msgstr "הודעה"
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:206
+msgid "Send"
+msgstr "לשלוח"
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:211
+msgid "Thanks!"
+msgstr "תודה!"
+
+#@ default
+#: lib/core/class-affiliates-contact.php:312
+#: lib/core/class-affiliates-registration-widget.php:121
+msgid "Title:"
+msgstr "כותרת:"
+
+#@ default
+#: lib/core/class-affiliates-contact.php:316
+msgid "Amount (use . for decimals):"
+msgstr "סכום (שימושי לשברים עשרוניים.):"
+
+#@ default
+#: lib/core/class-affiliates-contact.php:320
+msgid "Currency - 3 letter code, e.g. USD, EUR:"
+msgstr "מטבע - קוד ב 3 אותיות, לדוגמא. USD, EUR:"
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:324
+msgid "This contact form will request a referral and store the data that has been submitted."
+msgstr "זה טופס יצירת קשר דורש הפניה ואיחסון הנתונים שהוגשו."
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:327
+msgid "It has two purposes:"
+msgstr "יש לו שתי מטרות:"
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:330
+msgid "To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate."
+msgstr "כדי לשמש ככלי הכניסה ברמת להפניה (למשל יצירת לידים), אם אתה רוצה לעקוב אחר מי שהפנה אתם ומי ביקר באתר שלך דרך שותפים."
+
+#@ affiliates
+#: lib/core/class-affiliates-contact.php:331
+msgid "To serve as an example on how to use the API provided by the Affiliates plugin"
+msgstr "דוגמה כיצד להשתמש ב-API המסופק על ידי תוסף שותפים"
+
+#@ affiliates
+#: lib/core/class-affiliates-generator.php:69
+msgid "Affiliate Area"
+msgstr "איזור שותפים"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:92
+#, php-format
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] "פריט 1"
+msgstr[1] "%s פריטים"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:113
+msgid "Go to the first page"
+msgstr "לעמוד הראשון"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:120
+msgid "Go to the previous page"
+msgstr "לעמוד הקודם"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:129
+msgid "Current page"
+msgstr "עמוד נוכחי"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:136
+#, php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%1$s מתוך %2$s"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:140
+msgid "Go to the next page"
+msgstr "לעמוד הבא"
+
+#@ default
+#: lib/core/class-affiliates-pagination.php:147
+msgid "Go to the last page"
+msgstr "לעמוד הקודם"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms and conditions"
+msgstr "הסכם ותנאים"
+
+#@ default
+#: lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms Page or Post ID"
+msgstr "עמוד תנאים או מזהה פוסט"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration-widget.php:133
+msgid "Write part of the title or the post ID. If left empty, no terms disclaimer will be shown."
+msgstr "כתוב חלק מן הכותרת או את מזהה הפוסט. אם תשאיר ריק, ההסכם והתנאים לא יוצגו."
+
+#@ affiliates
+#: lib/core/class-affiliates-registration-widget.php:136
+#, php-format
+msgid "Terms page: <em>%s</em>"
+msgstr "עמוד תנאים: <em>%s</em>"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:51
+msgid "Sign Up"
+msgstr "הרשמה"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:109
+msgid "You are already registered as an affiliate."
+msgstr "אתה כבר רשום בתור שותף."
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:117
+#: lib/core/class-affiliates-registration.php:251
+msgid "Access your profile"
+msgstr "לגשת לפרופיל שלך"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:128
+msgid "Registration is currently closed."
+msgstr "ההרשמה כרגע סגורה."
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:150
+#, php-format
+msgid "By signing up, you indicate that you have read and agree to the %s."
+msgstr "על ידי הרשמה, אתה מציין שקראת והסכמת ל %s."
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:240
+msgid "Thanks for signing up!"
+msgstr "תודה שנרשמת !"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:242
+msgid "Please check your email for the confirmation link."
+msgstr "אנא בדוק את המייל שלך עבור קישור אישור."
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:243
+#, php-format
+msgid "Log in <a href=\"%s\">here</a>."
+msgstr "התחברות <a href=\"%s\">כאן</a>."
+
+#@ default
+#: lib/core/class-affiliates-registration.php:318
+#, php-format
+msgid "<p>Please fill in the required information in your <a href=\"%s\">profile</a> first.</p>"
+msgstr "<p>נא למלא קודם את המידע הדרוש ב <a href=\"%s\">בפרופיל האישי שלך</a>.</p>"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:323
+msgid "First Name"
+msgstr "שם פרטי"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:326
+msgid "Last Name"
+msgstr "שם משפחה"
+
+#@ affiliates
+#: lib/core/class-affiliates-registration.php:335
+msgid "Website"
+msgstr "אתר אינטרנט, או עמוד אישי שלך."
+
+#@ default
+#: lib/core/class-affiliates-registration.php:374
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>בעיה</strong>: שכחת לכתוב שם משתמש."
+
+#@ default
+#: lib/core/class-affiliates-registration.php:376
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr "<strong>בעיה</strong>: בשם המשתמש שבחרת יש תווים לא מתאימים - כדאי לנסות שוב."
+
+#@ default
+#: lib/core/class-affiliates-registration.php:379
+msgid "<strong>ERROR</strong>: This username is already registered, please choose another one."
+msgstr "‫<strong>בעיה</strong>: השם הזה תפוס כבר.‬"
+
+#@ default
+#: lib/core/class-affiliates-registration.php:384
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr "<strong>בעיה</strong>: לא כתבת את כתובת הדואל שלך."
+
+#@ default
+#: lib/core/class-affiliates-registration.php:386
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>בעיה</strong>: זאת לא כתובת המייל הנכונה"
+
+#@ default
+#: lib/core/class-affiliates-registration.php:389
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr "<strong>בעיה</strong>: כתובת הדואל הזו כבר תפוסה."
+
+#@ default
+#: lib/core/class-affiliates-registration.php:414
+#, php-format
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr "<strong>בעיה</strong>: הרישום לא הצליח... כדאי לפנות <a href=\"mailto:%s\">להנהלה</a>!"
+
+#@ default
+#: lib/core/class-affiliates-registration.php:566
+#, php-format
+msgid "New affiliate registration on your site %s:"
+msgstr "רישום משתמשים חדשים באתר %s:"
+
+#@ default
+#: lib/core/class-affiliates-registration.php:567
+#, php-format
+msgid "Username: %s"
+msgstr "שם משתמש: %s"
+
+#@ default
+#: lib/core/class-affiliates-registration.php:568
+#, php-format
+msgid "E-mail: %s"
+msgstr "מייל: %s"
+
+#@ default
+#: lib/core/class-affiliates-registration.php:570
+#, php-format
+msgid "[%s] New Affiliate Registration"
+msgstr "[%s] רישום שותף חדש"
+
+#@ default
+#: lib/core/class-affiliates-shortcodes.php:425
+msgid "Log out"
+msgstr "ניתוק"
+
+#@ affiliates
+#: lib/core/constants.php:100
+msgctxt "pseudo-affiliate name"
+msgid "Direct"
+msgstr "Direct"
+
+#@ affiliates
+#: lib/core/wp-init.php:861
+msgid "No encoding"
+msgstr "אין קידוד"
+
+#@ affiliates
+#: lib/core/wp-init.php:862
+msgid "MD5"
+msgstr "MD5"
+
+#@ affiliates
+#: lib/core/wp-init.php:1052
+msgid "Options"
+msgstr "אפשרויות"
+
+#@ affiliates
+#: lib/core/wp-init.php:1092
+msgid "The complete documentation is available on the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates plugin page</a>"
+msgstr "תיעוד מלא זמין ב <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">עמוד תוסף השותפים</a>"
+
+#@ affiliates
+#: lib/core/wp-init.php:1098
+msgid "This screen offers an overview with basic statistical data."
+msgstr "מסך זה מציע סקירה עם נתונים סטטיסטיים בסיסיים."
+
+#@ affiliates
+#: lib/core/wp-init.php:1100
+msgid "<em>From operative affiliates:</em> includes affiliates that are currently active. This excludes affiliates whose dates are not currently valid as well as those that have been deleted."
+msgstr "<em>מ פעילות שותפים :</em> כולל שותפים הפעילים כעת. זה אינו כולל חברות אשר התאריכים אינם תקפים כיום, כמו גם כאלה שנמחקו."
+
+#@ affiliates
+#: lib/core/wp-init.php:1101
+msgid "<em>From operative and non-operative affiliates:</em> excludes deleted affiliates."
+msgstr "<em>מ שותפים פעילים ולא פעילים:</em> לא כולל שותפים שנמחקו."
+
+#@ affiliates
+#: lib/core/wp-init.php:1102
+msgid "<em>All time</em> includes data from any affiliates, including deleted affiliates."
+msgstr "<em>כל הזמנים</em> כולל נתוני חברות כלשהן, כולל שותפים שנמחקו."
+
+#@ affiliates
+#: lib/core/wp-init.php:1105
+msgid "<em>Hits</em> are HTTP requests for affiliate links."
+msgstr "<em>צפיות</em> בקשות HTTP מקישורי שותפים."
+
+#@ affiliates
+#: lib/core/wp-init.php:1106
+msgid "<em>Visits</em> are unique and daily requests for affiliate links."
+msgstr "<em>ביקורים</em> ייחודיים מדי יום בקשות עבור קישורי שותפים."
+
+#@ affiliates
+#: lib/core/wp-init.php:1107
+msgid "<em>Referrals</em> are recorded by request through the use of an API function. See the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">documentation</a> for more information."
+msgstr "<em>הפניות</em> נרשמות על ידי בקשה באמצעות פונקציית ה-API. ראה <a href=\\\"http://www.itthinx.com/plugins/affiliates\\\" target=\\\"_blank\\\">תיעוד</a> לקבלת מידע נוסף."
+
+#@ affiliates
+#: lib/core/wp-init.php:1110
+msgid "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals."
+msgstr "תוסף שותפים מספק וידגט<em>קשר שותפים,</em> שניתן להשתמש בו כדי לתעד הפניות מובילות."
+
+#@ affiliates
+#: lib/core/wp-init.php:1111
+#, php-format
+msgid "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
+msgstr "כדי להשתמש בזה, עליך להציב את וידגט<a href=\\\"%s\\\">באזור הוידגטים</a> ."
+
+#@ affiliates
+#: lib/core/wp-init.php:1115
+msgid "Note that <em>deleted</em> affiliates are not literally deleted but marked as such so that data that has been collected will still be accesible."
+msgstr "שים לב, שותפים <em>שנמחקו</em> אינם נמחקים ממש רק מסומנים כמחוקים, אך הנתונים שנאספו עדיין יהיו נגישים."
+
+#@ affiliates
+#: lib/core/wp-init.php:1120
+msgid "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates."
+msgstr "כאן ניתן <strong>להוסיף, לערוך ולהסיר</strong> שותפים."
+
+#@ affiliates
+#: lib/core/wp-init.php:1122
+msgid "There are two types of links your affiliates may use to link to your site:"
+msgstr "ישנם שני סוגים של קישורי שותפים שאתה יכול להשתמש כדי לקשר אל האתר שלך:"
+
+#@ affiliates
+#: lib/core/wp-init.php:1127
+msgid "Affiliate link"
+msgstr "קישור שותף"
+
+#@ affiliates
+#: lib/core/wp-init.php:1130
+msgid "This link uses a parameter in the URL to record vists you receive through your affiliates."
+msgstr "קישור זה עושה שימוש בפרמטר URL לתעד מבקר שיגיע אליך דרך השותף שלך."
+
+#@ affiliates
+#: lib/core/wp-init.php:1131
+#: lib/core/wp-init.php:1141
+msgid "The affiliate information is removed once a visitor has landed on your site."
+msgstr "מידע השותף נמחק לאחר שהמבקר נוחת באתר שלך."
+
+#@ affiliates
+#: lib/core/wp-init.php:1132
+#, php-format
+msgid "You may also append the ?%s=... part to links to your posts."
+msgstr "אתה יכול גם להוסיף בחלק ?%s=...  לקשר לפוסטים שלך."
+
+#@ affiliates
+#: lib/core/wp-init.php:1137
+msgid "Affiliate permalink"
+msgstr "קישורים יפים לשותפים"
+
+#@ affiliates
+#: lib/core/wp-init.php:1140
+msgid "This link uses a nicer URL to record vists you receive through your affiliates."
+msgstr "קישור זה עושה שימוש בURL קישורים יפים, לתיעוד מבקרים שתקבל דרך השותפים שלך."
+
+#@ affiliates
+#: lib/core/wp-init.php:1146
+msgid "Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate."
+msgstr "לאחר שהמבקר נחת באתר שלך דרך קישורי שותפים, הפניות יתועדו וייוחסו לשותף."
+
+#@ affiliates
+#: lib/core/wp-init.php:1165
+msgid "If you require <em>support</em> or <em>customization</em> including <em>referrals integration</em> with your site, you may <a href=\"http://www.itthinx.com/\" target=\"_blank\">contact me here</a>."
+msgstr "אם דרושה <em>תמיכה</em> או <em>התאמה אישית</em> כולל <em>אינטגרציה</em> עם <em>הפניות</em> באתר שלך, אתה יכול <a href=\\\"http://www.itthinx.com/\\\" target=\\\"_blank\\\">לפנות אלי כאן</a> ."
+
+#@ affiliates
+#: lib/core/wp-init.php:1166
+#: lib/core/wp-init.php:1189
+msgid "If you find this plugin useful, please consider making a donation:"
+msgstr "אם התוסף הזה שימושי עבורך, אנא שקול תרומה:"
+
+#@ affiliates
+#: lib/core/wp-init.php:1184
+msgid "Thank you for using the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+msgstr "תודה על השימוש ב <a href=\\\"http://www.itthinx.com/plugins/affiliates\\\" target=\\\"_blank\\\">תוכנית שותפים</a> תוסף של<a href=\\\"http://www.itthinx.com\\\" target=\\\"_blank\\\">itthinx</a> ."
+
+#@ affiliates
+#: lib/core/wp-init.php:1186
+msgid "Please get in touch if you need support, consulting or customization."
+msgstr "נא ליצור קשר אם אתה צריך, תמיכה ייעוץ, או התאמה אישית."
+
