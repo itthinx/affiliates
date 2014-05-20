@@ -28,6 +28,8 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_User_Registration {
 
+	const REFERRAL_TYPE = 'user';
+
 	/**
 	 * Hooks on user_register to record a referral when new users register.
 	 * (only when the built-in User Registration integration is enabled).
@@ -39,19 +41,49 @@ class Affiliates_User_Registration {
 	}
 
 	/**
-	 * May record a referral when a new user has been referred by an affilaite.
+	 * Record a referral when a new user has been referred by an affilaite.
 	 * 
 	 * @param int $user_id
 	 */
 	public static function user_register( $user_id ) {
 
-		// @todo
-		//if pro / enterprise {
-		// $r->...
-		//} else {
-		//affiliates_suggest_referral(...);
-		//}
+		if ( $user = get_user_by( 'id', $user_id ) ) {
+
+			$post_id = get_the_ID();
+			$description = sprintf( 'User Registration %s', esc_html( $user->user_login ) );
+			$amount      = get_option( 'aff_user_registration_amount', '0' );
+			$currency    = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
+
+			$data = array(
+				'user_login' => array(
+					'title'  => 'Username',
+					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'value'  => $user->user_login,
+				),
+				'user_email' => array(
+					'title'  => 'Email',
+					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'value'  => $user->user_email,
+				),
+				'first_name' => array(
+					'title'  => 'First Name',
+					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'value'  => $user->first_name,
+				),
+				'last_name' => array(
+					'title'  => 'Last Name',
+					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'value'  => $user->last_name,
+				)
+			);
+
+			if ( class_exists( 'Affiliates_Referral_WordPress' ) ) {
+				$r = new Affiliates_Referral_WordPress();
+				$affiliate_id = $r->evaluate( $post_id, $description, $data, null, $amount, $currency, null, self::REFERRAL_TYPE );
+			} else {
+				$affiliate_id = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, null, self::REFERRAL_TYPE );
+			}
+		}
 	}
 }
 Affiliates_User_Registration::init();
-
