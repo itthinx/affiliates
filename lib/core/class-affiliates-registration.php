@@ -29,10 +29,10 @@
  * 
  */
 class Affiliates_Registration {
-	
+
 	const OPTIONAL = "optional";
 	const HIDDEN   = "hidden";
-	
+
 	private static $defaults = array(
 		'is_widget'                    => false,
 		'registered_profile_link_text' => null,
@@ -44,9 +44,9 @@ class Affiliates_Registration {
 		'first_name'                   => null,
 		'last_name'                    => null
 	);
-	
+
 	private static $submit_button_label = null;
-	
+
 	/**
 	 * Class initialization.
 	 */
@@ -65,7 +65,7 @@ class Affiliates_Registration {
 		global $affiliates_version;
 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
 	}
-	
+
 	/**
 	 * Fields:
 	 * 
@@ -86,12 +86,12 @@ class Affiliates_Registration {
 	 * @return string rendered registration form
 	 */
 	static function render_form( $options = array() ) {
-		
+
 		self::$submit_button_label = __( 'Sign Up', AFFILIATES_PLUGIN_DOMAIN );
-		
+
 		$output = '';
-		$ext = ''; // currently not relevant		
-		
+		$ext = ''; // currently not relevant
+
 		if ( $is_logged_in = is_user_logged_in() ) {
 			$user       = wp_get_current_user();
 			// sanitize_user_object is deprecated in WP 3.3 beta3
@@ -128,24 +128,24 @@ class Affiliates_Registration {
 			$output .= '</div>';
 			return $output;
 		}
-		
-		
+
+
 		if ( !get_option( 'aff_registration', get_option( 'users_can_register', false ) ) ) {
 			$output .= '<p>' . __( 'Registration is currently closed.', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
 			return $output;
 		}
-		
+
 		$method = 'post';
 		$action = "";
-		
+
 		$submit_name        = 'affiliates-registration-submit';
 		$nonce              = 'affiliates-registration-nonce';
 		$nonce_action       = 'affiliates-registration';
 		$send               = false;
-		
+
 		$first_name_class = '';
 		$last_name_class  = '';
-		
+
 		if ( !isset( $options['first_name'] ) ) {
 			$first_name_class   = ' class="required" ';
 		}
@@ -164,20 +164,20 @@ class Affiliates_Registration {
 			}
 		}
 		$captcha            = '';
-		
+
 		$error = false;
-		
+
 		if ( !empty( $_POST[$submit_name] ) ) {
-			
+
 			if ( !wp_verify_nonce( $_POST[$nonce], $nonce_action ) ) {
 				$error = true; // fail but don't give clues
 			}
-			
+
 			$captcha = $_POST[Affiliates_Utility::get_captcha_field_id()];
 			if ( !Affiliates_Utility::captcha_validates( $captcha ) ) {
 				$error = true; // dumbot
 			}
-		
+
 			if ( !$is_logged_in ) {
 				$first_name   = isset( $_POST['first_name'] ) ? Affiliates_Utility::filter( $_POST['first_name'] ) : '';
 				$last_name    = isset( $_POST['last_name'] ) ? Affiliates_Utility::filter( $_POST['last_name'] ) : '';
@@ -191,7 +191,7 @@ class Affiliates_Registration {
 				$email        = $user->user_email;
 				$url          = $user->user_url;
 			}
-			
+
 			if ( !isset( $options['first_name'] ) ) {
 				if ( empty( $first_name ) ) {
 					$first_name_class = ' class="required missing" ';
@@ -212,15 +212,15 @@ class Affiliates_Registration {
 				$email_class = ' class="required missing" ';
 				$error = true;
 			}
-			
+
 			$error = apply_filters( 'affiliates_registration_error_validate', $error );
-			
+
 			if ( !$error ) {
-				
+
 				if ( ( ( $options['first_name'] == self::OPTIONAL ) && ( empty( $first_name ) ) ) || ( $options['first_name'] == self::HIDDEN ) ) {
 					$first_name = $user_login;
 				}
-				
+
 				$userdata = array(
 					'first_name' => $first_name,
 					'last_name'  => $last_name,
@@ -228,7 +228,7 @@ class Affiliates_Registration {
 					'email'      => $email,
 					'user_url'   => $url
 				); 
-				
+
 				// don't try to create a new user on multiple renderings
 				global $affiliate_user_id, $new_affiliate_registered;
 				if ( !isset( $affiliate_user_id ) ) {
@@ -244,7 +244,7 @@ class Affiliates_Registration {
 						$new_affiliate_registered = true;
 					}
 				}
-					
+
 				// register as affiliate
 				if ( !is_wp_error( $affiliate_user_id ) ) {
 					// add affiliate entry
@@ -284,7 +284,7 @@ class Affiliates_Registration {
 							}
 						}
 					}
-					
+
 				} else {
 					$error = true;
 					$wp_error = $affiliate_user_id;
@@ -322,7 +322,7 @@ class Affiliates_Registration {
 					}
 				}
 			}
-			
+
 		} else {
 			if ( !$is_logged_in ) {
 				$first_name   = '';
@@ -332,7 +332,7 @@ class Affiliates_Registration {
 				$url          = '';
 			}
 		}
-			
+
 		if ( !$send ) {
 			$output .= '<div class="affiliates-registration" id="affiliates-registration' . $ext . '">';
 			$output .= '<img id="affiliates-registration-throbber' . $ext . '" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
@@ -349,48 +349,48 @@ class Affiliates_Registration {
 					);
 				}
 			}
-			
+
 			$output .= apply_filters( 'affiliates_registration_before_fields', '' );
-			
+
 			if ( ( !isset( $options['first_name'] ) ) || ( $options['first_name'] !== self::HIDDEN ) ) {
 				$output .= '<label ' . $first_name_class . ' id="affiliates-registration-form' . $ext . '-first-name-label" for="first_name">' . __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-first-name" name="first_name" type="text" value="' . esc_attr( $first_name ) . '"/>';
 			}
-			
+
 			if ( ( !isset( $options['last_name'] ) ) || ( $options['last_name'] !== self::HIDDEN ) ) {
 				$output .= '<label ' . $last_name_class . ' id="affiliates-registration-form' . $ext . '-last-name-label" for="last_name">' . __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-last-name" name="last_name" type="text" value="' . esc_attr( $last_name ) . '"/>';
 			}
-			
+
 			$output .= '<label ' . $user_login_class . ' id="affiliates-registration-form' . $ext . '-user-login-label" for="user_login">' . __( 'Username', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 			$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-user-login" name="user_login" type="text" value="' . esc_attr( $user_login ) . '"/>';
-			
+
 			$output .= '<label ' . $email_class . ' id="affiliates-registration-form' . $ext . '-email-label" for="email">' . __( 'Email', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 			$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-email" name="email" type="text" value="' . esc_attr( $email ) . '"/>';
-			
+
 			$output .= '<label ' . $url_class . ' id="affiliates-registration-form' . $ext . '-url-label" for="url">' . __( 'Website', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 			$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-url" name="url" type="text" value="' . esc_attr( $url ) . '"/>';
-			
+
 			$output .= apply_filters( 'affiliates_registration_after_fields', '' );
-			
+
 			if ( isset( $terms ) ) {
 				$output .= '<p class="terms">' . $terms . '</p>';
 			}
 			$output .= Affiliates_Utility::captcha_get( $captcha );
-			
+
 			$output .= wp_nonce_field( $nonce_action, $nonce, true, false );
-			
+
 			if ( isset( $options['redirect_to'] ) ) {
 				$output .= '<input type="hidden" name="redirect_to" value="'. esc_url( $options['redirect_to'] ) . '" />';
 			}
-			
+
 			$output .= '<input type="submit" name="' . $submit_name . '" value="'. self::$submit_button_label . '" />';
-			
+
 			$output .= '</div>';
 			$output .= '</form>';
 			$output .= '</div>';
 		}
-		
+
 		return $output;
 	}
 
@@ -403,10 +403,10 @@ class Affiliates_Registration {
 	 */
 	static function register_affiliate( $userdata ) {
 		$errors = new WP_Error();
-	
+
 		$sanitized_user_login = sanitize_user( $userdata['user_login'] );
 		$user_email = apply_filters( 'user_registration_email', $userdata['email'] );
-	
+
 		// Check the username
 		if ( $sanitized_user_login == '' ) {
 			$errors->add( 'empty_username', __( '<strong>ERROR</strong>: Please enter a username.', AFFILIATES_PLUGIN_DOMAIN ) );
@@ -416,7 +416,7 @@ class Affiliates_Registration {
 		} elseif ( username_exists( $sanitized_user_login ) ) {
 			$errors->add( 'username_exists', __( '<strong>ERROR</strong>: This username is already registered, please choose another one.', AFFILIATES_PLUGIN_DOMAIN ) );
 		}
-	
+
 		// Check the e-mail address
 		if ( $user_email == '' ) {
 			$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please type your e-mail address.', AFFILIATES_PLUGIN_DOMAIN ) );
@@ -426,17 +426,17 @@ class Affiliates_Registration {
 		} elseif ( email_exists( $user_email ) ) {
 			$errors->add( 'email_exists', __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', AFFILIATES_PLUGIN_DOMAIN ) );
 		}
-	
+
 		do_action( 'register_post', $sanitized_user_login, $user_email, $errors );
-	
+
 		$errors = apply_filters( 'registration_errors', $errors, $sanitized_user_login, $user_email );
-	
+
 		if ( $errors->get_error_code() ) {
 			return $errors;
 		}
-	
+
 		$user_pass = wp_generate_password( AFFILIATES_REGISTRATION_PASSWORD_LENGTH, false );
-		
+
 		$userdata['first_name'] = sanitize_text_field( $userdata['first_name'] );
 		$userdata['last_name']  = sanitize_text_field( $userdata['last_name'] );
 		$userdata['user_login'] = $sanitized_user_login;
@@ -447,20 +447,20 @@ class Affiliates_Registration {
 
 		// create affiliate entry
 		$user_id = self::create_affiliate( $userdata );
-		
+
 		if ( ! $user_id ) {
 			$errors->add( 'registerfail', sprintf( __( '<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href="mailto:%s">webmaster</a> !' ), get_option( 'admin_email' ) ) );
 			return $errors;
 		}
-	
+
 		update_user_option( $user_id, 'default_password_nag', true, true ); //Set up the Password change nag.
-	
+
 		// notify new user
 		self::new_user_notification( $user_id, $user_pass );
-	
+
 		return $user_id;
 	}
-	
+
 	/**
 	 * Create an affiliate user.
 	 * @param array $userdata
@@ -478,7 +478,7 @@ class Affiliates_Registration {
 		}
 		return wp_insert_user( $_userdata );
 	}
-	
+
 	/**
 	 * Creates an affiliate entry and relates it to a user.
 	 * Notifies site admin of affiliate registration.
@@ -489,9 +489,9 @@ class Affiliates_Registration {
 	 */
 	static function store_affiliate( $user_id, $userdata ) {
 		global $wpdb;
-		
+
 		$result = false;
-		
+
 		$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 		$today = date( 'Y-m-d', time() );
 		$name = $userdata['first_name'] . " " . $userdata['last_name'];
@@ -502,7 +502,7 @@ class Affiliates_Registration {
 			'from_date' => esc_sql( $today ),
 		);
 		$formats = array( '%s', '%s', '%s' );
-		if ( $wpdb->insert( $affiliates_table, $data, $formats ) ) {			
+		if ( $wpdb->insert( $affiliates_table, $data, $formats ) ) {
 			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			// create association
 			if ( $wpdb->insert(
@@ -516,7 +516,7 @@ class Affiliates_Registration {
 				$result = $affiliate_id;
 				self::new_affiliate_notification( $user_id );
 			}
-			
+
 			// hook
 			if ( !empty( $affiliate_id ) ) {
 				do_action( 'affiliates_added_affiliate', intval( $affiliate_id ) );
@@ -524,25 +524,25 @@ class Affiliates_Registration {
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Hooked on delete_user to mark affiliate as deleted.
 	 * Note that the affiliate-user association is maintained.
 	 * @param int $user_id
 	 */
 	static function deleted_user( $user_id ) {
-		
+
 		global $wpdb;
-		
+
 		$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 		$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
-		
+
 		if ( $affiliate_user = $wpdb->get_row(
 			$wpdb->prepare(
 				"SELECT * FROM $affiliates_users_table WHERE user_id = %d",
 				intval( $user_id ) ) ) ) {
 			$affiliate_id = $affiliate_user->affiliate_id;
-		
+
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
 				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
@@ -550,7 +550,7 @@ class Affiliates_Registration {
 			if ( $wpdb->query( $check ) ) {
 				$valid_affiliate = true;
 			}
-			
+
 			if ( $valid_affiliate ) {
 				// mark the affiliate as deleted - will go through and also
 				// clean up the association even if the affiliate was already
@@ -572,9 +572,9 @@ class Affiliates_Registration {
 				);
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * Registration form shortcode handler.
 	 * 
@@ -585,7 +585,7 @@ class Affiliates_Registration {
 		$options = shortcode_atts( self::$defaults, $atts );
 		return self::render_form( $options );
 	}
-	
+
 	/**
 	 * Notify the blog admin of a new affiliate.
 	 *
@@ -593,18 +593,18 @@ class Affiliates_Registration {
 	 */
 	static function new_affiliate_notification( $user_id ) {
 		$user = new WP_User( $user_id );
-	
+
 		$user_login = stripslashes( $user->user_login );
 		$user_email = stripslashes( $user->user_email );
-	
+
 		// The blogname option is escaped with esc_html on the way into the database in sanitize_option
 		// we want to reverse this for the plain text arena of emails.
 		$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
-	
+
 		$message  = sprintf( __( 'New affiliate registration on your site %s:', AFFILIATES_PLUGIN_DOMAIN ), $blogname ) . "\r\n\r\n";
 		$message .= sprintf( __( 'Username: %s', AFFILIATES_PLUGIN_DOMAIN ), $user_login ) . "\r\n\r\n";
 		$message .= sprintf( __( 'E-mail: %s', AFFILIATES_PLUGIN_DOMAIN ), $user_email ) . "\r\n";
-	
+
 		if ( get_option( 'aff_notify_admin', true ) ) {
 			@wp_mail(
 				apply_filters( 'affiliates_admin_email', get_option( 'admin_email' ) ),
@@ -633,7 +633,7 @@ class Affiliates_Registration {
 					$user->user_email,
 					apply_filters( 'affiliates_new_affiliate_user_registration_subject', sprintf( __( '[%s] Your username and password', AFFILIATES_PLUGIN_DOMAIN ), $blogname) ),
 					apply_filters( 'affiliates_new_affiliate_user_registration_message', $message )
-				);	
+				);
 			}
 		}
 	}
