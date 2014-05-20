@@ -423,6 +423,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.6.2 =
+* Registration form now allows optional or hidden first name and last name fields.
+
 = 2.6.1 =
 * Affiliate user notification filters added.
 
@@ -636,6 +639,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.6.2 =
+* Registration form improved.
 
 = 2.6.1 =
 * Affiliate user notification filters added.
