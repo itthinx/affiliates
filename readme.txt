@@ -1,7 +1,7 @@
 === Affiliates ===
 Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/affiliates
-Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, lead, link, marketing, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
+Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, gravity, gravity forms, gravityforms, lead, link, marketing, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
 Requires at least: 3.5.1
 Tested up to: 3.9.1
 Stable tag: 2.6.1
@@ -48,6 +48,7 @@ Extended integrations are available for:
 - [Easy Digital Downloads](http://www.itthinx.com/plugins/affiliates-pro-for-easy-digital-downloads/)
 - [Ecwid](http://www.itthinx.com/plugins/affiliates-ecwid)
 - [eShop](http://www.itthinx.com/plugins/affiliates-eshop)
+- [Gravity Forms](http://www.itthinx.com/plugins/affiliates-gravityforms/)
 - [Jigoshop](http://www.itthinx.com/plugins/affiliates-jigoshop)
 - [PayPal](http://www.itthinx.com/plugins/affiliates-pro-paypal)
 - [s2Member](http://www.itthinx.com/plugins/affiliates-s2member)
@@ -423,6 +424,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.6.2 =
+* Registration form now allows optional or hidden first name and last name fields.
+
 = 2.6.1 =
 * Affiliate user notification filters added.
 
@@ -636,6 +640,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.6.2 =
+* Registration form improved with first_name and last_name attributes added so that these fields can be made optional or hidden.
 
 = 2.6.1 =
 * Affiliate user notification filters added.
