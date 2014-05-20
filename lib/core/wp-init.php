@@ -29,6 +29,9 @@ if ( !isset( $affiliates_version ) ) {
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 }
 
+// base class
+require_once AFFILIATES_CORE_LIB . '/class-affiliates.php';
+
 // options
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-options.php' );
 if ( $affiliates_options == null ) {
@@ -1172,6 +1175,8 @@ function affiliates_get_direct_id() {
 if ( is_admin() ) {
 	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin.php');
 	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-options.php');
+	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php');
+	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-pro.php');
 	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php');
 	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php');
 	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php');
@@ -1266,6 +1271,36 @@ function affiliates_admin_menu() {
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+
+	// user registration
+	$page = add_submenu_page(
+		'affiliates-admin',
+		__( 'User Registration', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'User Registration', AFFILIATES_PLUGIN_DOMAIN ),
+		AFFILIATES_ADMINISTER_OPTIONS,
+		'affiliates-admin-user-registration',
+		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_user_registration' )
+	);
+	$pages[] = $page;
+	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		// pro
+		if ( get_option( 'aff_show_pro', 'yes' ) != 'no' ) {
+			$page = add_submenu_page(
+				'affiliates-admin',
+				__( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN ),
+				__( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN ),
+				AFFILIATES_ADMINISTER_OPTIONS,
+				'affiliates-admin-pro',
+				apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_pro' )
+			);
+			$pages[] = $page;
+			add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+			add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+		}
+	}
 
 	do_action( 'affiliates_admin_menu', $pages );
 }
