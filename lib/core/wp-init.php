@@ -1296,19 +1296,17 @@ function affiliates_admin_menu() {
 
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 		// pro
-		if ( get_option( 'aff_show_pro', 'yes' ) != 'no' ) {
-			$page = add_submenu_page(
-				'affiliates-admin',
-				__( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN ),
-				__( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN ),
-				AFFILIATES_ADMINISTER_OPTIONS,
-				'affiliates-admin-pro',
-				apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_pro' )
-			);
-			$pages[] = $page;
-			add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
-			add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
-		}
+		$page = add_submenu_page(
+			'affiliates-admin',
+			__( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN ),
+			AFFILIATES_ADMINISTER_OPTIONS,
+			'affiliates-admin-pro',
+			apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_pro' )
+		);
+		$pages[] = $page;
+		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 	}
 
 	do_action( 'affiliates_admin_menu', $pages );
