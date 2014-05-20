@@ -131,9 +131,9 @@ define( 'AFFILIATES_ADMINISTER_OPTIONS', 'aff_admin_options');
 define( 'AFFILIATES_REGISTRATION_PASSWORD_LENGTH', 12 );
 
 /** 
- * @var int decimal places for referral amount
+ * @var int default decimal places for referral amount
  */
-define( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS', 2 );
+define( 'AFFILIATES_DEFAULT_REFERRAL_AMOUNT_DECIMALS', 2 );
 
 /**
  * @var int number of characters in currency id

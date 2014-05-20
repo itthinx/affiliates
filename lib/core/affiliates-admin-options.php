@@ -192,6 +192,11 @@ function affiliates_admin_options() {
 			// allow duplicates?
 			delete_option( 'aff_duplicates' );
 			add_option( 'aff_duplicates', !empty( $_POST['duplicates'] ), '', 'no' );
+			// decimals
+			$decimals = isset( $_POST['decimals'] )?$_POST['decimals']:AFFILIATES_DEFAULT_REFERRAL_AMOUNT_DECIMALS;
+			$decimals = intval ( $decimals );
+			update_option( 'aff_decimals', $decimals );
+			
 		}
 	}
 	
@@ -294,6 +299,9 @@ function affiliates_admin_options() {
 	$caps_table .= '</table>';
 	
 	$delete_data = get_option( 'aff_delete_data', false );
+	
+	// decimals
+	$decimals = get_option( 'aff_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
 	
 	//
 	// Generator form
@@ -451,6 +459,14 @@ function affiliates_admin_options() {
 				'</p>';
 		}
 		echo
+				'<h3>' . __( 'Referral amount decimals', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+				'<p>' .
+				'<label>' .
+				'<input class="decimals" name="decimals" type="text" value="' . esc_attr( intval( $decimals ) ) . '" />' .
+				' ' .
+				__( 'Num. decimals', AFFILIATES_PLUGIN_DOMAIN ) .
+				'</label>' .
+				'</p>' .
 				'<p>' .
 					wp_nonce_field( 'admin', AFFILIATES_ADMIN_OPTIONS_NONCE, true, false ) .
 					'<input class="button" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
