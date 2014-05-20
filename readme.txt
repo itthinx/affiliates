@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, gravity, gravity forms, gravityforms, lead, link, marketing, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
 Requires at least: 3.5.1
 Tested up to: 3.9.1
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 License: GPLv3
 
 The Affiliates plugin provides the right tools to maintain an Affiliate Marketing Program.
@@ -424,6 +424,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.7.0 =
+* Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
+
 = 2.6.2 =
 * Registration form now allows optional or hidden first name and last name fields.
 
@@ -640,6 +643,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.7.0 =
+* New built-in User Registration Integration added, reward affiliates for referring new users.
 
 = 2.6.2 =
 * Registration form improved with first_name and last_name attributes added so that these fields can be made optional or hidden.
