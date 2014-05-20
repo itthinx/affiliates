@@ -47,6 +47,11 @@ include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration-widget.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php' ); // don't make it conditional on is_admin(), get_total() is used in Manage Affiliates
 
+// built-in user registration integration
+if ( get_option( 'aff_user_registration_enabled', 'no' ) ) {
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-user-registration.php';
+}
+
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
 /**

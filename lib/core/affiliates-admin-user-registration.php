@@ -31,29 +31,59 @@ function affiliates_admin_user_registration() {
 		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
 	}
 
-	$user_registration_enabled   = get_option( 'aff_user_registration_enabled', 'no' );
-	$user_registration_amount    = get_option( 'aff_user_registration_amount', '0' );
-	$user_registration_currency   = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
+	echo '<h1>';
+	echo __( 'User Registration', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</h1>';
+
+	echo '<p class="description">';
+	echo __( 'Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</p>';
+
+	// save
+	if ( isset( $_POST['action'] ) && $_POST['action'] == 'save' ) {
+		if ( isset( $_POST['affiliates-user-registraton-admin'] ) && wp_verify_nonce( $_POST['affiliates-user-registraton-admin'], 'save' ) ) {
+
+			delete_option( 'aff_user_registration_enabled' );
+			if ( !empty( $_POST['enabled'] ) ) {
+				add_option( 'aff_user_registration_enabled', 'yes', '', 'no' );
+			}
+
+			delete_option( 'aff_user_registration_amount' );
+			if ( !empty( $_POST['amount'] ) ) {
+				$amount = floatval( $_POST['amount'] );
+				if ( $amount < 0 ) {
+					$amount = 0;
+				}
+				add_option( 'aff_user_registration_amount', $amount, '', 'no' );
+			}
+
+			delete_option( 'aff_user_registration_currency' );
+			if ( !empty( $_POST['currency'] ) ) {
+				add_option( 'aff_user_registration_currency', $_POST['currency'], '', 'no' );
+			}
+
+			delete_option( 'aff_user_registration_referral_status' );
+			if ( !empty( $_POST['status'] ) ) {
+				add_option( 'aff_user_registration_referral_status', $_POST['status'], '', 'no' );
+			}
+		}
+	}
+
+	$user_registration_enabled  = get_option( 'aff_user_registration_enabled', 'no' );
+	$user_registration_amount   = get_option( 'aff_user_registration_amount', '0' );
+	$user_registration_currency = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
 	$user_registration_referral_status = get_option(
 		'aff_user_registration_referral_status',
 		get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED )
 	);
 
 	echo '<style type="text/css">';
-	echo 'div.field { padding: 4px; }';
+	echo 'div.field { padding: 0 1em 1em 0; }';
 	echo 'div.field.user-registration-amount input { width: 5em; text-align: right;}';
 	echo 'div.field span.label { display: inline-block; width: 20%; }';
 	echo 'div.field span.description { display: block; }';
 	echo 'div.buttons { padding-top: 1em; }';
 	echo '</style>';
-
-	echo '<h1>';
-	echo __( 'User Registration', AFFILIATES_PLUGIN_DOMAIN );
-	echo '</h1>';
-	
-	echo '<p class="description">';
-	echo __( 'Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.', AFFILIATES_PLUGIN_DOMAIN );
-	echo '</p>';
 
 	echo '<form action="" name="user_registration" method="post">';
 	echo '<div>';
@@ -61,7 +91,7 @@ function affiliates_admin_user_registration() {
 	// enable
 	echo '<div class="field user-registration-enabled">';
 	echo '<label>';
-	printf( '<input type="checkbox" value="1" %s />', $user_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
+	printf( '<input type="checkbox" name="enabled" value="1" %s />', $user_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
 	echo ' ';
 	echo __( 'Enable the user registration integration', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</label>';
@@ -128,8 +158,9 @@ function affiliates_admin_user_registration() {
 	echo '</div>';
 
 	echo '<div class="buttons">';
-	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, false );
+	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
 	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
+	echo '<input type="hidden" name="action" value="save"/>';
 	echo '</div>';
 
 	echo '</div>';
