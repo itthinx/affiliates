@@ -30,8 +30,8 @@
  */
 class Affiliates_Registration {
 	
-	const AFFILIATES_REGISTRATION_FIELD_OPTIONAL = "optional";
-	const AFFILIATES_REGISTRATION_FIELD_HIDDEN = "hidden";
+	const OPTIONAL = "optional";
+	const HIDDEN   = "hidden";
 	
 	private static $defaults = array(
 		'is_widget'                    => false,
@@ -45,7 +45,7 @@ class Affiliates_Registration {
 		'last_name'                    => null
 	);
 	
-	private static $submit_button_label = null; 
+	private static $submit_button_label = null;
 	
 	/**
 	 * Class initialization.
@@ -143,6 +143,9 @@ class Affiliates_Registration {
 		$nonce_action       = 'affiliates-registration';
 		$send               = false;
 		
+		$first_name_class = '';
+		$last_name_class  = '';
+		
 		if ( !isset( $options['first_name'] ) ) {
 			$first_name_class   = ' class="required" ';
 		}
@@ -214,7 +217,7 @@ class Affiliates_Registration {
 			
 			if ( !$error ) {
 				
-				if ( ( ( $options['first_name'] == self::AFFILIATES_REGISTRATION_FIELD_OPTIONAL ) && ( empty( $first_name ) ) ) || ( $options['first_name'] == self::AFFILIATES_REGISTRATION_FIELD_HIDDEN ) ) {
+				if ( ( ( $options['first_name'] == self::OPTIONAL ) && ( empty( $first_name ) ) ) || ( $options['first_name'] == self::HIDDEN ) ) {
 					$first_name = $user_login;
 				}
 				
@@ -349,12 +352,12 @@ class Affiliates_Registration {
 			
 			$output .= apply_filters( 'affiliates_registration_before_fields', '' );
 			
-			if ( ( !isset( $options['first_name'] ) ) || ( $options['first_name'] !== self::AFFILIATES_REGISTRATION_FIELD_HIDDEN ) ) {
+			if ( ( !isset( $options['first_name'] ) ) || ( $options['first_name'] !== self::HIDDEN ) ) {
 				$output .= '<label ' . $first_name_class . ' id="affiliates-registration-form' . $ext . '-first-name-label" for="first_name">' . __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-first-name" name="first_name" type="text" value="' . esc_attr( $first_name ) . '"/>';
 			}
 			
-			if ( ( !isset( $options['last_name'] ) ) || ( $options['last_name'] !== self::AFFILIATES_REGISTRATION_FIELD_HIDDEN ) ) {
+			if ( ( !isset( $options['last_name'] ) ) || ( $options['last_name'] !== self::HIDDEN ) ) {
 				$output .= '<label ' . $last_name_class . ' id="affiliates-registration-form' . $ext . '-last-name-label" for="last_name">' . __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-last-name" name="last_name" type="text" value="' . esc_attr( $last_name ) . '"/>';
 			}
