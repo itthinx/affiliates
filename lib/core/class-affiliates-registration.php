@@ -30,6 +30,9 @@
  */
 class Affiliates_Registration {
 	
+	const AFFILIATES_REGISTRATION_FIELD_OPTIONAL = "optional";
+	const AFFILIATES_REGISTRATION_FIELD_HIDDEN = "hidden";
+	
 	private static $defaults = array(
 		'is_widget'                    => false,
 		'registered_profile_link_text' => null,
@@ -37,7 +40,9 @@ class Affiliates_Registration {
 		'redirect'                     => false,
 		'redirect_to'                  => null,
 		'submit_button_label'          => null,
-		'terms_post_id'                => null
+		'terms_post_id'                => null,
+		'first_name'                   => null,
+		'last_name'                    => null
 	);
 	
 	private static $submit_button_label = null; 
@@ -138,8 +143,12 @@ class Affiliates_Registration {
 		$nonce_action       = 'affiliates-registration';
 		$send               = false;
 		
-		$first_name_class   = ' class="required" ';
-		$last_name_class    = ' class="required" ';
+		if ( !isset( $options['first_name'] ) ) {
+			$first_name_class   = ' class="required" ';
+		}
+		if ( !isset( $options['last_name'] ) ) {
+			$last_name_class    = ' class="required" ';
+		}
 		$user_login_class   = ' class="required" ';
 		$email_class        = ' class="required" ';
 		$url_class          = '';
@@ -180,13 +189,17 @@ class Affiliates_Registration {
 				$url          = $user->user_url;
 			}
 			
-			if ( empty( $first_name ) ) {
-				$first_name_class = ' class="required missing" ';
-				$error = true;
+			if ( !isset( $options['first_name'] ) ) {
+				if ( empty( $first_name ) ) {
+					$first_name_class = ' class="required missing" ';
+					$error = true;
+				}
 			}
-			if ( empty( $last_name ) ) {
-				$last_name_class = ' class="required missing" ';
-				$error = true;
+			if ( !isset( $options['last_name'] ) ) {
+				if ( empty( $last_name ) ) {
+					$last_name_class = ' class="required missing" ';
+					$error = true;
+				}
 			}
 			if ( empty( $user_login ) ) {
 				$user_login_class = ' class="required missing" ';
@@ -200,6 +213,10 @@ class Affiliates_Registration {
 			$error = apply_filters( 'affiliates_registration_error_validate', $error );
 			
 			if ( !$error ) {
+				
+				if ( ( ( $options['first_name'] == self::AFFILIATES_REGISTRATION_FIELD_OPTIONAL ) && ( empty( $first_name ) ) ) || ( $options['first_name'] == self::AFFILIATES_REGISTRATION_FIELD_HIDDEN ) ) {
+					$first_name = $user_login;
+				}
 				
 				$userdata = array(
 					'first_name' => $first_name,
@@ -332,11 +349,15 @@ class Affiliates_Registration {
 			
 			$output .= apply_filters( 'affiliates_registration_before_fields', '' );
 			
-			$output .= '<label ' . $first_name_class . ' id="affiliates-registration-form' . $ext . '-first-name-label" for="first_name">' . __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
-			$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-first-name" name="first_name" type="text" value="' . esc_attr( $first_name ) . '"/>';
+			if ( ( !isset( $options['first_name'] ) ) || ( $options['first_name'] !== self::AFFILIATES_REGISTRATION_FIELD_HIDDEN ) ) {
+				$output .= '<label ' . $first_name_class . ' id="affiliates-registration-form' . $ext . '-first-name-label" for="first_name">' . __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-first-name" name="first_name" type="text" value="' . esc_attr( $first_name ) . '"/>';
+			}
 			
-			$output .= '<label ' . $last_name_class . ' id="affiliates-registration-form' . $ext . '-last-name-label" for="last_name">' . __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
-			$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-last-name" name="last_name" type="text" value="' . esc_attr( $last_name ) . '"/>';
+			if ( ( !isset( $options['last_name'] ) ) || ( $options['last_name'] !== self::AFFILIATES_REGISTRATION_FIELD_HIDDEN ) ) {
+				$output .= '<label ' . $last_name_class . ' id="affiliates-registration-form' . $ext . '-last-name-label" for="last_name">' . __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-last-name" name="last_name" type="text" value="' . esc_attr( $last_name ) . '"/>';
+			}
 			
 			$output .= '<label ' . $user_login_class . ' id="affiliates-registration-form' . $ext . '-user-login-label" for="user_login">' . __( 'Username', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
 			$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-user-login" name="user_login" type="text" value="' . esc_attr( $user_login ) . '"/>';
