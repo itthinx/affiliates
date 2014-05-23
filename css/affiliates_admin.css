@@ -272,6 +272,10 @@ input.timeout {
 	width: 4em;
 	text-align: right;
 }
+input.decimals {
+	width: 4em;
+	text-align: right;
+}
 table.affiliates-permissions thead tr td.role {
 	font-weight: bold;
 }
