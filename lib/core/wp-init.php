@@ -576,10 +576,6 @@ add_action( 'init', 'affiliates_init' );
  */
 function affiliates_init() {
 	load_plugin_textdomain( AFFILIATES_PLUGIN_DOMAIN, null, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
-	// decimals
-	$decimals = get_option( 'aff_decimals', AFFILIATES_DEFAULT_REFERRAL_AMOUNT_DECIMALS );
-	define( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS', apply_filters( 'affiliates_referral_amount_decimals', $decimals ) );
-		
 }
 
 add_filter( 'query_vars', 'affiliates_query_vars', 999 ); // filter acts late to avoid being messed with by others
