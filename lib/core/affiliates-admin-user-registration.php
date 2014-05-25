@@ -166,4 +166,5 @@ function affiliates_admin_user_registration() {
 	echo '</div>';
 	echo '</form>';
 
+	affiliates_footer();
 }

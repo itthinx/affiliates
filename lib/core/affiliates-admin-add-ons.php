@@ -92,5 +92,7 @@ function affiliates_admin_add_ons() {
 	echo '<p>';
 	echo __( 'Free and premium extensions are listed on the <a href="http://www.itthinx.com/plugins/overview/">Overview</a> page and in the <a href="http://www.itthinx.com/shop/">Shop</a>.', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</p>';
+
+	affiliates_footer();
 }
 
