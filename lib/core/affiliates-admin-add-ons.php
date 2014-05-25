@@ -1,6 +1,6 @@
 <?php
 /**
- * affiliates-admin-pro.php
+ * affiliates-admin-add-ons.php
  * 
  * Copyright (c) 2010 - 2014 "kento" Karim Rahimpur www.itthinx.com
  * 
@@ -23,11 +23,18 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function affiliates_admin_pro() {
+function affiliates_admin_add_ons() {
 	
 	echo '<h1>';
-	echo __( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliates Extensions and Add-Ons', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h1>';
 
+	echo '<h2>';
+	echo __( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</h2>';
+
+	echo '<h2>';
+	echo __( 'Affiliates Enterprise', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</h2>';
 }
 
