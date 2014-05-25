@@ -426,6 +426,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.7.0 =
 * Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
+* Added filter affiliates_referral_amount_decimals.
 
 = 2.6.2 =
 * Registration form now allows optional or hidden first name and last name fields.
