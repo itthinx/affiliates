@@ -360,9 +360,9 @@ class Affiliates_Shortcodes {
 								$output .= '<ul>';
 								foreach ( $totals as $currency_id => $total ) {
 									$output .= '<li>';
-									$output .= $currency_id;
+									$output .= apply_filters( 'affiliates_referrals_display_currency', $currency_id );
 									$output .= '&nbsp;';
-									$output .= $total;
+									$output .= apply_filters( 'affiliates_referrals_display_total', $total );
 									$output .= '</li>';
 								}
 								$output .= '</ul>';
