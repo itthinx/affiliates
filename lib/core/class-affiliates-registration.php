@@ -640,7 +640,8 @@ class Affiliates_Registration {
 				@wp_mail(
 					$user->user_email,
 					apply_filters( 'affiliates_new_affiliate_user_registration_subject', sprintf( __( '[%s] Your username and password', AFFILIATES_PLUGIN_DOMAIN ), $blogname ), $params ),
-					apply_filters( 'affiliates_new_affiliate_user_registration_message', $message, $params )
+					apply_filters( 'affiliates_new_affiliate_user_registration_message', $message, $params ),
+					apply_filters( 'affiliates_new_affiliate_user_registration_headers', '', $params )
 				);
 			}
 		}
