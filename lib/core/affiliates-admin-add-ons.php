@@ -29,6 +29,10 @@ function affiliates_admin_add_ons() {
 	echo __( 'Affiliates Extensions and Add-Ons', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h1>';
 
+	echo '<p>';
+	echo __( 'Get additional features and access to premium support!', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</p>';
+
 	echo '<h2>';
 	echo __( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h2>';
@@ -48,11 +52,11 @@ function affiliates_admin_add_ons() {
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Mass payment file generation', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Export Totals and Mass Payment File generation', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Advanced shortcodes including graphs', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Advanced shortcodes including banners and graphs', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 
 	echo '<li>';
@@ -60,11 +64,15 @@ function affiliates_admin_add_ons() {
 	echo '</li>';
 
 	echo '<li>';
+	echo __( 'Customizable affiliate registration email', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</li>';
+
+	echo '<li>';
 	echo __( 'Notifications including customizable messages', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Access to integrations with popular e-commerce systems', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Access to advanced integrations with popular e-commerce systems', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 
 	echo '</ul>';

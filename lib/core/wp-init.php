@@ -1185,7 +1185,9 @@ if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-options.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';
-	include_once AFFILIATES_CORE_LIB . '/class-affiliates-totals.php';
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		include_once AFFILIATES_CORE_LIB . '/class-affiliates-totals.php';
+	}
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-add-ons.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php';
