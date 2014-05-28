@@ -625,7 +625,7 @@ class Affiliates_Registration {
 		$user = get_userdata( $user_id );
 		$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 		if ( !empty( $plaintext_pass ) ) {
-			if ( get_option( 'aff_notify_affiliate_user', true ) ) {
+			if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
 				$message  = sprintf( __( 'Username: %s', AFFILIATES_PLUGIN_DOMAIN ), $user->user_login) . "\r\n";
 				$message .= sprintf( __( 'Password: %s', AFFILIATES_PLUGIN_DOMAIN ), $plaintext_pass ) . "\r\n";
 				$message .= wp_login_url() . "\r\n";
