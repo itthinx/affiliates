@@ -428,6 +428,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
 * Added filter affiliates_referral_amount_decimals.
 * Added totals section.
+* Added filter affiliates_referrals_display_currency.
+* Added filter affiliates_referrals_display_total.
+* Added filter affiliates_referrals_display_total_none.
 
 = 2.6.2 =
 * Registration form now allows optional or hidden first name and last name fields.
@@ -647,7 +650,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.7.0 =
-* New Totals section (facilitates affiliate payment and closing referrals in bulk by time period) and built-in User Registration Integration added (reward affiliates for referring new users).
+* New Totals section (facilitates affiliate payment and closing referrals in bulk by time period) and built-in User Registration Integration added (reward affiliates for referring new users) along with new filters.
 
 = 2.6.2 =
 * Registration form improved with first_name and last_name attributes added so that these fields can be made optional or hidden.
