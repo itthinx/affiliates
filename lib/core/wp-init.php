@@ -1446,8 +1446,26 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 }
 
 /**
+ * Returns or renders the common footer for help tabs.
+ * @param boolean $render
+ * @return string or nothing
+ */
+function affiliates_help_tab_footer( $render = true ) {
+	$footer =
+		'<div class="affiliates-documentation">' .
+		__( '<a href="http://www.itthinx.com/documentation/affiliates/">Online documentation</a>', AFFILIATES_PRO_PLUGIN_DOMAIN ) .
+		'</div>';
+	if ( $render ) {
+		echo $footer;
+	} else {
+		return $footer;
+	}
+}
+
+/**
  * Returns or renders the footer.
  * @param boolean $render
+ * @return string or nothing
  */
 function affiliates_footer( $render = true ) {
 	$footer = '<div class="affiliates-footer">' .
