@@ -1423,6 +1423,9 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 		case 'affiliates_page_affiliates-admin-hits-affiliate' :
 			$show_affiliates_help = true;
 			break;
+		case 'affiliates_page_affiliates-admin-totals' :
+			$show_affiliates_help = true;
+			break;
 		case 'affiliates_page_affiliates-admin-referrals' :
 			$show_affiliates_help = true;
 			break;
@@ -1437,6 +1440,8 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 		$help .= affiliates_donate( false, true );
 		$help .= '</p>';
 	}
+
+	$help .= affiliates_help_tab_footer( false );
 
 	if ( $show_affiliates_help ) {
 		return $help;
@@ -1453,7 +1458,7 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 function affiliates_help_tab_footer( $render = true ) {
 	$footer =
 		'<div class="affiliates-documentation">' .
-		__( '<a href="http://www.itthinx.com/documentation/affiliates/">Online documentation</a>', AFFILIATES_PRO_PLUGIN_DOMAIN ) .
+		__( '<a href="http://www.itthinx.com/documentation/affiliates/">Online documentation</a>', AFFILIATES_PLUGIN_DOMAIN ) .
 		'</div>';
 	if ( $render ) {
 		echo $footer;
