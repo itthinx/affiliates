@@ -1357,9 +1357,9 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 
 	$show_affiliates_help = false;
 	$help = '<h3><a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a></h3>';
-	$help .= '<p>';
-	$help .= __( 'The complete documentation is available on the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates plugin page</a>', AFFILIATES_PLUGIN_DOMAIN );
-	$help .= '</p>';
+// 	$help .= '<p>';
+// 	$help .= __( 'The complete documentation is available on the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates plugin page</a>', AFFILIATES_PLUGIN_DOMAIN );
+// 	$help .= '</p>';
 
 	switch ( $screen_id ) {
 		case 'toplevel_page_affiliates-admin' :
