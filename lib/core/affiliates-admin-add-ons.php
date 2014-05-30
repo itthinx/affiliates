@@ -72,6 +72,10 @@ function affiliates_admin_add_ons() {
 	echo '</li>';
 
 	echo '<li>';
+	echo __( 'Affiliate link generator form', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</li>';
+
+	echo '<li>';
 	echo __( 'Access to advanced integrations with popular e-commerce systems', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 

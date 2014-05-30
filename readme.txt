@@ -1,7 +1,7 @@
 === Affiliates ===
 Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/affiliates
-Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, gravity, gravity forms, gravityforms, lead, link, marketing, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
+Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, gravity, gravity forms, gravityforms, lead, link, marketing, membership, memberships, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
 Requires at least: 3.5.1
 Tested up to: 3.9.1
 Stable tag: 2.6.2
@@ -13,13 +13,13 @@ The Affiliates plugin provides the right tools to maintain an Affiliate Marketin
 
 The Affiliates plugin provides the right tools to maintain an Affiliate Marketing Program.
 
-**Important features include automated affiliate registration, an unlimited affiliate management section and the ability to integrate Affiliates with virtually any E-Commerce platform. Free integrations with eShop, Jigoshop and WooCommerce are available.**
+_Important features include automated affiliate registration, an unlimited affiliate management section and the ability to integrate Affiliates with virtually any E-Commerce platform. Commissions on referred users are built in, free and premium integrations with e-commerce systems are available._
 
-**The Affiliates plugin provides an affiliate system for sellers, shops and developers who want to get started with their affiliate program right "out of the box".**
+**The Affiliates plugin provides an affiliate system for sellers, shops, and membership sites who want to get started with their affiliate program right "out of the box".**
 
 It also provides a solid framework for developers, who wish to build customized solutions based on a sound data model. With unlimited affiliate program management tools available on the back end and a set of shortcodes to provide Affiliates information on their performance on the front end, there is everything you need to start an affiliate program.
 
-Affiliates Pro and Enterprise provide additional features for sellers, shops and developers.
+Affiliates Pro and Enterprise provide additional and enhanced features.
 
 If you need to manage an **Affiliate Marketing Progam**, **track visits to your site** with **affiliate links**, the affiliates plugin is right for you. It provides the tools to maintain a **partner referral program**.
 
@@ -162,11 +162,19 @@ For each referral, the date and time, corresponding post and affiliate is shown.
 Additional data and referral descriptions that have been recorded using the plugin's API are shown for each referral.
 Data can be conveniently sorted and also filtered by affiliate and time period.
 
+#### Totals ####
+
+The Totals section provides accumulated totals per affiliate and time period, prepared to handle affiliate payments and mark paid referrals in bulk.
+
+#### User Registration ####
+
+Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.
+
 #### Options ####
 
 ##### Page generation #####
 
-You can let Affiliates generate an Affiliate Area page for you: Press the _Generate_ button.
+You can generate a pre-designed Affiliate Area, press the _Generate_ button.
 You will find a new page titled _Affiliate Area_ on your site which includes a login form, affiliate registration form, information about an affiliate's performance and the affiliate's link as well as a link to log out at the end of the page.
 You can edit this page and adjust it according to your preferences.
 
@@ -217,7 +225,7 @@ This option is useful if you just need to start clean while you run tests.
 
 #### What this plugin is not ####
 
-It is not intended to keep track of links to other sites that you as a member of an affiliate program may have.
+It is not intended to keep track of links to other sites that you as a member of an affiliate program may have. We suggest you have a look at the [Affiliate](http://wordpress.org/plugins/affiliate/) plugin if you're interested in that.
 
 ### Translations ###
 
@@ -377,13 +385,7 @@ Data is stored with reference to the server's settings and shown adjusted to the
 
 You can store any information you need along with referrals.
 
-= How ugly are affiliate links? =
-
-Not very and there are several options including pretty permalinks.
-
-Automatic affiliate id removal : the affiliate id is removed from your site's URL after the visitors land on your site.
-
-= Is it possible to have permalinks that include affiliate data? =
+= Is it possible to create affiliate links to any page on my site? =
 
 Yes.
 
@@ -425,6 +427,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 16. Registration Widget - View of a visitor's successful form submission to join the site's affiliate program.
 17. Affiliate Area I - This is showing the part of the generated Affiliate Area where an affiliate sees the affiliate URL and link when logged in.
 18. Affiliate Area II - This shows performance data on commissions and monthly earnings for an affiliate who is logged in.
+19. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users.
 
 == Changelog ==
 
