@@ -25,6 +25,14 @@ if ( !defined( 'ABSPATH' ) ) {
 
 function affiliates_admin_add_ons() {
 
+	echo '<style type="text/css">';
+	echo 'div.add-ons { background-color: #fff; padding: 1em; }';
+	echo 'img.screenshot { margin: 0 4px; padding: 4px; background-color: #fff; border: 1px solid #ccc; border-radius: 4px; height: 258px; }';
+	echo 'img.screenshot.enterprise { height: 190px; }';
+	echo '</style>';
+
+	echo '<div class="add-ons">';
+
 	echo '<h1>';
 	echo __( 'Affiliates Extensions and Add-Ons', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h1>';
@@ -36,6 +44,11 @@ function affiliates_admin_add_ons() {
 	echo '<h2>';
 	echo __( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h2>';
+
+	echo sprintf( '<img class="screenshot" alt="Affiliates Pro Menu" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Affiliates Pro Menu-small.png' );
+	echo sprintf( '<img class="screenshot" alt="Banners" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Banners-small.png' );
+	echo sprintf( '<img class="screenshot" alt="Notifications" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Notifications - Affiliate Registration-small.png' );
+	echo sprintf( '<img class="screenshot" alt="Totals" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Totals-small.png' );
 
 	echo '<ul>';
 
@@ -85,6 +98,10 @@ function affiliates_admin_add_ons() {
 	echo __( 'Affiliates Enterprise', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h2>';
 
+	echo sprintf( '<img class="screenshot enterprise" alt="Multiple Tiers" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Multi-tiered Referrals-small.png' );
+	echo sprintf( '<img class="screenshot enterprise" alt="Banners" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Specific Level Rates-small.png' );
+	echo sprintf( '<img class="screenshot enterprise" alt="Notifications" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Tiers-small.png' );
+
 	echo '<ul>';
 
 	echo '<li>';
@@ -105,6 +122,7 @@ function affiliates_admin_add_ons() {
 	echo __( 'Free and premium extensions are listed on the <a href="http://www.itthinx.com/plugins/overview/">Overview</a> page and in the <a href="http://www.itthinx.com/shop/">Shop</a>.', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</p>';
 
+	echo '</div>';
+
 	affiliates_footer();
 }
-
