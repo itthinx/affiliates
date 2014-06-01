@@ -564,6 +564,7 @@ function affiliates_cleanup( $delete = false ) {
 		$affiliates_options->flush_options();
 		delete_option( 'affiliates_plugin_version' );
 		delete_option( 'aff_cookie_timeout_days' );
+		delete_option( 'aff_duplicates' );
 		delete_option( 'aff_use_direct' );
 		delete_option( 'aff_id_encoding' );
 		delete_option( 'aff_default_referral_status' );
