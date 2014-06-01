@@ -152,10 +152,24 @@ function affiliates_admin_user_registration() {
 	echo ' ';
 	echo $status_select;
 	echo '</label>';
-	echo '<span class="description">';
-	echo __( 'The referral status for those that record commissions when affiliates refer new users.<br/>Recommended: <strong>Accepted</strong> if referred users should grant payable commissions to affiliate without the need for further review. <strong>Pending</strong> if these referrals should be reviewed manually before the commissions should be taken into account for affilaite payout.', AFFILIATES_PLUGIN_DOMAIN );
-	echo '</span>';
+	echo '<p class="description">';
+	echo __( 'The status for referrals that record commissions when affiliates refer new users.', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</p>';
 	echo '</div>';
+
+	echo '<p>';
+	echo __( 'Recommended choices for the referral status are <em>Accepted</em> and <em>Pending</em>.', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</p>';
+
+	echo '<ul>';
+	echo '<li>';
+	echo __( '<strong>Accepted</strong> if these referrals should grant payable commissions to affiliates without the need for further review.', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</li>';
+
+	echo '<li>';
+	echo __( '<strong>Pending</strong> if these referrals are to be reviewed before the commissions should be taken into account for affiliate payouts.', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</li>';
+	echo '</ul>';
 
 	echo '<div class="buttons">';
 	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );

@@ -53,6 +53,10 @@ class Affiliates_User_Registration {
 			$description = sprintf( 'User Registration %s', esc_html( $user->user_login ) );
 			$amount      = get_option( 'aff_user_registration_amount', '0' );
 			$currency    = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
+			$user_registration_referral_status = get_option(
+				'aff_user_registration_referral_status',
+				get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED )
+			);
 
 			$data = array(
 				'user_login' => array(
@@ -79,9 +83,9 @@ class Affiliates_User_Registration {
 
 			if ( class_exists( 'Affiliates_Referral_WordPress' ) ) {
 				$r = new Affiliates_Referral_WordPress();
-				$affiliate_id = $r->evaluate( $post_id, $description, $data, null, $amount, $currency, null, self::REFERRAL_TYPE );
+				$affiliate_id = $r->evaluate( $post_id, $description, $data, null, $amount, $currency, $user_registration_referral_status, self::REFERRAL_TYPE );
 			} else {
-				$affiliate_id = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, null, self::REFERRAL_TYPE );
+				$affiliate_id = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, $user_registration_referral_status, self::REFERRAL_TYPE );
 			}
 		}
 	}
