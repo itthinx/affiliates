@@ -319,7 +319,7 @@ class Affiliates_Totals {
 		}
 
 		$output .= '<style type="text/css">';
-		$output .= '.close-referrals img { vertical-align: middle; }';
+		$output .= '.close-referrals img, .close-referrals span.label { vertical-align: middle; }';
 		$output .= '</style>';
 
 		$output .= '<div class="manage">';

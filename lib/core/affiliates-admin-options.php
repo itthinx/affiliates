@@ -453,7 +453,7 @@ function affiliates_admin_options() {
 		echo
 				'<p>' .
 					wp_nonce_field( 'admin', AFFILIATES_ADMIN_OPTIONS_NONCE, true, false ) .
-					'<input class="button" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+					'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 				'</p>' .
 			'</div>' .
 		'</form>';
@@ -499,7 +499,7 @@ function affiliates_network_admin_options() {
 			'</ol>' .
 			'<p>' .
 			wp_nonce_field( 'admin', AFFILIATES_ADMIN_OPTIONS_NONCE, true, false ) .
-			'<input class="button" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 			'</p>' .
 			'</div>' .
 			'</form>';
