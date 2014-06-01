@@ -29,6 +29,9 @@ if ( !isset( $affiliates_version ) ) {
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 }
 
+// base class
+require_once AFFILIATES_CORE_LIB . '/class-affiliates.php';
+
 // options
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-options.php' );
 if ( $affiliates_options == null ) {
@@ -43,6 +46,11 @@ include_once( AFFILIATES_CORE_LIB . '/class-affiliates-contact.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration-widget.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php' ); // don't make it conditional on is_admin(), get_total() is used in Manage Affiliates
+
+// built-in user registration integration
+if ( get_option( 'aff_user_registration_enabled', 'no' ) ) {
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-user-registration.php';
+}
 
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
@@ -556,6 +564,7 @@ function affiliates_cleanup( $delete = false ) {
 		$affiliates_options->flush_options();
 		delete_option( 'affiliates_plugin_version' );
 		delete_option( 'aff_cookie_timeout_days' );
+		delete_option( 'aff_duplicates' );
 		delete_option( 'aff_use_direct' );
 		delete_option( 'aff_id_encoding' );
 		delete_option( 'aff_default_referral_status' );
@@ -565,6 +574,10 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_delete_network_data' );
 		delete_option( 'aff_redirect' );
 		delete_option( 'aff_pname' );
+		delete_option( 'aff_user_registration_enabled' );
+		delete_option( 'aff_user_registration_amount' );
+		delete_option( 'aff_user_registration_currency' );
+		delete_option( 'aff_user_registration_referral_status' );
 	}
 }
 
@@ -1170,12 +1183,17 @@ function affiliates_get_direct_id() {
 
 // only needed when in admin
 if ( is_admin() ) {
-	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin.php');
-	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-options.php');
-	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php');
-	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php');
-	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php');
-	include_once( AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php');
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-options.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		include_once AFFILIATES_CORE_LIB . '/class-affiliates-totals.php';
+	}
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-add-ons.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
 	add_action( 'admin_menu', 'affiliates_admin_menu' );
 	add_action( 'network_admin_menu', 'affiliates_network_admin_menu' );
@@ -1254,6 +1272,21 @@ function affiliates_admin_menu() {
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 
+	// totals
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		$page = add_submenu_page(
+			'affiliates-admin',
+			__( 'Totals', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Totals', AFFILIATES_PLUGIN_DOMAIN ),
+			AFFILIATES_ADMINISTER_OPTIONS,
+			'affiliates-admin-totals',
+			apply_filters( 'affiliates_add_submenu_page_function', array( 'Affiliates_Totals', 'view' ) )
+		);
+		$pages[] = $page;
+		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+	}
+
 	// options
 	$page = add_submenu_page(
 		'affiliates-admin',
@@ -1266,6 +1299,34 @@ function affiliates_admin_menu() {
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+
+	// user registration
+	$page = add_submenu_page(
+		'affiliates-admin',
+		__( 'User Registration', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'User Registration', AFFILIATES_PLUGIN_DOMAIN ),
+		AFFILIATES_ADMINISTER_OPTIONS,
+		'affiliates-admin-user-registration',
+		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_user_registration' )
+	);
+	$pages[] = $page;
+	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+
+	// add-ons
+// 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		$page = add_submenu_page(
+			'affiliates-admin',
+			__( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN ),
+			AFFILIATES_ADMINISTER_OPTIONS,
+			'affiliates-admin-add-ons',
+			apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_add_ons' )
+		);
+		$pages[] = $page;
+		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+// 	}
 
 	do_action( 'affiliates_admin_menu', $pages );
 }
@@ -1297,9 +1358,9 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 
 	$show_affiliates_help = false;
 	$help = '<h3><a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a></h3>';
-	$help .= '<p>';
-	$help .= __( 'The complete documentation is available on the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates plugin page</a>', AFFILIATES_PLUGIN_DOMAIN );
-	$help .= '</p>';
+// 	$help .= '<p>';
+// 	$help .= __( 'The complete documentation is available on the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates plugin page</a>', AFFILIATES_PLUGIN_DOMAIN );
+// 	$help .= '</p>';
 
 	switch ( $screen_id ) {
 		case 'toplevel_page_affiliates-admin' :
@@ -1363,6 +1424,9 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 		case 'affiliates_page_affiliates-admin-hits-affiliate' :
 			$show_affiliates_help = true;
 			break;
+		case 'affiliates_page_affiliates-admin-totals' :
+			$show_affiliates_help = true;
+			break;
 		case 'affiliates_page_affiliates-admin-referrals' :
 			$show_affiliates_help = true;
 			break;
@@ -1378,6 +1442,8 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 		$help .= '</p>';
 	}
 
+	$help .= affiliates_help_tab_footer( false );
+
 	if ( $show_affiliates_help ) {
 		return $help;
 	} else {
@@ -1386,8 +1452,26 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 }
 
 /**
+ * Returns or renders the common footer for help tabs.
+ * @param boolean $render
+ * @return string or nothing
+ */
+function affiliates_help_tab_footer( $render = true ) {
+	$footer =
+		'<div class="affiliates-documentation">' .
+		__( '<a href="http://www.itthinx.com/documentation/affiliates/">Online documentation</a>', AFFILIATES_PLUGIN_DOMAIN ) .
+		'</div>';
+	if ( $render ) {
+		echo $footer;
+	} else {
+		return $footer;
+	}
+}
+
+/**
  * Returns or renders the footer.
  * @param boolean $render
+ * @return string or nothing
  */
 function affiliates_footer( $render = true ) {
 	$footer = '<div class="affiliates-footer">' .

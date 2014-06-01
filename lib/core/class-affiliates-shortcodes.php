@@ -360,9 +360,9 @@ class Affiliates_Shortcodes {
 								$output .= '<ul>';
 								foreach ( $totals as $currency_id => $total ) {
 									$output .= '<li>';
-									$output .= $currency_id;
+									$output .= apply_filters( 'affiliates_referrals_display_currency', $currency_id );
 									$output .= '&nbsp;';
-									$output .= $total;
+									$output .= apply_filters( 'affiliates_referrals_display_total', number_format_i18n( $total, apply_filters( 'affiliates_referrals_decimals', 2 ) ), $total, $currency_id );
 									$output .= '</li>';
 								}
 								$output .= '</ul>';
@@ -372,7 +372,7 @@ class Affiliates_Shortcodes {
 							if ( $if_empty !== null ) {
 								$output .= '<ul>';
 								$output .= '<li>';
-								$output .= wp_filter_nohtml_kses( $if_empty );
+								$output .= apply_filters( 'affiliates_referrals_display_total_none', wp_filter_nohtml_kses( $if_empty ) );
 								$output .= '</li>';
 								$output .= '</ul>';
 							}
