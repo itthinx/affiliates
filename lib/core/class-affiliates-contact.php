@@ -51,7 +51,7 @@ class Affiliates_Contact extends WP_Widget {
 	/**
 	 * Enqueues required stylesheets.
 	 */
-	function _print_styles() {
+	public static function _print_styles() {
 		global $affiliates_version;
 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
 	}
@@ -59,7 +59,7 @@ class Affiliates_Contact extends WP_Widget {
 	/**
 	 * Enqueues required scripts.
 	 */
-	function _enqueue_scripts() {
+	public static function _enqueue_scripts() {
 		if ( !is_admin() ) {
 			wp_enqueue_script( 'jquery' );
 		}
@@ -102,7 +102,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * Remember NOT to use any form input elements named 'name', 'year', ... 
 	 * @static
 	 */
-	static function render_form( $widget_id = '', $amount = null, $currency_id = null ) {
+	public static function render_form( $widget_id = '', $amount = null, $currency_id = null ) {
 		
 		$method = 'post';
 		$action = "";
@@ -206,7 +206,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * Filters mail header injection, html, ... 
 	 * @param unknown_type $unfiltered_value
 	 */
-	static function filter( $unfiltered_value ) {
+	public static function filter( $unfiltered_value ) {
 		$mail_filtered_value = preg_replace('/(%0A|%0D|content-type:|to:|cc:|bcc:)/i', '', $unfiltered_value );
 		return stripslashes( wp_filter_nohtml_kses( Affiliates_Contact::filter_xss( trim( strip_tags( $mail_filtered_value ) ) ) ) );
 	}
@@ -217,7 +217,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * @param string $string input
 	 * @return filtered string
 	 */
-	static function filter_xss( $string ) {
+	public static function filter_xss( $string ) {
 		// Remove NUL characters (ignored by some browsers)
 		$string = str_replace(chr(0), '', $string);
 		// Remove Netscape 4 JS entities
@@ -247,7 +247,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * 
 	 * @return captcha field markup
 	 */
-	static function captcha_get( $value ) {
+	public static function captcha_get( $value ) {
 		$style = 'display:none;';
 		$field = '<input name="' . Affiliates_Contact::$captcha_field_id . '" id="' . Affiliates_Contact::$captcha_field_id . '" class="' . Affiliates_Contact::$captcha_field_id . ' field" style="' . $style . '" value="' . esc_attr( $value ) . '" type="text"/>';
 		return $field;
@@ -259,7 +259,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * @param string $field_value field content
 	 * @return true if the field validates
 	 */
-	static function captcha_validates( $field_value = null ) {
+	public static function captcha_validates( $field_value = null ) {
 		$result = false;
 		if ( empty( $field_value ) ) {
 			$result = true;

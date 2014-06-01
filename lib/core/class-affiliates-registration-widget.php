@@ -38,7 +38,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 	/**
 	 * Enqueues required stylesheets.
 	 */
-	function _print_styles() {
+	public static function _print_styles() {
 		global $affiliates_version;
 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
 	}
@@ -46,7 +46,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 	/**
 	 * Enqueues required scripts.
 	 */
-	function _enqueue_scripts() {
+	public static function _enqueue_scripts() {
 		if ( !is_admin() ) {
 			//wp_enqueue_script( ... );
 		}
