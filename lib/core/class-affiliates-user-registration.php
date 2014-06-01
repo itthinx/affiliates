@@ -35,7 +35,7 @@ class Affiliates_User_Registration {
 	 * (only when the built-in User Registration integration is enabled).
 	 */
 	public static function init() {
-		if ( get_option( 'aff_user_registration_enabled', 'no' ) ) {
+		if ( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) {
 			add_action( 'user_register', array( __CLASS__, 'user_register' ) );
 		}
 	}

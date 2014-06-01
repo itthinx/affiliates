@@ -586,7 +586,7 @@ class Affiliates_Shortcodes {
 	 * @param string $content
 	 * @return string rendered form
 	 */
-	function affiliates_login_redirect( $atts, $content = null ) {
+	public static function affiliates_login_redirect( $atts, $content = null ) {
 		extract( shortcode_atts( array( 'redirect_url' => '' ), $atts ) );
 		$form = '';
 		if ( !is_user_logged_in() ) {
@@ -605,7 +605,7 @@ class Affiliates_Shortcodes {
 	 * @param string $content not used
 	 * @return string rendered logout link or empty if not logged in
 	 */
-	function affiliates_logout( $atts, $content = null ) {
+	public static function affiliates_logout( $atts, $content = null ) {
 		if ( is_user_logged_in() ) {
 			return '<a href="' . esc_url( wp_logout_url() ) .'">' . __( 'Log out', AFFILIATES_PLUGIN_DOMAIN ) . '</a>';
 		} else {
