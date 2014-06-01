@@ -41,6 +41,8 @@ function affiliates_admin_add_ons() {
 	echo __( 'Get additional features and access to premium support!', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</p>';
 
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+
 	echo '<h2>';
 	echo __( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h2>';
@@ -94,6 +96,10 @@ function affiliates_admin_add_ons() {
 
 	echo '</ul>';
 
+	}
+
+	if ( ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) || ( AFFILIATES_PLUGIN_NAME == 'affiliates-pro' ) ) {
+
 	echo '<h2>';
 	echo __( 'Affiliates Enterprise', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</h2>';
@@ -113,6 +119,8 @@ function affiliates_admin_add_ons() {
 	echo '</li>';
 
 	echo '</ul>';
+
+	}
 
 	echo '<h2>';
 	echo __( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN );

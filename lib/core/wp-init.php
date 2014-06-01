@@ -1313,7 +1313,7 @@ function affiliates_admin_menu() {
 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 
 	// add-ons
-	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+// 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 		$page = add_submenu_page(
 			'affiliates-admin',
 			__( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN ),
@@ -1325,7 +1325,7 @@ function affiliates_admin_menu() {
 		$pages[] = $page;
 		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
-	}
+// 	}
 
 	do_action( 'affiliates_admin_menu', $pages );
 }
