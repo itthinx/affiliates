@@ -575,6 +575,7 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_redirect' );
 		delete_option( 'aff_pname' );
 		delete_option( 'aff_user_registration_enabled' );
+		delete_option( 'aff_user_registration_base_amount' );
 		delete_option( 'aff_user_registration_amount' );
 		delete_option( 'aff_user_registration_currency' );
 		delete_option( 'aff_user_registration_referral_status' );

@@ -48,6 +48,17 @@ function affiliates_admin_user_registration() {
 				add_option( 'aff_user_registration_enabled', 'yes', '', 'no' );
 			}
 
+			if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
+				delete_option( 'aff_user_registration_base_amount' );
+				if ( !empty( $_POST['base_amount'] ) ) {
+					$base_amount = floatval( $_POST['base_amount'] );
+					if ( $base_amount < 0 ) {
+						$base_amount = 0;
+					}
+					add_option( 'aff_user_registration_base_amount', $base_amount, '', 'no' );
+				}
+			}
+
 			delete_option( 'aff_user_registration_amount' );
 			if ( !empty( $_POST['amount'] ) ) {
 				$amount = floatval( $_POST['amount'] );
@@ -69,9 +80,12 @@ function affiliates_admin_user_registration() {
 		}
 	}
 
-	$user_registration_enabled  = get_option( 'aff_user_registration_enabled', 'no' );
-	$user_registration_amount   = get_option( 'aff_user_registration_amount', '0' );
-	$user_registration_currency = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
+	$user_registration_enabled     = get_option( 'aff_user_registration_enabled', 'no' );
+	if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
+		$user_registration_base_amount = get_option( 'aff_user_registration_base_amount', '' );
+	}
+	$user_registration_amount      = get_option( 'aff_user_registration_amount', '0' );
+	$user_registration_currency    = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
 	$user_registration_referral_status = get_option(
 		'aff_user_registration_referral_status',
 		get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED )
@@ -79,6 +93,7 @@ function affiliates_admin_user_registration() {
 
 	echo '<style type="text/css">';
 	echo 'div.field { padding: 0 1em 1em 0; }';
+	echo 'div.field.user-registration-base-amount input { width: 5em; text-align: right;}';
 	echo 'div.field.user-registration-amount input { width: 5em; text-align: right;}';
 	echo 'div.field span.label { display: inline-block; width: 20%; }';
 	echo 'div.field span.description { display: block; }';
@@ -96,6 +111,22 @@ function affiliates_admin_user_registration() {
 	echo __( 'Enable the user registration integration', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</label>';
 	echo '</div>';
+
+	// base amount
+	if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
+		echo '<div class="field user-registration-base-amount">';
+		echo '<label>';
+		echo '<span class="label">';
+		echo __( 'Base Amount', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</span>';
+		echo ' ';
+		printf( '<input type="text" name="base_amount" value="%s"/>', esc_attr( $user_registration_base_amount ) );
+		echo '</label>';
+		echo '<span class="description">';
+		echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate. If set, the <em>base amount</em> takes pecedence over the <em<amount</em> set below.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</span>';
+		echo '</div>';
+	}
 
 	// amount
 	echo '<div class="field user-registration-amount">';
