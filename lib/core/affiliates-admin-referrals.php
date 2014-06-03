@@ -77,33 +77,33 @@ function affiliates_admin_referrals() {
 	$posts_table = $wpdb->prefix . 'posts';
 	
 	// actions
-	if ( isset( $_POST['affiliate_id'] ) && isset( $_POST['post_id'] ) && isset( $_POST['datetime'] ) && isset( $_POST['action'] ) ) {
+// 	if ( isset( $_POST['affiliate_id'] ) && isset( $_POST['post_id'] ) && isset( $_POST['datetime'] ) && isset( $_POST['action'] ) ) {
 		
-		if ( isset( $_POST['status'] ) ) {
-			$referral = $wpdb->get_row(
-				$wpdb->prepare(
-					"SELECT * FROM $referrals_table WHERE affiliate_id = %d AND post_id = %d AND datetime = %s",
-					intval( $_POST['affiliate_id'] ),
-					intval( $_POST['post_id'] ),
-					$_POST['datetime']
-				)
-			);
-			if ( $referral ) {
-				if ( Affiliates_Utility::verify_referral_status_transition( $referral->status, $_POST['status'] ) ) {
-					$wpdb->query(
-						$wpdb->prepare(
-							"UPDATE $referrals_table SET status = %s WHERE affiliate_id = %d AND post_id = %d AND datetime = %s AND status = %s",
-							$_POST['status'],
-							intval( $referral->affiliate_id ),
-							intval( $referral->post_id ),
-							$referral->datetime,
-							$referral->status
-						)
-					);
-				}
-			}
-		}		
-	}
+// 		if ( isset( $_POST['status'] ) ) {
+// 			$referral = $wpdb->get_row(
+// 				$wpdb->prepare(
+// 					"SELECT * FROM $referrals_table WHERE affiliate_id = %d AND post_id = %d AND datetime = %s",
+// 					intval( $_POST['affiliate_id'] ),
+// 					intval( $_POST['post_id'] ),
+// 					$_POST['datetime']
+// 				)
+// 			);
+// 			if ( $referral ) {
+// 				if ( Affiliates_Utility::verify_referral_status_transition( $referral->status, $_POST['status'] ) ) {
+// 					$wpdb->query(
+// 						$wpdb->prepare(
+// 							"UPDATE $referrals_table SET status = %s WHERE affiliate_id = %d AND post_id = %d AND datetime = %s AND status = %s",
+// 							$_POST['status'],
+// 							intval( $referral->affiliate_id ),
+// 							intval( $referral->post_id ),
+// 							$referral->datetime,
+// 							$referral->status
+// 						)
+// 					);
+// 				}
+// 			}
+// 		}		
+// 	}
 	
 	// filters
 	$from_date            = $affiliates_options->get_option( 'referrals_from_date', null );
@@ -584,26 +584,28 @@ function affiliates_admin_referrals() {
 			
 			$output .= "<td class='status'>";
 			$output .= isset( $status_icons[$result->status] ) ? $status_icons[$result->status] : '';
-			$output .= "<form method='post' action=''>";
-			$output .= "<div>";
-			$output .= "<select name='status'>";
-			foreach ( $status_descriptions as $status_key => $status_value ) {
-				if ( $status_key == $result->status ) {
-					$selected = "selected='selected'";
-				} else {
-					$selected = "";
-				}
-				$output .= "<option value='$status_key' $selected>$status_value</option>";
-			}
-			$output .= "</select>";
-			$output .= '<input class="button" type="submit" value="' . __( 'Set', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
-			$output .= '<input name="affiliate_id" type="hidden" value="' . esc_attr( $result->affiliate_id ) . '"/>';
-			$output .= '<input name="post_id" type="hidden" value="' . esc_attr( $result->post_id ) . '"/>';
-			$output .= '<input name="datetime" type="hidden" value="' . esc_attr( $result->datetime ) . '"/>';
-			$output .= '<input name="action" type="hidden" value="set_status"/>';
-			$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false );
-			$output .= "</div>";
-			$output .= "</form>";
+			$output .= ' ';
+			$output .= isset( $status_descriptions[$result->status] ) ? $status_descriptions[$result->status] : '';
+// 			$output .= "<form method='post' action=''>";
+// 			$output .= "<div>";
+// 			$output .= "<select name='status'>";
+// 			foreach ( $status_descriptions as $status_key => $status_value ) {
+// 				if ( $status_key == $result->status ) {
+// 					$selected = "selected='selected'";
+// 				} else {
+// 					$selected = "";
+// 				}
+// 				$output .= "<option value='$status_key' $selected>$status_value</option>";
+// 			}
+// 			$output .= "</select>";
+// 			$output .= '<input class="button" type="submit" value="' . __( 'Set', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
+// 			$output .= '<input name="affiliate_id" type="hidden" value="' . esc_attr( $result->affiliate_id ) . '"/>';
+// 			$output .= '<input name="post_id" type="hidden" value="' . esc_attr( $result->post_id ) . '"/>';
+// 			$output .= '<input name="datetime" type="hidden" value="' . esc_attr( $result->datetime ) . '"/>';
+// 			$output .= '<input name="action" type="hidden" value="set_status"/>';
+// 			$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false );
+// 			$output .= "</div>";
+// 			$output .= "</form>";
 			$output .= "</td>";
 
 			$output .= '<td class="edit">';

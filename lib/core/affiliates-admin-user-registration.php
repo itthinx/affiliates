@@ -123,7 +123,13 @@ function affiliates_admin_user_registration() {
 		printf( '<input type="text" name="base_amount" value="%s"/>', esc_attr( $user_registration_base_amount ) );
 		echo '</label>';
 		echo '<span class="description">';
-		echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate. If set, the <em>base amount</em> takes pecedence over the <em<amount</em> set below.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate.', AFFILIATES_PLUGIN_DOMAIN );
+		echo ' ';
+		echo __( 'If set, this <strong>Base Amount</strong> takes precedence over the <strong>Amount</strong>.', AFFILIATES_PLUGIN_DOMAIN );
+		if ( AFFILIATES_PLUGIN_NAME == 'affiliates-enterprise' ) {
+			echo ' ';
+			echo __( 'If multi-tiered referrals are enabled and level rates are not relative, this <strong>Base Amount</strong> must be used instead of the <strong>Amount</strong>.', AFFILIATES_PLUGIN_DOMAIN );
+		}
 		echo '</span>';
 		echo '</div>';
 	}

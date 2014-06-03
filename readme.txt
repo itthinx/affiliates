@@ -438,6 +438,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Added filter affiliates_referrals_display_currency.
 * Added filter affiliates_referrals_display_total.
 * Added filter affiliates_referrals_display_total_none.
+* Improved and cleaned up the referrals screen by removing the Set buttons and reducing the status column footprint.
 
 = 2.6.2 =
 * Registration form now allows optional or hidden first name and last name fields.
