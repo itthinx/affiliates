@@ -431,6 +431,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.7.1 =
+* Fixed missing pagination class resource used in totals.
+
 = 2.7.0 =
 * Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
 * Added filter affiliates_referral_amount_decimals.
