@@ -249,6 +249,8 @@ class Affiliates_Registration {
 					$send = true;
 					if ( $new_affiliate_registered ) {
 						$affiliate_id = self::store_affiliate( $affiliate_user_id, $userdata );
+						// update user meta data: name and last name
+						wp_update_user( array( 'ID' => $affiliate_user_id, 'first_name' => $userdata['first_name'], 'last_name' => $userdata['last_name'] ) );
 						do_action( 'affiliates_stored_affiliate', $affiliate_id, $affiliate_user_id );
 					}
 
