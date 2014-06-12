@@ -342,11 +342,13 @@ class Affiliates_Registration {
 			$field_disabled = "";
 			if ( $is_logged_in ) {
 				$field_disabled = ' disabled="disabled" ';
-				if ( empty( $first_name ) || empty( $last_name ) ) {
-					$output .= sprintf(
-						__( '<p>Please fill in the required information in your <a href="%s">profile</a> first.</p>', AFFILIATES_PLUGIN_DOMAIN ),
-						esc_url( apply_filters( 'affiliates_registration_profile_url', admin_url( "profile.php" ) ) )
-					);
+				if ( !empty( $_POST[$submit_name] ) ) {
+					if (
+						( !isset( $options['first_name'] ) || ( $options['first_name'] != self::HIDDEN ) || ( $options['first_name'] != self::OPTIONAL ) ) && empty( $first_name ) ||
+						( !isset( $options['last_name'] ) || ( $options['last_name'] != self::HIDDEN ) || ( $options['last_name'] != self::OPTIONAL ) ) && empty( $last_name )
+					) {
+						$output .= __( '<p class="missing">Please fill in the required information.</p>', AFFILIATES_PLUGIN_DOMAIN );
+					}
 				}
 			}
 
