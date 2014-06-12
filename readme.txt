@@ -434,6 +434,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 = 2.7.1 =
 * Improved style loading.
 * Fixed missing pagination class resource used in totals.
+* Improved registration form so that first name and last name can be indicated directly instead of diverting to profile.
 
 = 2.7.0 =
 * Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
@@ -662,7 +663,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.7.1 =
-* Minor bug fixes and improved name field handling in the affiliate registration form and improved style loading.
+* Improved name field handling in the affiliate registration form. Minor bug fixes. Improved style loading.
 
 = 2.7.0 =
 * New Totals section (facilitates affiliate payment and closing referrals in bulk by time period) and built-in User Registration Integration added (reward affiliates for referring new users) along with new filters.
