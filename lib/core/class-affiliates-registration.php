@@ -52,18 +52,9 @@ class Affiliates_Registration {
 	 */
 	public static function init() {
 		add_shortcode( 'affiliates_registration', array( __CLASS__, 'add_shortcode' ) );
-		add_action( 'wp_print_styles', array( __CLASS__, 'print_styles' ) );
 
 		// delete affiliate when user is deleted
 		add_action( 'deleted_user', array( __CLASS__, 'deleted_user' ) );
-	}
-
-	/**
-	 * Enqueues required stylesheets.
-	 */
-	static function print_styles() {
-		global $affiliates_version;
-// 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
 	}
 
 	/**

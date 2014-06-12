@@ -25,33 +25,14 @@
  * @link http://codex.wordpress.org/Widgets_API#Developing_Widgets
  */
 class Affiliates_Registration_Widget extends WP_Widget {
-		
+
 	/**
 	 * Creates an affiliate registration widget.
 	 */
 	function __construct() {
 		parent::WP_Widget( false, $name = 'Affiliates Registration' );
-		add_action( 'wp_print_styles', array( __CLASS__, '_print_styles' ) );
-		//add_action( 'wp_enqueue_scripts', array( 'Affiliates_Registration_Widget', '_enqueue_scripts' ) );
 	}
-	
-	/**
-	 * Enqueues required stylesheets.
-	 */
-	public static function _print_styles() {
-		global $affiliates_version;
-// 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
-	}
-		
-	/**
-	 * Enqueues required scripts.
-	 */
-	public static function _enqueue_scripts() {
-		if ( !is_admin() ) {
-			//wp_enqueue_script( ... );
-		}
-	}
-	
+
 	/**
 	 * Widget output
 	 * 
