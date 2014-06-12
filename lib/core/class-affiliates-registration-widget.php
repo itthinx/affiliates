@@ -40,7 +40,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 	 */
 	public static function _print_styles() {
 		global $affiliates_version;
-		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
+// 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
 	}
 		
 	/**

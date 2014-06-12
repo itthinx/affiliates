@@ -110,6 +110,11 @@ function affiliates_admin_print_scripts() {
 //		';
 }
 
+add_action( 'wp_enqueue_scripts', 'affiliates_wp_enqueue_scripts' );
+function affiliates_wp_enqueue_scripts() {
+	global $affiliates_version;
+	wp_register_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
+}
 // ---
 
 register_activation_hook( AFFILIATES_FILE, 'affiliates_activate' );

@@ -51,11 +51,11 @@ class Affiliates_Registration {
 	 * Class initialization.
 	 */
 	public static function init() {
-		add_shortcode( 'affiliates_registration', array( 'Affiliates_Registration', 'add_shortcode' ) );
-		add_action( 'wp_print_styles', array( 'Affiliates_Registration', 'print_styles' ) );
+		add_shortcode( 'affiliates_registration', array( __CLASS__, 'add_shortcode' ) );
+		add_action( 'wp_print_styles', array( __CLASS__, 'print_styles' ) );
 
 		// delete affiliate when user is deleted
-		add_action( 'deleted_user', array( 'Affiliates_Registration', 'deleted_user' ) );
+		add_action( 'deleted_user', array( __CLASS__, 'deleted_user' ) );
 	}
 
 	/**
@@ -63,7 +63,7 @@ class Affiliates_Registration {
 	 */
 	static function print_styles() {
 		global $affiliates_version;
-		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
+// 		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
 	}
 
 	/**
@@ -86,14 +86,14 @@ class Affiliates_Registration {
 	 * @return string rendered registration form
 	 */
 	static function render_form( $options = array() ) {
-		
+
 		global $affiliates_registration_form_count;
-		
 		if ( isset( $affiliates_registration_form_count ) ) {
 			return '';
 		}
-		
 		$affiliates_registration_form_count = 1;
+
+		wp_enqueue_style( 'affiliates' );
 
 		self::$submit_button_label = __( 'Sign Up', AFFILIATES_PLUGIN_DOMAIN );
 
