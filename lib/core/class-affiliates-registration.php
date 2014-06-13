@@ -51,19 +51,10 @@ class Affiliates_Registration {
 	 * Class initialization.
 	 */
 	public static function init() {
-		add_shortcode( 'affiliates_registration', array( 'Affiliates_Registration', 'add_shortcode' ) );
-		add_action( 'wp_print_styles', array( 'Affiliates_Registration', 'print_styles' ) );
+		add_shortcode( 'affiliates_registration', array( __CLASS__, 'add_shortcode' ) );
 
 		// delete affiliate when user is deleted
-		add_action( 'deleted_user', array( 'Affiliates_Registration', 'deleted_user' ) );
-	}
-
-	/**
-	 * Enqueues required stylesheets.
-	 */
-	static function print_styles() {
-		global $affiliates_version;
-		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
+		add_action( 'deleted_user', array( __CLASS__, 'deleted_user' ) );
 	}
 
 	/**
@@ -86,6 +77,14 @@ class Affiliates_Registration {
 	 * @return string rendered registration form
 	 */
 	static function render_form( $options = array() ) {
+
+		global $affiliates_registration_form_count;
+		if ( isset( $affiliates_registration_form_count ) ) {
+			return '';
+		}
+		$affiliates_registration_form_count = 1;
+
+		wp_enqueue_style( 'affiliates' );
 
 		self::$submit_button_label = __( 'Sign Up', AFFILIATES_PLUGIN_DOMAIN );
 
@@ -178,15 +177,14 @@ class Affiliates_Registration {
 				$error = true; // dumbot
 			}
 
+			$first_name   = isset( $_POST['first_name'] ) ? Affiliates_Utility::filter( $_POST['first_name'] ) : '';
+			$last_name    = isset( $_POST['last_name'] ) ? Affiliates_Utility::filter( $_POST['last_name'] ) : '';
+				
 			if ( !$is_logged_in ) {
-				$first_name   = isset( $_POST['first_name'] ) ? Affiliates_Utility::filter( $_POST['first_name'] ) : '';
-				$last_name    = isset( $_POST['last_name'] ) ? Affiliates_Utility::filter( $_POST['last_name'] ) : '';
 				$user_login   = isset( $_POST['user_login'] ) ? Affiliates_Utility::filter( $_POST['user_login'] ) : '';
 				$email        = isset( $_POST['email'] ) ? Affiliates_Utility::filter( $_POST['email'] ) : '';
 				$url          = isset( $_POST['url'] ) ? Affiliates_Utility::filter( $_POST['url'] ) : '';
 			} else {
-				$first_name   = $user->first_name;
-				$last_name    = $user->last_name;
 				$user_login   = $user->user_login;
 				$email        = $user->user_email;
 				$url          = $user->user_url;
@@ -251,6 +249,8 @@ class Affiliates_Registration {
 					$send = true;
 					if ( $new_affiliate_registered ) {
 						$affiliate_id = self::store_affiliate( $affiliate_user_id, $userdata );
+						// update user meta data: name and last name
+						wp_update_user( array( 'ID' => $affiliate_user_id, 'first_name' => $userdata['first_name'], 'last_name' => $userdata['last_name'] ) );
 						do_action( 'affiliates_stored_affiliate', $affiliate_id, $affiliate_user_id );
 					}
 
@@ -342,11 +342,13 @@ class Affiliates_Registration {
 			$field_disabled = "";
 			if ( $is_logged_in ) {
 				$field_disabled = ' disabled="disabled" ';
-				if ( empty( $first_name ) || empty( $last_name ) ) {
-					$output .= sprintf(
-						__( '<p>Please fill in the required information in your <a href="%s">profile</a> first.</p>', AFFILIATES_PLUGIN_DOMAIN ),
-						esc_url( apply_filters( 'affiliates_registration_profile_url', admin_url( "profile.php" ) ) )
-					);
+				if ( !empty( $_POST[$submit_name] ) ) {
+					if (
+						( !isset( $options['first_name'] ) || ( $options['first_name'] != self::HIDDEN ) || ( $options['first_name'] != self::OPTIONAL ) ) && empty( $first_name ) ||
+						( !isset( $options['last_name'] ) || ( $options['last_name'] != self::HIDDEN ) || ( $options['last_name'] != self::OPTIONAL ) ) && empty( $last_name )
+					) {
+						$output .= __( '<p class="missing">Please fill in the required information.</p>', AFFILIATES_PLUGIN_DOMAIN );
+					}
 				}
 			}
 
@@ -354,12 +356,12 @@ class Affiliates_Registration {
 
 			if ( ( !isset( $options['first_name'] ) ) || ( $options['first_name'] !== self::HIDDEN ) ) {
 				$output .= '<label ' . $first_name_class . ' id="affiliates-registration-form' . $ext . '-first-name-label" for="first_name">' . __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
-				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-first-name" name="first_name" type="text" value="' . esc_attr( $first_name ) . '"/>';
+				$output .= '<input ' . ( apply_filters( 'affiliates_registration_first_name_disabled', false ) ? ' disabled="disabled" ' : '' ) . ' id="affiliates-registration-form' . $ext . '-first-name" name="first_name" type="text" value="' . esc_attr( $first_name ) . '"/>';
 			}
 
 			if ( ( !isset( $options['last_name'] ) ) || ( $options['last_name'] !== self::HIDDEN ) ) {
 				$output .= '<label ' . $last_name_class . ' id="affiliates-registration-form' . $ext . '-last-name-label" for="last_name">' . __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
-				$output .= '<input ' . $field_disabled . ' id="affiliates-registration-form' . $ext . '-last-name" name="last_name" type="text" value="' . esc_attr( $last_name ) . '"/>';
+				$output .= '<input ' . ( apply_filters( 'affiliates_registration_last_name_disabled', false ) ? ' disabled="disabled" ' : '' ) . ' id="affiliates-registration-form' . $ext . '-last-name" name="last_name" type="text" value="' . esc_attr( $last_name ) . '"/>';
 			}
 
 			$output .= '<label ' . $user_login_class . ' id="affiliates-registration-form' . $ext . '-user-login-label" for="user_login">' . __( 'Username', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';

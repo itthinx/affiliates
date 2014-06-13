@@ -44,27 +44,8 @@ class Affiliates_Contact extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct( false, $name = 'Affiliates Contact' );
-		add_action( 'wp_print_styles', array( __CLASS__, '_print_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, '_enqueue_scripts' ) );
 	}
-	
-	/**
-	 * Enqueues required stylesheets.
-	 */
-	public static function _print_styles() {
-		global $affiliates_version;
-		wp_enqueue_style( 'affiliates', AFFILIATES_PLUGIN_URL . 'css/affiliates.css', array(), $affiliates_version );
-	}
-		
-	/**
-	 * Enqueues required scripts.
-	 */
-	public static function _enqueue_scripts() {
-		if ( !is_admin() ) {
-			wp_enqueue_script( 'jquery' );
-		}
-	}
-	
+
 	/**
 	 * Widget output
 	 * 
@@ -103,6 +84,8 @@ class Affiliates_Contact extends WP_Widget {
 	 * @static
 	 */
 	public static function render_form( $widget_id = '', $amount = null, $currency_id = null ) {
+		
+		wp_enqueue_style( 'affiliates' );
 		
 		$method = 'post';
 		$action = "";

@@ -398,6 +398,7 @@ class Affiliates_Totals {
 			';
 
 		if ( $paginate ) {
+			require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 			$pagination = new Affiliates_Pagination( $count, null, $row_count );
 			$output .= '<form id="posts-filter" method="post" action="">';
 			$output .= '<div>';

@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, gravity, gravity forms, gravityforms, lead, link, marketing, membership, memberships, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
 Requires at least: 3.5.1
 Tested up to: 3.9.1
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv3
 
 The Affiliates plugin provides the right tools to maintain an Affiliate Marketing Program.
@@ -431,6 +431,13 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.7.1 =
+* Improved style loading.
+* Fixed missing pagination class resource used in totals.
+* Improved registration form so that first name and last name can be indicated directly instead of diverting to profile.
+* Fixed a warning due to missing post when user is added on admin.
+* Added the affiliates_user_registration_on_admin filter and now not recording user registration referrals unless it returns true when users are added on the admin back end.
+
 = 2.7.0 =
 * Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
 * Added filter affiliates_referral_amount_decimals.
@@ -656,6 +663,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.7.1 =
+* Improved name field handling in the affiliate registration form. Minor bug fixes. Improved style loading.
 
 = 2.7.0 =
 * New Totals section (facilitates affiliate payment and closing referrals in bulk by time period) and built-in User Registration Integration added (reward affiliates for referring new users) along with new filters.
