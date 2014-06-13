@@ -47,9 +47,19 @@ class Affiliates_User_Registration {
 	 */
 	public static function user_register( $user_id ) {
 
+		if ( is_admin() ) {
+			if ( !apply_filters( 'affiliates_user_registration_on_admin', false ) ) {
+				return;
+			}
+		}
+
 		if ( $user = get_user_by( 'id', $user_id ) ) {
 
-			$post_id = get_the_ID();
+			$post_id = null;
+			if ( $post = get_post() ) {
+				$post_id = $post->ID;
+			}
+
 			$description = sprintf( 'User Registration %s', esc_html( $user->user_login ) );
 			$base_amount = null;
 			if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
@@ -99,6 +109,7 @@ class Affiliates_User_Registration {
 			} else {
 				$affiliate_id = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, $user_registration_referral_status, self::REFERRAL_TYPE );
 			}
+
 		}
 	}
 }

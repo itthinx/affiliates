@@ -435,6 +435,8 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Improved style loading.
 * Fixed missing pagination class resource used in totals.
 * Improved registration form so that first name and last name can be indicated directly instead of diverting to profile.
+* Fixed a warning due to missing post when user is added on admin.
+* Added the affiliates_user_registration_on_admin filter and now not recording user registration referrals unless it returns true when users are added on the admin back end.
 
 = 2.7.0 =
 * Built-in User Registration Integration added, allows to record referrals when new users are referred by affiliates.
