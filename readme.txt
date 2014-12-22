@@ -3,8 +3,8 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, bucks, contact form, crm, earn money, e-commerce, gravity, gravity forms, gravityforms, lead, link, marketing, membership, memberships, money, online sale, order, partner, referral, referral links, referrer, shopping cart, sales, site, track, transaction, wordpress, contact form, contact form 7, digital downloads, easy digital downloads, eshop, jigowatt, jigoshop, paypal, s2Member, TheCartPress, woocommerce, woothemes, wp e-commerce, Ecwid
 Requires at least: 3.5.1
-Tested up to: 4.0
-Stable tag: 2.7.2
+Tested up to: 4.1
+Stable tag: 2.7.3
 License: GPLv3
 
 The Affiliates plugin provides the right tools to maintain an Affiliate Marketing Program.
@@ -431,6 +431,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.7.3 =
+* WordPress 4.1 compatible.
+
 = 2.7.2 =
 * WordPress 4.0 compatible.
 
@@ -666,6 +669,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.7.3 =
+* WordPress 4.1 compatible.
 
 = 2.7.2 =
 * WordPress 4.0 compatible.
