@@ -1190,7 +1190,7 @@ function affiliates_get_direct_id() {
 // only needed when in admin
 if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-options.php'; // @todo remove
+// 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-options.php'; // @todo remove
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
@@ -1295,17 +1295,17 @@ function affiliates_admin_menu() {
 	}
 
 	// options @todo remove
-	$page = add_submenu_page(
-		'affiliates-admin',
-		__( 'Affiliates options', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Options', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_ADMINISTER_OPTIONS,
-		'affiliates-admin-options',
-		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_options' )
-	);
-	$pages[] = $page;
-	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
-	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+// 	$page = add_submenu_page(
+// 		'affiliates-admin',
+// 		__( 'Affiliates options', AFFILIATES_PLUGIN_DOMAIN ),
+// 		__( 'Options', AFFILIATES_PLUGIN_DOMAIN ),
+// 		AFFILIATES_ADMINISTER_OPTIONS,
+// 		'affiliates-admin-options',
+// 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_options' )
+// 	);
+// 	$pages[] = $page;
+// 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+// 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 
 	// settings
 	$page = add_submenu_page(

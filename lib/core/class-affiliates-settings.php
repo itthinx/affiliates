@@ -44,24 +44,33 @@ class Affiliates_Settings {
 	 * Settings initialization.
 	 */
 	public static function init() {
-		self::$sections = array(
-			'integration'  => __( 'Integration', AFFILIATES_PLUGIN_DOMAIN ),
-			'pages'        => __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ),
-			'referrals'    => __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-			'registration' => __( 'Registration', AFFILIATES_PLUGIN_DOMAIN ),
-			'options'      => __( 'Options', AFFILIATES_PLUGIN_DOMAIN )
+		self::$sections = apply_filters(
+			'affiliates_settings_sections',
+			array(
+				'integration'  => __( 'Integration', AFFILIATES_PLUGIN_DOMAIN ),
+				'pages'        => __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ),
+				'referrals'    => __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
+				'registration' => __( 'Registration', AFFILIATES_PLUGIN_DOMAIN ),
+				'options'      => __( 'Options', AFFILIATES_PLUGIN_DOMAIN )
+			)
 		);
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 	}
-	
+
+	/**
+	 * Registers an admin_notices action.
+	 */
 	public static function admin_init() {
 		if ( get_option( 'aff_generate_page', 1 ) == 1 ) {
-			// @todo create CSS and enable
-			wp_enqueue_style( 'affiliates-setup', AFFILIATES_PLUGIN_URL . 'css/affiliates_setup.css' );
+			// @todo create CSS and enable if needed
+			//wp_enqueue_style( 'affiliates-setup', AFFILIATES_PLUGIN_URL . 'css/affiliates_setup.css' );
 			add_action( 'admin_notices', array( __CLASS__, 'setup_notice' ) );
 		}
 	}
-	
+
+	/**
+	 * Prints setup notices.
+	 */
 	public static function setup_notice() {
 		echo '<div id="message" class="updated affiliates-settings">';
 		echo '<p>';
@@ -80,9 +89,18 @@ class Affiliates_Settings {
 			__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
 		);
 		echo ' ';
+		
+		
+		// @todo link to enable affiliate registration
+		
+		// @todo link to review options
+		
+		
+		
+
 		printf( '<a class="skip button-primary" href="%s">%s</a>',
 			add_query_arg( 'affiliates_setup_skip', 'true', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-			__( 'Skip Setup', AFFILIATES_PLUGIN_DOMAIN )
+			__( 'Hide this', AFFILIATES_PLUGIN_DOMAIN )
 		);
 		echo '</p>';
 		echo '</div>';
@@ -117,7 +135,7 @@ class Affiliates_Settings {
 			$section_links[] = sprintf(
 				'<a class="%s" href="%s">%s</a>',
 				$section == $sec ? 'active' : '',
-				esc_url( add_query_arg( 'section', $sec, admin_url( '?page=affiliates-admin-settings' ) ) ),
+				esc_url( add_query_arg( 'section', $sec, admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
 				$title
 			);
 		}
@@ -129,22 +147,32 @@ class Affiliates_Settings {
 			'<h3>' .
 			$section_title .
 			'</h3>';
-
-		$pages_generated_info = '';
-
-		//
-		// handle page generation form submission
-		//
-		if ( isset( $_POST['generate'] ) ) {
-		if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_GEN_NONCE], 'admin' ) ) {
-				require_once( AFFILIATES_CORE_LIB . '/class-affiliates-generator.php' );
-			$post_ids = Affiliates_Generator::setup_pages();
-					foreach ( $post_ids as $post_id ) {
-					$link = '<a href="' . get_permalink( $post_id ) . '" target="_blank">' . get_the_title( $post_id ) . '</a>';
-					$pages_generated_info .= '<div class="info">' . __( sprintf( 'The %s page has been created.', $link ), AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
-			}
-					}
-					}
+		
+		switch( $section ) {
+			case 'integration' :
+				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-integration.php';
+				Affiliates_Settings_Integration::section();
+				break;
+			case 'pages' :
+				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-pages.php';
+				Affiliates_Settings_Pages::section();
+				break;
+// 			case 'referrals' :
+// 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-referrals.php';
+// 				Affiliates_Settings_Referrals::section();
+// 				break;
+// 			case 'registration' :
+// 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
+// 				Affiliates_Settings_Registration::section();
+// 				break;
+// 			case 'options' :
+// 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-options.php';
+// 				Affiliates_Settings_Options::section();
+// 				break;
+			default :
+				do_action( 'affiliates_settings_section', $section );
+		}
+return;
 		
 					//
 					// handle options form submission
@@ -373,23 +401,7 @@ class Affiliates_Settings {
 		
 					$delete_data = get_option( 'aff_delete_data', false );
 		
-					//
-					// Generator form
-					//
-					echo
-		'<form action="" name="options" method="post">' .
-		'<div>' .
-		'<h3>' . __( 'Page generation', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
-						'<p>' .
-		__( 'Press the button to generate an affiliate area.', AFFILIATES_PLUGIN_DOMAIN ) .
-				' ' .
-		'<input class="generate button" name="generate" type="submit" value="' . __( 'Generate', AFFILIATES_PLUGIN_DOMAIN ) .'" />' .
-				wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_GEN_NONCE, true, false ) .
-						'</p>' .
-						$pages_generated_info.
-						'</div>' .
-					'</form>';
-		
+	
 					//
 					// print the options form
 	//
@@ -542,5 +554,6 @@ class Affiliates_Settings {
 	public static function network_admin_settings() {
 		// @todo network admin settings
 	}
+
 }
 Affiliates_Settings::init();
