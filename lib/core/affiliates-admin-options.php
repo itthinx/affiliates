@@ -17,6 +17,8 @@
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
+ * 
+ * @todo remove
  */
 
 /**
@@ -195,7 +197,7 @@ function affiliates_admin_options() {
 		}
 	}
 	
-	$use_direct = get_option( 'aff_use_direct', true );
+	$use_direct = get_option( 'aff_use_direct', false );
 	$duplicates = get_option( 'aff_duplicates', false );
 	
 	$timeout = get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS );

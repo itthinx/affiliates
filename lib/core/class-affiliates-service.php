@@ -38,7 +38,7 @@ class Affiliates_Service {
 				}
 		}
 		if ( !$affiliate_id ) {
-			if ( get_option( 'aff_use_direct', true ) ) {
+			if ( get_option( 'aff_use_direct', false ) ) {
 				// Assume a direct referral
 				$affiliate_id = affiliates_get_direct_id();
 			}
