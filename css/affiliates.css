@@ -1,0 +1,56 @@
+/**
+ * affiliates.css
+ * 
+ * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
+ * 
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ * 
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * This header and all notices must be kept intact.
+ * 
+ * @author Karim Rahimpur
+ * @package affiliates
+ * @since affiliates 1.0.0
+ */
+
+/* contact widget */
+.affiliates-contact label {
+	display: block;
+}
+.affiliates-contact input[type="text"],
+.affiliates-contact textarea {
+	width: 100%;
+	display: block;
+}
+.affiliates-contact .missing {
+	color: #f00;
+}
+
+/* affiliate registration form */
+.affiliates-registration label {
+	display: block;
+}
+.affiliates-registration input[type="checkbox"] {
+	float: left;
+}
+.affiliates-registration input[type="text"],
+.affiliates-registration textarea {
+	width: 100%;
+	display: block;
+}
+.affiliates-registration .missing {
+	color: #f00;
+}
+.affiliates-registration .required {
+	background: url(../images/required.png) transparent no-repeat left center;
+	padding-left: 16px;
+}
+
+.affiliate-profile div.field label {
+	display: block;
+}

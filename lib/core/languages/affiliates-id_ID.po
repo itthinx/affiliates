@@ -1,0 +1,1280 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Affiliates v2.1.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-11-30 16:37:12+0000\n"
+"Last-Translator: admin <ganis@bisnisin.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Indonesian\n"
+"X-Poedit-Country: INDONESIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: lib/core/affiliates-admin-affiliates-add.php:28
+#: lib/core/affiliates-admin-affiliates-add.php:99
+#: lib/core/affiliates-admin-affiliates-add.php:103
+#: lib/core/affiliates-admin-affiliates-edit.php:31
+#: lib/core/affiliates-admin-affiliates-edit.php:123
+#: lib/core/affiliates-admin-affiliates-edit.php:127
+#: lib/core/affiliates-admin-affiliates-remove.php:31
+#: lib/core/affiliates-admin-affiliates-remove.php:100
+#: lib/core/affiliates-admin-affiliates-remove.php:104
+#: lib/core/affiliates-admin-affiliates.php:48
+#: lib/core/affiliates-admin-affiliates.php:110
+#: lib/core/affiliates-admin-affiliates.php:214
+#: lib/core/affiliates-admin-affiliates.php:220
+#: lib/core/affiliates-admin-hits-affiliate.php:39
+#: lib/core/affiliates-admin-hits-affiliate.php:53
+#: lib/core/affiliates-admin-hits-affiliate.php:158
+#: lib/core/affiliates-admin-hits-affiliate.php:164
+#: lib/core/affiliates-admin-hits.php:32
+#: lib/core/affiliates-admin-hits.php:46
+#: lib/core/affiliates-admin-hits.php:151
+#: lib/core/affiliates-admin-hits.php:157
+#: lib/core/affiliates-admin-options.php:43
+#: lib/core/affiliates-admin-options.php:413
+#: lib/core/affiliates-admin-referrals.php:32
+#: lib/core/affiliates-admin-referrals.php:48
+#: lib/core/affiliates-admin-referrals.php:213
+#: lib/core/affiliates-admin-referrals.php:219
+#: lib/core/affiliates-admin.php:29
+#: lib/core/affiliates-admin.php:47
+#@ affiliates
+msgid "Access denied."
+msgstr "Akses ditolak,"
+
+#: lib/core/affiliates-admin-affiliates-add.php:46
+#@ affiliates
+msgid "Add a new affiliate"
+msgstr "Tambah afiliasi baru"
+
+#: lib/core/affiliates-admin-affiliates-add.php:53
+#: lib/core/affiliates-admin-affiliates-edit.php:76
+#: lib/core/class-affiliates-contact.php:195
+#@ affiliates
+msgid "Name"
+msgstr "Nama"
+
+#: lib/core/affiliates-admin-affiliates-add.php:57
+#: lib/core/affiliates-admin-affiliates-edit.php:80
+#: lib/core/affiliates-admin-affiliates.php:356
+#: lib/core/class-affiliates-contact.php:197
+#: lib/core/class-affiliates-registration.php:334
+#@ affiliates
+msgid "Email"
+msgstr "Email"
+
+#: lib/core/affiliates-admin-affiliates-add.php:60
+#: lib/core/affiliates-admin-affiliates-edit.php:83
+#@ affiliates
+msgid "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically."
+msgstr "Bila <strong>Username</strong> valid tapi tidak ada email yang dimasukkan, maka email milik Username terkait akan digunakan secara otomatis"
+
+#: lib/core/affiliates-admin-affiliates-add.php:64
+#: lib/core/affiliates-admin-affiliates-edit.php:87
+#: lib/core/affiliates-admin-affiliates.php:357
+#: lib/core/class-affiliates-registration.php:331
+#@ affiliates
+msgid "Username"
+msgstr "Username"
+
+#: lib/core/affiliates-admin-affiliates-add.php:68
+#: lib/core/affiliates-admin-affiliates-edit.php:92
+#: lib/core/affiliates-admin-affiliates.php:358
+#: lib/core/affiliates-admin-affiliates.php:380
+#: lib/core/affiliates-admin-hits-affiliate.php:341
+#: lib/core/affiliates-admin-hits.php:333
+#: lib/core/affiliates-admin-referrals.php:415
+#: lib/core/affiliates-admin.php:131
+#@ affiliates
+msgid "From"
+msgstr "Dari"
+
+#: lib/core/affiliates-admin-affiliates-add.php:72
+#: lib/core/affiliates-admin-affiliates-edit.php:96
+#: lib/core/affiliates-admin-affiliates.php:359
+#: lib/core/affiliates-admin-affiliates.php:382
+#: lib/core/affiliates-admin-hits-affiliate.php:343
+#: lib/core/affiliates-admin-hits.php:335
+#: lib/core/affiliates-admin-referrals.php:417
+#: lib/core/affiliates-admin.php:133
+#@ affiliates
+msgid "Until"
+msgstr "Hingga"
+
+#: lib/core/affiliates-admin-affiliates-add.php:77
+#: lib/core/affiliates-admin-affiliates.php:242
+#@ affiliates
+msgid "Add"
+msgstr "Tambahkan"
+
+#: lib/core/affiliates-admin-affiliates-add.php:79
+#: lib/core/affiliates-admin-affiliates-edit.php:103
+#: lib/core/affiliates-admin-affiliates-remove.php:80
+#@ affiliates
+msgid "Cancel"
+msgstr "Batal"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:37
+#: lib/core/affiliates-admin-affiliates-edit.php:143
+#: lib/core/affiliates-admin-affiliates-remove.php:37
+#@ affiliates
+msgid "No such affiliate."
+msgstr "Tidak ada afiliasi tersebut"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:49
+#: lib/core/affiliates-admin-affiliates-remove.php:49
+#, php-format
+#@ affiliates
+msgid "Edit %s"
+msgstr "Sunting %s"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:68
+#@ affiliates
+msgid "Edit an affiliate"
+msgstr "Sunting afiliasi"
+
+#: lib/core/affiliates-admin-affiliates-edit.php:101
+#: lib/core/affiliates-admin-options.php:400
+#: lib/core/affiliates-admin-options.php:446
+#@ affiliates
+msgid "Save"
+msgstr "Simpan"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:64
+#@ affiliates
+msgid "Remove an affiliate"
+msgstr "Hapus afiliasi"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:71
+#, php-format
+#@ affiliates
+msgid "Name : %s"
+msgstr "Nama : %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:72
+#, php-format
+#@ affiliates
+msgid "Email : %s"
+msgstr "Email : %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:73
+#, php-format
+#@ affiliates
+msgid "Username : %s"
+msgstr "Username : %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:74
+#, php-format
+#@ affiliates
+msgid "From : %s"
+msgstr "Dari : %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:75
+#, php-format
+#@ affiliates
+msgid "Until : %s"
+msgstr "Hingga : %s"
+
+#: lib/core/affiliates-admin-affiliates-remove.php:78
+#: lib/core/affiliates-admin-affiliates.php:361
+#: lib/core/affiliates-admin-affiliates.php:502
+#@ affiliates
+msgid "Remove"
+msgstr "Hapus"
+
+#: lib/core/affiliates-admin-affiliates.php:53
+#, php-format
+#@ affiliates
+msgid "Your site is not using pretty <a href=\"%s\">permalinks</a>. You will only be able to use URL parameter based <span class=\"affiliate-link\">affiliate links</span> but not pretty <span class=\"affiliate-permalink\">affiliate permalinks</span>, unless you change your permalink settings."
+msgstr "Situs Anda tidak menggunakan pretty <a href=\"%s\">permalinks</a>. Anda hanya bisa menggunakan <span class=\"affiliate-link\">link afiliasi</span> dengan URL berbasis parameter tapi tidak bisa menggunakan pretty <span class=\"affiliate-permalink\">affiliate permalinks</span>, kecuali bila Anda merubah pengaturan permalinks situs ini."
+
+#: lib/core/affiliates-admin-affiliates.php:236
+#: lib/core/wp-init.php:1032
+#: lib/core/wp-init.php:1033
+#@ affiliates
+msgid "Manage Affiliates"
+msgstr "Kelola Afiliasi"
+
+#: lib/core/affiliates-admin-affiliates.php:242
+#@ affiliates
+msgid "Click to add a new affiliate"
+msgstr "Klik untuk menambah afiliasi baru"
+
+#: lib/core/affiliates-admin-affiliates.php:242
+#@ affiliates
+msgid "New Affiliate"
+msgstr "Afiliasi Baru"
+
+#: lib/core/affiliates-admin-affiliates.php:354
+#@ affiliates
+msgid "Id"
+msgstr "Id"
+
+#: lib/core/affiliates-admin-affiliates.php:355
+#: lib/core/affiliates-admin-hits-affiliate.php:307
+#: lib/core/affiliates-admin-hits-affiliate.php:319
+#: lib/core/affiliates-admin-hits-affiliate.php:472
+#: lib/core/affiliates-admin-hits-affiliate.php:533
+#: lib/core/affiliates-admin-hits.php:311
+#: lib/core/affiliates-admin-hits.php:457
+#: lib/core/affiliates-admin-hits.php:513
+#: lib/core/affiliates-admin-referrals.php:355
+#: lib/core/affiliates-admin-referrals.php:368
+#@ affiliates
+msgid "Affiliate"
+msgstr "Afiliasi"
+
+#: lib/core/affiliates-admin-affiliates.php:360
+#: lib/core/affiliates-admin-affiliates.php:499
+#@ affiliates
+msgid "Edit"
+msgstr "Sunting"
+
+#: lib/core/affiliates-admin-affiliates.php:362
+#@ affiliates
+msgid "Links"
+msgstr "Link"
+
+#: lib/core/affiliates-admin-affiliates.php:369
+#: lib/core/affiliates-admin-hits-affiliate.php:335
+#: lib/core/affiliates-admin-hits.php:327
+#: lib/core/affiliates-admin-referrals.php:406
+#: lib/core/affiliates-admin.php:128
+#@ affiliates
+msgid "Filters"
+msgstr "Filter"
+
+#: lib/core/affiliates-admin-affiliates.php:372
+#@ affiliates
+msgid "Affiliate Id"
+msgstr "Id Afiliasi"
+
+#: lib/core/affiliates-admin-affiliates.php:374
+#@ affiliates
+msgid "Affiliate Name"
+msgstr "Nama Afiliasi"
+
+#: lib/core/affiliates-admin-affiliates.php:376
+#@ affiliates
+msgid "Affiliate Username"
+msgstr "Username Afiliasi"
+
+#: lib/core/affiliates-admin-affiliates.php:384
+#: lib/core/affiliates-admin-hits-affiliate.php:355
+#: lib/core/affiliates-admin-hits.php:347
+#: lib/core/affiliates-admin-referrals.php:429
+#@ affiliates
+msgid "Include inoperative affiliates"
+msgstr "Ikutkan affiliasi non aktif"
+
+#: lib/core/affiliates-admin-affiliates.php:386
+#@ affiliates
+msgid "Include removed affiliates"
+msgstr "Ikutkan afiliasi yang sudah dihapus"
+
+#: lib/core/affiliates-admin-affiliates.php:391
+#: lib/core/affiliates-admin-affiliates.php:405
+#: lib/core/affiliates-admin-hits-affiliate.php:348
+#: lib/core/affiliates-admin-hits-affiliate.php:371
+#: lib/core/affiliates-admin-hits.php:340
+#: lib/core/affiliates-admin-hits.php:363
+#: lib/core/affiliates-admin-referrals.php:422
+#: lib/core/affiliates-admin-referrals.php:444
+#: lib/core/affiliates-admin.php:138
+#@ affiliates
+msgid "Apply"
+msgstr "Terapkan"
+
+#: lib/core/affiliates-admin-affiliates.php:392
+#: lib/core/affiliates-admin-hits-affiliate.php:357
+#: lib/core/affiliates-admin-hits.php:349
+#: lib/core/affiliates-admin-referrals.php:431
+#: lib/core/affiliates-admin.php:139
+#@ affiliates
+msgid "Clear"
+msgstr "Kosongkan"
+
+#: lib/core/affiliates-admin-affiliates.php:402
+#: lib/core/affiliates-admin-hits-affiliate.php:367
+#: lib/core/affiliates-admin-hits.php:359
+#: lib/core/affiliates-admin-referrals.php:441
+#@ affiliates
+msgid "Results per page"
+msgstr "Tampilan hasil per halaman"
+
+#: lib/core/affiliates-admin-affiliates.php:462
+#@ affiliates
+msgid "(removed)"
+msgstr "(telah dihapus)"
+
+#: lib/core/affiliates-admin-affiliates.php:468
+#@ affiliates
+msgid "(inoperative)"
+msgstr "(nonaktif)"
+
+#: lib/core/affiliates-admin-affiliates.php:483
+#, php-format
+#@ default
+msgid "There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s"
+msgstr ""
+
+#: lib/core/affiliates-admin-affiliates.php:508
+#@ affiliates
+msgid "Link"
+msgstr "Link"
+
+#: lib/core/affiliates-admin-affiliates.php:512
+#@ affiliates
+msgid "URL Parameter"
+msgstr "Parameter URL"
+
+#: lib/core/affiliates-admin-affiliates.php:516
+#@ affiliates
+msgid "Pretty"
+msgstr "Pretty"
+
+#: lib/core/affiliates-admin-affiliates.php:522
+#, php-format
+#@ affiliates
+msgid "you need to adjust your <a href=\"%s\">permalink settings</a>."
+msgstr "Anda harus melakukan penyesuaian <a href=\"%s\">pengaturan permalink</a> Anda."
+
+#: lib/core/affiliates-admin-affiliates.php:530
+#: lib/core/affiliates-admin-hits-affiliate.php:556
+#: lib/core/affiliates-admin-hits.php:534
+#: lib/core/affiliates-admin-referrals.php:606
+#@ affiliates
+msgid "There are no results."
+msgstr "Tidak ada hasil"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:178
+#: lib/core/wp-init.php:1058
+#: lib/core/wp-init.php:1059
+#@ affiliates
+msgid "Affiliates & Referrals"
+msgstr "Afiliasi & Referal"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:308
+#@ affiliates
+msgid "Visitors"
+msgstr "Pengunjung"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:309
+#: lib/core/affiliates-admin-hits-affiliate.php:524
+#: lib/core/affiliates-admin-hits.php:301
+#: lib/core/affiliates-admin-hits.php:506
+#: lib/core/affiliates-admin.php:280
+#@ affiliates
+msgid "Hits"
+msgstr "Hit"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:310
+#: lib/core/affiliates-admin-hits-affiliate.php:465
+#: lib/core/affiliates-admin-hits.php:302
+#: lib/core/affiliates-admin-hits.php:450
+#: lib/core/affiliates-admin-referrals.php:229
+#: lib/core/wp-init.php:1071
+#: lib/core/wp-init.php:1072
+#@ affiliates
+msgid "Referrals"
+msgstr "Referal"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:311
+#: lib/core/affiliates-admin-hits.php:303
+#@ affiliates
+msgid "Ratio"
+msgstr "Rasio"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:351
+#: lib/core/affiliates-admin-hits.php:343
+#@ affiliates
+msgid "Expand referrals"
+msgstr "Ekspansikan referal"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:353
+#: lib/core/affiliates-admin-hits.php:345
+#@ affiliates
+msgid "Expand hits"
+msgstr "Ekspansikan hit"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:470
+#: lib/core/affiliates-admin-hits-affiliate.php:530
+#: lib/core/affiliates-admin-hits.php:455
+#: lib/core/affiliates-admin-hits.php:511
+#@ affiliates
+msgid "Time"
+msgstr "Waktu"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:471
+#: lib/core/affiliates-admin-hits.php:456
+#: lib/core/affiliates-admin-referrals.php:354
+#@ affiliates
+msgid "Post"
+msgstr "Post"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:529
+#: lib/core/affiliates-admin-hits.php:299
+#: lib/core/affiliates-admin-referrals.php:353
+#@ affiliates
+msgid "Date"
+msgstr "Tanggal"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:531
+#: lib/core/affiliates-admin-hits.php:512
+#@ affiliates
+msgid "IP"
+msgstr "IP"
+
+#: lib/core/affiliates-admin-hits-affiliate.php:532
+#@ affiliates
+msgid "Count"
+msgstr "Jumlah"
+
+#: lib/core/affiliates-admin-hits.php:171
+#: lib/core/wp-init.php:1045
+#: lib/core/wp-init.php:1046
+#@ affiliates
+msgid "Visits & Referrals"
+msgstr "Kunjungan & Referal"
+
+#: lib/core/affiliates-admin-hits.php:300
+#: lib/core/affiliates-admin.php:287
+#@ affiliates
+msgid "Visits"
+msgstr "Kunjungan"
+
+#: lib/core/affiliates-admin-hits.php:552
+#, php-format
+#@ affiliates
+msgid "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT."
+msgstr "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT."
+
+#: lib/core/affiliates-admin-options.php:51
+#: lib/core/wp-init.php:1084
+#@ affiliates
+msgid "Affiliates options"
+msgstr "Opsi afiliasi"
+
+#: lib/core/affiliates-admin-options.php:120
+#@ affiliates
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is not valid</em>. Only lower case letters and the underscore _ are allowed."
+msgstr "Nama parameter untuk URL afiliasi <strong>belum dirubah</strong>, nama yang diusulkan <em> tidak valid</em>. Nama hanya boleh mengandung huruf kecil dan tanda underscore ( _ )"
+
+#: lib/core/affiliates-admin-options.php:123
+#@ affiliates
+msgid "The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is forbidden</em>."
+msgstr "Nama parameter untuk URL afiliasi <strong>belum dirubah</strong>, nama yang diusulkan <em> terlarang</em>. "
+
+#: lib/core/affiliates-admin-options.php:131
+#, php-format
+#@ affiliates
+msgid "The Affiliate URL parameter name <strong>has been changed</strong> from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
+msgstr "Nama parameter untuk URL afiliasi <strong>telah dirubah</strong> dari <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
+
+#: lib/core/affiliates-admin-options.php:134
+#@ affiliates
+msgid "If your affiliates are using affiliate links based on the previous Affiliate URL parameter name, they <strong>NEED</strong> to update their affiliate links."
+msgstr "Jika para afiliasi telah atau sedang aktif menggunakan link afiliasi berdasarkan nama parameter yang lama, maka mereka <strong>harus</strong> memperbarui link afiliasi tersebut secara manual."
+
+#: lib/core/affiliates-admin-options.php:137
+#@ affiliates
+msgid "Unless the incoming affiliate links reflect the current Affiliate URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "Jika link afiliasi belum disesuaikan dengan nama parameter baru yang berlaku, tidak ada data afiliasi yang akan tercatat."
+
+#: lib/core/affiliates-admin-options.php:150
+#: lib/core/affiliates-admin-options.php:241
+#@ affiliates
+msgid "Access affiliates"
+msgstr "Akses afiliasi"
+
+#: lib/core/affiliates-admin-options.php:151
+#: lib/core/affiliates-admin-options.php:242
+#@ affiliates
+msgid "Administer affiliates"
+msgstr "Kelola afiliasi"
+
+#: lib/core/affiliates-admin-options.php:152
+#: lib/core/affiliates-admin-options.php:243
+#@ affiliates
+msgid "Administer options"
+msgstr "Kelola opsi"
+
+#: lib/core/affiliates-admin-options.php:196
+#: lib/core/affiliates-admin-referrals.php:383
+#: lib/core/affiliates-admin-referrals.php:389
+#: lib/core/affiliates-admin.php:294
+#: lib/core/affiliates-admin.php:431
+#@ affiliates
+msgid "Accepted"
+msgstr "Diterima"
+
+#: lib/core/affiliates-admin-options.php:197
+#: lib/core/affiliates-admin-referrals.php:384
+#: lib/core/affiliates-admin-referrals.php:390
+#: lib/core/affiliates-admin.php:316
+#: lib/core/affiliates-admin.php:432
+#@ affiliates
+msgid "Closed"
+msgstr "Selesai"
+
+#: lib/core/affiliates-admin-options.php:198
+#: lib/core/affiliates-admin-referrals.php:385
+#: lib/core/affiliates-admin-referrals.php:391
+#: lib/core/affiliates-admin.php:302
+#: lib/core/affiliates-admin.php:433
+#@ affiliates
+msgid "Pending"
+msgstr "Pending"
+
+#: lib/core/affiliates-admin-options.php:199
+#: lib/core/affiliates-admin-referrals.php:386
+#: lib/core/affiliates-admin-referrals.php:392
+#: lib/core/affiliates-admin.php:309
+#: lib/core/affiliates-admin.php:434
+#@ affiliates
+msgid "Rejected"
+msgstr "Ditolak"
+
+#: lib/core/affiliates-admin-options.php:226
+#@ affiliates
+msgid "Affiliate ID Encoding"
+msgstr "Encoding ID Afiliasi"
+
+#: lib/core/affiliates-admin-options.php:249
+#@ affiliates
+msgid "Role"
+msgstr "Peran"
+
+#: lib/core/affiliates-admin-options.php:292
+#@ affiliates
+msgid "Page generation"
+msgstr "Pembuatan halaman"
+
+#: lib/core/affiliates-admin-options.php:294
+#@ affiliates
+msgid "Press the button to generate an affiliate area."
+msgstr "Tekan tombol untuk membuat halaman area afiliasi"
+
+#: lib/core/affiliates-admin-options.php:295
+#@ affiliates
+msgid "Generate"
+msgstr "Buat"
+
+#: lib/core/affiliates-admin-options.php:308
+#@ default
+msgid "Referral timeout"
+msgstr ""
+
+#: lib/core/affiliates-admin-options.php:311
+#@ affiliates
+msgid "Days"
+msgstr "Hari"
+
+#: lib/core/affiliates-admin-options.php:314
+#@ affiliates
+msgid "This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid."
+msgstr "Ini adalah lamanya waktu (dalam hari) terhitung sejak pengunjung mengakses situs Anda via link afiliasi, dalam mana referal masih dianggap valid."
+
+#: lib/core/affiliates-admin-options.php:317
+#@ affiliates
+msgid "If you enter 0, referrals will only be valid until the visitor closes the browser (session)."
+msgstr "Jika Anda mengisinya dengan 0, referal hanya akan valid hingga saat pengunjung menutup browser (session)"
+
+#: lib/core/affiliates-admin-options.php:320
+#@ affiliates
+msgid "The default value is 1. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until one day after she or he clicked that affiliate link."
+msgstr "Nilai default adalah 1. Yang berarti bila seseorang mengunjungi situs Anda melalui link afiliasi, referal masih akan dianggap valid sampai dengan 1 hari setelah dia mengklik link afiliasi tersebut"
+
+#: lib/core/affiliates-admin-options.php:323
+#@ affiliates
+msgid "Direct referrals"
+msgstr "Referal Direct"
+
+#: lib/core/affiliates-admin-options.php:326
+#@ affiliates
+msgid "Store direct referrals"
+msgstr "Simpan referal Direct"
+
+#: lib/core/affiliates-admin-options.php:329
+#@ affiliates
+msgid "If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct."
+msgstr "Bila opsi ini diaktifkan, maka referal tanpa afiliasi akap diberikan kepada Direct"
+
+#: lib/core/affiliates-admin-options.php:332
+#@ affiliates
+msgid "Default referral status"
+msgstr "Status referal default"
+
+#: lib/core/affiliates-admin-options.php:337
+#@ default
+msgid "Robots"
+msgstr ""
+
+#: lib/core/affiliates-admin-options.php:343
+#@ affiliates
+msgid "Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line."
+msgstr "Hit pada link afiliasi dari robot-robot dalam daftar berikut tidak akan dicatat. Masukkan satu entri per baris"
+
+#: lib/core/affiliates-admin-options.php:346
+#@ affiliates
+msgid "Affiliate registration"
+msgstr "Pendaftaran afiliasi"
+
+#: lib/core/affiliates-admin-options.php:349
+#@ affiliates
+msgid "Allow affiliate registration"
+msgstr "Buka pendaftaran afiliasi"
+
+#: lib/core/affiliates-admin-options.php:352
+#@ affiliates
+msgid "Affiliate URL parameter name"
+msgstr "Nama parameter URL afiliasi"
+
+#: lib/core/affiliates-admin-options.php:357
+#, php-format
+#@ affiliates
+msgid "The current Affiliate URL parameter name is: <b>%s</b>"
+msgstr "Nama parameter URL afiliase yang saat ini digunakan adalah <b>%s</b>"
+
+#: lib/core/affiliates-admin-options.php:360
+#, php-format
+#@ affiliates
+msgid "The default Affiliate URL parameter name is <em>%s</em>."
+msgstr "Nama parameter default untuk URL afiliasi adalah <em>%s</em>."
+
+#: lib/core/affiliates-admin-options.php:363
+#@ affiliates
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current URL parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr "PERHATIAN : jika Anda merubah pengaturan ini dan sebelumnya telah mendistribusikan link atau permalinks afiliasi, maka pastikanlah untuk memperbarui link-link tersebut. Hit, kunjungan maupun referal yang terjadi melalui link afiliasi yang tidak sesuai dengan pengaturan ini akan diabaikan."
+
+#: lib/core/affiliates-admin-options.php:366
+#@ affiliates
+msgid "Affiliate ID encoding"
+msgstr "Encoding ID afiliasi"
+
+#: lib/core/affiliates-admin-options.php:371
+#, php-format
+#@ affiliates
+msgid "The current encoding in effect is: <b>%s</b>"
+msgstr "Encoding yang digunakan saat ini adalah <b>%s</b>"
+
+#: lib/core/affiliates-admin-options.php:374
+#@ affiliates
+msgid "CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current encoding, no affiliate hits, visits or referrals will be recorded."
+msgstr "PERHATIAN : jika Anda merubah pengaturan ini dan sebelumnya telah mendistribusikan link atau permalinks afiliasi, maka pastikanlah untuk memperbarui link-link tersebut. Hit, kunjungan maupun referal yang terjadi melalui link afiliasi yang tidak sesuai dengan pengaturan encoding ini akan diabaikan."
+
+#: lib/core/affiliates-admin-options.php:377
+#@ affiliates
+msgid "Permissions"
+msgstr "Hak akses"
+
+#: lib/core/affiliates-admin-options.php:382
+#@ affiliates
+msgid "A minimum set of permissions will be preserved."
+msgstr "Hak akses minimum akan tetap dilindungi"
+
+#: lib/core/affiliates-admin-options.php:384
+#@ affiliates
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr "Jika hak akses Anda terblokir, mintalah bantuan pada administrator"
+
+#: lib/core/affiliates-admin-options.php:388
+#@ affiliates
+msgid "Deactivation and data persistence"
+msgstr "Deaktivasi dan simpanan data"
+
+#: lib/core/affiliates-admin-options.php:391
+#@ affiliates
+msgid "Delete all plugin data on deactivation"
+msgstr "Saat deaktivasi plugin ini, hapus semua data terkait"
+
+#: lib/core/affiliates-admin-options.php:394
+#@ affiliates
+msgid "CAUTION: If this option is active while the plugin is deactivated, ALL affiliate and referral data will be DELETED. If you want to retrieve data about your affiliates and their referrals and are going to deactivate the plugin, make sure to back up your data or do not enable this option. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "PERHATIAN : Bila opsi ini aktif pada saat plugin di deaktivasi, SEMUA DATA afiliasi dan referal akan terhapus. Pastikan Anda telah melakukan backup data afiliasi dan referal sebelum melakukan deaktivasi plugin. Atau jangan aktifkan opsi ini. Dengan mengaktifkan opsi ini maka Anda setuju untuk bertanggungjawab sendiri atas berbagai bentuk kehilangan data atau konsekuensi lain yang diakibatkannya."
+
+#: lib/core/affiliates-admin-options.php:415
+#: lib/core/wp-init.php:1019
+#: lib/core/wp-init.php:1103
+#: lib/core/wp-init.php:1104
+#@ affiliates
+msgid "Affiliates"
+msgstr "Afiliasi"
+
+#: lib/core/affiliates-admin-options.php:430
+#@ affiliates
+msgid "Affiliates network data"
+msgstr "Data jaringan afiliasi"
+
+#: lib/core/affiliates-admin-options.php:433
+#@ affiliates
+msgid "Delete all affiliate data on network deactivation"
+msgstr "Hapus semua data afiliasi pada saat deaktivasi jaringan"
+
+#: lib/core/affiliates-admin-options.php:436
+#@ affiliates
+msgid "READ AND UNDERSTAND the following before activating this option:"
+msgstr "BACA DAN PAHAMI hal-hal berikut sebelum mengaktifkan opsi ini:"
+
+#: lib/core/affiliates-admin-options.php:439
+#@ affiliates
+msgid "CAUTION: If this option is active while the plugin is network deactivated, <strong>ALL affiliate and referral data will be DELETED on all sites of the network</strong>."
+msgstr "PERHATIAN : Bila opsi ini aktif saat plugin mengalami deaktivasi jaringan <strong> SEMUA data afiliasi dan referal akan dihapus pada semua situs dalam jaringan tersebut</strong>."
+
+#: lib/core/affiliates-admin-options.php:440
+#@ affiliates
+msgid "This option should only be used to clean up after testing."
+msgstr "Opsi ini sebaiknya hanya digunakan untuk tujuan pembersihan setelah melakukan uji coba."
+
+#: lib/core/affiliates-admin-options.php:441
+#@ affiliates
+msgid "Make sure to back up your data or do not enable this option."
+msgstr "Pastikan Anda telah melakukan backup data atau jangan mengaktifkan opsi ini"
+
+#: lib/core/affiliates-admin-options.php:442
+#@ affiliates
+msgid "By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "Dengan mengaktifkan opsi ini Anda setuju untuk bertanggungjawab sendiri atas berbagai bentuk kehilangan data atau konsekuensi lain yang diakibatkannya."
+
+#: lib/core/affiliates-admin-referrals.php:356
+#@ affiliates
+msgid "Amount"
+msgstr "Jumlah"
+
+#: lib/core/affiliates-admin-referrals.php:357
+#@ affiliates
+msgid "Currency"
+msgstr "Mata Uang"
+
+#: lib/core/affiliates-admin-referrals.php:358
+#: lib/core/affiliates-admin-referrals.php:395
+#@ affiliates
+msgid "Status"
+msgstr "Status"
+
+#: lib/core/affiliates-admin-referrals.php:411
+#@ affiliates
+msgid "Search"
+msgstr "Cari"
+
+#: lib/core/affiliates-admin-referrals.php:423
+#@ affiliates
+msgid "Expand details"
+msgstr "Ekspansikan detil"
+
+#: lib/core/affiliates-admin-referrals.php:425
+#@ affiliates
+msgid "Expand descriptions"
+msgstr "Ekspansikan deskripsi"
+
+#: lib/core/affiliates-admin-referrals.php:427
+#@ affiliates
+msgid "Expand data"
+msgstr "Ekspansikan data"
+
+#: lib/core/affiliates-admin-referrals.php:519
+#@ affiliates
+msgid "Set"
+msgstr "Atur"
+
+#: lib/core/affiliates-admin-referrals.php:546
+#: lib/core/affiliates-admin-referrals.php:567
+#@ affiliates
+msgid "Data"
+msgstr "Data"
+
+#: lib/core/affiliates-admin-referrals.php:551
+#@ domain
+msgid "title"
+msgstr ""
+
+#: lib/core/affiliates-admin-referrals.php:596
+#@ affiliates
+msgid "Description"
+msgstr "Deskripsi"
+
+#: lib/core/affiliates-admin.php:32
+#: lib/core/wp-init.php:1018
+#@ affiliates
+msgid "Affiliates Overview"
+msgstr "Sekilas Afiliasi"
+
+#: lib/core/affiliates-admin.php:135
+#@ affiliates
+msgid "Days back"
+msgstr "Hari sebelumnya"
+
+#: lib/core/affiliates-admin.php:271
+#, php-format
+#@ affiliates
+msgid "%d Day Charts"
+msgstr "%d Grafik Hari"
+
+#: lib/core/affiliates-admin.php:393
+#@ affiliates
+msgid "Statistics Summary"
+msgstr "Ringkasan Statistik"
+
+#: lib/core/affiliates-admin.php:399
+#@ affiliates
+msgid "From operative affiliates:"
+msgstr "Dari afiliasi aktif :"
+
+#: lib/core/affiliates-admin.php:400
+#, php-format
+#@ affiliates
+msgid "There is 1 operative affiliate"
+msgid_plural "There are %d operative affiliates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/core/affiliates-admin.php:405
+#@ affiliates
+msgid "From operative and non-operative affiliates:"
+msgstr "Dari afiliasi aktif dan non-aktif"
+
+#: lib/core/affiliates-admin.php:406
+#: lib/core/affiliates-admin.php:412
+#, php-format
+#@ affiliates
+msgid "There is 1 affiliate in this set"
+msgid_plural "There are %d affiliates in this set"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/core/affiliates-admin.php:411
+#@ affiliates
+msgid "All time (includes data from deleted affiliates):"
+msgstr "Data sepanjang waktu (termasuk data dari afiliasi yang sudah dihapus) :"
+
+#: lib/core/affiliates-admin.php:441
+#@ affiliates
+msgid "<strong>Referrals:</strong>"
+msgstr "<strong>Referal:</strong>"
+
+#: lib/core/affiliates-admin.php:443
+#, php-format
+#@ affiliates
+msgid "%10d Accepted"
+msgstr "%10d Diterima"
+
+#: lib/core/affiliates-admin.php:444
+#, php-format
+#@ affiliates
+msgid "%10d Closed"
+msgstr "%10d Selesai"
+
+#: lib/core/affiliates-admin.php:445
+#, php-format
+#@ affiliates
+msgid "%10d Pending"
+msgstr "%10d Pending"
+
+#: lib/core/affiliates-admin.php:446
+#, php-format
+#@ affiliates
+msgid "%10d Rejected"
+msgstr "%10d Ditolak"
+
+#: lib/core/affiliates-admin.php:448
+#, php-format
+#@ affiliates
+msgid "%10d Hits"
+msgstr "%10d Hit"
+
+#: lib/core/affiliates-admin.php:449
+#, php-format
+#@ affiliates
+msgid "%10d Visits"
+msgstr "%10d Kunjungan"
+
+#: lib/core/class-affiliates-contact.php:166
+#@ affiliates
+msgid "Affiliates contact form submission"
+msgstr "Submisi form kontak Afiliasi"
+
+#: lib/core/class-affiliates-contact.php:199
+#@ affiliates
+msgid "Message"
+msgstr "Pesan"
+
+#: lib/core/class-affiliates-contact.php:203
+#@ affiliates
+msgid "Send"
+msgstr "Kirim"
+
+#: lib/core/class-affiliates-contact.php:208
+#@ affiliates
+msgid "Thanks!"
+msgstr "Terima kasih !"
+
+#: lib/core/class-affiliates-contact.php:309
+#: lib/core/class-affiliates-registration-widget.php:121
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: lib/core/class-affiliates-contact.php:313
+#@ default
+msgid "Amount (use . for decimals):"
+msgstr ""
+
+#: lib/core/class-affiliates-contact.php:317
+#@ default
+msgid "Currency - 3 letter code, e.g. USD, EUR:"
+msgstr ""
+
+#: lib/core/class-affiliates-contact.php:321
+#@ affiliates
+msgid "This contact form will request a referral and store the data that has been submitted."
+msgstr "Form kontak ini akan meminta referal dan menyimpan data yang telah di submit."
+
+#: lib/core/class-affiliates-contact.php:324
+#@ affiliates
+msgid "It has two purposes:"
+msgstr "Ini memiliki dua fungsi :"
+
+#: lib/core/class-affiliates-contact.php:327
+#@ affiliates
+msgid "To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate."
+msgstr "Untuk digunakan sebagai perangkat referal pada entry-level (mis. pada lead generation), jika Anda ingin trek siapa yang telah menghubungi Anda dan telah mengunjungi situs anda melalui afiliasi"
+
+#: lib/core/class-affiliates-contact.php:328
+#@ affiliates
+msgid "To serve as an example on how to use the API provided by the Affiliates plugin"
+msgstr "Sebagai contoh cara menggunakan API yang disediakan oleh plugin Afiliasi ini"
+
+#: lib/core/class-affiliates-generator.php:69
+#@ affiliates
+msgid "Affiliate Area"
+msgstr "Area Afiliasi"
+
+#: lib/core/class-affiliates-pagination.php:92
+#, php-format
+#@ default
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/core/class-affiliates-pagination.php:113
+#@ default
+msgid "Go to the first page"
+msgstr ""
+
+#: lib/core/class-affiliates-pagination.php:120
+#@ default
+msgid "Go to the previous page"
+msgstr ""
+
+#: lib/core/class-affiliates-pagination.php:129
+#@ default
+msgid "Current page"
+msgstr ""
+
+#: lib/core/class-affiliates-pagination.php:136
+#, php-format
+#@ default
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: lib/core/class-affiliates-pagination.php:140
+#@ default
+msgid "Go to the next page"
+msgstr ""
+
+#: lib/core/class-affiliates-pagination.php:147
+#@ default
+msgid "Go to the last page"
+msgstr ""
+
+#: lib/core/class-affiliates-registration-widget.php:130
+#@ affiliates
+msgid "Terms and conditions"
+msgstr "Syarat dan Kondisi"
+
+#: lib/core/class-affiliates-registration-widget.php:130
+#@ default
+msgid "Terms Page or Post ID"
+msgstr ""
+
+#: lib/core/class-affiliates-registration-widget.php:133
+#@ affiliates
+msgid "Write part of the title or the post ID. If left empty, no terms disclaimer will be shown."
+msgstr "Tuliskan judul atau post ID. Jika kosong, tidak ada terms disclaimer yang akan ditampilkan"
+
+#: lib/core/class-affiliates-registration-widget.php:136
+#, php-format
+#@ affiliates
+msgid "Terms page: <em>%s</em>"
+msgstr "Terms page: <em>%s</em>"
+
+#: lib/core/class-affiliates-registration.php:51
+#@ affiliates
+msgid "Sign Up"
+msgstr "Daftar"
+
+#: lib/core/class-affiliates-registration.php:109
+#@ affiliates
+msgid "You are already registered as an affiliate."
+msgstr "Anda telah terdaftar sebagai afiliasi"
+
+#: lib/core/class-affiliates-registration.php:117
+#: lib/core/class-affiliates-registration.php:253
+#@ affiliates
+msgid "Access your profile"
+msgstr "Akses profil Anda"
+
+#: lib/core/class-affiliates-registration.php:128
+#@ affiliates
+msgid "Registration is currently closed."
+msgstr "Pendaftaran sedang ditutup"
+
+#: lib/core/class-affiliates-registration.php:150
+#, php-format
+#@ affiliates
+msgid "By signing up, you indicate that you have read and agree to the %s."
+msgstr "Dengan mendaftarkan diri berarti Anda telah membaca dan menyetujui %s."
+
+#: lib/core/class-affiliates-registration.php:238
+#@ affiliates
+msgid "Thanks for signing up!"
+msgstr "Terima kasih telah mendaftar!"
+
+#: lib/core/class-affiliates-registration.php:240
+#@ affiliates
+msgid "Please check your email for the confirmation link."
+msgstr "Mohon cek email Anda untuk mendapatkan link konfirmasi"
+
+#: lib/core/class-affiliates-registration.php:244
+#, php-format
+#@ affiliates
+msgid "Log in <a href=\"%s\">here</a>."
+msgstr "Log in <a href=\"%s\">di sini</a>."
+
+#: lib/core/class-affiliates-registration.php:320
+#, php-format
+#@ default
+msgid "<p>Please fill in the required information in your <a href=\"%s\">profile</a> first.</p>"
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:325
+#@ affiliates
+msgid "First Name"
+msgstr "Nama Depan"
+
+#: lib/core/class-affiliates-registration.php:328
+#@ affiliates
+msgid "Last Name"
+msgstr "Nama Belakang"
+
+#: lib/core/class-affiliates-registration.php:337
+#@ affiliates
+msgid "Website"
+msgstr "Website"
+
+#: lib/core/class-affiliates-registration.php:376
+#@ default
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:378
+#@ default
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:381
+#@ default
+msgid "<strong>ERROR</strong>: This username is already registered, please choose another one."
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:386
+#@ default
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:388
+#@ default
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:391
+#@ default
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:416
+#, php-format
+#@ default
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:568
+#, php-format
+#@ default
+msgid "New affiliate registration on your site %s:"
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:569
+#, php-format
+#@ default
+msgid "Username: %s"
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:570
+#, php-format
+#@ default
+msgid "E-mail: %s"
+msgstr ""
+
+#: lib/core/class-affiliates-registration.php:572
+#, php-format
+#@ default
+msgid "[%s] New Affiliate Registration"
+msgstr ""
+
+#: lib/core/class-affiliates-shortcodes.php:452
+#@ default
+msgid "Log out"
+msgstr ""
+
+#: lib/core/constants.php:100
+#@ affiliates
+msgctxt "pseudo-affiliate name"
+msgid "Direct"
+msgstr "Direct"
+
+#: lib/core/wp-init.php:894
+#@ affiliates
+msgid "No encoding"
+msgstr "Tanpa encoding"
+
+#: lib/core/wp-init.php:895
+#@ affiliates
+msgid "MD5"
+msgstr "MD5"
+
+#: lib/core/wp-init.php:1085
+#@ affiliates
+msgid "Options"
+msgstr "Opsi"
+
+#: lib/core/wp-init.php:1125
+#@ affiliates
+msgid "The complete documentation is available on the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates plugin page</a>"
+msgstr "Dokumentasi lengkap dapat diperoleh di <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">halaman Affiliates plugin </a>"
+
+#: lib/core/wp-init.php:1131
+#@ affiliates
+msgid "This screen offers an overview with basic statistical data."
+msgstr "Layar ini menampilkan tinjauan sekilas dengan data statistik dasar."
+
+#: lib/core/wp-init.php:1133
+#@ affiliates
+msgid "<em>From operative affiliates:</em> includes affiliates that are currently active. This excludes affiliates whose dates are not currently valid as well as those that have been deleted."
+msgstr "<em>Dari afiliasi aktif :</em> berisi data afiliasi yang sedang aktif. Tidak termasuk data afiliasi non-aktif maupun yang sudah dihapus."
+
+#: lib/core/wp-init.php:1134
+#@ affiliates
+msgid "<em>From operative and non-operative affiliates:</em> excludes deleted affiliates."
+msgstr "<em>Dari afiliasi aktif dan non-aktif :</em> tidak termasuk afiliasi yang sudah dihapus."
+
+#: lib/core/wp-init.php:1135
+#@ affiliates
+msgid "<em>All time</em> includes data from any affiliates, including deleted affiliates."
+msgstr "<em>Sepanjang waktu</em> data dari semua afiliasi, termasuk yang sudah dihapus."
+
+#: lib/core/wp-init.php:1138
+#@ affiliates
+msgid "<em>Hits</em> are HTTP requests for affiliate links."
+msgstr "<em>Hit</em> adalah HTTP requests untuk link afiliasi"
+
+#: lib/core/wp-init.php:1139
+#@ affiliates
+msgid "<em>Visits</em> are unique and daily requests for affiliate links."
+msgstr "<em>Kunjungan</em> adalah request unik dan harian untuk link afiliasi."
+
+#: lib/core/wp-init.php:1140
+#@ affiliates
+msgid "<em>Referrals</em> are recorded by request through the use of an API function. See the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">documentation</a> for more information."
+msgstr "<em>Referal</em> dicatat berdasarkan request melalui penggunaan fungsi API. Selengkapnya silakan baca <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">dokumentasi</a> ."
+
+#: lib/core/wp-init.php:1143
+#@ affiliates
+msgid "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals."
+msgstr "Plugin Affiliate ini menyediakan <em>Affiliates Contact</em> widget yang bisa digunakan untuk merekam lead referal."
+
+#: lib/core/wp-init.php:1144
+#, php-format
+#@ affiliates
+msgid "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
+msgstr "Untuk menggunakannya letakkan widget pada <a href=\"%s\">widget areas</a> website Anda."
+
+#: lib/core/wp-init.php:1148
+#@ affiliates
+msgid "Note that <em>deleted</em> affiliates are not literally deleted but marked as such so that data that has been collected will still be accesible."
+msgstr "Mohon dicatat bahwa afiliasi <em>yang sudah dihapus</em> bukan berarti benar-benar dihapus. Melainkan ditandai sedemikian rupa sehingga data yang telah dikumpulkan masih bisa di akses."
+
+#: lib/core/wp-init.php:1153
+#@ affiliates
+msgid "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates."
+msgstr "Di sini Anda bisa <strong>menambah</strong>, <strong>menyunting</strong> dan <strong>menghapus</strong> afiliasi"
+
+#: lib/core/wp-init.php:1155
+#@ affiliates
+msgid "There are two types of links your affiliates may use to link to your site:"
+msgstr "Ada dua jenis link yang bisa digunakan oleh afiliasi Anda :"
+
+#: lib/core/wp-init.php:1160
+#@ affiliates
+msgid "Affiliate link"
+msgstr "Link afiliasi"
+
+#: lib/core/wp-init.php:1163
+#@ affiliates
+msgid "This link uses a parameter in the URL to record vists you receive through your affiliates."
+msgstr "Link ini menggunakan sebuah parameter yang ada pada URL untuk merekam data kunjungan yang Anda peroleh melalui afiliasi Anda"
+
+#: lib/core/wp-init.php:1164
+#: lib/core/wp-init.php:1174
+#@ affiliates
+msgid "The affiliate information is removed once a visitor has landed on your site."
+msgstr "Informasi afiliasi disingkirkan begitu pengunjung sampai di situs Anda."
+
+#: lib/core/wp-init.php:1165
+#, php-format
+#@ affiliates
+msgid "You may also append the ?%s=... part to links to your posts."
+msgstr "Anda juga bisa menambahkan ?%s=... pada link artikel Anda"
+
+#: lib/core/wp-init.php:1170
+#@ affiliates
+msgid "Affiliate permalink"
+msgstr "Permalink afiliasi"
+
+#: lib/core/wp-init.php:1173
+#@ affiliates
+msgid "This link uses a nicer URL to record vists you receive through your affiliates."
+msgstr "Link ini menggunakan struktur URL yang lebih bagus, untuk merekam kunjungan yang Anda peroleh dari afiliasi Anda"
+
+#: lib/core/wp-init.php:1179
+#@ affiliates
+msgid "Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate."
+msgstr "Saat pengujung sampai di situs Anda melalui link afiliasi, referal dicatat dan diberikan kepada afiliasi yang bersangkutan."
+
+#: lib/core/wp-init.php:1217
+#@ affiliates
+msgid "Thank you for using the <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+msgstr "Terima kasih telah menggunakan <a href=\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+

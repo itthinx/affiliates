@@ -1,0 +1,362 @@
+/**
+ * affiliates_admin.css
+ * 
+ * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
+ * 
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ * 
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * This header and all notices must be kept intact.
+ * 
+ * @author Karim Rahimpur
+ * @package affiliates
+ * @since affiliates 1.0.0
+ */
+
+label.field-label {
+	padding-right: 0.5em;
+	padding-left: 1em;
+}
+label.field-label.first {
+	padding-left: 0;
+}
+.affiliate.new label.field-label,
+.affiliate.edit label.field-label {
+	display: block;
+	padding-left: 0;
+}
+.affiliate.new input[type="text"],
+.affiliate.edit input[type="text"] {
+	display: block;
+	width: 80%;
+	padding: 0.62em 0;
+	margin-bottom: 0.31em;
+}
+.affiliate.new input[type="text"].datefield,
+.affiliate.edit input[type="text"].datefield {
+	width: 10em;
+	text-align: center;
+}
+
+a.addtoaffiliate {
+	padding: 5px 10px;
+	margin: 5px;
+}
+a.removefromaffiliate {
+	padding: 0 5px;
+}
+
+.missing {
+	border: 1px solid #fff;
+}
+
+.affiliate-link {
+	font-weight: bold;
+	font-style: italic;
+	color: #339;
+}
+.affiliate-link-param {
+	font-weight: bold;
+	font-style: italic;
+	color: #993;
+}
+.affiliate-permalink {
+	font-weight: bold;
+	font-style: italic;
+	color: #393;
+}
+
+.affiliate {
+	padding: 1em;
+	margin: 5px 1em 5px 0;
+	border: #ddd 1px solid;
+}
+.affiliate.new,
+.affiliate.edit,
+.affiliate.remove {
+	background-color: #eee;
+	border: 1px solid #ccc;
+}
+.affiliates-overview .odd {
+	background-color: #fff;
+}
+.affiliates-overview .even {
+	background-color: #eee;
+}
+.affiliates-overview .odd.inoperative {
+	background-color: #ffe;
+}
+.affiliates-overview .even.inoperative {
+	background-color: #eed;
+}
+.affiliates-overview .odd.deleted,
+.affiliates-overview .odd.deleted.inoperative {
+	background-color: #fee;
+}
+.affiliates-overview .even.deleted,
+.affiliates-overview .even.deleted.inoperative {
+	background-color: #edd;
+}
+
+/* overviews */
+.affiliates-overview .tablenav-pages,
+.hits-overview,
+.hits-affiliates-overview,
+.manage-affiliates,
+.referrals-overview {
+	padding-right: 1em;
+}
+
+div.details-referrals,
+div.details-hits {
+	padding-left: 1em;
+}
+
+.affiliates-overview .page-options,
+.hits-overview .page-options,
+.hits-affiliates-overview .page-options,
+.referrals-overview .page-options {
+	float: left;
+	display: inline;
+	min-width: 250px;
+	margin-bottom: 2px;
+}
+.affiliates-overview .tablenav.top,
+.hits-overview .tablenav.top,
+.hits-affiliates-overview .tablenav.top,
+.referrals-overview .tablenav.top {
+	display: inline;
+	width: 250px;
+}
+
+.hits-overview .odd,
+.hits-affiliates-overview .odd {
+  background-color: #fff;
+}
+
+.hits-overview .even,
+.hits-affiliates-overview .even {
+  background-color: #f9f9f9;
+}
+
+.referrals-overview .odd {
+  background-color: #fcfcfc;
+}
+.referrals-overview .even {
+  background-color: #f3f3f3;
+}
+.referrals-overview .even .widefat,
+.referrals-overview .odd .widefat {
+	background-color: inherit;
+}
+
+.referrals-overview .view-toggle .expander,
+.referrals-overview .view-toggle .view-toggle-label {
+	font-size: 0.8em;
+	color: #999;
+	display: inline;
+	cursor: pointer;
+}
+
+.referrals-overview table.referrals th.datetime {
+	width: 15%;
+}
+.referrals-overview table.referrals th.post_title {
+  width: 30%;
+}
+
+.referrals-overview table.referrals th.name {
+  width: 10%;
+}
+
+.referrals-overview table.referral-data td.referral-data-title {
+	width: 15%;
+}
+
+.referrals-overview table.referral-data td.referral-data-value {
+  width: 85%;
+}
+
+.referrals-overview tr.details-referrals {
+	border: 1px solid #000;
+}
+
+.referrals-overview td.post_title {
+  font-weight: bold;
+}
+.referrals-overview td.referral-data-title {
+	font-size: 0.8em; 
+	padding-left: 1em;
+	text-align: right;
+	border: none;
+}
+.referrals-overview td.referral-data-value {
+	border-color: #eee;
+}
+
+.filters,
+.manage {
+	background-color: #fff;
+	padding: 1em;
+	margin-bottom: 1em;
+	border: 1px solid #ddd;
+}
+.manage a.add {
+	text-decoration: none;
+	cursor: pointer;
+}
+.manage a.add .icon {
+	vertical-align: middle;
+	padding-right: 4px;
+}
+.manage a.add .label {
+	height: 20px;
+	vertical-align: middle;
+}
+.expanded-filter,
+.show-inoperative-filter,
+.show-deleted-filter {
+	/*padding-left: 1em;*/
+	padding-right: 5px;
+}
+
+.affiliate-id-filter,
+.status-filter,
+.affiliate-name-filter,
+.affiliate-email-filter,
+.affiliate-user-login-filter,
+.from-date-filter,
+.thru-date-filter,
+.days-back-filter {
+	margin-right: 1em;
+}
+.thru-date-filter {
+}
+
+input.days-back-filter {
+	width: 5em;
+	text-align: right;
+}
+
+input[name="clear_filters"] {
+	float: right;
+}
+
+.filters form label {
+	white-space: nowrap;
+}
+.filters label.description,
+.filters .filter-section {
+	padding-bottom: 1em;
+}
+
+.warning {
+	color: #933;
+}
+div.info {
+	background-color: #ffffe0;
+	border: 1px solid #993;
+	padding: 1em;
+	margin-right: 1em;
+}
+.affiliates-overview .warning {
+	cursor: pointer;
+}
+
+input.timeout {
+	width: 4em;
+	text-align: right;
+}
+table.affiliates-permissions thead tr td.role {
+	font-weight: bold;
+}
+table.affiliates-permissions thead tr td.cap {
+	padding: 0 1em;
+	font-weight: bold;
+	text-align: center;
+}
+table.affiliates-permissions tbody tr td.checkbox {
+	text-align: center;
+}
+.affiliates-footer {
+	border-top: 1px solid #ccc;
+	padding-top: 0.5em;
+	margin-top: 0.5em;
+	color: #333;
+}
+
+.affiliates-overview .required,
+.manage-affiliates .required {
+	background: url(../images/required.png) transparent no-repeat left center;
+	padding-left: 16px ! important;
+}
+.manage-affiliates input[type="submit"],
+.manage-affiliates .encoded-hint {
+	cursor: pointer;
+}
+.manage-affiliates div.field {
+	padding-bottom: 1em;
+}
+.manage-affiliates a.cancel {
+	padding-left: 1em;
+}
+
+.affiliates-overview th.affiliate_id {
+	width: 5%;
+}
+.affiliates-overview th.name {
+}
+.affiliates-overview th.email {
+}
+.affiliates-overview th.user_login {
+}
+.affiliates-overview th.from_date,
+.affiliates-overview th.thru_date {
+	width: 10%;
+}
+.affiliates-overview th.edit,
+.affiliates-overview th.remove {
+	width: 5%;
+}
+.affiliates-overview th.links {
+	width: 25%;
+}
+
+.referrals-overview td.status img.icon {
+	float: left;
+}
+.referrals-overview th.amount {
+	width: 10%;
+}
+.referrals-overview th.currency_id {
+	width: 10%;
+}
+.referrals-overview th.status {
+	width: 10%;
+}
+.referrals-overview td.amount {
+	text-align: right;
+}
+.referrals-overview td.edit,
+.referrals-overview td.remove {
+	vertical-align: middle;
+}
+.manage.referral {
+	margin: 3em 1em 0 0;
+}
+div.referral span.title {
+	display: block;
+}
+div.referral.remove span.title {
+	font-weight: bold;
+}
+.filters input.active-filter,
+.filters select.active-filter,
+.filters textarea.active-filter {
+	background-color: #ffc;
+}
