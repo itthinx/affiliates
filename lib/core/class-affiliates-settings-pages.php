@@ -50,7 +50,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 			}
 		}
 
-		echo '<h2>' . __( 'Generator', AFFILIATES_PLUGIN_DOMAIN ) . '</h2>';
+		echo '<h3>' . __( 'Generator', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
 
 		//
 		// Generator form
@@ -58,7 +58,6 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		echo
 			'<form action="" name="options" method="post">' .
 			'<div>' .
-			'<h3>' . __( 'Page generation', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
 			'<p>' .
 			__( 'Press the button to generate a default affiliate area.', AFFILIATES_PLUGIN_DOMAIN ) .
 			' ' .
@@ -68,11 +67,15 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 			$pages_generated_info.
 			'</div>' .
 			'</form>';
+		
+		echo '<p>';
+		echo __( 'The generated page contains Affiliates shortcodes and can be used as an out-of-the-box affiliate area or as a framework for customized affiliate areas and pages.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</p>';
 
 		//
 		// Pages containing affiliates shortcodes
 		//
-		echo '<h2>' . __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ) . '</h2>';
+		echo '<h3>' . __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
 
 		global $wpdb;
 		$post_options = '';

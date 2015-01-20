@@ -126,9 +126,9 @@ class Affiliates_Settings {
 		$section_title = self::$sections[$section];
 
 		echo
-			'<h2>' .
+			'<h1>' .
 			__( 'Settings', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>';
+			'</h1>';
 
 		$section_links = array();
 		foreach( self::$sections as $sec => $title ) {
@@ -144,9 +144,9 @@ class Affiliates_Settings {
 		echo '</div>';
 
 		echo
-			'<h3>' .
+			'<h2>' .
 			$section_title .
-			'</h3>';
+			'</h2>';
 		
 		switch( $section ) {
 			case 'integration' :
