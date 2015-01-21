@@ -45,13 +45,11 @@ These integrations are based on the Affiliates plugin and can be downloaded dire
 Extended integrations are available for:
 
 - [Contact Form 7](http://www.itthinx.com/plugins/affiliates-pro-contact-form-7)
-- [Easy Digital Downloads](http://www.itthinx.com/plugins/affiliates-pro-for-easy-digital-downloads/)
 - [Ecwid](http://www.itthinx.com/plugins/affiliates-ecwid)
 - [eShop](http://www.itthinx.com/plugins/affiliates-eshop)
 - [Gravity Forms](http://www.itthinx.com/plugins/affiliates-gravityforms/)
 - [Jigoshop](http://www.itthinx.com/plugins/affiliates-jigoshop)
 - [PayPal](http://www.itthinx.com/plugins/affiliates-pro-paypal)
-- [s2Member](http://www.itthinx.com/plugins/affiliates-s2member)
 - [TheCartPress](http://www.itthinx.com/plugins/affiliates-thecartpress/)
 - [WooCommerce](http://www.itthinx.com/plugins/affiliates-woocommerce)
 - [WP e-Commerce](http://www.itthinx.com/plugins/affiliates-wp-e-commerce)
@@ -88,7 +86,7 @@ Development and consulting services are available [on request](http://www.itthin
 * Unlimited Affiliates
 
     Simply have as many affiliates as you can get.
-    
+
 * Easy affiliate recruitment
 
     Affiliates can sign up automatically and can also be added manually with or without user accounts.
