@@ -677,6 +677,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Direct referrals are now disabled by default.
 * Changed the default cookie timeout to 30 days.
 * Security improvement, added additional ABSPATH checks.
+* Improved UI appearance and fixed some structural issues.
 
 = 2.7.3 =
 * WordPress 4.1 compatible.
