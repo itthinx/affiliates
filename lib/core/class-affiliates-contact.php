@@ -19,6 +19,10 @@
  * @since affiliates 1.0.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * This contact form is an example of how referrals are stored.
  * 

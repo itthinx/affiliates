@@ -19,6 +19,10 @@
  * @since affiliates 1.0.0
  */	
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 
 /**

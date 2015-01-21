@@ -19,6 +19,10 @@
  * @since affiliates 1.0.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 define( 'AFFILIATES_DEFAULT_VERSION', '1.0.0' );
 
 /**

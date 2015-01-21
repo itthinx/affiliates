@@ -18,7 +18,11 @@
  * @package affiliates
  * @since affiliates 1.0.0
  */
-	
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Shows hits by affiliate
 
 define( 'AFFILIATES_HITS_AFFILIATE_PER_PAGE', 10 );

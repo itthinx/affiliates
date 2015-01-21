@@ -19,6 +19,10 @@
  * @since affiliates 1.0.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Pagination unscrupulously borrowed from WP_List_Table.
  */

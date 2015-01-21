@@ -19,6 +19,10 @@
  * @since affiliates 2.5.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Shows referral totals on the dashboard.
  */

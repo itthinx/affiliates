@@ -17,7 +17,12 @@
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
- */	
+ */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Shows hits by date
 
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');

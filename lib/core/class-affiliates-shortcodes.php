@@ -18,6 +18,14 @@
 * @package affiliates
 * @since affiliates 1.3.0
 */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Shortcode handler.
+ */
 class Affiliates_Shortcodes {
 
 	// var $url_options = array();

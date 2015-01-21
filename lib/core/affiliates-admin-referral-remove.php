@@ -19,6 +19,10 @@
  * @since affiliates 2.2.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Delete a referral.
  */

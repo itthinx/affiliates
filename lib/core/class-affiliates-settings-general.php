@@ -305,4 +305,3 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			affiliates_footer();
 	}
 }
-

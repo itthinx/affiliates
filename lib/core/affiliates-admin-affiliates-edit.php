@@ -19,6 +19,10 @@
  * @since affiliates 1.1.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Show edit affiliate form.
  * @param int $affiliate_id affiliate id

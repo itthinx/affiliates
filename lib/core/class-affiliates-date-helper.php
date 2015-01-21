@@ -59,6 +59,14 @@
  * 
  * s2u() which does the opposite.
  */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Date translation and format helper.
+ */
 class DateHelper {
 	
 	/**

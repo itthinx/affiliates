@@ -28,6 +28,14 @@
  *   as deleted but does not delete the user, the association is maintained.
  * 
  */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Affiliate registration form.
+ */
 class Affiliates_Registration {
 
 	const OPTIONAL = "optional";

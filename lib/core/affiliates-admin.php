@@ -18,6 +18,11 @@
  * @package affiliates
  * @since affiliates 1.0.0
  */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Affiliates overview and summarized statistics.
  */

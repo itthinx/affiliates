@@ -19,6 +19,10 @@
  * @since affiliates 1.1.2
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 global $affiliates_options, $affiliates_version, $affiliates_admin_messages;
 
 if ( !isset( $affiliates_admin_messages ) ) {

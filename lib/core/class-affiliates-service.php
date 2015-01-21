@@ -19,6 +19,10 @@
  * @since affiliates 2.1.1
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Provides service-related methods.
  */
