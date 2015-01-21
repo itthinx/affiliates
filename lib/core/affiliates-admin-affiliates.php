@@ -249,9 +249,9 @@ function affiliates_admin_affiliates() {
 	$output .=
 		'<div class="manage-affiliates">' .
 		'<div>' .
-			'<h2>' .
+			'<h1>' .
 				__( 'Manage Affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>' .
+			'</h1>' .
 		'</div>';
 				
 	$output .=

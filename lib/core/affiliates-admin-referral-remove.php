@@ -41,9 +41,9 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 	$current_url = remove_query_arg( 'paged', $current_url );
 
 	$output .= '<div class="referral remove">';
-	$output .= '<h2>';
+	$output .= '<h1>';
 	$output .= __( 'Remove a Referral', AFFILIATES_PLUGIN_DOMAIN );
-	$output .= '</h2>';
+	$output .= '</h1>';
 
 	if ( isset( $_POST['submit'] ) ) {
 		if ( !wp_verify_nonce( $_POST['referral-nonce'], 'remove' ) ) {

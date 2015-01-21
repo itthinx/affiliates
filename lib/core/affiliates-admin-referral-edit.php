@@ -145,13 +145,13 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	}
 
 	$output .= '<div class="referral">';
-	$output .= '<h2>';
+	$output .= '<h1>';
 	if ( empty( $referral_id ) ) {
 		$output .= __( 'New Referral', AFFILIATES_PLUGIN_DOMAIN );
 	} else {
 		$output .= __( 'Edit Referral', AFFILIATES_PLUGIN_DOMAIN );
 	}
-	$output .= '</h2>';
+	$output .= '</h1>';
 
 	$output .= '<form id="referral" action="' . $current_url . '" method="post">';
 	$output .= '<div>';

@@ -64,9 +64,9 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 	$output =
 		'<div class="manage-affiliates">' .
 		'<div>' .
-			'<h2>' .
+			'<h1>' .
 				__( 'Remove an affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>' .
+			'</h1>' .
 		'</div>' .
 		'<form id="remove-affiliate" action="' . $current_url . '" method="post">' .
 		'<div class="affiliate remove">' .

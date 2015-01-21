@@ -251,9 +251,9 @@ function affiliates_admin_referrals() {
 	
 	$output .=
 		'<div>' .
-		'<h2>' .
+		'<h1>' .
 		__( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ) .
-		'</h2>' .
+		'</h1>' .
 		'</div>';
 	
 	$output .= '<div class="manage add">';

@@ -153,9 +153,9 @@ class Affiliates_Totals {
 		$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 
 		$output .= '<div class="totals">';
-		$output .= '<h2>';
+		$output .= '<h1>';
 		$output .= __( 'Totals', AFFILIATES_PLUGIN_DOMAIN );
-		$output .= '</h2>';
+		$output .= '</h1>';
 
 		$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
 

@@ -46,9 +46,9 @@ function affiliates_admin_affiliates_add() {
 	$output =
 		'<div class="manage-affiliates">' .
 		'<div>' .
-			'<h2>' .
+			'<h1>' .
 				__( 'Add a new affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>' .
+			'</h1>' .
 		'</div>' .
 	
 		'<form id="add-affiliate" action="' . $current_url . '" method="post">' .

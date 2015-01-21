@@ -68,9 +68,9 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	$output =
 		'<div class="manage-affiliates">' .
 		'<div>' .
-			'<h2>' .
+			'<h1>' .
 				__( 'Edit an affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>' .
+			'</h1>' .
 		'</div>' .
 	
 		'<form id="edit-affiliate" action="' . $current_url . '" method="post">' .
