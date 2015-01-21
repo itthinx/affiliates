@@ -44,7 +44,7 @@ define( 'AFFILIATES_COOKIE_TIMEOUT_BASE', 86400 );
 /**
  * @var int default timeout in days
  */
-define( 'AFFILIATES_COOKIE_TIMEOUT_DAYS', 1 );
+define( 'AFFILIATES_COOKIE_TIMEOUT_DAYS', 30 );
 
 /**
  * @var string this cookie stores the affiliate id

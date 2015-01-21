@@ -675,6 +675,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Added a setup notice with links to the page generation and integration sections.
 * Improved the configuration section and replaced the Options menu item with Settings.
 * Direct referrals are now disabled by default.
+* Changed the default cookie timeout to 30 days.
 
 = 2.7.3 =
 * WordPress 4.1 compatible.
