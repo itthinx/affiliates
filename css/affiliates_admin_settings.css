@@ -24,10 +24,11 @@
 	font-weight: bold;
 }
 div.integration {
-	border-radius: 4px;
+	border-radius: 2px;
 	background-color: #fff;
 	border: 1px solid #f0f0f0;
 	padding: 0.62em 1em;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 ul.integrations > li {
 	margin: 1em 0;
