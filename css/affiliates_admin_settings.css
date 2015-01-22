@@ -23,3 +23,16 @@
 .section-links a.active {
 	font-weight: bold;
 }
+div.integration {
+	border-radius: 4px;
+	background-color: #fff;
+	border: 1px solid #f0f0f0;
+	padding: 0.62em 1em;
+}
+ul.integrations > li {
+	margin: 1em 0;
+	width: 95%;
+}
+ul.integrations > li:last-child {
+	margin-bottom: 2em;
+}

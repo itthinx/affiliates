@@ -38,7 +38,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-woocommerce-light/',
 				'description'  => __( 'This plugin integrates Affiliates with WooCommerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file'  => 'affiliates-woocommerce-light/affiliates-woocommerce-light.php',
-				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>WooCommerce Integration</strong>.'
+				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>WooCommerce Integration</strong>.',
+				'repository'   => 'wordpress',
+				'access'       => 'free'
 			),
 			'affiliates-contact-form-7' => array(
 				'title'        => __( 'Contact Form 7', AFFILIATES_PLUGIN_DOMAIN ),
@@ -46,15 +48,19 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-contact-form-7/',
 				'description'  => __( 'This plugin integrates Affiliates, Affiliates Pro and Affiliates Enterprise with Contact Form 7. This integration stores data from submitted forms and tracks form submissions to the referring affiliate.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file'  => 'affiliates-contact-form-7/affiliates-contact-form-7.php',
-				'notes'        => ''
+				'notes'        => '',
+				'repository'   => 'wordpress',
+				'access'       => 'free'
 			),
 			'affiliates-jigoshop-light' => array(
-				'title'       => __( 'Jigoshop', AFFILIATES_PLUGIN_DOMAIN ),
+				'title'        => __( 'Jigoshop', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_title' => __( 'Affiliates Jigoshop Integration Light', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-jigoshop-light/',
-				'description' => __( 'This plugin integrates Affiliates with Jigoshop. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
-				'plugin_file' => 'affiliates-jigoshop-light/affiliates-jigoshop-light.php',
-				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>Jigoshop Integration</strong>.'
+				'description'  => __( 'This plugin integrates Affiliates with Jigoshop. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
+				'plugin_file'  => 'affiliates-jigoshop-light/affiliates-jigoshop-light.php',
+				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>Jigoshop Integration</strong>.',
+				'repository'   => 'wordpress',
+				'access'       => 'free'
 			),
 			'affiliates-wp-e-commerce' => array(
 				'title'       => __( 'WP e-Commerce', AFFILIATES_PLUGIN_DOMAIN ),
@@ -62,7 +68,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-wp-e-commerce/',
 				'description' => __( 'This plugin integrates Affiliates, Affiliates Pro and Affiliates Enterprise with WP e-Commerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file' => 'affiliates-wp-e-commerce/affiliates-wp-e-commerce.php',
-				'notes'        => ''
+				'notes'        => '',
+				'repository' => 'wordpress',
+				'access'        => 'free'
 			),
 			'affiliates-eshop-light' => array(
 				'title'        => __( 'eShop', AFFILIATES_PLUGIN_DOMAIN ),
@@ -70,7 +78,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-eshop-light/',
 				'description'  => __( 'This plugin integrates Affiliates with eShop. With this integration plugin, referrals are created automatically for your affiliates when sales are made through eShop.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file'  => 'affiliates-eshop-light/affiliates-eshop-light.php',
-				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>eShop Integration</strong>.'
+				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>eShop Integration</strong>.',
+				'repository'   => 'wordpress',
+				'access'       => 'free'
 			),
 			'affiliates-ecwid-light' => array(
 				'title'        => __( 'Ecwid', AFFILIATES_PLUGIN_DOMAIN ),
@@ -78,7 +88,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ecwid-light/',
 				'description'  => __( 'This plugin integrates Affiliates with Ecwid. With this integration plugin, affiliates are credited with referrals automatically after a customer has made a purchase through the online store powered by Ecwid.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file'  => 'affiliates-ecwid-light/affiliates-ecwid-light.php',
-				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>Ecwid Integration</strong>.'
+				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>Ecwid Integration</strong>.',
+				'repository'   => 'wordpress',
+				'access'       => 'free'
 			),
 			'affiliates-ready-light' => array(
 				'title'        => __( 'Ready! Ecommerce', AFFILIATES_PLUGIN_DOMAIN ),
@@ -86,7 +98,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ready-light/',
 				'description'  => __( 'This plugin integrates Affiliates with Ready! Ecommerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file'  => 'affiliates-ready-light/affiliates-ready-light.php',
-				'notes'        => ''
+				'notes'        => '',
+				'repository'   => 'wordpress',
+				'access'       => 'free'
 			)
 		);
 		self::$integrations = apply_filters( 'affiliates_settings_integrations', self::$integrations );
@@ -122,7 +136,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$active_plugins = apply_filters( 'active_plugins', get_option('active_plugins' ) );
 		$all_plugins    = get_plugins();
 
-		$list = '<ul>';
+		$list = '<ul class="integrations">';
 		foreach( self::$integrations as $key => $integration ) {
 			$install_url = wp_nonce_url(
 				self_admin_url(
@@ -132,6 +146,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$activate_url   = 'plugins.php?action=activate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "activate-plugin_$key/$key.php" ) );
 			$deactivate_url = 'plugins.php?action=deactivate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "deactivate-plugin_$key/$key.php" ) );
 			$list .= '<li>';
+			$list .= '<div class="integration">';
 			$list .= '<h3>' . $integration['title'] . '</h3>';
 			$action      = '';
 			$explanation = '';
@@ -163,7 +178,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$list .= $integration['description'];
 			$list .= '</p>';
 			if ( !empty( $integration['notes'] ) ) {
-				$list .= '<p class="description">';
+				$list .= '<p class="notes">';
 				$list .= $integration['notes'];
 				$list .= '</p>';
 			}
@@ -173,6 +188,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$list .= '<p>';
 			$list .= $action;
 			$list .= '</p>';
+			$list .= '</div>';
 			$list .= '</li>';
 		}
 		$list .= '</ul>';
