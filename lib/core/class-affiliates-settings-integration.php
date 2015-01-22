@@ -50,7 +50,7 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 				'title'       => __( 'Jigoshop', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_title' => __( 'Affiliates Jigoshop Integration Light', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-jigoshop-light/',
-				'description' => __( 'This plugin integrates the Affiliates with Jigoshop. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
+				'description' => __( 'This plugin integrates Affiliates with Jigoshop. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
 				'plugin_file' => 'affiliates-jigoshop-light/affiliates-jigoshop-light.php'
 			),
 			'affiliates-wp-e-commerce' => array(
@@ -93,7 +93,9 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 		$output = '';
 
 		$output .= '<p class="description">';
-		$output .= __( 'Integrations link the affiliate system to e-commerce plugins and other platforms. The integrations are required to record referrals, that reflect commissions awarded to affiliates, based on purchases or platform-specific actions.', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= __( 'Integrations link the affiliate system to e-commerce plugins and other platforms.', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= ' ';
+		$output .= __( 'The integrations are required to record referrals, as these award affiliates with commissions based on referred purchases or platform-specific actions.', AFFILIATES_PLUGIN_DOMAIN );
 		$output .= '</p>';
 		$output .= '<p class="description">';
 		$output .= __( 'You can manage available integrations here, this includes the installation and activation of integrations with e-commerce and other systems.', AFFILIATES_PLUGIN_DOMAIN );
@@ -102,8 +104,10 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 		$output .= __( 'You only need to install integrations with plugins that are actually used on the site.', AFFILIATES_PLUGIN_DOMAIN );
 		$output .= '</p>';
 		$output .= '<p class="description">';
+		$output .= __( 'User registrations do not require a specific integration to be installed.', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= ' ';
 		$output .= sprintf(
-			__( 'User registrations do not require a specific integration to be installed. Enable the built-in integration if the options provided under <a href="%s">User Registration</a> are sufficient.', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Enable the built-in integration if the options provided under <a href="%s">User Registration</a> are sufficient.', AFFILIATES_PLUGIN_DOMAIN ),
 			esc_attr( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) )
 		);
 		$output .= '</p>';
@@ -125,7 +129,7 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 			$action      = '';
 			$explanation = '';
 			if ( !key_exists( $integration['plugin_file'], $all_plugins ) ) {
-				$action = sprintf( '<a href="%s">Install</a>', esc_url( $install_url ) );
+				$action = sprintf( '<a class="button" href="%s">Install</a>', esc_url( $install_url ) );
 				$explanation = sprintf(
 					__( 'The <a href="%s">%s</a> plugin is not installed.', AFFILIATES_PLUGIN_DOMAIN ),
 					esc_attr( $integration['plugin_url'] ),
@@ -133,14 +137,14 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 				);
 			} else {
 				if ( !in_array( $integration['plugin_file'], $active_plugins ) ) {
-					$action = sprintf( '<a href="%s">Activate</a>', esc_url( $activate_url ) );
+					$action = sprintf( '<a class="button" href="%s">Activate</a>', esc_url( $activate_url ) );
 					$explanation = sprintf(
 						__( 'The <a href="%s">%s</a> plugin is installed but not activated.', AFFILIATES_PLUGIN_DOMAIN ),
 						esc_attr( $integration['plugin_url'] ),
 						esc_html( $integration['plugin_title'] )
 					);
 				} else {
-					$action = sprintf( '<a href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
+					$action = sprintf( '<a class="button" href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
 					$explanation = sprintf(
 						__( 'The <a href="%s">%s</a> plugin is installed and activated.', AFFILIATES_PLUGIN_DOMAIN ),
 						esc_attr( $integration['plugin_url'] ),
