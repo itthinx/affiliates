@@ -136,7 +136,7 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 					esc_html( $integration['plugin_title'] )
 				);
 			} else {
-				if ( !in_array( $integration['plugin_file'], $active_plugins ) ) {
+				if ( is_plugin_inactive( $integration['plugin_file'] ) ) {
 					$action = sprintf( '<a class="button" href="%s">Activate</a>', esc_url( $activate_url ) );
 					$explanation = sprintf(
 						__( 'The <a href="%s">%s</a> plugin is installed but not activated.', AFFILIATES_PLUGIN_DOMAIN ),
