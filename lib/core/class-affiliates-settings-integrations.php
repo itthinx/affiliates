@@ -1,6 +1,6 @@
 <?php
 /**
- * class-affiliates-settings-integration.php
+ * class-affiliates-settings-integrations.php
  * 
  * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
  * 
@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Integration section.
  */
-class Affiliates_Settings_Integration extends Affiliates_Settings {
+class Affiliates_Settings_Integrations extends Affiliates_Settings {
 
 	private static $integrations = null;
 
@@ -181,4 +181,4 @@ class Affiliates_Settings_Integration extends Affiliates_Settings {
 		echo $output;
 	}
 }
-Affiliates_Settings_Integration::init();
+Affiliates_Settings_Integrations::init();

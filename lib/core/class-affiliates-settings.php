@@ -47,7 +47,7 @@ class Affiliates_Settings {
 		self::$sections = apply_filters(
 			'affiliates_settings_sections',
 			array(
-				'integration'  => __( 'Integration', AFFILIATES_PLUGIN_DOMAIN ),
+				'integrations' => __( 'Integrations', AFFILIATES_PLUGIN_DOMAIN ),
 				'pages'        => __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ),
 				'referrals'    => __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
 				'registration' => __( 'Registration', AFFILIATES_PLUGIN_DOMAIN ),
@@ -108,7 +108,7 @@ class Affiliates_Settings {
 				),
 				'integrations' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'integration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
 					__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
 				),
 				'registration' => sprintf (
@@ -155,7 +155,7 @@ class Affiliates_Settings {
 		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
 
 		if ( !key_exists( $section, self::$sections ) ) {
-			$section = 'integration';
+			$section = 'integrations';
 		}
 		$section_title = self::$sections[$section];
 
@@ -183,9 +183,9 @@ class Affiliates_Settings {
 			'</h2>';
 		
 		switch( $section ) {
-			case 'integration' :
-				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-integration.php';
-				Affiliates_Settings_Integration::section();
+			case 'integrations' :
+				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-integrations.php';
+				Affiliates_Settings_Integrations::section();
 				break;
 			case 'pages' :
 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-pages.php';
