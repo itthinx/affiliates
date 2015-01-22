@@ -78,6 +78,7 @@ class Affiliates_Settings {
 	public static function setup_notice() {
 		echo '<div id="message" class="updated affiliates-settings">';
 
+		// render the welcome header and a brief explanation
 		echo '<p>';
 		echo
 			sprintf(
@@ -86,33 +87,48 @@ class Affiliates_Settings {
 			);
 		echo '</p>';
 
+		echo '<p>';
+		echo __( 'Please review the following suggested steps to set up the affiliate system.', AFFILIATES_PLUGIN_DOMAIN );
+		echo ' ';
+		echo __( 'This is intended as a guidance and you can safely hide this message when finished.', AFFILIATES_PLUGIN_DOMAIN );
+		echo ' ';
+		echo sprintf(
+			__( 'Use the <a href="%s">Settings</a> section to review or adjust the system anytime.', AFFILIATES_PLUGIN_DOMAIN ),
+			admin_url( 'admin.php?page=affiliates-admin-settings' )
+		);
+		echo '</p>';
+
+		$buttons = apply_filters(
+			'affiliates_setup_buttons',
+			array(
+				'pages' => sprintf (
+					'<a href="%s" class="button-primary">%s</a>',
+					add_query_arg( 'section', 'pages', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					__( 'Create an Affiliate Area', AFFILIATES_PLUGIN_DOMAIN )
+				),
+				'integrations' => sprintf (
+					'<a href="%s" class="button-primary">%s</a>',
+					add_query_arg( 'section', 'integration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
+				),
+				'registration' => sprintf (
+					'<a href="%s" class="button-primary">%s</a>',
+					add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					__( 'Enable Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN )
+				),
+				'general' => sprintf(
+					'<a href="%s" class="button-primary">%s</a>',
+					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					__( 'Review General Settings', AFFILIATES_PLUGIN_DOMAIN )
+				)
+			)
+		);
+
+		// render the buttons
 		echo '<p class="submit">';
-
-		printf (
-			'<a href="%s" class="button-primary">%s</a>',
-			add_query_arg( 'section', 'pages', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-			__( 'Create an Affiliate Area', AFFILIATES_PLUGIN_DOMAIN )
-		);
-
+		echo implode( ' ', $buttons );
 		echo ' ';
-
-		printf (
-			'<a href="%s" class="button-primary">%s</a>',
-			add_query_arg( 'section', 'integration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-			__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
-		);
-		echo ' ';
-
-		printf (
-		'<a href="%s" class="button-primary">%s</a>',
-		add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-		__( 'Enable Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN )
-		);
-		echo ' ';
-
-		// @todo link to review general settings? maybe not
-
-		printf( '<a class="hide button-primary" href="%s">%s</a>',
+		printf( '<a class="hide button" href="%s">%s</a>',
 			wp_nonce_url(
 				add_query_arg( 'aff_setup_hide', 'true', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
 				'aff_setup_hide',
