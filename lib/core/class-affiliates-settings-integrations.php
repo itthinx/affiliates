@@ -40,7 +40,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file'  => 'affiliates-woocommerce-light/affiliates-woocommerce-light.php',
 				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>WooCommerce Integration</strong>.',
 				'repository'   => 'wordpress',
-				'access'       => 'free'
+				'access'       => 'free',
+				'targets'      => array( 'affiliates' ),
+				'platforms'    => array( 'woocommerce' )
 			),
 			'affiliates-contact-form-7' => array(
 				'title'        => __( 'Contact Form 7', AFFILIATES_PLUGIN_DOMAIN ),
@@ -50,7 +52,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file'  => 'affiliates-contact-form-7/affiliates-contact-form-7.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
-				'access'       => 'free'
+				'access'       => 'free',
+				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
+				'platforms'    => array( 'contact-form-7' )
 			),
 			'affiliates-jigoshop-light' => array(
 				'title'        => __( 'Jigoshop', AFFILIATES_PLUGIN_DOMAIN ),
@@ -60,7 +64,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file'  => 'affiliates-jigoshop-light/affiliates-jigoshop-light.php',
 				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>Jigoshop Integration</strong>.',
 				'repository'   => 'wordpress',
-				'access'       => 'free'
+				'access'       => 'free',
+				'targets'      => array( 'affiliates' ),
+				'platforms'    => array( 'jigoshop' )
 			),
 			'affiliates-wp-e-commerce' => array(
 				'title'       => __( 'WP e-Commerce', AFFILIATES_PLUGIN_DOMAIN ),
@@ -70,7 +76,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file' => 'affiliates-wp-e-commerce/affiliates-wp-e-commerce.php',
 				'notes'        => '',
 				'repository' => 'wordpress',
-				'access'        => 'free'
+				'access'        => 'free',
+				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
+				'platforms'    => array( 'wp-e-commerce' )
 			),
 			'affiliates-eshop-light' => array(
 				'title'        => __( 'eShop', AFFILIATES_PLUGIN_DOMAIN ),
@@ -80,7 +88,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file'  => 'affiliates-eshop-light/affiliates-eshop-light.php',
 				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>eShop Integration</strong>.',
 				'repository'   => 'wordpress',
-				'access'       => 'free'
+				'access'       => 'free',
+				'targets'      => array( 'affiliates' ),
+				'platforms'    => array( 'eshop' )
 			),
 			'affiliates-ecwid-light' => array(
 				'title'        => __( 'Ecwid', AFFILIATES_PLUGIN_DOMAIN ),
@@ -90,7 +100,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file'  => 'affiliates-ecwid-light/affiliates-ecwid-light.php',
 				'notes'        => 'This light integration is suitable to be used with the <strong>Affiliates</strong> plugin. For use with <strong>Affiliates Pro</strong> or <strong>Affiliates Enterprise</strong>, please install the <strong>Ecwid Integration</strong>.',
 				'repository'   => 'wordpress',
-				'access'       => 'free'
+				'access'       => 'free',
+				'targets'      => array( 'affiliates' ),
+				'platforms'    => array( 'ecwid' )
 			),
 			'affiliates-ready-light' => array(
 				'title'        => __( 'Ready! Ecommerce', AFFILIATES_PLUGIN_DOMAIN ),
@@ -100,7 +112,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'plugin_file'  => 'affiliates-ready-light/affiliates-ready-light.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
-				'access'       => 'free'
+				'access'       => 'free',
+				'targets'      => array( 'affiliates' ),
+				'platforms'    => array( 'ready-ecommerce' )
 			)
 		);
 		self::$integrations = apply_filters( 'affiliates_settings_integrations', self::$integrations );
