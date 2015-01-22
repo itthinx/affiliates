@@ -44,6 +44,15 @@ class Affiliates_Settings {
 	 * Settings initialization.
 	 */
 	public static function init() {
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+	}
+
+	/**
+	 * Settings sections.
+	 * 
+	 * @return array
+	 */
+	public static function init_sections() {
 		self::$sections = apply_filters(
 			'affiliates_settings_sections',
 			array(
@@ -54,7 +63,6 @@ class Affiliates_Settings {
 				'general'      => __( 'General', AFFILIATES_PLUGIN_DOMAIN )
 			)
 		);
-		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 	}
 
 	/**
@@ -151,6 +159,8 @@ class Affiliates_Settings {
 		}
 
 		wp_enqueue_style( 'affiliates-admin-settings' );
+
+		self::init_sections();
 
 		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
 
