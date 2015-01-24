@@ -30,6 +30,12 @@ div.integration {
 	padding: 0.62em 1em;
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
+div.integration.active {
+	border-left:4px solid #2ea2cc;
+}
+div.integration.inactive {
+	border-left:4px solid #999;
+}
 ul.integrations > li {
 	margin: 1em 0;
 	width: 95%;

@@ -159,9 +159,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			);
 			$activate_url   = 'plugins.php?action=activate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "activate-plugin_$key/$key.php" ) );
 			$deactivate_url = 'plugins.php?action=deactivate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "deactivate-plugin_$key/$key.php" ) );
-			$list .= '<li>';
-			$list .= '<div class="integration">';
-			$list .= '<h3>' . $integration['title'] . '</h3>';
+			$integration_class = '';
 			$action      = '';
 			$explanation = '';
 			if ( !key_exists( $integration['plugin_file'], $all_plugins ) ) {
@@ -179,6 +177,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 						esc_attr( $integration['plugin_url'] ),
 						esc_html( $integration['plugin_title'] )
 					);
+					$integration_class = 'inactive';
 				} else {
 					$action = sprintf( '<a class="button" href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
 					$explanation = sprintf(
@@ -186,8 +185,12 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 						esc_attr( $integration['plugin_url'] ),
 						esc_html( $integration['plugin_title'] )
 					);
+					$integration_class = 'active';
 				}
 			}
+			$list .= '<li>';
+			$list .= sprintf( '<div class="integration %s">', $integration_class );
+			$list .= '<h3>' . $integration['title'] . '</h3>';
 			$list .= '<p class="description">';
 			$list .= $integration['description'];
 			$list .= '</p>';
