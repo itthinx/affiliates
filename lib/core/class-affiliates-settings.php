@@ -193,8 +193,6 @@ class Affiliates_Settings {
 			$section_title .
 			'</h2>';
 
-		echo apply_filters( 'affiliates_settings_section_prefix', '', $section );
-
 		switch( $section ) {
 			case 'integrations' :
 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-integrations.php';
@@ -220,7 +218,6 @@ class Affiliates_Settings {
 				do_action( 'affiliates_settings_section', $section );
 		}
 
-		echo apply_filters( 'affiliates_settings_section_suffix', '', $section );
 	}
 
 }
