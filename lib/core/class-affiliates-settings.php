@@ -192,7 +192,7 @@ class Affiliates_Settings {
 			'<h2>' .
 			$section_title .
 			'</h2>';
-		
+
 		switch( $section ) {
 			case 'integrations' :
 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-integrations.php';
