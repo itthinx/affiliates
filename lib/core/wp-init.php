@@ -1194,7 +1194,6 @@ function affiliates_get_direct_id() {
 // only needed when in admin
 if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
-// 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-options.php'; // @todo remove
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
