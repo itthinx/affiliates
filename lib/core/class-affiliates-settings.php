@@ -56,11 +56,11 @@ class Affiliates_Settings {
 		self::$sections = apply_filters(
 			'affiliates_settings_sections',
 			array(
-				'integrations' => __( 'Integrations', AFFILIATES_PLUGIN_DOMAIN ),
+				'general'      => __( 'General', AFFILIATES_PLUGIN_DOMAIN ),
+				'registration' => __( 'Registration', AFFILIATES_PLUGIN_DOMAIN ),
 				'pages'        => __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ),
 				'referrals'    => __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-				'registration' => __( 'Registration', AFFILIATES_PLUGIN_DOMAIN ),
-				'general'      => __( 'General', AFFILIATES_PLUGIN_DOMAIN )
+				'integrations' => __( 'Integrations', AFFILIATES_PLUGIN_DOMAIN )
 			)
 		);
 	}
@@ -109,6 +109,11 @@ class Affiliates_Settings {
 		$buttons = apply_filters(
 			'affiliates_setup_buttons',
 			array(
+				'registration' => sprintf (
+					'<a href="%s" class="button-primary">%s</a>',
+					add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					__( 'Enable Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN )
+				),
 				'pages' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'pages', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
@@ -118,17 +123,13 @@ class Affiliates_Settings {
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
 					__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
-				),
-				'registration' => sprintf (
-					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Enable Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN )
-				),
-				'general' => sprintf(
-					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Review General Settings', AFFILIATES_PLUGIN_DOMAIN )
 				)
+// 				,
+// 				'general' => sprintf(
+// 					'<a href="%s" class="button-primary">%s</a>',
+// 					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+// 					__( 'Review General Settings', AFFILIATES_PLUGIN_DOMAIN )
+// 				)
 			)
 		);
 
@@ -165,7 +166,7 @@ class Affiliates_Settings {
 		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
 
 		if ( !key_exists( $section, self::$sections ) ) {
-			$section = 'integrations';
+			$section = 'general';
 		}
 		$section_title = self::$sections[$section];
 
