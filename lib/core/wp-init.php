@@ -1350,7 +1350,7 @@ function affiliates_network_admin_menu() {
 		__( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-network-admin',
-		array( 'Affiliates_Settings_Network', 'affiliates_network_admin_options' ),
+		array( 'Affiliates_Settings_Network', 'network_admin_settings' ),
 		AFFILIATES_PLUGIN_URL . '/images/affiliates.png'
 	);
 	$pages[] = $page;
