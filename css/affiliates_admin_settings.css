@@ -36,6 +36,9 @@ div.integration.active {
 div.integration.inactive {
 	border-left:4px solid #999;
 }
+div.integration.non-free {
+	border-right:4px solid #00a651;
+}
 ul.integrations > li {
 	margin: 1em 0;
 	width: 95%;

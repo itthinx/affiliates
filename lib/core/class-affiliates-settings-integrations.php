@@ -159,7 +159,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			);
 			$activate_url   = 'plugins.php?action=activate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "activate-plugin_$key/$key.php" ) );
 			$deactivate_url = 'plugins.php?action=deactivate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "deactivate-plugin_$key/$key.php" ) );
-			$integration_class = '';
+			$integration_class = isset( $integration['access'] ) ? $integration['access'] : '';
 			$action      = '';
 			$explanation = '';
 			if ( !key_exists( $integration['plugin_file'], $all_plugins ) ) {
@@ -177,7 +177,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 						esc_attr( $integration['plugin_url'] ),
 						esc_html( $integration['plugin_title'] )
 					);
-					$integration_class = 'inactive';
+					$integration_class .= ' inactive';
 				} else {
 					$action = sprintf( '<a class="button" href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
 					$explanation = sprintf(
@@ -185,7 +185,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 						esc_attr( $integration['plugin_url'] ),
 						esc_html( $integration['plugin_title'] )
 					);
-					$integration_class = 'active';
+					$integration_class .= ' active';
 				}
 			}
 			$list .= '<li>';
