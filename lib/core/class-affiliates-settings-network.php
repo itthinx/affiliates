@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'AFFILIATES_MS_ADMIN_SETTINGS_NONCE', 'aff_ms_settings_nonce' );
+
 /**
  * Settings admin section.
  */
@@ -46,7 +48,7 @@ class Affiliates_Settings_Network {
 			echo '<h1>' . __( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ) . '</h1>';
 			if ( affiliates_is_sitewide_plugin() ) {
 				if ( isset( $_POST['submit'] ) ) {
-					if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_OPTIONS_NONCE], 'admin' ) ) {
+					if ( wp_verify_nonce( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE], 'admin' ) ) {
 						if ( !empty( $_POST['delete-network-data'] ) ) {
 							update_option( 'aff_delete_network_data', true );
 						} else {
@@ -73,7 +75,7 @@ class Affiliates_Settings_Network {
 				'<li>' . __( 'By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>' .
 				'</ol>' .
 				'<p>' .
-				wp_nonce_field( 'admin', AFFILIATES_ADMIN_OPTIONS_NONCE, true, false ) .
+				wp_nonce_field( 'admin', AFFILIATES_MS_ADMIN_SETTINGS_NONCE, true, false ) .
 				'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 				'</p>' .
 				'</div>' .
