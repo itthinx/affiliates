@@ -1297,19 +1297,6 @@ function affiliates_admin_menu() {
 		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 	}
 
-	// options @todo remove
-// 	$page = add_submenu_page(
-// 		'affiliates-admin',
-// 		__( 'Affiliates options', AFFILIATES_PLUGIN_DOMAIN ),
-// 		__( 'Options', AFFILIATES_PLUGIN_DOMAIN ),
-// 		AFFILIATES_ADMINISTER_OPTIONS,
-// 		'affiliates-admin-options',
-// 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_options' )
-// 	);
-// 	$pages[] = $page;
-// 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
-// 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
-
 	// settings
 	$page = add_submenu_page(
 		'affiliates-admin',
