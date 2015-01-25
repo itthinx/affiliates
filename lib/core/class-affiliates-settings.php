@@ -219,9 +219,5 @@ class Affiliates_Settings {
 
 	}
 
-	public static function network_admin_settings() {
-		// @todo network admin settings
-	}
-
 }
 Affiliates_Settings::init();
