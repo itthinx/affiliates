@@ -676,6 +676,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Changed the default cookie timeout to 30 days.
 * Security improvement, added additional ABSPATH checks.
 * Improved UI appearance and fixed some structural issues.
+* Added the option to enable user registration referrals for new WooCommerce customers.
 
 = 2.7.3 =
 * WordPress 4.1 compatible.

@@ -48,6 +48,13 @@ function affiliates_admin_user_registration() {
 				add_option( 'aff_user_registration_enabled', 'yes', '', 'no' );
 			}
 
+			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+				delete_option( 'aff_customer_registration_enabled' );
+				if ( !empty( $_POST['enabled'] ) ) {
+					add_option( 'aff_customer_registration_enabled', 'yes', '', 'no' );
+				}
+			}
+
 			if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
 				delete_option( 'aff_user_registration_base_amount' );
 				if ( !empty( $_POST['base_amount'] ) ) {
@@ -81,6 +88,9 @@ function affiliates_admin_user_registration() {
 	}
 
 	$user_registration_enabled     = get_option( 'aff_user_registration_enabled', 'no' );
+	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		$customer_registration_enabled = get_option( 'aff_customer_registration_enabled', 'no' );
+	}
 	if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
 		$user_registration_base_amount = get_option( 'aff_user_registration_base_amount', '' );
 	}
@@ -111,6 +121,21 @@ function affiliates_admin_user_registration() {
 	echo __( 'Enable the user registration integration', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</label>';
 	echo '</div>';
+
+	// enable customer
+	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		echo '<div class="field customer-registration-enabled">';
+		echo '<label>';
+		printf( '<input type="checkbox" name="enabled" value="1" %s />', $customer_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
+		echo ' ';
+		echo __( 'Enable the WooCommerce customer registration integration', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</label>';
+		echo ' ';
+		echo '<span class="description">';
+		echo __( 'If the user registration integration should create referrals for new customers that register at checkout, this option should be enabled.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</span>';
+		echo '</div>';
+	}
 
 	// base amount
 	if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
