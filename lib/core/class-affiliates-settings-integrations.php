@@ -159,7 +159,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			);
 			$activate_url   = 'plugins.php?action=activate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "activate-plugin_$key/$key.php" ) );
 			$deactivate_url = 'plugins.php?action=deactivate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "deactivate-plugin_$key/$key.php" ) );
-			$integration_class = isset( $integration['access'] ) ? $integration['access'] : '';
+			$integration_class = isset( $integration['class'] ) ? $integration['class'] : '';
 			$action      = '';
 			$explanation = '';
 			if ( !key_exists( $integration['plugin_file'], $all_plugins ) ) {

@@ -36,7 +36,7 @@ div.integration.active {
 div.integration.inactive {
 	border-left:4px solid #999;
 }
-div.integration.non-free {
+div.integration.ext {
 	border-right:4px solid #00a651;
 }
 ul.integrations > li {
