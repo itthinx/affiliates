@@ -24,13 +24,11 @@ class Affiliates_Exclusion {
 	private static $ap_priority = false;
 
 	public static function init() {
-		if ( get_option( 'aff_excluded', 'yes' ) !== 'no' ) {
+		if ( get_option( 'aff_allow_auto', 'no' ) == 'no' ) {
 			add_filter( 'affiliates_service_affiliate_id', array( __CLASS__, 'service' ), 999, 2 );
-
-			// @todo here or below ?
-			add_filter( 'affiliates_coupon_affiliate_id', array( __CLASS__, 'coupon' ), 999, 2 );
+// 			add_filter( 'affiliates_coupon_affiliate_id', array( __CLASS__, 'coupon' ), 999, 2 );
 		}
-		if ( get_option( 'aff_excluded_coupons_allowed', 'no' ) !== 'yes' ) {
+		if ( get_option( 'aff_allow_auto_coupons', 'no' ) == 'no' ) {
 			add_filter( 'woocommerce_coupon_is_valid', array( __CLASS__, 'woocommerce_coupon_is_valid' ), 999, 2 );
 			add_action( 'woocommerce_after_checkout_validation', array( __CLASS__, 'woocommerce_after_checkout_validation' ), 999 );
 		}

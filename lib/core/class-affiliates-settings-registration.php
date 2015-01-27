@@ -42,6 +42,8 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				delete_option( 'aff_notify_admin' );
 				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
 
+				self::settings_saved_notice();
+
 			}
 		}
 

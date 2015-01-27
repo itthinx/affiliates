@@ -138,6 +138,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					add_option( 'aff_delete_data', !empty( $_POST['delete-data'] ), '', 'no' );
 				}
 
+				self::settings_saved_notice();
 			}
 		}
 

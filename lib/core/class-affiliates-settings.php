@@ -222,5 +222,14 @@ class Affiliates_Settings {
 
 	}
 
+	/**
+	 * Outputs a note to confirm settings have been saved.
+	 */
+	protected static function settings_saved_notice() {
+		echo '<div class="updated">';
+		echo __( 'Settings saved.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</div>';
+	}
+
 }
 Affiliates_Settings::init();
