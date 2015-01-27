@@ -71,10 +71,7 @@ class Affiliates_Settings {
 	public static function admin_init() {
 		wp_register_style( 'affiliates-admin-settings', AFFILIATES_PLUGIN_URL . 'css/affiliates_admin_settings.css' );
 		wp_register_script( 'affiliates-field-choice', AFFILIATES_PLUGIN_URL . 'js/affiliates-field-choice.js', array( 'jquery' ), AFFILIATES_CORE_VERSION, true );
-		
-		wp_enqueue_script( 'affiliates-field-choice' );
-		
-		
+
 		if ( current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
 			if ( isset( $_REQUEST['aff_setup_hide'] ) ) {
 				if ( wp_verify_nonce( $_REQUEST['aff_setup_nonce'], 'aff_setup_hide' ) ) {
@@ -167,6 +164,7 @@ class Affiliates_Settings {
 		}
 
 		wp_enqueue_style( 'affiliates-admin-settings' );
+		wp_enqueue_script( 'affiliates-field-choice' );
 
 		self::init_sections();
 
