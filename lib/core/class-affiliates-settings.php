@@ -70,13 +70,15 @@ class Affiliates_Settings {
 	 */
 	public static function admin_init() {
 		wp_register_style( 'affiliates-admin-settings', AFFILIATES_PLUGIN_URL . 'css/affiliates_admin_settings.css' );
-		if ( isset( $_REQUEST['aff_setup_hide'] ) ) {
-			if ( wp_verify_nonce( $_REQUEST['aff_setup_nonce'], 'aff_setup_hide' ) ) {
-				add_option( 'aff_setup_hide', 'yes', '', 'no' );
+		if ( current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
+			if ( isset( $_REQUEST['aff_setup_hide'] ) ) {
+				if ( wp_verify_nonce( $_REQUEST['aff_setup_nonce'], 'aff_setup_hide' ) ) {
+					add_option( 'aff_setup_hide', 'yes', '', 'no' );
+				}
 			}
-		}
-		if ( !get_option( 'aff_setup_hide' ) ) {
-			add_action( 'admin_notices', array( __CLASS__, 'setup_notice' ) );
+			if ( !get_option( 'aff_setup_hide' ) ) {
+				add_action( 'admin_notices', array( __CLASS__, 'setup_notice' ) );
+			}
 		}
 	}
 
