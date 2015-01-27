@@ -56,6 +56,9 @@ if ( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) {
 	require_once AFFILIATES_CORE_LIB . '/class-affiliates-user-registration.php';
 }
 
+// affiliates excluded
+include_once AFFILIATES_CORE_LIB . '/class-affiliates-exclusion.php';
+
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
 /**

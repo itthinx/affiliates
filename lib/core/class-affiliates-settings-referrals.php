@@ -58,13 +58,22 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 				// allow duplicates?
 				delete_option( 'aff_duplicates' );
 				add_option( 'aff_duplicates', !empty( $_POST['duplicates'] ), '', 'no' );
+
+				delete_option( 'aff_excluded' );
+				add_option( 'aff_excluded', !empty( $_POST['excluded'] ), '', 'no' );
+
+				delete_option( 'aff_excluded_coupons_allowed' );
+				add_option( 'aff_excluded_coupons_allowed', !empty( $_POST['coupons_allowed'] ), '', 'no' );
+
 			}
 		}
 
-		$timeout        = get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS );
-		$use_direct     = get_option( 'aff_use_direct', false );
-		$duplicates     = get_option( 'aff_duplicates', false );
-		$default_status = get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
+		$timeout         = get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS );
+		$use_direct      = get_option( 'aff_use_direct', false );
+		$duplicates      = get_option( 'aff_duplicates', false );
+		$excluded        = get_option( 'aff_excluded', false );
+		$coupons_allowed = get_option( 'aff_excluded_coupons_allowed', false );
+		$default_status  = get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 		$status_descriptions = array(
 			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
 			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
@@ -137,6 +146,29 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 			'</p>' .
 			'<p class="description">' .
 			__( 'Allow to record duplicate referrals for the same affiliate (based on amount, currency, internal type and reference).', AFFILIATES_PLUGIN_DOMAIN ) .
+			'</p>';
+
+		echo
+			'<h3>' . __( 'Excluded referrals', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<p>' .
+			'<label>' .
+			sprintf( '<input type="checkbox" name="excluded" %s" />', $excluded ? ' checked="checked" ' : '' ) .
+			' ' .
+			__( 'Allow affiliates to be credited with auto-referrals.', AFFILIATES_PLUGIN_DOMAIN ) .
+			' ' .
+			__( 'If this option is enabled, affiliates can visit their own affiliate link and earn commissions on their own purchases.', AFFILIATES_PLUGIN_DOMAIN ) .
+			' ' .
+			__( 'Auto-referrals are identified when the purchase is made through the same user or if the user email is the same as the affiliate’s email.', AFFILIATES_PLUGIN_DOMAIN ) .
+			'</label>' .
+			'</p>' .
+			'<p>' .
+			'<label>' .
+			sprintf( '<input type="checkbox" name="coupons_allowed" %s" />', $coupons_allowed ? ' checked="checked" ' : '' ) .
+			' ' .
+			__( 'Allow affiliates to apply their own coupons.', AFFILIATES_PLUGIN_DOMAIN ) .
+			' ' .
+			__( 'Verification is supported for coupons managed through WooCommerce.', AFFILIATES_PLUGIN_DOMAIN ) .
+			'</label>' .
 			'</p>';
 
 		echo
