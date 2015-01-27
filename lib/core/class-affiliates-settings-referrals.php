@@ -174,7 +174,7 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'Allow affiliates to apply their own coupons.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow affiliates to apply coupons that are assigned to them.', AFFILIATES_PLUGIN_DOMAIN ) .
 			' ' .
 			__( 'Verification is supported for coupons managed through WooCommerce.', AFFILIATES_PLUGIN_DOMAIN ) .
 			'</p>';
