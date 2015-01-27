@@ -24,26 +24,6 @@ jQuery(document).ready(function(){
 
 	jQuery("#registration-fields").on('click','button.field-add',function(event){
 		event.stopPropagation();
-//		var i = jQuery('#registration-fields > table > tbody tr').length,
-//			row =
-//			'<tr id="field-'+i+'">' +
-//			'<td>' +
-//			'<input type="checkbox" name="field-'+i+'-enabled" checked="checked" />' +
-//			'</td>' +
-//			'<td>' +
-//			'<input type="text" name="field-'+i+'-name" value="" />' +
-//			'</td>' +
-//			'<td>' +
-//			'<input type="text" name="field-'+i+'-label" value="" />' +
-//			'</td>' +
-//			'<td>' +
-//			'<input type="checkbox" name="field-'+i+'-required" />' +
-//			'</td>' +
-//			'<td>' +
-//			'<button class="field-remove" type="button" value="'+i+'">Remove</button>' + // @todo l8n
-//			'</td>' +
-//			'</tr>';
-//		var i = jQuery('#registration-fields > table > tbody tr').length,
 		var i = aff_reg_field_count++,
 		row =
 		'<tr>' +
