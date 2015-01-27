@@ -60,10 +60,10 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 				add_option( 'aff_duplicates', !empty( $_POST['duplicates'] ), '', 'no' );
 
 				delete_option( 'aff_excluded' );
-				add_option( 'aff_excluded', !empty( $_POST['excluded'] ), '', 'no' );
+				add_option( 'aff_excluded', !empty( $_POST['excluded'] ) ? 'yes' : 'no', '', 'no' );
 
 				delete_option( 'aff_excluded_coupons_allowed' );
-				add_option( 'aff_excluded_coupons_allowed', !empty( $_POST['coupons_allowed'] ), '', 'no' );
+				add_option( 'aff_excluded_coupons_allowed', !empty( $_POST['coupons_allowed'] ) ? 'yes' : 'no', '', 'no' );
 
 			}
 		}
