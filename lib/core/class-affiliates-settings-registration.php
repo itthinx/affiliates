@@ -65,6 +65,38 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				delete_option( 'aff_notify_admin' );
 				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
 
+				if ( !get_option( 'aff_registration_fields' ) ) {
+					add_option( 'aff_registration_fields', self::$default_fields, '', 'no' );
+				}
+				$field_enabled = isset( $_POST['field-enabled'] ) ? $_POST['field-enabled'] : array();
+				$field_name = isset( $_POST['field-name'] ) ? $_POST['field-name'] : array();
+				$field_label = isset( $_POST['field-label'] ) ? $_POST['field-label'] : array();
+				$field_required = isset( $_POST['field-required'] ) ? $_POST['field-required'] : array();
+				$max_index = max( array(
+					max( array_keys( $field_enabled ) ),
+					max( array_keys( $field_name ) ),
+					max( array_keys( $field_label ) ),
+					max( array_keys( $field_required ) )
+				) );
+				$fields = array();
+				for( $i = 0; $i <= $max_index; $i++ ) {
+					if ( !empty( $field_name[$i] ) ) {
+						$name = strip_tags( $field_name[$i] );
+						$name = strtolower( $name );
+						$name = preg_replace( '/[^a-z0-9_]/', '', $name );
+						if ( !empty( $name ) ) {
+							$fields[$name] = array(
+								'enabled'    => !empty( $field_enabled[$i]),
+								'label'      => !empty( $field_label[$i] ) ? strip_tags( $field_label[$i] ) : '',
+								'required'   => !empty( $field_required[$i]),
+								'is_default' => key_exists( $field_name[$i], self::$default_fields )
+							);
+						}
+					}
+				}
+
+				update_option( 'aff_registration_fields', $fields );
+
 				self::settings_saved_notice();
 
 			}
