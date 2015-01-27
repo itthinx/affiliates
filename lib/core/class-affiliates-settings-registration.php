@@ -27,7 +27,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Registration settings section.
  */
 class Affiliates_Settings_Registration extends Affiliates_Settings {
-	
+
 	private static $default_fields = null;
 
 	/**
@@ -59,9 +59,6 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		if ( isset( $_POST['submit'] ) ) {
 			if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' ) ) {
 
-				
-				error_log( __METHOD__ . ' ' . var_export( $_POST, true )); // @todo remove
-				
 				delete_option( 'aff_registration' );
 				add_option( 'aff_registration', !empty( $_POST['registration'] ), '', 'no' );
 
@@ -122,25 +119,6 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		$i = 0;
 		echo '<tbody>';
 		foreach( $registration_fields as $name => $field ) {
-// 			echo sprintf( '<tr id="field-%d">', $i );
-// 			echo '<td>';
-// 			echo sprintf( '<input type="checkbox" name="field-%d-enabled" %s />', $i, $field['enabled'] ? ' checked="checked" ' : '' );
-// 			echo '</td>';
-// 			echo '<td>';
-// 			echo sprintf( '<input type="text" name="field-%d-name" value="%s" %s />', $i, esc_attr( $name ), $field['is_default'] ? ' readonly="readonly" ' : '' );
-// 			echo '</td>';
-// 			echo '<td>';
-// 			echo sprintf( '<input type="text" name="field-%d-label" value="%s" />', $i, esc_attr( $field['label'] ) );
-// 			echo '</td>';
-// 			echo '<td>';
-// 			echo sprintf( '<input type="checkbox" name="field-%d-required" %s />', $i, $field['required'] ? ' checked="checked" ' : '' );
-// 			echo '</td>';
-// 			echo '<td>';
-// 			if ( !$field['is_default'] ) {
-// 				echo sprintf( '<button class="field-remove" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) ) );
-// 			}
-// 			echo '</td>';
-// 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>';
 			echo sprintf( '<input type="checkbox" name="field-enabled[%d]" %s />', $i, $field['enabled'] ? ' checked="checked" ' : '' );
