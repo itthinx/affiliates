@@ -31,16 +31,25 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 	private static $default_fields = null;
 
 	/**
+	 * Registration fields.
+	 * 
+	 * @return array
+	 */
+	public static function get_fields() {
+		return get_option( 'aff_registration_fields', self::$default_fields );
+	}
+
+	/**
 	 * Settings initialization.
 	 */
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		self::$default_fields = array(
-			'first_name' => array( 'enabled' => true, 'label' => __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
-			'last_name'  => array( 'enabled' => true, 'label' => __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
-			'user_login' => array( 'enabled' => true, 'label' => __( 'Username', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
-			'user_email' => array( 'enabled' => true, 'label' => __( 'Email', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
-			'user_url'	 => array( 'enabled' => true, 'label' => __( 'Website', AFFILIATES_PLUGIN_DOMAIN ), 'required' => false, 'is_default' => true ),
+			'first_name' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
+			'last_name'  => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
+			'user_login' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Username', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
+			'user_email' => array( 'obligatory' => true, 'enabled' => true, 'label' => __( 'Email', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true ),
+			'user_url'	 => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', AFFILIATES_PLUGIN_DOMAIN ), 'required' => false, 'is_default' => true ),
 		);
 	}
 
@@ -86,7 +95,8 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 						$name = preg_replace( '/[^a-z0-9_]/', '', $name );
 						if ( !empty( $name ) ) {
 							$fields[$name] = array(
-								'enabled'    => !empty( $field_enabled[$i]),
+								'obligatory' => false || isset( self::$default_fields[$name] ) && self::$default_fields[$name]['obligatory'],
+								'enabled'    => !empty( $field_enabled[$i] ) || isset( self::$default_fields[$name] ) && self::$default_fields[$name]['obligatory'],
 								'label'      => !empty( $field_label[$i] ) ? strip_tags( $field_label[$i] ) : '',
 								'required'   => !empty( $field_required[$i]),
 								'is_default' => key_exists( $field_name[$i], self::$default_fields )
@@ -153,7 +163,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		foreach( $registration_fields as $name => $field ) {
 			echo '<tr>';
 			echo '<td>';
-			echo sprintf( '<input type="checkbox" name="field-enabled[%d]" %s />', $i, $field['enabled'] ? ' checked="checked" ' : '' );
+			echo sprintf( '<input type="checkbox" name="field-enabled[%d]" %s %s />', $i, $field['enabled'] ? ' checked="checked" ' : '', $field['obligatory'] ? ' readonly="readonly" disabled="disabled" ' : '' );
 			echo '</td>';
 			echo '<td>';
 			echo sprintf( '<input type="text" name="field-name[%d]" value="%s" %s />', $i, esc_attr( $name ), $field['is_default'] ? ' readonly="readonly" ' : '' );
