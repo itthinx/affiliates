@@ -68,14 +68,22 @@ class Affiliates_Registration {
 	 */
 	public static function init() {
 
-		// @todo new/old shortcode
-
-		add_shortcode( 'affiliates_registration', array( __CLASS__, 'add_shortcode' ) );
-
-		add_shortcode( 'affiliates_registration_form', array( __CLASS__, 'affiliates_registration_form' ) );
+		// registration form shortcode
+		add_shortcode( 'affiliates_registration', array( __CLASS__, 'affiliates_registration_shortcode' ) );
 
 		// delete affiliate when user is deleted
 		add_action( 'deleted_user', array( __CLASS__, 'deleted_user' ) );
+	}
+
+	/**
+	 * Registration form shortcode handler.
+	 *
+	 * @param array $atts attributes
+	 * @param string $content not used
+	 */
+	public static function affiliates_registration_shortcode( $atts, $content = null ) {
+		$options = shortcode_atts( self::$defaults, $atts );
+		return self::render_form( $options );
 	}
 
 	/**
@@ -91,7 +99,7 @@ class Affiliates_Registration {
 	 * @param array $options form options
 	 * @return string rendered registration form
 	 */
-	static function render_form( $options = array() ) {
+	public static function render_form( $options = array() ) {
 
 		global $affiliates_registration_form_count;
 		if ( isset( $affiliates_registration_form_count ) ) {
@@ -104,7 +112,6 @@ class Affiliates_Registration {
 		self::$submit_button_label = __( 'Sign Up', AFFILIATES_PLUGIN_DOMAIN );
 
 		$output = '';
-		$ext    = ''; // currently not relevant @todo remove or explain
 
 		//
 		// Existing affiliate
@@ -372,9 +379,9 @@ class Affiliates_Registration {
 		}
 
 		if ( !$send ) {
-			$output .= '<div class="affiliates-registration" id="affiliates-registration' . $ext . '">';
-			$output .= '<img id="affiliates-registration-throbber' . $ext . '" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
-			$output .= '<form id="affiliates-registration-form' . $ext . '" method="post">';
+			$output .= '<div class="affiliates-registration" id="affiliates-registration">';
+			$output .= '<img id="affiliates-registration-throbber" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
+			$output .= '<form id="affiliates-registration-form" method="post">';
 			$output .= '<div>';
 
 			$field_disabled = "";
@@ -419,17 +426,6 @@ class Affiliates_Registration {
 		}
 
 		return $output;
-	}
-
-	/**
-	 * Registration form shortcode handler.
-	 *
-	 * @param array $atts attributes
-	 * @param string $content not used
-	 */
-	public static function affiliates_registration_form( $atts, $content = null ) {
-		$options = shortcode_atts( self::$defaults, $atts );
-		return self::render_fields( $options );
 	}
 
 	/**
@@ -669,22 +665,11 @@ class Affiliates_Registration {
 	}
 
 	/**
-	 * Registration form shortcode handler.
-	 * 
-	 * @param array $atts attributes
-	 * @param string $content not used
-	 */
-	static function add_shortcode( $atts, $content = null ) {
-		$options = shortcode_atts( self::$defaults, $atts );
-		return self::render_form( $options );
-	}
-
-	/**
 	 * Notify the blog admin of a new affiliate.
 	 *
 	 * @param int $user_id User ID
 	 */
-	static function new_affiliate_notification( $user_id ) {
+	public static function new_affiliate_notification( $user_id ) {
 		$user = new WP_User( $user_id );
 
 		$user_login = stripslashes( $user->user_login );
