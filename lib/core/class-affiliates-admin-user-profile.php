@@ -145,7 +145,26 @@ class Affiliates_Admin_User_Profile {
 	 * @param int $user_id
 	 */
 	public static function edit_user_profile_update( $user_id ) {
-		// @todo
+
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
+		$registration_fields = Affiliates_Settings_Registration::get_fields();
+
+		// remove fields not stored as user meta
+		foreach( Affiliates_Registration::get_skip_meta_fields() as $key ) {
+			unset( $registration_fields[$key] );
+		}
+		unset( $registration_fields['first_name'] );
+		unset( $registration_fields['last_name'] );
+
+		// update user meta
+		if ( !empty( $registration_fields ) ) {
+			foreach( $registration_fields as $name => $field ) {
+				$meta_value = isset( $_POST[$name] ) ? $_POST[$name] : '';
+				$meta_value = Affiliates_Utility::filter( $meta_value );
+				update_user_meta( $user_id, $name, maybe_unserialize( $meta_value ) );
+			}
+		}
 	}
 
 }
