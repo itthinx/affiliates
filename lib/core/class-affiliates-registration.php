@@ -66,6 +66,7 @@ class Affiliates_Registration {
 	private static $skip_meta_fields = array(
 		'user_login',
 		'user_email',
+		'user_url',
 		'password'
 	);
 

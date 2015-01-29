@@ -132,7 +132,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo
 			'<form action="" name="options" method="post">' .
 			'<div>' .
-			'<h3>' . __( 'Affiliate registration', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<h3>' . __( 'Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="registration" type="checkbox" ' . ( $registration ? 'checked="checked"' : '' ) . '/>' .
@@ -151,6 +151,10 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			'</p>';
 
 		// registration fields
+		echo '<h3>' . __( 'Affiliate Registration Form', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
+		echo '<p class="description">';
+		echo __( 'The following fields are provided on the affiliate registration form rendered by the <code>[affiliates_registration]</code> shortcode.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</p>';
 		$registration_fields = get_option( 'aff_registration_fields', self::$default_fields );
 		echo '<div id="registration-fields">';
 		echo '<table>';
