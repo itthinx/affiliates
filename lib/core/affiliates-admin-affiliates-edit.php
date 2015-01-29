@@ -43,28 +43,58 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 	
-	$affiliate_user = null;
-	$affiliate_user_edit = '';
+	$affiliate_user        = null;
+	$affiliate_user_edit   = '';
+	$affiliate_user_fields = '';
 	$affiliate_user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM $affiliates_users_table WHERE affiliate_id = %d", intval( $affiliate_id ) ) );
 	if ( $affiliate_user_id !== null ) {
 		$affiliate_user = get_user_by( 'id', intval( $affiliate_user_id ) );
 		if ( $affiliate_user ) {
-			if ( current_user_can( 'edit_user',  $affiliate_user->ID ) ) {
+
+			// user edit link
+			if ( current_user_can( 'edit_user', $affiliate_user->ID ) ) {
 				$affiliate_user_edit = sprintf( __( 'Edit %s', AFFILIATES_PLUGIN_DOMAIN ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
 			}
+
+			// user meta fields
+			require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
+			require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
+			$registration_fields = Affiliates_Settings_Registration::get_fields();
+			// remove fields not stored as user meta
+			foreach( Affiliates_Registration::get_skip_meta_fields() as $key ) {
+				unset( $registration_fields[$key] );
+			}
+			// render user meta
+			foreach( $registration_fields as $name => $field ) {
+				if ( $field['enabled'] ) {
+					$affiliate_user_fields .= '<div class="field">';
+					$affiliate_user_fields .= '<label>';
+					$affiliate_user_fields .= $field['label'];
+					$affiliate_user_fields .= ' ';
+					$type  = isset( $field['type'] ) ? $field['type'] : 'text';
+					$value = get_user_meta( $affiliate_user->ID, $name , true );
+					$affiliate_user_fields .= sprintf(
+						'<input type="text" value="%s" readonly="readonly" />',
+						esc_attr( $value )
+					);
+					$affiliate_user_fields .= '</label>';
+					$affiliate_user_fields .= '</div>';
+				}
+			}
+
 		}
 	}
-	
+
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
-	
-	$name = isset( $_POST['name-field'] ) ? $_POST['name-field'] : $affiliate['name'];
-	$email = isset( $_POST['email-field'] ) ? $_POST['email-field'] : $affiliate['email'];
-	$user_login = isset( $_POST['user-field'] ) ? $_POST['user-field'] : ( $affiliate_user != null ? $affiliate_user->user_login : '' );
-	$from_date = isset( $_POST['from-date-field'] ) ? $_POST['from-date-field'] : $affiliate['from_date'];
-	$thru_date = isset( $_POST['thru-date-field'] ) ? $_POST['thru-date-field'] : $affiliate['thru_date'];
-	
+
+	$name        = isset( $_POST['name-field'] ) ? $_POST['name-field'] : $affiliate['name'];
+	$email       = isset( $_POST['email-field'] ) ? $_POST['email-field'] : $affiliate['email'];
+	$user_login  = isset( $_POST['user-field'] ) ? $_POST['user-field'] : ( $affiliate_user != null ? $affiliate_user->user_login : '' );
+	$from_date   = isset( $_POST['from-date-field'] ) ? $_POST['from-date-field'] : $affiliate['from_date'];
+	$thru_date   = isset( $_POST['thru-date-field'] ) ? $_POST['thru-date-field'] : $affiliate['thru_date'];
+
 	$output =
 		'<div class="manage-affiliates">' .
 		'<div>' .
@@ -107,11 +137,13 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		__( 'Username', AFFILIATES_PLUGIN_DOMAIN ) .
 		'</span>' .
 		' ' .
-		'<input id="user-field" name="user-field" class="userfield" type="text" value="' . esc_attr( $user_login ) . '"/>' .
+		'<input id="user-field" name="user-field" class="userfield" type="text" autocomplete="off" value="' . esc_attr( $user_login ) . '"/>' .
 		'</label>' .
 		' ' .
 		$affiliate_user_edit .
 		'</div>' .
+
+		$affiliate_user_fields .
 
 		'<div class="field">' .
 		'<label class="field-label">' .
@@ -131,7 +163,9 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		' ' .
 		'<input id="thru-date-field" name="thru-date-field" class="datefield" type="text" value="' . esc_attr( $thru_date ) . '"/>' .
 		'</label>' .
-		'</div>' .
+		'</div>';
+
+	$output .=
 
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-edit', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .

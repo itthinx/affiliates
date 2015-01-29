@@ -58,6 +58,26 @@ class Affiliates_Registration {
 		'terms_post_id'                => null
 	);
 
+	/**
+	 * Not stored as user meta.
+	 * 
+	 * @var array
+	 */
+	private static $skip_meta_fields = array(
+		'user_login',
+		'user_email',
+		'password'
+	);
+
+	/**
+	 * Returns the keys not stored as user meta.
+	 * 
+	 * @return array
+	 */
+	public static function get_skip_meta_fields() {
+		return self::$skip_meta_fields;
+	}
+
 	private static $submit_button_label = null;
 
 	/**
@@ -494,7 +514,7 @@ class Affiliates_Registration {
 		if ( !is_wp_error( $user_id ) ) {
 			// add user meta from remaining fields
 			foreach( $userdata as $meta_key => $meta_value ) {
-				if ( !key_exists( $meta_key, $_userdata ) ) {
+				if ( !key_exists( $meta_key, $_userdata ) && ( in_array( $meta_key, self::$skip_meta_fields) ) ) {
 					add_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 				}
 			}
