@@ -26,7 +26,6 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Registration settings section.
  * 
- * @todo show/edit fields in affiliate entry
  * @todo add shortcode to allow to print and/or edit fields
  * @todo up/down buttons to modify field order
  */
