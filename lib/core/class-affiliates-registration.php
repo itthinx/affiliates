@@ -46,9 +46,6 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Registration {
 
-	const OPTIONAL = "optional";
-	const HIDDEN   = "hidden";
-
 	private static $defaults = array(
 		'is_widget'                    => false,
 		'registered_profile_link_text' => null,
@@ -153,7 +150,7 @@ class Affiliates_Registration {
 		//
 		$user = null;
 		if ( $is_logged_in = is_user_logged_in() ) {
-			$user       = wp_get_current_user();
+			$user = wp_get_current_user();
 
 			if ( isset( $registration_fields['first_name'] ) && $registration_fields['first_name']['enabled'] ) {
 				$first_name = $user->first_name;
@@ -190,24 +187,8 @@ class Affiliates_Registration {
 		$nonce              = 'affiliates-registration-nonce';
 		$nonce_action       = 'affiliates-registration';
 		$send               = false;
-
-		$user_login_class   = ' class="required" ';
-		$email_class        = ' class="required" ';
-
-
-		//
-		// Link to terms
-		//
-		if ( isset( $options['terms_post_id'] ) ) {
-			$terms_post = get_post( $options['terms_post_id'] );
-			if ( $terms_post ) {
-				$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
-				$terms = sprintf( __( 'By signing up, you indicate that you have read and agree to the %s.', AFFILIATES_PLUGIN_DOMAIN ), $terms_post_link );
-			}
-		}
 		$captcha            = '';
-
-		$error = false;
+		$error              = false;
 
 		if ( !empty( $_POST[$submit_name] ) ) {
 
@@ -219,20 +200,6 @@ class Affiliates_Registration {
 			if ( !Affiliates_Utility::captcha_validates( $captcha ) ) {
 				$error = true; // dumbot
 			}
-
-			// @todo remove ?
-// 			$first_name   = isset( $_POST['first_name'] ) ? Affiliates_Utility::filter( $_POST['first_name'] ) : '';
-// 			$last_name    = isset( $_POST['last_name'] ) ? Affiliates_Utility::filter( $_POST['last_name'] ) : '';
-
-// 			if ( !$is_logged_in ) {
-// 				$user_login   = isset( $_POST['user_login'] ) ? Affiliates_Utility::filter( $_POST['user_login'] ) : '';
-// 				$email        = isset( $_POST['user_email'] ) ? Affiliates_Utility::filter( $_POST['user_email'] ) : '';
-// 				$url          = isset( $_POST['user_url'] ) ? Affiliates_Utility::filter( $_POST['user_url'] ) : '';
-// 			} else {
-// 				$user_login   = $user->user_login;
-// 				$email        = $user->user_email;
-// 				$url          = $user->user_url;
-// 			}
 
 			// gather field values
 			foreach( $registration_fields as $name => $field ) {
@@ -280,6 +247,7 @@ class Affiliates_Registration {
 
 				// register as affiliate
 				if ( !is_wp_error( $affiliate_user_id ) ) {
+
 					// add affiliate entry
 					$send = true;
 					if ( $new_affiliate_registered ) {
@@ -320,30 +288,14 @@ class Affiliates_Registration {
 						}
 					}
 
-				} else {
-					
-					
-					// @todo adjust error display
-					
-					
+				} else { // is_wp_error( $affiliate_user_id ), user registration failed
+
 					$error    = true;
 					$wp_error = $affiliate_user_id;
 					if ( $wp_error->get_error_code() ) {
 						$errors   = array();
 						$messages = array();
 						foreach ( $wp_error->get_error_codes() as $code ) {
-							switch ( $code ) {
-								case 'empty_username' :
-								case 'invalid_username' :
-								case 'username_exists' :
-									$user_login_class = ' class="required missing" ';
-									break;
-								case 'empty_email' :
-								case 'invalid_email' :
-								case 'email_exists' :
-									$email_class = ' class="required missing" ';
-									break;
-							}
 							$severity = $wp_error->get_error_data( $code );
 							foreach ( $wp_error->get_error_messages( $code ) as $error ) {
 								if ( 'message' == $severity ) {
@@ -367,48 +319,30 @@ class Affiliates_Registration {
 				}
 			}
 
-		} else {
-			// @todo remove ?
-// 			if ( !$is_logged_in ) {
-// 				$first_name   = '';
-// 				$last_name    = '';
-// 				$user_login   = '';
-// 				$email        = '';
-// 				$url          = '';
-// 			}
 		}
 
+		// Registration form
 		if ( !$send ) {
+
+			if ( isset( $options['terms_post_id'] ) ) {
+				$terms_post = get_post( $options['terms_post_id'] );
+				if ( $terms_post ) {
+					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
+					$terms = sprintf( __( 'By signing up, you indicate that you have read and agree to the %s.', AFFILIATES_PLUGIN_DOMAIN ), $terms_post_link );
+				}
+			}
+
 			$output .= '<div class="affiliates-registration" id="affiliates-registration">';
 			$output .= '<img id="affiliates-registration-throbber" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
 			$output .= '<form id="affiliates-registration-form" method="post">';
 			$output .= '<div>';
 
-			$field_disabled = "";
-			if ( $is_logged_in ) {
-				$field_disabled = ' disabled="disabled" ';
-				if ( !empty( $_POST[$submit_name] ) ) {
-					
-					
-// 					if (
-// 						( !isset( $options['first_name'] ) || ( $options['first_name'] != self::HIDDEN ) || ( $options['first_name'] != self::OPTIONAL ) ) && empty( $first_name ) ||
-// 						( !isset( $options['last_name'] ) || ( $options['last_name'] != self::HIDDEN ) || ( $options['last_name'] != self::OPTIONAL ) ) && empty( $last_name )
-// 					) {
-					if ( false ) { // @todo if any of the enabled and required fields are empty ...
-						$output .= __( '<p class="missing">Please fill in the required information.</p>', AFFILIATES_PLUGIN_DOMAIN );
-					}
-// 					}
-				}
-			}
-
 			$output .= apply_filters( 'affiliates_registration_before_fields', '' );
-
 			$output .= self::render_fields( $registration_fields );
-
 			$output .= apply_filters( 'affiliates_registration_after_fields', '' );
 
 			if ( isset( $terms ) ) {
-				$output .= '<p class="terms">' . $terms . '</p>';
+				$output .= '<div class="terms">' . $terms . '</div>';
 			}
 			$output .= Affiliates_Utility::captcha_get( $captcha );
 
@@ -418,7 +352,9 @@ class Affiliates_Registration {
 				$output .= '<input type="hidden" name="redirect_to" value="'. esc_url( $options['redirect_to'] ) . '" />';
 			}
 
+			$output .= '<div class="sign-up">';
 			$output .= '<input type="submit" name="' . $submit_name . '" value="'. self::$submit_button_label . '" />';
+			$output .= '</div>';
 
 			$output .= '</div>';
 			$output .= '</form>';

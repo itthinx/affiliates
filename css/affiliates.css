@@ -50,6 +50,11 @@
 .affiliates-registration .required {
 	background: url(../images/required.png) transparent no-repeat right center;
 }
+.affiliates-registration .field,
+.affiliates-registration .sign-up {
+	margin: 1em 0;
+	display: block;
+}
 
 .affiliate-profile div.field label {
 	display: block;
