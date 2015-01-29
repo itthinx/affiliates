@@ -19,7 +19,6 @@
  * @since affiliates 2.8.0
  */
 
-
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -70,6 +69,11 @@ class Affiliates_Admin_User_Profile {
 	 * @param WP_User $user
 	 */
 	public static function edit_user_profile( $user ) {
+
+		if ( !affiliates_user_is_affiliate( $user->ID ) ) {
+			return;
+		}
+
 		$output = '';
 
 		$output .= '<h3>';
@@ -145,6 +149,10 @@ class Affiliates_Admin_User_Profile {
 	 * @param int $user_id
 	 */
 	public static function edit_user_profile_update( $user_id ) {
+
+		if ( !affiliates_user_is_affiliate( $user_id ) ) {
+			return;
+		}
 
 		require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
 		require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
