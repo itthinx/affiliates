@@ -39,6 +39,7 @@
 	float: left;
 }
 .affiliates-registration input[type="text"],
+.affiliates-registration input[type="password"],
 .affiliates-registration textarea {
 	width: 100%;
 	display: block;
@@ -47,8 +48,7 @@
 	color: #f00;
 }
 .affiliates-registration .required {
-	background: url(../images/required.png) transparent no-repeat left center;
-	padding-left: 16px;
+	background: url(../images/required.png) transparent no-repeat right center;
 }
 
 .affiliate-profile div.field label {

@@ -40,6 +40,7 @@ jQuery(document).ready(function(){
 		'<input type="checkbox" name="field-required['+i+']" />' +
 		'</td>' +
 		'<td>' +
+		'<input type="hidden" name="field-type['+i+']" value="text" />' +
 		'<button class="field-remove" type="button" value="'+i+'">Remove</button>' + // @todo l8n
 		'</td>' +
 		'</tr>';
