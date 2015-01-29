@@ -166,4 +166,3 @@ class Affiliates_Pagination {
 		}
 	}
 }
-?>

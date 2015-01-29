@@ -95,4 +95,3 @@ class Affiliates_Options {
 		delete_option( 'affiliates_plugin' );
 	}
 }
-?>

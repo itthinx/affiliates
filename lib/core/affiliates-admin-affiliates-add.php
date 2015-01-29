@@ -226,5 +226,3 @@ function affiliates_admin_affiliates_add_submit() {
 	}
 	return $result;
 } // function affiliates_admin_affiliates_add_submit
-
-?>

@@ -661,4 +661,3 @@ function affiliates_admin_affiliates() {
 	echo $output;
 	affiliates_footer();
 } // function affiliates_admin_affiliates()
-?>

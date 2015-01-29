@@ -123,4 +123,3 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		echo '</p>';
 	}
 }// class Affiliates_Registration_Widget
-?>

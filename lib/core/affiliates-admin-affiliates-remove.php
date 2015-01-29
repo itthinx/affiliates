@@ -135,4 +135,3 @@ function affiliates_admin_affiliates_remove_submit() {
 	return $result;
 	
 } // function affiliates_admin_affiliates_remove_submit
-?>

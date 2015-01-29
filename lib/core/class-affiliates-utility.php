@@ -200,4 +200,3 @@ class Affiliates_Utility {
 	}
 	
 }// class Affiliates_Utility
-?>

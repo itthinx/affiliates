@@ -580,4 +580,3 @@ function affiliates_admin_hits() {
 	echo $output;
 	affiliates_footer();
 } // function affiliates_admin_hits()
-?>

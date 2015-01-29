@@ -310,4 +310,3 @@ class Affiliates_Contact extends WP_Widget {
 		<?php
 	}
 }// class Affiliates_Contact
-?>

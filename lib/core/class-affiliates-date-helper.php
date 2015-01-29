@@ -220,4 +220,3 @@ class DateHelper {
 		return apply_filters( 'timezone_support', $support );
 	}
 }
-?>

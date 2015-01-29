@@ -470,4 +470,3 @@ function affiliates_admin() {
 	}
 	affiliates_footer();
 }
-?>

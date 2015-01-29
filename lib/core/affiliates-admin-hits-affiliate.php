@@ -649,4 +649,3 @@ function affiliates_admin_hits_affiliate() {
 	echo $output;
 	affiliates_footer();
 } // function affiliates_admin_hits()
-?>

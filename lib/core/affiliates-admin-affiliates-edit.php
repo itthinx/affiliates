@@ -281,4 +281,3 @@ function affiliates_admin_affiliates_edit_submit() {
 	return $result;
 	
 } // function affiliates_admin_affiliates_edit_submit
-?>
