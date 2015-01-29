@@ -17,16 +17,6 @@
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.1.0
- * 
- * Notes
- * 
- * Deleting users vs. removing affiliates :
- * 
- * - If a user is deleted, the affiliate is marked as deleted and the
- *   association is released.
- * - Marking an affiliate as deleted (pressing Remove) marks the affiliate
- *   as deleted but does not delete the user, the association is maintained.
- * 
  */
 
 if ( !defined( 'ABSPATH' ) ) {
@@ -35,6 +25,13 @@ if ( !defined( 'ABSPATH' ) ) {
 
 /**
  * Affiliate registration form.
+ * 
+ * Deleting users vs. removing affiliates :
+ * 
+ * - If a user is deleted, the affiliate is marked as deleted and the
+ *   association is released.
+ * - Marking an affiliate as deleted (pressing Remove) marks the affiliate
+ *   as deleted but does not delete the user, the association is maintained.
  * 
  * @todo WPML field translations, also on form output
  * 
@@ -46,6 +43,11 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Registration {
 
+	/**
+	 * Accepted form parameters.
+	 * 
+	 * @var array
+	 */
 	private static $defaults = array(
 		'is_widget'                    => false,
 		'registered_profile_link_text' => null,
@@ -53,9 +55,7 @@ class Affiliates_Registration {
 		'redirect'                     => false,
 		'redirect_to'                  => null,
 		'submit_button_label'          => null,
-		'terms_post_id'                => null,
-		'first_name'                   => null,
-		'last_name'                    => null
+		'terms_post_id'                => null
 	);
 
 	private static $submit_button_label = null;
@@ -86,12 +86,7 @@ class Affiliates_Registration {
 	/**
 	 * Registration form.
 	 * 
-	 * Form options :
-	 * - terms_post_id
-	 * - redirect_to
-	 * - is_widget
-	 * - registered_profile_link_url
-	 * - registered_profile_link_text
+	 * @see Affiliates_Registration::$defaults for accepted parameters
 	 * 
 	 * @param array $options form options
 	 * @return string rendered registration form
@@ -328,7 +323,10 @@ class Affiliates_Registration {
 				$terms_post = get_post( $options['terms_post_id'] );
 				if ( $terms_post ) {
 					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
-					$terms = sprintf( __( 'By signing up, you indicate that you have read and agree to the %s.', AFFILIATES_PLUGIN_DOMAIN ), $terms_post_link );
+					$terms = sprintf(
+						apply_filters( 'affiliates_terms_post_link_text', __( 'By signing up, you indicate that you have read and agree to the %s.', AFFILIATES_PLUGIN_DOMAIN ) ),
+						$terms_post_link
+					);
 				}
 			}
 
@@ -512,7 +510,7 @@ class Affiliates_Registration {
 	 * @param array $userdata affiliate data
 	 * @return if successful new affiliate's id, otherwise false
 	 */
-	static function store_affiliate( $user_id, $userdata ) {
+	public static function store_affiliate( $user_id, $userdata ) {
 		global $wpdb;
 
 		$result = false;
@@ -555,7 +553,7 @@ class Affiliates_Registration {
 	 * Note that the affiliate-user association is maintained.
 	 * @param int $user_id
 	 */
-	static function deleted_user( $user_id ) {
+	public static function deleted_user( $user_id ) {
 
 		global $wpdb;
 
@@ -662,5 +660,4 @@ class Affiliates_Registration {
 	}
 
 }
-
 Affiliates_Registration::init();
