@@ -130,17 +130,12 @@ class Affiliates_Admin_User_Profile {
 	}
 
 	/**
-	 * Updates user meta when a user's own profile is saved -
-	 * for affiliate admins on their own profile page only.
-	 * 
-	 * @todo needed or remove ?
+	 * Updates user meta when a user's own profile is saved.
 	 * 
 	 * @param int $user_id
 	 */
 	public static function personal_options_update( $user_id ) {
-		if ( current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-			self::edit_user_profile_update( $user_id );
-		}
+		self::edit_user_profile_update( $user_id );
 	}
 
 	/**
