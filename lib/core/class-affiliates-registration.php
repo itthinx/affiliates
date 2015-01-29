@@ -510,7 +510,7 @@ class Affiliates_Registration {
 			return $errors;
 		}
 
-		// @todo use user-provided password if present
+		// use user-provided password if present
 		if ( !empty( $userdata['password'] ) ) {
 			$user_pass = $userdata['password'];
 		} else {
