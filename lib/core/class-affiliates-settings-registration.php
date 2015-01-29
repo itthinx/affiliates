@@ -92,7 +92,8 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 					if ( !empty( $field_name[$i] ) ) {
 						$name = strip_tags( $field_name[$i] );
 						$name = strtolower( $name );
-						$name = preg_replace( '/[^a-z0-9_]/', '', $name );
+						$name = preg_replace( '/[^a-z0-9_]/', '_', $name );
+						$name = preg_replace( '/[_]+/', '_', $name );
 						if ( !empty( $name ) ) {
 							$fields[$name] = array(
 								'obligatory' => false || isset( self::$default_fields[$name] ) && self::$default_fields[$name]['obligatory'],
@@ -105,6 +106,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 					}
 				}
 
+				// @todo remove fields with duplicate names
 				update_option( 'aff_registration_fields', $fields );
 
 				self::settings_saved_notice();

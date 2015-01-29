@@ -225,8 +225,8 @@ class Affiliates_Registration {
 				$url          = $user->user_url;
 			}
 
-			
 
+			//
 			foreach( $registration_fields as $name => $field ) {
 				if ( $field['enabled'] ) {
 					$value = isset( $_POST[$name] ) ? $_POST[$name] : '';
@@ -351,13 +351,14 @@ class Affiliates_Registration {
 			}
 
 		} else {
-			if ( !$is_logged_in ) {
-				$first_name   = '';
-				$last_name    = '';
-				$user_login   = '';
-				$email        = '';
-				$url          = '';
-			}
+			// @todo remove ?
+// 			if ( !$is_logged_in ) {
+// 				$first_name   = '';
+// 				$last_name    = '';
+// 				$user_login   = '';
+// 				$email        = '';
+// 				$url          = '';
+// 			}
 		}
 
 		if ( !$send ) {
@@ -370,12 +371,16 @@ class Affiliates_Registration {
 			if ( $is_logged_in ) {
 				$field_disabled = ' disabled="disabled" ';
 				if ( !empty( $_POST[$submit_name] ) ) {
-					if (
-						( !isset( $options['first_name'] ) || ( $options['first_name'] != self::HIDDEN ) || ( $options['first_name'] != self::OPTIONAL ) ) && empty( $first_name ) ||
-						( !isset( $options['last_name'] ) || ( $options['last_name'] != self::HIDDEN ) || ( $options['last_name'] != self::OPTIONAL ) ) && empty( $last_name )
-					) {
+					
+					
+// 					if (
+// 						( !isset( $options['first_name'] ) || ( $options['first_name'] != self::HIDDEN ) || ( $options['first_name'] != self::OPTIONAL ) ) && empty( $first_name ) ||
+// 						( !isset( $options['last_name'] ) || ( $options['last_name'] != self::HIDDEN ) || ( $options['last_name'] != self::OPTIONAL ) ) && empty( $last_name )
+// 					) {
+					if ( false ) { // @todo if any of the enabled and required fields are empty ...
 						$output .= __( '<p class="missing">Please fill in the required information.</p>', AFFILIATES_PLUGIN_DOMAIN );
 					}
+// 					}
 				}
 			}
 
