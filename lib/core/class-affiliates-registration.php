@@ -67,6 +67,7 @@ class Affiliates_Registration {
 		'user_login',
 		'user_email',
 		'user_url',
+		'user_pass',
 		'password'
 	);
 
@@ -502,12 +503,15 @@ class Affiliates_Registration {
 	 * @return int|WP_Error Either user's ID or error on failure.
 	 */
 	public static function update_affiliate_user( $user_id, $userdata ) {
+
+		global $wpdb;
+
 		$errors = new WP_Error();
-	
+
 		if ( ( $user = get_user_by( 'id', $user_id ) ) && affiliates_user_is_affiliate( $user_id ) ) {
 
 			$user_email = apply_filters( 'user_registration_email', $userdata['user_email'] );
-	
+
 			// Check the e-mail address
 			if ( $user_email == '' ) {
 				$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please type your e-mail address.', AFFILIATES_PLUGIN_DOMAIN ) );
@@ -523,17 +527,10 @@ class Affiliates_Registration {
 			if ( $errors->get_error_code() ) {
 				return $errors;
 			}
-		
-			// update user-provided password if present
-			if ( !empty( $userdata['password'] ) ) {
-				$user_pass = $userdata['password'];
-			}
-		
+
 			$userdata['first_name'] = sanitize_text_field( $userdata['first_name'] );
 			$userdata['last_name']  = sanitize_text_field( $userdata['last_name'] );
-			$userdata['user_login'] = $sanitized_user_login;
 			$userdata['user_email'] = $user_email;
-			$userdata['password']   = $user_pass;
 			if ( !empty( $userdata['user_url'] ) ) {
 				$userdata['user_url'] = esc_url_raw( $userdata['user_url'] );
 				$userdata['user_url'] = preg_match( '/^(https?|ftps?|mailto|news|irc|gopher|nntp|feed|telnet):/is', $userdata['user_url'] ) ? $userdata['user_url'] : 'http://' . $userdata['user_url'];
@@ -544,28 +541,31 @@ class Affiliates_Registration {
 				'ID'         => $user_id,
 				'first_name' => esc_sql( $userdata['first_name'] ),
 				'last_name'  => esc_sql( $userdata['last_name'] ),
-				'user_login' => esc_sql( $userdata['user_login'] ),
 				'user_email' => esc_sql( $userdata['user_email'] ),
-				'user_pass'  => esc_sql( $userdata['password'] )
 			);
+			if ( !empty( $userdata['password'] ) ) {
+				$_userdata['user_pass'] = esc_sql( $userdata['password'] );
+			}
 			if ( isset( $userdata['user_url'] ) ) {
 				$_userdata['user_url'] = esc_sql( $userdata['user_url'] );
 			}
-			
+
 			// update user and affiliate entry
 			$user_id = wp_update_user( $_userdata ); // if WP_Error it's returned below
 			if ( !is_wp_error( $user_id ) ) {
 
 				// add user meta from remaining fields
 				foreach( $userdata as $meta_key => $meta_value ) {
-					if ( !key_exists( $meta_key, $_userdata ) && ( in_array( $meta_key, self::$skip_meta_fields) ) ) {
+					if ( !key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
 						update_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 					}
 				}
 
 				// update affiliate entry
-				if ( $affiliate_id = array_shift( affiliates_get_user_affiliate( $user_id ) ) ) {
-					global $wpdb;
+				$affiliate_ids = affiliates_get_user_affiliate( $user_id );
+				if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
+					
+					$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 					$query = $wpdb->prepare(
 						"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
 						$_userdata['first_name'] . ' ' . $_userdata['last_name'],
@@ -603,7 +603,7 @@ class Affiliates_Registration {
 		if ( !is_wp_error( $user_id ) ) {
 			// add user meta from remaining fields
 			foreach( $userdata as $meta_key => $meta_value ) {
-				if ( !key_exists( $meta_key, $_userdata ) && ( in_array( $meta_key, self::$skip_meta_fields) ) ) {
+				if ( !key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
 					add_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 				}
 			}

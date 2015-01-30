@@ -145,6 +145,8 @@ class Affiliates_Admin_User_Profile {
 	 */
 	public static function edit_user_profile_update( $user_id ) {
 
+		global $wpdb;
+
 		if ( !affiliates_user_is_affiliate( $user_id ) ) {
 			return;
 		}
@@ -166,6 +168,23 @@ class Affiliates_Admin_User_Profile {
 				$meta_value = isset( $_POST[$name] ) ? $_POST[$name] : '';
 				$meta_value = Affiliates_Utility::filter( $meta_value );
 				update_user_meta( $user_id, $name, maybe_unserialize( $meta_value ) );
+			}
+		}
+
+		// update affiliate entry
+		$affiliate_ids = affiliates_get_user_affiliate( $user_id );
+		if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
+			if ( $user = get_user_by('id', $user_id ) ) {
+				$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+				$query = $wpdb->prepare(
+					"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
+					$user->first_name . ' ' . $user->last_name,
+					$user->user_email,
+					intval( $affiliate_id )
+				);
+				if ( $wpdb->query( $query ) ) {
+					do_action( 'affiliates_updated_affiliate', $affiliate_id );
+				}
 			}
 		}
 	}
