@@ -25,9 +25,6 @@ if ( !defined( 'ABSPATH' ) ) {
 
 /**
  * Registration settings section.
- * 
- * @todo add the [affiliates_fields] shortcode to the page generator code
- * 
  */
 class Affiliates_Settings_Registration extends Affiliates_Settings {
 

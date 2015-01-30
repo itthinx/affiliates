@@ -52,6 +52,8 @@ class Affiliates_Generator {
 
 [affiliates_is_affiliate]
 <p>Welcome to your affiliate area. Here you can find information about your affiliate link and earnings.</p>
+<h3>Affiliate Information</h3>
+[affiliates_fields]
 <h3>Affiliate link</h3>
 <p>Your affiliate URL:<br/>
 <code>[affiliates_url]</code></p>
