@@ -46,3 +46,9 @@ ul.integrations > li {
 ul.integrations > li:last-child {
 	margin-bottom: 2em;
 }
+#registration-fields > table > tbody > tr:first-child button.field-up {
+	display:none;
+}
+#registration-fields > table > tbody > tr:last-child button.field-down {
+	display:none;
+}
