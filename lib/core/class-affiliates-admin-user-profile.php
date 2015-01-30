@@ -36,6 +36,7 @@ class Affiliates_Admin_User_Profile {
 		add_action( 'edit_user_profile', array( __CLASS__, 'edit_user_profile' ) );
 		add_action( 'personal_options_update', array( __CLASS__, 'personal_options_update' ) );
 		add_action( 'edit_user_profile_update', array( __CLASS__, 'edit_user_profile_update' ) );
+		add_action( 'profile_update', array( __CLASS__, 'profile_update' ), 10, 2 );
 		//add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue_scripts' ) );
 	}
 
@@ -171,16 +172,31 @@ class Affiliates_Admin_User_Profile {
 			}
 		}
 
+		// The affiliate entry must be updated using the profile_update action
+		// as we don't have the updated user info here yet.
+
+	}
+
+	/**
+	 * Updates the affiliate entry.
+	 * 
+	 * @param int $user_id
+	 * @param array $old_userdata
+	 */
+	public static function profile_update( $user_id, $old_userdata ) {
+
+		global $wpdb;
+
 		// update affiliate entry
 		$affiliate_ids = affiliates_get_user_affiliate( $user_id );
 		if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
-			if ( $user = get_user_by('id', $user_id ) ) {
+			if ( $user = get_userdata( $user_id ) ) {
 				$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 				$query = $wpdb->prepare(
-					"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
-					$user->first_name . ' ' . $user->last_name,
-					$user->user_email,
-					intval( $affiliate_id )
+						"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
+						$user->first_name . ' ' . $user->last_name,
+						$user->user_email,
+						intval( $affiliate_id )
 				);
 				if ( $wpdb->query( $query ) ) {
 					do_action( 'affiliates_updated_affiliate', $affiliate_id );
@@ -188,6 +204,7 @@ class Affiliates_Admin_User_Profile {
 			}
 		}
 	}
+
 
 }
 Affiliates_Admin_User_Profile::init();
