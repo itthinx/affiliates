@@ -510,6 +510,8 @@ class Affiliates_Registration {
 
 		if ( ( $user = get_user_by( 'id', $user_id ) ) && affiliates_user_is_affiliate( $user_id ) ) {
 
+			$new_password = false;
+
 			$user_email = apply_filters( 'user_registration_email', $userdata['user_email'] );
 
 			// Check the e-mail address
@@ -545,6 +547,7 @@ class Affiliates_Registration {
 			);
 			if ( !empty( $userdata['password'] ) ) {
 				$_userdata['user_pass'] = esc_sql( $userdata['password'] );
+				$new_password = true;
 			}
 			if ( isset( $userdata['user_url'] ) ) {
 				$_userdata['user_url'] = esc_sql( $userdata['user_url'] );
@@ -576,6 +579,14 @@ class Affiliates_Registration {
 						do_action( 'affiliates_updated_affiliate', $affiliate_id );
 					}
 				}
+				// @todo headers already sent notices with WC when password is changed ... for example
+				// wp_woocommerce_session_... cookie cannot be set - headers already sent by .../wp-content/themes/twentytwelve/header.php on line 13 in .../wp-content/plugins/woocommerce/includes/wc-core-functions.php on line 469
+				// below doesn't solve this and we don't want to force logout/login on password change anyway
+// 				if ( $new_password ) {
+// 					$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+// 					wp_redirect( wp_login_url( $current_url ) );
+// 					exit;
+// 				}
 			}
 		}
 		return $user_id;

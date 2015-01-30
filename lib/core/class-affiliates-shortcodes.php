@@ -28,8 +28,6 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Shortcodes {
 
-	// var $url_options = array();
-
 	/**
 	 * Add shortcodes.
 	 */
@@ -47,6 +45,14 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_login_redirect', array( __CLASS__, 'affiliates_login_redirect' ) );
 		add_shortcode( 'affiliates_logout', array( __CLASS__, 'affiliates_logout' ) );
 		add_shortcode( 'affiliates_fields', array( __CLASS__, 'affiliates_fields' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'wp_enqueue_scripts' ) );
+	}
+
+	/**
+	 * Register styles.
+	 */
+	public static function wp_enqueue_scripts() {
+		wp_register_style( 'affiliates-fields', AFFILIATES_PLUGIN_URL . 'css/affiliates-fields.css', array(), AFFILIATES_CORE_VERSION, 'all' );
 	}
 
 	/**
@@ -628,12 +634,14 @@ class Affiliates_Shortcodes {
 	 * user_id - print for ... requires AFFILIATES_ADMIN...
 	 * name - field name or names, empty includes all by default
 	 * edit - yes or no
+	 * load_styles - yes or no
 	 * 
 	 * @param array $atts
 	 * @param string $content
 	 * @return string
 	 */
 	public static function affiliates_fields( $atts, $content = null ) {
+
 		$output = '';
 
 		if ( is_user_logged_in() ) {
@@ -641,11 +649,17 @@ class Affiliates_Shortcodes {
 			$atts = shortcode_atts(
 				array(
 					'edit'    => 'yes',
+					'load_styles' => 'yes',
 					'name'    => '',
-					'user_id' => null,
+					'user_id' => null
 				),
 				$atts
 			);
+
+			$atts['load_styles'] = strtolower( trim( $atts['load_styles' ] ) );
+			if ( $atts['load_styles'] == 'yes' ) {
+				wp_enqueue_style( 'affiliates-fields' );
+			}
 
 			$atts['edit'] = strtolower( trim( $atts['edit' ] ) );
 
@@ -684,7 +698,9 @@ class Affiliates_Shortcodes {
 				if ( $atts['edit'] === 'yes' ) {
 					if ( !empty( $_POST['affiliate-nonce'] ) && wp_verify_nonce( $_POST['affiliate-nonce'], 'save' ) ) {
 						if ( !empty( $registration_fields ) ) {
-							
+
+							$error = false;
+
 							// gather field values
 							foreach( $registration_fields as $name => $field ) {
 								if ( $field['enabled'] ) {
@@ -699,9 +715,26 @@ class Affiliates_Shortcodes {
 										$output .= '</div>';
 									}
 									$registration_fields[$name]['value'] = $value;
+
+									// password check
+									$type = isset( $field['type'] ) ? $field['type'] : 'text';
+									if ( $type == 'password' ) {
+										if ( !empty( $value ) ) {
+											$value2 = isset( $_POST[$name . '2'] ) ? $_POST[$name . '2'] : '';
+											$value2 = Affiliates_Utility::filter( $value2 );
+											if ( $value !== $value2 ) {
+												$error = true;
+												$output .= '<div class="error">';
+												$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+												$output .= ' : ';
+												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+												$output .= '</div>';
+											}
+										}
+									}
 								}
 							}
-							
+
 							$userdata = array();
 							foreach( $registration_fields as $name => $field ) {
 								if ( $registration_fields[$name]['enabled'] ) {
@@ -709,12 +742,18 @@ class Affiliates_Shortcodes {
 								}
 							}
 
-							$updated_user_id = Affiliates_Registration::update_affiliate_user( $user_id, $userdata );
-							if ( is_wp_error( $updated_user_id ) ) {
-								$error_messages = implode( '<br/>', $updated_user_id->get_error_messages() );
-								if ( !empty( $error_messages ) ) {
-									$output .= '<div class="error">';
-									$output .= $error_messages;
+							if ( !$error ) {
+								$updated_user_id = Affiliates_Registration::update_affiliate_user( $user_id, $userdata );
+								if ( is_wp_error( $updated_user_id ) ) {
+									$error_messages = implode( '<br/>', $updated_user_id->get_error_messages() );
+									if ( !empty( $error_messages ) ) {
+										$output .= '<div class="error">';
+										$output .= $error_messages;
+										$output .= '</div>';
+									}
+								} else {
+									$output .= '<div class="updated">';
+									$output .= __( 'Saved', AFFILIATES_PLUGIN_DOMAIN );
 									$output .= '</div>';
 								}
 							}
@@ -726,22 +765,16 @@ class Affiliates_Shortcodes {
 				$n = 0;
 				if ( !empty( $registration_fields ) ) {
 					if ( $atts['edit'] === 'yes' ) {
-						$output .= '<form id="affiliates-registration-form" method="post">';
+						$output .= '<form class="affiliates-fields" method="post">';
 						$output .= '<div>';
 					}
-					$output .= '<table class="form-table">';
-					$output .= '</body>';
 					foreach( $registration_fields as $name => $field ) {
 
 						if ( $field['enabled'] ) {
 							$n++;
-							$output .= '<tr>';
-							$output .= '<th>';
-							$output .= sprintf( '<label for="%s">', esc_attr( $name ) );
+							$output .= '<div class="field">';
+							$output .= '<label>';
 							$output .= esc_html( $field['label'] ); // @todo i18n
-							$output .= '</label>';
-							$output .= '</th>';
-							$output .= '<td>';
 							$type = isset( $field['type'] ) ? $field['type'] : 'text';
 							$extra = $atts['edit'] != 'yes' ? ' readonly="readonly" ' : '';
 							switch( $name ) {
@@ -770,17 +803,13 @@ class Affiliates_Shortcodes {
 									$field['required'] ? ' required="required" ' : '',
 									$extra
 							);
-							$output .= '</td>';
-							$output .= '</tr>';
+							$output .= '</label>';
+							$output .= '</div>';
 
 							if ( $type == 'password' ) {
-								$output .= '<tr>';
-								$output .= '<th>';
-								$output .= sprintf( '<label for="%s">', esc_attr( $name ) );
+								$output .= '<div class="field">';
+								$output .= '<label>';
 								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( $field['label'] ) ); // @todo i18n
-								$output .= '</label>';
-								$output .= '</th>';
-								$output .= '<td>';
 								$output .= sprintf(
 										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 										esc_attr( $type ),
@@ -790,13 +819,11 @@ class Affiliates_Shortcodes {
 										$field['required'] ? ' required="required" ' : '',
 										$extra
 								);
-								$output .= '</td>';
-								$output .= '</tr>';
+								$output .= '</label>';
+								$output .= '</div>';
 							}
 						}
 					}
-					$output .= '</tbody>';
-					$output .= '</table>';
 
 					if ( $atts['edit'] === 'yes' ) {
 						$output .=  wp_nonce_field( 'save', 'affiliate-nonce', true, false );

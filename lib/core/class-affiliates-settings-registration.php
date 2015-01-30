@@ -28,6 +28,8 @@ if ( !defined( 'ABSPATH' ) ) {
  * 
  * @todo add shortcode to allow to print and/or edit fields
  * @todo up/down buttons to modify field order
+ * @todo add the [affiliates_fields] shortcode to the page generator code
+ * 
  */
 class Affiliates_Settings_Registration extends Affiliates_Settings {
 
