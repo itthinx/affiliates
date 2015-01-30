@@ -26,8 +26,6 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Registration settings section.
  * 
- * @todo add shortcode to allow to print and/or edit fields
- * @todo up/down buttons to modify field order
  * @todo add the [affiliates_fields] shortcode to the page generator code
  * 
  */
@@ -195,8 +193,8 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			echo '</td>';
 			echo '<td>';
 			echo sprintf( '<input type="hidden" name="field-type[%d]" value="%s" />', $i, $field['type'] );
-			// @todo up button
-			// @todo down button
+			echo sprintf( '<button class="field-up" type="button" value="%d">%s</button>', $i, esc_html( __( 'Up', AFFILIATES_PLUGIN_DOMAIN ) ) );
+			echo sprintf( '<button class="field-down" type="button" value="%d">%s</button>', $i, esc_html( __( 'Down', AFFILIATES_PLUGIN_DOMAIN ) ) );
 			if ( !$field['is_default'] ) {
 				echo sprintf( '<button class="field-remove" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) ) );
 			}

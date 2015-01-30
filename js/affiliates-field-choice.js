@@ -51,4 +51,44 @@ jQuery(document).ready(function(){
 		event.stopPropagation();
 		jQuery(event.target).parent().parent().remove();
 	});
+
+	jQuery("#registration-fields").on('click','button.field-up,button.field-down',function(event){
+		event.stopPropagation();
+		var row = jQuery(this).parents("tr:first");
+		if (jQuery(this).is(".field-up")) {
+			var prev = row.prev();
+			row.insertBefore(prev);
+			row.find('input').each(function(){
+				var name = jQuery(this).attr('name');
+				var newName = name.replace(/\d+/, function(match,offset,string){
+					return parseInt(match)-1;
+				});
+				jQuery(this).attr('name',newName);
+			});
+			prev.find('input').each(function(){
+				var name = jQuery(this).attr('name');
+				var newName = name.replace(/\d+/, function(match,offset,string){
+					return parseInt(match)+1;
+				});
+				jQuery(this).attr('name',newName);
+			});
+		} else {
+			var next = row.next();
+			row.insertAfter(next);
+			row.find('input').each(function(){
+				var name = jQuery(this).attr('name');
+				var newName = name.replace(/\d+/, function(match,offset,string){
+					return parseInt(match)+1;
+				});
+				jQuery(this).attr('name',newName);
+			});
+			next.find('input').each(function(){
+				var name = jQuery(this).attr('name');
+				var newName = name.replace(/\d+/, function(match,offset,string){
+					return parseInt(match)-1;
+				});
+				jQuery(this).attr('name',newName);
+			});
+		}
+	});
 });
