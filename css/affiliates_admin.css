@@ -290,10 +290,9 @@ table.affiliates-permissions tbody tr td.checkbox {
 	color: #333;
 }
 
-.affiliates-overview .required,
-.manage-affiliates .required {
-	background: url(../images/required.png) transparent no-repeat left center;
-	padding-left: 16px ! important;
+.affiliates-overview .required input,
+.manage-affiliates .required input{
+	background: url(../images/required.png) transparent no-repeat right center;
 }
 .manage-affiliates input[type="submit"],
 .manage-affiliates .encoded-hint {
