@@ -429,6 +429,19 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.8.0 =
+* Added a setup notice with links to the page generation and integration sections.
+* Improved the configuration section and replaced the Options menu item with Settings.
+* Direct referrals are now disabled by default.
+* Changed the default cookie timeout to 30 days.
+* Security improvement, added additional ABSPATH checks.
+* Improved UI appearance and fixed some structural issues.
+* Added the option to enable user registration referrals for new WooCommerce customers.
+* Improved the date displayed for earnings for i18n.
+* Added customization options for the affiliate registration form.
+* Added User profile displays additional affiliate registration fields.
+* Added the [affiliates_fields] shortcode and included it in the affiliate area page generator.
+
 = 2.7.3 =
 * WordPress 4.1 compatible.
 
@@ -669,14 +682,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.8.0 =
-
-* Added a setup notice with links to the page generation and integration sections.
-* Improved the configuration section and replaced the Options menu item with Settings.
-* Direct referrals are now disabled by default.
-* Changed the default cookie timeout to 30 days.
-* Security improvement, added additional ABSPATH checks.
-* Improved UI appearance and fixed some structural issues.
-* Added the option to enable user registration referrals for new WooCommerce customers.
+* This version provides many additions and improvements, including a fully revised customizable registration form, new shortcodes and many improvements on the administrative back end which also include a better Settings section and quick links to guide through setup.
 
 = 2.7.3 =
 * WordPress 4.1 compatible.
