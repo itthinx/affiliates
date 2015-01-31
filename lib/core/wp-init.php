@@ -575,21 +575,26 @@ function affiliates_cleanup( $delete = false ) {
 		flush_rewrite_rules();
 		$affiliates_options->flush_options();
 		delete_option( 'affiliates_plugin_version' );
+		delete_option( 'aff_allow_auto' );
+		delete_option( 'aff_allow_auto_coupons' );
 		delete_option( 'aff_cookie_timeout_days' );
-		delete_option( 'aff_duplicates' );
-		delete_option( 'aff_use_direct' );
-		delete_option( 'aff_id_encoding' );
+		delete_option( 'aff_customer_registration_enabled' );
 		delete_option( 'aff_default_referral_status' );
-		delete_option( 'aff_registration' );
-		delete_option( 'aff_notify_admin' );
 		delete_option( 'aff_delete_data' );
 		delete_option( 'aff_delete_network_data' );
-		delete_option( 'aff_redirect' );
+		delete_option( 'aff_duplicates' );
+		delete_option( 'aff_id_encoding' );
+		delete_option( 'aff_notify_admin' );
 		delete_option( 'aff_pname' );
-		delete_option( 'aff_user_registration_enabled' );
-		delete_option( 'aff_user_registration_base_amount' );
+		delete_option( 'aff_redirect' );
+		delete_option( 'aff_registration' );
+		delete_option( 'aff_registration_fields' );
+		delete_option( 'aff_setup_hide' );
+		delete_option( 'aff_use_direct' );
 		delete_option( 'aff_user_registration_amount' );
+		delete_option( 'aff_user_registration_base_amount' );
 		delete_option( 'aff_user_registration_currency' );
+		delete_option( 'aff_user_registration_enabled' );
 		delete_option( 'aff_user_registration_referral_status' );
 	}
 }
