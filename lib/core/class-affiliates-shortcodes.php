@@ -450,7 +450,7 @@ class Affiliates_Shortcodes {
 	
 							// month & year
 							$output .= '<td>';
-							$output .= date( __( 'F Y', AFFILIATES_PLUGIN_DOMAIN ), strtotime( $from ) ); // translators: date format; month and year for earnings display
+							$output .= date_i18n( __( 'F Y', AFFILIATES_PLUGIN_DOMAIN ), strtotime( $from ) ); // translators: date format; month and year for earnings display
 							$output .= '</td>';
 	
 							// earnings
