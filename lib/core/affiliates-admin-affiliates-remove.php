@@ -79,9 +79,10 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		'<li>' . sprintf( __( 'Until : %s', AFFILIATES_PLUGIN_DOMAIN ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
 		'</ul> ' .
 		wp_nonce_field( 'affiliates-remove', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button" type="submit" value="' . __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 		'<input type="hidden" value="remove" name="action"/>' .
-		'<a class="cancel" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		' ' .
+		'<a class="cancel button" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
 		'</div>' .
 		'</div>' . // .affiliate.remove
 		'</form>' .

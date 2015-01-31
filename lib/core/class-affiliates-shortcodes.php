@@ -828,7 +828,7 @@ class Affiliates_Shortcodes {
 					if ( $atts['edit'] === 'yes' ) {
 						$output .=  wp_nonce_field( 'save', 'affiliate-nonce', true, false );
 						$output .= '<div class="save">';
-						$output .= sprintf( '<input type="submit" name="save" value="%s" />', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+						$output .= sprintf( '<input class="button" type="submit" name="save" value="%s" />', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
 						$output .= '</div>';
 						$output .= '</div>';
 						$output .= '</form>';

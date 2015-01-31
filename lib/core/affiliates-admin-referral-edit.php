@@ -247,9 +247,9 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
 
-	$output .= sprintf( '<input class="button" type="submit" name="save" value="%s"/>', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+	$output .= sprintf( '<input class="button button-primary" type="submit" name="save" value="%s"/>', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
 	$output .= ' ';
-	$output .= sprintf( '<a class="cancel" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', AFFILIATES_PLUGIN_DOMAIN ) : __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
+	$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', AFFILIATES_PLUGIN_DOMAIN ) : __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
 
 	$output .= '</div>';
 	$output .= '</form>';

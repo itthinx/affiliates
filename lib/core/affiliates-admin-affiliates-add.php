@@ -109,9 +109,10 @@ function affiliates_admin_affiliates_add() {
 
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-add', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button" type="submit" value="' . __( 'Add', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . __( 'Add', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 		'<input type="hidden" value="add" name="action"/>' .
-		'<a class="cancel" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		' ' .
+		'<a class="cancel button" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.new

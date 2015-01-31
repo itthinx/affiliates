@@ -145,9 +145,9 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					$output .= __( 'Remove this referral? This action can not be undone.', AFFILIATES_PLUGIN_DOMAIN );
 					$output .= '</p>';
 					
-					$output .= sprintf( '<input class="button" type="submit" name="submit" value="%s"/>', __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) );
+					$output .= sprintf( '<input class="button button-primary" type="submit" name="submit" value="%s"/>', __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) );
 					$output .= ' ';
-					$output .= sprintf( '<a class="cancel" href="%s">%s</a>', $cancel_url, __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
+					$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
 					
 					$output .= '</div>';
 					$output .= '</form>';
