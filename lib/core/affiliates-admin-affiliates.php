@@ -391,25 +391,25 @@ function affiliates_admin_affiliates() {
 			'<form id="setfilters" action="" method="post">' .
 				'<div class="filter-section">' .
 				'<label class="affiliate-id-filter">' .
-					__( 'Affiliate Id', AFFILIATES_PLUGIN_DOMAIN ) .
+					__( 'Id', AFFILIATES_PLUGIN_DOMAIN ) .
 					' ' .
 					'<input class="affiliate-id-filter" name="affiliate_id" type="text" value="' . esc_attr( $affiliate_id ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-name-filter">' .
-				__( 'Affiliate Name', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Name', AFFILIATES_PLUGIN_DOMAIN ) .
 				' ' .
 				'<input class="affiliate-name-filter" name="affiliate_name" type="text" value="' . $affiliate_name . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-email-filter">' .
-				__( 'Affiliate Email', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Email', AFFILIATES_PLUGIN_DOMAIN ) .
 				' ' .
 				'<input class="affiliate-email-filter" name="affiliate_email" type="text" value="' . $affiliate_email . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-user-login-filter">' .
-				__( 'Affiliate Username', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Username', AFFILIATES_PLUGIN_DOMAIN ) .
 				' ' .
 				'<input class="affiliate-user-login-filter" name="affiliate_user_login" type="text" value="' . $affiliate_user_login . '" />' .
 				'</label>' .
