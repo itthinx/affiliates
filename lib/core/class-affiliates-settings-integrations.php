@@ -161,9 +161,11 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$deactivate_url = 'plugins.php?action=deactivate&plugin=' . urlencode( "$key/$key.php" ) . '&plugin_status=all&paged=1&s&_wpnonce=' . urlencode( wp_create_nonce( "deactivate-plugin_$key/$key.php" ) );
 			$integration_class = isset( $integration['class'] ) ? $integration['class'] : '';
 			$action      = '';
+			$button      = '';
 			$explanation = '';
 			if ( !key_exists( $integration['plugin_file'], $all_plugins ) ) {
-				$action = sprintf( '<a class="button" href="%s">Install</a>', esc_url( $install_url ) );
+				$action = 'install';
+				$button = sprintf( '<a class="button" href="%s">Install</a>', esc_url( $install_url ) );
 				$explanation = sprintf(
 					__( 'The <a href="%s">%s</a> plugin is not installed.', AFFILIATES_PLUGIN_DOMAIN ),
 					esc_attr( $integration['plugin_url'] ),
@@ -171,7 +173,8 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				);
 			} else {
 				if ( is_plugin_inactive( $integration['plugin_file'] ) ) {
-					$action = sprintf( '<a class="button" href="%s">Activate</a>', esc_url( $activate_url ) );
+					$action = 'activate';
+					$button = sprintf( '<a class="button" href="%s">Activate</a>', esc_url( $activate_url ) );
 					$explanation = sprintf(
 						__( 'The <a href="%s">%s</a> plugin is installed but not activated.', AFFILIATES_PLUGIN_DOMAIN ),
 						esc_attr( $integration['plugin_url'] ),
@@ -179,7 +182,8 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 					);
 					$integration_class .= ' inactive';
 				} else {
-					$action = sprintf( '<a class="button" href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
+					$action = 'deactivate';
+					$button = sprintf( '<a class="button" href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
 					$explanation = sprintf(
 						__( 'The <a href="%s">%s</a> plugin is installed and activated.', AFFILIATES_PLUGIN_DOMAIN ),
 						esc_attr( $integration['plugin_url'] ),
@@ -188,6 +192,8 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 					$integration_class .= ' active';
 				}
 			}
+			$button = apply_filters( 'affiliates_settings_integration_button', $button, $action, $key, $integration );
+			$explanation = apply_filters( 'affiliates_settings_integration_explanation', $explanation, $action, $key, $integration );
 			$list .= '<li>';
 			$list .= sprintf( '<div class="integration %s">', $integration_class );
 			$list .= '<h3>' . $integration['title'] . '</h3>';
@@ -199,12 +205,16 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				$list .= $integration['notes'];
 				$list .= '</p>';
 			}
-			$list .= '<p>';
-			$list .= $explanation;
-			$list .= '</p>';
-			$list .= '<p>';
-			$list .= $action;
-			$list .= '</p>';
+			if ( !empty( $explanation ) ) {
+				$list .= '<p>';
+				$list .= $explanation;
+				$list .= '</p>';
+			}
+			if ( !empty( $button ) ) {
+				$list .= '<p>';
+				$list .= $button;
+				$list .= '</p>';
+			}
 			$list .= '</div>';
 			$list .= '</li>';
 		}
