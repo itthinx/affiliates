@@ -404,13 +404,15 @@ class Affiliates_Registration {
 				$output .= $field['label'];
 				$output .= ' ';
 				$type = isset( $field['type'] ) ? $field['type'] : 'text';
+				$readonly = is_user_logged_in() && ( ( $name == 'user_login' ) || ( $name == 'user_email' ) ) ? ' readonly="readonly" ' : '';
 				$output .= sprintf(
-					'<input type="%s" class="%s" name="%s" value="%s" %s />',
+					'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 					esc_attr( $type ),
 					esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
 					esc_attr( $name ),
 					esc_attr( isset( $field['value'] ) ? $field['value'] : '' ),
-					$field['required'] ? ' required="required" ' : ''
+					$field['required'] ? ' required="required" ' : '',
+					$readonly
 				);
 				$output .= '</label>';
 				$output .= '</div>';
