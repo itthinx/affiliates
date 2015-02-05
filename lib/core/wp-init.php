@@ -607,6 +607,9 @@ add_action( 'init', 'affiliates_init' );
  */
 function affiliates_init() {
 	load_plugin_textdomain( AFFILIATES_PLUGIN_DOMAIN, null, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
+	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
+		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
+	}
 }
 
 add_filter( 'query_vars', 'affiliates_query_vars', 999 ); // filter acts late to avoid being messed with by others
@@ -1857,4 +1860,22 @@ function affiliates_get_affiliate_referrals( $affiliate_id, $from_date = null , 
 function _affiliates_get_tablename( $name ) {
 	global $wpdb;
 	return $wpdb->prefix . AFFILIATES_TP . $name;
+}
+
+/**
+ * Attribute filter for overrides.
+ * 
+ * @param mixed $value
+ * @param int $affiliate_id
+ * @param string $key
+ * @return mixed
+ */
+function affiliates_attribute_filter( $value, $affiliate_id, $key ) {
+	if ( $user_id = affiliates_get_affiliate_user( $affiliate_id ) ) {
+		$maybe_value = get_user_meta( $user_id, $key , true );
+		if ( !empty( $maybe_value ) ) {
+			$value = $maybe_value;
+		}
+	}
+	return $value;
 }
