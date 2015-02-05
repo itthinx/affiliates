@@ -194,7 +194,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			}
 			$button = apply_filters( 'affiliates_settings_integration_button', $button, $action, $key, $integration );
 			$explanation = apply_filters( 'affiliates_settings_integration_explanation', $explanation, $action, $key, $integration );
-			$list .= '<li>';
+			$list .= sprintf( '<li id="integration-%s">', $key );
 			$list .= sprintf( '<div class="integration %s">', $integration_class );
 			$list .= '<h3>' . $integration['title'] . '</h3>';
 			$list .= '<p class="description">';
