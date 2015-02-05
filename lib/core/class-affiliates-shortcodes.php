@@ -767,6 +767,9 @@ class Affiliates_Shortcodes {
 					if ( $atts['edit'] === 'yes' ) {
 						$output .= '<form class="affiliates-fields" method="post">';
 						$output .= '<div>';
+					} else {
+						$output .= '<div class="affiliates-fields">';
+						$output .= '<div>';
 					}
 					foreach( $registration_fields as $name => $field ) {
 
@@ -832,6 +835,9 @@ class Affiliates_Shortcodes {
 						$output .= '</div>';
 						$output .= '</div>';
 						$output .= '</form>';
+					} else {
+						$output .= '</div>';
+						$output .= '</div>';
 					}
 
 				}
