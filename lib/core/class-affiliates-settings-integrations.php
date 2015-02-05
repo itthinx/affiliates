@@ -222,6 +222,8 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$output .= $list;
 
 		echo $output;
+
+		affiliates_footer();
 	}
 }
 Affiliates_Settings_Integrations::init();

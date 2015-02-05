@@ -123,5 +123,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		// @todo update the documentation link :
 		_e( 'Please refer to the <a href="http://www.itthinx.com/documentation/affiliates/">Documentation</a> for more details.', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</p>';
+
+		affiliates_footer();
 	}
 }
