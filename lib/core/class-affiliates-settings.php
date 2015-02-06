@@ -113,6 +113,11 @@ class Affiliates_Settings {
 		$buttons = apply_filters(
 			'affiliates_setup_buttons',
 			array(
+				'general' => sprintf(
+					'<a href="%s" class="button-primary">%s</a>',
+					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+					__( 'Review General Settings', AFFILIATES_PLUGIN_DOMAIN )
+				),
 				'registration' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
@@ -128,12 +133,6 @@ class Affiliates_Settings {
 					add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
 					__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
 				)
-// 				,
-// 				'general' => sprintf(
-// 					'<a href="%s" class="button-primary">%s</a>',
-// 					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-// 					__( 'Review General Settings', AFFILIATES_PLUGIN_DOMAIN )
-// 				)
 			)
 		);
 
