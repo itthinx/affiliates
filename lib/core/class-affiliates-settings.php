@@ -88,7 +88,12 @@ class Affiliates_Settings {
 	 * Prints setup notices.
 	 */
 	public static function setup_notice() {
-		echo '<div id="message" class="updated affiliates-settings">';
+
+		echo '<style type="text/css">';
+		echo '.affiliates-welcome a.button-primary { margin: 0 4px 4px 0; }';
+		echo '</style>';
+
+		echo '<div class="updated affiliates-welcome">';
 
 		// render the welcome header and a brief explanation
 		echo '<p>';
