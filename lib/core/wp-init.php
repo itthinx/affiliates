@@ -750,7 +750,8 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		$formats .= ',%d';
 		$values[] = $user_id;
 	}
-	if ( AFFILIATES_RECORD_ROBOT_HITS ) {
+	$is_robot = 0;
+	if ( AFFILIATES_RECORD_ROBOT_HITS ) { // @todo review/fix logic
 		$robots_table    = _affiliates_get_tablename( 'robots' );
 		$robots_query    = $wpdb->prepare( "SELECT name FROM $robots_table WHERE %s LIKE concat('%%',name,'%%')", $http_user_agent );
 		$got_robots      = $wpdb->get_results( $robots_query );
@@ -763,7 +764,23 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$columns .= ')';
 	$formats .= ')';
 	$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
-	$wpdb->query( $query );
+	if ( $wpdb->query( $query ) ) {
+		do_action(
+			'affiliates_hit',
+			array(
+				'affiliate_id' => $affiliate_id,
+				'campaign_id'  => null,
+				'date'         => $date,
+				'time'         => $time,
+				'datetime'     => $datetime,
+				'ip'           => $ip_address,
+				'ipv6'         => null,
+				'is_robot'     => $is_robot,
+				'user_id'      => $user_id,
+				'type'         => $type
+			)
+		);
+	}
 }
 
 /**
