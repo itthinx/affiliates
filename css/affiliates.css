@@ -48,7 +48,9 @@
 	color: #f00;
 }
 .affiliates-registration .required {
-	background: url(../images/required.png) transparent no-repeat right center;
+	background-image: url(../images/required.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 .affiliates-registration .field,
 .affiliates-registration .sign-up {

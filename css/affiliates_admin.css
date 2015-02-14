@@ -292,7 +292,9 @@ table.affiliates-permissions tbody tr td.checkbox {
 
 .affiliates-overview .required input,
 .manage-affiliates .required input{
-	background: url(../images/required.png) transparent no-repeat right center;
+	background-image: url(../images/required.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 .manage-affiliates input[type="submit"],
 .manage-affiliates .encoded-hint {

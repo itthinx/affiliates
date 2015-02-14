@@ -34,7 +34,9 @@
 	color: #f00;
 }
 .affiliates-fields .required {
-	background: url(../images/required.png) transparent no-repeat right center;
+	background-image: url(../images/required.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 .affiliates-fields .field,
 .affiliates-fields .save {
