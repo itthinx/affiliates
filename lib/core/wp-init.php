@@ -354,6 +354,7 @@ function affiliates_setup() {
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $hits_table . "'" ) != $hits_table ) {
 		$queries[] = "CREATE TABLE " . $hits_table . "(
 				affiliate_id    BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+				campaign_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				date            DATE NOT NULL,
 				time            TIME NOT NULL,
 				datetime        DATETIME NOT NULL,
@@ -365,7 +366,8 @@ function affiliates_setup() {
 				type            VARCHAR(10) DEFAULT NULL,
 				PRIMARY KEY     (affiliate_id, date, time, ip),
 				INDEX           aff_hits_ddt (date, datetime),
-				INDEX           aff_hits_dtd (datetime, date)
+				INDEX           aff_hits_dtd (datetime, date),
+				INDEX           aff_hits_acm (affiliate_id, campaign_id)
 			) $charset_collate;";
 	}
 	$robots_table = _affiliates_get_tablename( 'robots' );
@@ -512,6 +514,12 @@ function affiliates_update( $previous_version ) {
 		DROP PRIMARY KEY,
 		ADD PRIMARY KEY (referral_id),
 		ADD INDEX aff_referrals_ref (reference(20));";
+	}
+	if ( !empty( $previous_version ) && strcmp( $previous_version, "2.8.0" ) < 0 ) {
+		$hits_table = _affiliates_get_tablename( 'hits' );
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD INDEX aff_hits_acm (affiliate_id, campaign_id);";
 	}
 	//		dbDelta won't handle ALTER ...
 	//		if ( !empty( $queries ) ) {
@@ -759,7 +767,18 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 			$columns .= ',is_robot';
 			$formats .= ',%d';
 			$values[] = '1';
+		}
 	}
+	$campaign_id = null;
+	if ( class_exists( 'Affiliates_Campaign' ) && method_exists( 'evaluate' ) ) {
+		if ( isset( $_REQUEST['cmid'] ) ) {
+			$campaign_id = Affiliates_Campaign::evaluate( $_REQUEST['cmid'], $affiliate_id, $_REQUEST );
+			if ( $campaign_id ) {
+				$columns .= ',campaign_id';
+				$format  .= ',%s';
+				$values[] = $campaign_id;
+			}
+		}
 	}
 	$columns .= ')';
 	$formats .= ')';
@@ -769,7 +788,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 			'affiliates_hit',
 			array(
 				'affiliate_id' => $affiliate_id,
-				'campaign_id'  => null,
+				'campaign_id'  => $campaign_id,
 				'date'         => $date,
 				'time'         => $time,
 				'datetime'     => $datetime,
