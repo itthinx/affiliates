@@ -313,6 +313,7 @@ function affiliates_setup() {
 		$queries[] = "CREATE TABLE " . $referrals_table . "(
 				referral_id  BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 				affiliate_id bigint(20) unsigned NOT NULL default '0',
+				campaign_id  bigint(20) UNSIGNED DEFAULT NULL,
 				post_id      bigint(20) unsigned NOT NULL default '0',
 				datetime     datetime NOT NULL,
 				description  varchar(5000),
@@ -330,7 +331,9 @@ function affiliates_setup() {
 				INDEX        aff_referrals_da (datetime, affiliate_id),
 				INDEX        aff_referrals_sda (status, datetime, affiliate_id),
 				INDEX        aff_referrals_tda (type, datetime, affiliate_id),
-				INDEX        aff_referrals_ref (reference(20))
+				INDEX        aff_referrals_ref (reference(20)),
+				INDEX        aff_referrals_ac  (affiliate_id, campaign_id),
+				INDEX        aff_referrals_c   (campaign_id)
 			) $charset_collate;";
 		// @see http://bugs.mysql.com/bug.php?id=27645 as of now (2011-03-19) NOW() can not be specified as the default value for a datetime column
 	}
@@ -520,6 +523,12 @@ function affiliates_update( $previous_version ) {
 		$queries[] = "ALTER TABLE " . $hits_table . "
 		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_hits_acm (affiliate_id, campaign_id);";
+
+		$referrals_table = _affiliates_get_tablename( 'referrals' );
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD INDEX aff_referrals_ac (affiliate_id, campaign_id),
+		ADD INDEX aff_referrals_c (campaign_id);";
 	}
 	//		dbDelta won't handle ALTER ...
 	//		if ( !empty( $queries ) ) {
@@ -676,6 +685,11 @@ function affiliates_parse_request( &$wp ) {
 			$expire = time() + AFFILIATES_COOKIE_TIMEOUT_BASE * $days;
 		} else {
 			$expire = 0;
+		}
+		if ( class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'evaluate' ) ) {
+			if ( $cmid = Affiliates_Campaign::evaluate( $_REQUEST['cmid'], $affiliate_id ) ) {
+				$encoded_id .= '.' . $cmid;
+			}
 		}
 		setcookie(
 			AFFILIATES_COOKIE_NAME,

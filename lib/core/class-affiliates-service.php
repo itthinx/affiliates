@@ -38,7 +38,14 @@ class Affiliates_Service {
 		switch ( $service ) {
 			default :
 				if ( isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
-					$affiliate_id = affiliates_check_affiliate_id_encoded( trim( $_COOKIE[AFFILIATES_COOKIE_NAME] ) );
+					$value = trim( $_COOKIE[AFFILIATES_COOKIE_NAME] );
+					if ( ( $dot = strpos( $value, '.' ) ) === false ) {
+						$affiliate_id = affiliates_check_affiliate_id_encoded( $value );
+					} else {
+						if ( ( $dot > 0 ) && ( $dot < strlen( $value ) - 1 ) ) {
+							$affiliate_id = affiliates_check_affiliate_id_encoded( substr( $value, 0, $dot ) );
+						}
+					}
 				}
 		}
 		if ( !$affiliate_id ) {
@@ -48,6 +55,80 @@ class Affiliates_Service {
 			}
 		}
 		return apply_filters( 'affiliates_service_affiliate_id', $affiliate_id, $service );
+	}
+
+	/**
+	 * Obtain the referrer's campaign's id.
+	 * 
+	 * @param string $service
+	 * @return int campaign id or false if none applies
+	 */
+	public static function get_campaign_id( $service = null ) {
+		$campaign_id = false;
+		switch ( $service ) {
+			default :
+				if ( isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
+					$value = trim( $_COOKIE[AFFILIATES_COOKIE_NAME] );
+					if ( ( $dot = strpos( $value, '.' ) ) !== false ) {
+						if ( ( $dot > 0 ) && ( $dot < strlen( $value ) - 1 ) ) {
+							if ( $affiliate_id = affiliates_check_affiliate_id_encoded( substr( $value, 0, $dot ) ) ) {
+								$_campaign_id  = substr( $value, $dot + 1 );
+								if ( class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' ) ) {
+									if ( Affiliates_Campaign::is_affiliate_campaign( $affiliate_id, $_campaign_id ) ) {
+										$campaign_id = $_campaign_id;
+									}
+								}
+							}
+						}
+					}
+				}
+		}
+		return apply_filters( 'affiliates_service_campaign_id', $campaign_id, $service );
+	}
+
+	/**
+	 * Returns the affiliate and campaign ids if present.
+	 * 
+	 * @param string $service
+	 * @return array or null
+	 */
+	public static function get_ids( $service = null ) {
+		$affiliate_id = null;
+		$campaign_id  = null;
+		$result = null;
+		switch ( $service ) {
+			default :
+				if ( isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
+					$value = trim( $_COOKIE[AFFILIATES_COOKIE_NAME] );
+					if ( ( $dot = strpos( $value, '.' ) ) === false ) {
+						$affiliate_id = affiliates_check_affiliate_id_encoded( $value );
+					} else {
+						if ( ( $dot > 0 ) && ( $dot < strlen( $value ) - 1 ) ) {
+							if ( $affiliate_id = affiliates_check_affiliate_id_encoded( substr( $value, 0, $dot ) ) ) {
+								$_campaign_id  = substr( $value, $dot + 1 );
+								if ( class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' ) ) {
+									if ( Affiliates_Campaign::is_affiliate_campaign( $affiliate_id, $_campaign_id ) ) {
+										$campaign_id = $_campaign_id;
+									}
+								}
+							}
+						}
+					}
+				}
+		}
+		if ( !$affiliate_id ) {
+			if ( get_option( 'aff_use_direct', false ) ) {
+				// Assume a direct referral
+				$affiliate_id = affiliates_get_direct_id();
+			}
+		}
+		if ( $affiliate_id ) {
+			$result = array(
+				'affiliate_id' => $affiliate_id,
+				'campaign_id'  => $campaign_id
+			);
+		}
+		return apply_filters( 'affiliates_service_ids', $result, $service );
 	}
 
 }
