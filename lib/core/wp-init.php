@@ -687,8 +687,10 @@ function affiliates_parse_request( &$wp ) {
 			$expire = 0;
 		}
 		if ( class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'evaluate' ) ) {
-			if ( $cmid = Affiliates_Campaign::evaluate( $_REQUEST['cmid'], $affiliate_id ) ) {
-				$encoded_id .= '.' . $cmid;
+			if ( !empty( $_REQUEST['cmid'] ) ) {
+				if ( $cmid = Affiliates_Campaign::evaluate( $_REQUEST['cmid'], $affiliate_id ) ) {
+					$encoded_id .= '.' . $cmid;
+				}
 			}
 		}
 		setcookie(
