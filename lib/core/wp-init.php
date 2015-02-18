@@ -786,7 +786,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		}
 	}
 	$campaign_id = null;
-	if ( class_exists( 'Affiliates_Campaign' ) && method_exists( 'evaluate' ) ) {
+	if ( class_exists( 'Affiliates_Campaign' ) && method_exists(  'Affiliates_Campaign', 'evaluate' ) ) {
 		if ( isset( $_REQUEST['cmid'] ) ) {
 			$campaign_id = Affiliates_Campaign::evaluate( $_REQUEST['cmid'], $affiliate_id, $_REQUEST );
 			if ( $campaign_id ) {
