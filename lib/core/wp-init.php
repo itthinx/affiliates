@@ -791,8 +791,8 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 			$campaign_id = Affiliates_Campaign::evaluate( $_REQUEST['cmid'], $affiliate_id, $_REQUEST );
 			if ( $campaign_id ) {
 				$columns .= ',campaign_id';
-				$format  .= ',%s';
-				$values[] = $campaign_id;
+				$formats .= ',%d';
+				$values[] = intval( $campaign_id );
 			}
 		}
 	}
