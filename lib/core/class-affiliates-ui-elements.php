@@ -19,6 +19,10 @@
  * @since 2.8.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Renders common User Interface elements.
  */
@@ -35,7 +39,7 @@ class Affiliates_UI_Elements {
 
 		$affiliate_id = null;
 		if ( isset( $args['affiliate_id'] ) ) {
-			$affiliate_id = intval( $affiliate_id );
+			$affiliate_id = intval( $args['affiliate_id'] );
 		}
 		$show_inoperative = false;
 		if ( isset( $args['show_inoperative'] ) ) {
