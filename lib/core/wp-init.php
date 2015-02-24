@@ -44,6 +44,7 @@ if ( $affiliates_options == null ) {
 
 // utilities
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-utility.php' );
+include_once( AFFILIATES_CORE_LIB . '/class-affiliates-ui-elements.php' );
 
 // forms, shortcodes, widgets
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-contact.php' );
