@@ -138,7 +138,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$output .= '</p>';
 		} else {
 			$output .= '<p class="description">';
-			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section, click <a hre.', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
+			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section.', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
 			$output .= '</p>';
 		}
 		$output .= '<p class="description">';
