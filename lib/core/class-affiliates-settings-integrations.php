@@ -132,9 +132,15 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$output .= ' ';
 		$output .= __( 'The integrations are required to record referrals, as these award affiliates with commissions based on referred purchases or platform-specific actions.', AFFILIATES_PLUGIN_DOMAIN );
 		$output .= '</p>';
-		$output .= '<p class="description">';
-		$output .= __( 'You can manage available integrations here, this includes the installation and activation of integrations with e-commerce and other systems.', AFFILIATES_PLUGIN_DOMAIN );
-		$output .= '</p>';
+		if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
+			$output .= '<p class="description">';
+			$output .= __( 'You can manage available integrations here, this includes the installation and activation of integrations with e-commerce and other systems.', AFFILIATES_PLUGIN_DOMAIN );
+			$output .= '</p>';
+		} else {
+			$output .= '<p class="description">';
+			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section, click <a hre.', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
+			$output .= '</p>';
+		}
 		$output .= '<p class="description">';
 		$output .= __( 'You only need to install integrations with plugins that are actually used on the site.', AFFILIATES_PLUGIN_DOMAIN );
 		$output .= '</p>';
@@ -192,7 +198,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 					$integration_class .= ' active';
 				}
 			}
-			$button = apply_filters( 'affiliates_settings_integration_button', $button, $action, $key, $integration );
+			if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+				$button = '';
+			}
 			$explanation = apply_filters( 'affiliates_settings_integration_explanation', $explanation, $action, $key, $integration );
 			$list .= sprintf( '<li id="integration-%s">', $key );
 			$list .= sprintf( '<div class="integration %s">', $integration_class );
