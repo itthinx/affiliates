@@ -1550,7 +1550,12 @@ function affiliates_help_tab_footer( $render = true ) {
 function affiliates_footer( $render = true ) {
 	$footer = '<div class="affiliates-footer">' .
 		'<p>' .
-		__( 'Thank you for using the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a> plugin by <a href="http://www.itthinx.com" target="_blank">itthinx</a>.', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Thank you for using the <a style="text-decoration:none;" href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a> plugin by <a style="text-decoration:none;" href="http://www.itthinx.com" target="_blank">itthinx</a>.', AFFILIATES_PLUGIN_DOMAIN ) .
+		' ' .
+		sprintf(
+			__( 'Please give it a <a style="text-decoration:none;" href="%s">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating!', AFFILIATES_PLUGIN_DOMAIN ),
+			'http://wordpress.org/support/view/plugin-reviews/affiliates?filter=5#postform'
+		) .
 		'</p>' .
 		'<p>' .
 		affiliates_donate( false ) .
