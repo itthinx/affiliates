@@ -1,0 +1,1259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Español - España (es_ES)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-27 12:45+0100\n"
+"PO-Revision-Date: 2014-06-02 15:29+0200\n"
+"Last-Translator: Michael Yunat <Michael.Yunat@gmail.com>\n"
+"Language-Team: http://getvoip.com/\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-pagination.php:136
+#: php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr " %1$s з %2$s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:443
+#: php-format
+msgid "%10d Accepted"
+msgstr "%10d Прийнято"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:444
+#: php-format
+msgid "%10d Closed"
+msgstr "%10d закритий"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:448
+#: php-format
+msgid "%10d Hits"
+msgstr "%10d Хіти по"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:445
+#: php-format
+msgid "%10d Pending"
+msgstr "%10d очікуванні"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:446
+#: php-format
+msgid "%10d Rejected"
+msgstr "%10d Відхилений"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:449
+#: php-format
+msgid "%10d Visits"
+msgstr "%10d переглядів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:271
+#: php-format
+msgid " %d Day Charts"
+msgstr " %d День Чарти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:468
+msgid "(inoperative)"
+msgstr "(В неробочому стані)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:462
+msgid "(removed)"
+msgstr "(Вилучено)"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:552
+#: php-format
+msgid ""
+"* Date is given for the server's time zone : %s, which has an offset of %s "
+"hours with respect to GMT."
+msgstr ""
+"* Дата дається для часового поясу сервера: %s, який має офсетний %s годин по "
+"відношенню до GMT."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-pagination.php:92
+#: php-format
+msgid "1 item"
+msgid_plural " %s items"
+msgstr[0] "1 предмет"
+msgstr[1] "%s предметів"
+msgstr[2] "%s предметів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1135
+msgid ""
+"<em>All time</em> includes data from any affiliates, including deleted "
+"affiliates."
+msgstr ""
+"<em>Весь час</em> включає в себе дані з будь-яких філій, у тому числі "
+"віддалених філій."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1133
+msgid ""
+"<em>From operative affiliates:</em> includes affiliates that are currently "
+"active. This excludes affiliates whose dates are not currently valid as well "
+"as those that have been deleted."
+msgstr ""
+"<em>З Operaтивних філій:</em> включає філії, які в даний активний Це "
+"виключає філії яких дати в даний час не діє, а. Як ті, які були видалені."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1134
+msgid ""
+"<em>From operative and non-operative affiliates:</em> excludes deleted "
+"affiliates."
+msgstr ""
+"<em>З Operaтивних і не Operaтивних філій: виключається</em> видалений філії."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1138
+msgid "<em>Hits</em> are HTTP requests for affiliate links."
+msgstr "<em>Переглядів</em> є HTTP запити на партнерської посилання."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1140
+msgid ""
+"<em>Referrals</em> are recorded by request through the use of an API "
+"function. See the <a href=\"http://www.itthinx.com/plugins/affiliates\target="
+"\"_blank\">documentation</a> for more information."
+msgstr ""
+"<em>Спрямування</em> реєструються за запитом за допомогою ІПП функції. Див "
+"<a href=\"http://www.itthinx.com/plugins/affiliates\target=\"_blank"
+"\">документацію</a> для отримання додаткової інформації ."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1139
+msgid "<em>Visits</em> are unique and daily requests for affiliate links."
+msgstr ""
+"<em>Візит до</em> є унікальним і щоденні запити на партнерські посилання."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:320
+#: php-format
+msgid ""
+"<p>Please fill in the required information in your <a href=\" %s\">profile</"
+"a> first.</p>"
+msgstr ""
+"<p>Будь ласка, заповніть обов'язкові відомості вашого <a href=\"%s\"> "
+"профілю</a> спочатку.</p>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:416
+#: php-format
+msgid ""
+"<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a "
+"href=\"mailto: %s\">webmaster</a> !"
+msgstr ""
+"<strong>Помилка</strong>: не міг &#8217; t зареєструвати вас.. будь ласка "
+"звертайтесь до <a href=\"mailto: %s\"> вебмайстра</a>!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:376
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>Помилка</strong>: будь ласка, введіть ім'я користувача."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:386
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr ""
+"<strong>Помилка</strong>: будь ласка, введіть Вашу адресу електронної пошти."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:388
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr ""
+"<strong>Помилка</strong>: isn адресу електронної пошти &#8217; t правильної."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:391
+msgid ""
+"<strong>ERROR</strong>: This email is already registered, please choose "
+"another one."
+msgstr ""
+"<strong>Помилка</strong>: цей лист вже зареєструвалися, будь ласка, оберіть "
+"інше."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:381
+msgid ""
+"<strong>ERROR</strong>: This username is already registered, please choose "
+"another one."
+msgstr ""
+"<strong>Помилка</strong>: це ім'я користувача вже зареєструвалися, будь "
+"ласка, оберіть інше."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:378
+msgid ""
+"<strong>ERROR</strong>: This username is invalid because it uses illegal "
+"characters. Please enter a valid username."
+msgstr ""
+"<strong>Помилка</strong>: ім'я цього користувача неприпустиме, оскільки воно "
+"використовує неприпустимі символи. Будь ласка, введіть чинні ім'я "
+"користувача."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:441
+msgid "<strong>Referrals:</strong>"
+msgstr "<strong>Рефералів:</strong>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:382
+msgid "A minimum set of permissions will be preserved."
+msgstr "Мінімальний набір дозволів будуть збережені."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:383
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:389
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:294
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:431
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:196
+msgid "Accepted"
+msgstr "Прийнято"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:150
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:241
+msgid "Access affiliates"
+msgstr "Філії доступу"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:31
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:123
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:127
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:46
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:151
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:157
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:28
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:99
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:32
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:48
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:213
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:219
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:31
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:100
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:104
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:29
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:47
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:43
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:413
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:48
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:110
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:214
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:220
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:39
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:53
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:158
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:164
+msgid "Access denied."
+msgstr "Доступ заборонений."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:117
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:253
+msgid "Access your profile"
+msgstr "Доступ до вашого профілю"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:77
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "Add"
+msgstr "Додавати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:46
+msgid "Add a new affiliate"
+msgstr "Додати нову філію"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:151
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:242
+msgid "Administer affiliates"
+msgstr "Адміністрування філії"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:152
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:243
+msgid "Administer options"
+msgstr "Адміністрування варіанти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:311
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:457
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:513
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:355
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:368
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:355
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:307
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:319
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:472
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:533
+msgid "Affiliate"
+msgstr "Філія"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-generator.php:69
+msgid "Affiliate Area"
+msgstr "Партнерська Зона"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:226
+msgid "Affiliate ID Encoding"
+msgstr "Партнерська ID Кодування"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:366
+msgid "Affiliate ID encoding"
+msgstr "Партнерська ID кодування"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:372
+msgid "Affiliate Id"
+msgstr "Партнерська Id"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:374
+msgid "Affiliate Name"
+msgstr "Партнерська Ім'я"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:352
+msgid "Affiliate URL parameter name"
+msgstr "Ім'я параметра Партнерська URL"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:376
+msgid "Affiliate Username"
+msgstr "Партнерська Ім'я користувача"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1160
+msgid "Affiliate link"
+msgstr "Партнерська посилання"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1170
+msgid "Affiliate permalink"
+msgstr "Партнерська постійна посилання"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:346
+msgid "Affiliate registration"
+msgstr "Партнерська реєстрація"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1019
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1104
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:415
+msgid "Affiliates"
+msgstr "Партнери"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1058
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1059
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:178
+msgid "Affiliates & Referrals"
+msgstr "Партнери та Реферали"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1018
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:32
+msgid "Affiliates Overview"
+msgstr "Партнери Огляд"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:166
+msgid "Affiliates contact form submission"
+msgstr "Партнери зв'язатися відправки форми"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:430
+msgid "Affiliates network data"
+msgstr "Партнери мережі передачі даних"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1084
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:51
+msgid "Affiliates options"
+msgstr "Філії варіанти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:411
+msgid "All time (includes data from deleted affiliates):"
+msgstr "Весь час (включає в себе дані з віддалених філій):"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:349
+msgid "Allow affiliate registration"
+msgstr "Дозволити Реєстрація партнерів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:356
+msgid "Amount"
+msgstr "Кількість"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:313
+msgid "Amount (use . for decimals):"
+msgstr "Сума (використання для десятих.):"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:340
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:363
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:422
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:444
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:138
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:391
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:405
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:348
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:371
+msgid "Apply"
+msgstr "Застосовувати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:442
+msgid ""
+"By enabling this option you agree to be solely responsible for any loss of "
+"data or any other consequences thereof."
+msgstr ""
+"Включивши цей параметр, ви погоджуєтеся нести повну відповідальність за "
+"втрату даних або їх будь-яких інших наслідків."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:150
+#: php-format
+msgid "By signing up, you indicate that you have read and agree to the %s."
+msgstr "Зареєструвавшись, ви вказуєте, що ви прочитали і згодні з %s."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:394
+msgid ""
+"CAUTION: If this option is active while the plugin is deactivated, ALL "
+"affiliate and referral data will be DELETED. If you want to retrieve data "
+"about your affiliates and their referrals and are going to deactivate the "
+"plugin, make sure to back up your data or do not enable this option. By "
+"enabling this option you agree to be solely responsible for any loss of data "
+"or any other consequences thereof."
+msgstr ""
+"УВАГА: Якщо ця опція активна в той час як плагін відключається, ВСІ "
+"партнерські та довідкові дані будуть видалені, якщо ви хочете отримати дані "
+"про ваших партнерів і їх рефералів і збираються відключити плагін, зробити. "
+"Обов'язково зробіть резервну копію даних або не включати цю опцію. По  "
+"включення цієї опції ви погоджуєтесь нести повну відповідальність за будь-"
+"яку втрату даних  або будь-яких інших випливають з цього наслідки ."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:439
+msgid ""
+"CAUTION: If this option is active while the plugin is network deactivated, "
+"<strong>ALL affiliate and referral data will be DELETED on all sites of the "
+"network</strong>."
+msgstr ""
+"УВАГА: Якщо ця опція активна в той час як плагін мережу <strong>відключена, "
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:363
+msgid ""
+"CAUTION: If you change this setting and have distributed affiliate links or "
+"permalinks, make sure that these are updated. Unless the incoming affiliate "
+"links reflect the current URL parameter name, no affiliate hits, visits or "
+"referrals will be recorded."
+msgstr ""
+"УВАГА: Якщо ви змінити цю настройку і роздали партнерські посилання або "
+"постійні, переконайтеся, що вони оновлюються Якщо вхідний філія посилання не "
+"відображають поточне ім'я параметра URL, ні партнерські хіти, відвідування "
+"або рефералів буде. записали ."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:374
+msgid ""
+"CAUTION: If you change this setting and have distributed affiliate links or "
+"permalinks, make sure that these are updated. Unless the incoming affiliate "
+"links reflect the current encoding, no affiliate hits, visits or referrals "
+"will be recorded."
+msgstr ""
+"Увага: Якщо змінити цей параметр і роздати партнерської посилання або "
+"постійні посилання, переконайтеся, що дані оновлюються. Якщо вхідні "
+"посилання партнерська періодах кодування, немає Партнерська хіти, "
+"відвідування або рефералів записується."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:103
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:79
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:80
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:349
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:431
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:139
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:392
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:357
+msgid "Clear"
+msgstr "Ясно"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "Click to add a new affiliate"
+msgstr "Натисніть, щоб додати нову філію"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:384
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:390
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:316
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:432
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:197
+msgid "Closed"
+msgstr "Закрито"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:532
+msgid "Count"
+msgstr "Вважати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:357
+msgid "Currency"
+msgstr "Валюта"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:317
+msgid "Currency - 3 letter code, e.g. USD, EUR:"
+msgstr "Валюта - 3 буквений код, наприклад, долари США, євро:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:546
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:567
+msgid "Data"
+msgstr "Дані"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:299
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:353
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:529
+msgid "Date"
+msgstr "Дата"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:311
+msgid "Days"
+msgstr "Дні"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:135
+msgid "Days back"
+msgstr "Дні назад"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:388
+msgid "Deactivation and data persistence"
+msgstr "Дезактивація і наполегливість даних"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:332
+msgid "Default referral status"
+msgstr "Статус замовчуванням напрямок"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:433
+msgid "Delete all affiliate data on network deactivation"
+msgstr "Видалити всі партнерські дані по мережі дезактивації"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:391
+msgid "Delete all plugin data on deactivation"
+msgstr "Видалити всі дані плагіна щодо списання"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:596
+msgid "Description"
+msgstr "Опис"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/constants.php:100
+msgctxt "pseudo-affiliate name"
+msgid "Direct"
+msgstr "Прямий"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:323
+msgid "Direct referrals"
+msgstr "Прямих рефералів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:570
+#: php-format
+msgid "E-mail: %s"
+msgstr "Електронна пошта: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:360
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:499
+msgid "Edit"
+msgstr "Редагувати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:49
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:49
+#: php-format
+msgid "Edit %s"
+msgstr "Редагувати %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:68
+msgid "Edit an affiliate"
+msgstr "Редагувати філія"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:80
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:57
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:334
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:356
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:197
+msgid "Email"
+msgstr "E-mail"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:72
+#: php-format
+msgid "Email : %s"
+msgstr "E-mail: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:427
+msgid "Expand data"
+msgstr "Розгорнути даних"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:425
+msgid "Expand descriptions"
+msgstr "Розгорнути опису"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:423
+msgid "Expand details"
+msgstr "Розгорнути деталі"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:345
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:353
+msgid "Expand hits"
+msgstr "Розгорнути хіти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:343
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:351
+msgid "Expand referrals"
+msgstr "Розгорнути рефералів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:327
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:406
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:128
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:369
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:335
+msgid "Filters"
+msgstr "Фільтри"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:325
+msgid "First Name"
+msgstr "Ім'я"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:92
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:333
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:68
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:415
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:131
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:358
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:380
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:341
+msgid "From"
+msgstr "Від"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:74
+#: php-format
+msgid "From : %s"
+msgstr "От: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:399
+msgid "From operative affiliates:"
+msgstr "З Operaтивних філій:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:405
+msgid "From operative and non-operative affiliates:"
+msgstr "З Operaтивних і не Operaтивних філій:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:295
+msgid "Generate"
+msgstr "Генерувати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1153
+msgid ""
+"Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</"
+"strong> affiliates."
+msgstr ""
+"Тут ви можете <strong>додавати</strong>, <strong>редагувати</strong> та "
+"<strong>видаляти</strong> філій."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:301
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:506
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:280
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:309
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:524
+msgid "Hits"
+msgstr "Переглядів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:343
+msgid ""
+"Hits on affiliate links from these robots will be marked or not recorded. "
+"Put one entry on each line."
+msgstr ""
+"Хіти на партнерської посилання від цих роботів будуть марковані або не "
+"реєструються. Покладіть одну запис в кожному рядку."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:512
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:531
+msgid "IP"
+msgstr "IP"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:354
+msgid "Id"
+msgstr "Id"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:83
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:60
+msgid ""
+"If a valid <strong>Username</strong> is specified and no email is given, the "
+"user's email address will be used automatically."
+msgstr ""
+"Якщо вказано припустиме <strong>ім'я користувача</strong>, електронних "
+"листів дається адреса електронної пошти користувача буде використовуватися "
+"автоматично."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:329
+msgid ""
+"If this option is enabled, whenever a referral is suggested and no affiliate "
+"is attributable to it, the referral will be attributed to Direct."
+msgstr ""
+"Якщо ця опція включена, кожного разу, коли реферал запропонував і не "
+"Партнерська це пояснюється його, направлення будуть віднесені до прямих."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:317
+msgid ""
+"If you enter 0, referrals will only be valid until the visitor closes the "
+"browser (session)."
+msgstr ""
+"Якщо ввести 0, напрямки буде діяти тільки до тих пір, відвідувач не закриє "
+"браузера (засідання)."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:384
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr ""
+"Якщо ви скасували собі, будь ласка, зверніться до системного адміністратора, "
+"щоб допомогти."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:134
+msgid ""
+"If your affiliates are using affiliate links based on the previous Affiliate "
+"URL parameter name, they <strong>NEED</strong> to update their affiliate "
+"links."
+msgstr ""
+"Якщо ваші партнери використовують партнерські посилання, засновані на "
+"попередньому філія ім'я параметра URL, вони <strong>повинні оновити</strong> "
+"їх філія посилання."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:347
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:429
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:384
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:355
+msgid "Include inoperative affiliates"
+msgstr "Увімкніть непрацездатних філії"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:386
+msgid "Include removed affiliates"
+msgstr "Увімкніть видалені філії"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:324
+msgid "It has two purposes:"
+msgstr "Він має дві мети:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:328
+msgid "Last Name"
+msgstr "Прізвище"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:508
+msgid "Link"
+msgstr "Посилання"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:362
+msgid "Links"
+msgstr "Зв'язки"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:244
+#: php-format
+msgid "Log in <a href=\" %s\">here</a>."
+msgstr "Ввійти <a href=\" %s\">тут</a> ."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-shortcodes.php:452
+msgid "Log out"
+msgstr "Вийти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:895
+msgid "MD5"
+msgstr "MD5"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:441
+msgid "Make sure to back up your data or do not enable this option."
+msgstr "Переконайтеся, що резервне копіювання даних або не включати цю опцію."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1032
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1033
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:236
+msgid "Manage Affiliates"
+msgstr "Управління Філії"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:199
+msgid "Message"
+msgstr "Повідомлення"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:76
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:53
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:195
+msgid "Name"
+msgstr "Назва"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:71
+#: php-format
+msgid "Name : %s"
+msgstr "Ім'я: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:242
+msgid "New Affiliate"
+msgstr "Реєстрація в партнерській програмі"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:568
+#: php-format
+msgid "New affiliate registration on your site %s:"
+msgstr "Нова реєстрація філію на вашому сайті %s:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:894
+msgid "No encoding"
+msgstr "Ні кодування"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:37
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:143
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:37
+msgid "No such affiliate."
+msgstr "Немає такого філії."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1148
+msgid ""
+"Note that <em>deleted</em> affiliates are not literally deleted but marked "
+"as such so that data that has been collected will still be accesible."
+msgstr ""
+"Зверніть увагу, що <em>Видалені</em> філії не є буквально видалені, але, "
+"позначена як така, щоб дані, які були зібрані під час можна буде отримати "
+"під'їзд."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1179
+msgid ""
+"Once a visitor has landed on your site through an affiliate link, referrals "
+"may be recorded and attributed to the affiliate."
+msgstr ""
+"Як тільки відвідувач має приземлився на ваш сайт через партнерську "
+"посилання, рефералів можуть записав і віднести до філії."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1085
+msgid "Options"
+msgstr "Опції"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:292
+msgid "Page generation"
+msgstr "Генерація сторінки"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:385
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:391
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:302
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:433
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:198
+msgid "Pending"
+msgstr "В очікуванні"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:377
+msgid "Permissions"
+msgstr "Дозволи"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:240
+msgid "Please check your email for the confirmation link."
+msgstr ""
+"Будь ласка, перевірте свою електронну пошту для посилання для підтвердження."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:456
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:354
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:471
+msgid "Post"
+msgstr "Пост"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:294
+msgid "Press the button to generate an affiliate area."
+msgstr "Натисніть кнопку для генерації партнерську зону."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:516
+msgid "Pretty"
+msgstr "Досить"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:436
+msgid "READ AND UNDERSTAND the following before activating this option:"
+msgstr "Читати і розуміти наступне, перш ніж активувати цю опцію:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:303
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:311
+msgid "Ratio"
+msgstr "Співвідношення"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:308
+msgid "Referral timeout"
+msgstr "Напрямок тайм-аут"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1071
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1072
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:302
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:450
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:229
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:310
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:465
+msgid "Referrals"
+msgstr "Спрямування"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:128
+msgid "Registration is currently closed."
+msgstr "Реєстрація в даний час закриті."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:386
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:392
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:309
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:434
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:199
+msgid "Rejected"
+msgstr "Відхилений"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:78
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:361
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:502
+msgid "Remove"
+msgstr "Видаляти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:64
+msgid "Remove an affiliate"
+msgstr "Видалити філія"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:359
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:441
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:402
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:367
+msgid "Results per page"
+msgstr "Результатів на сторінці"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:337
+msgid "Robots"
+msgstr "Роботи"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:249
+msgid "Role"
+msgstr "Роль"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:101
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:400
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:446
+msgid "Save"
+msgstr "Зберегти"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:411
+msgid "Search"
+msgstr "Пошук"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:203
+msgid "Send"
+msgstr "Послати"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:519
+msgid "Set"
+msgstr "Набір"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:51
+msgid "Sign Up"
+msgstr "Зареєструватися"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:393
+msgid "Statistics Summary"
+msgstr "Зведена статистика"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:358
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:395
+msgid "Status"
+msgstr "Статус"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:326
+msgid "Store direct referrals"
+msgstr "Зберігайте прямих рефералів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms Page or Post ID"
+msgstr "Умови або повідомлення ID"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:130
+msgid "Terms and conditions"
+msgstr "Постанови та умови"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:136
+#: php-format
+msgid "Terms page: <em> %s</em>"
+msgstr "Сторінка <em>Умови: %s</em>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1217
+msgid ""
+"Thank you for using the <a href=\"http://www.itthinx.com/plugins/affiliates"
+"\" target=\"_blank\">Affiliates</a> plugin by <a href=\"http://www.itthinx."
+"com\" target=\"_blank\">itthinx</a>."
+msgstr ""
+"Дякуємо вам за допомогою плагіна <a href=\"http://www.itthinx.com/plugins/"
+"affiliates\" target=\"_blank\"> філії</a> по <a href=\"http://www.itthinx.com"
+"\" target=\"_blank\"> itthinx</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:238
+msgid "Thanks for signing up!"
+msgstr "Спасибі за Вашу реєстрацію!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:208
+msgid "Thanks!"
+msgstr "Завдяки!"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:131
+#: php-format
+msgid ""
+"The Affiliate URL parameter name <strong>has been changed</strong> from "
+"<em><strong> %s</strong></em> to <em><strong> %s</strong></em>."
+msgstr "Ім'я параметра Партнерська URL <strong>був змінений <em>з "
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:123
+msgid ""
+"The Affiliate URL parameter name <strong>has not been changed</strong>, the "
+"suggested name <em>is forbidden</em>."
+msgstr "Ім'я параметра Партнерська URL <strong>ні змінено, "
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:120
+msgid ""
+"The Affiliate URL parameter name <strong>has not been changed</strong>, the "
+"suggested name <em>is not valid</em>. Only lower case letters and the "
+"underscore _ are allowed."
+msgstr ""
+"Ім'я параметра Партнерська URL <strong>ні змінено, передбачуване</strong> "
+"ім'я <em>не є допустимим.</em> Використовуються тільки малі літери і "
+"підкреслення _ допускається."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1143
+msgid ""
+"The Affiliates plugin provides the <em>Affiliates Contact</em> widget that "
+"can be used to record lead referrals."
+msgstr ""
+"Плагін Партнери надає <em>Партнерам Зв'язок</em> віджет, який може бути "
+"використаний для запису свинцеві рефералів."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1164
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1174
+msgid ""
+"The affiliate information is removed once a visitor has landed on your site."
+msgstr ""
+"Філія інформація видаляється відразу відвідувач приземлився на вашому сайті."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1125
+msgid ""
+"The complete documentation is available on the <a href=\"http://www.itthinx."
+"com/plugins/affiliates\" target=\"_blank\">Affiliates plugin page</a>"
+msgstr ""
+"Повна документація є на <a href=\"http://www.itthinx.com/plugins/affiliates"
+"\" target=\"_blank\"> філії плагін сторінки</a>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:357
+#: php-format
+msgid "The current Affiliate URL parameter name is: <b> %s</b>"
+msgstr "Нинішню назву параметра Партнерська URL <b>є: %s</b>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:371
+#: php-format
+msgid "The current encoding in effect is: <b> %s</b>"
+msgstr "Поточне кодування в <b>ефект: %s</b>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:360
+#: php-format
+msgid "The default Affiliate URL parameter name is <em> %s</em>."
+msgstr "Ім'я за замовчуванням Партнерська URL <em>параметр %s.</em>"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:320
+msgid ""
+"The default value is 1. In this case, if a visitor comes to your site via an "
+"affiliate link, a suggested referral will be valid until one day after she "
+"or he clicked that affiliate link."
+msgstr ""
+"Значення за замовчуванням 1. У цьому випадку, якщо відвідувач заходить на "
+"сайт через партнерської посиланням, запропонував напрямки буде діяти, поки "
+"одного разу після того як вона або він натиснув, що партнерську посилання."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:483
+#: php-format
+msgid ""
+"There are different email addresses on record for the affiliate and the "
+"associated user. This might be ok, but if in doubt please check. The email "
+"address on file for the user is %s"
+msgstr ""
+"Є різні адреси електронної пошти на запис для філії і пов'язаного з ним "
+"користувача. Це може бути в порядку, але якщо є сумніви, будь ласка, "
+"перевірте. Електронна пошта адресу у файлі для користувача є %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:534
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:606
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:530
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:556
+msgid "There are no results."
+msgstr "Там немає результатів."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1155
+msgid ""
+"There are two types of links your affiliates may use to link to your site:"
+msgstr ""
+"Є два типи посилань ваші філії можуть використовувати, щоб посилання на ваш "
+"сайт:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:406
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:412
+#: php-format
+msgid "There is 1 affiliate in this set"
+msgid_plural "There are %d affiliates in this set"
+msgstr[0] "Існує 1 партнерка в цьому наборі"
+msgstr[1] "Існує %d партнерок в цьому наборі"
+msgstr[2] "Існує %d партнерок в цьому наборі"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:400
+#: php-format
+msgid "There is 1 operative affiliate"
+msgid_plural "There are %d operative affiliates"
+msgstr[0] "Існує 1 оперативна партнерок"
+msgstr[1] "Існують %d оперативних партнерок"
+msgstr[2] "Існують %d оперативних партнерок"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:321
+msgid ""
+"This contact form will request a referral and store the data that has been "
+"submitted."
+msgstr ""
+"Цей контакт форма буде потребувати напрямок і зберігати дані, які були "
+"представлений."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:314
+msgid ""
+"This is the number of days since a visitor accessed your site via an "
+"affiliate link, for which a suggested referral will be valid."
+msgstr ""
+"Ця кількість днів з моменту, коли відвідувач зверталися ваш сайт через "
+"партнерської посиланням, для яких запропонував напрямки буде діяти."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1173
+msgid ""
+"This link uses a nicer URL to record vists you receive through your "
+"affiliates."
+msgstr ""
+"Цей зв'язок використовує більш гарне URL записувати vists ви отримуєте через "
+"ваші філій."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1163
+msgid ""
+"This link uses a parameter in the URL to record vists you receive through "
+"your affiliates."
+msgstr ""
+"Цей зв'язок використовує параметр в URL, щоб записати vists ви отримуєте "
+"через ваших партнерів."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:440
+msgid "This option should only be used to clean up after testing."
+msgstr ""
+"Ця опція повинна використовуватися тільки для очищення після тестування."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1131
+msgid "This screen offers an overview with basic statistical data."
+msgstr "Цей екран пропонує огляд з основних статистичних даних."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:455
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:511
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:470
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:530
+msgid "Time"
+msgstr "Час"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:121
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:309
+msgid "Title:"
+msgstr "Назва:"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:327
+msgid ""
+"To be used as an entry-level referral tool (e.g. in lead generation), if you "
+"want to track who has contacted you and has visited your site through an "
+"affiliate."
+msgstr ""
+"Для того, щоб використовуватися як інструмент реферальной початкового рівня "
+"(наприклад, в генерації лідів), якщо ви хочете відслідковувати, хто "
+"зв'язався з вами і відвідав ваш сайт через філія."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-contact.php:328
+msgid ""
+"To serve as an example on how to use the API provided by the Affiliates "
+"plugin"
+msgstr ""
+"Для того, щоб служити прикладом про те, як використовувати API надану "
+"Партнерська плагін"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1144
+#: php-format
+msgid ""
+"To use it, place the widget in one of your <a href=\" %s\">widget areas</a>."
+msgstr ""
+"Використовувати його, помістіть віджет в одному з ваших <a href=\"%s\"> "
+"віджетів областях</a>."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:512
+msgid "URL Parameter"
+msgstr "URL Параметр"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-options.php:137
+msgid ""
+"Unless the incoming affiliate links reflect the current Affiliate URL "
+"parameter name, no affiliate hits, visits or referrals will be recorded."
+msgstr ""
+"Якщо вхідні партнерські посилання не відображають поточний Партнерська URL "
+"ім'я параметра, ні партнерські хіти, відвідування або рефералів буде "
+"записаний."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:96
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:335
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:72
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-referrals.php:417
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:133
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:359
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:382
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:343
+msgid "Until"
+msgstr "До"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:75
+#: php-format
+msgid "Until : %s"
+msgstr "До: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-edit.php:87
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-add.php:64
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:331
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:357
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates-remove.php:73
+#: php-format
+msgid "Username : %s"
+msgstr "Ім'я користувача: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:569
+#: php-format
+msgid "Username: %s"
+msgstr "Ім'я користувача: %s"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits-affiliate.php:308
+msgid "Visitors"
+msgstr "Відвідувачі"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:300
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin.php:287
+msgid "Visits"
+msgstr "Переглядів"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1045
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1046
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-hits.php:171
+msgid "Visits & Referrals"
+msgstr "Переглядів і Реферали"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:337
+msgid "Website"
+msgstr "Сайт"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration-widget.php:133
+msgid ""
+"Write part of the title or the post ID. If left empty, no terms disclaimer "
+"will be shown."
+msgstr ""
+"Написати частина назви або поштового ID. Якщо залишити порожнім, що не "
+"терміни обмовка не показано."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:109
+msgid "You are already registered as an affiliate."
+msgstr "Ви вже зареєстровані як філії."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/wp-init.php:1165
+#: php-format
+msgid "You may also append the ? %s=... part to links to your posts."
+msgstr ""
+"Ви також можете приєднати? %s = ... частина, щоб посилання на ваші "
+"повідомлення."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:53
+#: php-format
+msgid ""
+"Your site is not using pretty <a href=\" %s\">permalinks</a>. You will only "
+"be able to use URL parameter based <span class=\"affiliate-link\">affiliate "
+"links</span> but not pretty <span class=\"affiliate-permalink\">affiliate "
+"permalinks</span>, unless you change your permalink settings."
+msgstr ""
+"Ваш сайт не використовує досить <a href=\"%s\"> постійні посилання</a>. "
+"Тільки можна використовувати URL-адресу параметр на основі <span class="
+"\"affiliate-link\"> партнерські посилання</span>, але не досить <span class="
+"\"affiliate-permalink\"> Партнерська постійні посилання</span>, доки ви не "
+"зміните параметри Постійне посилання."
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/class-affiliates-registration.php:572
+#: php-format
+msgid "[ %s] New Affiliate Registration"
+msgstr "[ %s] Нова філія реєстрації"
+
+#: /var/www/aff/wp-content/plugins/affiliates/lib/core/affiliates-admin-affiliates.php:522
+#: php-format
+msgid "you need to adjust your <a href=\" %s\">permalink settings</a>."
+msgstr "вам потрібно змінити <a href=\"%s\"> настройки Постійне посилання</a>."

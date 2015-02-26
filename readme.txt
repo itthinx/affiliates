@@ -125,7 +125,8 @@ Lithuanian by Vincent G from [Host1Free](http://www.host1free.com/),
 Polish by [BizExpert](http://4business4you.com),
 Portuguese by Carlos Gouveia from [iNovve](http://www.inovve.com/),
 Slovak by Cr3o from [životné poistenie](http://www.zivotnepoistenie24.sk/),
-Spanish by David Perez from [Closemarketing](http://www.closemarketing.es/)
+Spanish by David Perez from [Closemarketing](http://www.closemarketing.es/),
+Ukranian by Michael Yunat from [GetVoIP](http://getvoip.com)
 
 [Follow itthinx on Twitter](http://twitter.com/itthinx) for updates on this and other plugins.
 
@@ -328,6 +329,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Added customization options for the affiliate registration form.
 * Added User profile displays additional affiliate registration fields.
 * Added the [affiliates_fields] shortcode and included it in the affiliate area page generator.
+* Ukranian translation added.
 
 = 2.7.3 =
 * WordPress 4.1 compatible.
