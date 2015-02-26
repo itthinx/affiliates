@@ -3,7 +3,7 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 3.5.1
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: 2.7.3
 License: GPLv3
 
@@ -26,8 +26,14 @@ Referrals are stored and attributed to an affiliate, for example if clients plac
 
 **Integrations**
 
-To use Affiliates together with an e-commerce plugin, you also need to install the appropriate integration plugin:
-Available free e-commerce integrations include [WooCommerce](http://www.itthinx.com/plugins/affiliates-woocommerce-light), [Jigoshop](http://www.itthinx.com/plugins/affiliates-jigoshop-light), [WP e-Commerce](http://wordpress.org/plugins/affiliates-wp-e-commerce), [Ecwid](http://www.itthinx.com/plugins/affiliates-ecwid-light), [eShop](http://www.itthinx.com/plugins/affiliates-eshop-light) and [Ready! Ecommerce](http://www.itthinx.com/plugins/affiliates-ready-light/).
+To use Affiliates together with an e-commerce plugin, you also need to install the appropriate integration plugin.
+Available free e-commerce integrations include
+[WooCommerce](http://wordpress.org/plugins/affiliates-woocommerce-light),
+[Jigoshop](http://wordpress.org/plugins/affiliates-jigoshop-light),
+[WP e-Commerce](http://wordpress.org/plugins/affiliates-wp-e-commerce),
+[Ecwid](http://wordpress.org/plugins/affiliates-ecwid-light),
+[eShop](http://wordpress.org/plugins/affiliates-eshop-light)
+and [Ready! Ecommerce](http://wordpress.org/plugins/affiliates-ready-light/).
 To grant commissions based on forms and track leads you can use [Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7).
 
 **Premium Integrations**
@@ -53,10 +59,10 @@ and [Formidable Forms and Formidable Pro](http://www.itthinx.com/plugins/affilia
 
 [Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers and campaigns.
 
-Other extensions include [Affiliates Is Referred](https://github.com/itthinx/affiliates-is-referred) adds shortcodes to show content conditionally based on whether a visitor was referred (or not) by an affiliate,
-[Affiliates Products](http://www.itthinx.com/plugins/affiliates-products/) handles product commissions for product partners and affiliates on product sales,
+Other extensions include [Affiliates Is Referred](https://github.com/itthinx/affiliates-is-referred) which adds shortcodes to show content conditionally based on whether a visitor was referred (or not) by an affiliate,
+[Affiliates Products](http://www.itthinx.com/plugins/affiliates-products/) which handles product commissions for product partners and affiliates on product sales,
 [Affiliates Users](http://www.itthinx.com/plugins/affiliates-users/) to automatically create affiliate accounts for new users
-and [Affiliates by Username](http://www.itthinx.com/plugins/affiliates-by-username/) allows affiliate links to indicate usernames in addition to the affiliate IDs
+and [Affiliates by Username](http://www.itthinx.com/plugins/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
 
 Additional resources can be found on [GitHub](https://github.com/itthinx).
 
@@ -231,13 +237,31 @@ Total amount for paid and unpaid referrals: [affiliates_referrals show="total"]
 
 Yes.
 
-This is one of the most important features.
+Affiliate links are available for registered affiliates and they can see
+them in the Affiliate Area. You can also customize these and let them
+link to any page on your site.
 
 = Can we track visits to our site through our partners' sites? =
 
 Yes.
 
-This is also one of the most important features and what the plugin is intended for, besides recording referrals and transaction data.
+The Affiliates system tracks visits via affiliate links to any page on
+your site. It also allows to track referred user registrations and order,
+while recording related commissions through referrals and transaction data.
+
+= Can we register commissions manually? =
+
+Yes.
+
+Commissions are registered manually via the Referrals section in the
+Affiliates menu.
+
+= Can we grant commissions when affiliates refer new users? =
+
+Yes.
+
+The built-in user registration integration allows to grant commissions
+for new user sign-ups.
 
 = Can we record referrals automatically when, for example, an order is placed? =
 
@@ -302,18 +326,18 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 5. Referrals I - per-referrals view of information about referrals
 6. Referrals II - showing detailed information stored along with referrals obtained through the Affiliates Contact widget
 7. Totals - accumulated totals per affiliate and mark referrals as paid for time periods
-8. Options I - where general plugin options are maintained
-9. Options II - where general plugin options are maintained
+8. Settings > General - where general plugin options are maintained
+9. Settings > Registration - customizable affiliate registration
 10. Menu - the Affiliates menu
 11. Dashboard Widget - showing accumulated totals for referrals on the administrative dashboard
 12. Contact Widget - Usable example widget for lead generation and referrals with applied commission rate
 13. Contact Widget - Visitor's view (theme Twenty Eleven)
 14. Registration Widget - Lets visitors sign up to your affiliate program, fully automated. Also available as a shortcode to embed on pages.
-15. Registration Widget - Visitor's view of the form. Also available as a shortcode to embed on pages.
+15. Registration Form - Visitor's view of a customized registration form.
 16. Registration Widget - View of a visitor's successful form submission to join the site's affiliate program.
 17. Affiliate Area I - This is showing the part of the generated Affiliate Area where an affiliate sees the affiliate URL and link when logged in.
 18. Affiliate Area II - This shows performance data on commissions and monthly earnings for an affiliate who is logged in.
-19. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users.
+19. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users and customers.
 
 == Changelog ==
 
