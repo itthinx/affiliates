@@ -201,6 +201,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 				$button = '';
 			}
+			$button = apply_filters( 'affiliates_settings_integration_button', $button, $action, $key, $integration );
 			$explanation = apply_filters( 'affiliates_settings_integration_explanation', $explanation, $action, $key, $integration );
 			$list .= sprintf( '<li id="integration-%s">', $key );
 			$list .= sprintf( '<div class="integration %s">', $integration_class );
