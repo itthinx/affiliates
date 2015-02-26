@@ -1427,14 +1427,11 @@ function affiliates_network_admin_menu() {
 add_action( 'contextual_help', 'affiliates_contextual_help', 10, 3 );
 
 function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
-	
+
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 
 	$show_affiliates_help = false;
 	$help = '<h3><a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a></h3>';
-// 	$help .= '<p>';
-// 	$help .= __( 'The complete documentation is available on the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates plugin page</a>', AFFILIATES_PLUGIN_DOMAIN );
-// 	$help .= '</p>';
 
 	switch ( $screen_id ) {
 		case 'toplevel_page_affiliates-admin' :
@@ -1448,7 +1445,7 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 			$help .= '<ul>';
 			$help .= '<li>' . __( '<em>Hits</em> are HTTP requests for affiliate links.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
 			$help .= '<li>' . __( '<em>Visits</em> are unique and daily requests for affiliate links.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
-			$help .= '<li>' . __( '<em>Referrals</em> are recorded by request through the use of an API function. See the <a href="http://www.itthinx.com/plugins/affiliates" target="_blank">documentation</a> for more information.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
+			$help .= '<li>' . __( '<em>Referrals</em> are recording commissions and referral data.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
 			$help .= '</ul>';
 			$help .= '<p>';
 			$help .= __( 'The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals.', AFFILIATES_PLUGIN_DOMAIN );
@@ -1533,7 +1530,7 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 function affiliates_help_tab_footer( $render = true ) {
 	$footer =
 		'<div class="affiliates-documentation">' .
-		__( '<a href="http://www.itthinx.com/documentation/affiliates/">Online documentation</a>', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( '<a href="http://docs.itthinx.com/document/affiliates/">Online documentation</a>', AFFILIATES_PLUGIN_DOMAIN ) .
 		'</div>';
 	if ( $render ) {
 		echo $footer;

@@ -120,8 +120,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		_e( 'You can modify the default affiliate area and also create customized pages for your affiliates using shortcodes.', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</p>';
 		echo '<p>';
-		// @todo update the documentation link :
-		_e( 'Please refer to the <a href="http://www.itthinx.com/documentation/affiliates/">Documentation</a> for more details.', AFFILIATES_PLUGIN_DOMAIN );
+		_e( 'Please refer to the <a href="http://docs.itthinx.com/document/affiliates/">Documentation</a> for more details.', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</p>';
 
 		affiliates_footer();
