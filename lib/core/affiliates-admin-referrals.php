@@ -19,6 +19,10 @@
  * @since affiliates 1.0.0
  */	
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 
 /**
@@ -247,9 +251,9 @@ function affiliates_admin_referrals() {
 	
 	$output .=
 		'<div>' .
-		'<h2>' .
+		'<h1>' .
 		__( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ) .
-		'</h2>' .
+		'</h1>' .
 		'</div>';
 	
 	$output .= '<div class="manage add">';
@@ -717,4 +721,3 @@ function affiliates_admin_referrals() {
 	echo $output;
 	affiliates_footer();
 } // function affiliates_admin_referrals()
-?>

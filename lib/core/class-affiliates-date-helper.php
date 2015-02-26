@@ -59,6 +59,14 @@
  * 
  * s2u() which does the opposite.
  */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Date translation and format helper.
+ */
 class DateHelper {
 	
 	/**
@@ -212,4 +220,3 @@ class DateHelper {
 		return apply_filters( 'timezone_support', $support );
 	}
 }
-?>

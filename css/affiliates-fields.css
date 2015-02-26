@@ -1,5 +1,5 @@
 /**
- * affiliates.css
+ * affiliates-fields.css
  * 
  * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
  * 
@@ -15,49 +15,31 @@
  * 
  * @author Karim Rahimpur
  * @package affiliates
- * @since affiliates 1.0.0
+ * @since affiliates 2.8.0
  */
 
-/* contact widget */
-.affiliates-contact label {
+.affiliates-fields label {
 	display: block;
 }
-.affiliates-contact input[type="text"],
-.affiliates-contact textarea {
-	width: 100%;
-	display: block;
-}
-.affiliates-contact .missing {
-	color: #f00;
-}
-
-/* affiliate registration form */
-.affiliates-registration label {
-	display: block;
-}
-.affiliates-registration input[type="checkbox"] {
+.affiliates-fields input[type="checkbox"] {
 	float: left;
 }
-.affiliates-registration input[type="text"],
-.affiliates-registration input[type="password"],
-.affiliates-registration textarea {
+.affiliates-fields input[type="text"],
+.affiliates-fields input[type="password"],
+.affiliates-fields textarea {
 	width: 100%;
 	display: block;
 }
-.affiliates-registration .missing {
+.affiliates-fields .missing {
 	color: #f00;
 }
-.affiliates-registration .required {
+.affiliates-fields .required {
 	background-image: url(../images/required.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 }
-.affiliates-registration .field,
-.affiliates-registration .sign-up {
+.affiliates-fields .field,
+.affiliates-fields .save {
 	margin: 1em 0;
-	display: block;
-}
-
-.affiliate-profile div.field label {
 	display: block;
 }

@@ -19,6 +19,10 @@
  * @since affiliates 1.1.0 
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Affiliate registration form as a widget.
  * 
@@ -119,4 +123,3 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		echo '</p>';
 	}
 }// class Affiliates_Registration_Widget
-?>

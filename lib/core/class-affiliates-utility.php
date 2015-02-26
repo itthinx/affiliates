@@ -19,6 +19,10 @@
  * @since affiliates 1.1.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Provides utility methods.
  */
@@ -196,4 +200,3 @@ class Affiliates_Utility {
 	}
 	
 }// class Affiliates_Utility
-?>

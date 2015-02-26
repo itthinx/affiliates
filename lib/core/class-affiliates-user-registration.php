@@ -38,16 +38,40 @@ class Affiliates_User_Registration {
 		if ( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) {
 			add_action( 'user_register', array( __CLASS__, 'user_register' ) );
 		}
+		if ( get_option( 'aff_customer_registration_enabled', 'no' ) == 'yes' ) {
+			add_action( 'woocommerce_created_customer', array( __CLASS__, 'woocommerce_created_customer' ), 10, 3 );
+		}
 	}
 
 	/**
-	 * Record a referral when a new user has been referred by an affilaite.
+	 * Hooks on customer creation to record a referral when a new customer is created.
+	 * 
+	 * @param int $customer_id
+	 * @param array $new_customer_data
+	 * @param boolean $password_generated
+	 */
+	public static function woocommerce_created_customer( $customer_id, $new_customer_data, $password_generated ) {
+		self::user_register( $customer_id, array( 'force' => true, 'type' => 'customer' ) );
+	}
+
+	/**
+	 * Record a referral when a new user has been referred by an affiliate.
 	 * 
 	 * @param int $user_id
+	 * @param array $params registration parameters
 	 */
-	public static function user_register( $user_id ) {
+	public static function user_register( $user_id, $params = array() ) {
 
-		if ( is_admin() ) {
+		extract( $params );
+
+		if ( !isset( $force ) ) {
+			$force = false;
+		}
+		if ( !isset( $type ) ) {
+			$type = null;
+		}
+
+		if ( !$force && is_admin() ) {
 			if ( !apply_filters( 'affiliates_user_registration_on_admin', false ) ) {
 				return;
 			}
@@ -60,7 +84,13 @@ class Affiliates_User_Registration {
 				$post_id = $post->ID;
 			}
 
-			$description = sprintf( 'User Registration %s', esc_html( $user->user_login ) );
+			switch ( $type ) {
+				case 'customer' :
+					$description = sprintf( 'Customer Registration %s', esc_html( $user->user_login ) );
+					break;
+				default :
+					$description = sprintf( 'User Registration %s', esc_html( $user->user_login ) );
+			}
 			$base_amount = null;
 			if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
 				$base_amount = get_option( 'aff_user_registration_base_amount', null );

@@ -18,8 +18,21 @@
 * @package affiliates
 * @since affiliates 1.3.1
 */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Page generator
+ */
 class Affiliates_Generator {
-	
+
+	/**
+	 * Creates the default affiliate area page (or pages).
+	 * 
+	 * @return int post ID(s)
+	 */
 	public static function setup_pages() {
 		
 		global $affiliates_admin_messages;
@@ -39,6 +52,8 @@ class Affiliates_Generator {
 
 [affiliates_is_affiliate]
 <p>Welcome to your affiliate area. Here you can find information about your affiliate link and earnings.</p>
+<h3>Affiliate Information</h3>
+[affiliates_fields]
 <h3>Affiliate link</h3>
 <p>Your affiliate URL:<br/>
 <code>[affiliates_url]</code></p>
@@ -62,7 +77,7 @@ class Affiliates_Generator {
 [/affiliates_is_affiliate]
 ';
 		$affiliate_area_page_content = apply_filters( 'affiliates_affiliate_area_page_content', $affiliate_area_page_content );
-		
+
 		$postarr = array(
 			'comment_status' => 'closed',
 			'ping_status'    => 'closed',
@@ -77,12 +92,11 @@ class Affiliates_Generator {
 		} else {
 			$post_ids[] = $post_id;
 		}
-		
+
 		$post_ids = apply_filters( 'affiliates_setup_pages', $post_ids );
-		
+
 		do_action( 'affiliates_after_setup_pages', $post_ids );
-		
+
 		return $post_ids;
 	}
 }
-

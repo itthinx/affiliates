@@ -18,9 +18,15 @@
 * @package affiliates
 * @since affiliates 1.3.0
 */
-class Affiliates_Shortcodes {
 
-	// var $url_options = array();
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Shortcode handler.
+ */
+class Affiliates_Shortcodes {
 
 	/**
 	 * Add shortcodes.
@@ -38,6 +44,15 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_url', array( __CLASS__, 'affiliates_url' ) );
 		add_shortcode( 'affiliates_login_redirect', array( __CLASS__, 'affiliates_login_redirect' ) );
 		add_shortcode( 'affiliates_logout', array( __CLASS__, 'affiliates_logout' ) );
+		add_shortcode( 'affiliates_fields', array( __CLASS__, 'affiliates_fields' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'wp_enqueue_scripts' ) );
+	}
+
+	/**
+	 * Register styles.
+	 */
+	public static function wp_enqueue_scripts() {
+		wp_register_style( 'affiliates-fields', AFFILIATES_PLUGIN_URL . 'css/affiliates-fields.css', array(), AFFILIATES_CORE_VERSION, 'all' );
 	}
 
 	/**
@@ -435,7 +450,7 @@ class Affiliates_Shortcodes {
 	
 							// month & year
 							$output .= '<td>';
-							$output .= date( __( 'F Y', AFFILIATES_PLUGIN_DOMAIN ), strtotime( $from ) ); // translators: date format; month and year for earnings display
+							$output .= date_i18n( __( 'F Y', AFFILIATES_PLUGIN_DOMAIN ), strtotime( $from ) ); // translators: date format; month and year for earnings display
 							$output .= '</td>';
 	
 							// earnings
@@ -611,6 +626,224 @@ class Affiliates_Shortcodes {
 		} else {
 			return '';
 		}
+	}
+
+	/**
+	 * Affiliate field info.
+	 * 
+	 * user_id - print for ... requires AFFILIATES_ADMIN...
+	 * name - field name or names, empty includes all by default
+	 * edit - yes or no
+	 * load_styles - yes or no
+	 * 
+	 * @param array $atts
+	 * @param string $content
+	 * @return string
+	 */
+	public static function affiliates_fields( $atts, $content = null ) {
+
+		$output = '';
+
+		if ( is_user_logged_in() ) {
+
+			$atts = shortcode_atts(
+				array(
+					'edit'    => 'yes',
+					'load_styles' => 'yes',
+					'name'    => '',
+					'user_id' => null
+				),
+				$atts
+			);
+
+			$atts['load_styles'] = strtolower( trim( $atts['load_styles' ] ) );
+			if ( $atts['load_styles'] == 'yes' ) {
+				wp_enqueue_style( 'affiliates-fields' );
+			}
+
+			$atts['edit'] = strtolower( trim( $atts['edit' ] ) );
+
+			$fields = null;
+			if ( !empty( $atts['name'] ) ) {
+				$fields = array_map( 'strtolower', array_map( 'trim', explode( ',', $atts['name'] ) ) );
+			}
+
+			if ( current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) && !empty( $atts['user_id'] ) ) {
+				$user_id = intval( trim( $atts['user_id'] ) );
+			} else {
+				$user_id = get_current_user_id();
+			}
+			$user = get_user_by( 'id', $user_id );
+
+			if ( affiliates_user_is_affiliate( $user_id ) ) {
+				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
+				require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
+				$registration_fields = Affiliates_Settings_Registration::get_fields();
+
+				if ( $atts['edit'] != 'yes' ) {
+					unset( $registration_fields['password'] );
+				}
+
+				if ( !empty( $fields ) ) {
+					$_registration_fields = array();
+					foreach( $fields as $name ) {
+						if ( isset( $registration_fields[$name] ) ) {
+							$_registration_fields[$name] = $registration_fields[$name];
+						}
+					}
+					$registration_fields = $_registration_fields;
+				}
+
+				// handle form submission
+				if ( $atts['edit'] === 'yes' ) {
+					if ( !empty( $_POST['affiliate-nonce'] ) && wp_verify_nonce( $_POST['affiliate-nonce'], 'save' ) ) {
+						if ( !empty( $registration_fields ) ) {
+
+							$error = false;
+
+							// gather field values
+							foreach( $registration_fields as $name => $field ) {
+								if ( $field['enabled'] ) {
+									$value = isset( $_POST[$name] ) ? $_POST[$name] : '';
+									$value = Affiliates_Utility::filter( $value );
+									if ( $field['required'] && empty( $value ) ) {
+										$error = true;
+										$output .= '<div class="error">';
+										$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+										$output .= ' : ';
+										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+										$output .= '</div>';
+									}
+									$registration_fields[$name]['value'] = $value;
+
+									// password check
+									$type = isset( $field['type'] ) ? $field['type'] : 'text';
+									if ( $type == 'password' ) {
+										if ( !empty( $value ) ) {
+											$value2 = isset( $_POST[$name . '2'] ) ? $_POST[$name . '2'] : '';
+											$value2 = Affiliates_Utility::filter( $value2 );
+											if ( $value !== $value2 ) {
+												$error = true;
+												$output .= '<div class="error">';
+												$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+												$output .= ' : ';
+												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+												$output .= '</div>';
+											}
+										}
+									}
+								}
+							}
+
+							$userdata = array();
+							foreach( $registration_fields as $name => $field ) {
+								if ( $registration_fields[$name]['enabled'] ) {
+									$userdata[$name] = $registration_fields[$name]['value'];
+								}
+							}
+
+							if ( !$error ) {
+								$updated_user_id = Affiliates_Registration::update_affiliate_user( $user_id, $userdata );
+								if ( is_wp_error( $updated_user_id ) ) {
+									$error_messages = implode( '<br/>', $updated_user_id->get_error_messages() );
+									if ( !empty( $error_messages ) ) {
+										$output .= '<div class="error">';
+										$output .= $error_messages;
+										$output .= '</div>';
+									}
+								} else {
+									$output .= '<div class="updated">';
+									$output .= __( 'Saved', AFFILIATES_PLUGIN_DOMAIN );
+									$output .= '</div>';
+								}
+							}
+						}
+					}
+				}
+
+				// show form
+				$n = 0;
+				if ( !empty( $registration_fields ) ) {
+					if ( $atts['edit'] === 'yes' ) {
+						$output .= '<form class="affiliates-fields" method="post">';
+						$output .= '<div>';
+					} else {
+						$output .= '<div class="affiliates-fields">';
+						$output .= '<div>';
+					}
+					foreach( $registration_fields as $name => $field ) {
+
+						if ( $field['enabled'] ) {
+							$n++;
+							$output .= '<div class="field">';
+							$output .= '<label>';
+							$output .= esc_html( $field['label'] ); // @todo i18n
+							$type = isset( $field['type'] ) ? $field['type'] : 'text';
+							$extra = $atts['edit'] != 'yes' ? ' readonly="readonly" ' : '';
+							switch( $name ) {
+								case 'user_login' :
+									$extra .= ' readonly="readonly" ';
+									$value = $user->user_login;
+									break;
+								case 'user_email' :
+									$value = $user->user_email;
+									break;
+								case 'user_url' :
+									$value = $user->user_url;
+									break;
+								case 'password' :
+									$value = '';
+									break;
+								default :
+									$value = get_user_meta( $user_id, $name , true );
+							}
+							$output .= sprintf(
+									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
+									esc_attr( $type ),
+									'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
+									esc_attr( $name ),
+									esc_attr( $value ),
+									$field['required'] ? ' required="required" ' : '',
+									$extra
+							);
+							$output .= '</label>';
+							$output .= '</div>';
+
+							if ( $type == 'password' ) {
+								$output .= '<div class="field">';
+								$output .= '<label>';
+								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( $field['label'] ) ); // @todo i18n
+								$output .= sprintf(
+										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
+										esc_attr( $type ),
+										'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
+										esc_attr( $name . '2' ),
+										esc_attr( $value ),
+										$field['required'] ? ' required="required" ' : '',
+										$extra
+								);
+								$output .= '</label>';
+								$output .= '</div>';
+							}
+						}
+					}
+
+					if ( $atts['edit'] === 'yes' ) {
+						$output .=  wp_nonce_field( 'save', 'affiliate-nonce', true, false );
+						$output .= '<div class="save">';
+						$output .= sprintf( '<input class="button" type="submit" name="save" value="%s" />', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+						$output .= '</div>';
+						$output .= '</div>';
+						$output .= '</form>';
+					} else {
+						$output .= '</div>';
+						$output .= '</div>';
+					}
+
+				}
+			}
+		}
+		return $output;
 	}
 }
 Affiliates_Shortcodes::init();

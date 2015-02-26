@@ -1,7 +1,7 @@
 /**
  * affiliates_admin.css
  * 
- * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
  * 
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
@@ -290,10 +290,11 @@ table.affiliates-permissions tbody tr td.checkbox {
 	color: #333;
 }
 
-.affiliates-overview .required,
-.manage-affiliates .required {
-	background: url(../images/required.png) transparent no-repeat left center;
-	padding-left: 16px ! important;
+.affiliates-overview .required input,
+.manage-affiliates .required input{
+	background-image: url(../images/required.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 .manage-affiliates input[type="submit"],
 .manage-affiliates .encoded-hint {

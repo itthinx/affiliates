@@ -19,6 +19,10 @@
  * @since affiliates 1.0.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Affiliates options
  */
@@ -91,4 +95,3 @@ class Affiliates_Options {
 		delete_option( 'affiliates_plugin' );
 	}
 }
-?>

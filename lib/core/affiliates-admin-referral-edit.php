@@ -19,6 +19,10 @@
  * @since affiliates 2.2.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Create/Edit referral form.
  */
@@ -141,13 +145,13 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	}
 
 	$output .= '<div class="referral">';
-	$output .= '<h2>';
+	$output .= '<h1>';
 	if ( empty( $referral_id ) ) {
 		$output .= __( 'New Referral', AFFILIATES_PLUGIN_DOMAIN );
 	} else {
 		$output .= __( 'Edit Referral', AFFILIATES_PLUGIN_DOMAIN );
 	}
-	$output .= '</h2>';
+	$output .= '</h1>';
 
 	$output .= '<form id="referral" action="' . $current_url . '" method="post">';
 	$output .= '<div>';
@@ -243,9 +247,9 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
 
-	$output .= sprintf( '<input class="button" type="submit" name="save" value="%s"/>', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+	$output .= sprintf( '<input class="button button-primary" type="submit" name="save" value="%s"/>', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
 	$output .= ' ';
-	$output .= sprintf( '<a class="cancel" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', AFFILIATES_PLUGIN_DOMAIN ) : __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
+	$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', AFFILIATES_PLUGIN_DOMAIN ) : __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
 
 	$output .= '</div>';
 	$output .= '</form>';

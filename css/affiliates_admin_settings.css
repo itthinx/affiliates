@@ -1,0 +1,54 @@
+/**
+ * affiliates_admin_settings.css
+ * 
+ * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
+ * 
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ * 
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * This header and all notices must be kept intact.
+ * 
+ * @author Karim Rahimpur
+ * @package affiliates
+ * @since affiliates 2.8.0
+ */
+.section-links a.section-link {
+	text-decoration: none;
+}
+.section-links a.active {
+	font-weight: bold;
+}
+div.integration {
+	border-radius: 2px;
+	background-color: #fff;
+	border: 1px solid #f0f0f0;
+	padding: 0.62em 1em;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+div.integration.active {
+	border-left:4px solid #2ea2cc;
+}
+div.integration.inactive {
+	border-left:4px solid #999;
+}
+div.integration.ext {
+	border-right:4px solid #00a651;
+}
+ul.integrations > li {
+	margin: 1em 0;
+	width: 95%;
+}
+ul.integrations > li:last-child {
+	margin-bottom: 2em;
+}
+#registration-fields > table > tbody > tr:first-child button.field-up {
+	display:none;
+}
+#registration-fields > table > tbody > tr:last-child button.field-down {
+	display:none;
+}

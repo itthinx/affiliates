@@ -19,6 +19,10 @@
  * @since affiliates 1.1.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Show add affiliate form.
  */
@@ -42,9 +46,9 @@ function affiliates_admin_affiliates_add() {
 	$output =
 		'<div class="manage-affiliates">' .
 		'<div>' .
-			'<h2>' .
+			'<h1>' .
 				__( 'Add a new affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>' .
+			'</h1>' .
 		'</div>' .
 	
 		'<form id="add-affiliate" action="' . $current_url . '" method="post">' .
@@ -105,9 +109,10 @@ function affiliates_admin_affiliates_add() {
 
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-add', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button" type="submit" value="' . __( 'Add', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . __( 'Add', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 		'<input type="hidden" value="add" name="action"/>' .
-		'<a class="cancel" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		' ' .
+		'<a class="cancel button" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.new
@@ -222,5 +227,3 @@ function affiliates_admin_affiliates_add_submit() {
 	}
 	return $result;
 } // function affiliates_admin_affiliates_add_submit
-
-?>

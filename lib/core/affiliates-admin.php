@@ -18,6 +18,11 @@
  * @package affiliates
  * @since affiliates 1.0.0
  */
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Affiliates overview and summarized statistics.
  */
@@ -29,7 +34,7 @@ function affiliates_admin() {
 		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
 	}
 
-	echo '<h2>' . __( 'Affiliates Overview', AFFILIATES_PLUGIN_DOMAIN ) . '</h2>';
+	echo '<h1>' . __( 'Affiliates Overview', AFFILIATES_PLUGIN_DOMAIN ) . '</h1>';
 
 	$today = date( 'Y-m-d', time() );
 	$day_interval  = 7;
@@ -281,7 +286,7 @@ function affiliates_admin() {
 	$ticks_json           = json_encode( $ticks );
 	$dates_json           = json_encode( $dates );
 
-	echo '<h3>' . sprintf( __( '%d Day Charts', AFFILIATES_PLUGIN_DOMAIN ), $days_back ) . '</h2>';
+	echo '<h2>' . sprintf( __( '%d Day Charts', AFFILIATES_PLUGIN_DOMAIN ), $days_back ) . '</h2>';
 	echo '<div class="manage" style="margin-right:1em">';
 	?>
 	<div id="stats" class="" style="width:100%;height:400px;"></div>
@@ -403,7 +408,7 @@ function affiliates_admin() {
 	echo $filters_form;
 	echo '</div>';
 	
-	echo '<h3>' . __( 'Statistics Summary', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
+	echo '<h2>' . __( 'Statistics Summary', AFFILIATES_PLUGIN_DOMAIN ) . '</h2>';
 	for ( $i = 0; $i < 3; $i++ ) {
 		$add_class = "";
 		switch ( $i ) {
@@ -465,4 +470,3 @@ function affiliates_admin() {
 	}
 	affiliates_footer();
 }
-?>

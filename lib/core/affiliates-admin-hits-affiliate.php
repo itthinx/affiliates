@@ -18,7 +18,11 @@
  * @package affiliates
  * @since affiliates 1.0.0
  */
-	
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Shows hits by affiliate
 
 define( 'AFFILIATES_HITS_AFFILIATE_PER_PAGE', 10 );
@@ -188,9 +192,9 @@ function affiliates_admin_hits_affiliate() {
 	
 	$output .=
 		'<div>' .
-			'<h2>' .
+			'<h1>' .
 				__( 'Affiliates & Referrals', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h2>' .
+			'</h1>' .
 		'</div>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
@@ -645,4 +649,3 @@ function affiliates_admin_hits_affiliate() {
 	echo $output;
 	affiliates_footer();
 } // function affiliates_admin_hits()
-?>
