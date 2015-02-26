@@ -777,7 +777,7 @@ class Affiliates_Shortcodes {
 							$n++;
 							$output .= '<div class="field">';
 							$output .= '<label>';
-							$output .= esc_html( $field['label'] ); // @todo i18n
+							$output .= esc_html( stripslashes( $field['label'] ) ); // @todo i18n
 							$type = isset( $field['type'] ) ? $field['type'] : 'text';
 							$extra = $atts['edit'] != 'yes' ? ' readonly="readonly" ' : '';
 							switch( $name ) {
@@ -802,7 +802,7 @@ class Affiliates_Shortcodes {
 									esc_attr( $type ),
 									'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
 									esc_attr( $name ),
-									esc_attr( $value ),
+									esc_attr( stripslashes( $value ) ),
 									$field['required'] ? ' required="required" ' : '',
 									$extra
 							);
@@ -812,7 +812,7 @@ class Affiliates_Shortcodes {
 							if ( $type == 'password' ) {
 								$output .= '<div class="field">';
 								$output .= '<label>';
-								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( $field['label'] ) ); // @todo i18n
+								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
 								$output .= sprintf(
 										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 										esc_attr( $type ),

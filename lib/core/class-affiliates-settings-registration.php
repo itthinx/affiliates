@@ -183,7 +183,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			echo sprintf( '<input type="text" name="field-name[%d]" value="%s" %s />', $i, esc_attr( $name ), $field['is_default'] ? ' readonly="readonly" ' : '' );
 			echo '</td>';
 			echo '<td>';
-			echo sprintf( '<input type="text" name="field-label[%d]" value="%s" />', $i, esc_attr( $field['label'] ) );
+			echo sprintf( '<input type="text" name="field-label[%d]" value="%s" />', $i, esc_attr( stripslashes( $field['label'] ) ) );
 			echo '</td>';
 			echo '<td>';
 			echo sprintf( '<input type="checkbox" name="field-required[%d]" %s />', $i, $field['required'] ? ' checked="checked" ' : '' );

@@ -401,7 +401,7 @@ class Affiliates_Registration {
 			if ( $field['enabled'] ) {
 				$output .= '<div class="field">';
 				$output .= '<label>';
-				$output .= $field['label'];
+				$output .= stripslashes( $field['label'] );
 				$output .= ' ';
 				$type = isset( $field['type'] ) ? $field['type'] : 'text';
 				$readonly = is_user_logged_in() && ( ( $name == 'user_login' ) || ( $name == 'user_email' ) ) ? ' readonly="readonly" ' : '';
@@ -410,7 +410,7 @@ class Affiliates_Registration {
 					esc_attr( $type ),
 					esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
 					esc_attr( $name ),
-					esc_attr( isset( $field['value'] ) ? $field['value'] : '' ),
+					esc_attr( stripslashes( isset( $field['value'] ) ? $field['value'] : '' ) ),
 					$field['required'] ? ' required="required" ' : '',
 					$readonly
 				);
