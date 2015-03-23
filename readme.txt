@@ -32,8 +32,7 @@ Available free e-commerce integrations include
 [Jigoshop](http://wordpress.org/plugins/affiliates-jigoshop-light),
 [WP e-Commerce](http://wordpress.org/plugins/affiliates-wp-e-commerce),
 [Ecwid](http://wordpress.org/plugins/affiliates-ecwid-light),
-[eShop](http://wordpress.org/plugins/affiliates-eshop-light)
-and [Ready! Ecommerce](http://wordpress.org/plugins/affiliates-ready-light/).
+[eShop](http://wordpress.org/plugins/affiliates-eshop-light).
 To grant commissions based on forms and track leads you can use [Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7).
 
 **Premium Integrations**
