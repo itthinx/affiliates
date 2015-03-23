@@ -340,6 +340,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.8.1 =
+* Fixed a PHP Warning when saving a user profile.
+
 = 2.8.0 =
 * Added a setup notice with links to the page generation and integration sections.
 * Improved the configuration section and replaced the Options menu item with Settings.
