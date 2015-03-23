@@ -32,8 +32,7 @@ Available free e-commerce integrations include
 [Jigoshop](http://wordpress.org/plugins/affiliates-jigoshop-light),
 [WP e-Commerce](http://wordpress.org/plugins/affiliates-wp-e-commerce),
 [Ecwid](http://wordpress.org/plugins/affiliates-ecwid-light),
-[eShop](http://wordpress.org/plugins/affiliates-eshop-light)
-and [Ready! Ecommerce](http://wordpress.org/plugins/affiliates-ready-light/).
+[eShop](http://wordpress.org/plugins/affiliates-eshop-light).
 To grant commissions based on forms and track leads you can use [Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7).
 
 **Premium Integrations**
@@ -341,6 +340,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.8.1 =
+* Fixed a PHP Warning when saving a user profile.
+
 = 2.8.0 =
 * Added a setup notice with links to the page generation and integration sections.
 * Improved the configuration section and replaced the Options menu item with Settings.
@@ -593,6 +595,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.8.1 =
+* This release fixes a PHP Warning when saving a user profile.
 
 = 2.8.0 =
 * This version provides many additions and improvements, including a fully revised customizable registration form, new shortcodes and many improvements on the administrative back end which also include a better Settings section and quick links to guide through setup.

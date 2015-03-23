@@ -189,17 +189,19 @@ class Affiliates_Admin_User_Profile {
 
 		// update affiliate entry
 		$affiliate_ids = affiliates_get_user_affiliate( $user_id );
-		if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
-			if ( $user = get_userdata( $user_id ) ) {
-				$affiliates_table = _affiliates_get_tablename( 'affiliates' );
-				$query = $wpdb->prepare(
-						"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
-						$user->first_name . ' ' . $user->last_name,
-						$user->user_email,
-						intval( $affiliate_id )
-				);
-				if ( $wpdb->query( $query ) ) {
-					do_action( 'affiliates_updated_affiliate', $affiliate_id );
+		if ( !empty( $affiliate_ids ) ) {
+			if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
+				if ( $user = get_userdata( $user_id ) ) {
+					$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+					$query = $wpdb->prepare(
+							"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
+							$user->first_name . ' ' . $user->last_name,
+							$user->user_email,
+							intval( $affiliate_id )
+					);
+					if ( $wpdb->query( $query ) ) {
+						do_action( 'affiliates_updated_affiliate', $affiliate_id );
+					}
 				}
 			}
 		}
