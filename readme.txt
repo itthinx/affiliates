@@ -596,6 +596,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
+= 2.8.1 =
+* This release fixes a PHP Warning when saving a user profile.
+
 = 2.8.0 =
 * This version provides many additions and improvements, including a fully revised customizable registration form, new shortcodes and many improvements on the administrative back end which also include a better Settings section and quick links to guide through setup.
 
