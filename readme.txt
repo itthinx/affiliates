@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 3.5.1
 Tested up to: 4.1.1
-Stable tag: 2.8.1
+Stable tag: 2.8.2
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,6 +340,12 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.8.2 =
+* Fixes an issue with the registration form not being rendered when page
+  content is evaluated previously.
+* Fixes user URL not saved due to usage of inexistent variable.
+* Removed Ready from integrations index.
+
 = 2.8.1 =
 * Fixed a PHP Warning when saving a user profile.
 
@@ -595,6 +601,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.8.2 =
+* Fixes an issue with the registration form not being rendered when page
+  content is evaluated previously and missing user URL.
 
 = 2.8.1 =
 * This release fixes a PHP Warning when saving a user profile.

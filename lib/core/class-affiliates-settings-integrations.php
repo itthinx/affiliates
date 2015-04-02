@@ -103,18 +103,6 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'access'       => 'free',
 				'targets'      => array( 'affiliates' ),
 				'platforms'    => array( 'ecwid' )
-			),
-			'affiliates-ready-light' => array(
-				'title'        => __( 'Ready! Ecommerce (light)', AFFILIATES_PLUGIN_DOMAIN ),
-				'plugin_title' => __( 'Affiliates Ready! Ecommerce Integration Light', AFFILIATES_PLUGIN_DOMAIN ),
-				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ready-light/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with Ready! Ecommerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', AFFILIATES_PLUGIN_DOMAIN ),
-				'plugin_file'  => 'affiliates-ready-light/affiliates-ready-light.php',
-				'notes'        => '',
-				'repository'   => 'wordpress',
-				'access'       => 'free',
-				'targets'      => array( 'affiliates' ),
-				'platforms'    => array( 'ready-ecommerce' )
 			)
 		);
 		self::$integrations = apply_filters( 'affiliates_settings_integrations', self::$integrations );

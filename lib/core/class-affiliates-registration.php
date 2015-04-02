@@ -115,12 +115,6 @@ class Affiliates_Registration {
 	 */
 	public static function render_form( $options = array() ) {
 
-		global $affiliates_registration_form_count;
-		if ( isset( $affiliates_registration_form_count ) ) {
-			return '';
-		}
-		$affiliates_registration_form_count = 1;
-
 		wp_enqueue_style( 'affiliates' );
 
 		self::$submit_button_label = __( 'Sign Up', AFFILIATES_PLUGIN_DOMAIN );
@@ -196,7 +190,7 @@ class Affiliates_Registration {
 			if ( isset( $registration_fields['user_url'] ) && $registration_fields['user_url']['enabled'] ) {
 				$url        = $user->user_url;
 				$url        = sanitize_user_field( 'user_url', $url, $user->ID, 'display' );
-				$registration_fields['user_url']['value'] = $user_url;
+				$registration_fields['user_url']['value'] = $url;
 			}
 		}
 
@@ -247,7 +241,7 @@ class Affiliates_Registration {
 				}
 
 				// don't try to create a new user on multiple renderings
-				global $affiliate_user_id, $new_affiliate_registered;
+				global $affiliate_user_id, $new_affiliate_registered, $stored_affiliate;
 				if ( !isset( $affiliate_user_id ) ) {
 					if ( !$is_logged_in ) {
 						// allow plugins to be aware of new user account being created
@@ -267,12 +261,15 @@ class Affiliates_Registration {
 
 					// add affiliate entry
 					$send = true;
-					if ( $new_affiliate_registered ) {
-						$affiliate_id = self::store_affiliate( $affiliate_user_id, $userdata );
-						// update user meta data: name and last name
-						wp_update_user( array( 'ID' => $affiliate_user_id, 'first_name' => $userdata['first_name'], 'last_name' => $userdata['last_name'] ) );
-						// @todo handle rest of user meta here, too?
-						do_action( 'affiliates_stored_affiliate', $affiliate_id, $affiliate_user_id );
+					if ( !isset( $stored_affiliate ) ) {
+						if ( $new_affiliate_registered ) {
+							$affiliate_id = self::store_affiliate( $affiliate_user_id, $userdata );
+							// update user meta data: name and last name
+							wp_update_user( array( 'ID' => $affiliate_user_id, 'first_name' => $userdata['first_name'], 'last_name' => $userdata['last_name'] ) );
+							// @todo handle rest of user meta here, too?
+							do_action( 'affiliates_stored_affiliate', $affiliate_id, $affiliate_user_id );
+						}
+						$stored_affiliate = true;
 					}
 
 					$is_widget    = isset( $options['is_widget'] ) && ( $options['is_widget'] === true || $options['is_widget'] == 'true' );
