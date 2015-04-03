@@ -42,6 +42,7 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_referrals', array( __CLASS__, 'affiliates_referrals' ) );
 		add_shortcode( 'affiliates_earnings', array( __CLASS__, 'affiliates_earnings' ) );
 		add_shortcode( 'affiliates_url', array( __CLASS__, 'affiliates_url' ) );
+		add_filter( 'no_texturize_shortcodes', array( __CLASS__, 'no_texturize_shortcodes' ) );
 		add_shortcode( 'affiliates_login_redirect', array( __CLASS__, 'affiliates_login_redirect' ) );
 		add_shortcode( 'affiliates_logout', array( __CLASS__, 'affiliates_logout' ) );
 		add_shortcode( 'affiliates_fields', array( __CLASS__, 'affiliates_fields' ) );
@@ -562,8 +563,6 @@ class Affiliates_Shortcodes {
 	public static function affiliates_url( $atts, $content = null ) {
 		global $wpdb;
 
-		$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-
 		remove_shortcode( 'affiliates_url' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_url', array( __CLASS__, 'affiliates_url' ) );
@@ -577,21 +576,35 @@ class Affiliates_Shortcodes {
 				"SELECT $affiliates_users_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = 'active'",
 				intval( $user_id )
 			))) {
-				$encoded_affiliate_id = affiliates_encode_affiliate_id( $affiliate_id );
 				if ( strlen( $content ) == 0 ) {
 					$base_url = get_bloginfo( 'url' );
 				} else {
-					$base_url = $content;
+					// wp_texturize() has already been applied to $content and
+					// it indiscriminately replaces ampersands with the HTML
+					// entity &#038; - we need to undo this so path separators
+					// are not messed up. Note that it does that even though we
+					// have indicated to exclude affiliates_url via the
+					// no_texturize_shortcodes filter.
+					$base_url = trim( $content );
+					$base_url = str_replace( '&#038;', '&', $base_url );
 				}
-				$separator = '?';
-				$url_query = parse_url( $base_url, PHP_URL_QUERY );
-				if ( !empty( $url_query ) ) {
-					$separator = '&';
-				}
-				$output .= $base_url . $separator . $pname . '=' . $encoded_affiliate_id;
+				$output .= affiliates_get_affiliate_url( $base_url, $affiliate_id );
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * Exclude the affiliates_url shortcode.
+	 * 
+	 * @param array $shortcodes
+	 * @return unknown
+	 */
+	public static function no_texturize_shortcodes( $shortcodes ) {
+		if ( !in_array( 'affiliates_url', $shortcodes ) ) {
+			$shortcodes[] = 'affiliates_url';
+		}
+		return $shortcodes;
 	}
 
 	/**

@@ -1934,3 +1934,63 @@ function affiliates_attribute_filter( $value, $affiliate_id, $key ) {
 	}
 	return $value;
 }
+
+/**
+ * Compose a URL based on its components.
+ * 
+ * $components can provide values indexed by the keys scheme, host, port,
+ * user, pass, path, query and fragment as produced by parse_url().
+ * 
+ * @param array $components
+ * @return string URL
+ */
+function affiliates_compose_url( $components ) {
+	$scheme   = isset( $components['scheme'] ) ? $components['scheme'] . '://' : '';
+	$host     = isset( $components['host'] ) ? $components['host'] : '';
+	$port     = isset( $components['port'] ) ? ':' . $components['port'] : '';
+	$user     = isset( $components['user'] ) ? $components['user'] : '';
+	$pass     = isset( $components['pass'] ) ? ':' . $components['pass']  : '';
+	$pass     = ( !empty( $user ) || !empty( $pass ) ) ? "$pass@" : '';
+	$path     = isset( $components['path'] ) ? $components['path'] : '';
+	$query    = isset( $components['query'] ) ? '?' . $components['query'] : '';
+	$fragment = isset( $components['fragment'] ) ? '#' . $components['fragment'] : '';
+	return "$scheme$user$pass$host$port$path$query$fragment";
+}
+
+/**
+ * Returns the URL converted to an affiliate URL for the given affiliate.
+ * 
+ * @param string $url
+ * @param int $affiliate_id
+ */
+function affiliates_get_affiliate_url( $url, $affiliate_id ) {
+	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+	$scheme = parse_url( $url, PHP_URL_SCHEME );
+	if ( empty( $scheme ) ) {
+		$prefix = '';
+		// Although scheme is empty we could have a malformed scheme and we don't
+		// want to make it worse so also check for http:// and https:// prefixes.
+		if ( strpos( $url, 'http://' ) !== 0 && strpos( $url, 'https://' ) !== 0 ) {
+			$prefix = !empty( $_SERVER['HTTPS'] ) && strtolower( $_SERVER['HTTPS'] ) != 'off' ? 'https:' : 'http:';
+			if ( strpos( $url, '//' ) !== 0 ) {
+				$prefix .= '//';
+			}
+		}
+		$url = $prefix . $url;
+	}
+	$components = parse_url( $url );
+	// If pname is already in query, don't modify.
+	if ( strpos( isset( $components['query'] ) ? $components['query'] : '', "$pname=" ) === false ) {
+		$query = '';
+		if ( !empty( $components['query'] ) ) {
+			$query = $components['query'] . '&';
+		}
+		$encoded_id = affiliates_encode_affiliate_id( $affiliate_id );
+		$query .= sprintf( '%s=%s', $pname, $encoded_id );
+		if ( empty( $components['path'] ) ) {
+			$components['path'] = '/';
+		}
+		$components['query'] = $query;
+	}
+	return affiliates_compose_url( $components );
+}

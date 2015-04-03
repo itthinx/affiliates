@@ -566,7 +566,7 @@ function affiliates_admin_affiliates() {
 			$output .=
 				__( 'Link', AFFILIATES_PLUGIN_DOMAIN ) .
 				': ' .
-				'<span class="affiliate-link">' . get_bloginfo('url') . '?' . $pname . '=' . $encoded_id . '</span>' .
+				'<span class="affiliate-link">' . affiliates_get_affiliate_url( get_bloginfo('url'), $result->affiliate_id ) . '</span>' .
 				'<br/>' .
 				__( 'URL Parameter', AFFILIATES_PLUGIN_DOMAIN ) .
 				': ' .
