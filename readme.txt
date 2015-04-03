@@ -340,6 +340,12 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.8.3 =
+* Fixed affilite URLs with missing path element.
+* Added API function to obtain affiliate URLs.
+* Improved the affiliates_url shortcode to avoid URLs being messed up by
+  default filters applied to the content it receives.
+
 = 2.8.2 =
 * Fixes an issue with the registration form not being rendered when page
   content is evaluated previously.
@@ -601,6 +607,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Initial release (tested & working on production sites).
 
 == Upgrade Notice ==
+
+= 2.8.3 =
+* This release improves the way how affiliate URLs are obtained and fixes and
+  issue with URLs that are missing the path element. 
 
 = 2.8.2 =
 * Fixes an issue with the registration form not being rendered when page
