@@ -587,7 +587,9 @@ class Affiliates_Shortcodes {
 					// no_texturize_shortcodes filter.
 					$base_url = trim( $content );
 					$base_url = str_replace( '&#038;', '&', $base_url );
-					$base_url = trim( strip_tags( $base_url ) );
+					$base_url = strip_tags( $base_url );
+					$base_url = preg_replace('/\r|\n/', '', $base_url );
+					$base_url = trim( $base_url );
 				}
 				$output .= affiliates_get_affiliate_url( $base_url, $affiliate_id );
 			}
