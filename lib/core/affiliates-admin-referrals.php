@@ -393,8 +393,8 @@ function affiliates_admin_referrals() {
 		'amount'      => __( 'Amount', AFFILIATES_PLUGIN_DOMAIN ),
 		'currency_id' => __( 'Currency', AFFILIATES_PLUGIN_DOMAIN ),
 		'status'      => __( 'Status', AFFILIATES_PLUGIN_DOMAIN ),
-		'edit'        => __( '', AFFILIATES_PLUGIN_DOMAIN ),
-		'remove'      => __( '', AFFILIATES_PLUGIN_DOMAIN ),
+		'edit'        => '',
+		'remove'      => '',
 	);
 	
 	$column_count = count( $column_display_names );

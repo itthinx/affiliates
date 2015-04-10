@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 3.5.1
 Tested up to: 4.1.1
-Stable tag: 2.8.3
+Stable tag: 2.8.4
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,6 +340,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.8.4 =
+* Added the translation template.
+* Removed a couple of translations for empty strings.
+
 = 2.8.3 =
 * Fixed affilite URLs with missing path element.
 * Added API function to obtain affiliate URLs.
@@ -608,179 +612,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.8.3 =
-* This release improves the way how affiliate URLs are obtained and fixes and
-  issue with URLs that are missing the path element. 
-
-= 2.8.2 =
-* Fixes an issue with the registration form not being rendered when page
-  content is evaluated previously and missing user URL.
-
-= 2.8.1 =
-* This release fixes a PHP Warning when saving a user profile.
-
-= 2.8.0 =
-* This version provides many additions and improvements, including a fully revised customizable registration form, new shortcodes and many improvements on the administrative back end which also include a better Settings section and quick links to guide through setup.
-
-= 2.7.3 =
-* WordPress 4.1 compatible.
-
-= 2.7.2 =
-* WordPress 4.0 compatible.
-
-= 2.7.1 =
-* Improved name field handling in the affiliate registration form. Minor bug fixes. Improved style loading.
-
-= 2.7.0 =
-* New Totals section (facilitates affiliate payment and closing referrals in bulk by time period) and built-in User Registration Integration added (reward affiliates for referring new users) along with new filters.
-
-= 2.6.2 =
-* Registration form improved with first_name and last_name attributes added so that these fields can be made optional or hidden.
-
-= 2.6.1 =
-* Affiliate user notification filters added.
-
-= 2.6.0 =
-* WordPress 3.9 compatibility, UI filter improvements and bug fixes.
-
-= 2.5.1 =
-* UI improvements and added the French translation.
-
-= 2.5.0 =
-* This release provides a new dashboard widget showing referral totals and a new shortcode [affiliates_earnings] showing affiliate earnings per month.
-
-= 2.4.4 =
-* Added display of accumulated totals and clearer link display in the Manage Affiliates section. WordPress 3.8 compatibility checked.
-
-= 2.4.3 =
-* WordPress 3.7.1 compatibility checked and some minor fixes and improvements.
-
-= 2.4.2 =
-* Improvements: Added captcha filters to allow to use alternatives; replaced use of deprecated PHP function; new registration form filters added; new affiliate registration email filters added.
-
-= 2.4.1 =
-* Improves handling of the URL parameter recognition process and makes it more robst with respect to potential conflicts caused by other plugins.
-
-= 2.4.0.1 =
-* WordPress 3.6 compatibility checked
-
-= 2.4.0 =
-* Several fixes and improvements.
-
-= 2.3.0 =
-* WordPress 3.5.2 compatibility tests passed
-
-= 2.2.1 =
-* New features, translations and fixes. Redirection after affiliate link hits is now optional and disabled by default.
-
-= 2.2.0 =
-* New features and Italian translation added.
-
-= 2.1.9 =
-* WordPress 3.5 compatible, fixes and Indonesian translation added.
-
-= 2.1.8 =
-* Several improvements and added Spanish translation.
-
-= 2.1.7 =
-* Several fixes and additions (see changelog)
-
-= 2.1.5
-* Important performance improvement related to rewrite rule handling
-* Redirect improvement for registraton form
-
-= 2.1.4 =
-* GUI and other improvements including better click-toggle, buttons, referral action, ...
-* Added Portuguese translation.
-
-= 2.1.3 =
-* Added Slovak translation.
-
-= 2.1.2 =
-* Upgrade to get much improved stats graphics on the Affiliates Overview. Also adds the option to show stats for a given amount of days back.
-
-= 2.1.1 =
-* New shortcode to render the referrer's id.
-
-= 2.1.0 =
-* Added Lithuanian and Hebrew translations.
-
-= 2.0.1 =
-* WordPress 3.4 compatibility & fixes
-
-= 2.0.0 =
-* Affiliate registration is now independent of the general user registration (affiliates can be allowed to register although not 'Anyone can register') 
-* Multisite support
-
-= 1.3.9 =
-* New shortcode: [affiliates_id] prints the current affiliate's ID when that affiliate is logged in.
-
-= 1.3.8 =
-* fixed affiliate registration bug
-* added filter to search in referral data
-
-= 1.3.7 =
-* added [affiliates_hits] and [affiliates_visits] shortcodes
-* fixed bugs in admin screens for some filter settings
-
-= 1.3.6 =
-* Added the possibility to change the affiliate URL parameter name: new setting in Affiliates > Options.
-* Several improvements and minor fixes. 
-
-= 1.3.5 =
-* Charts in overview allow to display data for a selected date range, for example show charts for the current month instead of just the last 14 days.
-
-= 1.3.4 =
-* Added date filter section to charts to provide a more flexible means of displaying charts for desired date ranges.
-
-= 1.3.3 =
-* Improved filter form handling.
-
-= 1.3.2 =
-* 14 Day Charts added in overview showing referrals, visits and hits for the last 14 days.
-
-= 1.3.1 =
-* This release provides the option to generate an Affiliate Area page and more shortcodes that allow you to place a log in form and a log out link on a page. 
-
-= 1.3.0 =
-* Upgrade if you want to show affiliates information about their performance on the front end. There are new shortcodes that you can embed on a page.
-
-= 1.2.2 =
-* No changes but a note on new integrations available.
-
-= 1.2.1 =
-* Summary screen shows detailed referral info by referral status. See how many referrals have been accepted, closed, are pending or have been rejected in a glimpse.
-* For developers - new actions: affiliates_added_affiliate, affiliates_updated_affiliate (affiliates_deleted_affiliate was there already)
-
-= 1.2.0 =
-* Referrals table changes: primary key changed to referral_id
-* Added reference column and index 
-
-= 1.1.2 =
-Added type to referrals. Upgrade if using Pro or Enterprise or referral types are desired via API.
-
-= 1.1.1 =
-Added status parameter to referral suggestion. Upgrade if you use the API and want to store a status other than default.
-
-= 1.1.0 =
-This release automates the process of affiliate registration, providing a registration form for affiliates as a widget, a shortcode and API function.
-It also includes important bug fixes. Please update now.
-
-= 1.0.4 =
-Bug fixes, please update.
-
-= 1.0.3 =
-Bug fixes, please update.
-
-= 1.0.2 =
-Important bug-fixes that affect use of the plugin with installations using non-default table name prefixes and multi-site installations.
-
-= 1.0.1 =
-Please upgrade if you see errors like these or if you are on PHP < 5.3:
-
-Warning: call_user_func_array() [function.call-user-func-array]: First argument is expected to be a valid callback, 'Affiliates_Contact::_enqueue_scripts' was given in /var/www/wptest/wp-includes/plugin.php on line 395
-
-Warning: call_user_func_array() [function.call-user-func-array]: First argument is expected to be a valid callback, 'Affiliates_Contact::_print_styles' was given in /var/www/wptest/wp-includes/plugin.php on line 395
-
-= 1.0.0 =
-There is no need to upgrade yet.
+= 2.8.4 =
+This release adds the plugin's translation template.
