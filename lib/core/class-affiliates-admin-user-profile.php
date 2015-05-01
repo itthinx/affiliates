@@ -101,7 +101,7 @@ class Affiliates_Admin_User_Profile {
 					$output .= '<tr>';
 					$output .= '<th>';
 					$output .= sprintf( '<label for="%s">', esc_attr( $name ) );
-					$output .= esc_html( $field['label'] ); // @todo i18n
+					$output .= esc_html( stripslashes( $field['label'] ) ); // @todo i18n
 					$output .= '</label>';
 					$output .= '</th>';
 					$output .= '<td>';
@@ -112,7 +112,7 @@ class Affiliates_Admin_User_Profile {
 							esc_attr( $type ),
 							'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
 							esc_attr( $name ),
-							esc_attr( $value ),
+							esc_attr( stripslashes( $value ) ),
 							$field['required'] ? ' required="required" ' : ''
 					);
 					$output .= '</td>';

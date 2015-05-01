@@ -1353,7 +1353,7 @@ function affiliates_admin_menu() {
 			'affiliates-admin',
 			__( 'Totals', AFFILIATES_PLUGIN_DOMAIN ),
 			__( 'Totals', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_ADMINISTER_OPTIONS,
+			AFFILIATES_ACCESS_AFFILIATES,
 			'affiliates-admin-totals',
 			apply_filters( 'affiliates_add_submenu_page_function', array( 'Affiliates_Totals', 'view' ) )
 		);
@@ -1431,7 +1431,12 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 
 	$show_affiliates_help = false;
-	$help = '<h3><a href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a></h3>';
+
+	$title = '<h3>';
+	$title .= sprintf( '<a href="%s" target="_blank">%s</a>', esc_attr( 'http://www.itthinx.com/plugins/affiliates' ), __( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ) );
+	$title .= '</h3>';
+
+	$help = apply_filters( 'affiliates_help_tab_title', $title );
 
 	switch ( $screen_id ) {
 		case 'toplevel_page_affiliates-admin' :
@@ -1458,32 +1463,22 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 			break;
 		case 'affiliates_page_affiliates-admin-affiliates':
 			$show_affiliates_help = true;
-			$help .= '<p>' . __( 'Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
 			$help .=
-// 				'<p>' .
-// 				__( 'There are two types of links your affiliates may use to link to your site:', AFFILIATES_PLUGIN_DOMAIN ) .
-// 				'</p>' .
+				'<p>' .
+				__( 'Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates.', AFFILIATES_PLUGIN_DOMAIN ) .
+				'</p>';
+			$help .=
 				'<ul>' .
 				'<li>' .
 				'<p class="affiliate-link">' .
 				__( 'Affiliate link', AFFILIATES_PLUGIN_DOMAIN ) .
 				'<p/>' .
 				'<p>' .
-				__( 'This link uses a parameter in the URL to record vists you receive through your affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . ' ' .
-				__( 'The affiliate information is removed once a visitor has landed on your site.', AFFILIATES_PLUGIN_DOMAIN ) . '<br/>' .
+				__( 'This link uses a parameter in the URL to record visits you receive through your affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . ' ' .
+				'<br/>' .
 				sprintf( __( 'You may also append the ?%s=... part to links to your posts.', AFFILIATES_PLUGIN_DOMAIN ), $pname ) .
 				'</p>' .
 				'</li>' .
-				// @deprecated
-// 				'<li>' .
-// 				'<p class="affiliate-permalink">' .
-// 				__( 'Affiliate permalink', AFFILIATES_PLUGIN_DOMAIN ) .
-// 				'</p>' .
-// 				'<p>' .
-// 				__( 'This link uses a nicer URL to record vists you receive through your affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . ' ' .
-// 				__( 'The affiliate information is removed once a visitor has landed on your site.', AFFILIATES_PLUGIN_DOMAIN ) .
-// 				'</p>' .
-// 				'</li>' .
 				'</ul>' .
 				'<p>' .
 				__( 'Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate.', AFFILIATES_PLUGIN_DOMAIN ) .
@@ -1530,8 +1525,13 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 function affiliates_help_tab_footer( $render = true ) {
 	$footer =
 		'<div class="affiliates-documentation">' .
-		__( '<a href="http://docs.itthinx.com/document/affiliates/">Online documentation</a>', AFFILIATES_PLUGIN_DOMAIN ) .
+		sprintf(
+			'<a href="%s">%s</a>',
+			esc_attr( 'http://docs.itthinx.com/document/affiliates/' ),
+			esc_html( __( 'Online documentation', AFFILIATES_PLUGIN_DOMAIN ) )
+		) .
 		'</div>';
+	$footer = apply_filters( 'affiliates_help_tab_footer', $footer );
 	if ( $render ) {
 		echo $footer;
 	} else {

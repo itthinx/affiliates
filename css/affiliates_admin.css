@@ -111,6 +111,9 @@ a.removefromaffiliate {
 .referrals-overview {
 	padding-right: 1em;
 }
+.totals {
+	margin-right: 1em;
+}
 
 div.details-referrals,
 div.details-hits {
