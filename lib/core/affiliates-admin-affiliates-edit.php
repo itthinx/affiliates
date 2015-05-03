@@ -69,13 +69,13 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 				if ( $field['enabled'] ) {
 					$affiliate_user_fields .= '<div class="field">';
 					$affiliate_user_fields .= '<label>';
-					$affiliate_user_fields .= $field['label'];
+					$affiliate_user_fields .= esc_html( stripslashes( $field['label'] ) ); // @todo i18n
 					$affiliate_user_fields .= ' ';
 					$type  = isset( $field['type'] ) ? $field['type'] : 'text';
 					$value = get_user_meta( $affiliate_user->ID, $name , true );
 					$affiliate_user_fields .= sprintf(
 						'<input type="text" value="%s" readonly="readonly" />',
-						esc_attr( $value )
+						esc_attr( stripslashes( $value ) )
 					);
 					$affiliate_user_fields .= '</label>';
 					$affiliate_user_fields .= '</div>';

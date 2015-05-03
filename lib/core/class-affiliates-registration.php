@@ -261,12 +261,12 @@ class Affiliates_Registration {
 
 					// add affiliate entry
 					$send = true;
+
 					if ( !isset( $stored_affiliate ) ) {
 						if ( $new_affiliate_registered ) {
 							$affiliate_id = self::store_affiliate( $affiliate_user_id, $userdata );
-							// update user meta data: name and last name
-							wp_update_user( array( 'ID' => $affiliate_user_id, 'first_name' => $userdata['first_name'], 'last_name' => $userdata['last_name'] ) );
-							// @todo handle rest of user meta here, too?
+							// update user including meta
+							self::update_affiliate_user( $affiliate_user_id, $userdata );
 							do_action( 'affiliates_stored_affiliate', $affiliate_id, $affiliate_user_id );
 						}
 						$stored_affiliate = true;
@@ -554,6 +554,7 @@ class Affiliates_Registration {
 
 			// update user and affiliate entry
 			$user_id = wp_update_user( $_userdata ); // if WP_Error it's returned below
+
 			if ( !is_wp_error( $user_id ) ) {
 
 				// add user meta from remaining fields
