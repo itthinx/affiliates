@@ -37,7 +37,8 @@ class Affiliates_Service {
 		$affiliate_id = false;
 		switch ( $service ) {
 			default :
-				if ( isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
+				$affiliate_id = affiliates_get_affiliate_id_from_request();
+				if ( empty( $affiliate_id ) && isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
 					$value = trim( $_COOKIE[AFFILIATES_COOKIE_NAME] );
 					if ( ( $dot = strpos( $value, '.' ) ) === false ) {
 						$affiliate_id = affiliates_check_affiliate_id_encoded( $value );

@@ -657,8 +657,29 @@ function affiliates_update_rewrite_rules() {
 	flush_rewrite_rules();
 }
 
+/**
+ * Returns the affiliate id if present as pname in the current request.
+ * 
+ * @return int
+ */
+function affiliates_get_affiliate_id_from_request( &$wp = null ) {
+	if ( $wp === null ) {
+		global $wp;
+	}
+	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
+	if ( isset( $wp->query_vars[$pname] ) ) {
+		// affiliates-by-username uses this hook
+		$maybe_affiliate_id = apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id );
+		if ( ( $maybe_affiliate_id !== null ) && $maybe_affiliate_id !== trim( $wp->query_vars[$pname] ) ) {
+			$affiliate_id = $maybe_affiliate_id;
+		}
+	}
+	return $affiliate_id;
+}
+
 add_action( 'parse_request', 'affiliates_parse_request' );
-	
+
 /**
  * Looks in the query variables and sets a cookie with the affiliate id.
  * Hook into parse_request.
@@ -669,15 +690,7 @@ function affiliates_parse_request( &$wp ) {
 
 	global $wpdb, $affiliates_options;
 
-	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
-	if ( isset( $wp->query_vars[$pname] ) ) {
-		// affiliates-by-username uses this hook
-		$maybe_affiliate_id = apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id );
-		if ( ( $maybe_affiliate_id !== null ) && $maybe_affiliate_id !== trim( $wp->query_vars[$pname] ) ) {
-			$affiliate_id = $maybe_affiliate_id;
-		}
-	}
+	$affiliate_id = affiliates_get_affiliate_id_from_request();
 
 	if ( $affiliate_id ) {
 		$encoded_id = affiliates_encode_affiliate_id( $affiliate_id );
