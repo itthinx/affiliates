@@ -690,7 +690,9 @@ function affiliates_parse_request( &$wp ) {
 
 	global $wpdb, $affiliates_options;
 
-	$affiliate_id = affiliates_get_affiliate_id_from_request();
+	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+
+	$affiliate_id = affiliates_get_affiliate_id_from_request( $wp );
 
 	if ( $affiliate_id ) {
 		$encoded_id = affiliates_encode_affiliate_id( $affiliate_id );
