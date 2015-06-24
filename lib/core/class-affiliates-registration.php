@@ -274,7 +274,10 @@ class Affiliates_Registration {
 
 					$is_widget    = isset( $options['is_widget'] ) && ( $options['is_widget'] === true || $options['is_widget'] == 'true' );
 					$redirect     = isset( $options['redirect'] ) && ( $options['redirect'] === true || $options['redirect'] == 'true' );
-					$redirect_url = empty( $_REQUEST['redirect_to'] ) ? get_home_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) : $_REQUEST['redirect_to'];
+					$redirect_url =
+						empty( $_REQUEST['redirect_to'] ) ?
+						apply_filters( 'affiliates_registration_login_redirect_url', get_site_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) :
+						$_REQUEST['redirect_to'];
 
 					if ( $redirect && !$is_widget && !headers_sent() ) {
 						wp_safe_redirect( $redirect_url );
@@ -286,7 +289,12 @@ class Affiliates_Registration {
 							if ( $redirect && !$is_widget ) {
 								$output .= '<script type="text/javascript">window.location="' . esc_url( $redirect_url ) . '";</script>';
 							} else {
-								$output .= '<p>' . sprintf( __( 'Log in <a href="%s">here</a>.', AFFILIATES_PLUGIN_DOMAIN ), get_home_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) . '</p>';
+								$output .= '<p>';
+								$output .= sprintf(
+									__( 'Log in <a href="%s">here</a>.', AFFILIATES_PLUGIN_DOMAIN ),
+									esc_url( apply_filters( 'affiliates_registration_login_redirect_url', get_site_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) )
+								);
+								$output .= '</p>';
 							}
 						} else {
 							if ( isset( $options['registered_profile_link_url'] ) ) {
