@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Español - España (es_ES)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-24 16:59+0100\n"
-"PO-Revision-Date: 2015-06-24 17:23+0100\n"
+"PO-Revision-Date: 2015-06-24 17:40+0100\n"
 "Last-Translator: David Perez <david@closemarketing.es>\n"
 "Language-Team: Closemarketing <david@closemarketing.es>\n"
 "Language: es_ES\n"
@@ -101,8 +101,8 @@ msgstr ""
 #, php-format
 msgid "1 item"
 msgid_plural "%s items"
-msgstr[0] "1 ítem"
-msgstr[1] "%s ítems"
+msgstr[0] "1 elemento"
+msgstr[1] "%s elementos"
 
 #: lib/core/wp-init.php:1449
 msgid ""
@@ -127,7 +127,7 @@ msgid ""
 "<em>From operative and non-operative affiliates:</em> excludes deleted "
 "affiliates."
 msgstr ""
-"<em>Para Afiliados Activos e Inactivos:</em> excluir Afiliados eliminados."
+"<em>Para afiliados activos e inactivos:</em> excluye afiliados eliminados."
 
 #: lib/core/wp-init.php:1452
 msgid "<em>Hits</em> are HTTP requests for affiliate links."
@@ -626,7 +626,7 @@ msgid ""
 "enabling this option you agree to be solely responsible for any loss of data "
 "or any other consequences thereof."
 msgstr ""
-"PRECAUCIÓN: Si esta opción está activa, mientras el plubin está desactivado, "
+"ATENCIÓN: Si esta opción está activa, mientras el plubin está desactivado, "
 "TODOS los datos de Afiliados y de Referencias serán BORRADOS. Si quieres "
 "conservar datos sobre afiliados y sus referencias y vas a desactivar el "
 "plugin, asegúrate de que haces backup de tus datos y no habilitas esta "
@@ -639,9 +639,9 @@ msgid ""
 "<strong>ALL affiliate and referral data will be DELETED on all sites of the "
 "network</strong>."
 msgstr ""
-"PRECAUCIÓN: Si esta opción se activa cuando el plugin se desactiva en la "
-"red, <strong>TODOS los datos de afiliados y referencias serán ELIMINADOS en "
-"todos los sitios de la red</strong>!"
+"ATENCIÓN: Si esta opción se activa cuando el plugin se desactiva en la red, "
+"<strong>TODOS los datos de afiliados y referencias serán ELIMINADOS en todos "
+"los sitios de la red</strong>!"
 
 #: lib/core/class-affiliates-settings-general.php:231
 msgid ""
@@ -650,7 +650,7 @@ msgid ""
 "links reflect the current URL parameter name, no affiliate hits, visits or "
 "referrals will be recorded."
 msgstr ""
-"PRECAUCIÓN: Si modificas esta opción y has distribuido enlaces afiliados o "
+"ATENCIÓN: Si modificas esta opción y has distribuido enlaces afiliados o "
 "permalinks, asegura de que éstos lo actualizan. A menos que los enlaces de "
 "afiliados de entrada reflejen el actual parámetro de nombre de URL, no serán "
 "registrados clics, visitas o referencias de afiliados."
@@ -662,10 +662,10 @@ msgid ""
 "links reflect the current encoding, no affiliate hits, visits or referrals "
 "will be recorded."
 msgstr ""
-"PRECAUCIÓN: Si modificas esta opción y has distribuido enlaces afiliados o "
-"permalinks, asegura que éstos son actualizados. A menos que los enlaces de "
-"afiliados de entrada usen la codificación actual, no serán registrados "
-"clics, visitas o referencias de afiliados."
+"ATENCIÓN: Si modificas esta opción y has distribuido enlaces de afiliados, "
+"asegura que éstos son actualizados. A menos que los enlaces de afiliados de "
+"entrada usen la codificación actual, no serán registrados clics, visitas o "
+"referencias de afiliados."
 
 #: lib/core/affiliates-admin-affiliates-add.php:115
 #: lib/core/affiliates-admin-affiliates-edit.php:175
@@ -888,7 +888,7 @@ msgstr "Email : %s"
 
 #: lib/core/class-affiliates-settings.php:129
 msgid "Enable Affiliate Registration"
-msgstr ""
+msgstr "Habilitar el Registro de Afiliados"
 
 #: lib/core/affiliates-admin-user-registration.php:131
 msgid "Enable the WooCommerce customer registration integration"
@@ -992,7 +992,7 @@ msgstr ""
 #: lib/core/affiliates-admin-referrals.php:474
 #: lib/core/affiliates-admin.php:149 lib/core/class-affiliates-totals.php:375
 msgid "From"
-msgstr "De"
+msgstr "Desde"
 
 #: lib/core/affiliates-admin-affiliates-remove.php:78
 #, php-format
@@ -1374,6 +1374,7 @@ msgstr ""
 msgid ""
 "Please review the following suggested steps to set up the affiliate system."
 msgstr ""
+"Por favor revisa los siguientes pasos para ajustar el sistema de afiliados."
 
 #: lib/core/class-affiliates-totals.php:609
 msgid "Please review the list of referrals that will be <em>closed</em>."
@@ -1831,6 +1832,7 @@ msgid ""
 "This is intended as a guidance and you can safely hide this message when "
 "finished."
 msgstr ""
+"Esto es una guía y se puede descartar el mensaje cuando se haya terminado."
 
 #: lib/core/class-affiliates-settings-referrals.php:108
 msgid ""
@@ -2026,6 +2028,8 @@ msgid ""
 "Use the <a href=\"%s\">Settings</a> section to review or adjust the system "
 "anytime."
 msgstr ""
+"Utiliza la sección de <a href=\"%s\">Ajustes</a> para revisar y ajustar el "
+"sistema en cualquier momento."
 
 #: lib/core/affiliates-admin-user-registration.php:35
 #: lib/core/wp-init.php:1382 lib/core/wp-init.php:1383
