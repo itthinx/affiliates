@@ -342,6 +342,8 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.9.1 =
 * Updated the menu position.
+* Added the affiliates_registration_login_redirect_url filter to allow customized redirects for login.
+* Updated the Spanish translation.
 
 = 2.9.0 =
 * German translation added.
@@ -633,4 +635,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.9.1 =
-This release updates the menu to a more reachable position.
+This release updates the Spanish translation, adds a new filter and sets the menu to a more reachable position.
