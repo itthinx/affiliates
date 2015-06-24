@@ -16,7 +16,7 @@
  * 
  * @author Karim Rahimpur
  * @package affiliates
- * @since affiliates 1.1.0h
+ * @since affiliates 1.1.0
  */
 
 if ( !defined( 'ABSPATH' ) ) {
