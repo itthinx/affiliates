@@ -1290,7 +1290,7 @@ function affiliates_admin_menu() {
 		'affiliates-admin',
 		'affiliates_admin',
 		AFFILIATES_PLUGIN_URL . '/images/affiliates.png',
-		59.187
+		'58.187'
 	);
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
@@ -1573,7 +1573,10 @@ function affiliates_footer( $render = true ) {
  * @param boolean $render
  */
 function affiliates_donate( $render = true, $small = false ) {
-	$donate = '<a class="button" href="http://www.itthinx.com/shop/">Get Affiliates Pro</a>';
+	$donate = sprintf(
+		'<a class="button" href="http://www.itthinx.com/shop/">%s</a>',
+		__( 'Get Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN )
+	);
 	if ( $render ) {
 		echo $donate;
 	} else {
