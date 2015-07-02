@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2015-06-24 16:59+0200\n"
+        "POT-Creation-Date: 2015-07-02 19:40+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,10 +124,6 @@ msgstr  ""
 msgid   "<em>Visits</em> are unique and daily requests for affiliate links."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:358
-msgid   "<p class=\"missing\">Please fill in the required information.</p>"
-msgstr  ""
-
 #: lib/core/affiliates-admin-affiliates.php:607
 #: lib/core/class-affiliates-dashboard-widget.php:99
 #, php-format
@@ -163,45 +159,38 @@ msgstr  ""
 msgid   "<strong>ERROR</strong>"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:462
-#: lib/core/class-affiliates-registration.php:485
+#: lib/core/class-affiliates-registration.php:493
 #, php-format
 msgid   "<strong>ERROR</strong>: Couldn&#8217;t register you... please "
         "contact the <a href=\"mailto:%s\">webmaster</a> !"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:422
-#: lib/core/class-affiliates-registration.php:439
+#: lib/core/class-affiliates-registration.php:447
 msgid   "<strong>ERROR</strong>: Please enter a username."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:432
-#: lib/core/class-affiliates-registration.php:449
-#: lib/core/class-affiliates-registration.php:518
+#: lib/core/class-affiliates-registration.php:457
+#: lib/core/class-affiliates-registration.php:526
 msgid   "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:434
-#: lib/core/class-affiliates-registration.php:451
-#: lib/core/class-affiliates-registration.php:520
+#: lib/core/class-affiliates-registration.php:459
+#: lib/core/class-affiliates-registration.php:528
 msgid   "<strong>ERROR</strong>: The email address isn&#8217;t correct."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:437
-#: lib/core/class-affiliates-registration.php:454
-#: lib/core/class-affiliates-registration.php:524
+#: lib/core/class-affiliates-registration.php:462
+#: lib/core/class-affiliates-registration.php:532
 msgid   "<strong>ERROR</strong>: This email is already registered, please "
         "choose another one."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:427
-#: lib/core/class-affiliates-registration.php:444
+#: lib/core/class-affiliates-registration.php:452
 msgid   "<strong>ERROR</strong>: This username is already registered, please "
         "choose another one."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:424
-#: lib/core/class-affiliates-registration.php:441
+#: lib/core/class-affiliates-registration.php:449
 msgid   "<strong>ERROR</strong>: This username is invalid because it uses "
         "illegal characters. Please enter a valid username."
 msgstr  ""
@@ -285,10 +274,8 @@ msgstr  ""
 msgid   "Access denied."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:130
-#: lib/core/class-affiliates-registration-deprecated.php:288
 #: lib/core/class-affiliates-registration.php:138
-#: lib/core/class-affiliates-registration.php:298
+#: lib/core/class-affiliates-registration.php:306
 msgid   "Access your profile"
 msgstr  ""
 
@@ -564,8 +551,7 @@ msgid   "By enabling this option you agree to be solely responsible for any "
         "loss of data or any other consequences thereof."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:170
-#: lib/core/class-affiliates-registration.php:347
+#: lib/core/class-affiliates-registration.php:355
 #, php-format
 msgid   "By signing up, you indicate that you have read and agree to the %s."
 msgstr  ""
@@ -769,8 +755,7 @@ msgstr  ""
 msgid   "Duplicate referrals"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:616
-#: lib/core/class-affiliates-registration.php:738
+#: lib/core/class-affiliates-registration.php:746
 #, php-format
 msgid   "E-mail: %s"
 msgstr  ""
@@ -808,7 +793,6 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:377
 #: lib/core/affiliates-admin-affiliates.php:406
 #: lib/core/class-affiliates-contact.php:177
-#: lib/core/class-affiliates-registration-deprecated.php:378
 #: lib/core/class-affiliates-settings-registration.php:56
 #: lib/core/class-affiliates-totals.php:293
 msgid   "Email"
@@ -895,7 +879,6 @@ msgstr  ""
 msgid   "Filters"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:366
 #: lib/core/class-affiliates-settings-registration.php:53
 msgid   "First Name"
 msgstr  ""
@@ -948,6 +931,10 @@ msgstr  ""
 
 #: lib/core/class-affiliates-settings-pages.php:53
 msgid   "Generator"
+msgstr  ""
+
+#: lib/core/wp-init.php:1578
+msgid   "Get Affiliates Pro"
 msgstr  ""
 
 #: lib/core/affiliates-admin-add-ons.php:41
@@ -1089,7 +1076,6 @@ msgstr  ""
 msgid   "Jigoshop (light)"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:371
 #: lib/core/class-affiliates-settings-registration.php:54
 msgid   "Last Name"
 msgstr  ""
@@ -1102,8 +1088,7 @@ msgstr  ""
 msgid   "Links"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:279
-#: lib/core/class-affiliates-registration.php:289
+#: lib/core/class-affiliates-registration.php:294
 #, php-format
 msgid   "Log in <a href=\"%s\">here</a>."
 msgstr  ""
@@ -1157,8 +1142,7 @@ msgstr  ""
 msgid   "New Referral"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:614
-#: lib/core/class-affiliates-registration.php:736
+#: lib/core/class-affiliates-registration.php:744
 #, php-format
 msgid   "New affiliate registration on your site %s:"
 msgstr  ""
@@ -1218,8 +1202,7 @@ msgstr  ""
 msgid   "Password"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:640
-#: lib/core/class-affiliates-registration.php:762
+#: lib/core/class-affiliates-registration.php:770
 #, php-format
 msgid   "Password: %s"
 msgstr  ""
@@ -1244,8 +1227,7 @@ msgstr  ""
 msgid   "Permissions"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:275
-#: lib/core/class-affiliates-registration.php:285
+#: lib/core/class-affiliates-registration.php:288
 msgid   "Please check your email for the confirmation link."
 msgstr  ""
 
@@ -1350,7 +1332,6 @@ msgstr  ""
 msgid   "Registration"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:141
 #: lib/core/class-affiliates-registration.php:151
 msgid   "Registration is currently closed."
 msgstr  ""
@@ -1465,7 +1446,6 @@ msgid   "Shows accumulated referral totals for all time when left empty, or "
         "for the last number of days set."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:97
 #: lib/core/class-affiliates-registration.php:120
 msgid   "Sign Up"
 msgstr  ""
@@ -1507,8 +1487,7 @@ msgid   "Thank you for using the <a style=\"text-decoration:none;\" href="
         "\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:273
-#: lib/core/class-affiliates-registration.php:283
+#: lib/core/class-affiliates-registration.php:286
 msgid   "Thanks for signing up!"
 msgstr  ""
 
@@ -1766,18 +1745,20 @@ msgstr  ""
 msgid   "This plugin integrates <a href=\"http://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"http://www.itthinx.com/"
         "plugins/affiliates-pro/\">Affiliates Pro</a> and <a href=\"http://"
-        "www.itthinx.com/plugins/affiliates-pro/\">Affiliates Enterprise</a> "
-        "with Contact Form 7. This integration stores data from submitted "
-        "forms and tracks form submissions to the referring affiliate."
+        "www.itthinx.com/plugins/affiliates-enterprise/\">Affiliates "
+        "Enterprise</a> with Contact Form 7. This integration stores data "
+        "from submitted forms and tracks form submissions to the referring "
+        "affiliate."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:75
 msgid   "This plugin integrates <a href=\"http://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"http://www.itthinx.com/"
         "plugins/affiliates-pro/\">Affiliates Pro</a> and <a href=\"http://"
-        "www.itthinx.com/plugins/affiliates-pro/\">Affiliates Enterprise</a> "
-        "with WP e-Commerce. With this integration plugin, referrals are "
-        "created automatically for your affiliates when sales are made."
+        "www.itthinx.com/plugins/affiliates-enterprise/\">Affiliates "
+        "Enterprise</a> with WP e-Commerce. With this integration plugin, "
+        "referrals are created automatically for your affiliates when sales "
+        "are made."
 msgstr  ""
 
 #: lib/core/affiliates-admin-referral-remove.php:155
@@ -1886,7 +1867,6 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates-edit.php:137
 #: lib/core/affiliates-admin-affiliates.php:378
 #: lib/core/affiliates-admin-affiliates.php:412
-#: lib/core/class-affiliates-registration-deprecated.php:375
 #: lib/core/class-affiliates-settings-registration.php:55
 #: lib/core/class-affiliates-totals.php:294
 msgid   "Username"
@@ -1897,10 +1877,8 @@ msgstr  ""
 msgid   "Username : %s"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:615
-#: lib/core/class-affiliates-registration-deprecated.php:639
-#: lib/core/class-affiliates-registration.php:737
-#: lib/core/class-affiliates-registration.php:761
+#: lib/core/class-affiliates-registration.php:745
+#: lib/core/class-affiliates-registration.php:769
 #, php-format
 msgid   "Username: %s"
 msgstr  ""
@@ -1932,7 +1910,6 @@ msgstr  ""
 msgid   "WP e-Commerce"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:381
 #: lib/core/class-affiliates-settings-registration.php:57
 msgid   "Website"
 msgstr  ""
@@ -1959,7 +1936,6 @@ msgid   "Write part of the title or the post ID. If left empty, no terms "
         "disclaimer will be shown."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:122
 #: lib/core/class-affiliates-registration.php:130
 msgid   "You are already registered as an affiliate."
 msgstr  ""
@@ -1996,14 +1972,12 @@ msgid   "You only need to install integrations with plugins that are actually "
         "used on the site."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:621
-#: lib/core/class-affiliates-registration.php:743
+#: lib/core/class-affiliates-registration.php:751
 #, php-format
 msgid   "[%s] New Affiliate Registration"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration-deprecated.php:652
-#: lib/core/class-affiliates-registration.php:774
+#: lib/core/class-affiliates-registration.php:782
 #, php-format
 msgid   "[%s] Your username and password"
 msgstr  ""
