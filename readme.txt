@@ -340,6 +340,13 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.10.0 =
+* Updated the German translation with more suitable translations in context.
+* Updated the Spanish translation.
+* Updated the French translation.
+* Updated the Affiliates menu position.
+* Updated the translation template.
+
 = 2.9.2 =
 * Fixes the issue with the Appearance menu disappearing.
 
@@ -637,5 +644,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.9.2 =
-This release fixes the issue with the Appearance menu disappearing.
+= 2.10.0 =
+This release improves the German translation and adds some additional translations. It also improves the menu position to avoid any overlapping or the Affiliates menu disappearing.
