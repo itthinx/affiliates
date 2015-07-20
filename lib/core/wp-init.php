@@ -681,7 +681,7 @@ function affiliates_parse_request( &$wp ) {
 
 	if ( $affiliate_id ) {
 		$encoded_id = affiliates_encode_affiliate_id( $affiliate_id );
-		$days = get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS );
+		$days = apply_filters( 'affiliates_cookie_timeout_days', get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS ) );
 		if ( $days > 0 ) {
 			$expire = time() + AFFILIATES_COOKIE_TIMEOUT_BASE * $days;
 		} else {
