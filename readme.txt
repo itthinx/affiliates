@@ -342,6 +342,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.11.0 =
 * Added a cookie timeout filter.
+* Removed menu title translation to circumvent effects of core bug 18857.
 
 = 2.10.0 =
 * Updated the German translation with more suitable translations in context.
@@ -648,4 +649,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.11.0 =
-This release improves the API by adding a cookie timeout filter.
+This release improves the API by adding a cookie timeout filter and circumvents issues with translated screens related to a core bug.
