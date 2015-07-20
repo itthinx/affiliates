@@ -47,14 +47,14 @@ class Affiliates_Ajax {
 	public static function affiliates_set_option() {
 		global $affiliates_options;
 		if ( check_ajax_referer( 'affiliates-ajax-nonce', 'affiliates_ajax_nonce' ) ) {
-			// @todo processing
-			error_log(__METHOD__. ' passed nonce ok' ); // @todo remove
-			error_log(__METHOD__. ' request = ' . var_export($_REQUEST,true) ); // @todo remove
 			$key   = $_REQUEST['key'];
 			$value = json_decode( $_REQUEST['value'] );
 			switch( $_REQUEST['key'] ) {
 				case 'show_filters' :
 					$affiliates_options->update_option( 'show_filters', $value === true );
+					break;
+				case 'show_columns' :
+					$affiliates_options->update_option( 'show_columns', $value === true );
 					break;
 			}
 		}
