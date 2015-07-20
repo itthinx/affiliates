@@ -260,10 +260,6 @@ function affiliates_admin_affiliates() {
 	$output .= sprintf( '<div class="button toggle-button %s" id="filters-toggle">', ( $show_filters ? 'on' : 'off' ) );
 	$output .= __( 'Filters', AFFILIATES_PLUGIN_DOMAIN );
 	$output .= '</div>'; // #filters-toggle
-	$output .= ' ';
-	$output .= '<div class="button" id="column-toggles-toggle">';
-	$output .= __( 'Columns', AFFILIATES_PLUGIN_DOMAIN );
-	$output .= '</div>'; // #column-toggles-toggle
 	$output .= '</div>'; // floating right
 	$output .= '</div>'; // .manage
 
