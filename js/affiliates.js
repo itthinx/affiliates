@@ -53,22 +53,6 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	/* columns toggle */
-	jQuery('#column-toggles-toggle').click(function(){
-		jQuery('#toggles-container').toggle();
-		if (
-			( typeof ajaxurl !== 'undefined' ) &&
-			( typeof affiliates_ajax_nonce !== 'undefined' )
-		) {
-			var data = {
-				action: 'affiliates_admin_user_screen_settings',
-				affiliates_ajax_nonce: affiliates_ajax_nonce,
-				screen: 'affiliates_admin_affiliates'
-			};
-			jQuery.post(ajaxurl, data, function(response){});
-		}
-	});
-
 	/* filters toggle */
 	jQuery('#filters-toggle').click(function(){
 		jQuery('#filters-container').toggle();
