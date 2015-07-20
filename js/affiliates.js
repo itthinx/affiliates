@@ -52,4 +52,45 @@ jQuery(document).ready(function(){
 			this.className += ' active-filter';
 		}
 	});
+
+	/* columns toggle */
+	jQuery('#column-toggles-toggle').click(function(){
+		jQuery('#toggles-container').toggle();
+		if (
+			( typeof ajaxurl !== 'undefined' ) &&
+			( typeof affiliates_ajax_nonce !== 'undefined' )
+		) {
+			var data = {
+				action: 'affiliates_admin_user_screen_settings',
+				affiliates_ajax_nonce: affiliates_ajax_nonce,
+				screen: 'affiliates_admin_affiliates'
+			};
+			jQuery.post(ajaxurl, data, function(response){});
+		}
+	});
+
+	/* filters toggle */
+	jQuery('#filters-toggle').click(function(){
+		jQuery('#filters-container').toggle();
+		var visible = jQuery('#filters-container').is(':visible');
+		if (visible) {
+			jQuery(this).addClass('on');
+			jQuery(this).removeClass('off');
+		} else {
+			jQuery(this).addClass('off');
+			jQuery(this).removeClass('on');
+		}
+		if (
+			( typeof ajaxurl !== 'undefined' ) &&
+			( typeof affiliates_ajax_nonce !== 'undefined' )
+		) {
+			var data = {
+				action: 'affiliates_set_option',
+				affiliates_ajax_nonce: affiliates_ajax_nonce,
+				key: 'show_filters',
+				value: JSON.stringify(visible)
+			};
+			jQuery.post(ajaxurl, data, function(response){});
+		}
+	});
 });

@@ -32,8 +32,8 @@ class Affiliates_Ajax {
 		// @todo only on own admin screens
 		add_action('admin_footer', array( __CLASS__, 'admin_footer' ) );
 		add_action(
-			'wp_ajax_affiliates_admin_user_screen_settings',
-			array( __CLASS__, 'affiliates_admin_user_screen_settings' )
+			'wp_ajax_affiliates_set_option',
+			array( __CLASS__, 'affiliates_set_option' )
 		);
 	}
 
@@ -44,10 +44,19 @@ class Affiliates_Ajax {
 		echo $output;
 	}
 
-	public static function affiliates_admin_user_screen_settings() {
+	public static function affiliates_set_option() {
+		global $affiliates_options;
 		if ( check_ajax_referer( 'affiliates-ajax-nonce', 'affiliates_ajax_nonce' ) ) {
 			// @todo processing
 			error_log(__METHOD__. ' passed nonce ok' ); // @todo remove
+			error_log(__METHOD__. ' request = ' . var_export($_REQUEST,true) ); // @todo remove
+			$key   = $_REQUEST['key'];
+			$value = json_decode( $_REQUEST['value'] );
+			switch( $_REQUEST['key'] ) {
+				case 'show_filters' :
+					$affiliates_options->update_option( 'show_filters', $value === true );
+					break;
+			}
 		}
 		wp_die();
 	}

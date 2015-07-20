@@ -343,6 +343,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 = 2.11.0 =
 * Added a cookie timeout filter.
 * Removed menu title translation to circumvent effects of core bug 18857.
+* Fixed a bug related to retrieving a user option where the null comparison needed to be strict.
+* Added an AJAX handler to allow setting user options on the fly.
+* Added the option to hide or show filters on the affiliates overview.
 
 = 2.10.0 =
 * Updated the German translation with more suitable translations in context.

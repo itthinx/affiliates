@@ -245,19 +245,27 @@ function affiliates_admin_affiliates() {
 	
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
-	
+
 	$output .=
 		'<div class="manage-affiliates">' .
-		'<div>' .
-			'<h1>' .
-				__( 'Manage Affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h1>' .
-		'</div>';
-				
-	$output .=
-		'<div class="manage">' .
-			"<a title='" . __( 'Click to add a new affiliate', AFFILIATES_PLUGIN_DOMAIN ) . "' class='button add' href='" . esc_url( $current_url ) . "&action=add'><img class='icon' alt='" . __( 'Add', AFFILIATES_PLUGIN_DOMAIN) . "' src='". AFFILIATES_PLUGIN_URL ."images/add.png'/><span class='label'>" . __( 'New Affiliate', AFFILIATES_PLUGIN_DOMAIN) . "</span></a>" .
-		'</div>';
+		'<h1>' .
+		__( 'Manage Affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
+		'</h1>';
+
+	$show_filters = $affiliates_options->get_option( 'show_filters', true );
+
+	$output .= '<div class="manage">';
+	$output .= "<a title='" . __( 'Click to add a new affiliate', AFFILIATES_PLUGIN_DOMAIN ) . "' class='button add' href='" . esc_url( $current_url ) . "&action=add'><img class='icon' alt='" . __( 'Add', AFFILIATES_PLUGIN_DOMAIN) . "' src='". AFFILIATES_PLUGIN_URL ."images/add.png'/><span class='label'>" . __( 'New Affiliate', AFFILIATES_PLUGIN_DOMAIN) . "</span></a>";
+	$output .= '<div style="float:right">';
+	$output .= sprintf( '<div class="button toggle-button %s" id="filters-toggle">', ( $show_filters ? 'on' : 'off' ) );
+	$output .= __( 'Filters', AFFILIATES_PLUGIN_DOMAIN );
+	$output .= '</div>'; // #filters-toggle
+	$output .= ' ';
+	$output .= '<div class="button" id="column-toggles-toggle">';
+	$output .= __( 'Columns', AFFILIATES_PLUGIN_DOMAIN );
+	$output .= '</div>'; // #column-toggles-toggle
+	$output .= '</div>'; // floating right
+	$output .= '</div>'; // .manage
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
 	
@@ -385,8 +393,8 @@ function affiliates_admin_affiliates() {
 	
 	$output .= '<div class="affiliates-overview">';
 	
+	$output .= sprintf( '<div id="filters-container" class="filters" style="%s">', $show_filters ? '' : 'display:none' );
 	$output .=
-		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
 				'<div class="filter-section">' .
@@ -453,7 +461,7 @@ function affiliates_admin_affiliates() {
 				'</div>' .
 			'</form>' .
 		'</div>';
-							
+
 	$output .= '
 		<div class="page-options">
 			<form id="setrowcount" action="" method="post">
