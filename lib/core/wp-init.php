@@ -1288,7 +1288,7 @@ function affiliates_admin_menu() {
 	// main
 	$page = add_menu_page(
 		__( 'Affiliates Overview', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
+		'Affiliates', // @todo translate after core bug 18857 has been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin',
 		'affiliates_admin',
