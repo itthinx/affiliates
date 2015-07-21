@@ -18,12 +18,12 @@
  * @since affiliates 1.0.0
  */
 jQuery(document).ready(function(){
-	
+
 	/* design */
 	jQuery(".affiliate").corner("5px");
 	jQuery(".filters").corner("5px");
 	jQuery(".manage").corner("5px");
-	
+
 	/* effects & handling */
 	var clickToggler = function() {
 		var description = jQuery(this).parent().children(".view");
@@ -38,7 +38,7 @@ jQuery(document).ready(function(){
 			expander.append("[+] ");
 		}
 	};
-	
+
 	jQuery('.view-toggle .expander').each( function() {
 		jQuery(this).click(clickToggler);
 	});
@@ -55,6 +55,11 @@ jQuery(document).ready(function(){
 
 	/* filters toggle */
 	jQuery('#filters-toggle').click(function(){
+		var ajaxing = jQuery('#filters-toggle').data('ajaxing');
+		if (typeof ajaxing !== 'undefined' || ajaxing) {
+			return;
+		}
+		jQuery('#filters-container').data('ajaxing',true);
 		jQuery('#filters-container').toggle();
 		var visible = jQuery('#filters-container').is(':visible');
 		if (visible) {
@@ -69,12 +74,18 @@ jQuery(document).ready(function(){
 			( typeof affiliates_ajax_nonce !== 'undefined' )
 		) {
 			var data = {
-				action: 'affiliates_set_option',
-				affiliates_ajax_nonce: affiliates_ajax_nonce,
-				key: 'show_filters',
-				value: JSON.stringify(visible)
+				action : 'affiliates_set_option',
+				affiliates_ajax_nonce : affiliates_ajax_nonce,
+				key : 'show_filters',
+				value : JSON.stringify(visible)
 			};
-			jQuery.post(ajaxurl, data, function(response){});
+			jQuery.ajax({
+				type   : 'POST',
+				async  : false,
+				url    : ajaxurl,
+				data   : data
+			});
 		}
+		jQuery('#filters-container').data('ajaxing',false);
 	});
 });
