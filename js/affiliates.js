@@ -56,10 +56,10 @@ jQuery(document).ready(function(){
 	/* filters toggle */
 	jQuery('#filters-toggle').click(function(){
 		var ajaxing = jQuery('#filters-toggle').data('ajaxing');
-		if (typeof ajaxing !== 'undefined' || ajaxing) {
+		if (!(typeof ajaxing === 'undefined' || !ajaxing)) {
 			return;
 		}
-		jQuery('#filters-container').data('ajaxing',true);
+		jQuery('#filters-toggle').data('ajaxing',true);
 		jQuery('#filters-container').toggle();
 		var visible = jQuery('#filters-container').is(':visible');
 		if (visible) {
@@ -86,6 +86,6 @@ jQuery(document).ready(function(){
 				data   : data
 			});
 		}
-		jQuery('#filters-container').data('ajaxing',false);
+		jQuery('#filters-toggle').data('ajaxing',false);
 	});
 });
