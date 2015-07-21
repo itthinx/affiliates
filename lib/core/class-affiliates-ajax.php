@@ -28,22 +28,37 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Ajax {
 
+	/**
+	 * Adds actions.
+	 */
 	public static function init() {
-		// @todo only on own admin screens
-		add_action('admin_footer', array( __CLASS__, 'admin_footer' ) );
+		add_action( 'admin_footer', array( __CLASS__, 'admin_footer' ) );
 		add_action(
 			'wp_ajax_affiliates_set_option',
 			array( __CLASS__, 'affiliates_set_option' )
 		);
 	}
 
+	/**
+	 * Initializes the ajax nonce in the footer.
+	 */
 	public static function admin_footer() {
-		$output = '<script type="text/javascript">';
-		$output .= 'affiliates_ajax_nonce = \'' . wp_create_nonce( 'affiliates-ajax-nonce' ) . '\';';
-		$output .= '</script>';
+		$output = '';
+		// only on own relevant admin screens
+		$screen = get_current_screen();
+		switch( $screen->id ) {
+			case 'affiliates_page_affiliates-admin-affiliates' :
+				$output .= '<script type="text/javascript">';
+				$output .= 'affiliates_ajax_nonce = \'' . wp_create_nonce( 'affiliates-ajax-nonce' ) . '\';';
+				$output .= '</script>';
+				break;
+		}
 		echo $output;
 	}
 
+	/**
+	 * Ajax affiliates_set_option handler.
+	 */
 	public static function affiliates_set_option() {
 		global $affiliates_options;
 		if ( check_ajax_referer( 'affiliates-ajax-nonce', 'affiliates_ajax_nonce' ) ) {
