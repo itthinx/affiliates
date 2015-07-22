@@ -63,13 +63,21 @@ class Affiliates_Ajax {
 		global $affiliates_options;
 		if ( check_ajax_referer( 'affiliates-ajax-nonce', 'affiliates_ajax_nonce' ) ) {
 			$key   = $_REQUEST['key'];
-			$value = json_decode( $_REQUEST['value'] );
+			$value = json_decode( stripslashes( $_REQUEST['value'] ) );
 			switch( $_REQUEST['key'] ) {
 				case 'show_filters' :
 					$affiliates_options->update_option( 'show_filters', $value === true );
 					break;
 				case 'show_columns' :
 					$affiliates_options->update_option( 'show_columns', $value === true );
+					break;
+				case 'affiliates_overview_columns' :
+					if ( is_object( $value ) ) {
+						$value = (array) $value;
+					}
+					if ( is_array( $value ) ) {
+						$affiliates_options->update_option( 'affiliates_overview_columns', $value );
+					}
 					break;
 			}
 		}
