@@ -705,7 +705,11 @@ function affiliates_parse_request( &$wp ) {
 			COOKIE_DOMAIN
 		);
 		affiliates_record_hit( $affiliate_id );
-		if ( class_exists( 'Affiliates_Pixel' ) && method_exists( 'Affiliates_Pixel', 'pixel' ) ) {
+		if (
+			class_exists( 'Affiliates_Pixel' ) &&
+			method_exists( 'Affiliates_Pixel', 'pixel' ) &&
+			method_exists( 'Affiliates_Pixel', 'is_pixel_request' )
+		) {
 			$p = new Affiliates_Pixel( trailingslashit( home_url() ), $pname );
 			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 			if ( $p->is_pixel_request( $current_url ) ) {
