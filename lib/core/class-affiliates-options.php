@@ -48,7 +48,7 @@ class Affiliates_Options {
 				$value = null;
 			}
 		}
-		if ( $value == null ) {
+		if ( $value === null ) {
 			$value = $default;
 		}
 		return $value;

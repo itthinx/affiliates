@@ -46,6 +46,9 @@ if ( $affiliates_options == null ) {
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-utility.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-ui-elements.php' );
 
+// ajax
+include_once AFFILIATES_CORE_LIB . '/class-affiliates-ajax.php';
+
 // forms, shortcodes, widgets
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-contact.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration.php' );
@@ -681,7 +684,7 @@ function affiliates_parse_request( &$wp ) {
 
 	if ( $affiliate_id ) {
 		$encoded_id = affiliates_encode_affiliate_id( $affiliate_id );
-		$days = get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS );
+		$days = apply_filters( 'affiliates_cookie_timeout_days', get_option( 'aff_cookie_timeout_days', AFFILIATES_COOKIE_TIMEOUT_DAYS ), $affiliate_id );
 		if ( $days > 0 ) {
 			$expire = time() + AFFILIATES_COOKIE_TIMEOUT_BASE * $days;
 		} else {
@@ -1285,7 +1288,7 @@ function affiliates_admin_menu() {
 	// main
 	$page = add_menu_page(
 		__( 'Affiliates Overview', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
+		'Affiliates', // @todo translate after core bug 18857 has been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin',
 		'affiliates_admin',

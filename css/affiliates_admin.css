@@ -364,3 +364,8 @@ div.referral.remove span.title {
 .filters textarea.active-filter {
 	background-color: #ffc;
 }
+.toggle-button.on {
+	box-shadow: 0 2px 5px -3px rgba(0,0,0,0.5) inset;
+}
+.toggle-button.off {
+}
