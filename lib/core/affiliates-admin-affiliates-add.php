@@ -60,7 +60,7 @@ function affiliates_admin_affiliates_add() {
 		__( 'Name', AFFILIATES_PLUGIN_DOMAIN ) .
 		'</span>' .
 		' ' .
-		'<input id="name-field" name="name-field" class="namefield" type="text" value="' . esc_attr( $name ) . '"/>' .
+		'<input id="name-field" name="name-field" class="namefield" type="text" value="' . esc_attr( stripslashes( $name ) ) . '"/>' .
 		'</label>' .
 		'</div>' .
 
@@ -83,7 +83,7 @@ function affiliates_admin_affiliates_add() {
 		__( 'Username', AFFILIATES_PLUGIN_DOMAIN ) .
 		'</span>' .
 		' ' .
-		'<input id="user-field" name="user-field" class="userfield" type="text" value="' . esc_attr( $user_login ) . '"/>' .
+		'<input id="user-field" name="user-field" class="userfield" type="text" value="' . esc_attr( stripslashes( $user_login ) ) . '"/>' .
 		'</label>' .
 		'</div>' .
 
