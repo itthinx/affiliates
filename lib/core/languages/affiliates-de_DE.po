@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-28 11:37+0200\n"
-"PO-Revision-Date: 2015-07-28 11:40+0200\n"
+"PO-Revision-Date: 2015-07-28 12:00+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -436,7 +436,7 @@ msgstr "Partnerattribute für individuelle Kommissionsraten, Gutscheine, ..."
 
 #: lib/core/affiliates-admin-add-ons.php:126
 msgid "Affiliate campaign management and tracking."
-msgstr "Partnerkampagnen und Tracking"
+msgstr "Partnerkampagnen und Tracking."
 
 #: lib/core/wp-init.php:1489
 msgid "Affiliate link"
