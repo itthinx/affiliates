@@ -56,7 +56,7 @@ Integrations with popular forms plugins include
 [Gravity Forms](http://www.itthinx.com/plugins/affiliates-gravityforms/)
 and [Formidable Forms and Formidable Pro](http://www.itthinx.com/plugins/affiliates-formidable/).
 
-[Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers and campaigns.
+[Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels.
 
 Other extensions include [Affiliates Is Referred](https://github.com/itthinx/affiliates-is-referred) which adds shortcodes to show content conditionally based on whether a visitor was referred (or not) by an affiliate,
 [Affiliates Products](http://www.itthinx.com/plugins/affiliates-products/) which handles product commissions for product partners and affiliates on product sales,
