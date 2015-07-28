@@ -119,7 +119,7 @@ function affiliates_admin_add_ons() {
 	echo '<ul>';
 
 	echo '<li>';
-	echo __( 'Includes all additional features available in Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Includes all additional features available in Affiliates Pro.', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 
 	echo '<li>';
@@ -129,7 +129,11 @@ function affiliates_admin_add_ons() {
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Multi-tier capability with unlimited levels and rates', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Multi-tier capability with unlimited levels and rates.', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</li>';
+
+	echo '<li>';
+	echo __( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', AFFILIATES_PLUGIN_DOMAIN );
 	echo '</li>';
 
 	echo '</ul>';
