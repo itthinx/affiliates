@@ -346,6 +346,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Fixed a bug related to retrieving a user option where the null comparison needed to be strict.
 * Added an AJAX handler to allow setting user options on the fly.
 * Added the option to hide or show filters on the affiliates overview.
+* Added the affiliates_admin_referrals_secondary_actions filter.
 
 = 2.10.0 =
 * Updated the German translation with more suitable translations in context.

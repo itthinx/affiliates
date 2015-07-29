@@ -265,6 +265,9 @@ function affiliates_admin_referrals() {
 		AFFILIATES_PLUGIN_URL .'images/add.png',
 		__( 'Add', AFFILIATES_PLUGIN_DOMAIN)
 	);
+	$output .= '<div style="float:right">';
+	$output .= apply_filters( 'affiliates_admin_referrals_secondary_actions', '' );
+	$output .= '</div>'; // floating right
 	$output .= '</div>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
