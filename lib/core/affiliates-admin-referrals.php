@@ -658,9 +658,7 @@ function affiliates_admin_referrals() {
 							$output .= stripslashes( wp_filter_nohtml_kses( $title ) );
 							$output .= '</td>';
 							$output .= '<td class="referral-data-value">';
-							// @todo revise
-							// $output .= wp_filter_nohtml_kses( $value );
-							$output .= htmlentities( stripslashes( $value ) );
+							$output .= stripslashes( wp_filter_kses( $value ) );
 							$output .= '</td>';
 							$output .= '</tr>';
 						}
@@ -670,10 +668,8 @@ function affiliates_admin_referrals() {
 						$output .= __( 'Data', AFFILIATES_PLUGIN_DOMAIN );
 						$output .= '</td>';
 						$output .= '<td class="referral-data-value">';
-						// @todo revise
-						//$output .= wp_filter_nohtml_kses( $data );
 						if ( is_string( $data ) ) {
-							$output .= htmlentities( stripslashes( $data ) );
+							$output .= stripslashes( wp_filter_kses( $data ) );
 						}
 						$output .= '</td>';
 						$output .= '</tr>';
