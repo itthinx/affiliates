@@ -705,17 +705,7 @@ function affiliates_parse_request( &$wp ) {
 			COOKIE_DOMAIN
 		);
 		affiliates_record_hit( $affiliate_id );
-		if (
-			class_exists( 'Affiliates_Pixel' ) &&
-			method_exists( 'Affiliates_Pixel', 'pixel' ) &&
-			method_exists( 'Affiliates_Pixel', 'is_pixel_request' )
-		) {
-			$p = new Affiliates_Pixel( trailingslashit( home_url() ), $pname );
-			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-			if ( $p->is_pixel_request( $current_url ) ) {
-				$p->pixel();
-			}
-		}
+		affiliates_pixel_request();
 		unset( $wp->query_vars[$pname] ); // we use this to avoid ending up on the blog listing page
 		if ( get_option( 'aff_redirect', false ) !== false ) {
 			// use a redirect so that we end up on the desired url without the affiliate id dangling on the url
@@ -740,7 +730,27 @@ function affiliates_parse_request( &$wp ) {
 			}
 			wp_redirect( $current_url, $status );
 			exit; // "wp_redirect() does not exit automatically and should almost always be followed by exit." @see http://codex.wordpress.org/Function_Reference/wp_redirect
-		}  
+		}
+	} else {
+		affiliates_pixel_request();
+	}
+}
+
+/**
+ * Requests pixel handling.
+ */
+function affiliates_pixel_request() {
+	if (
+		class_exists( 'Affiliates_Pixel' ) &&
+		method_exists( 'Affiliates_Pixel', 'pixel' ) &&
+		method_exists( 'Affiliates_Pixel', 'is_pixel_request' )
+	) {
+		$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+		$p = new Affiliates_Pixel( trailingslashit( home_url() ), $pname );
+		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		if ( $p->is_pixel_request( $current_url ) ) {
+			$p->pixel();
+		}
 	}
 }
 
