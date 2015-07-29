@@ -43,7 +43,7 @@ class Affiliates_UI_Elements {
 		}
 		$show_inoperative = false;
 		if ( isset( $args['show_inoperative'] ) ) {
-			$show_inoperative = boolval( $args['show_inoperative'] );
+			$show_inoperative = (bool) $args['show_inoperative'];
 		}
 
 		$affiliates = affiliates_get_affiliates( true, !$show_inoperative );

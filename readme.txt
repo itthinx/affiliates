@@ -348,6 +348,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Added the option to hide or show filters on the affiliates overview.
 * Added the affiliates_admin_referrals_secondary_actions filter.
 * Fixed a minor bug related to data representation in case of string data in referrals.
+* Improved PHP compatibility avoiding use of boolval.
 
 = 2.10.0 =
 * Updated the German translation with more suitable translations in context.
