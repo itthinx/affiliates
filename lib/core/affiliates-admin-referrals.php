@@ -660,7 +660,7 @@ function affiliates_admin_referrals() {
 							$output .= '<td class="referral-data-value">';
 							// @todo revise
 							// $output .= wp_filter_nohtml_kses( $value );
-							$output .= stripslashes( $value );
+							$output .= htmlentities( stripslashes( $value ) );
 							$output .= '</td>';
 							$output .= '</tr>';
 						}
@@ -672,7 +672,9 @@ function affiliates_admin_referrals() {
 						$output .= '<td class="referral-data-value">';
 						// @todo revise
 						//$output .= wp_filter_nohtml_kses( $data );
-						$output .= stripslashes( $value );
+						if ( is_string( $data ) ) {
+							$output .= htmlentities( stripslashes( $data ) );
+						}
 						$output .= '</td>';
 						$output .= '</tr>';
 					}
