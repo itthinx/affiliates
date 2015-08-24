@@ -139,7 +139,7 @@ function affiliates_version_check() {
 	global $affiliates_version, $affiliates_admin_messages;
 	$previous_version = get_option( 'affiliates_plugin_version', null );
 	$affiliates_version = AFFILIATES_CORE_VERSION;
-	if ( strcmp( $previous_version, $affiliates_version ) < 0 ) {
+	if ( version_compare( $previous_version, $affiliates_version ) < 0 ) {
 		if ( affiliates_update( $previous_version ) ) {
 			update_option( 'affiliates_plugin_version', $affiliates_version );
 		} else {
@@ -406,6 +406,7 @@ function affiliates_setup() {
 		}
 	}
 
+	affiliates_update();
 	affiliates_update_rewrite_rules();
 }
 
@@ -462,12 +463,15 @@ function _affiliates_assure_capabilities() {
 }
 
 /**
- * Update from a previous version (within 2.x).
+ * Update from a previous version or repair on activation (within 2.x).
+ * 
+ * This is called from affiliates_setup() on plugin activation and affiliates_version_check()
+ * when a previous version is detected.
  * 
  * @param string $previous_version
  * @return boolean
  */
-function affiliates_update( $previous_version ) {
+function affiliates_update( $previous_version = null ) {
 
 	global $wpdb;
 
