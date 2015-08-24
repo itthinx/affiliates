@@ -132,8 +132,6 @@ register_activation_hook( AFFILIATES_FILE, 'affiliates_activate' );
 add_action( 'wpmu_new_blog', 'affiliates_wpmu_new_blog', 10, 2 );
 add_action( 'delete_blog', 'affiliates_delete_blog', 10, 2 );
 
-//global $affiliates_version, $affiliates_admin_messages;
-
 add_action( 'init', 'affiliates_version_check' );
 function affiliates_version_check() {
 	global $affiliates_version, $affiliates_admin_messages;
