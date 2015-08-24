@@ -34,7 +34,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 	 * Creates an affiliate registration widget.
 	 */
 	function __construct() {
-		parent::WP_Widget( false, $name = 'Affiliates Registration' );
+		parent::__construct( false, $name = 'Affiliates Registration' );
 	}
 
 	/**
