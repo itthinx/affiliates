@@ -343,6 +343,8 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 = 2.12.0 =
 * Fixed ompatibility with WordPress 4.3 (widget constructor).
 * Fixed potential issues when upgrading from earlier versions.
+* Fixed a PHP Warning related to password changes through the affiliate fields.
+* Added a guard against multiple invocations of the affiliate user update procedure in the same request.
 
 = 2.11.0 =
 * Added a cookie timeout filter.
