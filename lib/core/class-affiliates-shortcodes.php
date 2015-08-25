@@ -826,17 +826,16 @@ class Affiliates_Shortcodes {
 							$output .= '</div>';
 
 							if ( $type == 'password' ) {
+								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
 								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
 								$output .= sprintf(
 										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 										esc_attr( $type ),
-// 										'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
 										'regular-text ' . esc_attr( $name ),
 										esc_attr( $name . '2' ),
 										esc_attr( $value ),
-// 										$field['required'] ? ' required="required" ' : '',
 										'',
 										$extra
 								);
