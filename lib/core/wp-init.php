@@ -132,14 +132,12 @@ register_activation_hook( AFFILIATES_FILE, 'affiliates_activate' );
 add_action( 'wpmu_new_blog', 'affiliates_wpmu_new_blog', 10, 2 );
 add_action( 'delete_blog', 'affiliates_delete_blog', 10, 2 );
 
-//global $affiliates_version, $affiliates_admin_messages;
-
 add_action( 'init', 'affiliates_version_check' );
 function affiliates_version_check() {
 	global $affiliates_version, $affiliates_admin_messages;
 	$previous_version = get_option( 'affiliates_plugin_version', null );
 	$affiliates_version = AFFILIATES_CORE_VERSION;
-	if ( strcmp( $previous_version, $affiliates_version ) < 0 ) {
+	if ( version_compare( $previous_version, $affiliates_version ) < 0 ) {
 		if ( affiliates_update( $previous_version ) ) {
 			update_option( 'affiliates_plugin_version', $affiliates_version );
 		} else {
@@ -253,7 +251,7 @@ function affiliates_get_blogs() {
 }
 
 /**
- * Create tables and prepare data. 
+ * Create tables and prepare data.
  */
 function affiliates_setup() {
 	global $wpdb, $wp_roles;
@@ -406,6 +404,7 @@ function affiliates_setup() {
 		}
 	}
 
+	affiliates_update();
 	affiliates_update_rewrite_rules();
 }
 
@@ -462,90 +461,46 @@ function _affiliates_assure_capabilities() {
 }
 
 /**
- * D'oh :/
- * Yes, update hooks are awesome ...
+ * Update from a previous version or repair on activation (within 2.x).
+ * 
+ * This is called from affiliates_setup() on plugin activation and affiliates_version_check()
+ * when a previous version is detected.
+ * 
+ * @param string $previous_version
+ * @return boolean
  */
-function affiliates_update( $previous_version ) {
-	global $wpdb, $affiliates_admin_messages;
-	$result = true;
+function affiliates_update( $previous_version = null ) {
+
+	global $wpdb;
+
+	$result  = true;
 	$queries = array();
-	switch ( $previous_version ) {
-		case '1.1.0' :
-		case '1.1.1' :
-			// add new fields and index to referrals
-			$referrals_table = _affiliates_get_tablename( 'referrals' );
-			$type_row = $wpdb->get_row( "SHOW COLUMNS FROM " . $referrals_table . " LIKE 'type'" );
-			if ( empty( $type_row )  ) {
-				$queries[] = "ALTER TABLE " . $referrals_table . "
-					ADD COLUMN type         varchar(10) NULL,
-					ADD INDEX aff_referrals_tda (type, datetime, affiliate_id)
-					;";
-			}
-			break;
 
-			default : // 1.0.0 1.0.1 1.0.2 1.0.3 1.0.4
-				if ( !empty( $previous_version ) ) {
-					$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
-					if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_users_table . "'" ) != $affiliates_users_table ) {
-						$queries[] = "CREATE TABLE " . $affiliates_users_table . " (
-								affiliate_id bigint(20) unsigned NOT NULL,
-								user_id      bigint(20) unsigned NOT NULL,
-								PRIMARY KEY (affiliate_id, user_id)
-							);";
-					}
-
-					// add new fields and index to referrals
-					$referrals_table = _affiliates_get_tablename( 'referrals' );
-					$amount_row = $wpdb->get_row( "SHOW COLUMNS FROM " . $referrals_table . " LIKE 'amount'" );
-					if ( empty( $amount_row )  ) {
-						$queries[] = "ALTER TABLE " . $referrals_table . "
-						ADD COLUMN amount       decimal(18,2) default NULL,
-						ADD COLUMN currency_id  char(3) default NULL,
-						ADD COLUMN status       varchar(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
-						ADD COLUMN type         varchar(10) NULL,
-						ADD INDEX aff_referrals_da (datetime, affiliate_id),
-						ADD INDEX aff_referrals_sda (status, datetime, affiliate_id),
-						ADD INDEX aff_referrals_tda (type, datetime, affiliate_id)
-						;";
-						$queries[] = "UPDATE " . $referrals_table . " SET status = '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "' WHERE status IS NULL;";
-					}
-				}
-				break;
-	} // switch
-	// add new PK & fields if it's not a new installation
-	if ( !empty( $previous_version ) && strcmp( $previous_version, "1.2.0" ) < 0 ) {
-		$referrals_table = _affiliates_get_tablename( 'referrals' );
-		$queries[] = "ALTER TABLE " . $referrals_table . "
-		ADD COLUMN referral_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-		ADD COLUMN reference VARCHAR(100) DEFAULT NULL,
-		DROP PRIMARY KEY,
-		ADD PRIMARY KEY (referral_id),
-		ADD INDEX aff_referrals_ref (reference(20));";
-	}
-	if ( !empty( $previous_version ) && strcmp( $previous_version, "2.8.0" ) < 0 ) {
-		$hits_table = _affiliates_get_tablename( 'hits' );
+	$hits_table = _affiliates_get_tablename( 'hits' );
+	$column     = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'campaign_id'" );
+	if ( empty( $column ) ) {
 		$queries[] = "ALTER TABLE " . $hits_table . "
 		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_hits_acm (affiliate_id, campaign_id);";
+	}
 
-		$referrals_table = _affiliates_get_tablename( 'referrals' );
+	$referrals_table = _affiliates_get_tablename( 'referrals' );
+	$column          = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'campaign_id'" );
+	if ( empty( $column ) ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
 		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_ac (affiliate_id, campaign_id),
 		ADD INDEX aff_referrals_c (campaign_id);";
 	}
-	//		dbDelta won't handle ALTER ...
-	//		if ( !empty( $queries ) ) {
-	//			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-	//			dbDelta( $queries );
-	//		}
+
 	foreach ( $queries as $query ) {
+		// don't use dbDelta, it doesn't handle ALTER
 		if ( $wpdb->query( $query ) === false ) {
 			// fail but still try to go on
 			$result = false;
 		}
 	}
-	if ( !empty( $previous_version ) && strcmp( $previous_version, "2.1.5" ) < 0 ) {
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.1.5' ) < 0 ) {
 		affiliates_update_rewrite_rules();
 	}
 	return $result;

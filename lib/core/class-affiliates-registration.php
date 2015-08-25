@@ -511,7 +511,13 @@ class Affiliates_Registration {
 	 */
 	public static function update_affiliate_user( $user_id, $userdata ) {
 
-		global $wpdb;
+		global $wpdb, $affiliates_update_affiliate_user;
+
+		if ( !isset( $affiliates_update_affiliate_user ) ) {
+			$affiliates_update_affiliate_user = true;
+		} else {
+			return;
+		}
 
 		$errors = new WP_Error();
 
@@ -553,8 +559,12 @@ class Affiliates_Registration {
 				'user_email' => esc_sql( $userdata['user_email'] ),
 			);
 			if ( !empty( $userdata['password'] ) ) {
-				$_userdata['user_pass'] = esc_sql( $userdata['password'] );
+				// Don't pass the new password through wp_update_user as we risk
+				// sending headers again when wp_update_user() clears the cookies while
+				// the new password is set. Instead, we set the new password here and
+				// only update the other user data below.
 				$new_password = true;
+				wp_set_password( $userdata['password'], $user_id );
 			}
 			if ( isset( $userdata['user_url'] ) ) {
 				$_userdata['user_url'] = esc_sql( $userdata['user_url'] );

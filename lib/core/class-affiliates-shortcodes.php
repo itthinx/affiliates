@@ -722,7 +722,7 @@ class Affiliates_Shortcodes {
 								if ( $field['enabled'] ) {
 									$value = isset( $_POST[$name] ) ? $_POST[$name] : '';
 									$value = Affiliates_Utility::filter( $value );
-									if ( $field['required'] && empty( $value ) ) {
+									if ( $field['required'] && empty( $value ) && !( is_user_logged_in() && isset( $field['type'] ) && $field['type'] == 'password' ) ) {
 										$error = true;
 										$output .= '<div class="error">';
 										$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
@@ -816,26 +816,27 @@ class Affiliates_Shortcodes {
 							$output .= sprintf(
 									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 									esc_attr( $type ),
-									'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
+									'regular-text ' . esc_attr( $name ) . ( $type != 'password' && $field['required'] ? ' required ' : '' ),
 									esc_attr( $name ),
 									esc_attr( stripslashes( $value ) ),
-									$field['required'] ? ' required="required" ' : '',
+									( $type != 'password' && $field['required'] ) ? ' required="required" ' : '',
 									$extra
 							);
 							$output .= '</label>';
 							$output .= '</div>';
 
 							if ( $type == 'password' ) {
+								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
 								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
 								$output .= sprintf(
 										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 										esc_attr( $type ),
-										'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
+										'regular-text ' . esc_attr( $name ),
 										esc_attr( $name . '2' ),
 										esc_attr( $value ),
-										$field['required'] ? ' required="required" ' : '',
+										'',
 										$extra
 								);
 								$output .= '</label>';
