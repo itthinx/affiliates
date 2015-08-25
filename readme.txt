@@ -340,6 +340,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.12.0 =
+* Fixed ompatibility with WordPress 4.3 (widget constructor).
+* Fixed potential issues when upgrading from earlier versions.
+
 = 2.11.0 =
 * Added a cookie timeout filter.
 * Removed menu title translation to circumvent effects of core bug 18857.
