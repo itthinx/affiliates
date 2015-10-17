@@ -207,7 +207,7 @@ class Affiliates_Registration {
 				$error = true; // fail but don't give clues
 			}
 
-			$captcha = $_POST[Affiliates_Utility::get_captcha_field_id()];
+			$captcha = !empty( $_POST[Affiliates_Utility::get_captcha_field_id()] ) ? $_POST[Affiliates_Utility::get_captcha_field_id()] : null;
 			if ( !Affiliates_Utility::captcha_validates( $captcha ) ) {
 				$error = true; // dumbot
 			}

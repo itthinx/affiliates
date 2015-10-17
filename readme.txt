@@ -3,8 +3,8 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
-Tested up to: 4.3
-Stable tag: 2.12.0
+Tested up to: 4.3.1
+Stable tag: 2.12.1
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,8 +340,11 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.12.1 =
+* Fixed PHP notice thrown when a replacement captcha instead of the built-in captcha field is used.
+
 = 2.12.0 =
-* Fixed ompatibility with WordPress 4.3 (widget constructor).
+* Fixed compatibility with WordPress 4.3 (widget constructor).
 * Fixed potential issues when upgrading from earlier versions.
 * Fixed a PHP Warning related to password changes through the affiliate fields.
 * Added a guard against multiple invocations of the affiliate user update procedure in the same request.
@@ -660,5 +663,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.12.0 =
-This release includes compatibility fixes for WordPress 4.3 and solves potential issues when upgrading from earlier versions.
+= 2.12.1 =
+This release fixes an issue with the built-in captcha for affiliate registration.
