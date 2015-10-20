@@ -369,3 +369,58 @@ div.referral.remove span.title {
 }
 .toggle-button.off {
 }
+
+.affiliates-admin-add-ons {
+	/*background-color: #eee;*/
+	padding: 1em;
+}
+.affiliates-admin-add-ons img.screenshot {
+	margin: 0 4px;
+	padding: 4px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	height: 258px;
+}
+.affiliates-admin-add-ons img.screenshot.enterprise {
+	height: 190px;
+}
+.affiliates-admin-add-ons ul.add-ons {
+	list-style: none;
+	display: block;
+	padding: 0;
+	overflow: hidden;
+}
+.affiliates-admin-add-ons ul.add-ons li {
+	float: left;
+	margin: 0 1em 1em 0;
+	padding: 8px;
+	vertical-align: top;
+	width: 280px;
+	height: 212px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+.affiliates-admin-add-ons ul.add-ons h3 {
+	margin: 0;
+	display: block;
+	clear: both;
+}
+.affiliates-admin-add-ons ul.add-ons h3 img {
+	vertical-align: middle;
+	margin: 0 8px 0 0;
+	display: block;
+	float: left;
+}
+.affiliates-admin-add-ons ul.add-ons a {
+	text-decoration: none;
+	display: block;
+	overflow: hidden;
+}
+.affiliates-admin-add-ons ul.add-ons p {
+	margin: 0;
+	padding-top: 8px;
+	clear: both;
+	display: block;
+	color: #333;
+}
