@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.3.1
-Stable tag: 2.13.0
+Stable tag: 2.13.1
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,6 +340,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.13.1 =
+* Reverted a change introduced in 2.13.0 related to trailing slashes.
+
 = 2.13.0 =
 * Fixed an issue where trailing slashes would be left before the query part of an affiliate URL.
 * Add-ons section revised.
@@ -667,5 +670,6 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.13.0 =
-This release fixes an issue where trailing slashes would be left before the query part of an affiliate URL and has a revised section for recommended add-ons.
+= 2.13.1 =
+This release reverts a change introduced in 2.13.0 related to trailing slashes before the query part of an affiliate URL.
+The change could affect valid URLs and has been removed in this version.

@@ -1974,9 +1974,6 @@ function affiliates_get_affiliate_url( $url, $affiliate_id ) {
 			$components['path'] = '/';
 		}
 		$components['query'] = $query;
-		if ( !empty( $components['query'] ) ) {
-			$components['path'] = rtrim( $components['path'], '/' );
-		}
 	}
 	return affiliates_compose_url( $components );
 }
