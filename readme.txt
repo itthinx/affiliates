@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.3.1
-Stable tag: 2.12.1
+Stable tag: 2.13.0
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,6 +340,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.13.0 =
+* Fixed an issue where trailing slashes would be left before the query part of an affiliate URL.
+* Add-ons section revised.
+
 = 2.12.1 =
 * Fixed PHP notice thrown when a replacement captcha instead of the built-in captcha field is used.
 
@@ -663,5 +667,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.12.1 =
-This release fixes an issue with the built-in captcha for affiliate registration.
+= 2.13.0 =
+This release fixes an issue where trailing slashes would be left before the query part of an affiliate URL and has a revised section for recommended add-ons.
