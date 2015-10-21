@@ -83,7 +83,7 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					$status       = $referral->status;
 					$reference    = wp_strip_all_tags( $referral->reference );
 
-					$output .= '<form id="referral" action="' . $current_url . '" method="post">';
+					$output .= '<form id="referral" action="' . esc_url( $current_url ) . '" method="post">';
 					$output .= '<div>';
 					
 					$output .= sprintf( '<input type="hidden" name="referral_id" value="%d" />', intval( $referral_id ) );

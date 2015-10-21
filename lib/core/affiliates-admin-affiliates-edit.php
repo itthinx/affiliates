@@ -103,7 +103,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 			'</h1>' .
 		'</div>' .
 	
-		'<form id="edit-affiliate" action="' . $current_url . '" method="post">' .
+		'<form id="edit-affiliate" action="' . esc_url( $current_url ) . '" method="post">' .
 		'<div class="affiliate edit">' .
 		'<input id="affiliate-id-field" name="affiliate-id-field" type="hidden" value="' . esc_attr( intval( $affiliate_id ) ) . '"/>' .
 
@@ -172,7 +172,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<input class="button button-primary" type="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 		'<input type="hidden" value="edit" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.edit

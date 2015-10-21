@@ -68,7 +68,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 				__( 'Remove an affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
 			'</h1>' .
 		'</div>' .
-		'<form id="remove-affiliate" action="' . $current_url . '" method="post">' .
+		'<form id="remove-affiliate" action="' . esc_url( $current_url ) . '" method="post">' .
 		'<div class="affiliate remove">' .
 		'<input id="affiliate-id-field" name="affiliate-id-field" type="hidden" value="' . esc_attr( intval( $affiliate_id ) ) . '"/>' .
 		'<ul>' .
@@ -82,7 +82,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		'<input class="button button-primary" type="submit" value="' . __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 		'<input type="hidden" value="remove" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
 		'</div>' .
 		'</div>' . // .affiliate.remove
 		'</form>' .

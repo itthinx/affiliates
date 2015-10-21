@@ -153,7 +153,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	}
 	$output .= '</h1>';
 
-	$output .= '<form id="referral" action="' . $current_url . '" method="post">';
+	$output .= '<form id="referral" action="' . esc_url( $current_url ) . '" method="post">';
 	$output .= '<div>';
 
 	if ( $referral_id ) {
