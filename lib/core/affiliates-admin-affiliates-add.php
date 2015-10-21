@@ -51,7 +51,7 @@ function affiliates_admin_affiliates_add() {
 			'</h1>' .
 		'</div>' .
 	
-		'<form id="add-affiliate" action="' . $current_url . '" method="post">' .
+		'<form id="add-affiliate" action="' . esc_url( $current_url ) . '" method="post">' .
 		'<div class="affiliate new">' .
 
 		'<div class="field">' .
@@ -112,7 +112,7 @@ function affiliates_admin_affiliates_add() {
 		'<input class="button button-primary" type="submit" value="' . __( 'Add', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
 		'<input type="hidden" value="add" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . $current_url . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.new
