@@ -240,6 +240,9 @@ function affiliates_admin_user_registration() {
 	if ( !( class_exists( 'Groups_Group' ) && method_exists( 'Groups_Group', 'get_groups' ) ) ) {
 		echo __( 'If you would like to grant commissions for group memberships, please install <a href="http://wordpress.org/plugins/groups/">Groups</a>.', AFFILIATES_PLUGIN_DOMAIN );
 	} else {
+
+		$aff_user_groups = get_option( 'aff_user_groups', array() );
+
 		$groups = Groups_Group::get_groups( array( 'order_by' => 'name', 'order' => 'ASC' ) );
 		echo '<table>';
 		echo '<thead>';
@@ -250,9 +253,11 @@ function affiliates_admin_user_registration() {
 		echo '<td>';
 		echo __( 'Amount', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</td>';
-		echo '<td>';
-		echo __( 'Base Amount', AFFILIATES_PLUGIN_DOMAIN );
-		echo '</td>';
+		if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
+			echo '<td>';
+			echo __( 'Base Amount', AFFILIATES_PLUGIN_DOMAIN );
+			echo '</td>';
+		}
 		echo '<td>';
 		echo __( 'Currency', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</td>';
@@ -263,36 +268,44 @@ function affiliates_admin_user_registration() {
 		echo '</thead>';
 		echo '<tbody>';
 		foreach( $groups as $group ) {
+			$group_enabled = !empty( $aff_user_groups[$group->group_id] ) && !empty( $aff_user_groups[$group->group_id]['enabled'] ) ? $aff_user_groups[$group->group_id]['enabled'] : 'no';
+			$group_amount = !empty( $aff_user_groups[$group->group_id] ) && !empty( $aff_user_groups[$group->group_id]['amount'] ) ? $aff_user_groups[$group->group_id]['amount'] : '0';
+			$group_base_amount = !empty( $aff_user_groups[$group->group_id] ) && !empty( $aff_user_groups[$group->group_id]['base_amount'] ) ? $aff_user_groups[$group->group_id]['base_amount'] : '';
+			$group_currency = !empty( $aff_user_groups[$group->group_id] ) && !empty( $aff_user_groups[$group->group_id]['currency'] ) ? $aff_user_groups[$group->group_id]['currency'] : Affiliates::DEFAULT_CURRENCY;
+			$group_referral_status = !empty( $aff_user_groups[$group->group_id] ) && !empty( $aff_user_groups[$group->group_id]['referral_status'] ) ? $aff_user_groups[$group->group_id]['referral_status'] : get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 			echo '<tr>';
+
 			echo '<td>';
 			echo '<label>';
-			printf( '<input type="checkbox" name="group" value="%s" />', esc_attr( $group->name ) );
+			printf( '<input type="checkbox" name="group" value="1" %s />', esc_attr( $group->group_id ), $group_enabled == 'yes' ? ' checked="checked" ' : '' );
 			echo ' ';
 			echo esc_html( $group->name );
 			echo '</label>';
 			echo '</td>';
+
 			echo '<td>';
-			printf( '<input type="number" name="group_amount[%s]" value="%s" />', esc_attr( $group->name ), '' ); // @todo amount
+			printf( '<input type="number" name="group_amount[%d]" value="%s" />', esc_attr( $group->group_id ), $group_amount );
 			echo '</td>';
+
+			if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
+				echo '<td>';
+				printf( '<input type="number" name="group_base_amount[%d]" value="%s" />', esc_attr( $group->group_id ), $group_base_amount );
+				echo '</td>';
+			}
+
 			echo '<td>';
-			printf( '<input type="number" name="group_base_amount[%s]" value="%s" />', esc_attr( $group->name ), '' ); // @todo amount
-			echo '</td>';
-			
-			
-			echo '<td>';
-			printf( '<select name="group_currency[%s]">', esc_attr( $group->name ) );
+			printf( '<select name="group_currency[%s]">', esc_attr( $group->group_id ) );
 			foreach( apply_filters( 'affiliates_supported_currencies', Affiliates::$supported_currencies ) as $cid ) {
-				$selected = ( $user_registration_currency == $cid ) ? ' selected="selected" ' : ''; // @todo currency
+				$selected = ( $group_currency == $cid ) ? ' selected="selected" ' : '';
 				echo '<option ' . $selected . ' value="' .esc_attr( $cid ).'">' . $cid . '</option>';
 			}
 			echo '</select>';
 			echo '</td>';
-			
-			
+
 			echo '<td>';
-			printf( '<select name="group_status[%s]">', esc_attr( $group->name ) );
+			printf( '<select name="group_status[%s]">', esc_attr( $group->group_id ) );
 			foreach ( $status_descriptions as $status_key => $status_value ) {
-				if ( $status_key == $user_registration_referral_status ) { // @todo status
+				if ( $status_key == $group_referral_status ) {
 					$selected = "selected='selected'";
 				} else {
 					$selected = "";
@@ -301,7 +314,7 @@ function affiliates_admin_user_registration() {
 			}
 			echo "</select>";
 			echo '</td>';
-			
+
 			echo '</tr>';
 		}
 		echo '</tbody>';
