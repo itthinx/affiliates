@@ -238,12 +238,25 @@ function affiliates_admin_user_registration() {
 	echo '</h2>';
 
 	if ( !( class_exists( 'Groups_Group' ) && method_exists( 'Groups_Group', 'get_groups' ) ) ) {
+		echo '<p class="description">';
 		echo __( 'If you would like to grant commissions for group memberships, please install <a href="http://wordpress.org/plugins/groups/">Groups</a>.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</p>';
 	} else {
+
+		echo '<p class="description">';
+		echo __( 'Here you can enable commissions per group with the built-in <a href="http://wordpress.org/plugins/groups/">Groups</a> integration.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</p>';
 
 		$aff_user_groups = get_option( 'aff_user_groups', array() );
 
 		$groups = Groups_Group::get_groups( array( 'order_by' => 'name', 'order' => 'ASC' ) );
+
+		echo '<style type="text/css">';
+		echo 'td.field { padding: 0 1em 1em 0; }';
+		echo 'td.field.group-base-amount input { width: 5em; text-align: right;}';
+		echo 'td.field.group-amount input { width: 5em; text-align: right;}';
+		echo '</style>';
+
 		echo '<table>';
 		echo '<thead>';
 		echo '<tr>';
@@ -275,7 +288,7 @@ function affiliates_admin_user_registration() {
 			$group_referral_status = !empty( $aff_user_groups[$group->group_id] ) && !empty( $aff_user_groups[$group->group_id]['referral_status'] ) ? $aff_user_groups[$group->group_id]['referral_status'] : get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 			echo '<tr>';
 
-			echo '<td>';
+			echo '<td class="field">';
 			echo '<label>';
 			printf( '<input type="checkbox" name="group" value="1" %s />', esc_attr( $group->group_id ), $group_enabled == 'yes' ? ' checked="checked" ' : '' );
 			echo ' ';
@@ -283,17 +296,17 @@ function affiliates_admin_user_registration() {
 			echo '</label>';
 			echo '</td>';
 
-			echo '<td>';
+			echo '<td class="field group-amount">';
 			printf( '<input type="number" name="group_amount[%d]" value="%s" />', esc_attr( $group->group_id ), $group_amount );
 			echo '</td>';
 
 			if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
-				echo '<td>';
+				echo '<td class="field group-base-amount">';
 				printf( '<input type="number" name="group_base_amount[%d]" value="%s" />', esc_attr( $group->group_id ), $group_base_amount );
 				echo '</td>';
 			}
 
-			echo '<td>';
+			echo '<td class="field group-currency">';
 			printf( '<select name="group_currency[%s]">', esc_attr( $group->group_id ) );
 			foreach( apply_filters( 'affiliates_supported_currencies', Affiliates::$supported_currencies ) as $cid ) {
 				$selected = ( $group_currency == $cid ) ? ' selected="selected" ' : '';
@@ -302,7 +315,7 @@ function affiliates_admin_user_registration() {
 			echo '</select>';
 			echo '</td>';
 
-			echo '<td>';
+			echo '<td class="field group-referral-status">';
 			printf( '<select name="group_status[%s]">', esc_attr( $group->group_id ) );
 			foreach ( $status_descriptions as $status_key => $status_value ) {
 				if ( $status_key == $group_referral_status ) {
@@ -319,6 +332,12 @@ function affiliates_admin_user_registration() {
 		}
 		echo '</tbody>';
 		echo '</table>';
+
+		echo '<p class="description">';
+		echo __( 'This allows to grant commissions to affiliates when they refer group memberships.', AFFILIATES_PLUGIN_DOMAIN );
+		echo ' ';
+		echo __( 'For enabled groups, a commission will be granted to the referring affiliate as soon as the user becomes a member of the group.', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</p>';
 	}
 
 	echo '<div class="buttons">';
