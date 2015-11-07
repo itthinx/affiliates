@@ -233,6 +233,81 @@ function affiliates_admin_user_registration() {
 	echo '</li>';
 	echo '</ul>';
 
+	echo '<h2>';
+	echo __( 'Groups', AFFILIATES_PLUGIN_DOMAIN );
+	echo '</h2>';
+
+	if ( !( class_exists( 'Groups_Group' ) && method_exists( 'Groups_Group', 'get_groups' ) ) ) {
+		echo __( 'If you would like to grant commissions for group memberships, please install <a href="http://wordpress.org/plugins/groups/">Groups</a>.', AFFILIATES_PLUGIN_DOMAIN );
+	} else {
+		$groups = Groups_Group::get_groups( array( 'order_by' => 'name', 'order' => 'ASC' ) );
+		echo '<table>';
+		echo '<thead>';
+		echo '<tr>';
+		echo '<td>';
+		echo __( 'Group', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</td>';
+		echo '<td>';
+		echo __( 'Amount', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</td>';
+		echo '<td>';
+		echo __( 'Base Amount', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</td>';
+		echo '<td>';
+		echo __( 'Currency', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</td>';
+		echo '<td>';
+		echo __( 'Referral Status', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</td>';
+		echo '<tr/>';
+		echo '</thead>';
+		echo '<tbody>';
+		foreach( $groups as $group ) {
+			echo '<tr>';
+			echo '<td>';
+			echo '<label>';
+			printf( '<input type="checkbox" name="group" value="%s" />', esc_attr( $group->name ) );
+			echo ' ';
+			echo esc_html( $group->name );
+			echo '</label>';
+			echo '</td>';
+			echo '<td>';
+			printf( '<input type="number" name="group_amount[%s]" value="%s" />', esc_attr( $group->name ), '' ); // @todo amount
+			echo '</td>';
+			echo '<td>';
+			printf( '<input type="number" name="group_base_amount[%s]" value="%s" />', esc_attr( $group->name ), '' ); // @todo amount
+			echo '</td>';
+			
+			
+			echo '<td>';
+			printf( '<select name="group_currency[%s]">', esc_attr( $group->name ) );
+			foreach( apply_filters( 'affiliates_supported_currencies', Affiliates::$supported_currencies ) as $cid ) {
+				$selected = ( $user_registration_currency == $cid ) ? ' selected="selected" ' : ''; // @todo currency
+				echo '<option ' . $selected . ' value="' .esc_attr( $cid ).'">' . $cid . '</option>';
+			}
+			echo '</select>';
+			echo '</td>';
+			
+			
+			echo '<td>';
+			printf( '<select name="group_status[%s]">', esc_attr( $group->name ) );
+			foreach ( $status_descriptions as $status_key => $status_value ) {
+				if ( $status_key == $user_registration_referral_status ) { // @todo status
+					$selected = "selected='selected'";
+				} else {
+					$selected = "";
+				}
+				echo "<option value='$status_key' $selected>$status_value</option>";
+			}
+			echo "</select>";
+			echo '</td>';
+			
+			echo '</tr>';
+		}
+		echo '</tbody>';
+		echo '</table>';
+	}
+
 	echo '<div class="buttons">';
 	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
 	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
