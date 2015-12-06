@@ -56,9 +56,9 @@ class Affiliates_Pagination {
 			}
 		}		
 
-		if( isset( $this->_pagination_args['total_pages'] ) && $pagenum > $this->_pagination_args['total_pages'] )
+		if( isset( $this->_pagination_args['total_pages'] ) && $pagenum > $this->_pagination_args['total_pages'] ) {
 			$pagenum = $this->_pagination_args['total_pages'];
-
+		}
 		return max( 1, $pagenum );
 	}
 	
