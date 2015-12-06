@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-28 11:37+0200\n"
-"PO-Revision-Date: 2015-07-28 12:00+0200\n"
+"PO-Revision-Date: 2015-11-08 10:42+0100\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.3\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: lib/core/affiliates-admin-affiliates.php:634
 #: lib/core/class-affiliates-dashboard-widget.php:121
@@ -1801,7 +1801,7 @@ msgid ""
 "The status for referrals that record commissions when affiliates refer new "
 "users."
 msgstr ""
-"Der Status von Transaktionen die Kommissionen aufzeichnen when Partner neue "
+"Der Status von Transaktionen die Kommissionen aufzeichnen wenn Partner neue "
 "Nutzer empfehlen."
 
 #: lib/core/affiliates-admin-affiliates.php:546

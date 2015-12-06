@@ -233,15 +233,48 @@ function affiliates_admin_user_registration() {
 	echo '</li>';
 	echo '</ul>';
 
-	echo '<h2>';
-	echo __( 'Groups', AFFILIATES_PLUGIN_DOMAIN );
-	echo '</h2>';
-
 	if ( !( class_exists( 'Groups_Group' ) && method_exists( 'Groups_Group', 'get_groups' ) ) ) {
-		echo '<p class="description">';
+		echo '<p>';
 		echo __( 'If you would like to grant commissions for group memberships, please install <a href="http://wordpress.org/plugins/groups/">Groups</a>.', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</p>';
-	} else {
+	}
+
+	echo '<div class="buttons">';
+	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
+	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
+	echo '<input type="hidden" name="action" value="save"/>';
+	echo '</div>';
+
+	if ( ( class_exists( 'Groups_Group' ) && method_exists( 'Groups_Group', 'get_groups' ) ) ) {
+
+		echo '<br/>';
+
+		echo '<h2>';
+		echo __( 'Groups', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</h2>';
+
+		echo '<h3>';
+		echo __( 'Affiliates Group', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</h3>';
+
+		echo __( 'New affiliates can be assigned to a group.', AFFILIATES_PLUGIN_DOMAIN );
+
+		// @todo
+
+		echo '<h3>';
+		echo __( 'Groups PayPal Integration', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</h3>';
+
+		echo __( 'Enable the Groups PayPal integration.', AFFILIATES_PLUGIN_DOMAIN );
+
+		// @todo we can act on:
+		// do_action( "groups_created_subscription", $result );
+		// do_action( "groups_updated_subscription", $result );
+		// do_action( "groups_deleted_subscription", $result );
+
+		echo '<h3>';
+		echo __( 'Membership Commissions', AFFILIATES_PLUGIN_DOMAIN );
+		echo '</h3>';
 
 		echo '<p class="description">';
 		echo __( 'Here you can enable commissions per group with the built-in <a href="http://wordpress.org/plugins/groups/">Groups</a> integration.', AFFILIATES_PLUGIN_DOMAIN );
@@ -338,13 +371,13 @@ function affiliates_admin_user_registration() {
 		echo ' ';
 		echo __( 'For enabled groups, a commission will be granted to the referring affiliate as soon as the user becomes a member of the group.', AFFILIATES_PLUGIN_DOMAIN );
 		echo '</p>';
-	}
 
-	echo '<div class="buttons">';
-	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
-	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
-	echo '<input type="hidden" name="action" value="save"/>';
-	echo '</div>';
+		echo '<div class="buttons">';
+		wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
+		echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
+		echo '<input type="hidden" name="action" value="save"/>';
+		echo '</div>';
+	}
 
 	echo '</div>';
 	echo '</form>';
