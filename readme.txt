@@ -3,8 +3,8 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
-Tested up to: 4.4
-Stable tag: 2.13.3
+Tested up to: 4.4.1
+Stable tag: 2.14.0
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -339,6 +339,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 19. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users and customers.
 
 == Changelog ==
+
+= 2.14.0 =
+* Added the $create_affiliate_userdata global which provides affiliate registration data in
+  the process after calling wp_insert_user() and before it is added as user meta data.
 
 = 2.13.3 =
 * WordPress 4.4 compatible.
@@ -677,5 +681,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.13.3 =
-This release has been tested with WordPress 4.4 and in additions contains some fixes and improvements.
+= 2.14.0 =
+This release contains some internal improvements related to the affiliate registration API.
