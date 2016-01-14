@@ -628,6 +628,9 @@ class Affiliates_Registration {
 			$_userdata['user_url'] = esc_sql( $userdata['user_url'] );
 		}
 
+		global $create_affiliate_userdata;
+		$create_affiliate_userdata = $userdata;
+
 		$user_id = wp_insert_user( $_userdata );
 		if ( !is_wp_error( $user_id ) ) {
 			// add user meta from remaining fields
