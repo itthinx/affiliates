@@ -759,10 +759,18 @@ class Affiliates_Registration {
 		$message .= sprintf( __( 'E-mail: %s', AFFILIATES_PLUGIN_DOMAIN ), $user_email ) . "\r\n";
 
 		if ( get_option( 'aff_notify_admin', true ) ) {
+			$params = array(
+				'user_id'        => $user_id,
+				'user'           => $user,
+				'username'       => $user->user_login,
+				'site_login_url' => wp_login_url(),
+				'blogname'       => $blogname
+			);
 			@wp_mail(
 				apply_filters( 'affiliates_admin_email', get_option( 'admin_email' ) ),
-				apply_filters( 'affiliates_new_affiliate_registration_subject', sprintf( __( '[%s] New Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN ), $blogname ) ),
-				apply_filters( 'affiliates_new_affiliate_registration_message', $message )
+				apply_filters( 'affiliates_new_affiliate_registration_subject', sprintf( __( '[%s] New Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN ), $blogname ), $params ),
+				apply_filters( 'affiliates_new_affiliate_registration_message', $message, $params ),
+				apply_filters( 'affiliates_new_affiliate_registration_headers', '', $params )
 			);
 		}
 
