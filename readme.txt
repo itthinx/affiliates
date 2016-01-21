@@ -340,6 +340,13 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.15.0 =
+* Added the $affiliates_request_encoded_id global which provides the referring affiliate's ID if
+  recognized during a request.
+* Added the [referrer] shortcode which allows to render information about the referring affiliate.
+* Added the [affiliates_is_referred] shortcode which allows to display content conditionally for referred visitors.
+* Added the [affiliates_is_not_referred] shortcode which allows to display content conditionally for referred visitors.
+
 = 2.14.1 =
 * Added a parameter set to the filter invoked when the new affiliate notification is sent to the
   site administrator.

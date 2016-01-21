@@ -625,7 +625,7 @@ add_action( 'parse_request', 'affiliates_parse_request' );
  */
 function affiliates_parse_request( &$wp ) {
 
-	global $wpdb, $affiliates_options;
+	global $wpdb, $affiliates_options, $affiliates_request_encoded_id;
 
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
@@ -652,6 +652,7 @@ function affiliates_parse_request( &$wp ) {
 				}
 			}
 		}
+		$affiliates_request_encoded_id = $encoded_id;
 		setcookie(
 			AFFILIATES_COOKIE_NAME,
 			$encoded_id,
