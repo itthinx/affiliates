@@ -34,11 +34,17 @@ class Affiliates_Service {
 	 * @return int affiliate id or false if none applies
 	 */
 	public static function get_referrer_id( $service = null ) {
+		global $affiliates_request_encoded_id;
 		$affiliate_id = false;
 		switch ( $service ) {
 			default :
-				if ( isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
+				$value = null;
+				if ( !empty( $affiliates_request_encoded_id ) ) {
+					$value = trim( $affiliates_request_encoded_id );
+				} else if ( isset( $_COOKIE[AFFILIATES_COOKIE_NAME] ) ) {
 					$value = trim( $_COOKIE[AFFILIATES_COOKIE_NAME] );
+				}
+				if ( !empty( $value ) ) {
 					if ( ( $dot = strpos( $value, '.' ) ) === false ) {
 						$affiliate_id = affiliates_check_affiliate_id_encoded( $value );
 					} else {
@@ -64,6 +70,7 @@ class Affiliates_Service {
 	 * @return int campaign id or false if none applies
 	 */
 	public static function get_campaign_id( $service = null ) {
+		global $affiliates_request_encoded_id;
 		$campaign_id = false;
 		switch ( $service ) {
 			default :

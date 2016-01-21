@@ -35,8 +35,11 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_id', array( __CLASS__, 'affiliates_id' ) );
 		add_shortcode( 'referrer_id', array( __CLASS__, 'referrer_id' ) );
 		add_shortcode( 'referrer_user', array( __CLASS__, 'referrer_user' ) );
+		add_shortcode( 'referrer', array( __CLASS__, 'referrer' ) );
 		add_shortcode( 'affiliates_is_affiliate', array( __CLASS__, 'affiliates_is_affiliate' ) );
 		add_shortcode( 'affiliates_is_not_affiliate', array( __CLASS__, 'affiliates_is_not_affiliate' ) );
+		add_shortcode( 'affiliates_is_referred', array( __CLASS__, 'affiliates_is_referred' ) );
+		add_shortcode( 'affiliates_is_not_referred', array( __CLASS__, 'affiliates_is_not_referred' ) );
 		add_shortcode( 'affiliates_hits', array( __CLASS__, 'affiliates_hits' ) );
 		add_shortcode( 'affiliates_visits', array( __CLASS__, 'affiliates_visits' ) );
 		add_shortcode( 'affiliates_referrals', array( __CLASS__, 'affiliates_referrals' ) );
@@ -83,6 +86,7 @@ class Affiliates_Shortcodes {
 	/**
 	 * Referrer ID shortcode.
 	 * Renders the referring affiliate's id.
+	 * Pages using this shortcode should NOT be cached.
 	 *
 	 * @param array $atts attributes
 	 * @param string $content not used
@@ -107,7 +111,11 @@ class Affiliates_Shortcodes {
 	}
 
 	/**
-	 * Renders the referrer's username.
+	 * Renders the referrer's username and other user details.
+	 * Pages using this shortcode should NOT be cached.
+	 * 
+	 * Supported values for the display attribute are: user_login, user_nicename, user_email, user_url and display_name.
+	 * 
 	 * @param array $atts
 	 * @param string $content not used
 	 * @return string
@@ -156,6 +164,88 @@ class Affiliates_Shortcodes {
 	}
 
 	/**
+	 * Renders information about the referring affiliate.
+	 * Pages using this shortcode should NOT be cached.
+	 *
+	 * Supported values for the display attribute are:
+	 * - name, id, email taken from the affiliate entry
+	 * - user_id, user_login, user_nicename, user_email, user_url and display_name from the user
+	 * - the field name of any enabled affiliate registration field
+	 * 
+	 * If the display attribute is omitted, the user_login of the referrer is displayed.
+	 *
+	 * @param array $atts
+	 * @param string $content not used
+	 * @return string
+	 */
+	public static function referrer( $atts, $content = null ) {
+		$options = shortcode_atts(
+			array(
+				'direct'  => false,
+				'display' => 'user_login'
+			),
+			$atts
+		);
+		extract( $options );
+		$output = '';
+		require_once( 'class-affiliates-service.php' );
+		$affiliate_id = Affiliates_Service::get_referrer_id();
+		if ( $affiliate_id ) {
+			if ( $direct || $affiliate_id !== affiliates_get_direct_id() ) {
+				if ( affiliates_check_affiliate_id( $affiliate_id ) ) {
+					$affiliate = affiliates_get_affiliate( $affiliate_id );
+					switch( $display ) {
+						case 'name' :
+							$output = $affiliate['name'];
+							break;
+						case 'id' :
+							$output = $affiliate['affiliate_id'];
+							break;
+						case 'email' :
+							$output = $affiliate['email'];
+							break;
+						default :
+							if ( $user_id = affiliates_get_affiliate_user( $affiliate_id ) ) {
+								if ( $user = get_user_by( 'id', $user_id ) ) {
+									switch( $display ) {
+										case 'user_id' :
+											$output = $user->ID;
+											break;
+										case 'user_login' :
+											$output = $user->user_login;
+											break;
+										case 'user_nicename' :
+											$output = $user->user_nicename;
+											break;
+										case 'user_email' :
+											$output = $user->user_email;
+											break;
+										case 'user_url' :
+											$output = $user->user_url;
+											break;
+										case 'display_name' :
+											$output = $user->display_name;
+											break;
+										default :
+											require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
+											require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
+											$registration_fields = Affiliates_Settings_Registration::get_fields();
+											unset( $registration_fields['password'] );
+											if ( !empty( $registration_fields ) && isset( $registration_fields[$display] ) ) {
+												$output = stripslashes( get_user_meta( $user_id, $display , true ) );
+											}
+									}
+								}
+							}
+					}
+				}
+			}
+		}
+		$output = wp_strip_all_tags( $output );
+		return $output;
+	}
+
+	/**
 	 * Affiliate content shortcode.
 	 * Renders the content if the current user is an affiliate.
 	 *
@@ -189,6 +279,50 @@ class Affiliates_Shortcodes {
 
 		$output = "";
 		if ( !affiliates_user_is_affiliate( get_current_user_id() ) ) {
+			$output .= $content;
+		}
+		return $output;
+	}
+
+	/**
+	 * Render content if visitor was referred. Pages using this shortcode should NOT be cached.
+	 * 
+	 * @param array $atts
+	 * @param string $content
+	 * @return string $content is rendered if referred
+	 */
+	public static function affiliates_is_referred( $atts, $content = null ) {
+		remove_shortcode( 'affiliates_is_referred' );
+		$content = do_shortcode( $content );
+		add_shortcode( 'affiliates_is_referred', array( __CLASS__, 'affiliates_is_referred' ) );
+		$output = '';
+		require_once( 'class-affiliates-service.php' );
+		$affiliate_id = Affiliates_Service::get_referrer_id();
+		if ( $affiliate_id ) {
+			if ( $affiliate_id !== affiliates_get_direct_id() ) {
+				if ( affiliates_check_affiliate_id( $affiliate_id ) ) {
+					$output .= $content;
+				}
+			}
+		}
+		return $output;
+	}
+
+	/**
+	 * Render content if visitor was not referred. Pages using this shortcode should NOT be cached.
+	 *
+	 * @param array $atts
+	 * @param string $content
+	 * @return string $content is rendered if not referred
+	 */
+	public static function affiliates_is_not_referred( $atts, $content = null ) {
+		remove_shortcode( 'affiliates_is_not_referred' );
+		$content = do_shortcode( $content );
+		add_shortcode( 'affiliates_is_not_referred', array( __CLASS__, 'affiliates_is_not_referred' ) );
+		$output = '';
+		require_once( 'class-affiliates-service.php' );
+		$affiliate_id = Affiliates_Service::get_referrer_id();
+		if ( !$affiliate_id ) {
 			$output .= $content;
 		}
 		return $output;
