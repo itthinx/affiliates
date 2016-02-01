@@ -666,6 +666,12 @@ class Affiliates_Registration {
 			'from_date' => esc_sql( $today ),
 		);
 		$formats = array( '%s', '%s', '%s' );
+		// pending affiliate status?
+		$affiliate_status = get_option( 'aff_status', 'active' );
+		if ( $affiliate_status == 'pending' ) {
+			$data['status'] = 'pending';
+			$formats[] = '%s';
+		}
 		if ( $wpdb->insert( $affiliates_table, $data, $formats ) ) {
 			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			// create association

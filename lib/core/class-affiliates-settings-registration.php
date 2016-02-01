@@ -77,6 +77,17 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				delete_option( 'aff_registration' );
 				add_option( 'aff_registration', !empty( $_POST['registration'] ), '', 'no' );
 
+				delete_option( 'aff_status' );
+				$status = !empty( $_POST['affiliate_status'] ) ? $_POST['affiliate_status'] : 'active';
+				switch( $status ) {
+					case 'active' :
+					case 'pending' :
+						break;
+					default :
+						$status = 'active';
+				}
+				add_option( 'aff_status', $status, '', 'no' );
+
 				delete_option( 'aff_notify_admin' );
 				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
 
@@ -123,6 +134,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		}
 
 		$registration = get_option( 'aff_registration', get_option( 'users_can_register', false ) );
+		$affiliate_status = get_option( 'aff_status', 'active' );
 		$notify_admin = get_option( 'aff_notify_admin', get_option( 'aff_notify_admin', true ) );
 
 		echo
@@ -134,6 +146,22 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			'<input name="registration" type="checkbox" ' . ( $registration ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
 			__( 'Allow affiliate registration', AFFILIATES_PLUGIN_DOMAIN ) .
+			'</label>' .
+			'</p>';
+
+		echo
+			'<p>' .
+			'<label>' .
+			__( 'Status', AFFILIATES_PLUGIN_DOMAIN ) .
+			' ' .
+			'<select name="affiliate_status">' .
+			sprintf( '<option value="active" %s>', $affiliate_status == 'active' ? ' selected="selected" ' : '' ) .
+			__( 'Active', AFFILIATES_PLUGIN_DOMAIN ) .
+			'</option>' .
+			sprintf( '<option value="pending" %s>', $affiliate_status == 'pending' ? ' selected="selected" ' : '' ) .
+			__( 'Pending', AFFILIATES_PLUGIN_DOMAIN ) .
+			'</option>' .
+			'</select>' .
 			'</label>' .
 			'</p>';
 
