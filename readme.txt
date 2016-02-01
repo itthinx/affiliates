@@ -340,6 +340,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.16.0 =
+* Added the possibility to approve new affiliates with a status option.
+
 = 2.15.0 =
 * Added the $affiliates_request_encoded_id global which provides the referring affiliate's ID if
   recognized during a request.
@@ -693,5 +696,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.15.0 =
-This release adds new shortcodes that allow to show referrer information and content conditionally: [referrer], [affiliates_is_referred] and [affiliates_is_not_referred].
+= 2.16.0 =
+This release adds the status option for new affiliates, which allows to approve new affiliates before being active.
