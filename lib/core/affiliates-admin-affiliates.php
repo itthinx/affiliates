@@ -117,6 +117,8 @@ function affiliates_admin_affiliates() {
 	$affiliate_name       = $affiliates_options->get_option( 'affiliates_affiliate_name', null );
 	$affiliate_email      = $affiliates_options->get_option( 'affiliates_affiliate_email', null );
 	$affiliate_user_login = $affiliates_options->get_option( 'affiliates_affiliate_user_login', null );
+	$show_active          = $affiliates_options->get_option( 'affiliates_show_active', true );
+	$show_pending         = $affiliates_options->get_option( 'affiliates_show_pending', true );
 	$show_deleted         = $affiliates_options->get_option( 'affiliates_show_deleted', false );
 	$show_inoperative     = $affiliates_options->get_option( 'affiliates_show_inoperative', false );
 	$show_totals          = $affiliates_options->get_option( 'affiliates_show_totals', true );
@@ -128,6 +130,8 @@ function affiliates_admin_affiliates() {
 		$affiliates_options->delete_option( 'affiliates_affiliate_name' );
 		$affiliates_options->delete_option( 'affiliates_affiliate_email' );
 		$affiliates_options->delete_option( 'affiliates_affiliate_user_login' );
+		$affiliates_options->delete_option( 'affiliates_show_active' );
+		$affiliates_options->delete_option( 'affiliates_show_pending' );
 		$affiliates_options->delete_option( 'affiliates_show_deleted' );
 		$affiliates_options->delete_option( 'affiliates_show_inoperative' );
 		$affiliates_options->delete_option( 'affiliates_show_totals' );
@@ -139,6 +143,8 @@ function affiliates_admin_affiliates() {
 		$affiliate_name = null;
 		$affiliate_email = null;
 		$affiliate_user_login = null;
+		$show_active = true;
+		$show_pending = true;
 		$show_deleted = false;
 		$show_inoperative = false;
 		$show_totals = true;
@@ -179,6 +185,10 @@ function affiliates_admin_affiliates() {
 			$affiliate_user_login = null;
 			$affiliates_options->delete_option( 'affiliates_affiliate_user_login' );
 		}
+		$show_active = isset( $_POST['show_active'] );
+		$affiliates_options->update_option( 'affiliates_show_active', $show_active );
+		$show_pending = isset( $_POST['show_pending'] );
+		$affiliates_options->update_option( 'affiliates_show_pending', $show_pending );
 		$show_deleted = isset( $_POST['show_deleted'] );
 		$affiliates_options->update_option( 'affiliates_show_deleted', $show_deleted );
 		$show_inoperative = isset( $_POST['show_inoperative'] );
@@ -330,10 +340,21 @@ function affiliates_admin_affiliates() {
 		$filters[] = " $wpdb->users.user_login LIKE '%%%s%%' ";
 		$filter_params[] = $affiliate_user_login;
 	}
-	if ( !$show_deleted ) {
-		$filters[] = " $affiliates_table.status = %s ";
-		$filter_params[] = 'active';
+	$statuses = array( '' ); // need at least one entry for the IN clause
+	if ( $show_active ) {
+		$statuses[] = 'active';
 	}
+	if ( $show_pending ) {
+		$statuses[] = 'pending';
+	}
+	if ( $show_deleted ) {
+		$statuses[] = 'deleted';
+	}
+// 	if ( !$show_deleted ) {
+// 		$filters[] = " $affiliates_table.status = %s ";
+// 		$filter_params[] = 'active';
+// 	}
+	$filters[] = sprintf( " $affiliates_table.status IN (%s) ", !empty($statuses) ? "'" .  implode( "','", $statuses ) . "'" : '' );
 	if ( !$show_inoperative ) {
 		$filters[] = " $affiliates_table.from_date <= %s AND ( $affiliates_table.thru_date IS NULL OR $affiliates_table.thru_date >= %s ) ";
 		$filter_params[] = $today;
@@ -435,6 +456,18 @@ function affiliates_admin_affiliates() {
 					'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
 					' ' .
 					__( 'Include inoperative affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
+				'</label>' .
+				' ' .
+				'<label class="show-active-filter">' .
+				'<input class="show-active-filter" name="show_active" type="checkbox" ' . ( $show_active ? 'checked="checked"' : '' ) . '/>' .
+				' ' .
+				__( 'Include active affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
+				'</label>' .
+				' ' .
+				'<label class="show-pending-filter">' .
+				'<input class="show-pending-filter" name="show_pending" type="checkbox" ' . ( $show_pending ? 'checked="checked"' : '' ) . '/>' .
+				' ' .
+				__( 'Include pending affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
 				'</label>' .
 				' ' .
 				'<label class="show-deleted-filter">' .

@@ -1614,14 +1614,23 @@ function affiliates_get_affiliate_user( $affiliate_id ) {
  * @param int $user_id
  * @return array of int affiliate ids or null on failure
  */
-function affiliates_get_user_affiliate( $user_id ) {
+function affiliates_get_user_affiliate( $user_id, $status = 'active' ) {
 	global $wpdb;
+	switch( $status ) {
+		case 'active' :
+		case 'pending' :
+		case 'deleted' :
+			break;
+		default :
+			$status = 'active';
+	}
 	$result = null;
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 	if ( $affiliates = $wpdb->get_results( $wpdb->prepare(
-		"SELECT $affiliates_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status ='active'",
-		intval( $user_id )
+		"SELECT $affiliates_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = %s",
+		intval( $user_id ),
+		$status
 	) ) ) {
 		$result = array();
 		foreach( $affiliates as $affiliate ) {
@@ -1655,6 +1664,63 @@ function affiliates_user_is_affiliate( $user_id = null ) {
 		}
 	}
 	return $result;
+}
+
+/**
+ * Returns true if the user is an affiliate with the given status.
+ * 
+ * @param int|object $user (optional) specify a user or use current if none given
+ * @param string $status 'active' (default), 'pending', 'deleted'
+ */
+function affiliates_user_is_affiliate_status( $user_id = null, $status = 'active' ) {
+	global $wpdb;
+	switch( $status ) {
+		case 'active' :
+		case 'pending' :
+		case 'deleted' :
+			break;
+		default :
+			$status = 'active';
+	}
+	$result = false;
+	if ( is_user_logged_in() ) {
+		if ( $user_id == null ) {
+			$user = wp_get_current_user();
+		} else {
+			$user = get_user_by( 'id', $user_id );
+		}
+		if ( $user ) {
+			$user_id = $user->ID;
+			$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+			$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
+			$affiliates = $wpdb->get_results(
+				$wpdb->prepare(
+					"SELECT * FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = %s",
+					intval( $user_id ),
+					$status
+				)
+			);
+			$result = !empty( $affiliates );
+		}
+	}
+	return $result;
+}
+
+/**
+ * Returns the current status of the affiliate.
+ * 
+ * @param int $affiliate_id
+ * @return string affiliate status or null
+ */
+function affiliates_get_affiliate_status( $affiliate_id ) {
+	global $wpdb;
+	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+	return $wpdb->get_var(
+		$wpdb->prepare(
+			"SELECT status FROM $affiliates_table WHERE affiliate_id = %d",
+			intval( $affiliate_id )
+		)
+	);
 }
 
 /**

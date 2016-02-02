@@ -122,6 +122,18 @@ class Affiliates_Registration {
 		$output = '';
 
 		//
+		// Existing affiliate pending approval
+		//
+		if ( affiliates_user_is_affiliate_status( null, 'pending' ) ) {
+			$output .= '<div class="affiliates-registration registered pending">';
+			$output .= '<p>';
+			$output .= __( 'Your affiliate application is pending approval.', AFFILIATES_PLUGIN_DOMAIN );
+			$output .= '</p>';
+			$output .= '</div>';
+			return $output;
+		}
+
+		//
 		// Existing affiliate
 		//
 		if ( $is_affiliate = affiliates_user_is_affiliate() ) {
