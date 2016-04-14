@@ -911,6 +911,9 @@ class Affiliates_Shortcodes {
 					}
 				}
 
+				// get user again in case anything changed as we're using it below
+				$user = get_user_by( 'id', $user_id );
+
 				// show form
 				$n = 0;
 				if ( !empty( $registration_fields ) ) {
