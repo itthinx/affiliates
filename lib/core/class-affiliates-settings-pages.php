@@ -82,7 +82,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		$post_ids = array();
 		// We also have [referrer_id] and [referrer_user] but these are not essential in
 		// determining whether an affiliate page has been set up.
-		$posts = $wpdb->get_results( "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[affiliates_%' AND post_status = 'publish'" );
+		$posts = $wpdb->get_results( "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[affiliates\_%' AND post_status = 'publish'" );
 		foreach( $posts as $post ) {
 			$post_ids[] = $post->ID;
 		}
