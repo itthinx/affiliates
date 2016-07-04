@@ -28,7 +28,7 @@
  * License: GPLv3
  */
 if ( !defined( 'AFFILIATES_CORE_VERSION' ) ) {
-	define( 'AFFILIATES_CORE_VERSION', '2.15.2' );
+	define( 'AFFILIATES_CORE_VERSION', '2.15.3' );
 	define( 'AFFILIATES_PLUGIN_NAME', 'affiliates' );
 	define( 'AFFILIATES_FILE', __FILE__ );
 	define( 'AFFILIATES_PLUGIN_BASENAME', plugin_basename( AFFILIATES_FILE ) );
