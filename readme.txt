@@ -705,5 +705,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.15.2 =
-* This release contains a fix for the test to find pages containing Affiliates shortcodes.
+= 2.15.3 =
+* Updated the admin buttons translation
+* Updated the German translation.
+* Updated the Spanish translation.
