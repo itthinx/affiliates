@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Español - España (es_ES)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-04 19:04+0200\n"
-"PO-Revision-Date: 2016-07-04 19:04+0200\n"
+"PO-Revision-Date: 2016-07-04 21:44+0200\n"
 "Last-Translator: itthinx.com; David Perez <david@closemarketing.es>\n"
 "Language-Team: itthinx.com; Closemarketing <david@closemarketing.es>\n"
 "Language: es_ES\n"
@@ -1160,7 +1160,7 @@ msgstr "Incluir afiliados eliminados"
 #: lib/core/affiliates-admin-add-ons.php:196
 msgid "Includes all additional features available in Affiliates Pro."
 msgstr ""
-"Incluya todas las características adicionales disponible en Affiliates Pro."
+"Incluye todas las características adicionales disponible en Affiliates Pro."
 
 #: lib/core/class-affiliates-settings.php:139
 msgid "Install an Integration"
@@ -1182,7 +1182,7 @@ msgstr "Tiene dos finalidades:"
 
 #: lib/core/class-affiliates-settings-pages.php:92
 msgid "It seems that you do not have any pages set up for your affiliates yet."
-msgstr "Parece que aún no tiene página de afiliados."
+msgstr "Parece que aún no tiene páginas configuradas para sus afiliados."
 
 #: lib/core/class-affiliates-settings-integrations.php:60
 msgid "Jigoshop (light)"
@@ -1350,6 +1350,10 @@ msgid ""
 "they do not even need to click an affiliate link. Supported methods are "
 "image and iframe tracking pixels."
 msgstr ""
+"Pixel Tracking facilita a los afiliados aún más la tarea de referir "
+"clientes, ya que ni siquiera necesitan hacer clic en un enlace de afiliado. "
+"Los métodos empleados son tracking pixels mediante una imagen o mediante un "
+"iframe."
 
 #: lib/core/class-affiliates-registration.php:288
 msgid "Please check your email for the confirmation link."
@@ -1372,8 +1376,8 @@ msgid ""
 "Please give it a <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
 "&#9733;&#9733;&#9733;&#9733;</a> rating!"
 msgstr ""
-"Por favor, da una valoración <a style=\"text-decoration:none;\" href=\"%s"
-"\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> !"
+"Agradecemos su valoración <a style=\"text-decoration:none;\" href=\"%s"
+"\">&#9733;&#9733;&#9733;&#9733;&#9733;</a>!"
 
 #: lib/core/class-affiliates-settings-pages.php:123
 msgid ""
@@ -1401,7 +1405,7 @@ msgstr "Entrada"
 
 #: lib/core/class-affiliates-settings-pages.php:62
 msgid "Press the button to generate a default affiliate area."
-msgstr "Presione el botón para generar el Area de Afiliados por defecto."
+msgstr "Presione el botón para generar el Área de Afiliados por defecto."
 
 #: lib/core/affiliates-admin-referral-remove.php:161
 msgid "Pretty pointless ..."
@@ -1809,7 +1813,7 @@ msgstr[1] "Hay %d afiliados activos"
 #: lib/core/class-affiliates-totals.php:749
 #, php-format
 msgid "These referrals could not be updated to <em>%s</em>."
-msgstr "Estas comisiones podrían no se actualizadas a <em>%s</em>."
+msgstr "Estas comisiones no se han podido actualizar a <em>%s</em>."
 
 #: lib/core/class-affiliates-totals.php:741
 #, php-format
