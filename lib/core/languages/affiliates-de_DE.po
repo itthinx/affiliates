@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Affiliates\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-04 15:12+0200\n"
-"PO-Revision-Date: 2016-07-04 18:45+0100\n"
+"PO-Revision-Date: 2016-07-04 19:01+0100\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -20,7 +20,6 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_;_e;_x;_ngettext\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ../../..\n"
 
 #: lib/core/affiliates-admin-affiliates.php:634
 #: lib/core/class-affiliates-dashboard-widget.php:121
