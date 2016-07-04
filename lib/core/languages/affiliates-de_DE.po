@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-04 15:12+0200\n"
-"PO-Revision-Date: 2016-07-04 19:01+0100\n"
+"POT-Creation-Date: 2016-07-04 19:04+0200\n"
+"PO-Revision-Date: 2016-07-04 19:04+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_;_e;_x;_ngettext\n"
 "X-Poedit-Basepath: .\n"
@@ -2139,8 +2139,8 @@ msgstr ""
 "Verwenden Sie die <a href=\"%s\">Einstellungen</a> um das System jederzeit "
 "anzupassen."
 
-#: lib/core/affiliates-admin-user-registration.php:35
-#: lib/core/wp-init.php:1362 lib/core/wp-init.php:1363
+#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1362
+#: lib/core/wp-init.php:1363
 msgid "User Registration"
 msgstr "Nutzerregistrierung"
 

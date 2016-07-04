@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Español - España (es_ES)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-04 15:12+0200\n"
-"PO-Revision-Date: 2016-07-04 18:59+0100\n"
+"POT-Creation-Date: 2016-07-04 19:04+0200\n"
+"PO-Revision-Date: 2016-07-04 19:04+0200\n"
 "Last-Translator: itthinx.com; David Perez <david@closemarketing.es>\n"
 "Language-Team: itthinx.com; Closemarketing <david@closemarketing.es>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_;_x;_e\n"
@@ -2048,8 +2048,8 @@ msgstr ""
 "Utiliza la sección de <a href=\"%s\">Ajustes</a> para revisar y ajustar el "
 "sistema en cualquier momento."
 
-#: lib/core/affiliates-admin-user-registration.php:35
-#: lib/core/wp-init.php:1362 lib/core/wp-init.php:1363
+#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1362
+#: lib/core/wp-init.php:1363
 msgid "User Registration"
 msgstr "Registro de Usuario"
 
