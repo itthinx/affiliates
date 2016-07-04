@@ -344,6 +344,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Updated the admin buttons translation.
 * Updated the German translation.
 * Updated the Spanish translation.
+* Updated the translation template file.
 
 = 2.15.2 =
 * Fixed an unescaped underscore in the SQL query for the test to find pages containing Affiliates shortcodes.
