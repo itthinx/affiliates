@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.5.3
-Stable tag: 2.15.3
+Stable tag: 2.15.4
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -341,7 +341,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Changelog ==
 
 = 2.15.4 =
-* Properly prepared for localization.
+* For WordPress translation : Substituted constants with string literals as language domain indicators.
 
 = 2.15.3 =
 * Updated the admin buttons translation.
@@ -366,4 +366,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.4 =
-Properly prepared for localization.
+This release uses string literals instead of constants as language domain indicators.
