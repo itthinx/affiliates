@@ -342,6 +342,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.15.4 =
 * For WordPress translation : Substituted constants with string literals as language domain indicators.
+* Moved the complete changelog to changelog.txt.
 
 = 2.15.3 =
 * Updated the admin buttons translation.
