@@ -29,7 +29,7 @@ if ( !defined( 'ABSPATH' ) ) {
 function affiliates_admin_affiliates_add() {
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -47,7 +47,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="manage-affiliates">' .
 		'<div>' .
 			'<h1>' .
-				__( 'Add a new affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Add a new affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
 	
@@ -57,7 +57,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label first required">' .
 		'<span class="label">' .
-		__( 'Name', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Name', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="name-field" name="name-field" class="namefield" type="text" value="' . esc_attr( stripslashes( $name ) ) . '"/>' .
@@ -67,20 +67,20 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Email', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Email', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="email-field" name="email-field" class="emailfield" type="text" value="' . esc_attr( $email ) . '"/>' .
 		'</label>' .
 		'<span class="description">' .
-		__( "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically.", AFFILIATES_PLUGIN_DOMAIN ) .
+		__( "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically.", 'affiliates' ) .
 		'</span>' .
 		'</div>' .
 
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Username', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Username', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="user-field" name="user-field" class="userfield" type="text" value="' . esc_attr( stripslashes( $user_login ) ) . '"/>' .
@@ -90,7 +90,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'From', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'From', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="from-date-field" name="from-date-field" class="datefield" type="text" value="' . esc_attr( $from_date ) . '"/>' .
@@ -100,7 +100,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Until', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Until', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="thru-date-field" name="thru-date-field" class="datefield" type="text" value="' . esc_attr( $thru_date ) . '"/>' .
@@ -109,10 +109,10 @@ function affiliates_admin_affiliates_add() {
 
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-add', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" value="' . __( 'Add', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . __( 'Add', 'affiliates' ) . '"/>' .
 		'<input type="hidden" value="add" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', 'affiliates' ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.new
@@ -133,11 +133,11 @@ function affiliates_admin_affiliates_add_submit() {
 	$result = true;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-add' ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );

@@ -143,11 +143,11 @@ class Affiliates_Contact extends WP_Widget {
 			
 			if ( !$error ) {
 				$send = true;
-				$description = __( 'Affiliates contact form submission', AFFILIATES_PLUGIN_DOMAIN );
+				$description = __( 'Affiliates contact form submission', 'affiliates' );
 				$data = array(
-					'name'    => array( 'title' => 'Name', 'domain' => AFFILIATES_PLUGIN_DOMAIN, 'value' => $sender ),
-					'email'   => array( 'title' => 'Email', 'domain' => AFFILIATES_PLUGIN_DOMAIN, 'value' => $email ),
-					'message' => array( 'title' => 'Message', 'domain' => AFFILIATES_PLUGIN_DOMAIN, 'value' => $message )
+					'name'    => array( 'title' => 'Name', 'domain' => 'affiliates', 'value' => $sender ),
+					'email'   => array( 'title' => 'Email', 'domain' => 'affiliates', 'value' => $email ),
+					'message' => array( 'title' => 'Message', 'domain' => 'affiliates', 'value' => $message )
 				);
 				// request a referral
 				$affiliate = null;
@@ -172,20 +172,20 @@ class Affiliates_Contact extends WP_Widget {
 			echo '<img id="affiliates-contact-throbber' . $ext . '" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
 			echo '<form id="affiliates-contact-form' . $ext . '" action="' . $action . '" method="' . $method . '">';
 			echo '<div>';
-			echo '<label ' . $sender_class . ' id="affiliates-contact-form' . $ext . '-sender-label" for="sender">' . __( 'Name', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+			echo '<label ' . $sender_class . ' id="affiliates-contact-form' . $ext . '-sender-label" for="sender">' . __( 'Name', 'affiliates' ) . '</label>';
 			echo '<input id="affiliates-contact-form' . $ext . '-sender" name="sender" type="text" value="' . esc_attr( $sender ) . '"/>';
-			echo '<label ' . $email_class . ' id="affiliates-contact-form' . $ext . '-email-label" for="email">' . __( 'Email', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+			echo '<label ' . $email_class . ' id="affiliates-contact-form' . $ext . '-email-label" for="email">' . __( 'Email', 'affiliates' ) . '</label>';
 			echo '<input id="affiliates-contact-form' . $ext . '-email" name="email" type="text" value="' . esc_attr( $email ) . '"/>';
-			echo '<label ' . $message_class . 'id="affiliates-contact-form' . $ext . '-message-label" for="message">' . __( 'Message', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+			echo '<label ' . $message_class . 'id="affiliates-contact-form' . $ext . '-message-label" for="message">' . __( 'Message', 'affiliates' ) . '</label>';
 			echo '<textarea id="affiliates-contact-form' . $ext . '-message" name="message">' . $message . '</textarea>';
 			echo Affiliates_Contact::captcha_get( $captcha );
 			echo wp_nonce_field( $nonce_action, $nonce, true, false );
-			echo '<input type="submit" name="' . $submit_name . '" value="'. __( 'Send', AFFILIATES_PLUGIN_DOMAIN ) . '" />';
+			echo '<input type="submit" name="' . $submit_name . '" value="'. __( 'Send', 'affiliates' ) . '" />';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';
 		} else {
-			echo '<p>' . __( 'Thanks!', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+			echo '<p>' . __( 'Thanks!', 'affiliates' ) . '</p>';
 		}
 	}
 		
@@ -286,26 +286,26 @@ class Affiliates_Contact extends WP_Widget {
 		$currency_id = isset( $instance['currency_id'] ) ? esc_attr( $instance['currency_id'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', AFFILIATES_PLUGIN_DOMAIN ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'affiliates' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'amount' ); ?>"><?php _e( 'Amount (use . for decimals):', AFFILIATES_PLUGIN_DOMAIN ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'amount' ); ?>"><?php _e( 'Amount (use . for decimals):', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'amount' ); ?>" name="<?php echo $this->get_field_name( 'amount' ); ?>" type="text" value="<?php echo $amount; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php _e( 'Currency - 3 letter code, e.g. USD, EUR:', AFFILIATES_PLUGIN_DOMAIN ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php _e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'currency_id' ); ?>" name="<?php echo $this->get_field_name( 'currency_id' ); ?>" type="text" value="<?php echo $currency_id; ?>" />
 		</p>
 		<p>
-			<?php _e( 'This contact form will request a referral and store the data that has been submitted.', AFFILIATES_PLUGIN_DOMAIN ); ?>
+			<?php _e( 'This contact form will request a referral and store the data that has been submitted.', 'affiliates' ); ?>
 		</p>
 		<p>
-			<?php _e( 'It has two purposes:', AFFILIATES_PLUGIN_DOMAIN ); ?>
+			<?php _e( 'It has two purposes:', 'affiliates' ); ?>
 		</p>
 		<ul>
-			<li><?php _e( 'To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate.', AFFILIATES_PLUGIN_DOMAIN ); ?></li>
-			<li><?php _e( 'To serve as an example on how to use the API provided by the Affiliates plugin', AFFILIATES_PLUGIN_DOMAIN ); ?></li>
+			<li><?php _e( 'To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate.', 'affiliates' ); ?></li>
+			<li><?php _e( 'To serve as an example on how to use the API provided by the Affiliates plugin', 'affiliates' ); ?></li>
 		</ul>
 		<?php
 	}

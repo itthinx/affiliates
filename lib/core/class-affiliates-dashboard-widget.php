@@ -93,16 +93,16 @@ class Affiliates_Dashboard_Widget {
 			$output .= '<strong>';
 			switch( $status ) {
 				case AFFILIATES_REFERRAL_STATUS_CLOSED :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Closed</span>', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( __( 'Accumulated total for closed referrals (commissions paid).', AFFILIATES_PLUGIN_DOMAIN ) ) );
+					$output .= sprintf( __( '<span style="cursor:help" title="%s">Closed</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for closed referrals (commissions paid).', 'affiliates' ) ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_ACCEPTED :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Accepted</span>', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( __( 'Accumulated total for accepted referrals (commissions unpaid).', AFFILIATES_PLUGIN_DOMAIN ) ) );
+					$output .= sprintf( __( '<span style="cursor:help" title="%s">Accepted</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for accepted referrals (commissions unpaid).', 'affiliates' ) ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_PENDING :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Pending</span>', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( __( 'Accumulated total for pending referrals.', AFFILIATES_PLUGIN_DOMAIN ) ) );
+					$output .= sprintf( __( '<span style="cursor:help" title="%s">Pending</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for pending referrals.', 'affiliates' ) ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_REJECTED :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Rejected</span>', AFFILIATES_PLUGIN_DOMAIN ), esc_attr( __( 'Accumulated total for rejected referrals.', AFFILIATES_PLUGIN_DOMAIN ) ) );
+					$output .= sprintf( __( '<span style="cursor:help" title="%s">Rejected</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for rejected referrals.', 'affiliates' ) ) );
 					break;
 			}
 			$output .= '</strong>';
@@ -118,12 +118,12 @@ class Affiliates_Dashboard_Widget {
 			if ( $total ) {
 				foreach( $total as $currency => $amount ) {
 					$output .= '<li>';
-					$output .= sprintf( __( '%1$s %2$s', AFFILIATES_PLUGIN_DOMAIN ), $currency, $amount ); // translators: first is a three-letter currency code, second is a monetary amount
+					$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $amount ); // translators: first is a three-letter currency code, second is a monetary amount
 					$output .= '</li>';
 				}
 			} else {
 				$output .= '<li>';
-				$output .= __( 'None', AFFILIATES_PLUGIN_DOMAIN );
+				$output .= __( 'None', 'affiliates' );
 				$output .= '</li>';
 			}
 			$output .= '</ul>';
@@ -136,7 +136,7 @@ class Affiliates_Dashboard_Widget {
 		$output .= '<form id="affiliates-dashboard-widget-form" action="" method="post">';
 		$output .= '<div>';
 		$output .= '<label>';
-		$output .= __( 'Days back', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= __( 'Days back', 'affiliates' );
 		$output .= ' ';
 		$output .= '<input name="days_back" style="width:5em" type="text" value="' . esc_attr( $days_back > self::MIN_DAYS_BACK ? $days_back : '' ) . '"/>';
 		$output .= '</label>';
@@ -148,7 +148,7 @@ class Affiliates_Dashboard_Widget {
 		$output .= '</form>';
 
 		$output .= '<p class="description">';
-		$output .= __( 'Shows accumulated referral totals for all time when left empty, or for the last number of days set.', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= __( 'Shows accumulated referral totals for all time when left empty, or for the last number of days set.', 'affiliates' );
 		$output .= '</p>';
 
 		echo $output;

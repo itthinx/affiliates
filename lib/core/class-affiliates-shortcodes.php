@@ -553,10 +553,10 @@ class Affiliates_Shortcodes {
 				$output .= '<thead>';
 				$output .= '<tr>';
 				$output .= '<th>';
-				$output .= __( 'Month', AFFILIATES_PLUGIN_DOMAIN );
+				$output .= __( 'Month', 'affiliates' );
 				$output .= '</th>';
 				$output .= '<th>';
-				$output .= __( 'Earnings', AFFILIATES_PLUGIN_DOMAIN );
+				$output .= __( 'Earnings', 'affiliates' );
 				$output .= '</th>';
 				$output .= '</tr>';
 				$output .= '</thead>';
@@ -585,7 +585,7 @@ class Affiliates_Shortcodes {
 	
 							// month & year
 							$output .= '<td>';
-							$output .= date_i18n( __( 'F Y', AFFILIATES_PLUGIN_DOMAIN ), strtotime( $from ) ); // translators: date format; month and year for earnings display
+							$output .= date_i18n( __( 'F Y', 'affiliates' ), strtotime( $from ) ); // translators: date format; month and year for earnings display
 							$output .= '</td>';
 	
 							// earnings
@@ -605,7 +605,7 @@ class Affiliates_Shortcodes {
 								$output .= '&nbsp;';
 								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', 2 ) ), $total, $currency_id );
 							} else {
-								$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', AFFILIATES_PLUGIN_DOMAIN ) );
+								$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', 'affiliates' ) );
 							}
 							$output .= '</td>';
 	
@@ -615,7 +615,7 @@ class Affiliates_Shortcodes {
 						}
 					} else {
 						$output .= '<td colspan="2">';
-						$output .= apply_filters( 'affiliates_earnings_display_total_no_earnings', __( 'There are no earnings yet.', AFFILIATES_PLUGIN_DOMAIN ) );
+						$output .= apply_filters( 'affiliates_earnings_display_total_no_earnings', __( 'There are no earnings yet.', 'affiliates' ) );
 						$output .= '</td>';
 					}
 				}
@@ -772,7 +772,7 @@ class Affiliates_Shortcodes {
 	 */
 	public static function affiliates_logout( $atts, $content = null ) {
 		if ( is_user_logged_in() ) {
-			return '<a href="' . esc_url( wp_logout_url() ) .'">' . __( 'Log out', AFFILIATES_PLUGIN_DOMAIN ) . '</a>';
+			return '<a href="' . esc_url( wp_logout_url() ) .'">' . __( 'Log out', 'affiliates' ) . '</a>';
 		} else {
 			return '';
 		}
@@ -859,9 +859,9 @@ class Affiliates_Shortcodes {
 									if ( $field['required'] && empty( $value ) && !( is_user_logged_in() && isset( $field['type'] ) && $field['type'] == 'password' ) ) {
 										$error = true;
 										$output .= '<div class="error">';
-										$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+										$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 										$output .= ' : ';
-										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
 										$output .= '</div>';
 									}
 									$registration_fields[$name]['value'] = $value;
@@ -875,9 +875,9 @@ class Affiliates_Shortcodes {
 											if ( $value !== $value2 ) {
 												$error = true;
 												$output .= '<div class="error">';
-												$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+												$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 												$output .= ' : ';
-												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', 'affiliates' ), $field['label'] );
 												$output .= '</div>';
 											}
 										}
@@ -903,7 +903,7 @@ class Affiliates_Shortcodes {
 									}
 								} else {
 									$output .= '<div class="updated">';
-									$output .= __( 'Saved', AFFILIATES_PLUGIN_DOMAIN );
+									$output .= __( 'Saved', 'affiliates' );
 									$output .= '</div>';
 								}
 							}
@@ -966,7 +966,7 @@ class Affiliates_Shortcodes {
 								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
-								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
+								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
 								$output .= sprintf(
 										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 										esc_attr( $type ),
@@ -985,7 +985,7 @@ class Affiliates_Shortcodes {
 					if ( $atts['edit'] === 'yes' ) {
 						$output .=  wp_nonce_field( 'save', 'affiliate-nonce', true, false );
 						$output .= '<div class="save">';
-						$output .= sprintf( '<input class="button" type="submit" name="save" value="%s" />', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+						$output .= sprintf( '<input class="button" type="submit" name="save" value="%s" />', __( 'Save', 'affiliates' ) );
 						$output .= '</div>';
 						$output .= '</div>';
 						$output .= '</form>';
