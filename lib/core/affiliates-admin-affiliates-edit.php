@@ -32,13 +32,13 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	global $wpdb;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	$affiliate = affiliates_get_affiliate( intval( $affiliate_id ) );
 	
 	if ( empty( $affiliate ) ) {
-		wp_die( __( 'No such affiliate.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'No such affiliate.', 'affiliates' ) );
 	}
 	
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
@@ -53,7 +53,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 			// user edit link
 			if ( current_user_can( 'edit_user', $affiliate_user->ID ) ) {
-				$affiliate_user_edit = sprintf( __( 'Edit %s', AFFILIATES_PLUGIN_DOMAIN ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
+				$affiliate_user_edit = sprintf( __( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
 			}
 
 			// user meta fields
@@ -99,7 +99,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="manage-affiliates">' .
 		'<div>' .
 			'<h1>' .
-				__( 'Edit an affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Edit an affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
 	
@@ -110,7 +110,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label first required">' .
 		'<span class="label">' .
-		__( 'Name', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Name', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="name-field" name="name-field" class="namefield" type="text" value="' . esc_attr( stripslashes( $name ) ) . '"/>' .
@@ -120,21 +120,21 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Email', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Email', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="email-field" name="email-field" class="emailfield" type="text" value="' . esc_attr( $email ) . '"/>' .
 		'</label>' .
 		' ' .
 		'<span class="description">' .
-		__( "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically.", AFFILIATES_PLUGIN_DOMAIN ) .
+		__( "If a valid <strong>Username</strong> is specified and no email is given, the user's email address will be used automatically.", 'affiliates' ) .
 		'</span>' .
 		'</div>' .
 
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Username', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Username', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="user-field" name="user-field" class="userfield" type="text" autocomplete="off" value="' . esc_attr( stripslashes( $user_login ) ) . '"/>' .
@@ -148,7 +148,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'From', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'From', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="from-date-field" name="from-date-field" class="datefield" type="text" value="' . esc_attr( $from_date ) . '"/>' .
@@ -158,7 +158,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Until', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Until', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="thru-date-field" name="thru-date-field" class="datefield" type="text" value="' . esc_attr( $thru_date ) . '"/>' .
@@ -169,10 +169,10 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-edit', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
 		'<input type="hidden" value="edit" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', 'affiliates' ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.edit
@@ -193,11 +193,11 @@ function affiliates_admin_affiliates_edit_submit() {
 	$result = true;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE],  'affiliates-edit' ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -213,7 +213,7 @@ function affiliates_admin_affiliates_edit_submit() {
 	}
 	
 	if ( empty( $affiliate ) ) {
-		wp_die( __( 'No such affiliate.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'No such affiliate.', 'affiliates' ) );
 	}
 	
 	$name = isset( $_POST['name-field'] ) ? $_POST['name-field'] : null;

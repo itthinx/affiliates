@@ -2,7 +2,7 @@
 /**
  * affiliates.php
  * 
- * Copyright (c) 2010-2015 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2010-2016 "kento" Karim Rahimpur www.itthinx.com
  * 
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
@@ -21,14 +21,14 @@
  * Plugin Name: Affiliates
  * Plugin URI: http://www.itthinx.com/plugins/affiliates
  * Description: The Affiliates plugin provides the right tools to maintain a partner referral program.
- * Version: 2.15.3
+ * Version: 2.15.4
  * Author: itthinx
  * Author URI: http://www.itthinx.com
  * Donate-Link: http://www.itthinx.com
  * License: GPLv3
  */
 if ( !defined( 'AFFILIATES_CORE_VERSION' ) ) {
-	define( 'AFFILIATES_CORE_VERSION', '2.15.3' );
+	define( 'AFFILIATES_CORE_VERSION', '2.15.4' );
 	define( 'AFFILIATES_PLUGIN_NAME', 'affiliates' );
 	define( 'AFFILIATES_FILE', __FILE__ );
 	define( 'AFFILIATES_PLUGIN_BASENAME', plugin_basename( AFFILIATES_FILE ) );

@@ -116,7 +116,7 @@ function affiliates_admin_print_scripts() {
 
 //	echo '
 //		<script type="text/javascript">
-//			var fooText = "' . __( 'Foo', AFFILIATES_PLUGIN_DOMAIN ) . '";
+//			var fooText = "' . __( 'Foo', 'affiliates' ) . '";
 //		</script>
 //		';
 }
@@ -582,7 +582,7 @@ add_action( 'init', 'affiliates_init' );
  * Loads the plugin's translations.
  */
 function affiliates_init() {
-	load_plugin_textdomain( AFFILIATES_PLUGIN_DOMAIN, null, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
+	load_plugin_textdomain( 'affiliates', null, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
 	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
 	}
@@ -1133,8 +1133,8 @@ function affiliates_update_referral( $referral_id, $attributes ) {
  */
 function affiliates_get_id_encodings() {
 	return array(
-		AFFILIATES_NO_ID_ENCODING => __( 'No encoding', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_MD5_ID_ENCODING => __( 'MD5', AFFILIATES_PLUGIN_DOMAIN )
+		AFFILIATES_NO_ID_ENCODING => __( 'No encoding', 'affiliates' ),
+		AFFILIATES_MD5_ID_ENCODING => __( 'MD5', 'affiliates' )
 	);
 }
 
@@ -1264,7 +1264,7 @@ function affiliates_admin_menu() {
 
 	// main
 	$page = add_menu_page(
-		__( 'Affiliates Overview', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Affiliates Overview', 'affiliates' ),
 		'Affiliates', // @todo translate after core bug 18857 has been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin',
@@ -1279,8 +1279,8 @@ function affiliates_admin_menu() {
 	// overview on affiliates-admin
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'Manage Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Manage Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Manage Affiliates', 'affiliates' ),
+		__( 'Manage Affiliates', 'affiliates' ),
 		AFFILIATES_ADMINISTER_AFFILIATES,
 		'affiliates-admin-affiliates',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_affiliates' )
@@ -1292,8 +1292,8 @@ function affiliates_admin_menu() {
 	// hits by date
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'Visits & Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Visits & Referrals', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Visits & Referrals', 'affiliates' ),
+		__( 'Visits & Referrals', 'affiliates' ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin-hits',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_hits' )
@@ -1305,8 +1305,8 @@ function affiliates_admin_menu() {
 	// hits by affiliate
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'Affiliates & Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Affiliates & Referrals', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Affiliates & Referrals', 'affiliates' ),
+		__( 'Affiliates & Referrals', 'affiliates' ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin-hits-affiliate',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_hits_affiliate' )
@@ -1318,8 +1318,8 @@ function affiliates_admin_menu() {
 	// referrals
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Referrals', 'affiliates' ),
+		__( 'Referrals', 'affiliates' ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin-referrals',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_referrals' )
@@ -1332,8 +1332,8 @@ function affiliates_admin_menu() {
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 		$page = add_submenu_page(
 			'affiliates-admin',
-			__( 'Totals', AFFILIATES_PLUGIN_DOMAIN ),
-			__( 'Totals', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Totals', 'affiliates' ),
+			__( 'Totals', 'affiliates' ),
 			AFFILIATES_ACCESS_AFFILIATES,
 			'affiliates-admin-totals',
 			apply_filters( 'affiliates_add_submenu_page_function', array( 'Affiliates_Totals', 'view' ) )
@@ -1346,8 +1346,8 @@ function affiliates_admin_menu() {
 	// settings
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'Affiliates Settings', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Settings', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Affiliates Settings', 'affiliates' ),
+		__( 'Settings', 'affiliates' ),
 		AFFILIATES_ADMINISTER_OPTIONS,
 		'affiliates-admin-settings',
 		apply_filters( 'affiliates_add_submenu_page_function', array( 'Affiliates_Settings', 'admin_settings' ) )
@@ -1359,8 +1359,8 @@ function affiliates_admin_menu() {
 	// user registration
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'User Registration', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'User Registration', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'User Registration', 'affiliates' ),
+		__( 'User Registration', 'affiliates' ),
 		AFFILIATES_ADMINISTER_OPTIONS,
 		'affiliates-admin-user-registration',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_user_registration' )
@@ -1372,8 +1372,8 @@ function affiliates_admin_menu() {
 	// add-ons
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Add-Ons', 'affiliates' ),
+		__( 'Add-Ons', 'affiliates' ),
 		AFFILIATES_ADMINISTER_OPTIONS,
 		'affiliates-admin-add-ons',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_add_ons' )
@@ -1392,8 +1392,8 @@ function affiliates_network_admin_menu() {
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-network.php';
 	$pages = array();
 	$page = add_menu_page(
-		__( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
-		__( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ),
+		__( 'Affiliates', 'affiliates' ),
+		__( 'Affiliates', 'affiliates' ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-network-admin',
 		array( 'Affiliates_Settings_Network', 'network_admin_settings' ),
@@ -1414,7 +1414,7 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 	$show_affiliates_help = false;
 
 	$title = '<h3>';
-	$title .= sprintf( '<a href="%s" target="_blank">%s</a>', esc_attr( 'http://www.itthinx.com/plugins/affiliates' ), __( 'Affiliates', AFFILIATES_PLUGIN_DOMAIN ) );
+	$title .= sprintf( '<a href="%s" target="_blank">%s</a>', esc_attr( 'http://www.itthinx.com/plugins/affiliates' ), __( 'Affiliates', 'affiliates' ) );
 	$title .= '</h3>';
 
 	$help = apply_filters( 'affiliates_help_tab_title', $title );
@@ -1422,47 +1422,47 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 	switch ( $screen_id ) {
 		case 'toplevel_page_affiliates-admin' :
 			$show_affiliates_help = true;
-			$help .= '<p>' . __( 'This screen offers an overview with basic statistical data.', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+			$help .= '<p>' . __( 'This screen offers an overview with basic statistical data.', 'affiliates' ) . '</p>';
 			$help .= '<ul>';
-			$help .= '<li>' . __( '<em>From operative affiliates:</em> includes affiliates that are currently active. This excludes affiliates whose dates are not currently valid as well as those that have been deleted.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
-			$help .= '<li>' . __( '<em>From operative and non-operative affiliates:</em> excludes deleted affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
-			$help .= '<li>' . __( '<em>All time</em> includes data from any affiliates, including deleted affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
+			$help .= '<li>' . __( '<em>From operative affiliates:</em> includes affiliates that are currently active. This excludes affiliates whose dates are not currently valid as well as those that have been deleted.', 'affiliates' ) . '</li>';
+			$help .= '<li>' . __( '<em>From operative and non-operative affiliates:</em> excludes deleted affiliates.', 'affiliates' ) . '</li>';
+			$help .= '<li>' . __( '<em>All time</em> includes data from any affiliates, including deleted affiliates.', 'affiliates' ) . '</li>';
 			$help .= '<ul>';
 			$help .= '<ul>';
-			$help .= '<li>' . __( '<em>Hits</em> are HTTP requests for affiliate links.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
-			$help .= '<li>' . __( '<em>Visits</em> are unique and daily requests for affiliate links.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
-			$help .= '<li>' . __( '<em>Referrals</em> are recording commissions and referral data.', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
+			$help .= '<li>' . __( '<em>Hits</em> are HTTP requests for affiliate links.', 'affiliates' ) . '</li>';
+			$help .= '<li>' . __( '<em>Visits</em> are unique and daily requests for affiliate links.', 'affiliates' ) . '</li>';
+			$help .= '<li>' . __( '<em>Referrals</em> are recording commissions and referral data.', 'affiliates' ) . '</li>';
 			$help .= '</ul>';
 			$help .= '<p>';
-			$help .= __( 'The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals.', AFFILIATES_PLUGIN_DOMAIN );
-			$help .= sprintf( __( 'To use it, place the widget in one of your <a href="%s">widget areas</a>.', AFFILIATES_PLUGIN_DOMAIN ), get_admin_url( null, 'widgets.php' ) );
+			$help .= __( 'The Affiliates plugin provides the <em>Affiliates Contact</em> widget that can be used to record lead referrals.', 'affiliates' );
+			$help .= sprintf( __( 'To use it, place the widget in one of your <a href="%s">widget areas</a>.', 'affiliates' ), get_admin_url( null, 'widgets.php' ) );
 			$help .= '</p>';
 
 			$help .= '<p>';
-			$help .= __( 'Note that <em>deleted</em> affiliates are not literally deleted but marked as such so that data that has been collected will still be accesible.', AFFILIATES_PLUGIN_DOMAIN );
+			$help .= __( 'Note that <em>deleted</em> affiliates are not literally deleted but marked as such so that data that has been collected will still be accesible.', 'affiliates' );
 			$help .= '</p>';
 			break;
 		case 'affiliates_page_affiliates-admin-affiliates':
 			$show_affiliates_help = true;
 			$help .=
 				'<p>' .
-				__( 'Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates.', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> affiliates.', 'affiliates' ) .
 				'</p>';
 			$help .=
 				'<ul>' .
 				'<li>' .
 				'<p class="affiliate-link">' .
-				__( 'Affiliate link', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Affiliate link', 'affiliates' ) .
 				'<p/>' .
 				'<p>' .
-				__( 'This link uses a parameter in the URL to record visits you receive through your affiliates.', AFFILIATES_PLUGIN_DOMAIN ) . ' ' .
+				__( 'This link uses a parameter in the URL to record visits you receive through your affiliates.', 'affiliates' ) . ' ' .
 				'<br/>' .
-				sprintf( __( 'You may also append the ?%s=... part to links to your posts.', AFFILIATES_PLUGIN_DOMAIN ), $pname ) .
+				sprintf( __( 'You may also append the ?%s=... part to links to your posts.', 'affiliates' ), $pname ) .
 				'</p>' .
 				'</li>' .
 				'</ul>' .
 				'<p>' .
-				__( 'Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate.', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Once a visitor has landed on your site through an affiliate link, referrals may be recorded and attributed to the affiliate.', 'affiliates' ) .
 				'</p>';
 			break;
 		case 'affiliates_page_affiliates-admin-hits' :
@@ -1509,7 +1509,7 @@ function affiliates_help_tab_footer( $render = true ) {
 		sprintf(
 			'<a href="%s">%s</a>',
 			esc_attr( 'http://docs.itthinx.com/document/affiliates/' ),
-			esc_html( __( 'Online documentation', AFFILIATES_PLUGIN_DOMAIN ) )
+			esc_html( __( 'Online documentation', 'affiliates' ) )
 		) .
 		'</div>';
 	$footer = apply_filters( 'affiliates_help_tab_footer', $footer );
@@ -1528,10 +1528,10 @@ function affiliates_help_tab_footer( $render = true ) {
 function affiliates_footer( $render = true ) {
 	$footer = '<div class="affiliates-footer">' .
 		'<p>' .
-		__( 'Thank you for using the <a style="text-decoration:none;" href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a> plugin by <a style="text-decoration:none;" href="http://www.itthinx.com" target="_blank">itthinx</a>.', AFFILIATES_PLUGIN_DOMAIN ) .
+		__( 'Thank you for using the <a style="text-decoration:none;" href="http://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a> plugin by <a style="text-decoration:none;" href="http://www.itthinx.com" target="_blank">itthinx</a>.', 'affiliates' ) .
 		' ' .
 		sprintf(
-			__( 'Please give it a <a style="text-decoration:none;" href="%s">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating!', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Please give it a <a style="text-decoration:none;" href="%s">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating!', 'affiliates' ),
 			'http://wordpress.org/support/view/plugin-reviews/affiliates?filter=5#postform'
 		) .
 		'</p>' .
@@ -1555,7 +1555,7 @@ function affiliates_footer( $render = true ) {
 function affiliates_donate( $render = true, $small = false ) {
 	$donate = sprintf(
 		'<a class="button" href="http://www.itthinx.com/shop/">%s</a>',
-		__( 'Get Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN )
+		__( 'Get Affiliates Pro', 'affiliates' )
 	);
 	if ( $render ) {
 		echo $donate;

@@ -77,10 +77,10 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 		$allow_auto_coupons = get_option( 'aff_allow_auto_coupons', 'no' ) == 'yes';
 		$default_status  = get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 		$status_descriptions = array(
-			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ),
+			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 		);
 		$status_select = "<select name='status'>";
 		foreach ( $status_descriptions as $status_key => $status_value ) {
@@ -96,93 +96,93 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 		echo
 			'<form action="" name="options" method="post">' .
 				'<div>' .
-				'<h3>' . __( 'Referral timeout', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+				'<h3>' . __( 'Referral timeout', 'affiliates' ) . '</h3>' .
 				'<p>' .
 				'<label>' .
 				'<input class="timeout" name="timeout" type="text" value="' . esc_attr( intval( $timeout ) ) . '" />' .
 				' ' .
-				__( 'Days', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Days', 'affiliates' ) .
 				'</label>' .
 				'</p>' .
 				'<p class="description">' .
-				__( 'This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid.', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid.', 'affiliates' ) .
 				'</p>' .
 				'<p>' .
-				__( 'If you enter 0, referrals will only be valid until the visitor closes the browser (session).', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'If you enter 0, referrals will only be valid until the visitor closes the browser (session).', 'affiliates' ) .
 				'</p>' .
 				'<p>' .
 				sprintf(
-					__( 'The default value is %d. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until %d days after she or he clicked that affiliate link.', AFFILIATES_PLUGIN_DOMAIN ),
+					__( 'The default value is %d. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until %d days after she or he clicked that affiliate link.', 'affiliates' ),
 					AFFILIATES_COOKIE_TIMEOUT_DAYS,
 					AFFILIATES_COOKIE_TIMEOUT_DAYS
 				) .
 				'</p>';
 
 		echo
-			'<h3>' . __( 'Direct referrals', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<h3>' . __( 'Direct referrals', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="use-direct" type="checkbox" ' . ( $use_direct ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
-			__( 'Store direct referrals', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Store direct referrals', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct.', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Default referral status', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<h3>' . __( 'Default referral status', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			$status_select .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Duplicate referrals', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<h3>' . __( 'Duplicate referrals', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="duplicates" type="checkbox" ' . ( $duplicates ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
-			__( 'Allow duplicate referrals', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow duplicate referrals', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'Allow to record duplicate referrals for the same affiliate (based on amount, currency, internal type and reference).', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow to record duplicate referrals for the same affiliate (based on amount, currency, internal type and reference).', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Auto-referrals', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<h3>' . __( 'Auto-referrals', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			sprintf( '<input type="checkbox" name="allow_auto" %s" />', $allow_auto == 'yes' ? ' checked="checked" ' : '' ) .
 			' ' .
-			__( 'Allow auto-referrals', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow auto-referrals', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'If this option is enabled, affiliates are allowed to refer themselves.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'If this option is enabled, affiliates are allowed to refer themselves.', 'affiliates' ) .
 			' ' .
-			__( 'This option allows an affiliate to earn a commission on a transaction that involves the affiliate as a customer or lead.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'This option allows an affiliate to earn a commission on a transaction that involves the affiliate as a customer or lead.', 'affiliates' ) .
 			' ' .
-			__( 'Auto-referrals are identified as such, when a transaction is processed for the same user or user email as the affiliate’s, or when it involves the use of a coupon assigned to the affiliate.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Auto-referrals are identified as such, when a transaction is processed for the same user or user email as the affiliate’s, or when it involves the use of a coupon assigned to the affiliate.', 'affiliates' ) .
 			'</p>' .
 			'<p>' .
 			'<label>' .
 			sprintf( '<input type="checkbox" name="allow_auto_coupons" %s" />', $allow_auto_coupons ? ' checked="checked" ' : '' ) .
 			' ' .
-			__( 'Allow auto-coupons', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow auto-coupons', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'Allow affiliates to apply coupons that are assigned to them.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow affiliates to apply coupons that are assigned to them.', 'affiliates' ) .
 			' ' .
-			__( 'Verification is supported for coupons managed through WooCommerce.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Verification is supported for coupons managed through WooCommerce.', 'affiliates' ) .
 			'</p>';
 
 		echo
 			'<p>' .
 			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) .
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
 			'</p>' .
 			'</div>' .
 			'</form>';

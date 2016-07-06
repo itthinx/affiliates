@@ -56,11 +56,11 @@ class Affiliates_Settings {
 		self::$sections = apply_filters(
 			'affiliates_settings_sections',
 			array(
-				'general'      => __( 'General', AFFILIATES_PLUGIN_DOMAIN ),
-				'registration' => __( 'Registration', AFFILIATES_PLUGIN_DOMAIN ),
-				'pages'        => __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ),
-				'referrals'    => __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-				'integrations' => __( 'Integrations', AFFILIATES_PLUGIN_DOMAIN )
+				'general'      => __( 'General', 'affiliates' ),
+				'registration' => __( 'Registration', 'affiliates' ),
+				'pages'        => __( 'Pages', 'affiliates' ),
+				'referrals'    => __( 'Referrals', 'affiliates' ),
+				'integrations' => __( 'Integrations', 'affiliates' )
 			)
 		);
 	}
@@ -99,18 +99,18 @@ class Affiliates_Settings {
 		echo '<p>';
 		echo
 			sprintf(
-				__( '<strong>Welcome to %s</strong>', AFFILIATES_PLUGIN_DOMAIN ),
+				__( '<strong>Welcome to %s</strong>', 'affiliates' ),
 				ucwords( str_replace('-', ' ', AFFILIATES_PLUGIN_NAME ) )
 			);
 		echo '</p>';
 
 		echo '<p>';
-		echo __( 'Please review the following suggested steps to set up the affiliate system.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Please review the following suggested steps to set up the affiliate system.', 'affiliates' );
 		echo ' ';
-		echo __( 'This is intended as a guidance and you can safely hide this message when finished.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'This is intended as a guidance and you can safely hide this message when finished.', 'affiliates' );
 		echo ' ';
 		echo sprintf(
-			__( 'Use the <a href="%s">Settings</a> section to review or adjust the system anytime.', AFFILIATES_PLUGIN_DOMAIN ),
+			__( 'Use the <a href="%s">Settings</a> section to review or adjust the system anytime.', 'affiliates' ),
 			admin_url( 'admin.php?page=affiliates-admin-settings' )
 		);
 		echo '</p>';
@@ -121,22 +121,22 @@ class Affiliates_Settings {
 				'general' => sprintf(
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Review General Settings', AFFILIATES_PLUGIN_DOMAIN )
+					__( 'Review General Settings', 'affiliates' )
 				),
 				'registration' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Enable Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN )
+					__( 'Enable Affiliate Registration', 'affiliates' )
 				),
 				'pages' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'pages', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Create an Affiliate Area', AFFILIATES_PLUGIN_DOMAIN )
+					__( 'Create an Affiliate Area', 'affiliates' )
 				),
 				'integrations' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
 					add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Install an Integration', AFFILIATES_PLUGIN_DOMAIN )
+					__( 'Install an Integration', 'affiliates' )
 				)
 			)
 		);
@@ -151,7 +151,7 @@ class Affiliates_Settings {
 				'aff_setup_hide',
 				'aff_setup_nonce'
 			),
-			__( 'Hide this', AFFILIATES_PLUGIN_DOMAIN )
+			__( 'Hide this', 'affiliates' )
 		);
 		echo '</p>';
 		echo '</div>';
@@ -164,7 +164,7 @@ class Affiliates_Settings {
 		global $wp, $wpdb, $affiliates_options, $wp_roles;
 
 		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 
 		wp_enqueue_style( 'affiliates-admin-settings' );
@@ -181,7 +181,7 @@ class Affiliates_Settings {
 
 		echo
 			'<h1>' .
-			__( 'Settings', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Settings', 'affiliates' ) .
 			'</h1>';
 
 		$section_links = array();
@@ -234,7 +234,7 @@ class Affiliates_Settings {
 	 */
 	protected static function settings_saved_notice() {
 		echo '<div class="updated">';
-		echo __( 'Settings saved.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Settings saved.', 'affiliates' );
 		echo '</div>';
 	}
 

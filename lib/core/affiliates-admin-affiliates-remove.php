@@ -32,13 +32,13 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 	global $wpdb;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	$affiliate = affiliates_get_affiliate( intval( $affiliate_id ) );
 	
 	if ( empty( $affiliate ) ) {
-		wp_die( __( 'No such affiliate.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'No such affiliate.', 'affiliates' ) );
 	}
 	
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
@@ -50,7 +50,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		$affiliate_user = get_user_by( 'id', intval( $affiliate_user_id ) );
 		if ( $affiliate_user ) {
 			if ( current_user_can( 'edit_user',  $affiliate_user->ID ) ) {
-				$affiliate_user_edit = sprintf( __( 'Edit %s', AFFILIATES_PLUGIN_DOMAIN ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
+				$affiliate_user_edit = sprintf( __( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
 			} else {
 				$affiliate_user_edit = $affiliate_user->user_login;
 			}
@@ -65,24 +65,24 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		'<div class="manage-affiliates">' .
 		'<div>' .
 			'<h1>' .
-				__( 'Remove an affiliate', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Remove an affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
 		'<form id="remove-affiliate" action="' . esc_url( $current_url ) . '" method="post">' .
 		'<div class="affiliate remove">' .
 		'<input id="affiliate-id-field" name="affiliate-id-field" type="hidden" value="' . esc_attr( intval( $affiliate_id ) ) . '"/>' .
 		'<ul>' .
-		'<li>' . sprintf( __( 'Name : %s', AFFILIATES_PLUGIN_DOMAIN ), wp_filter_kses( $affiliate['name'] ) ) . '</li>' .
-		'<li>' . sprintf( __( 'Email : %s', AFFILIATES_PLUGIN_DOMAIN ), wp_filter_kses( $affiliate['email'] ) ) . '</li>' .
-		'<li>' . sprintf( __( 'Username : %s', AFFILIATES_PLUGIN_DOMAIN ), wp_filter_kses( $affiliate_user_edit ) ) . '</li>' .
-		'<li>' . sprintf( __( 'From : %s', AFFILIATES_PLUGIN_DOMAIN ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
-		'<li>' . sprintf( __( 'Until : %s', AFFILIATES_PLUGIN_DOMAIN ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
+		'<li>' . sprintf( __( 'Name : %s', 'affiliates' ), wp_filter_kses( $affiliate['name'] ) ) . '</li>' .
+		'<li>' . sprintf( __( 'Email : %s', 'affiliates' ), wp_filter_kses( $affiliate['email'] ) ) . '</li>' .
+		'<li>' . sprintf( __( 'Username : %s', 'affiliates' ), wp_filter_kses( $affiliate_user_edit ) ) . '</li>' .
+		'<li>' . sprintf( __( 'From : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
+		'<li>' . sprintf( __( 'Until : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
 		'</ul> ' .
 		wp_nonce_field( 'affiliates-remove', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" value="' . __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . __( 'Remove', 'affiliates' ) . '"/>' .
 		'<input type="hidden" value="remove" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', 'affiliates' ) . '</a>' .
 		'</div>' .
 		'</div>' . // .affiliate.remove
 		'</form>' .
@@ -102,11 +102,11 @@ function affiliates_admin_affiliates_remove_submit() {
 	$result = false;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-remove' ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );

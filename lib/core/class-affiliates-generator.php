@@ -83,12 +83,12 @@ class Affiliates_Generator {
 			'ping_status'    => 'closed',
 			'post_content'   => $affiliate_area_page_content,
 			'post_status'    => 'publish',
-			'post_title'     => __( 'Affiliate Area', AFFILIATES_PLUGIN_DOMAIN ),
+			'post_title'     => __( 'Affiliate Area', 'affiliates' ),
 			'post_type'      => 'page'
 		);
 		$post_id = wp_insert_post( $postarr );
 		if ( $post_id instanceof WP_Error ) {
-			$affiliates_admin_messages[] = '<div class="error">' . __( sprintf( 'The affiliate area page could not be created. Error: %s', $post_id->get_error_message() ), AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+			$affiliates_admin_messages[] = '<div class="error">' . __( sprintf( 'The affiliate area page could not be created. Error: %s', $post_id->get_error_message() ), 'affiliates' ) . '</div>';
 		} else {
 			$post_ids[] = $post_id;
 		}
