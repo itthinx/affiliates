@@ -103,6 +103,15 @@ a.removefromaffiliate {
 	background-color: #edd;
 }
 
+.affiliates-overview th.check-column {
+	padding: 10px 0 0 3px;
+}
+
+.affiliates-overview .page-options.right {
+	float:right;
+	text-align: right;
+}
+
 /* overviews */
 .affiliates-overview .tablenav-pages,
 .hits-overview,
