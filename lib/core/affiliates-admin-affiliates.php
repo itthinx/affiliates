@@ -30,6 +30,7 @@ define( 'AFFILIATES_AFFILIATES_PER_PAGE', 10 );
 define( 'AFFILIATES_ADMIN_AFFILIATES_NONCE_1', 'affiliates-nonce-1');
 define( 'AFFILIATES_ADMIN_AFFILIATES_NONCE_2', 'affiliates-nonce-2');
 define( 'AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE', 'affiliates-filter-nonce' );
+define( 'AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE', 'affiliates-action-nonce' );
 
 require_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-add.php');
@@ -78,6 +79,30 @@ function affiliates_admin_affiliates() {
 				break;
 			case 'remove' :
 				affiliates_admin_affiliates_remove_submit();
+				break;
+			// bulk actions on affiliates: remove affiliates
+			case 'affiliate-action' :
+				if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+					$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
+					$bulk_action = null;
+					if ( isset( $_POST['bulk'] ) ) {
+						$bulk_action = $_POST['bulk-action'];
+					}
+					if ( is_array( $affiliate_ids ) && ( $bulk_action !== null ) ) {
+						foreach ( $affiliate_ids as $affiliate_id ) {
+							switch ( $bulk_action ) {
+								case 'remove-affiliate' :
+									$bulk_confirm = isset( $_POST['confirm'] ) ? true : false;
+									if ( $bulk_confirm ) {
+										affiliates_admin_affiliates_bulk_remove_submit();
+									} else {
+										return affiliates_admin_affiliates_bulk_remove();
+									}
+									break;
+							}
+						}
+					}
+				}
 				break;
 		}
 	} else if ( isset ( $_GET['action'] ) ) {
@@ -459,7 +484,7 @@ function affiliates_admin_affiliates() {
 		'</div>';
 
 	$output .= '
-		<div class="page-options">
+		<div class="page-options right">
 			<form id="setrowcount" action="" method="post">
 				<div>
 					<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
@@ -483,13 +508,28 @@ function affiliates_admin_affiliates() {
 		$output .= '</div>';
 		$output .= '</form>';
 	}
-					
+
+	$output .= '<form id="affiliates-action" method="post" action="">';
+
+	$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE, true, false );
+	$output .= '<div class="affiliates-bulk-container">';
+	$output .= '<select class="bulk-action" name="bulk-action">';
+	$output .= '<option selected="selected" value="-1">' . esc_html( __( 'Bulk Actions', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="remove-affiliate">' . esc_html( __( 'Remove affiliate', 'affiliates' ) ) . '</option>';
+	$output .= '</select>';
+	$output .= sprintf( '<input class="button" type="submit" name="bulk" value="%s" />', esc_attr( __( 'Apply', 'affiliates' ) ) );
+	$output .= '<input type="hidden" name="action" value="affiliate-action"/>';
+	$output .= '</div>';
+
 	$output .= '
 		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
 		<thead>
 			<tr>
 			';
-	
+
+	$output .= '<th id="cb" class="manage-column column-cb check-column" scope="col"><input type="checkbox"></th>';
+
+	$num_columns = 0;
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
 			'orderby' => $key,
@@ -506,8 +546,10 @@ function affiliates_admin_affiliates() {
 			$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
 		}
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
+		$num_columns++;
 	}
-	
+	$num_columns++; // ID
+
 	$output .= '</tr>
 		</thead>
 		<tbody>
@@ -533,6 +575,11 @@ function affiliates_admin_affiliates() {
 			
 			
 			$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+			
+			$output .= '<th class="check-column">';
+			$output .= '<input type="checkbox" value="' . esc_attr( $result->affiliate_id ) . '" name="affiliate_ids[]"/>';
+			$output .= '</th>';
+			
 			$output .= "<td class='affiliate-id'>";
 			if ( affiliates_encode_affiliate_id( $result->affiliate_id ) != $result->affiliate_id ) {
 				$output .= '<span class="encoded-hint" title="' . affiliates_encode_affiliate_id( $result->affiliate_id ) . '">' . $result->affiliate_id . '</span>';
@@ -595,7 +642,7 @@ function affiliates_admin_affiliates() {
 				$totals[AFFILIATES_REFERRAL_STATUS_ACCEPTED] = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 				$totals[AFFILIATES_REFERRAL_STATUS_PENDING]  = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_PENDING );
 				$totals[AFFILIATES_REFERRAL_STATUS_REJECTED] = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_REJECTED );
-				$output .= '<td colspan="' . count( $column_display_names ) . '">';
+				$output .= '<td colspan="' . $num_columns . '">';
 				$output .= '<table class="affiliate-referral-totals">';
 				$output .= '<thead>';
 				$output .= '<tr>';
@@ -646,12 +693,14 @@ function affiliates_admin_affiliates() {
 			}
 		}
 	} else {
-		$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="' . $num_columns . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 	}
-		
+
 	$output .= '</tbody>';
 	$output .= '</table>';
-					
+
+	$output .= '</form>'; // #affiliates-action
+
 	if ( $paginate ) {
 	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
