@@ -371,5 +371,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.5 =
-* Added affiliates delete bulk option.
-* For WordPress translation : Added Text Domain and Domain Path header tags.
+* This release adds a bulk deletion feature for affiliate management and includes additional header tags used for translation.
