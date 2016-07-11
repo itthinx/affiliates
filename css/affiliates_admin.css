@@ -102,9 +102,12 @@ a.removefromaffiliate {
 .affiliates-overview .even.deleted.inoperative {
 	background-color: #edd;
 }
-
 .affiliates-overview th.check-column {
-	padding: 10px 0 0 3px;
+	vertical-align: top;
+	padding: 4px 0 0 3px;
+}
+.affiliates-overview th.column-cb.check-column {
+	vertical-align: middle;
 }
 
 .affiliates-overview .page-options.right {
