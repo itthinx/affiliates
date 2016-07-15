@@ -730,7 +730,7 @@ class Affiliates_Shortcodes {
 			))) {
 				if ( strlen( $content ) == 0 ) {
 					$url = get_bloginfo( 'url' );
-					if ( $current !== null ) {
+					if ( $current === 'yes' ) {
 						$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 						$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 						$url = remove_query_arg( $pname, $current_url );
