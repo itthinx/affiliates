@@ -700,19 +700,25 @@ class Affiliates_Shortcodes {
 
 		$options = shortcode_atts(
 			array(
-				'current' => 'no'
+				'url'     => ''
 			),
 			$atts
 		);
 		extract( $options );
 
-		$current = strtolower( $current );
-		switch( $current ) {
-			case 'yes' :
-			case 'no' :
+		switch( $url ) {
+			case '' :
+				$url = get_bloginfo( 'url' );
+				break;
+			case 'current' :
+				$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$url = remove_query_arg( $pname, $current_url );
+				break;
+			case 'permalink' :
+				$url = get_permalink();
 				break;
 			default :
-				$current = 'no';
 		}
 
 		remove_shortcode( 'affiliates_url' );
@@ -729,12 +735,6 @@ class Affiliates_Shortcodes {
 				intval( $user_id )
 			))) {
 				if ( strlen( $content ) == 0 ) {
-					$url = get_bloginfo( 'url' );
-					if ( $current === 'yes' ) {
-						$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-						$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-						$url = remove_query_arg( $pname, $current_url );
-					}
 				} else {
 					// wp_texturize() has already been applied to $content and
 					// it indiscriminately replaces ampersands with the HTML
