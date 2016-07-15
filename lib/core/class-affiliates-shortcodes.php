@@ -1037,7 +1037,7 @@ class Affiliates_Shortcodes {
 		$output = "";
 		$options = shortcode_atts(
 			array(
-				'key'  => "",
+				'key'  => '',
 				'filter'  => 'raw'
 			),
 			$atts
