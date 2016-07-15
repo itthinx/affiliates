@@ -700,7 +700,7 @@ class Affiliates_Shortcodes {
 
 		$options = shortcode_atts(
 			array(
-				'url'     => ''
+				'url' => ''
 			),
 			$atts
 		);
@@ -725,7 +725,7 @@ class Affiliates_Shortcodes {
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_url', array( __CLASS__, 'affiliates_url' ) );
 
-		$output = "";
+		$output = '';
 		$user_id = get_current_user_id();
 		if ( $user_id && affiliates_user_is_affiliate( $user_id ) ) {
 			$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -734,8 +734,8 @@ class Affiliates_Shortcodes {
 				"SELECT $affiliates_users_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = 'active'",
 				intval( $user_id )
 			))) {
-				if ( strlen( $content ) == 0 ) {
-				} else {
+				$content = trim( $content );
+				if ( strlen( $content ) > 0 ) {
 					// wp_texturize() has already been applied to $content and
 					// it indiscriminately replaces ampersands with the HTML
 					// entity &#038; - we need to undo this so path separators
