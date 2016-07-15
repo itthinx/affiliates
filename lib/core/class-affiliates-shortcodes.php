@@ -1034,25 +1034,16 @@ class Affiliates_Shortcodes {
 	 */
 	public static function affiliates_bloginfo( $atts, $content = null ) {
 
-		$output = "";
+		$output = '';
 		$options = shortcode_atts(
 			array(
-				'key'     => '',
-				'filter'  => 'esc_html'
+				'key' => ''
 			),
 			$atts
 		);
 		extract( $options );
 
-		switch( $filter ) {
-			case 'raw' :
-			case 'esc_html' :
-				break;
-			default :
-				$filter = 'esc_html';
-		}
-
-		return get_bloginfo( $key, $filter );
+		return esc_html( get_bloginfo( $key ) );
 	}
 }
 Affiliates_Shortcodes::init();
