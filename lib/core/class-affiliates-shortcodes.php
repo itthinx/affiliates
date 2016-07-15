@@ -1037,12 +1037,20 @@ class Affiliates_Shortcodes {
 		$output = "";
 		$options = shortcode_atts(
 			array(
-				'key'  => '',
-				'filter'  => 'raw'
+				'key'     => '',
+				'filter'  => 'esc_html'
 			),
 			$atts
 		);
 		extract( $options );
+
+		switch( $filter ) {
+			case 'raw' :
+			case 'esc_html' :
+				break;
+			default :
+				$filter = 'esc_html';
+		}
 
 		return get_bloginfo( $key, $filter );
 	}
