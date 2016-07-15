@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.5.3
-Stable tag: 2.15.5
+Stable tag: 2.15.6
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,6 +340,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.15.6 =
+* Added the [affiliates_bloginfo] shortcode.
+* Extended the functionality provided by the [affiliates_url] shortcode adding the 'current' attribute for get the current page url.
+
 = 2.15.5 =
 * Added affiliates delete bulk option.
 * For WordPress translation : Added Text Domain and Domain Path header tags.
@@ -370,5 +374,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.15.5 =
-* This release adds a bulk deletion feature for affiliate management and includes additional header tags used for translation.
+= 2.15.6 =
+* This release adds new and extends existing shortcodes.
