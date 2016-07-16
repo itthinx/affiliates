@@ -50,6 +50,7 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_logout', array( __CLASS__, 'affiliates_logout' ) );
 		add_shortcode( 'affiliates_fields', array( __CLASS__, 'affiliates_fields' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'wp_enqueue_scripts' ) );
+		add_shortcode( 'affiliates_bloginfo', array( __CLASS__, 'affiliates_bloginfo' ) );
 	}
 
 	/**
@@ -695,13 +696,36 @@ class Affiliates_Shortcodes {
 	 * @param string $content (is not used)
 	 */
 	public static function affiliates_url( $atts, $content = null ) {
-		global $wpdb;
+		global $wpdb, $wp;
+
+		$options = shortcode_atts(
+			array(
+				'url' => ''
+			),
+			$atts
+		);
+		extract( $options );
+
+		switch( $url ) {
+			case '' :
+				$url = get_bloginfo( 'url' );
+				break;
+			case 'current' :
+				$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$url = remove_query_arg( $pname, $current_url );
+				break;
+			case 'permalink' :
+				$url = get_permalink();
+				break;
+			default :
+		}
 
 		remove_shortcode( 'affiliates_url' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_url', array( __CLASS__, 'affiliates_url' ) );
 
-		$output = "";
+		$output = '';
 		$user_id = get_current_user_id();
 		if ( $user_id && affiliates_user_is_affiliate( $user_id ) ) {
 			$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -710,22 +734,21 @@ class Affiliates_Shortcodes {
 				"SELECT $affiliates_users_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = 'active'",
 				intval( $user_id )
 			))) {
-				if ( strlen( $content ) == 0 ) {
-					$base_url = get_bloginfo( 'url' );
-				} else {
+				$content = trim( $content );
+				if ( strlen( $content ) > 0 ) {
 					// wp_texturize() has already been applied to $content and
 					// it indiscriminately replaces ampersands with the HTML
 					// entity &#038; - we need to undo this so path separators
 					// are not messed up. Note that it does that even though we
 					// have indicated to exclude affiliates_url via the
 					// no_texturize_shortcodes filter.
-					$base_url = trim( $content );
-					$base_url = str_replace( '&#038;', '&', $base_url );
-					$base_url = strip_tags( $base_url );
-					$base_url = preg_replace('/\r|\n/', '', $base_url );
-					$base_url = trim( $base_url );
+					$url = trim( $content );
+					$url = str_replace( '&#038;', '&', $url );
+					$url = strip_tags( $url );
+					$url = preg_replace('/\r|\n/', '', $url );
+					$url = trim( $url );
 				}
-				$output .= affiliates_get_affiliate_url( $base_url, $affiliate_id );
+				$output .= affiliates_get_affiliate_url( $url, $affiliate_id );
 			}
 		}
 		return $output;
@@ -998,6 +1021,29 @@ class Affiliates_Shortcodes {
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * Bloginfo shortcode - renders the blog info.
+	 * 
+	 * key - Site info to retrieve. Default empty (site name).
+	 * filter - How to filter what is retrieved.
+	 * 
+	 * @param array $atts attributes
+	 * @param string $content not used
+	 */
+	public static function affiliates_bloginfo( $atts, $content = null ) {
+
+		$output = '';
+		$options = shortcode_atts(
+			array(
+				'key' => ''
+			),
+			$atts
+		);
+		extract( $options );
+
+		return esc_html( get_bloginfo( $key ) );
 	}
 }
 Affiliates_Shortcodes::init();
