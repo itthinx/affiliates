@@ -2,7 +2,7 @@
 
 = 2.15.6 =
 * Added the [affiliates_bloginfo] shortcode.
-* Extended the functionality provided by the [affiliates_url] shortcode adding the 'current' attribute for get the current page url.
+* Extended the functionality provided by the [affiliates_url] shortcode adding the 'url' attribute.
 
 = 2.15.5 =
 * Added affiliates delete bulk option.
