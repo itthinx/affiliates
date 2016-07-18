@@ -2,6 +2,7 @@
 
 = 2.15.7 =
 * Added the [affiliates_user] shortcode which allows to render user meta data info if the user is an affiliate.
+* Updated the Spanish translation.
 
 = 2.15.6 =
 * Added the [affiliates_bloginfo] shortcode.

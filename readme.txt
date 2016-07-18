@@ -342,6 +342,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.15.7 =
 * Added the [affiliates_user] shortcode which allows to render user meta data info if the user is an affiliate.
+* Updated the Spanish translation.
 
 = 2.15.6 =
 * Added the [affiliates_bloginfo] shortcode.
@@ -378,4 +379,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.7 =
-* Added the [affiliates_user] shortcode which allows to render user meta data info if the user is an affiliate.
+* This release adds a new shortcode [affiliates_user] which allows to render user meta data for affiliates and updates the Spanish translation.
