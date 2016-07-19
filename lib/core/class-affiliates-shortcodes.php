@@ -51,6 +51,7 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_fields', array( __CLASS__, 'affiliates_fields' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'wp_enqueue_scripts' ) );
 		add_shortcode( 'affiliates_bloginfo', array( __CLASS__, 'affiliates_bloginfo' ) );
+		add_shortcode( 'affiliates_user_meta', array( __CLASS__, 'affiliates_user_meta' ) );
 	}
 
 	/**
@@ -1044,6 +1045,35 @@ class Affiliates_Shortcodes {
 		extract( $options );
 
 		return esc_html( get_bloginfo( $key ) );
+	}
+
+	/**
+	 * affiliates_user shortcode - renders user meta of the current user.
+	 *
+	 * key - User meta info to retrieve. Default empty.
+	 *
+	 * @param array $atts attributes
+	 * @param string $content not used
+	 */
+	public static function affiliates_user_meta( $atts, $content = null ) {
+
+		$output = "";
+		$options = shortcode_atts(
+			array(
+				'key'  => ''
+			),
+			$atts
+		);
+		extract( $options );
+
+		$output = '';
+		if ( is_user_logged_in() && ( $key !== '' ) ) {
+			if ( $user_id = get_current_user_id() ) {
+				$output = get_user_meta( $user_id, $key, true );
+			}
+		}
+	
+		return esc_html( $output );
 	}
 }
 Affiliates_Shortcodes::init();
