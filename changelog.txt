@@ -1,7 +1,7 @@
 == Affiliates - Changelog ==
 
 = 2.15.7 =
-* Added the [affiliates_user] shortcode which allows to render user meta data info if the user is an affiliate.
+* Added the [affiliates_user_meta] shortcode which allows to render user meta data.
 * Updated the Spanish translation.
 
 = 2.15.6 =
