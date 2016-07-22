@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-22 09:41+0200\n"
-"PO-Revision-Date: 2016-07-22 09:41+0200\n"
+"PO-Revision-Date: 2016-07-22 10:41+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -604,7 +604,7 @@ msgstr "Basisbetrag"
 
 #: lib/core/affiliates-admin-affiliates.php:517
 msgid "Bulk Actions"
-msgstr ""
+msgstr "Aktion wählen"
 
 #: lib/core/class-affiliates-settings-network.php:75
 msgid ""
@@ -1388,6 +1388,8 @@ msgid ""
 "Please confirm removal of the following affiliates. This action cannot be "
 "undone."
 msgstr ""
+"Bitte bestätigen Sie dass die folgenden Partner gelöscht werden. Diese "
+"Aktion kann nicht rückgängig gemacht werden."
 
 #: lib/core/affiliates-admin-add-ons.php:134
 msgid ""
@@ -1468,7 +1470,7 @@ msgstr ""
 
 #: lib/core/affiliates-admin-add-ons.php:39
 msgid "Recommended plugins and extensions"
-msgstr ""
+msgstr "Empfohlene Plugins und Erweiterungen"
 
 #: lib/core/class-affiliates-settings-general.php:240
 msgid "Redirect"
@@ -1550,11 +1552,11 @@ msgstr "Transaktion löschen"
 
 #: lib/core/affiliates-admin-affiliates.php:518
 msgid "Remove affiliate"
-msgstr ""
+msgstr "Partner löschen"
 
 #: lib/core/affiliates-admin-affiliates-remove.php:176
 msgid "Remove affiliates"
-msgstr ""
+msgstr "Partner löschen"
 
 #: lib/core/affiliates-admin-affiliates-remove.php:68
 msgid "Remove an affiliate"
@@ -1851,7 +1853,7 @@ msgstr ""
 
 #: lib/core/affiliates-admin-affiliates-remove.php:163
 msgid "There are no affiliates."
-msgstr ""
+msgstr "Es sind keine Partner vorhanden."
 
 #: lib/core/class-affiliates-shortcodes.php:620
 msgid "There are no earnings yet."
