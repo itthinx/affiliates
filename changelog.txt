@@ -1,5 +1,10 @@
 == Affiliates - Changelog ==
 
+= 2.15.8 =
+* Updated pot and translation files.
+* Updated the German translation.
+* Updated the Spanish translation.
+
 = 2.15.7 =
 * Added the [affiliates_user_meta] shortcode which allows to render user meta data.
 * Updated the Spanish translation.
