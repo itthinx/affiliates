@@ -342,6 +342,8 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.15.8 =
 * Updated pot and translation files.
+* Updated the German translation.
+* Updated the Spanish translation.
 
 = 2.15.7 =
 * Added the [affiliates_user_meta] shortcode which allows to render user meta data.
@@ -382,4 +384,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.8 =
-* This release updates the .pot and translation files.
+* This release updates the .pot and translation files and adds some new translations.
