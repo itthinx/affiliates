@@ -46,7 +46,7 @@ class Affiliates_Totals {
 		$today = date( 'Y-m-d', time() );
 
 		if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 
 		if ( isset ( $_GET['action'] ) ) {
@@ -76,7 +76,7 @@ class Affiliates_Totals {
 
 		if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
 			if ( !wp_verify_nonce( $_POST[self::NONCE], self::SET_FILTERS ) ) {
-				wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+				wp_die( __( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
@@ -133,13 +133,13 @@ class Affiliates_Totals {
 
 		if ( isset( $_POST['row_count'] ) ) {
 			if ( !wp_verify_nonce( $_POST[self::NONCE_1], self::SET_RPP ) ) {
-				wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+				wp_die( __( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
 		if ( isset( $_POST['paged'] ) ) {
 			if ( !wp_verify_nonce( $_POST[self::NONCE_2], self::SET_PAGE ) ) {
-				wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+				wp_die( __( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
@@ -154,7 +154,7 @@ class Affiliates_Totals {
 
 		$output .= '<div class="totals">';
 		$output .= '<h1>';
-		$output .= __( 'Totals', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= __( 'Totals', 'affiliates' );
 		$output .= '</h1>';
 
 		$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
@@ -288,12 +288,12 @@ class Affiliates_Totals {
 		) );
 
 		$column_display_names = array(
-			'affiliate_id' => __( 'Id', AFFILIATES_PLUGIN_DOMAIN ),
-			'name'         => __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN ),
-			'email'        => __( 'Email', AFFILIATES_PLUGIN_DOMAIN ),
-			'user_login'   => __( 'Username', AFFILIATES_PLUGIN_DOMAIN ),
-			'total'        => __( 'Total', AFFILIATES_PLUGIN_DOMAIN ),
-			'currency_id'  => __( 'Currency', AFFILIATES_PLUGIN_DOMAIN )
+			'affiliate_id' => __( 'Id', 'affiliates' ),
+			'name'         => __( 'Affiliate', 'affiliates' ),
+			'email'        => __( 'Email', 'affiliates' ),
+			'user_login'   => __( 'Username', 'affiliates' ),
+			'total'        => __( 'Total', 'affiliates' ),
+			'currency_id'  => __( 'Currency', 'affiliates' )
 		);
 
 		$output .= '<div class="totals-overview">';
@@ -325,23 +325,23 @@ class Affiliates_Totals {
 		$output .= '<div class="manage">';
 		$output .= '<p>';
 		$output .=
-			"<a title='" . __( 'Click to close these referrals', AFFILIATES_PLUGIN_DOMAIN ) . "' " .
+			"<a title='" . __( 'Click to close these referrals', 'affiliates' ) . "' " .
 			"class='button close-referrals' " .
 			"href='" . esc_url( $current_url ) . "&action=close_referrals" . $mp_params . "'>" .
-			"<img class='icon' alt='" . __( 'Close referrals', AFFILIATES_PLUGIN_DOMAIN) . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
-			"<span class='label'>" . __( 'Close Referrals', AFFILIATES_PLUGIN_DOMAIN) . "</span>" .
+			"<img class='icon' alt='" . __( 'Close referrals', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
+			"<span class='label'>" . __( 'Close Referrals', 'affiliates') . "</span>" .
 			"</a>";
 		$output .= "</p>";
 		$output .= '</div>';
 
 		$status_descriptions = array(
-			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ),
+			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 		);
 
-		$status_select = '<label class="referral-status-filter" for="referral_status">' . __('Referral Status', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+		$status_select = '<label class="referral-status-filter" for="referral_status">' . __('Referral Status', 'affiliates' ) . '</label>';
 		$status_select .= ' ';
 		$status_select .= '<select class="referral-status-filter" name="referral_status">';
 		$status_select .= '<option value="" ' . ( empty( $referral_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -352,7 +352,7 @@ class Affiliates_Totals {
 		$status_select .= '</select>';
 
 		$currencies = $wpdb->get_results( "SELECT DISTINCT(currency_id) FROM $referrals_table WHERE currency_id IS NOT NULL" );
-		$currency_select = '<label class="currency-id-filter" for="currency_id">' . __( 'Currency', AFFILIATES_PLUGIN_DOMAIN ) . '</label>';
+		$currency_select = '<label class="currency-id-filter" for="currency_id">' . __( 'Currency', 'affiliates' ) . '</label>';
 		$currency_select .= ' ';
 		$currency_select .= '<select class="currency-id-filter" name="currency_id">';
 		$currency_select .= '<option value="" ' . ( empty( $currency_id ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -364,7 +364,7 @@ class Affiliates_Totals {
 
 		$output .=
 			'<div class="filters">' .
-				'<label class="description" for="setfilters">' . __( 'Filters', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+				'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 				'<form id="setfilters" action="" method="post">' .
 					'<p>' .
 					$status_select .
@@ -372,15 +372,15 @@ class Affiliates_Totals {
 					$currency_select .
 					'</p>' .
 					'<p>' .
-					'<label class="from-date-filter" for="from_date">' . __( 'From', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+					'<label class="from-date-filter" for="from_date">' . __( 'From', 'affiliates' ) . '</label>' .
 					'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-					'<label class="thru-date-filter" for="thru_date">' . __( 'Until', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+					'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
 					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
 					'</p>
 					<p>' .
 					wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false ) .
-					'<input class="button" type="submit" value="' . __( 'Apply', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
-					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
 					'<input type="hidden" value="submitted" name="submitted"/>' .
 					'</p>' .
 				'</form>' .
@@ -390,10 +390,10 @@ class Affiliates_Totals {
 			<div class="page-options">
 				<form id="setrowcount" action="" method="post">
 					<div>
-						<label for="row_count">' . __('Results per page', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+						<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
 						'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
 						' . wp_nonce_field( self::SET_RPP, self::NONCE_1, true, false ) . '
-						<input class="button" type="submit" value="' . __( 'Apply', AFFILIATES_PLUGIN_DOMAIN ) . '"/>
+						<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
 					</div>
 				</form>
 			</div>
@@ -450,13 +450,13 @@ class Affiliates_Totals {
 				$class_deleted = '';
 				if ( $is_deleted = ( strcmp( $result->status, 'deleted' ) == 0 ) ) {
 					$class_deleted = ' deleted ';
-					$name_suffix .= " " . __( '(removed)', AFFILIATES_PLUGIN_DOMAIN );
+					$name_suffix .= " " . __( '(removed)', 'affiliates' );
 				}
 
 				$class_inoperative = '';
 				if ( $is_inoperative = ! ( ( $result->from_date <= $today ) && ( $result->thru_date == null || $result->thru_date >= $today ) ) ) {
 					$class_inoperative = ' inoperative ';
-					$name_suffix .= " " . __( '(inoperative)', AFFILIATES_PLUGIN_DOMAIN );
+					$name_suffix .= " " . __( '(inoperative)', 'affiliates' );
 				}
 
 				$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
@@ -477,7 +477,7 @@ class Affiliates_Totals {
 				$output .= '</tr>';
 			}
 		} else {
-			$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __( 'There are no results.', AFFILIATES_PLUGIN_DOMAIN ) . '</td></tr>';
+			$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __( 'There are no results.', 'affiliates' ) . '</td></tr>';
 		}
 
 		$output .= '</tbody>';
@@ -541,7 +541,7 @@ class Affiliates_Totals {
 
 		if ( isset( $params['tables'] ) ) {
 
-			$output .= "<h1>" . __( "Closing referrals", AFFILIATES_PLUGIN_DOMAIN ) . "</h1>";
+			$output .= "<h1>" . __( "Closing referrals", 'affiliates' ) . "</h1>";
 			$output .= "<div class='closing-referrals-overview'>";
 
 			$affiliates_table       = $params['tables']['affiliates'];
@@ -606,17 +606,17 @@ class Affiliates_Totals {
 					$output .= "<div class='warning'>";
 					$output .= "<p>";
 					$output .= "<strong>";
-					$output .= __( "Please review the list of referrals that will be <em>closed</em>.", AFFILIATES_PLUGIN_DOMAIN );
+					$output .= __( "Please review the list of referrals that will be <em>closed</em>.", 'affiliates' );
 					$output .= "</strong>";
 					$output .= "</p>";
 					$output .= "</div>"; // .warning
 
 					$output .= "<p>";
-					$output .= __( "Usually only referrals that are <em>accepted</em> and have been paid out should be <em>closed</em>. If there are unwanted or too many referrals shown, restrict your filter settings.", AFFILIATES_PLUGIN_DOMAIN );
+					$output .= __( "Usually only referrals that are <em>accepted</em> and have been paid out should be <em>closed</em>. If there are unwanted or too many referrals shown, restrict your filter settings.", 'affiliates' );
 					$output .= "</p>";
 
 					$output .= "<p>";
-					$output .= __( "If these referrals can be closed, click the confirmation button below.", AFFILIATES_PLUGIN_DOMAIN );
+					$output .= __( "If these referrals can be closed, click the confirmation button below.", 'affiliates' );
 					$output .= "</p>";
 					$output .= "</div>";
 
@@ -657,25 +657,25 @@ class Affiliates_Totals {
 						$output .= '</style>';
 
 						$output .= "<p>";
-						$output .= __( "Close these referrals by clicking:", AFFILIATES_PLUGIN_DOMAIN );
+						$output .= __( "Close these referrals by clicking:", 'affiliates' );
 						$output .= "</p>";
 						$output .=
-							"<a title='" . __( 'Click to close these referrals', AFFILIATES_PLUGIN_DOMAIN ) . "' " .
+							"<a title='" . __( 'Click to close these referrals', 'affiliates' ) . "' " .
 							"class='close-referrals button' " .
 							"href='" . esc_url( $current_url ) . "&action=close_referrals&step=2" . $mp_params . "'>" .
-							"<img class='icon' alt='" . __( 'Close referrals', AFFILIATES_PLUGIN_DOMAIN) . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
-							"<span class='label'>" . __( 'Close Referrals', AFFILIATES_PLUGIN_DOMAIN) . "</span>" .
+							"<img class='icon' alt='" . __( 'Close referrals', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
+							"<span class='label'>" . __( 'Close Referrals', 'affiliates') . "</span>" .
 							"</a>";
 
 						$output .= "<div class='warning'>";
 						$output .= "<p>";
 						$output .= "<strong>";
-						$output .= __( "This action can not be undone*.", AFFILIATES_PLUGIN_DOMAIN );
+						$output .= __( "This action can not be undone*.", 'affiliates' );
 						$output .= "</strong>";
 						$output .= "</p>";
 						$output .= "<p>";
 						$output .= "<span style='font-size:0.8em;'>";
-						$output .= __( "*To undo, each referral would have to be set to the desired status individually.", AFFILIATES_PLUGIN_DOMAIN );
+						$output .= __( "*To undo, each referral would have to be set to the desired status individually.", 'affiliates' );
 						$output .= "</span>";
 						$output .= "</p>";
 						$output .= "</div>"; // .warning
@@ -724,29 +724,29 @@ class Affiliates_Totals {
 					// always show at least the updated table because this will
 					// also give information if no results have been updated
 					$status_descriptions = array(
-						AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
-						AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
-						AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', AFFILIATES_PLUGIN_DOMAIN ),
-						AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ),
+						AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+						AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+						AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+						AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 					);
-					$output .= "<h2>" . __( "Updated", AFFILIATES_PLUGIN_DOMAIN ) . "</h2>";
+					$output .= "<h2>" . __( "Updated", 'affiliates' ) . "</h2>";
 					$output .= "<p>";
-					$output .= sprintf( __( "These referrals have been updated to <em>%s</em>.", AFFILIATES_PLUGIN_DOMAIN ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
+					$output .= sprintf( __( "These referrals have been updated to <em>%s</em>.", 'affiliates' ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
 					$output .= "</p>";
 					$output .= self::render_results( $updated );
 
 					if ( count( $omitted ) > 0 ) {
-						$output .= "<h2>" . __( "Omitted", AFFILIATES_PLUGIN_DOMAIN ) . "</h2>";
+						$output .= "<h2>" . __( "Omitted", 'affiliates' ) . "</h2>";
 						$output .= "<p>";
-						$output .= sprintf( __( "These referrals have been omitted because their status must not be changed to <em>%s</em>.", AFFILIATES_PLUGIN_DOMAIN ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
+						$output .= sprintf( __( "These referrals have been omitted because their status must not be changed to <em>%s</em>.", 'affiliates' ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
 						$output .= "</p>";
 						$output .= self::render_results( $omitted );
 					}
 
 					if ( count( $failed ) > 0 ) {
-						$output .= "<h2>" . __( "Failed", AFFILIATES_PLUGIN_DOMAIN ) . "</h2>";
+						$output .= "<h2>" . __( "Failed", 'affiliates' ) . "</h2>";
 						$output .= "<p>";
-						$output .= sprintf( __( "These referrals could not be updated to <em>%s</em>.", AFFILIATES_PLUGIN_DOMAIN ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
+						$output .= sprintf( __( "These referrals could not be updated to <em>%s</em>.", 'affiliates' ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
 						$output .= "</p>";
 						$output .= self::render_results( $failed );
 					}
@@ -762,24 +762,24 @@ class Affiliates_Totals {
 	public static function render_results( $results ) {
 		$output = "";
 		$column_display_names = array(
-			'datetime'    => __( 'Date', AFFILIATES_PLUGIN_DOMAIN ),
-			'post_title'  => __( 'Post', AFFILIATES_PLUGIN_DOMAIN ),
-			'name'        => __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN ),
-			'amount'      => __( 'Amount', AFFILIATES_PLUGIN_DOMAIN ),
-			'currency_id' => __( 'Currency', AFFILIATES_PLUGIN_DOMAIN ),
-			'status'      => __( 'Status', AFFILIATES_PLUGIN_DOMAIN )
+			'datetime'    => __( 'Date', 'affiliates' ),
+			'post_title'  => __( 'Post', 'affiliates' ),
+			'name'        => __( 'Affiliate', 'affiliates' ),
+			'amount'      => __( 'Amount', 'affiliates' ),
+			'currency_id' => __( 'Currency', 'affiliates' ),
+			'status'      => __( 'Status', 'affiliates' )
 		);
 		$status_descriptions = array(
-			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', AFFILIATES_PLUGIN_DOMAIN ),
-			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ),
+			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 		);
 		$status_icons = array(
-			AFFILIATES_REFERRAL_STATUS_ACCEPTED => "<img class='icon' alt='" . __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>",
-			AFFILIATES_REFERRAL_STATUS_CLOSED   => "<img class='icon' alt='" . __( 'Closed', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>",
-			AFFILIATES_REFERRAL_STATUS_PENDING  => "<img class='icon' alt='" . __( 'Pending', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>",
-			AFFILIATES_REFERRAL_STATUS_REJECTED => "<img class='icon' alt='" . __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>",
+			AFFILIATES_REFERRAL_STATUS_ACCEPTED => "<img class='icon' alt='" . __( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>",
+			AFFILIATES_REFERRAL_STATUS_CLOSED   => "<img class='icon' alt='" . __( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>",
+			AFFILIATES_REFERRAL_STATUS_PENDING  => "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>",
+			AFFILIATES_REFERRAL_STATUS_REJECTED => "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>",
 		);
 
 		$output .= '<table id="referrals" class="referrals wp-list-table widefat fixed" cellspacing="0">';
@@ -809,7 +809,7 @@ class Affiliates_Totals {
 				$output .= '</tr>';
 			}
 		} else {
-			$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __('There are no results.', AFFILIATES_PLUGIN_DOMAIN ) . '</td></tr>';
+			$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 		}
 		$output .= '</tbody>';
 		$output .= '</table>';

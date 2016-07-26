@@ -50,6 +50,8 @@ class Affiliates_Shortcodes {
 		add_shortcode( 'affiliates_logout', array( __CLASS__, 'affiliates_logout' ) );
 		add_shortcode( 'affiliates_fields', array( __CLASS__, 'affiliates_fields' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'wp_enqueue_scripts' ) );
+		add_shortcode( 'affiliates_bloginfo', array( __CLASS__, 'affiliates_bloginfo' ) );
+		add_shortcode( 'affiliates_user_meta', array( __CLASS__, 'affiliates_user_meta' ) );
 	}
 
 	/**
@@ -553,10 +555,10 @@ class Affiliates_Shortcodes {
 				$output .= '<thead>';
 				$output .= '<tr>';
 				$output .= '<th>';
-				$output .= __( 'Month', AFFILIATES_PLUGIN_DOMAIN );
+				$output .= __( 'Month', 'affiliates' );
 				$output .= '</th>';
 				$output .= '<th>';
-				$output .= __( 'Earnings', AFFILIATES_PLUGIN_DOMAIN );
+				$output .= __( 'Earnings', 'affiliates' );
 				$output .= '</th>';
 				$output .= '</tr>';
 				$output .= '</thead>';
@@ -585,7 +587,7 @@ class Affiliates_Shortcodes {
 	
 							// month & year
 							$output .= '<td>';
-							$output .= date_i18n( __( 'F Y', AFFILIATES_PLUGIN_DOMAIN ), strtotime( $from ) ); // translators: date format; month and year for earnings display
+							$output .= date_i18n( __( 'F Y', 'affiliates' ), strtotime( $from ) ); // translators: date format; month and year for earnings display
 							$output .= '</td>';
 	
 							// earnings
@@ -605,7 +607,7 @@ class Affiliates_Shortcodes {
 								$output .= '&nbsp;';
 								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', 2 ) ), $total, $currency_id );
 							} else {
-								$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', AFFILIATES_PLUGIN_DOMAIN ) );
+								$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', 'affiliates' ) );
 							}
 							$output .= '</td>';
 	
@@ -615,7 +617,7 @@ class Affiliates_Shortcodes {
 						}
 					} else {
 						$output .= '<td colspan="2">';
-						$output .= apply_filters( 'affiliates_earnings_display_total_no_earnings', __( 'There are no earnings yet.', AFFILIATES_PLUGIN_DOMAIN ) );
+						$output .= apply_filters( 'affiliates_earnings_display_total_no_earnings', __( 'There are no earnings yet.', 'affiliates' ) );
 						$output .= '</td>';
 					}
 				}
@@ -695,13 +697,36 @@ class Affiliates_Shortcodes {
 	 * @param string $content (is not used)
 	 */
 	public static function affiliates_url( $atts, $content = null ) {
-		global $wpdb;
+		global $wpdb, $wp;
+
+		$options = shortcode_atts(
+			array(
+				'url' => ''
+			),
+			$atts
+		);
+		extract( $options );
+
+		switch( $url ) {
+			case '' :
+				$url = get_bloginfo( 'url' );
+				break;
+			case 'current' :
+				$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
+				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$url = remove_query_arg( $pname, $current_url );
+				break;
+			case 'permalink' :
+				$url = get_permalink();
+				break;
+			default :
+		}
 
 		remove_shortcode( 'affiliates_url' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_url', array( __CLASS__, 'affiliates_url' ) );
 
-		$output = "";
+		$output = '';
 		$user_id = get_current_user_id();
 		if ( $user_id && affiliates_user_is_affiliate( $user_id ) ) {
 			$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -710,22 +735,21 @@ class Affiliates_Shortcodes {
 				"SELECT $affiliates_users_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = 'active'",
 				intval( $user_id )
 			))) {
-				if ( strlen( $content ) == 0 ) {
-					$base_url = get_bloginfo( 'url' );
-				} else {
+				$content = trim( $content );
+				if ( strlen( $content ) > 0 ) {
 					// wp_texturize() has already been applied to $content and
 					// it indiscriminately replaces ampersands with the HTML
 					// entity &#038; - we need to undo this so path separators
 					// are not messed up. Note that it does that even though we
 					// have indicated to exclude affiliates_url via the
 					// no_texturize_shortcodes filter.
-					$base_url = trim( $content );
-					$base_url = str_replace( '&#038;', '&', $base_url );
-					$base_url = strip_tags( $base_url );
-					$base_url = preg_replace('/\r|\n/', '', $base_url );
-					$base_url = trim( $base_url );
+					$url = trim( $content );
+					$url = str_replace( '&#038;', '&', $url );
+					$url = strip_tags( $url );
+					$url = preg_replace('/\r|\n/', '', $url );
+					$url = trim( $url );
 				}
-				$output .= affiliates_get_affiliate_url( $base_url, $affiliate_id );
+				$output .= affiliates_get_affiliate_url( $url, $affiliate_id );
 			}
 		}
 		return $output;
@@ -772,7 +796,7 @@ class Affiliates_Shortcodes {
 	 */
 	public static function affiliates_logout( $atts, $content = null ) {
 		if ( is_user_logged_in() ) {
-			return '<a href="' . esc_url( wp_logout_url() ) .'">' . __( 'Log out', AFFILIATES_PLUGIN_DOMAIN ) . '</a>';
+			return '<a href="' . esc_url( wp_logout_url() ) .'">' . __( 'Log out', 'affiliates' ) . '</a>';
 		} else {
 			return '';
 		}
@@ -859,9 +883,9 @@ class Affiliates_Shortcodes {
 									if ( $field['required'] && empty( $value ) && !( is_user_logged_in() && isset( $field['type'] ) && $field['type'] == 'password' ) ) {
 										$error = true;
 										$output .= '<div class="error">';
-										$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+										$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 										$output .= ' : ';
-										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
 										$output .= '</div>';
 									}
 									$registration_fields[$name]['value'] = $value;
@@ -875,9 +899,9 @@ class Affiliates_Shortcodes {
 											if ( $value !== $value2 ) {
 												$error = true;
 												$output .= '<div class="error">';
-												$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+												$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 												$output .= ' : ';
-												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', 'affiliates' ), $field['label'] );
 												$output .= '</div>';
 											}
 										}
@@ -903,13 +927,16 @@ class Affiliates_Shortcodes {
 									}
 								} else {
 									$output .= '<div class="updated">';
-									$output .= __( 'Saved', AFFILIATES_PLUGIN_DOMAIN );
+									$output .= __( 'Saved', 'affiliates' );
 									$output .= '</div>';
 								}
 							}
 						}
 					}
 				}
+
+				// get user again in case anything changed as we're using it below
+				$user = get_user_by( 'id', $user_id );
 
 				// show form
 				$n = 0;
@@ -963,7 +990,7 @@ class Affiliates_Shortcodes {
 								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
-								$output .= sprintf( __( 'Repeat %s', AFFILIATES_PLUGIN_DOMAIN ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
+								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
 								$output .= sprintf(
 										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 										esc_attr( $type ),
@@ -982,7 +1009,7 @@ class Affiliates_Shortcodes {
 					if ( $atts['edit'] === 'yes' ) {
 						$output .=  wp_nonce_field( 'save', 'affiliate-nonce', true, false );
 						$output .= '<div class="save">';
-						$output .= sprintf( '<input class="button" type="submit" name="save" value="%s" />', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+						$output .= sprintf( '<input class="button" type="submit" name="save" value="%s" />', __( 'Save', 'affiliates' ) );
 						$output .= '</div>';
 						$output .= '</div>';
 						$output .= '</form>';
@@ -995,6 +1022,58 @@ class Affiliates_Shortcodes {
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * Bloginfo shortcode - renders the blog info.
+	 * 
+	 * key - Site info to retrieve. Default empty (site name).
+	 * filter - How to filter what is retrieved.
+	 * 
+	 * @param array $atts attributes
+	 * @param string $content not used
+	 */
+	public static function affiliates_bloginfo( $atts, $content = null ) {
+
+		$output = '';
+		$options = shortcode_atts(
+			array(
+				'key' => ''
+			),
+			$atts
+		);
+		extract( $options );
+
+		return esc_html( get_bloginfo( $key ) );
+	}
+
+	/**
+	 * affiliates_user shortcode - renders user meta of the current user.
+	 *
+	 * key - User meta info to retrieve. Default empty.
+	 *
+	 * @param array $atts attributes
+	 * @param string $content not used
+	 */
+	public static function affiliates_user_meta( $atts, $content = null ) {
+
+		$output = "";
+		$options = shortcode_atts(
+			array(
+				'key'  => ''
+			),
+			$atts
+		);
+		extract( $options );
+
+		$output = '';
+		if ( is_user_logged_in() && ( $key !== '' ) ) {
+			if ( $user_id = get_current_user_id() ) {
+				$output = get_user_meta( $user_id, $key, true );
+			}
+		}
+	
+		return esc_html( $output );
 	}
 }
 Affiliates_Shortcodes::init();
