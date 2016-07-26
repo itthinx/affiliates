@@ -316,3 +316,95 @@ function affiliates_admin_affiliates_edit_submit() {
 	return $result;
 	
 } // function affiliates_admin_affiliates_edit_submit
+
+/**
+ * Handle change mulk status to active
+ * @return array of updated affiliates' ids
+ */
+function affiliates_admin_affiliates_bulk_status_active_submit() {
+
+	global $wpdb;
+	$result = false;
+
+	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+
+	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
+	if ( $affiliate_ids ) {
+		foreach ( $affiliate_ids as $affiliate_id ) {
+			$valid_affiliate = false;
+			// do not mark the pseudo-affiliate as deleted: type != ...
+			$check = $wpdb->prepare(
+					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+					intval( $affiliate_id ) );
+			if ( $wpdb->query( $check ) ) {
+				$valid_affiliate = true;
+			}
+				
+			if ( $valid_affiliate ) {
+				$result = false !== $wpdb->query(
+						$query = $wpdb->prepare(
+								"UPDATE $affiliates_table SET status = 'active' WHERE affiliate_id = %d",
+								intval( $affiliate_id )
+								)
+						);
+				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
+			}
+		}
+	}
+
+	return $result;
+} // function affiliates_admin_affiliates_bulk_status_active_submit
+
+/**
+ * Handle change mulk status to pending
+ * @return array of updated affiliates' ids
+ */
+function affiliates_admin_affiliates_bulk_status_pending_submit() {
+
+	global $wpdb;
+	$result = false;
+
+	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+
+	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
+	if ( $affiliate_ids ) {
+		foreach ( $affiliate_ids as $affiliate_id ) {
+			$valid_affiliate = false;
+			// do not mark the pseudo-affiliate as deleted: type != ...
+			$check = $wpdb->prepare(
+					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+					intval( $affiliate_id ) );
+			if ( $wpdb->query( $check ) ) {
+				$valid_affiliate = true;
+			}
+
+			if ( $valid_affiliate ) {
+				$result = false !== $wpdb->query(
+						$query = $wpdb->prepare(
+								"UPDATE $affiliates_table SET status = 'pending' WHERE affiliate_id = %d",
+								intval( $affiliate_id )
+								)
+						);
+				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
+			}
+		}
+	}
+
+	return $result;
+} // function affiliates_admin_affiliates_bulk_status_pending_submit

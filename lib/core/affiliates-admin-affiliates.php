@@ -99,6 +99,14 @@ function affiliates_admin_affiliates() {
 										return affiliates_admin_affiliates_bulk_remove();
 									}
 									break;
+								case 'status-accepted' :
+									affiliates_admin_affiliates_bulk_status_active_submit();
+									break;
+								case 'status-pending' :
+									affiliates_admin_affiliates_bulk_status_pending_submit();
+									break;
+								default :
+									break;
 							}
 						}
 					}
@@ -322,6 +330,7 @@ function affiliates_admin_affiliates() {
 		case 'affiliate_id' :
 		case 'name' :
 		case 'user_login' :
+		case 'status' :
 			break;
 		default:
 			$orderby = 'name';
@@ -428,6 +437,7 @@ function affiliates_admin_affiliates() {
 		'user_login'   => __( 'Username', 'affiliates' ),
 		'from_date'    => __( 'From', 'affiliates' ),
 		'thru_date'    => __( 'Until', 'affiliates' ),
+		'status'       => __( 'Status', 'affiliates' ),
 		'edit'         => __( 'Edit', 'affiliates' ),
 		'remove'       => __( 'Remove', 'affiliates' ),
 		'links'        => __( 'Links', 'affiliates' ),
@@ -549,6 +559,8 @@ function affiliates_admin_affiliates() {
 	$output .= '<select class="bulk-action" name="bulk-action">';
 	$output .= '<option selected="selected" value="-1">' . esc_html( __( 'Bulk Actions', 'affiliates' ) ) . '</option>';
 	$output .= '<option value="remove-affiliate">' . esc_html( __( 'Remove affiliate', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="status-pending">' . esc_html( __( 'Set status to pending', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="status-accepted">' . esc_html( __( 'Set status to accepted', 'affiliates' ) ) . '</option>';
 	$output .= '</select>';
 	$output .= sprintf( '<input class="button" type="submit" name="bulk" value="%s" />', esc_attr( __( 'Apply', 'affiliates' ) ) );
 	$output .= '<input type="hidden" name="action" value="affiliate-action"/>';
@@ -594,10 +606,12 @@ function affiliates_admin_affiliates() {
 			$result = $results[$i];
 			
 			$name_suffix = '';
-			$class_deleted = '';
+			$class_status = '';
 			if ( $is_deleted = ( strcmp( $result->status, 'deleted' ) == 0 ) ) {
-				$class_deleted = ' deleted ';
+				$class_status = ' deleted ';
 				$name_suffix .= " " . __( '(removed)', 'affiliates' );
+			} else if ( strcmp( $result->status, 'pending' ) == 0 ) {
+				$class_status .= ' pending ';
 			}
 			
 			$class_inoperative = '';
@@ -607,7 +621,7 @@ function affiliates_admin_affiliates() {
 			}
 			
 			
-			$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+			$output .= '<tr class="' . $class_status . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 			
 			$output .= '<th class="check-column">';
 			$output .= '<input type="checkbox" value="' . esc_attr( $result->affiliate_id ) . '" name="affiliate_ids[]"/>';
@@ -639,6 +653,8 @@ function affiliates_admin_affiliates() {
 			$output .= "<td class='from-date'>$result->from_date</td>";
 			$output .= "<td class='thru-date'>$result->thru_date</td>";
 			
+			$output .= "<td class='status'>$result->status</td>";
+			
 			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . $result->affiliate_id . "' alt='" . __( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
 			$output .= "<td class='remove'>" .
 				( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE )  ) ?
@@ -669,7 +685,7 @@ function affiliates_admin_affiliates() {
 			$output .= '</tr>';
 
 			if ( $show_totals ) {
-				$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+				$output .= '<tr class="' . $class_status . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 				$totals = array();
 				$totals[AFFILIATES_REFERRAL_STATUS_CLOSED]   = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_CLOSED );
 				$totals[AFFILIATES_REFERRAL_STATUS_ACCEPTED] = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_ACCEPTED );
