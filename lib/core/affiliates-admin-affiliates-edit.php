@@ -94,6 +94,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	$user_login  = isset( $_POST['user-field'] ) ? $_POST['user-field'] : ( $affiliate_user != null ? $affiliate_user->user_login : '' );
 	$from_date   = isset( $_POST['from-date-field'] ) ? $_POST['from-date-field'] : $affiliate['from_date'];
 	$thru_date   = isset( $_POST['thru-date-field'] ) ? $_POST['thru-date-field'] : $affiliate['thru_date'];
+	$status      = isset( $_POST['status'] ) ? $_POST['status'] : $affiliate['status'];
 
 	$output =
 		'<div class="manage-affiliates">' .
@@ -164,6 +165,22 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<input id="thru-date-field" name="thru-date-field" class="datefield" type="text" value="' . esc_attr( $thru_date ) . '"/>' .
 		'</label>' .
 		'</div>';
+
+		$output .=
+		
+			'<div class="field">' .
+			'<label class="field-label">' .
+			'<span class="label">' .
+			__( 'Status', 'affiliates' ) .
+			'</span>' .
+			' ' .
+			'<select id="status" name="status" class="datafield">' .
+			'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __('Accepted', 'affiliates') . '</option>' .
+			'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __('Pending', 'affiliates') . '</option>' .
+			'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __('Deleted', 'affiliates') . '</option>' .
+			'</select>' .
+			'</label>' .
+			'</div>';
 
 	$output .=
 
@@ -264,6 +281,13 @@ function affiliates_admin_affiliates_edit_submit() {
 			$data['thru_date'] = null; // (*)
 			$formats[] = 'NULL'; // (*)
 		}
+		
+		$status = $_POST['status'];
+		if ( empty( $status ) ) {
+			$status = get_option( 'aff_status', 'active' );
+		}
+		$data['status'] = $status;
+		$formats[] = '%s';
 		
 		$sets = array();
 		$values = array();
