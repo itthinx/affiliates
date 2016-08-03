@@ -1,9 +1,9 @@
 === Affiliates ===
-Contributors: itthinx
+Contributors: itthinx, proaktion
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
-Tested up to: 4.5.3
+Tested up to: 4.6
 Stable tag: 2.16
 License: GPLv3
 
@@ -342,6 +342,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.16.0 =
 * Added the possibility to approve new affiliates with a status option.
+
+= 2.15.9 =
+* Added filters: 'affiliates_thanks_sign_up_text' and 'affiliates_check_confirmation_text' on registration form.
+* Added button class to buttons on registration form settings.
 
 = 2.15.8 =
 * Updated pot and translation files.

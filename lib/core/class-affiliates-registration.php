@@ -295,9 +295,9 @@ class Affiliates_Registration {
 						wp_safe_redirect( $redirect_url );
 						exit();
 					} else {
-						$output .= '<p>' . __( 'Thanks for signing up!', 'affiliates' ) . '</p>';
+						$output .= apply_filters( 'affiliates_thanks_sign_up_text', '<p>' . __( 'Thanks for signing up!', 'affiliates' ) . '</p>' );
 						if ( !$is_logged_in ) {
-							$output .= '<p>' . __( 'Please check your email for the confirmation link.', 'affiliates' ) . '</p>';
+							$output .= apply_filters( 'affiliates_check_confirmation_text', '<p>' . __( 'Please check your email for the confirmation link.', 'affiliates' ) . '</p>' );
 							if ( $redirect && !$is_widget ) {
 								$output .= '<script type="text/javascript">window.location="' . esc_url( $redirect_url ) . '";</script>';
 							} else {
