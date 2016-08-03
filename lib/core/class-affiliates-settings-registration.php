@@ -190,10 +190,10 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			echo '</td>';
 			echo '<td>';
 			echo sprintf( '<input type="hidden" name="field-type[%d]" value="%s" />', $i, $field['type'] );
-			echo sprintf( '<button class="field-up" type="button" value="%d">%s</button>', $i, esc_html( __( 'Up', 'affiliates' ) ) );
-			echo sprintf( '<button class="field-down" type="button" value="%d">%s</button>', $i, esc_html( __( 'Down', 'affiliates' ) ) );
+			echo sprintf( '<button class="field-up button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Up', 'affiliates' ) ) );
+			echo sprintf( '<button class="field-down button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Down', 'affiliates' ) ) );
 			if ( !$field['is_default'] ) {
-				echo sprintf( '<button class="field-remove" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', 'affiliates' ) ) );
+				echo sprintf( '<button class="field-remove button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', 'affiliates' ) ) );
 			}
 			echo '</td>';
 			echo '</tr>';
@@ -203,7 +203,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '</table>';
 
 		echo '<p>';
-		echo sprintf( '<button class="field-add" type="button" value="%d">%s</button>', $i, esc_html( __( 'Add a field', 'affiliates' ) ) );
+		echo sprintf( '<button class="field-add button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Add a field', 'affiliates' ) ) );
 		echo '</p>';
 
 		echo '</div>'; // #registration-fields
