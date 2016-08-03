@@ -776,7 +776,8 @@ class Affiliates_Registration {
 		$message .= sprintf( __( 'Username: %s', 'affiliates' ), $user_login ) . "\r\n\r\n";
 		$message .= sprintf( __( 'E-mail: %s', 'affiliates' ), $user_email ) . "\r\n";
 
-		if ( get_option( 'aff_notify_admin', true ) ) {
+		if ( get_option( 'aff_notify_admin', true ) || get_option( 'admin_registration_enabled', true ) ) {
+			
 			$params = array(
 				'user_id'        => $user_id,
 				'user'           => $user,

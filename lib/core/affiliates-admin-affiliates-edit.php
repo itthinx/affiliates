@@ -206,7 +206,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
  */
 function affiliates_admin_affiliates_edit_submit() {
 	
-	global $wpdb;
+	global $wpdb, $affiliates_version;
 	$result = true;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
@@ -271,7 +271,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		$thru_date = $_POST['thru-date-field'];
 		if ( !empty( $thru_date ) && strtotime( $thru_date ) < strtotime( $from_date ) ) {
 			// thru_date is before from_date => set to null
-			$thru_date = null;							
+			$thru_date = null;
 		}
 		if ( !empty( $thru_date ) ) {
 			$thru_date = date( 'Y-m-d', strtotime( $thru_date ) );
@@ -283,6 +283,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		}
 		
 		$status = $_POST['status'];
+		$old_status = $status;
 		if ( empty( $status ) ) {
 			$status = get_option( 'aff_status', 'active' );
 		}
@@ -332,6 +333,9 @@ function affiliates_admin_affiliates_edit_submit() {
 		// hook
 		if ( !empty( $affiliate_id ) ) {
 			do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+			if ( !empty( $status ) ) {
+				do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, $status );
+			}
 		}
 	} else {
 		$result = false;
