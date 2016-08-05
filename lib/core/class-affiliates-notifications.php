@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'Affiliates_Notifications' ) ) {
 
 /**
- * Totals admin.
+ * Notifications admin.
  */
 class Affiliates_Notifications {
 

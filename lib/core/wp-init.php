@@ -63,6 +63,11 @@ if ( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) {
 // affiliates excluded
 include_once AFFILIATES_CORE_LIB . '/class-affiliates-exclusion.php';
 
+// affiliates notifications
+if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+	include_once AFFILIATES_CORE_LIB . '/class-affiliates-notifications.php';
+}
+
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
 /**
@@ -1369,6 +1374,21 @@ function affiliates_admin_menu() {
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+
+	// notifications
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		$page = add_submenu_page(
+				'affiliates-admin',
+				__( 'Notifications', 'affiliates' ),
+				__( 'Notifications', 'affiliates' ),
+				AFFILIATES_ACCESS_AFFILIATES,
+				'affiliates-admin-notifications',
+				apply_filters( 'affiliates_add_submenu_page_function', array( 'Affiliates_Notifications', 'view' ) )
+				);
+		$pages[] = $page;
+		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+	}
 
 	// add-ons
 	$page = add_submenu_page(
