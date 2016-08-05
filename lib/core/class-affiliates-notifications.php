@@ -77,8 +77,8 @@ class Affiliates_Notifications {
 				'affiliates' );
 		self::$default_status_accepted_subject  = __( '[[site_title]] Accepted to the Affiliates program.', 'affiliates' );
 		self::$default_status_accepted_message  = __(
-				'Congratulation [username]<br/>
-				You have been accepted to the Affiliates program.<br/>',
+				'Congratulation [user_login]<br />
+				You have been accepted to the Affiliates program.<br />',
 				'affiliates' );
 		self::$default_admin_registration_pending_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 		self::$default_admin_registration_pending_message = __(
@@ -105,6 +105,10 @@ class Affiliates_Notifications {
 		add_filter( 'affiliates_new_affiliate_registration_subject', array( __CLASS__, 'affiliates_new_affiliate_registration_subject' ), 10, 2 );
 		add_filter( 'affiliates_new_affiliate_registration_message', array( __CLASS__, 'affiliates_new_affiliate_registration_message' ), 10, 2 );
 		add_filter( 'affiliates_new_affiliate_registration_headers', array( __CLASS__, 'affiliates_new_affiliate_registration_headers' ), 10, 2 );
+
+		add_filter( 'affiliates_updated_affiliate_status_subject', array( __CLASS__, 'affiliates_updated_affiliate_status_subject' ), 10, 2 );
+		add_filter( 'affiliates_updated_affiliate_status_message', array( __CLASS__, 'affiliates_updated_affiliate_status_message' ), 10, 2 );
+		add_filter( 'affiliates_updated_affiliate_status_headers', array( __CLASS__, 'affiliates_updated_affiliate_status_headers' ), 10, 2 );
 
 		add_filter( 'affiliates_updated_affiliate_status', array( __CLASS__, 'affiliates_updated_affiliate_status' ), 10, 3 );
 
@@ -603,17 +607,16 @@ class Affiliates_Notifications {
 	 */
 	public static function affiliates_updated_affiliate_status( $affiliate_id, $old_status, $new_status ) {
 	
-		if ( ( $old_status == 'pending' ) && ( $new_status == 'accepted' ) ) {
-			$user = get_userdata( $user_id );
+		if ( ( $old_status == 'pending' ) && ( $new_status == 'active' ) ) {
+			$user_id = affiliates_get_affiliate_user ( $affiliate_id );
 			$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
-			if ( !empty( $plaintext_pass ) ) {
+			if ( $user = get_userdata( $user_id ) ) {
 				if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
 					$message  = Affiliates_Notifications::$default_status_accepted_message;
 					$params = array(
 						'user_id'  => $user_id,
 						'user'     => $user,
 						'username' => $user->user_login,
-						'password' => $plaintext_pass,
 						'site_login_url' => wp_login_url(),
 						'blogname'       => $blogname
 					);

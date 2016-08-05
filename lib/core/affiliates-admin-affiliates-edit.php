@@ -224,7 +224,7 @@ function affiliates_admin_affiliates_edit_submit() {
 	$is_direct = false;
 	$affiliate = null;
 	if ( $affiliate = $wpdb->get_row( $wpdb->prepare(
-		"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d",
+		"SELECT * FROM $affiliates_table WHERE affiliate_id = %d",
 		intval( $affiliate_id ) ) ) ) {
 		$is_direct = isset( $affiliate->type ) && ( $affiliate->type == AFFILIATES_DIRECT_TYPE );
 	}
@@ -283,7 +283,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		}
 		
 		$status = $_POST['status'];
-		$old_status = $status;
+		$old_status = $affiliate->status;
 		if ( empty( $status ) ) {
 			$status = get_option( 'aff_status', 'active' );
 		}
