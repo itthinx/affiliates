@@ -88,9 +88,6 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				}
 				add_option( 'aff_status', $status, '', 'no' );
 
-				delete_option( 'aff_notify_admin' );
-				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
-
 				if ( !get_option( 'aff_registration_fields' ) ) {
 					add_option( 'aff_registration_fields', self::$default_fields, '', 'no' );
 				}
@@ -135,7 +132,6 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 
 		$registration = get_option( 'aff_registration', get_option( 'users_can_register', false ) );
 		$affiliate_status = get_option( 'aff_status', 'active' );
-		$notify_admin = get_option( 'aff_notify_admin', get_option( 'aff_notify_admin', true ) );
 
 		echo
 			'<form action="" name="options" method="post">' .
@@ -162,15 +158,6 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			__( 'Pending', AFFILIATES_PLUGIN_DOMAIN ) .
 			'</option>' .
 			'</select>' .
-			'</label>' .
-			'</p>';
-
-		echo
-			'<p>' .
-			'<label>' .
-			'<input name="notify_admin" type="checkbox" ' . ( $notify_admin ? 'checked="checked"' : '' ) . '/>' .
-			' ' .
-			__( 'Notify the site admin when a new affiliate is registered', 'affiliates' ) .
 			'</label>' .
 			'</p>';
 

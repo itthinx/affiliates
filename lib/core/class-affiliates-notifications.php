@@ -45,9 +45,6 @@ class Affiliates_Notifications {
 	public static $default_status_accepted_subject;
 	public static $default_status_accepted_message;
 	
-	const ADMIN_REGISTRATION_ENABLED          = 'admin_registration_enabled';
-	const ADMIN_REGISTRATION_ENABLED_DEFAULT  = true;
-	
 	public static $default_admin_registration_pending_subject;
 	public static $default_admin_registration_pending_message;
 	public static $default_admin_registration_accepted_subject;
@@ -279,21 +276,14 @@ class Affiliates_Notifications {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 
-		$notifications = get_option( 'affiliates_notifications', null );
-		if ( $notifications === null ) {
-			add_option('affiliates_notifications', array(), null, 'no' );
-		}
-
 		if ( isset( $_POST['submit'] ) ) {
 			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
-
-				$notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] );
-
-				update_option( 'affiliates_notifications', $notifications );
+				delete_option( 'aff_notify_admin' );
+				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
 			}
 		}
 
-		$registration_enabled = isset( $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] ) ? $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] : Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED_DEFAULT;
+		$notify_admin = get_option( 'aff_notify_admin', get_option( 'aff_notify_admin', true ) );
 
 		echo '<div class="notifications">';
 	
@@ -316,7 +306,7 @@ class Affiliates_Notifications {
 	
 		'<p>' .
 		'<label>' .
-		'<input type="checkbox" name="' . Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED . '" id="' . Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED . '" ' . ( $registration_enabled ? ' checked="checked" ' : '' ) . '/>' .
+		'<input type="checkbox" name="aff_notify_admin" id="aff_notify_admin" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
 		__( 'Enable registration emails', 'affiliates' ) .
 		'</label>' .
 		'</p>' .
