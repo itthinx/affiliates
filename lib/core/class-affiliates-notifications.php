@@ -112,8 +112,17 @@ class Affiliates_Notifications {
 
 		add_filter( 'affiliates_updated_affiliate_status', array( __CLASS__, 'affiliates_updated_affiliate_status' ), 10, 3 );
 
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+
 	}
-	
+
+	/**
+	 * Registers the affiliates-admin-notifications css style.
+	 */
+	public static function admin_init() {
+		wp_register_style( 'affiliates-admin-notifications', AFFILIATES_PLUGIN_URL . 'css/affiliates_admin_notifications.css' );
+	}
+
 	/**
 	 * Filter the registration email option, return true if the registration
 	 * email should be sent (which is the default), otherwise false.
@@ -139,6 +148,8 @@ class Affiliates_Notifications {
 		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
+		
+		wp_enqueue_style( 'affiliates-admin-notifications' );
 		
 		self::init_sections();
 		
