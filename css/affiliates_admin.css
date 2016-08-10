@@ -102,6 +102,14 @@ a.removefromaffiliate {
 .affiliates-overview .even.deleted.inoperative {
 	background-color: #edd;
 }
+.affiliates-overview .odd.pending,
+.affiliates-overview .odd.pending.inoperative {
+	background-color: #fec;
+}
+.affiliates-overview .even.pending,
+.affiliates-overview .even.pending.inoperative {
+	background-color: #ffd;
+}
 .affiliates-overview th.check-column {
 	vertical-align: top;
 	padding: 4px 0 0 3px;
