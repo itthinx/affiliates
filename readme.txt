@@ -342,6 +342,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.16.0 =
 * Added the possibility to approve new affiliates with a status option.
+* Added Notifications section where you can enable to notify administrator and affiliates when new registration.
 
 = 2.15.9 =
 * Added filters: 'affiliates_thanks_sign_up_text' and 'affiliates_check_confirmation_text' on registration form.
@@ -392,3 +393,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.16.0 =
 This release adds the status option for new affiliates, which allows to approve new affiliates before being active.
+Added Notifications section where you can enable to notify administrator and affiliates when new registration.
