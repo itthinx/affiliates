@@ -368,7 +368,7 @@ function affiliates_setup() {
 				date            DATE NOT NULL,
 				time            TIME NOT NULL,
 				datetime        DATETIME NOT NULL,
-				ip              INT(10) UNSIGNED DEFAULT NULL,
+				ip              INT(10) UNSIGNED NOT NULL DEFAULT 0,
 				ipv6            DECIMAL(39,0) UNSIGNED DEFAULT NULL,
 				is_robot        TINYINT(1) DEFAULT 0,
 				user_id         BIGINT(20) UNSIGNED DEFAULT NULL,
@@ -489,6 +489,11 @@ function affiliates_update( $previous_version = null ) {
 		ADD INDEX aff_hits_acm (affiliate_id, campaign_id);";
 	}
 
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.16.0' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		MODIFY ip INT(10) UNSIGNED NOT NULL DEFAULT 0;";
+	}
+
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$column          = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'campaign_id'" );
 	if ( empty( $column ) ) {
@@ -505,6 +510,7 @@ function affiliates_update( $previous_version = null ) {
 			$result = false;
 		}
 	}
+	
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.1.5' ) < 0 ) {
 		affiliates_update_rewrite_rules();
 	}
