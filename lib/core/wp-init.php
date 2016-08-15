@@ -363,7 +363,7 @@ function affiliates_setup() {
 				date            DATE NOT NULL,
 				time            TIME NOT NULL,
 				datetime        DATETIME NOT NULL,
-				ip              INT(10) UNSIGNED DEFAULT NULL,
+				ip              INT(10) UNSIGNED NOT NULL DEFAULT 0,
 				ipv6            DECIMAL(39,0) UNSIGNED DEFAULT NULL,
 				is_robot        TINYINT(1) DEFAULT 0,
 				user_id         BIGINT(20) UNSIGNED DEFAULT NULL,
@@ -491,6 +491,12 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_ac (affiliate_id, campaign_id),
 		ADD INDEX aff_referrals_c (campaign_id);";
+	}
+
+	// MySQL 5.7.3 PK requirements
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.15.10' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		MODIFY ip INT(10) UNSIGNED NOT NULL DEFAULT 0;";
 	}
 
 	foreach ( $queries as $query ) {
