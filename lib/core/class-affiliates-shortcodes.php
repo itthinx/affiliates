@@ -776,17 +776,48 @@ class Affiliates_Shortcodes {
 	 * @return string rendered form
 	 */
 	public static function affiliates_login_redirect( $atts, $content = null ) {
-		extract( shortcode_atts( array( 'redirect_url' => '' ), $atts ) );
+		
+		$options = shortcode_atts(
+			array(
+				'redirect_url' => '',
+				'login_failed_redirect_url' => '',
+				'login_failed_message' => ''
+			),
+			$atts
+			);
+		extract( $options );
+		
 		$form = '';
 		if ( !is_user_logged_in() ) {
 			if ( empty( $redirect_url ) ) {
 				$redirect_url = get_permalink();
 			}
-			$form = wp_login_form( array( 'echo' => false, 'redirect' => $redirect_url ) );
+			
+			if ( ( strtoupper( $login_failed_redirect_url ) == 'TRUE' ) || ( strtoupper( $login_failed_redirect_url ) == 'YES' ) ) {
+				// @todo this doesn't work. Ask to kr if he knows the solution !!!!
+				add_action( 'wp_login_failed', array( __CLASS__, 'wp_login_failed' ) );
+			}
+			if ( isset( $_GET['login'] ) && ( $_GET['login'] == 'failed' ) ) {
+				if ( strlen( $login_failed_message ) > 0 ) {
+					$form .= '<div class="warning" >' . $login_failed_message . '</div>';
+				} else {
+					$form .= '<div class="warning" >' . __( 'ERROR: Invalid username and/or password.', 'affiliates' ) . '</div>';
+				}
+			}
+			
+			$form .= wp_login_form( array( 'echo' => false, 'redirect' => $redirect_url ) );
 		}
 		return $form;
 	}
-
+	
+	public static function wp_login_failed( $username ) {
+	
+		$redirect_url = get_permalink();
+		wp_redirect( add_query_arg( 'login', 'failed', $redirect_url ) );
+		exit;
+	
+	}
+	
 	/**
 	 * Renders a link to log out.
 	 * 
