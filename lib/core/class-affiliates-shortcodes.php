@@ -324,7 +324,9 @@ class Affiliates_Shortcodes {
 		$output = '';
 		require_once( 'class-affiliates-service.php' );
 		$affiliate_id = Affiliates_Service::get_referrer_id();
-		if ( !$affiliate_id ) {
+		
+		// it can not be an affiliate and direct doesn't count
+		if ( ( !$affiliate_id ) || ( $affiliate_id === affiliates_get_direct_id() ) ) {
 			$output .= $content;
 		}
 		return $output;
