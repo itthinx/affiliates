@@ -341,7 +341,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Changelog ==
 
 = 2.15.11 =
-* Fixed the affiliates_is_not_referred shortcode. Now when Direct referrals is enabled, the content is not displayed.
+* Fixed the affiliates_is_not_referred shortcode. Direct doesn't interfere with the content displayed.
 
 = 2.15.10 =
 * Altered the hits table definition for MySQL 5.7.3 compatibility, see https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-3.html
@@ -394,4 +394,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.11 =
-* Fixed the affiliates_is_not_referred shortcode. Now when Direct referrals is enabled, the content is not displayed.
+This release provides a minor fix to the [affiliates_is_not_referred] shortcode.
