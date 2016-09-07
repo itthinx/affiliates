@@ -1,7 +1,7 @@
 == Affiliates - Changelog ==
 
 = 2.15.12 =
-* Updated Settings tabs according to the Wordpress appearance.
+* Updated Settings tabs according to the WordPress appearance.
 
 = 2.15.11 =
 * Fixed the affiliates_is_not_referred shortcode. Now when Direct referrals is enabled, the content is not displayed.

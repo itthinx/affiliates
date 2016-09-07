@@ -341,7 +341,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Changelog ==
 
 = 2.15.12 =
-* Updated Settings tabs according to the Wordpress appearance.
+* Updated Settings tabs according to the WordPress appearance.
 
 = 2.15.11 =
 * Fixed the affiliates_is_not_referred shortcode. Direct doesn't interfere with the content displayed.
@@ -397,4 +397,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.12 =
-Updated Settings tabs according to the Wordpress appearance.
+Updated Settings tabs according to the WordPress appearance.
