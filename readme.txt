@@ -397,4 +397,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.12 =
-Updated Settings tabs according to the WordPress appearance.
+This release revamps parts of the administrative section.
