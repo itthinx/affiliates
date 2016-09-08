@@ -399,4 +399,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Upgrade Notice ==
 
 = 2.15.12 =
-This release revamps parts of the administrative section.
+This release improves parts of the administrative section, including Settings tabs and graph rendering.
