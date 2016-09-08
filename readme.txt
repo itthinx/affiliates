@@ -341,6 +341,8 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Changelog ==
 
 = 2.15.12 =
+* Updated the flot library to version 0.8.3.
+* Improved the graph tooltip position to be displayed within bounds.
 * Updated Settings tabs according to the WordPress appearance.
 
 = 2.15.11 =
