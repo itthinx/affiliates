@@ -1,5 +1,10 @@
 == Affiliates - Changelog ==
 
+= 2.15.12 =
+* Updated the flot library to version 0.8.3.
+* Improved the graph tooltip position to be displayed within bounds.
+* Updated Settings tabs according to the WordPress appearance.
+
 = 2.15.11 =
 * Fixed the affiliates_is_not_referred shortcode. Now when Direct referrals is enabled, the content is not displayed.
 

@@ -17,6 +17,9 @@
  * @package affiliates
  * @since affiliates 2.8.0
  */
+ .section-links {
+ 	border-bottom: 1px solid #ccc;
+ }
 .section-links a.section-link {
 	text-decoration: none;
 }
