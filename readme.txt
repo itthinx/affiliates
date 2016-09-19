@@ -344,6 +344,18 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Added the possibility to approve new affiliates with a status option.
 * Added Notifications section where you can enable to notify administrator and affiliates when new registration.
 
+= 2.15.12 =
+* Updated the flot library to version 0.8.3.
+* Improved the graph tooltip position to be displayed within bounds.
+* Updated Settings tabs according to the WordPress appearance.
+
+= 2.15.11 =
+* Fixed the affiliates_is_not_referred shortcode. Direct doesn't interfere with the content displayed.
+
+= 2.15.10 =
+* Altered the hits table definition for MySQL 5.7.3 compatibility, see https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-3.html
+>>>>>>> master
+
 = 2.15.9 =
 * Added filters: 'affiliates_thanks_sign_up_text' and 'affiliates_check_confirmation_text' on registration form.
 * Added button class to buttons on registration form settings.

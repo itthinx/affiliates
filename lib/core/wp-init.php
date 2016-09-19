@@ -503,6 +503,12 @@ function affiliates_update( $previous_version = null ) {
 		ADD INDEX aff_referrals_c (campaign_id);";
 	}
 
+	// MySQL 5.7.3 PK requirements
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.15.10' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		MODIFY ip INT(10) UNSIGNED NOT NULL DEFAULT 0;";
+	}
+
 	foreach ( $queries as $query ) {
 		// don't use dbDelta, it doesn't handle ALTER
 		if ( $wpdb->query( $query ) === false ) {

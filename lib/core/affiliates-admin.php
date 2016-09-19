@@ -367,7 +367,7 @@ function affiliates_admin() {
 				$.plot($("#stats"),data,options);
 
 				function statsTooltip(x, y, contents) {
-					$('<div id="tooltip">' + contents + '</div>').css( {
+					var tooltip = $('<div id="tooltip">' + contents + '</div>').css( {
 						position: 'absolute',
 						display: 'none',
 						top: y + 5,
@@ -378,6 +378,9 @@ function affiliates_admin() {
 						'background-color': '#ccc',
 						opacity: 0.90
 					}).appendTo("body").fadeIn(200);
+					if ( tooltip.position().left >= tooltip.parent().width() / 2 ) {
+						tooltip.css({left:x-tooltip.outerWidth()});
+					}
 				}
 
 				var tooltipItem = null;
