@@ -66,19 +66,19 @@ class Affiliates_Notifications {
 				'Username: [username]<br/>
 				Password: [password]<br/>
 				[site_login_url]<br/>
-				You are pending to be accepted to the Affiliates program.',
+				Your request to join the Affiliate Program is pending approval.',
 				'affiliates' );
 		self::$default_registration_accepted_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
 		self::$default_registration_accepted_message  = __(
 				'Username: [username]<br/>
 				Password: [password]<br/>
 				[site_login_url]<br/>
-				You have been accepted to the Affiliates program.',
+				Thanks for joining the Affiliate Program.',
 				'affiliates' );
-		self::$default_status_accepted_subject  = __( '[[site_title]] Accepted to the Affiliates program.', 'affiliates' );
+		self::$default_status_accepted_subject  = __( '[[site_title]] Welcome to the Affiliate Program.', 'affiliates' );
 		self::$default_status_accepted_message  = __(
-				'Congratulation [user_login]<br />
-				You have been accepted to the Affiliates program.<br />',
+				'Congratulations [user_login],<br />
+				Your request to join the Affiliate Program has been approved.<br />',
 				'affiliates' );
 		self::$default_admin_registration_pending_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 		self::$default_admin_registration_pending_message = __(
