@@ -2,7 +2,7 @@
 /**
  * affiliates.php
  * 
- * Copyright (c) 2010-2015 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2010-2016 "kento" Karim Rahimpur www.itthinx.com
  * 
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
@@ -25,6 +25,8 @@
  * Author: itthinx
  * Author URI: http://www.itthinx.com
  * Donate-Link: http://www.itthinx.com
+ * Text Domain: affiliates
+ * Domain Path: /lib/core/languages
  * License: GPLv3
  */
 if ( !defined( 'AFFILIATES_CORE_VERSION' ) ) {

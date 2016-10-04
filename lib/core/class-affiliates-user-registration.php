@@ -108,27 +108,27 @@ class Affiliates_User_Registration {
 			$data = array(
 				'user_login' => array(
 					'title'  => 'Username',
-					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'domain' => 'affiliates',
 					'value'  => $user->user_login,
 				),
 				'user_email' => array(
 					'title'  => 'Email',
-					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'domain' => 'affiliates',
 					'value'  => $user->user_email,
 				),
 				'first_name' => array(
 					'title'  => 'First Name',
-					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'domain' => 'affiliates',
 					'value'  => $user->first_name,
 				),
 				'last_name' => array(
 					'title'  => 'Last Name',
-					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'domain' => 'affiliates',
 					'value'  => $user->last_name,
 				),
 				'base_amount' => array(
 					'title'  => 'Base Amount',
-					'domain' => AFFILIATES_PLUGIN_DOMAIN,
+					'domain' => 'affiliates',
 					'value'  => $base_amount
 				)
 			);

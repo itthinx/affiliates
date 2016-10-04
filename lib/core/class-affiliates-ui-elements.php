@@ -50,7 +50,7 @@ class Affiliates_UI_Elements {
 		$affiliates_select = '';
 		if ( !empty( $affiliates ) ) {
 			$affiliates_select .= '<label class="affiliate-id-filter">';
-			$affiliates_select .= __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN );
+			$affiliates_select .= __( 'Affiliate', 'affiliates' );
 			$affiliates_select .= ' ';
 			$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
 			$affiliates_select .= '<option value="">--</option>';

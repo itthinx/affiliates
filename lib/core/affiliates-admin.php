@@ -31,10 +31,10 @@ function affiliates_admin() {
 	global $wpdb, $affiliates_options;
 
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 
-	echo '<h1>' . __( 'Affiliates Overview', AFFILIATES_PLUGIN_DOMAIN ) . '</h1>';
+	echo '<h1>' . __( 'Affiliates Overview', 'affiliates' ) . '</h1>';
 
 	$today = date( 'Y-m-d', time() );
 	$day_interval  = 7;
@@ -49,7 +49,7 @@ function affiliates_admin() {
 		isset( $_POST['clear_filters'] )
 	) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_OVERVIEW_NONCE], 'admin' ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
 	$from_date = $affiliates_options->get_option( 'overview_from_date', null );
@@ -143,18 +143,18 @@ function affiliates_admin() {
 	// fill this in before the final $from_date and $thru_date are set
 	$filters_form =
 		'<div class="filters">' .
-			'<label class="description" for="setfilters">' . __( 'Filters', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
 				'<p>' .
-				'<label class="from-date-filter" for="from_date">' . __( 'From', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+				'<label class="from-date-filter" for="from_date">' . __( 'From', 'affiliates' ) . '</label>' .
 				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-				'<label class="thru-date-filter" for="thru_date">' . __( 'Until', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+				'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
 				'<input class="datefield thru-date-filter" name="thru_date" type="text" value="' . esc_attr( $thru_date ) . '"/>'.
-				'<label class="days-back-filter" for="days_back">' . __( 'Days back', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+				'<label class="days-back-filter" for="days_back">' . __( 'Days back', 'affiliates' ) . '</label>' .
 				'<input class="days-back-filter" name="days_back" type="text" value="' . esc_attr( $days_back ) . '"/>'.
 				wp_nonce_field( 'admin', AFFILIATES_ADMIN_OVERVIEW_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
 				'<input type="hidden" value="submitted" name="submitted"/>' .
 				'</p>' .
 			'</form>' .
@@ -286,7 +286,7 @@ function affiliates_admin() {
 	$ticks_json           = json_encode( $ticks );
 	$dates_json           = json_encode( $dates );
 
-	echo '<h2>' . sprintf( __( '%d Day Charts', AFFILIATES_PLUGIN_DOMAIN ), $days_back ) . '</h2>';
+	echo '<h2>' . sprintf( __( '%d Day Charts', 'affiliates' ), $days_back ) . '</h2>';
 	echo '<div class="manage" style="margin-right:1em">';
 	?>
 	<div id="stats" class="" style="width:100%;height:400px;"></div>
@@ -295,21 +295,21 @@ function affiliates_admin() {
 			$(document).ready(function(){
 				var data = [
 					{
-						label : "<?php _e( 'Hits', AFFILIATES_PLUGIN_DOMAIN ); ?>",
+						label : "<?php _e( 'Hits', 'affiliates' ); ?>",
 						data : <?php echo $hits_series_json; ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ccddff'
 					},
 					{
-						label : "<?php _e( 'Visits', AFFILIATES_PLUGIN_DOMAIN ); ?>",
+						label : "<?php _e( 'Visits', 'affiliates' ); ?>",
 						data : <?php echo $visits_series_json; ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ffddcc'
 					},
 					{
-						label : "<?php _e( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ); ?>",
+						label : "<?php _e( 'Accepted', 'affiliates' ); ?>",
 						data : <?php echo $accepted_series_json; ?>,
 						color : '#009900',
 						bars : { align : "center", show : true, barWidth : 1 },
@@ -317,21 +317,21 @@ function affiliates_admin() {
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Pending', AFFILIATES_PLUGIN_DOMAIN ); ?>",
+						label : "<?php _e( 'Pending', 'affiliates' ); ?>",
 						data : <?php echo $pending_series_json; ?>,
 						color : '#0000ff',
 						bars : { align : "center", show : true, barWidth : 0.6 },
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ); ?>",
+						label : "<?php _e( 'Rejected', 'affiliates' ); ?>",
 						data : <?php echo $rejected_series_json; ?>,
 						color : '#ff0000',
 						bars : { align : "center", show : true, barWidth : .3 },
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Closed', AFFILIATES_PLUGIN_DOMAIN ); ?>",
+						label : "<?php _e( 'Closed', 'affiliates' ); ?>",
 						data : <?php echo $closed_series_json; ?>,
 						color : '#333333',
 						points : { show : true },
@@ -367,7 +367,7 @@ function affiliates_admin() {
 				$.plot($("#stats"),data,options);
 
 				function statsTooltip(x, y, contents) {
-					$('<div id="tooltip">' + contents + '</div>').css( {
+					var tooltip = $('<div id="tooltip">' + contents + '</div>').css( {
 						position: 'absolute',
 						display: 'none',
 						top: y + 5,
@@ -378,6 +378,9 @@ function affiliates_admin() {
 						'background-color': '#ccc',
 						opacity: 0.90
 					}).appendTo("body").fadeIn(200);
+					if ( tooltip.position().left >= tooltip.parent().width() / 2 ) {
+						tooltip.css({left:x-tooltip.outerWidth()});
+					}
 				}
 
 				var tooltipItem = null;
@@ -408,26 +411,26 @@ function affiliates_admin() {
 	echo $filters_form;
 	echo '</div>';
 	
-	echo '<h2>' . __( 'Statistics Summary', AFFILIATES_PLUGIN_DOMAIN ) . '</h2>';
+	echo '<h2>' . __( 'Statistics Summary', 'affiliates' ) . '</h2>';
 	for ( $i = 0; $i < 3; $i++ ) {
 		$add_class = "";
 		switch ( $i ) {
 			case 0:
 				$affiliates = affiliates_get_affiliates( true, true );
-				$title = __( 'From operative affiliates:', AFFILIATES_PLUGIN_DOMAIN );
-				$info = sprintf( _n( 'There is 1 operative affiliate', 'There are %d operative affiliates', count( $affiliates ), AFFILIATES_PLUGIN_DOMAIN ), count( $affiliates ) );
+				$title = __( 'From operative affiliates:', 'affiliates' );
+				$info = sprintf( _n( 'There is 1 operative affiliate', 'There are %d operative affiliates', count( $affiliates ), 'affiliates' ), count( $affiliates ) );
 				$add_class = "active valid";
 				break;
 			case 1:
 				$affiliates = affiliates_get_affiliates( true, false );
-				$title = __( 'From operative and non-operative affiliates:', AFFILIATES_PLUGIN_DOMAIN );
-				$info = sprintf( _n( 'There is 1 affiliate in this set', 'There are %d affiliates in this set', count( $affiliates ), AFFILIATES_PLUGIN_DOMAIN ), count( $affiliates ) );
+				$title = __( 'From operative and non-operative affiliates:', 'affiliates' );
+				$info = sprintf( _n( 'There is 1 affiliate in this set', 'There are %d affiliates in this set', count( $affiliates ), 'affiliates' ), count( $affiliates ) );
 				$add_class = "active";
 				break;
 			case 2:
 				$affiliates = affiliates_get_affiliates( false, false );
-				$title = __( 'All time (includes data from deleted affiliates):', AFFILIATES_PLUGIN_DOMAIN );
-				$info = sprintf( _n( 'There is 1 affiliate in this set', 'There are %d affiliates in this set', count( $affiliates ), AFFILIATES_PLUGIN_DOMAIN ), count( $affiliates ) );
+				$title = __( 'All time (includes data from deleted affiliates):', 'affiliates' );
+				$info = sprintf( _n( 'There is 1 affiliate in this set', 'There are %d affiliates in this set', count( $affiliates ), 'affiliates' ), count( $affiliates ) );
 				break;
 		}
 		$hits               = 0;
@@ -446,25 +449,25 @@ function affiliates_admin() {
 			$referrals_rejected += affiliates_get_affiliate_referrals( $affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_REJECTED );
 		}
 		
-		$accepted_icon = "<img class='icon' alt='" . __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>";
-		$closed_icon = "<img class='icon' alt='" . __( 'Closed', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>";
-		$pending_icon = "<img class='icon' alt='" . __( 'Pending', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>";
-		$rejected_icon = "<img class='icon' alt='" . __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN) . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>";
+		$accepted_icon = "<img class='icon' alt='" . __( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>";
+		$closed_icon = "<img class='icon' alt='" . __( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>";
+		$pending_icon = "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>";
+		$rejected_icon = "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>";
 		
 		echo '<div class="manage" style="margin-right:1em">';
 		echo '<p>';
 		echo '<strong>' . $title . '</strong>&nbsp;' . $info;
 		echo '</p>';
 		echo '<ul>';
-		echo '<li>' . __( '<strong>Referrals:</strong>', AFFILIATES_PLUGIN_DOMAIN ) . '</li>';
+		echo '<li>' . __( '<strong>Referrals:</strong>', 'affiliates' ) . '</li>';
 		echo '<li><ul>';
-		echo '<li>' . $accepted_icon . '&nbsp;' . sprintf( __( '%10d Accepted', AFFILIATES_PLUGIN_DOMAIN ), $referrals_accepted ) . '</li>';
-		echo '<li>' . $closed_icon . '&nbsp;' . sprintf( __( '%10d Closed', AFFILIATES_PLUGIN_DOMAIN ), $referrals_closed ) . '</li>';
-		echo '<li>' . $pending_icon . '&nbsp;' . sprintf( __( '%10d Pending', AFFILIATES_PLUGIN_DOMAIN ), $referrals_pending ) . '</li>';
-		echo '<li>' . $rejected_icon . '&nbsp;' . sprintf( __( '%10d Rejected', AFFILIATES_PLUGIN_DOMAIN ), $referrals_rejected ) . '</li>';
+		echo '<li>' . $accepted_icon . '&nbsp;' . sprintf( __( '%10d Accepted', 'affiliates' ), $referrals_accepted ) . '</li>';
+		echo '<li>' . $closed_icon . '&nbsp;' . sprintf( __( '%10d Closed', 'affiliates' ), $referrals_closed ) . '</li>';
+		echo '<li>' . $pending_icon . '&nbsp;' . sprintf( __( '%10d Pending', 'affiliates' ), $referrals_pending ) . '</li>';
+		echo '<li>' . $rejected_icon . '&nbsp;' . sprintf( __( '%10d Rejected', 'affiliates' ), $referrals_rejected ) . '</li>';
 		echo '</li></ul>';
-		echo '<li>' . sprintf( __( '%10d Hits', AFFILIATES_PLUGIN_DOMAIN ), $hits ) . '</li>';
-		echo '<li>' . sprintf( __( '%10d Visits', AFFILIATES_PLUGIN_DOMAIN ), $visits ) . '</li>';
+		echo '<li>' . sprintf( __( '%10d Hits', 'affiliates' ), $hits ) . '</li>';
+		echo '<li>' . sprintf( __( '%10d Visits', 'affiliates' ), $visits ) . '</li>';
 		echo '</ul>';
 		echo '</div>';
 	}

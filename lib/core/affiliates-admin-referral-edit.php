@@ -33,7 +33,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -65,7 +65,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$saved = false;
 	if ( isset( $_POST['save'] ) ) {
 		if ( !wp_verify_nonce( $_POST['referral-nonce'], 'save' ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		} else {			
 			if ( !empty( $affiliate_id ) ) {
 				if ( empty( $referral_id ) ) {
@@ -81,11 +81,11 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					if ( isset( $captured_referral_id ) ) {
 						$referral_id = $captured_referral_id;
 						$output .= '<br/>';
-						$output .= '<div class="info">' . __( 'The referral has been created.', AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+						$output .= '<div class="info">' . __( 'The referral has been created.', 'affiliates' ) . '</div>';
 						$saved = true;
 					} else {
 						$output .= '<br/>';
-						$output .= '<div class="warning">' . __( 'The referral has not been created. Duplicate?', AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+						$output .= '<div class="warning">' . __( 'The referral has not been created. Duplicate?', 'affiliates' ) . '</div>';
 					}
 				} else {
 					if ( class_exists( 'Affiliates_Referral_WordPress' ) ) {
@@ -101,12 +101,12 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 								'reference'    => $reference
 							) ) ) {
 								$output .= '<br/>';
-								$output .= '<div class="info">' . __( 'The referral has been saved.', AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+								$output .= '<div class="info">' . __( 'The referral has been saved.', 'affiliates' ) . '</div>';
 								$saved = true;
 							}
 						} catch ( Exception $ex ) {
 							$output .= '<br/>';
-							$output .= '<div class="error">' . __( 'The referral could not be saved.', AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+							$output .= '<div class="error">' . __( 'The referral could not be saved.', 'affiliates' ) . '</div>';
 						}
 					} else {
 						if ( affiliates_update_referral( $referral_id, array(
@@ -119,7 +119,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 							'reference'    => $reference
 						) ) ) {
 							$output .= '<br/>';
-							$output .= '<div class="info">' . __( 'The referral has been saved.', AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+							$output .= '<div class="info">' . __( 'The referral has been saved.', 'affiliates' ) . '</div>';
 							$saved = true;
 						}
 					}
@@ -147,9 +147,9 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= '<div class="referral">';
 	$output .= '<h1>';
 	if ( empty( $referral_id ) ) {
-		$output .= __( 'New Referral', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= __( 'New Referral', 'affiliates' );
 	} else {
-		$output .= __( 'Edit Referral', AFFILIATES_PLUGIN_DOMAIN );
+		$output .= __( 'Edit Referral', 'affiliates' );
 	}
 	$output .= '</h1>';
 
@@ -164,7 +164,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Affiliate', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$affiliates = affiliates_get_affiliates( true, true );
 	$output .= '<select name="affiliate_id">';
@@ -182,17 +182,17 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Date & Time', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Date & Time', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="datetime" value="%s" />', esc_attr( $datetime ) );
 	$output .= ' ';
-	$output .= '<span class="description">' . __( 'Format : YYYY-MM-DD HH:MM:SS', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="description">' . __( 'Format : YYYY-MM-DD HH:MM:SS', 'affiliates' ) . '</span>';
 	$output .= '</label>';
 	$output .= '</p>';
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Description', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Description', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= '<textarea name="description">';
 	$output .= stripslashes( $description );
@@ -202,7 +202,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Amount', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Amount', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="amount" value="%s" />', esc_attr( $amount ) );
 	$output .= '</label>';
@@ -210,23 +210,23 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Currency ID', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Currency ID', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="currency_id" value="%s" />', esc_attr( $currency_id ) );
 	$output .= ' ';
-	$output .= '<span class="description">' . __( '* Required when an amount is provided. Examples: USD, GBP, EUR, ...', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="description">' . __( '* Required when an amount is provided. Examples: USD, GBP, EUR, ...', 'affiliates' ) . '</span>';
 	$output .= '</label>';
 	$output .= '</p>';
 
 	$status_descriptions = array(
-		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ),
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 	);
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Status', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Status', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= '<select name="status">';
 	foreach ( $status_descriptions as $key => $label ) {
@@ -239,7 +239,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Reference', AFFILIATES_PLUGIN_DOMAIN ) . '</span>';
+	$output .= '<span class="title">' . __( 'Reference', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="reference" value="%s" />', esc_attr( $reference ) );
 	$output .= '</label>';
@@ -247,9 +247,9 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
 
-	$output .= sprintf( '<input class="button button-primary" type="submit" name="save" value="%s"/>', __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) );
+	$output .= sprintf( '<input class="button button-primary" type="submit" name="save" value="%s"/>', __( 'Save', 'affiliates' ) );
 	$output .= ' ';
-	$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', AFFILIATES_PLUGIN_DOMAIN ) : __( 'Cancel', AFFILIATES_PLUGIN_DOMAIN ) );
+	$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', 'affiliates' ) : __( 'Cancel', 'affiliates' ) );
 
 	$output .= '</div>';
 	$output .= '</form>';
