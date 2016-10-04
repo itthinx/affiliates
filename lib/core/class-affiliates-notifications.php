@@ -32,29 +32,29 @@ class Affiliates_Notifications {
 
 	const NONCE = 'aff-admin-menu';
 	const NOTIFICATIONS = 'aff-notifications';
-	
+
 	const AFFILIATES_NOTIFICATIONS = 'affiliates_notifications';
-	
+
 	const REGISTRATION_ENABLED          = 'registration_enabled';
 	const REGISTRATION_ENABLED_DEFAULT  = true;
-	
+
 	const ADMIN_REGISTRATION_ENABLED          = 'aff_notify_admin';
 	const ADMIN_REGISTRATION_ENABLED_DEFAULT  = true;
-	
+
 	public static $default_registration_pending_subject;
 	public static $default_registration_pending_message;
 	public static $default_registration_accepted_subject;
 	public static $default_registration_accepted_message;
 	public static $default_status_accepted_subject;
 	public static $default_status_accepted_message;
-	
+
 	public static $default_admin_registration_pending_subject;
 	public static $default_admin_registration_pending_message;
 	public static $default_admin_registration_accepted_subject;
 	public static $default_admin_registration_accepted_message;
-	
+
 	static $sections = null;
-	
+
 	/**
 	 * Adds hooks and actions for notifications.
 	 */
@@ -140,7 +140,7 @@ class Affiliates_Notifications {
 		}
 		return $value;
 	}
-	
+
 	public static function view() {
 
 		global $wp, $wpdb, $affiliates_options, $wp_roles;
@@ -148,24 +148,24 @@ class Affiliates_Notifications {
 		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
-		
+
 		wp_enqueue_style( 'affiliates-admin-notifications' );
-		
+
 		self::init_sections();
-		
+
 		// Section
 		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
-		
+
 		if ( !key_exists( $section, self::$sections ) ) {
 			$section = 'affiliates';
 		}
 		$section_title = self::$sections[$section];
-		
+
 		echo
 		'<h1>' .
 		__( 'Notifications', 'affiliates' ) .
 		'</h1>';
-		
+
 		$section_links = array();
 		foreach( self::$sections as $sec => $sec_data ) {
 			$section_links[$sec] = sprintf(
@@ -178,7 +178,7 @@ class Affiliates_Notifications {
 		echo '<div class="section-links">';
 		echo implode( ' | ', $section_links );
 		echo '</div>';
-		
+
 		echo
 		'<h2>' .
 		$section_title .
@@ -240,22 +240,20 @@ class Affiliates_Notifications {
 			echo '<div class="notifications">';
 
 			echo '<div class="manage">';
-		
+
 			echo
 			'<p>' .
 			__( 'Notifications for the site administrator and affiliates can be enabled here. If the integration used provides its own notification settings, enable these through the integration&rsquo;s settings or here. Do not enable them both, as that could cause duplicate notifications to be sent.', 'affiliates' ) .
 			'</p>';
-		
+
 			echo
 			'<form action="" name="notifications" method="post">' .
 			'<div>' .
-		
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
-		
+
 			// Affiliate registration notifications
-		
+
 			'<h3>' . __( 'Enable registration notifications', 'affiliates' ) . '</h3>' .
-		
+
 			'<p>' .
 			'<label>' .
 			'<input type="checkbox" name="' . Affiliates_Notifications::REGISTRATION_ENABLED . '" id="' . Affiliates_Notifications::REGISTRATION_ENABLED . '" ' . ( $registration_enabled ? ' checked="checked" ' : '' ) . '/>' .
@@ -294,42 +292,40 @@ class Affiliates_Notifications {
 		if ( $notifications === null ) {
 			add_option('affiliates_notifications', array(), null, 'no' );
 		}
-		
+
 		if ( isset( $_POST['submit'] ) ) {
 			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
-				
+
 				// admin registration enabled
 				$notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] );
-				
+
 				// Delete legacy option
 				delete_option( 'aff_notify_admin' );
-				
+
 				update_option( 'affiliates_notifications', $notifications );
-				
+
 			}
 		}
 
 		$notify_admin = isset( $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] ) ? $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] : Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED_DEFAULT;
 
 		echo '<div class="notifications">';
-	
+
 		echo '<div class="manage">';
-	
+
 		echo
 		'<p>' .
 		__( 'Notifications for the site administrator and affiliates can be enabled here. If the integration used provides its own notification settings, enable these through the integration&rsquo;s settings or here. Do not enable them both, as that could cause duplicate notifications to be sent.', 'affiliates' ) .
 		'</p>';
-	
+
 		echo
 		'<form action="" name="notifications" method="post">' .
 		'<div>' .
-	
-		'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
-	
+
 		// Administrator registration notifications
-	
+
 		'<h3>' . __( 'Enable registration notifications', 'affiliates' ) . '</h3>' .
-	
+
 		'<p>' .
 		'<label>' .
 		'<input type="checkbox" name="' . Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED . '" id="' . Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED . '" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
@@ -337,22 +333,22 @@ class Affiliates_Notifications {
 		'</label>' .
 		'</p>' .
 		'<p class="description">' .
-		__( 'Send new affiliates an email when their user account is created.', 'affiliates' ) .
+		__( 'Send the administrator an email when a new affiliate user account is created.', 'affiliates' ) .
 		' ' .
-		__( 'This should normally be enabled, so that new affiliates receives their username and password to be able to log in and access their account.', 'affiliates' ) .
+		__( 'This should normally be enabled, especially when the status for new affiliates is pending approval by the administrator.', 'affiliates' ) .
 		'</p>' .
 
 		'<p>' .
 		wp_nonce_field( self::NOTIFICATIONS, self::NONCE, true, false ) .
 		'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
 		'</p>' .
-	
+
 		'</div>' .
 		'</form>' .
 		'</div>'; // .manage
-	
+
 		echo '</div>'; // .notifications
-	
+
 	}
 
 	/**
@@ -363,7 +359,7 @@ class Affiliates_Notifications {
 	 * @return string
 	 */
 	public static function affiliates_new_affiliate_registration_subject( $subject, $params ) {
-		
+
 		$notifications        = get_option( 'affiliates_notifications', array() );
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
@@ -379,7 +375,7 @@ class Affiliates_Notifications {
 		$subject              = self::substitute_tokens( stripslashes( $registration_subject ), $tokens );
 		return $subject;
 	}
-	
+
 	/**
 	 * Changes the admin registration email message.
 	 *
@@ -389,9 +385,9 @@ class Affiliates_Notifications {
 	 */
 	public static function affiliates_new_affiliate_registration_message( $message, $params ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		
+
 		$status = get_option( 'aff_status', null );
-		
+
 		switch ( $status ) {
 			case 'pending' :
 				$registration_message = Affiliates_Notifications::$default_admin_registration_pending_message;
@@ -405,7 +401,7 @@ class Affiliates_Notifications {
 		$message              = self::substitute_tokens( stripslashes( $registration_message ), $tokens );
 		return $message;
 	}
-	
+
 	/**
 	 * Additional mail headers for wp_mail() - used to set the type to HTML.
 	 *
@@ -417,7 +413,7 @@ class Affiliates_Notifications {
 		$headers .= 'Content-type: text/html; charset="' . get_option( 'blog_charset' ) . '"' . "\r\n";
 		return $headers;
 	}
-	
+
 	/**
 	 * Changes the affiliate registration email subject.
 	 *
@@ -426,9 +422,9 @@ class Affiliates_Notifications {
 	 * @return string
 	 */
 	public static function affiliates_new_affiliate_user_registration_subject( $subject, $params ) {
-		
+
 		$notifications        = get_option( 'affiliates_notifications', array() );
-		
+
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
@@ -443,7 +439,7 @@ class Affiliates_Notifications {
 		$subject = self::substitute_tokens( stripslashes( $registration_subject ), $tokens );
 		return $subject;
 	}
-	
+
 	/**
 	 * Changes the affiliate registration email message.
 	 *
@@ -453,9 +449,9 @@ class Affiliates_Notifications {
 	 */
 	public static function  affiliates_new_affiliate_user_registration_message( $message, $params ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		
+
 		$status = get_option( 'aff_status', null );
-		
+
 		switch ( $status ) {
 			case 'pending' :
 				$registration_message = Affiliates_Notifications::$default_registration_pending_message;
@@ -469,7 +465,7 @@ class Affiliates_Notifications {
 		$message = self::substitute_tokens( stripslashes( $registration_message ), $tokens );
 		return $message;
 	}
-	
+
 	/**
 	 * Additional mail headers for wp_mail() - used to set the type to HTML.
 	 *
@@ -490,15 +486,15 @@ class Affiliates_Notifications {
 	 * @return string
 	 */
 	public static function affiliates_updated_affiliate_status_subject( $subject, $params ) {
-		
+
 		$notifications = get_option( 'affiliates_notifications', array() );
 		$status_subject = Affiliates_Notifications::$default_status_accepted_subject;
-		
+
 		$tokens = self::get_registration_tokens( $params );
 		$subject = self::substitute_tokens( stripslashes( $status_subject ), $tokens );
 		return $subject;
 	}
-	
+
 	/**
 	 * Changes the affiliate status changed email message.
 	 *
@@ -509,12 +505,12 @@ class Affiliates_Notifications {
 	public static function  affiliates_updated_affiliate_status_message( $message, $params ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
 		$status_message = Affiliates_Notifications::$default_status_accepted_message;
-		
+
 		$tokens = self::get_registration_tokens( $params );
 		$message = self::substitute_tokens( stripslashes( $status_message ), $tokens );
 		return $message;
 	}
-	
+
 	/**
 	 * Additional mail headers for wp_mail() - used to set the type to HTML.
 	 *
@@ -622,7 +618,7 @@ class Affiliates_Notifications {
 	 * @param int $user_id User ID
 	 */
 	public static function affiliates_updated_affiliate_status( $affiliate_id, $old_status, $new_status ) {
-	
+
 		if ( ( $old_status == 'pending' ) && ( $new_status == 'active' ) ) {
 			$user_id = affiliates_get_affiliate_user ( $affiliate_id );
 			$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
@@ -645,7 +641,7 @@ class Affiliates_Notifications {
 				}
 			}
 		}
-	
+
 	}
 
 }
