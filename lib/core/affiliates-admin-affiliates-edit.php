@@ -175,9 +175,9 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 			'</span>' .
 			' ' .
 			'<select id="status" name="status" class="datafield">' .
-			'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __('Accepted', 'affiliates') . '</option>' .
-			'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __('Pending', 'affiliates') . '</option>' .
-			'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __('Deleted', 'affiliates') . '</option>' .
+			'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __( 'Active', 'affiliates' ) . '</option>' .
+			'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __( 'Pending', 'affiliates' ) . '</option>' .
+			'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __( 'Deleted', 'affiliates' ) . '</option>' .
 			'</select>' .
 			'</label>' .
 			'</div>';
