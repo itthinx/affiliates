@@ -99,7 +99,7 @@ function affiliates_admin_affiliates() {
 										return affiliates_admin_affiliates_bulk_remove();
 									}
 									break;
-								case 'status-accepted' :
+								case 'status-active' :
 									affiliates_admin_affiliates_bulk_status_active_submit();
 									break;
 								case 'status-pending' :
@@ -559,8 +559,8 @@ function affiliates_admin_affiliates() {
 	$output .= '<select class="bulk-action" name="bulk-action">';
 	$output .= '<option selected="selected" value="-1">' . esc_html( __( 'Bulk Actions', 'affiliates' ) ) . '</option>';
 	$output .= '<option value="remove-affiliate">' . esc_html( __( 'Remove affiliate', 'affiliates' ) ) . '</option>';
-	$output .= '<option value="status-pending">' . esc_html( __( 'Set status to pending', 'affiliates' ) ) . '</option>';
-	$output .= '<option value="status-accepted">' . esc_html( __( 'Set status to accepted', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="status-pending">' . esc_html( __( 'Set status to Pending', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="status-active">' . esc_html( __( 'Set status to Active', 'affiliates' ) ) . '</option>';
 	$output .= '</select>';
 	$output .= sprintf( '<input class="button" type="submit" name="bulk" value="%s" />', esc_attr( __( 'Apply', 'affiliates' ) ) );
 	$output .= '<input type="hidden" name="action" value="affiliate-action"/>';
