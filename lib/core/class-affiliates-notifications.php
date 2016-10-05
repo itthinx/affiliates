@@ -613,7 +613,7 @@ class Affiliates_Notifications {
 	/**
 	 * Notify the affiliate of his status changed.
 	 * Notification is sent when the status change:
-	 * - From pending to acepted
+	 * - From pending to active
 	 *
 	 * @param int $user_id User ID
 	 */
