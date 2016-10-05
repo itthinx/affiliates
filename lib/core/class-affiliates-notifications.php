@@ -242,17 +242,12 @@ class Affiliates_Notifications {
 			echo '<div class="manage">';
 
 			echo
-			'<p>' .
-			__( 'Notifications for the site administrator and affiliates can be enabled here. If the integration used provides its own notification settings, enable these through the integration&rsquo;s settings or here. Do not enable them both, as that could cause duplicate notifications to be sent.', 'affiliates' ) .
-			'</p>';
-
-			echo
 			'<form action="" name="notifications" method="post">' .
 			'<div>' .
 
 			// Affiliate registration notifications
 
-			'<h3>' . __( 'Enable registration notifications', 'affiliates' ) . '</h3>' .
+			'<h3>' . __( 'Registration notifications', 'affiliates' ) . '</h3>' .
 
 			'<p>' .
 			'<label>' .
@@ -305,17 +300,12 @@ class Affiliates_Notifications {
 		echo '<div class="manage">';
 
 		echo
-		'<p>' .
-		__( 'Notifications for the site administrator and affiliates can be enabled here. If the integration used provides its own notification settings, enable these through the integration&rsquo;s settings or here. Do not enable them both, as that could cause duplicate notifications to be sent.', 'affiliates' ) .
-		'</p>';
-
-		echo
 		'<form action="" name="notifications" method="post">' .
 		'<div>' .
 
 		// Administrator registration notifications
 
-		'<h3>' . __( 'Enable registration notifications', 'affiliates' ) . '</h3>' .
+		'<h3>' . __( 'Registration notifications', 'affiliates' ) . '</h3>' .
 
 		'<p>' .
 		'<label>' .
