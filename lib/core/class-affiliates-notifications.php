@@ -43,15 +43,15 @@ class Affiliates_Notifications {
 
 	public static $default_registration_pending_subject;
 	public static $default_registration_pending_message;
-	public static $default_registration_accepted_subject;
-	public static $default_registration_accepted_message;
-	public static $default_status_accepted_subject;
-	public static $default_status_accepted_message;
+	public static $default_registration_active_subject;
+	public static $default_registration_active_message;
+	public static $default_status_active_subject;
+	public static $default_status_active_message;
 
 	public static $default_admin_registration_pending_subject;
 	public static $default_admin_registration_pending_message;
-	public static $default_admin_registration_accepted_subject;
-	public static $default_admin_registration_accepted_message;
+	public static $default_admin_registration_active_subject;
+	public static $default_admin_registration_active_message;
 
 	static $sections = null;
 
@@ -68,15 +68,15 @@ class Affiliates_Notifications {
 				[site_login_url]<br/>
 				Your request to join the Affiliate Program is pending approval.',
 				'affiliates' );
-		self::$default_registration_accepted_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
-		self::$default_registration_accepted_message  = __(
+		self::$default_registration_active_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
+		self::$default_registration_active_message  = __(
 				'Username: [username]<br/>
 				Password: [password]<br/>
 				[site_login_url]<br/>
 				Thanks for joining the Affiliate Program.',
 				'affiliates' );
-		self::$default_status_accepted_subject  = __( '[[site_title]] Welcome to the Affiliate Program.', 'affiliates' );
-		self::$default_status_accepted_message  = __(
+		self::$default_status_active_subject  = __( '[[site_title]] Welcome to the Affiliate Program.', 'affiliates' );
+		self::$default_status_active_message  = __(
 				'Congratulations [user_login],<br />
 				Your request to join the Affiliate Program has been approved.<br />',
 				'affiliates' );
@@ -88,8 +88,8 @@ class Affiliates_Notifications {
 				E-mail: [user_email]<br/>
 				This affiliate is pending approval.<br />',
 				'affiliates' );
-		self::$default_admin_registration_accepted_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
-		self::$default_admin_registration_accepted_message = __(
+		self::$default_admin_registration_active_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
+		self::$default_admin_registration_active_message = __(
 				'New affiliate registration on your site [site_title]:<br/>
 				<br/>
 				Username: [user_login]<br/>
@@ -366,9 +366,9 @@ class Affiliates_Notifications {
 			case 'pending' :
 				$registration_subject = Affiliates_Notifications::$default_admin_registration_pending_subject;
 				break;
-			case 'accepted':
+			case 'active':
 			default:
-				$registration_subject = Affiliates_Notifications::$default_admin_registration_accepted_subject;
+				$registration_subject = Affiliates_Notifications::$default_admin_registration_active_subject;
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -392,9 +392,9 @@ class Affiliates_Notifications {
 			case 'pending' :
 				$registration_message = Affiliates_Notifications::$default_admin_registration_pending_message;
 				break;
-			case 'accepted':
+			case 'active':
 			default:
-				$registration_message = Affiliates_Notifications::$default_admin_registration_accepted_message;
+				$registration_message = Affiliates_Notifications::$default_admin_registration_active_message;
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -430,9 +430,9 @@ class Affiliates_Notifications {
 			case 'pending' :
 				$registration_subject = Affiliates_Notifications::$default_registration_pending_subject;
 				break;
-			case 'accepted':
+			case 'active':
 			default:
-				$registration_subject = Affiliates_Notifications::$default_registration_accepted_subject;
+				$registration_subject = Affiliates_Notifications::$default_registration_active_subject;
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -456,9 +456,9 @@ class Affiliates_Notifications {
 			case 'pending' :
 				$registration_message = Affiliates_Notifications::$default_registration_pending_message;
 				break;
-			case 'accepted':
+			case 'active':
 			default:
-				$registration_message = Affiliates_Notifications::$default_registration_accepted_message;
+				$registration_message = Affiliates_Notifications::$default_registration_active_message;
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -488,7 +488,7 @@ class Affiliates_Notifications {
 	public static function affiliates_updated_affiliate_status_subject( $subject, $params ) {
 
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_subject = Affiliates_Notifications::$default_status_accepted_subject;
+		$status_subject = Affiliates_Notifications::$default_status_active_subject;
 
 		$tokens = self::get_registration_tokens( $params );
 		$subject = self::substitute_tokens( stripslashes( $status_subject ), $tokens );
@@ -504,7 +504,7 @@ class Affiliates_Notifications {
 	 */
 	public static function  affiliates_updated_affiliate_status_message( $message, $params ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_message = Affiliates_Notifications::$default_status_accepted_message;
+		$status_message = Affiliates_Notifications::$default_status_active_message;
 
 		$tokens = self::get_registration_tokens( $params );
 		$message = self::substitute_tokens( stripslashes( $status_message ), $tokens );
@@ -613,7 +613,7 @@ class Affiliates_Notifications {
 	/**
 	 * Notify the affiliate of his status changed.
 	 * Notification is sent when the status change:
-	 * - From pending to accepted
+	 * - From pending to active
 	 *
 	 * @param int $user_id User ID
 	 */
@@ -624,7 +624,7 @@ class Affiliates_Notifications {
 			$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 			if ( $user = get_userdata( $user_id ) ) {
 				if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
-					$message  = Affiliates_Notifications::$default_status_accepted_message;
+					$message  = Affiliates_Notifications::$default_status_active_message;
 					$params = array(
 						'user_id'  => $user_id,
 						'user'     => $user,
