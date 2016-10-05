@@ -572,7 +572,7 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_delete_network_data' );
 		delete_option( 'aff_duplicates' );
 		delete_option( 'aff_id_encoding' );
-		delete_option( 'aff_notify_admin' );
+		delete_option( 'aff_notify_admin' ); // @todo use constant
 		delete_option( 'aff_pname' );
 		delete_option( 'aff_redirect' );
 		delete_option( 'aff_registration' );

@@ -781,10 +781,11 @@ class Affiliates_Registration {
 		if ( ( $notifications !== null ) && ( isset( $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] ) ) ) {
 			$registration_enabled = $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED];
 		}
-		
+
 		// Legacy: 'aff_notify_admin' option
-		if ( get_option( 'aff_notify_admin', false ) || ( $registration_enabled ) ) {
-					
+		// @todo review for logic
+		if ( get_option( Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED, Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED_DEFAULT ) || ( $registration_enabled ) ) {
+
 			$params = array(
 				'user_id'        => $user_id,
 				'user'           => $user,
@@ -798,7 +799,7 @@ class Affiliates_Registration {
 				apply_filters( 'affiliates_new_affiliate_registration_message', $message, $params ),
 				apply_filters( 'affiliates_new_affiliate_registration_headers', '', $params )
 			);
-			
+
 		}
 
 	}

@@ -300,7 +300,7 @@ class Affiliates_Notifications {
 				$notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] );
 
 				// Delete legacy option
-				delete_option( 'aff_notify_admin' );
+				delete_option( Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED );
 
 				update_option( 'affiliates_notifications', $notifications );
 
