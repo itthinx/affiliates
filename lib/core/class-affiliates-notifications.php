@@ -204,11 +204,11 @@ class Affiliates_Notifications {
 	 */
 	public static function init_sections() {
 		self::$sections = apply_filters(
-				'affiliates_notifications_sections',
-				array(
-						'affiliates'      => __( 'Affiliates', 'affiliates' ),
-						'administrator'   => __( 'Administrator', 'affiliates' )
-				)
+			'affiliates_notifications_sections',
+			array(
+				'affiliates'      => __( 'Affiliates', 'affiliates' ),
+				'administrator'   => __( 'Administrator', 'affiliates' )
+			)
 		);
 	}
 
@@ -223,7 +223,7 @@ class Affiliates_Notifications {
 
 			$notifications = get_option( 'affiliates_notifications', null );
 			if ( $notifications === null ) {
-				add_option('affiliates_notifications', array(), null, 'no' );
+				add_option( 'affiliates_notifications', array(), null, 'no' );
 			}
 
 			if ( isset( $_POST['submit'] ) ) {
