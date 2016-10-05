@@ -1637,8 +1637,10 @@ function affiliates_get_affiliate_user( $affiliate_id ) {
 }
 
 /**
- * Return the affiliate ids related to a user. 
+ * Return the affiliate ids related to a user.
+ * 
  * @param int $user_id
+ * @param string $status the affiliate's status, default is 'active'
  * @return array of int affiliate ids or null on failure
  */
 function affiliates_get_user_affiliate( $user_id, $status = 'active' ) {
