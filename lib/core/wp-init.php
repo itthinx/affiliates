@@ -489,11 +489,6 @@ function affiliates_update( $previous_version = null ) {
 		ADD INDEX aff_hits_acm (affiliate_id, campaign_id);";
 	}
 
-	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.15.10' ) < 0 ) {
-		$queries[] = "ALTER TABLE " . $hits_table . "
-		MODIFY ip INT(10) UNSIGNED NOT NULL DEFAULT 0;";
-	}
-
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$column          = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'campaign_id'" );
 	if ( empty( $column ) ) {
