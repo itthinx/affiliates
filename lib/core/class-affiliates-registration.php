@@ -776,16 +776,7 @@ class Affiliates_Registration {
 		$message .= sprintf( __( 'Username: %s', 'affiliates' ), $user_login ) . "\r\n\r\n";
 		$message .= sprintf( __( 'E-mail: %s', 'affiliates' ), $user_email ) . "\r\n";
 
-		$registration_enabled = true;
-		$notifications = get_option( 'affiliates_notifications', null );
-		if ( ( $notifications !== null ) && ( isset( $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ) ) ) {
-			$registration_enabled = $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN];
-		}
-
-		// Legacy: 'aff_notify_admin' option
-		// @todo review for logic
-		if ( get_option( Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN, Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN_DEFAULT ) || ( $registration_enabled ) ) {
-
+		if ( get_option( 'aff_notify_admin', true ) ) {
 			$params = array(
 				'user_id'        => $user_id,
 				'user'           => $user,
