@@ -778,13 +778,13 @@ class Affiliates_Registration {
 
 		$registration_enabled = true;
 		$notifications = get_option( 'affiliates_notifications', null );
-		if ( ( $notifications !== null ) && ( isset( $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] ) ) ) {
-			$registration_enabled = $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED];
+		if ( ( $notifications !== null ) && ( isset( $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ) ) ) {
+			$registration_enabled = $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN];
 		}
 
 		// Legacy: 'aff_notify_admin' option
 		// @todo review for logic
-		if ( get_option( Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED, Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED_DEFAULT ) || ( $registration_enabled ) ) {
+		if ( get_option( Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN, Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN_DEFAULT ) || ( $registration_enabled ) ) {
 
 			$params = array(
 				'user_id'        => $user_id,

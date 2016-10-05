@@ -38,8 +38,8 @@ class Affiliates_Notifications {
 	const REGISTRATION_ENABLED          = 'registration_enabled';
 	const REGISTRATION_ENABLED_DEFAULT  = true;
 
-	const ADMIN_REGISTRATION_ENABLED          = 'aff_notify_admin';
-	const ADMIN_REGISTRATION_ENABLED_DEFAULT  = true;
+	const REGISTRATION_NOTIFY_ADMIN          = 'aff_notify_admin';
+	const REGISTRATION_NOTIFY_ADMIN_DEFAULT  = true;
 
 	public static $default_registration_pending_subject;
 	public static $default_registration_pending_message;
@@ -297,17 +297,17 @@ class Affiliates_Notifications {
 			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
 
 				// admin registration enabled
-				$notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] );
+				$notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] = !empty( $_POST[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] );
 
 				// Delete legacy option
-				delete_option( Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED );
+				delete_option( Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN );
 
 				update_option( 'affiliates_notifications', $notifications );
 
 			}
 		}
 
-		$notify_admin = isset( $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] ) ? $notifications[Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED] : Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED_DEFAULT;
+		$notify_admin = isset( $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ) ? $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] : Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN_DEFAULT;
 
 		echo '<div class="notifications">';
 
@@ -328,7 +328,7 @@ class Affiliates_Notifications {
 
 		'<p>' .
 		'<label>' .
-		'<input type="checkbox" name="' . Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED . '" id="' . Affiliates_Notifications::ADMIN_REGISTRATION_ENABLED . '" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
+		'<input type="checkbox" name="' . Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN . '" id="' . Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN . '" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
 		__( 'Enable registration emails', 'affiliates' ) .
 		'</label>' .
 		'</p>' .
