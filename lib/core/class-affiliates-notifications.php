@@ -288,26 +288,17 @@ class Affiliates_Notifications {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 
-		$notifications = get_option( 'affiliates_notifications', null );
-		if ( $notifications === null ) {
-			add_option('affiliates_notifications', array(), null, 'no' );
-		}
-
 		if ( isset( $_POST['submit'] ) ) {
 			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
 
 				// admin registration enabled
-				$notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] = !empty( $_POST[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] );
-
-				// Delete legacy option
-				delete_option( Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN );
-
-				update_option( 'affiliates_notifications', $notifications );
+				delete_option( 'aff_notify_admin' );
+				add_option( 'aff_notify_admin', !empty( $_POST[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ), '', 'no' );
 
 			}
 		}
 
-		$notify_admin = isset( $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ) ? $notifications[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] : Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN_DEFAULT;
+		$notify_admin = get_option( 'aff_notify_admin', true );
 
 		echo '<div class="notifications">';
 
