@@ -35,8 +35,8 @@ class Affiliates_Notifications {
 
 	const AFFILIATES_NOTIFICATIONS = 'affiliates_notifications';
 
-	const REGISTRATION_ENABLED          = 'registration_enabled';
-	const REGISTRATION_ENABLED_DEFAULT  = true;
+	const REGISTRATION_ENABLED               = 'registration_enabled';
+	const REGISTRATION_ENABLED_DEFAULT       = true;
 
 	const REGISTRATION_NOTIFY_ADMIN          = 'aff_notify_admin';
 	const REGISTRATION_NOTIFY_ADMIN_DEFAULT  = true;
