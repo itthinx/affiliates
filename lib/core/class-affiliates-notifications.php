@@ -43,8 +43,18 @@ class Affiliates_Notifications {
 	public static $default_registration_pending_message;
 	public static $default_registration_active_subject;
 	public static $default_registration_active_message;
-	public static $default_status_active_subject;
-	public static $default_status_active_message;
+	
+	/**
+	 * Default message subject when an affiliate has been accepted, passing from pending to active status.
+	 * @var string
+	 */
+	protected static $default_affiliate_pending_to_active_subject;
+	
+	/**
+	 * Default message body when an affiliate has been accepted, passing from pending to active status.
+	 * @var string
+	 */
+	protected static $default_affiliate_pending_to_active_message;
 
 	public static $default_admin_registration_pending_subject;
 	public static $default_admin_registration_pending_message;
@@ -57,12 +67,13 @@ class Affiliates_Notifications {
 	 * Singleton instance.
 	 * @var Affiliates_Notifications
 	 */
-	private static $instance = null;
+	protected static $instance = null;
 
 	/**
 	 * Singleton constructor.
 	 */
-	private function __construct() {
+	protected function __construct() {
+		self::$instance = $this;
 		self::init();
 	}
 
@@ -72,9 +83,9 @@ class Affiliates_Notifications {
 	public static function get_instance() {
 		if ( self::$instance === null ) {
 			if ( class_exists( 'Affiliates_Notifications_Extended' ) ) {
-				self::$instance = new Affiliates_Notifications_Extended();
+				new Affiliates_Notifications_Extended();
 			} else {
-				self::$instance = new Affiliates_Notifications();
+				new Affiliates_Notifications();
 			}
 		}
 		return self::$instance;
@@ -86,24 +97,24 @@ class Affiliates_Notifications {
 	public static function init() {
 
 		// The emails subject and message
-		self::$default_registration_pending_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
-		self::$default_registration_pending_message  = __(
+		self::$default_registration_pending_subject = __( '[[site_title]] Your username and password', 'affiliates' );
+		self::$default_registration_pending_message = __(
 			'Username: [username]<br/>' .
 			'Password: [password]<br/>' .
 			'[site_login_url]<br/>' .
 			'Your request to join the Affiliate Program is pending approval.',
 			'affiliates'
 		);
-		self::$default_registration_active_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
-		self::$default_registration_active_message  = __(
+		self::$default_registration_active_subject = __( '[[site_title]] Your username and password', 'affiliates' );
+		self::$default_registration_active_message = __(
 			'Username: [username]<br/>' .
 			'Password: [password]<br/>' .
 			'[site_login_url]<br/>' .
 			'Thanks for joining the Affiliate Program.',
 			'affiliates'
 		);
-		self::$default_status_active_subject  = __( '[[site_title]] Welcome to the Affiliate Program.', 'affiliates' );
-		self::$default_status_active_message  = __(
+		self::$default_affiliate_pending_to_active_subject = __( '[[site_title]] Welcome to the Affiliate Program', 'affiliates' );
+		self::$default_affiliate_pending_to_active_message = __(
 			'Congratulations [user_login],<br />'.
 			'Your request to join the Affiliate Program has been approved.<br />',
 			'affiliates'
@@ -127,22 +138,22 @@ class Affiliates_Notifications {
 		);
 
 		// registration notifications
-		add_filter( 'pre_option_aff_notify_affiliate_user', array( __CLASS__, 'pre_option_aff_notify_affiliate_user' ) );
-		add_filter( 'affiliates_new_affiliate_user_registration_subject', array( __CLASS__, 'affiliates_new_affiliate_user_registration_subject' ), 10, 2 );
-		add_filter( 'affiliates_new_affiliate_user_registration_message', array( __CLASS__, 'affiliates_new_affiliate_user_registration_message' ), 10, 2 );
-		add_filter( 'affiliates_new_affiliate_user_registration_headers', array( __CLASS__, 'affiliates_new_affiliate_user_registration_headers' ), 10, 2 );
+		add_filter( 'pre_option_aff_notify_affiliate_user', array( self::$instance, 'pre_option_aff_notify_affiliate_user' ) );
+		add_filter( 'affiliates_new_affiliate_user_registration_subject', array( self::$instance, 'affiliates_new_affiliate_user_registration_subject' ), 10, 2 );
+		add_filter( 'affiliates_new_affiliate_user_registration_message', array( self::$instance, 'affiliates_new_affiliate_user_registration_message' ), 10, 2 );
+		add_filter( 'affiliates_new_affiliate_user_registration_headers', array( self::$instance, 'affiliates_new_affiliate_user_registration_headers' ), 10, 2 );
 
-		add_filter( 'affiliates_new_affiliate_registration_subject', array( __CLASS__, 'affiliates_new_affiliate_registration_subject' ), 10, 2 );
-		add_filter( 'affiliates_new_affiliate_registration_message', array( __CLASS__, 'affiliates_new_affiliate_registration_message' ), 10, 2 );
-		add_filter( 'affiliates_new_affiliate_registration_headers', array( __CLASS__, 'affiliates_new_affiliate_registration_headers' ), 10, 2 );
+		add_filter( 'affiliates_new_affiliate_registration_subject', array( self::$instance, 'affiliates_new_affiliate_registration_subject' ), 10, 2 );
+		add_filter( 'affiliates_new_affiliate_registration_message', array( self::$instance, 'affiliates_new_affiliate_registration_message' ), 10, 2 );
+		add_filter( 'affiliates_new_affiliate_registration_headers', array( self::$instance, 'affiliates_new_affiliate_registration_headers' ), 10, 2 );
 
-		add_filter( 'affiliates_updated_affiliate_status_subject', array( __CLASS__, 'affiliates_updated_affiliate_status_subject' ), 10, 2 );
-		add_filter( 'affiliates_updated_affiliate_status_message', array( __CLASS__, 'affiliates_updated_affiliate_status_message' ), 10, 2 );
-		add_filter( 'affiliates_updated_affiliate_status_headers', array( __CLASS__, 'affiliates_updated_affiliate_status_headers' ), 10, 2 );
+		add_filter( 'affiliates_updated_affiliate_status_subject', array( self::$instance, 'affiliates_updated_affiliate_status_subject' ), 10, 4 );
+		add_filter( 'affiliates_updated_affiliate_status_message', array( self::$instance, 'affiliates_updated_affiliate_status_message' ), 10, 4 );
+		add_filter( 'affiliates_updated_affiliate_status_headers', array( self::$instance, 'affiliates_updated_affiliate_status_headers' ), 10, 4 );
 
-		add_filter( 'affiliates_updated_affiliate_status', array( __CLASS__, 'affiliates_updated_affiliate_status' ), 10, 3 );
+		add_filter( 'affiliates_updated_affiliate_status', array( self::$instance, 'affiliates_updated_affiliate_status' ), 10, 3 );
 
-		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+		add_action( 'admin_init', array( self::$instance, 'admin_init' ) );
 
 	}
 
@@ -162,7 +173,7 @@ class Affiliates_Notifications {
 	 */
 	public static function pre_option_aff_notify_affiliate_user( $value ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$registration_enabled = isset( $notifications[Affiliates_Notifications::REGISTRATION_ENABLED] ) ? $notifications[Affiliates_Notifications::REGISTRATION_ENABLED] : Affiliates_Notifications::REGISTRATION_ENABLED_DEFAULT;
+		$registration_enabled = isset( $notifications[self::REGISTRATION_ENABLED] ) ? $notifications[self::REGISTRATION_ENABLED] : self::REGISTRATION_ENABLED_DEFAULT;
 		if ( $registration_enabled ) {
 			$value = 'yes';
 		} else {
@@ -259,13 +270,13 @@ class Affiliates_Notifications {
 			if ( isset( $_POST['submit'] ) ) {
 				if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
 
-					$notifications[Affiliates_Notifications::REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::REGISTRATION_ENABLED] );
+					$notifications[self::REGISTRATION_ENABLED] = !empty( $_POST[self::REGISTRATION_ENABLED] );
 
 					update_option( 'affiliates_notifications', $notifications );
 				}
 			}
 
-			$registration_enabled = isset( $notifications[Affiliates_Notifications::REGISTRATION_ENABLED] ) ? $notifications[Affiliates_Notifications::REGISTRATION_ENABLED] : Affiliates_Notifications::REGISTRATION_ENABLED_DEFAULT;
+			$registration_enabled = isset( $notifications[self::REGISTRATION_ENABLED] ) ? $notifications[self::REGISTRATION_ENABLED] : self::REGISTRATION_ENABLED_DEFAULT;
 
 			echo '<div class="notifications">';
 
@@ -281,7 +292,7 @@ class Affiliates_Notifications {
 
 			'<p>' .
 			'<label>' .
-			'<input type="checkbox" name="' . Affiliates_Notifications::REGISTRATION_ENABLED . '" id="' . Affiliates_Notifications::REGISTRATION_ENABLED . '" ' . ( $registration_enabled ? ' checked="checked" ' : '' ) . '/>' .
+			'<input type="checkbox" name="' . self::REGISTRATION_ENABLED . '" id="' . self::REGISTRATION_ENABLED . '" ' . ( $registration_enabled ? ' checked="checked" ' : '' ) . '/>' .
 			__( 'Enable registration emails', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
@@ -318,7 +329,7 @@ class Affiliates_Notifications {
 
 				// admin registration enabled
 				delete_option( 'aff_notify_admin' );
-				add_option( 'aff_notify_admin', !empty( $_POST[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ), '', 'no' );
+				add_option( 'aff_notify_admin', !empty( $_POST[self::REGISTRATION_NOTIFY_ADMIN] ), '', 'no' );
 
 			}
 		}
@@ -339,7 +350,7 @@ class Affiliates_Notifications {
 
 		'<p>' .
 		'<label>' .
-		'<input type="checkbox" name="' . Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN . '" id="' . Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN . '" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
+		'<input type="checkbox" name="' . self::REGISTRATION_NOTIFY_ADMIN . '" id="' . self::REGISTRATION_NOTIFY_ADMIN . '" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
 		__( 'Enable registration emails', 'affiliates' ) .
 		'</label>' .
 		'</p>' .
@@ -371,15 +382,14 @@ class Affiliates_Notifications {
 	 */
 	public static function affiliates_new_affiliate_registration_subject( $subject, $params ) {
 
-		$notifications        = get_option( 'affiliates_notifications', array() );
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
-				$registration_subject = Affiliates_Notifications::$default_admin_registration_pending_subject;
+				$registration_subject = self::$default_admin_registration_pending_subject;
 				break;
 			case 'active':
 			default:
-				$registration_subject = Affiliates_Notifications::$default_admin_registration_active_subject;
+				$registration_subject = self::$default_admin_registration_active_subject;
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -395,17 +405,15 @@ class Affiliates_Notifications {
 	 * @return string
 	 */
 	public static function affiliates_new_affiliate_registration_message( $message, $params ) {
-		$notifications = get_option( 'affiliates_notifications', array() );
 
 		$status = get_option( 'aff_status', null );
-
 		switch ( $status ) {
 			case 'pending' :
-				$registration_message = Affiliates_Notifications::$default_admin_registration_pending_message;
+				$registration_message = self::$default_admin_registration_pending_message;
 				break;
 			case 'active':
 			default:
-				$registration_message = Affiliates_Notifications::$default_admin_registration_active_message;
+				$registration_message = self::$default_admin_registration_active_message;
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -434,16 +442,14 @@ class Affiliates_Notifications {
 	 */
 	public static function affiliates_new_affiliate_user_registration_subject( $subject, $params ) {
 
-		$notifications        = get_option( 'affiliates_notifications', array() );
-
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
-				$registration_subject = Affiliates_Notifications::$default_registration_pending_subject;
+				$registration_subject = self::$default_registration_pending_subject;
 				break;
 			case 'active':
 			default:
-				$registration_subject = Affiliates_Notifications::$default_registration_active_subject;
+				$registration_subject = self::$default_registration_active_subject;
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -459,17 +465,15 @@ class Affiliates_Notifications {
 	 * @return string
 	 */
 	public static function  affiliates_new_affiliate_user_registration_message( $message, $params ) {
-		$notifications = get_option( 'affiliates_notifications', array() );
 
 		$status = get_option( 'aff_status', null );
-
 		switch ( $status ) {
 			case 'pending' :
-				$registration_message = Affiliates_Notifications::$default_registration_pending_message;
+				$registration_message = self::$default_registration_pending_message;
 				break;
 			case 'active':
 			default:
-				$registration_message = Affiliates_Notifications::$default_registration_active_message;
+				$registration_message = self::$default_registration_active_message;
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -496,10 +500,10 @@ class Affiliates_Notifications {
 	 * @param array $params
 	 * @return string
 	 */
-	public static function affiliates_updated_affiliate_status_subject( $subject, $params ) {
+	public static function affiliates_updated_affiliate_status_subject( $subject, $params, $old_status, $new_status ) {
 
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_subject = Affiliates_Notifications::$default_status_active_subject;
+		$status_subject = self::$default_affiliate_pending_to_active_subject;
 
 		$tokens = self::get_registration_tokens( $params );
 		$subject = self::substitute_tokens( stripslashes( $status_subject ), $tokens );
@@ -513,9 +517,9 @@ class Affiliates_Notifications {
 	 * @param array $params
 	 * @return string
 	 */
-	public static function  affiliates_updated_affiliate_status_message( $message, $params ) {
+	public static function  affiliates_updated_affiliate_status_message( $message, $params, $old_status, $new_status ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_message = Affiliates_Notifications::$default_status_active_message;
+		$status_message = self::$$default_affiliate_pending_to_active_message;
 
 		$tokens = self::get_registration_tokens( $params );
 		$message = self::substitute_tokens( stripslashes( $status_message ), $tokens );
@@ -529,7 +533,7 @@ class Affiliates_Notifications {
 	 * @param array $params
 	 * @return string
 	 */
-	public static function affiliates_updated_affiliate_status_headers( $headers = '', $params = array() ) {
+	public static function affiliates_updated_affiliate_status_headers( $headers = '', $params = array(), $old_status, $new_status ) {
 		$headers .= 'Content-type: text/html; charset="' . get_option( 'blog_charset' ) . '"' . "\r\n";
 		return $headers;
 	}
@@ -635,7 +639,7 @@ class Affiliates_Notifications {
 			$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 			if ( $user = get_userdata( $user_id ) ) {
 				if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
-					$message  = Affiliates_Notifications::$default_status_active_message;
+					$message  = self::$$default_affiliate_pending_to_active_message;
 					$params = array(
 						'user_id'  => $user_id,
 						'user'     => $user,
@@ -645,9 +649,9 @@ class Affiliates_Notifications {
 					);
 					@wp_mail(
 						$user->user_email,
-						apply_filters( 'affiliates_updated_affiliate_status_subject', sprintf( __( '[%s] Affiliate program', 'affiliates' ), $blogname ), $params ),
-						apply_filters( 'affiliates_updated_affiliate_status_message', $message, $params ),
-						apply_filters( 'affiliates_updated_affiliate_status_headers', '', $params )
+						apply_filters( 'affiliates_updated_affiliate_status_subject', sprintf( __( '[%s] Affiliate program', 'affiliates' ), $blogname ), $params, $old_status, $new_status ),
+						apply_filters( 'affiliates_updated_affiliate_status_message', $message, $params, $old_status, $new_status ),
+						apply_filters( 'affiliates_updated_affiliate_status_headers', '', $params, $old_status, $new_status )
 					);
 				}
 			}
