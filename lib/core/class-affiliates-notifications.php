@@ -90,7 +90,7 @@ class Affiliates_Notifications {
 	 * Returns the name of the related admin class.
 	 * @return string
 	 */
-	public static function get_admin_class() {
+	public function get_admin_class() {
 		return 'Affiliates_Admin_Notifications';
 	}
 
