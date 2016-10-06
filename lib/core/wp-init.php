@@ -66,7 +66,9 @@ include_once AFFILIATES_CORE_LIB . '/class-affiliates-exclusion.php';
 // affiliates notifications
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-notifications.php';
 if ( is_admin() ) {
-	require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-notifications.php';
+	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-notifications.php';
+	}
 }
 
 add_action( 'widgets_init', 'affiliates_widgets_init' );
