@@ -547,7 +547,7 @@ function affiliates_deactivate( $network_wide = false ) {
  */
 function affiliates_cleanup( $delete = false ) {
 	global $wpdb, $affiliates_options, $wp_roles;
-	
+
 	$delete_data = get_option( 'aff_delete_data', false ) || $delete;
 	if ( $delete_data ) {
 		foreach ( $wp_roles->role_objects as $role ) {
@@ -572,13 +572,13 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_delete_network_data' );
 		delete_option( 'aff_duplicates' );
 		delete_option( 'aff_id_encoding' );
-		delete_option( 'aff_notify_admin' ); // @todo use constant
+		delete_option( 'aff_notify_admin' );
 		delete_option( 'aff_pname' );
 		delete_option( 'aff_redirect' );
 		delete_option( 'aff_registration' );
-		delete_option( 'aff_status' );
 		delete_option( 'aff_registration_fields' );
 		delete_option( 'aff_setup_hide' );
+		delete_option( 'aff_status' );
 		delete_option( 'aff_use_direct' );
 		delete_option( 'aff_user_registration_amount' );
 		delete_option( 'aff_user_registration_base_amount' );
@@ -589,7 +589,7 @@ function affiliates_cleanup( $delete = false ) {
 }
 
 add_action( 'init', 'affiliates_init' );
-	
+
 /**
  * Initialize.
  * Loads the plugin's translations.
