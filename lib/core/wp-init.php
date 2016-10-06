@@ -1385,13 +1385,13 @@ function affiliates_admin_menu() {
 	// notifications
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 		$page = add_submenu_page(
-				'affiliates-admin',
-				__( 'Notifications', 'affiliates' ),
-				__( 'Notifications', 'affiliates' ),
-				AFFILIATES_ACCESS_AFFILIATES,
-				'affiliates-admin-notifications',
-				apply_filters( 'affiliates_add_submenu_page_function', array( 'Affiliates_Notifications', 'view' ) )
-				);
+			'affiliates-admin',
+			__( 'Notifications', 'affiliates' ),
+			__( 'Notifications', 'affiliates' ),
+			AFFILIATES_ACCESS_AFFILIATES,
+			'affiliates-admin-notifications',
+			apply_filters( 'affiliates_add_submenu_page_function', array( Affiliates_Notifications::get_instance(), 'view' ) )
+		);
 		$pages[] = $page;
 		add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 		add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );

@@ -23,8 +23,6 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( !class_exists( 'Affiliates_Notifications' ) ) {
-
 /**
  * Notifications admin.
  */
@@ -56,6 +54,33 @@ class Affiliates_Notifications {
 	static $sections = null;
 
 	/**
+	 * Singleton instance.
+	 * @var Affiliates_Notifications
+	 */
+	private static $instance = null;
+
+	/**
+	 * Singleton constructor.
+	 */
+	private function __construct() {
+		self::init();
+	}
+
+	/**
+	 * Returns the appropriate instance for notifications.
+	 */
+	public static function get_instance() {
+		if ( self::$instance === null ) {
+			if ( class_exists( 'Affiliates_Notifications_Extended' ) ) {
+				self::$instance = new Affiliates_Notifications_Extended();
+			} else {
+				self::$instance = new Affiliates_Notifications();
+			}
+		}
+		return self::$instance;
+	}
+
+	/**
 	 * Adds hooks and actions for notifications.
 	 */
 	public static function init() {
@@ -63,38 +88,43 @@ class Affiliates_Notifications {
 		// The emails subject and message
 		self::$default_registration_pending_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
 		self::$default_registration_pending_message  = __(
-				'Username: [username]<br/>
-				Password: [password]<br/>
-				[site_login_url]<br/>
-				Your request to join the Affiliate Program is pending approval.',
-				'affiliates' );
+			'Username: [username]<br/>' .
+			'Password: [password]<br/>' .
+			'[site_login_url]<br/>' .
+			'Your request to join the Affiliate Program is pending approval.',
+			'affiliates'
+		);
 		self::$default_registration_active_subject  = __( '[[site_title]] Your username and password', 'affiliates' );
 		self::$default_registration_active_message  = __(
-				'Username: [username]<br/>
-				Password: [password]<br/>
-				[site_login_url]<br/>
-				Thanks for joining the Affiliate Program.',
-				'affiliates' );
+			'Username: [username]<br/>' .
+			'Password: [password]<br/>' .
+			'[site_login_url]<br/>' .
+			'Thanks for joining the Affiliate Program.',
+			'affiliates'
+		);
 		self::$default_status_active_subject  = __( '[[site_title]] Welcome to the Affiliate Program.', 'affiliates' );
 		self::$default_status_active_message  = __(
-				'Congratulations [user_login],<br />
-				Your request to join the Affiliate Program has been approved.<br />',
-				'affiliates' );
+			'Congratulations [user_login],<br />'.
+			'Your request to join the Affiliate Program has been approved.<br />',
+			'affiliates'
+		);
 		self::$default_admin_registration_pending_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 		self::$default_admin_registration_pending_message = __(
-				'New affiliate registration on your site [site_title]:<br/>
-				<br/>
-				Username: [user_login]<br/>
-				E-mail: [user_email]<br/>
-				This affiliate is pending approval.<br />',
-				'affiliates' );
+			'New affiliate registration on your site [site_title]:<br/>' .
+			'<br/>' .
+			'Username: [user_login]<br/>' .
+			'E-mail: [user_email]<br/>' .
+			'This affiliate is pending approval.<br />',
+			'affiliates'
+		);
 		self::$default_admin_registration_active_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 		self::$default_admin_registration_active_message = __(
-				'New affiliate registration on your site [site_title]:<br/>
-				<br/>
-				Username: [user_login]<br/>
-				E-mail: [user_email]<br/>',
-				'affiliates' );
+			'New affiliate registration on your site [site_title]:<br/>' .
+			'<br/>' .
+			'Username: [user_login]<br/>' .
+			'E-mail: [user_email]<br/>',
+			'affiliates'
+		);
 
 		// registration notifications
 		add_filter( 'pre_option_aff_notify_affiliate_user', array( __CLASS__, 'pre_option_aff_notify_affiliate_user' ) );
@@ -626,7 +656,5 @@ class Affiliates_Notifications {
 	}
 
 }
-
-add_action( 'init', array( 'Affiliates_Notifications', 'init' ) );
-
-} // if
+// trigger initialization for action and filter hooks
+add_action( 'init', array( 'Affiliates_Notifications', 'get_instance' ) );
