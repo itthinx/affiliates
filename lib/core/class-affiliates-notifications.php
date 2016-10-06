@@ -28,9 +28,6 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Notifications {
 
-	const NONCE = 'aff-admin-menu';
-	const NOTIFICATIONS = 'aff-notifications';
-
 	const AFFILIATES_NOTIFICATIONS = 'affiliates_notifications';
 
 	const REGISTRATION_ENABLED               = 'registration_enabled';
@@ -43,13 +40,13 @@ class Affiliates_Notifications {
 	public static $default_registration_pending_message;
 	public static $default_registration_active_subject;
 	public static $default_registration_active_message;
-	
+
 	/**
 	 * Default message subject when an affiliate has been accepted, passing from pending to active status.
 	 * @var string
 	 */
 	protected static $default_affiliate_pending_to_active_subject;
-	
+
 	/**
 	 * Default message body when an affiliate has been accepted, passing from pending to active status.
 	 * @var string
@@ -60,8 +57,6 @@ class Affiliates_Notifications {
 	public static $default_admin_registration_pending_message;
 	public static $default_admin_registration_active_subject;
 	public static $default_admin_registration_active_message;
-
-	static $sections = null;
 
 	/**
 	 * Singleton instance.
@@ -89,6 +84,14 @@ class Affiliates_Notifications {
 			}
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Returns the name of the related admin class.
+	 * @return string
+	 */
+	public static function get_admin_class() {
+		return 'Affiliates_Admin_Notifications';
 	}
 
 	/**
@@ -180,197 +183,6 @@ class Affiliates_Notifications {
 			$value = 'no';
 		}
 		return $value;
-	}
-
-	public static function view() {
-
-		global $wp, $wpdb, $affiliates_options, $wp_roles;
-
-		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
-		}
-
-		wp_enqueue_style( 'affiliates-admin-notifications' );
-
-		self::init_sections();
-
-		// Section
-		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
-
-		if ( !key_exists( $section, self::$sections ) ) {
-			$section = 'affiliates';
-		}
-		$section_title = self::$sections[$section];
-
-		echo
-		'<h1>' .
-		__( 'Notifications', 'affiliates' ) .
-		'</h1>';
-
-		$section_links = array();
-		foreach( self::$sections as $sec => $sec_data ) {
-			$section_links[$sec] = sprintf(
-					'<a class="section-link %s" href="%s">%s</a>',
-					$section == $sec ? 'active' : '',
-					esc_url( add_query_arg( 'section', $sec, admin_url( 'admin.php?page=affiliates-admin-notifications' ) ) ),
-					$sec_data
-					);
-		}
-		echo '<div class="section-links">';
-		echo implode( ' | ', $section_links );
-		echo '</div>';
-
-		echo
-		'<h2>' .
-		$section_title .
-		'</h2>';
-
-		switch ( $section ) {
-			case 'administrator' :
-				self::administrator_registration_section();
-				break;
-			case 'affiliates' :
-			default :
-				self::affiliates_registration_section();
-				break;
-		}
-
-		affiliates_footer();
-	}
-
-	/**
-	 * Settings sections.
-	 *
-	 * @return array
-	 */
-	public static function init_sections() {
-		self::$sections = apply_filters(
-			'affiliates_notifications_sections',
-			array(
-				'affiliates'      => __( 'Affiliates', 'affiliates' ),
-				'administrator'   => __( 'Administrator', 'affiliates' )
-			)
-		);
-	}
-
-	/**
-	 * Display the Affiliates - Registration notifications section.
-	 */
-	public static function affiliates_registration_section () {
-
-			if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-				wp_die( __( 'Access denied.', 'affiliates' ) );
-			}
-
-			$notifications = get_option( 'affiliates_notifications', null );
-			if ( $notifications === null ) {
-				add_option( 'affiliates_notifications', array(), null, 'no' );
-			}
-
-			if ( isset( $_POST['submit'] ) ) {
-				if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
-
-					$notifications[self::REGISTRATION_ENABLED] = !empty( $_POST[self::REGISTRATION_ENABLED] );
-
-					update_option( 'affiliates_notifications', $notifications );
-				}
-			}
-
-			$registration_enabled = isset( $notifications[self::REGISTRATION_ENABLED] ) ? $notifications[self::REGISTRATION_ENABLED] : self::REGISTRATION_ENABLED_DEFAULT;
-
-			echo '<div class="notifications">';
-
-			echo '<div class="manage">';
-
-			echo
-			'<form action="" name="notifications" method="post">' .
-			'<div>' .
-
-			// Affiliate registration notifications
-
-			'<h3>' . __( 'Registration notifications', 'affiliates' ) . '</h3>' .
-
-			'<p>' .
-			'<label>' .
-			'<input type="checkbox" name="' . self::REGISTRATION_ENABLED . '" id="' . self::REGISTRATION_ENABLED . '" ' . ( $registration_enabled ? ' checked="checked" ' : '' ) . '/>' .
-			__( 'Enable registration emails', 'affiliates' ) .
-			'</label>' .
-			'</p>' .
-			'<p class="description">' .
-			__( 'Send new affiliates an email when their user account is created.', 'affiliates' ) .
-			' ' .
-			__( 'This should normally be enabled, so that new affiliates receives their username and password to be able to log in and access their account.', 'affiliates' ) .
-			'</p>' .
-
-			'<p>' .
-			wp_nonce_field( self::NOTIFICATIONS, self::NONCE, true, false ) .
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
-			'</p>' .
-
-			'</div>' .
-			'</form>' .
-			'</div>'; // .manage
-
-			echo '</div>'; // .notifications
-
-	}
-
-	/**
-	 * Display the Administrator - Registration notifications section.
-	 */
-	public static function administrator_registration_section () {
-
-		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
-		}
-
-		if ( isset( $_POST['submit'] ) ) {
-			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
-
-				// admin registration enabled
-				delete_option( 'aff_notify_admin' );
-				add_option( 'aff_notify_admin', !empty( $_POST[self::REGISTRATION_NOTIFY_ADMIN] ), '', 'no' );
-
-			}
-		}
-
-		$notify_admin = get_option( 'aff_notify_admin', true );
-
-		echo '<div class="notifications">';
-
-		echo '<div class="manage">';
-
-		echo
-		'<form action="" name="notifications" method="post">' .
-		'<div>' .
-
-		// Administrator registration notifications
-
-		'<h3>' . __( 'Registration notifications', 'affiliates' ) . '</h3>' .
-
-		'<p>' .
-		'<label>' .
-		'<input type="checkbox" name="' . self::REGISTRATION_NOTIFY_ADMIN . '" id="' . self::REGISTRATION_NOTIFY_ADMIN . '" ' . ( $notify_admin ? ' checked="checked" ' : '' ) . '/>' .
-		__( 'Enable registration emails', 'affiliates' ) .
-		'</label>' .
-		'</p>' .
-		'<p class="description">' .
-		__( 'Send the administrator an email when a new affiliate user account is created.', 'affiliates' ) .
-		' ' .
-		__( 'This should normally be enabled, especially when the status for new affiliates is pending approval by the administrator.', 'affiliates' ) .
-		'</p>' .
-
-		'<p>' .
-		wp_nonce_field( self::NOTIFICATIONS, self::NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
-		'</p>' .
-
-		'</div>' .
-		'</form>' .
-		'</div>'; // .manage
-
-		echo '</div>'; // .notifications
-
 	}
 
 	/**

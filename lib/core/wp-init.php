@@ -65,6 +65,9 @@ include_once AFFILIATES_CORE_LIB . '/class-affiliates-exclusion.php';
 
 // affiliates notifications
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-notifications.php';
+if ( is_admin() ) {
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-notifications.php';
+}
 
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
@@ -1387,7 +1390,7 @@ function affiliates_admin_menu() {
 		__( 'Notifications', 'affiliates' ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin-notifications',
-		apply_filters( 'affiliates_add_submenu_page_function', array( Affiliates_Notifications::get_instance(), 'view' ) )
+		apply_filters( 'affiliates_add_submenu_page_function', array( Affiliates_Notifications::get_admin_class(), 'view' ) )
 	);
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
