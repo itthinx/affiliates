@@ -59,17 +59,17 @@ class Affiliates_Admin_Notifications {
 			__( 'Notifications', 'affiliates' ) .
 			'</h1>';
 
-		$section_links = array();
+		$section_links = '';
 		foreach( self::$sections as $sec => $sec_data ) {
-			$section_links[$sec] = sprintf(
-				'<a class="section-link %s" href="%s">%s</a>',
-				$section == $sec ? 'active' : '',
-				esc_url( add_query_arg( 'section', $sec, admin_url( 'admin.php?page=affiliates-admin-notifications' ) ) ),
-				$sec_data
-			);
+			$section_links .= sprintf(
+					'<a class="section-link nav-tab %s" href="%s">%s</a>',
+					$section == $sec ? 'active nav-tab-active' : '',
+					esc_url( add_query_arg( 'section', $sec, admin_url( 'admin.php?page=affiliates-admin-notifications' ) ) ),
+					$sec_data
+					);
 		}
-		echo '<div class="section-links">';
-		echo implode( ' | ', $section_links );
+		echo '<div class="section-links nav-tab-wrapper">';
+		echo $section_links;
 		echo '</div>';
 
 		echo
@@ -224,7 +224,7 @@ class Affiliates_Admin_Notifications {
 		echo '</div>'; // .notifications
 
 	}
-	
+
 	/**
 	 * Adds help tabs.
 	 */
