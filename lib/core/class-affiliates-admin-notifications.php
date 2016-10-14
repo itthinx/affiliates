@@ -224,4 +224,10 @@ class Affiliates_Admin_Notifications {
 		echo '</div>'; // .notifications
 
 	}
+	
+	/**
+	 * Adds help tabs.
+	 */
+	public static function load_page() {
+	}
 }

@@ -45,13 +45,13 @@ class Affiliates_Notifications {
 	 * Default message subject when an affiliate has been accepted, passing from pending to active status.
 	 * @var string
 	 */
-	protected static $default_affiliate_pending_to_active_subject;
+	public static $default_affiliate_pending_to_active_subject;
 
 	/**
 	 * Default message body when an affiliate has been accepted, passing from pending to active status.
 	 * @var string
 	 */
-	protected static $default_affiliate_pending_to_active_message;
+	public static $default_affiliate_pending_to_active_message;
 
 	public static $default_admin_registration_pending_subject;
 	public static $default_admin_registration_pending_message;

@@ -1398,6 +1398,8 @@ function affiliates_admin_menu() {
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
 	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
 
+	add_action( 'load-' . $page, array( Affiliates_Notifications::get_instance()->get_admin_class(), 'load_page' ) );
+
 	// add-ons
 	$page = add_submenu_page(
 		'affiliates-admin',
