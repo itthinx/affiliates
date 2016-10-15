@@ -148,18 +148,24 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo
 			'<p>' .
 			'<label>' .
-			__( 'Status', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Status', 'affiliates' ) .
 			' ' .
 			'<select name="affiliate_status">' .
 			sprintf( '<option value="active" %s>', $affiliate_status == 'active' ? ' selected="selected" ' : '' ) .
-			__( 'Active', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Active', 'affiliates' ) .
 			'</option>' .
 			sprintf( '<option value="pending" %s>', $affiliate_status == 'pending' ? ' selected="selected" ' : '' ) .
-			__( 'Pending', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Pending', 'affiliates' ) .
 			'</option>' .
 			'</select>' .
 			'</label>' .
 			'</p>';
+
+		echo '<p>';
+		echo __( 'This determines if new affiliate applications require manual approval or whether they are accepted automatically.', 'affiliates' );
+		echo ' ';
+		echo __( '<em>Pending</em> will require manual approval of new affiliates. <em>Active</em> will accept new affiliates automatically.', 'affiliates' );
+		echo '</p>';
 
 		// registration fields
 		echo '<h3>' . __( 'Affiliate Registration Form', 'affiliates' ) . '</h3>';

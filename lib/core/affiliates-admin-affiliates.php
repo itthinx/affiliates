@@ -487,13 +487,13 @@ function affiliates_admin_affiliates() {
 				'<label class="show-active-filter">' .
 				'<input class="show-active-filter" name="show_active" type="checkbox" ' . ( $show_active ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Include active affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Include active affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-pending-filter">' .
 				'<input class="show-pending-filter" name="show_pending" type="checkbox" ' . ( $show_pending ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Include pending affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Include pending affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-deleted-filter">' .
