@@ -342,7 +342,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.16.0 =
 * Added the possibility to approve new affiliates with a status option.
-* Added Notifications section where you can enable to notify administrator and affiliates when new registration.
+* Added a Notifications section where you can enable to notify administrator and affiliates on registration.
 
 = 2.15.12 =
 * Updated the flot library to version 0.8.3.
@@ -404,4 +404,4 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 = 2.16.0 =
 This release adds the status option for new affiliates, which allows to approve new affiliates before being active.
-Added Notifications section where you can enable to notify administrator and affiliates when new registration.
+We've also added a Notifications section where you can enable to notify the administrator and the affiliates on registration.
