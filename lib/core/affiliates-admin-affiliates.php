@@ -379,7 +379,7 @@ function affiliates_admin_affiliates() {
 	if ( $show_deleted ) {
 		$statuses[] = 'deleted';
 	}
-	$filters[] = sprintf( " $affiliates_table.status IN (%s) ", !empty($statuses) ? "'" .  implode( "','", $statuses ) . "'" : '' );
+	$filters[] = sprintf( " $affiliates_table.status IN (%s) ", !empty( $statuses ) ? "'" .  implode( "','", $statuses ) . "'" : '' );
 	if ( !$show_inoperative ) {
 		$filters[] = " $affiliates_table.from_date <= %s AND ( $affiliates_table.thru_date IS NULL OR $affiliates_table.thru_date >= %s ) ";
 		$filter_params[] = $today;
