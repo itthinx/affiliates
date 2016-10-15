@@ -331,7 +331,7 @@ class Affiliates_Notifications {
 	 */
 	public static function  affiliates_updated_affiliate_status_message( $message, $params, $old_status, $new_status ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_message = self::$$default_affiliate_pending_to_active_message;
+		$status_message = self::$default_affiliate_pending_to_active_message;
 
 		$tokens = self::get_registration_tokens( $params );
 		$message = self::substitute_tokens( stripslashes( $status_message ), $tokens );
@@ -451,7 +451,7 @@ class Affiliates_Notifications {
 			$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 			if ( $user = get_userdata( $user_id ) ) {
 				if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
-					$message  = self::$$default_affiliate_pending_to_active_message;
+					$message  = self::$default_affiliate_pending_to_active_message;
 					$params = array(
 						'user_id'  => $user_id,
 						'user'     => $user,
