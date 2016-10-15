@@ -122,7 +122,8 @@ Thanks for joining the Affiliate Program.<br/>',
 		self::$default_affiliate_pending_to_active_message = __(
 'Congratulations [user_login],<br/>
 <br/>
-Your request to join the Affiliate Program has been approved.<br/>',
+Your request to join the Affiliate Program has been approved.<br/>
+[site_url]<br/>',
 			'affiliates'
 		);
 		self::$default_admin_registration_pending_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
