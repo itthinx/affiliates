@@ -351,7 +351,7 @@ class Affiliates_Notifications {
 	}
 
 	/**
-	 * Builds an array of tokens adn values based on the parameters provided.
+	 * Builds an array of tokens and values based on the parameters provided.
 	 *
 	 * These tokens are added automatically:
 	 * - site_title
