@@ -41,18 +41,18 @@ require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-remove.php');
  * Affiliate table and action handling.
  */
 function affiliates_admin_affiliates() {
-	
+
 	global $wpdb, $wp_rewrite, $affiliates_options;
-	
+
 	$output = '';
 	$today = date( 'Y-m-d', time() );
-	
+
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-	
+
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
-	
+
 	// @deprecated
 // 	if ( !$wp_rewrite->using_permalinks() ) {
 // 		$output .= '<p class="warning">' .
@@ -60,7 +60,7 @@ function affiliates_admin_affiliates() {
 // 			sprintf( __( 'Your site is not using pretty <a href="%s">permalinks</a>. You will only be able to use URL parameter based <span class="affiliate-link">affiliate links</span> but not pretty <span class="affiliate-permalink">affiliate permalinks</span>, unless you change your permalink settings.', 'affiliates' ), esc_url( get_admin_url( null, 'options-permalink.php') ) ) .
 // 			'</p>';
 // 	}
-	
+
 	//
 	// handle actions
 	//
@@ -99,6 +99,14 @@ function affiliates_admin_affiliates() {
 										return affiliates_admin_affiliates_bulk_remove();
 									}
 									break;
+								case 'status-active' :
+									affiliates_admin_affiliates_bulk_status_active_submit();
+									break;
+								case 'status-pending' :
+									affiliates_admin_affiliates_bulk_status_pending_submit();
+									break;
+								default :
+									break;
 							}
 						}
 					}
@@ -123,7 +131,7 @@ function affiliates_admin_affiliates() {
 				break;
 		}
 	}
-	
+
 	//
 	// affiliate table
 	//
@@ -132,7 +140,7 @@ function affiliates_admin_affiliates() {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	// filters
 	$from_date            = $affiliates_options->get_option( 'affiliates_from_date', null );
 	$from_datetime        = null;
@@ -142,10 +150,12 @@ function affiliates_admin_affiliates() {
 	$affiliate_name       = $affiliates_options->get_option( 'affiliates_affiliate_name', null );
 	$affiliate_email      = $affiliates_options->get_option( 'affiliates_affiliate_email', null );
 	$affiliate_user_login = $affiliates_options->get_option( 'affiliates_affiliate_user_login', null );
+	$show_active          = $affiliates_options->get_option( 'affiliates_show_active', true );
+	$show_pending         = $affiliates_options->get_option( 'affiliates_show_pending', true );
 	$show_deleted         = $affiliates_options->get_option( 'affiliates_show_deleted', false );
 	$show_inoperative     = $affiliates_options->get_option( 'affiliates_show_inoperative', false );
 	$show_totals          = $affiliates_options->get_option( 'affiliates_show_totals', true );
-	
+
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'affiliates_from_date' );
 		$affiliates_options->delete_option( 'affiliates_thru_date' );
@@ -153,6 +163,8 @@ function affiliates_admin_affiliates() {
 		$affiliates_options->delete_option( 'affiliates_affiliate_name' );
 		$affiliates_options->delete_option( 'affiliates_affiliate_email' );
 		$affiliates_options->delete_option( 'affiliates_affiliate_user_login' );
+		$affiliates_options->delete_option( 'affiliates_show_active' );
+		$affiliates_options->delete_option( 'affiliates_show_pending' );
 		$affiliates_options->delete_option( 'affiliates_show_deleted' );
 		$affiliates_options->delete_option( 'affiliates_show_inoperative' );
 		$affiliates_options->delete_option( 'affiliates_show_totals' );
@@ -164,6 +176,8 @@ function affiliates_admin_affiliates() {
 		$affiliate_name = null;
 		$affiliate_email = null;
 		$affiliate_user_login = null;
+		$show_active = true;
+		$show_pending = true;
 		$show_deleted = false;
 		$show_inoperative = false;
 		$show_totals = true;
@@ -204,6 +218,10 @@ function affiliates_admin_affiliates() {
 			$affiliate_user_login = null;
 			$affiliates_options->delete_option( 'affiliates_affiliate_user_login' );
 		}
+		$show_active = isset( $_POST['show_active'] );
+		$affiliates_options->update_option( 'affiliates_show_active', $show_active );
+		$show_pending = isset( $_POST['show_pending'] );
+		$affiliates_options->update_option( 'affiliates_show_pending', $show_pending );
 		$show_deleted = isset( $_POST['show_deleted'] );
 		$affiliates_options->update_option( 'affiliates_show_deleted', $show_deleted );
 		$show_inoperative = isset( $_POST['show_inoperative'] );
@@ -247,27 +265,27 @@ function affiliates_admin_affiliates() {
 			}
 		} else if ( isset( $_POST['affiliate_id'] ) ) { // empty && isset => '' => all
 			$affiliate_id = null;
-			$affiliates_options->delete_option( 'affiliates_affiliate_id' );	
+			$affiliates_options->delete_option( 'affiliates_affiliate_id' );
 		}
 	}
-	
+
 	if ( isset( $_POST['row_count'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	if ( isset( $_POST['paged'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'paged', $current_url );
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
-	
+
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 
@@ -289,7 +307,7 @@ function affiliates_admin_affiliates() {
 	$output .= '</div>'; // .manage
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
-	
+
 	if ($row_count <= 0) {
 		$row_count = $affiliates_options->get_option( 'affiliates_per_page', AFFILIATES_AFFILIATES_PER_PAGE );
 	} else {
@@ -303,7 +321,7 @@ function affiliates_admin_affiliates() {
 	if ( $paged < 0 ) {
 		$paged = 0;
 	} 
-	
+
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'from_date' :
@@ -312,11 +330,12 @@ function affiliates_admin_affiliates() {
 		case 'affiliate_id' :
 		case 'name' :
 		case 'user_login' :
+		case 'status' :
 			break;
 		default:
 			$orderby = 'name';
 	}
-	
+
 	$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
 	switch ( $order ) {
 		case 'asc' :
@@ -331,12 +350,7 @@ function affiliates_admin_affiliates() {
 			$order = 'ASC';
 			$switch_order = 'DESC';
 	}
-	
-//	if ( $from_date || $thru_date || $affiliate_id ) {
-//		$filters = " WHERE ";
-//	} else {
-//		$filters = '';			
-//	}
+
 	$filters = array( " 1=%d " );
 	$filter_params = array( 1 );
 	if ( $affiliate_id ) {
@@ -355,10 +369,17 @@ function affiliates_admin_affiliates() {
 		$filters[] = " $wpdb->users.user_login LIKE '%%%s%%' ";
 		$filter_params[] = $affiliate_user_login;
 	}
-	if ( !$show_deleted ) {
-		$filters[] = " $affiliates_table.status = %s ";
-		$filter_params[] = 'active';
+	$statuses = array( '' ); // need at least one entry for the IN clause
+	if ( $show_active ) {
+		$statuses[] = 'active';
 	}
+	if ( $show_pending ) {
+		$statuses[] = 'pending';
+	}
+	if ( $show_deleted ) {
+		$statuses[] = 'deleted';
+	}
+	$filters[] = sprintf( " $affiliates_table.status IN (%s) ", !empty( $statuses ) ? "'" .  implode( "','", $statuses ) . "'" : '' );
 	if ( !$show_inoperative ) {
 		$filters[] = " $affiliates_table.from_date <= %s AND ( $affiliates_table.thru_date IS NULL OR $affiliates_table.thru_date >= %s ) ";
 		$filter_params[] = $today;
@@ -375,13 +396,13 @@ function affiliates_admin_affiliates() {
 		$filters[] = " $affiliates_table.thru_date < %s ";
 		$filter_params[] = $thru_datetime;
 	}
-	
+
 	if ( !empty( $filters ) ) {
 		$filters = " WHERE " . implode( " AND ", $filters );
 	} else {
 		$filters = '';
 	}
-	
+
 	$count_query = $wpdb->prepare( "SELECT COUNT(*) FROM $affiliates_table LEFT JOIN $affiliates_users_table ON $affiliates_table.affiliate_id = $affiliates_users_table.affiliate_id LEFT JOIN $wpdb->users on $affiliates_users_table.user_id = $wpdb->users.ID $filters", $filter_params );
 	$count  = $wpdb->get_var( $count_query );
 	if ( $count > $row_count ) {
@@ -396,9 +417,9 @@ function affiliates_admin_affiliates() {
 	if ( $paged != 0 ) {
 		$offset = ( $paged - 1 ) * $row_count;
 	}
-	
+
 	$query = $wpdb->prepare( "SELECT $affiliates_table.*, $wpdb->users.* FROM $affiliates_table LEFT JOIN $affiliates_users_table ON $affiliates_table.affiliate_id = $affiliates_users_table.affiliate_id LEFT JOIN $wpdb->users on $affiliates_users_table.user_id = $wpdb->users.ID $filters ORDER BY $orderby $order LIMIT $row_count OFFSET $offset", $filter_params );
-	$results = $wpdb->get_results( $query, OBJECT );		
+	$results = $wpdb->get_results( $query, OBJECT );
 
 	$column_display_names = array(
 		'affiliate_id' => __( 'Id', 'affiliates' ),
@@ -407,13 +428,14 @@ function affiliates_admin_affiliates() {
 		'user_login'   => __( 'Username', 'affiliates' ),
 		'from_date'    => __( 'From', 'affiliates' ),
 		'thru_date'    => __( 'Until', 'affiliates' ),
+		'status'       => __( 'Status', 'affiliates' ),
 		'edit'         => __( 'Edit', 'affiliates' ),
 		'remove'       => __( 'Remove', 'affiliates' ),
 		'links'        => __( 'Links', 'affiliates' ),
 	);
-	
+
 	$output .= '<div class="affiliates-overview">';
-	
+
 	$output .= sprintf( '<div id="filters-container" class="filters" style="%s">', $show_filters ? '' : 'display:none' );
 	$output .=
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
@@ -462,6 +484,18 @@ function affiliates_admin_affiliates() {
 					__( 'Include inoperative affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
+				'<label class="show-active-filter">' .
+				'<input class="show-active-filter" name="show_active" type="checkbox" ' . ( $show_active ? 'checked="checked"' : '' ) . '/>' .
+				' ' .
+				__( 'Include active affiliates', 'affiliates' ) .
+				'</label>' .
+				' ' .
+				'<label class="show-pending-filter">' .
+				'<input class="show-pending-filter" name="show_pending" type="checkbox" ' . ( $show_pending ? 'checked="checked"' : '' ) . '/>' .
+				' ' .
+				__( 'Include pending affiliates', 'affiliates' ) .
+				'</label>' .
+				' ' .
 				'<label class="show-deleted-filter">' .
 					'<input class="show-deleted-filter" name="show_deleted" type="checkbox" ' . ( $show_deleted ? 'checked="checked"' : '' ) . '/>' .
 					' ' .
@@ -495,9 +529,9 @@ function affiliates_admin_affiliates() {
 			</form>
 		</div>
 		';
-		
+
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
@@ -516,16 +550,16 @@ function affiliates_admin_affiliates() {
 	$output .= '<select class="bulk-action" name="bulk-action">';
 	$output .= '<option selected="selected" value="-1">' . esc_html( __( 'Bulk Actions', 'affiliates' ) ) . '</option>';
 	$output .= '<option value="remove-affiliate">' . esc_html( __( 'Remove affiliate', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="status-pending">' . esc_html( __( 'Set status to Pending', 'affiliates' ) ) . '</option>';
+	$output .= '<option value="status-active">' . esc_html( __( 'Set status to Active', 'affiliates' ) ) . '</option>';
 	$output .= '</select>';
 	$output .= sprintf( '<input class="button" type="submit" name="bulk" value="%s" />', esc_attr( __( 'Apply', 'affiliates' ) ) );
 	$output .= '<input type="hidden" name="action" value="affiliate-action"/>';
 	$output .= '</div>';
 
-	$output .= '
-		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
-		<thead>
-			<tr>
-			';
+	$output .= '<table id="" class="wp-list-table widefat fixed" cellspacing="0">';
+	$output .= '<thead>';
+	$output .= '<tr>';
 
 	$output .= '<th id="cb" class="manage-column column-cb check-column" scope="col"><input type="checkbox"></th>';
 
@@ -554,32 +588,33 @@ function affiliates_admin_affiliates() {
 		</thead>
 		<tbody>
 		';
-		
+
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
-			
+
 			$result = $results[$i];
-			
+
 			$name_suffix = '';
-			$class_deleted = '';
+			$class_status = '';
 			if ( $is_deleted = ( strcmp( $result->status, 'deleted' ) == 0 ) ) {
-				$class_deleted = ' deleted ';
+				$class_status = ' deleted ';
 				$name_suffix .= " " . __( '(removed)', 'affiliates' );
+			} else if ( strcmp( $result->status, 'pending' ) == 0 ) {
+				$class_status .= ' pending ';
 			}
-			
+
 			$class_inoperative = '';
 			if ( $is_inoperative = ! ( ( $result->from_date <= $today ) && ( $result->thru_date == null || $result->thru_date >= $today ) ) ) {
 				$class_inoperative = ' inoperative ';
 				$name_suffix .= " " . __( '(inoperative)', 'affiliates' );
 			}
-			
-			
-			$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			
+
+			$output .= '<tr class="' . $class_status . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+
 			$output .= '<th class="check-column">';
 			$output .= '<input type="checkbox" value="' . esc_attr( $result->affiliate_id ) . '" name="affiliate_ids[]"/>';
 			$output .= '</th>';
-			
+
 			$output .= "<td class='affiliate-id'>";
 			if ( affiliates_encode_affiliate_id( $result->affiliate_id ) != $result->affiliate_id ) {
 				$output .= '<span class="encoded-hint" title="' . affiliates_encode_affiliate_id( $result->affiliate_id ) . '">' . $result->affiliate_id . '</span>';
@@ -594,18 +629,20 @@ function affiliates_admin_affiliates() {
 			}
 			$output .= "</td>";
 			$output .= "<td class='affiliate-user-login'>";
-			if ( !empty( $result->ID ) ) {			
+			if ( !empty( $result->ID ) ) {
 				if ( current_user_can( 'edit_user',  $result->ID ) ) {
 					$output .= '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$result->ID" ) . '">' . $result->user_login . '</a>';
 				} else {
 					$output .= $result->user_login;
 				}
 			}
-			
+
 			$output .= "</td>";
 			$output .= "<td class='from-date'>$result->from_date</td>";
 			$output .= "<td class='thru-date'>$result->thru_date</td>";
-			
+
+			$output .= "<td class='status'>$result->status</td>";
+
 			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . $result->affiliate_id . "' alt='" . __( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
 			$output .= "<td class='remove'>" .
 				( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE )  ) ?
@@ -636,7 +673,7 @@ function affiliates_admin_affiliates() {
 			$output .= '</tr>';
 
 			if ( $show_totals ) {
-				$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+				$output .= '<tr class="' . $class_status . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 				$totals = array();
 				$totals[AFFILIATES_REFERRAL_STATUS_CLOSED]   = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_CLOSED );
 				$totals[AFFILIATES_REFERRAL_STATUS_ACCEPTED] = Affiliates_Shortcodes::get_total( $result->affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_ACCEPTED );
@@ -698,15 +735,14 @@ function affiliates_admin_affiliates() {
 
 	$output .= '</tbody>';
 	$output .= '</table>';
-
 	$output .= '</form>'; // #affiliates-action
 
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
-		$output .= '</div>';			
+		$output .= '</div>';
 	}
 
 	$output .= '</div>'; // .affiliates-overview

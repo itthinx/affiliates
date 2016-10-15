@@ -122,6 +122,18 @@ class Affiliates_Registration {
 		$output = '';
 
 		//
+		// Existing affiliate pending approval
+		//
+		if ( affiliates_user_is_affiliate_status( null, 'pending' ) ) {
+			$output .= '<div class="affiliates-registration registered pending">';
+			$output .= '<p>';
+			$output .= __( 'Your affiliate application is pending approval.', 'affiliates' );
+			$output .= '</p>';
+			$output .= '</div>';
+			return $output;
+		}
+
+		//
 		// Existing affiliate
 		//
 		if ( $is_affiliate = affiliates_user_is_affiliate() ) {
@@ -666,6 +678,12 @@ class Affiliates_Registration {
 			'from_date' => esc_sql( $today ),
 		);
 		$formats = array( '%s', '%s', '%s' );
+		// pending affiliate status?
+		$affiliate_status = get_option( 'aff_status', 'active' );
+		if ( $affiliate_status == 'pending' ) {
+			$data['status'] = 'pending';
+			$formats[] = '%s';
+		}
 		if ( $wpdb->insert( $affiliates_table, $data, $formats ) ) {
 			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			// create association
@@ -772,6 +790,7 @@ class Affiliates_Registration {
 				apply_filters( 'affiliates_new_affiliate_registration_message', $message, $params ),
 				apply_filters( 'affiliates_new_affiliate_registration_headers', '', $params )
 			);
+
 		}
 
 	}

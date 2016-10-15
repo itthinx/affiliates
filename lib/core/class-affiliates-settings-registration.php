@@ -77,8 +77,16 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				delete_option( 'aff_registration' );
 				add_option( 'aff_registration', !empty( $_POST['registration'] ), '', 'no' );
 
-				delete_option( 'aff_notify_admin' );
-				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
+				delete_option( 'aff_status' );
+				$status = !empty( $_POST['affiliate_status'] ) ? $_POST['affiliate_status'] : 'active';
+				switch( $status ) {
+					case 'active' :
+					case 'pending' :
+						break;
+					default :
+						$status = 'active';
+				}
+				add_option( 'aff_status', $status, '', 'no' );
 
 				if ( !get_option( 'aff_registration_fields' ) ) {
 					add_option( 'aff_registration_fields', self::$default_fields, '', 'no' );
@@ -123,7 +131,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		}
 
 		$registration = get_option( 'aff_registration', get_option( 'users_can_register', false ) );
-		$notify_admin = get_option( 'aff_notify_admin', get_option( 'aff_notify_admin', true ) );
+		$affiliate_status = get_option( 'aff_status', 'active' );
 
 		echo
 			'<form action="" name="options" method="post">' .
@@ -140,11 +148,24 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo
 			'<p>' .
 			'<label>' .
-			'<input name="notify_admin" type="checkbox" ' . ( $notify_admin ? 'checked="checked"' : '' ) . '/>' .
+			__( 'Status', 'affiliates' ) .
 			' ' .
-			__( 'Notify the site admin when a new affiliate is registered', 'affiliates' ) .
+			'<select name="affiliate_status">' .
+			sprintf( '<option value="active" %s>', $affiliate_status == 'active' ? ' selected="selected" ' : '' ) .
+			__( 'Active', 'affiliates' ) .
+			'</option>' .
+			sprintf( '<option value="pending" %s>', $affiliate_status == 'pending' ? ' selected="selected" ' : '' ) .
+			__( 'Pending', 'affiliates' ) .
+			'</option>' .
+			'</select>' .
 			'</label>' .
 			'</p>';
+
+		echo '<p>';
+		echo __( 'This determines if new affiliate applications require manual approval or whether they are accepted automatically.', 'affiliates' );
+		echo ' ';
+		echo __( '<em>Pending</em> will require manual approval of new affiliates. <em>Active</em> will accept new affiliates automatically.', 'affiliates' );
+		echo '</p>';
 
 		// registration fields
 		echo '<h3>' . __( 'Affiliate Registration Form', 'affiliates' ) . '</h3>';

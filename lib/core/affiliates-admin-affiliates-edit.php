@@ -94,6 +94,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	$user_login  = isset( $_POST['user-field'] ) ? $_POST['user-field'] : ( $affiliate_user != null ? $affiliate_user->user_login : '' );
 	$from_date   = isset( $_POST['from-date-field'] ) ? $_POST['from-date-field'] : $affiliate['from_date'];
 	$thru_date   = isset( $_POST['thru-date-field'] ) ? $_POST['thru-date-field'] : $affiliate['thru_date'];
+	$status      = isset( $_POST['status'] ) ? $_POST['status'] : $affiliate['status'];
 
 	$output =
 		'<div class="manage-affiliates">' .
@@ -165,6 +166,22 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'</label>' .
 		'</div>';
 
+		$output .=
+		
+			'<div class="field">' .
+			'<label class="field-label">' .
+			'<span class="label">' .
+			__( 'Status', 'affiliates' ) .
+			'</span>' .
+			' ' .
+			'<select id="status" name="status" class="datafield">' .
+			'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __( 'Active', 'affiliates' ) . '</option>' .
+			'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __( 'Pending', 'affiliates' ) . '</option>' .
+			'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __( 'Deleted', 'affiliates' ) . '</option>' .
+			'</select>' .
+			'</label>' .
+			'</div>';
+
 	$output .=
 
 		'<div class="field">' .
@@ -189,7 +206,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
  */
 function affiliates_admin_affiliates_edit_submit() {
 	
-	global $wpdb;
+	global $wpdb, $affiliates_version;
 	$result = true;
 	
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
@@ -207,7 +224,7 @@ function affiliates_admin_affiliates_edit_submit() {
 	$is_direct = false;
 	$affiliate = null;
 	if ( $affiliate = $wpdb->get_row( $wpdb->prepare(
-		"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d",
+		"SELECT * FROM $affiliates_table WHERE affiliate_id = %d",
 		intval( $affiliate_id ) ) ) ) {
 		$is_direct = isset( $affiliate->type ) && ( $affiliate->type == AFFILIATES_DIRECT_TYPE );
 	}
@@ -254,7 +271,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		$thru_date = $_POST['thru-date-field'];
 		if ( !empty( $thru_date ) && strtotime( $thru_date ) < strtotime( $from_date ) ) {
 			// thru_date is before from_date => set to null
-			$thru_date = null;							
+			$thru_date = null;
 		}
 		if ( !empty( $thru_date ) ) {
 			$thru_date = date( 'Y-m-d', strtotime( $thru_date ) );
@@ -264,6 +281,14 @@ function affiliates_admin_affiliates_edit_submit() {
 			$data['thru_date'] = null; // (*)
 			$formats[] = 'NULL'; // (*)
 		}
+		
+		$status = $_POST['status'];
+		$old_status = $affiliate->status;
+		if ( empty( $status ) ) {
+			$status = get_option( 'aff_status', 'active' );
+		}
+		$data['status'] = $status;
+		$formats[] = '%s';
 		
 		$sets = array();
 		$values = array();
@@ -308,6 +333,9 @@ function affiliates_admin_affiliates_edit_submit() {
 		// hook
 		if ( !empty( $affiliate_id ) ) {
 			do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+			if ( !empty( $status ) ) {
+				do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, $status );
+			}
 		}
 	} else {
 		$result = false;
@@ -316,3 +344,95 @@ function affiliates_admin_affiliates_edit_submit() {
 	return $result;
 	
 } // function affiliates_admin_affiliates_edit_submit
+
+/**
+ * Handle change bulk status to active
+ * @return array of updated affiliates' ids
+ */
+function affiliates_admin_affiliates_bulk_status_active_submit() {
+
+	global $wpdb;
+	$result = false;
+
+	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+
+	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
+	if ( $affiliate_ids ) {
+		foreach ( $affiliate_ids as $affiliate_id ) {
+			$valid_affiliate = false;
+			// do not mark the pseudo-affiliate as deleted: type != ...
+			$check = $wpdb->prepare(
+					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+					intval( $affiliate_id ) );
+			if ( $wpdb->query( $check ) ) {
+				$valid_affiliate = true;
+			}
+				
+			if ( $valid_affiliate ) {
+				$result = false !== $wpdb->query(
+						$query = $wpdb->prepare(
+								"UPDATE $affiliates_table SET status = 'active' WHERE affiliate_id = %d",
+								intval( $affiliate_id )
+								)
+						);
+				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
+			}
+		}
+	}
+
+	return $result;
+} // function affiliates_admin_affiliates_bulk_status_active_submit
+
+/**
+ * Handle change bulk status to pending
+ * @return array of updated affiliates' ids
+ */
+function affiliates_admin_affiliates_bulk_status_pending_submit() {
+
+	global $wpdb;
+	$result = false;
+
+	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+		wp_die( __( 'Access denied.', 'affiliates' ) );
+	}
+
+	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
+
+	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
+	if ( $affiliate_ids ) {
+		foreach ( $affiliate_ids as $affiliate_id ) {
+			$valid_affiliate = false;
+			// do not mark the pseudo-affiliate as deleted: type != ...
+			$check = $wpdb->prepare(
+					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+					intval( $affiliate_id ) );
+			if ( $wpdb->query( $check ) ) {
+				$valid_affiliate = true;
+			}
+
+			if ( $valid_affiliate ) {
+				$result = false !== $wpdb->query(
+						$query = $wpdb->prepare(
+								"UPDATE $affiliates_table SET status = 'pending' WHERE affiliate_id = %d",
+								intval( $affiliate_id )
+								)
+						);
+				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
+			}
+		}
+	}
+
+	return $result;
+} // function affiliates_admin_affiliates_bulk_status_pending_submit

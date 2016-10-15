@@ -177,7 +177,7 @@ function affiliates_admin_affiliates_add_submit() {
 		$thru_date = $_POST['thru-date-field'];
 		if ( !empty( $thru_date ) && strtotime( $thru_date ) < strtotime( $from_date ) ) {
 			// thru_date is before from_date => set to null
-			$thru_date = null;							
+			$thru_date = null;
 		}
 		if ( !empty( $thru_date ) ) {
 			$thru_date = date( 'Y-m-d', strtotime( $thru_date ) );
@@ -200,6 +200,10 @@ function affiliates_admin_affiliates_add_submit() {
 				$formats_[] = $format;
 			}
 		}
+		
+		$data_['status'] = get_option( 'aff_status', 'active' );
+		$formats_[] = '%s';
+		
 		if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
 			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 		}

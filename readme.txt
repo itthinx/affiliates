@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.6
-Stable tag: 2.15.12
+Stable tag: 2.16.0
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -340,6 +340,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.16.0 =
+* Added the possibility to approve new affiliates with a status option.
+* Added a Notifications section where you can enable to notify administrator and affiliates on registration.
+
 = 2.15.12 =
 * Updated the flot library to version 0.8.3.
 * Improved the graph tooltip position to be displayed within bounds.
@@ -398,5 +402,6 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.15.12 =
-This release improves parts of the administrative section, including Settings tabs and graph rendering.
+= 2.16.0 =
+This release adds the status option for new affiliates, which allows to approve new affiliates before being active.
+We've also added a Notifications section where you can enable to notify the administrator and the affiliates on registration.
