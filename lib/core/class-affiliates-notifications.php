@@ -102,41 +102,44 @@ class Affiliates_Notifications {
 		// The emails subject and message
 		self::$default_registration_pending_subject = __( '[[site_title]] Your username and password', 'affiliates' );
 		self::$default_registration_pending_message = __(
-			'Username: [username]<br/>' .
-			'Password: [password]<br/>' .
-			'[site_login_url]<br/>' .
-			'Your request to join the Affiliate Program is pending approval.',
+'Username: [username]<br/>
+Password: [password]<br/>
+[site_login_url]<br/>
+<br/>
+Your request to join the Affiliate Program is pending approval.<br/>',
 			'affiliates'
 		);
 		self::$default_registration_active_subject = __( '[[site_title]] Your username and password', 'affiliates' );
 		self::$default_registration_active_message = __(
-			'Username: [username]<br/>' .
-			'Password: [password]<br/>' .
-			'[site_login_url]<br/>' .
-			'Thanks for joining the Affiliate Program.',
+'Username: [username]<br/>
+Password: [password]<br/>
+[site_login_url]<br/>
+<br/>
+Thanks for joining the Affiliate Program.<br/>',
 			'affiliates'
 		);
 		self::$default_affiliate_pending_to_active_subject = __( '[[site_title]] Welcome to the Affiliate Program', 'affiliates' );
 		self::$default_affiliate_pending_to_active_message = __(
-			'Congratulations [user_login],<br />'.
-			'Your request to join the Affiliate Program has been approved.<br />',
+'Congratulations [user_login],<br/>
+<br/>
+Your request to join the Affiliate Program has been approved.<br/>',
 			'affiliates'
 		);
 		self::$default_admin_registration_pending_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 		self::$default_admin_registration_pending_message = __(
-			'New affiliate registration on your site [site_title]:<br/>' .
-			'<br/>' .
-			'Username: [user_login]<br/>' .
-			'E-mail: [user_email]<br/>' .
-			'This affiliate is pending approval.<br />',
+'New affiliate registration on your site [site_title]:<br/>
+<br/>
+Username: [user_login]<br/>
+E-mail: [user_email]<br/>
+This affiliate is pending approval.<br/>',
 			'affiliates'
 		);
 		self::$default_admin_registration_active_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 		self::$default_admin_registration_active_message = __(
-			'New affiliate registration on your site [site_title]:<br/>' .
-			'<br/>' .
-			'Username: [user_login]<br/>' .
-			'E-mail: [user_email]<br/>',
+'New affiliate registration on your site [site_title]:<br/>
+<br/>
+Username: [user_login]<br/>
+E-mail: [user_email]<br/>',
 			'affiliates'
 		);
 
