@@ -346,7 +346,7 @@ function affiliates_admin_affiliates_edit_submit() {
 } // function affiliates_admin_affiliates_edit_submit
 
 /**
- * Handle change mulk status to active
+ * Handle change bulk status to active
  * @return array of updated affiliates' ids
  */
 function affiliates_admin_affiliates_bulk_status_active_submit() {
@@ -392,7 +392,7 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 } // function affiliates_admin_affiliates_bulk_status_active_submit
 
 /**
- * Handle change mulk status to pending
+ * Handle change bulk status to pending
  * @return array of updated affiliates' ids
  */
 function affiliates_admin_affiliates_bulk_status_pending_submit() {
