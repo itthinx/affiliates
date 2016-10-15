@@ -154,7 +154,7 @@ class Affiliates_Notifications {
 		add_filter( 'affiliates_updated_affiliate_status_message', array( self::$instance, 'affiliates_updated_affiliate_status_message' ), 10, 4 );
 		add_filter( 'affiliates_updated_affiliate_status_headers', array( self::$instance, 'affiliates_updated_affiliate_status_headers' ), 10, 4 );
 
-		add_filter( 'affiliates_updated_affiliate_status', array( self::$instance, 'affiliates_updated_affiliate_status' ), 10, 3 );
+		add_action( 'affiliates_updated_affiliate_status', array( self::$instance, 'affiliates_updated_affiliate_status' ), 10, 3 );
 
 		add_action( 'admin_init', array( self::$instance, 'admin_init' ) );
 
