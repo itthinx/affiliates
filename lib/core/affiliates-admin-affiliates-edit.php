@@ -367,24 +367,28 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
 	if ( $affiliate_ids ) {
 		foreach ( $affiliate_ids as $affiliate_id ) {
-			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
-					intval( $affiliate_id ) );
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND status != 'active' AND (type IS NULL OR type != %s)",
+				intval( $affiliate_id ),
+				AFFILIATES_DIRECT_TYPE
+			);
 			if ( $wpdb->query( $check ) ) {
-				$valid_affiliate = true;
+				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
+					$old_status = $affiliate['status'];
+					$result = false !== $wpdb->query( $wpdb->prepare(
+						"UPDATE $affiliates_table SET status = 'active' WHERE affiliate_id = %d",
+						intval( $affiliate_id )
+					) );
+					if ( $result ) {
+						do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+						do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, 'active' );
+					}
+					unset( $result );
+					unset( $affiliate );
+				}
 			}
-				
-			if ( $valid_affiliate ) {
-				$result = false !== $wpdb->query(
-						$query = $wpdb->prepare(
-								"UPDATE $affiliates_table SET status = 'active' WHERE affiliate_id = %d",
-								intval( $affiliate_id )
-								)
-						);
-				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
-			}
+			unset( $check );
 		}
 	}
 
@@ -413,24 +417,28 @@ function affiliates_admin_affiliates_bulk_status_pending_submit() {
 	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
 	if ( $affiliate_ids ) {
 		foreach ( $affiliate_ids as $affiliate_id ) {
-			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
-					intval( $affiliate_id ) );
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND status != 'pending' AND (type IS NULL OR type != %s)",
+				intval( $affiliate_id ),
+				AFFILIATES_DIRECT_TYPE
+			);
 			if ( $wpdb->query( $check ) ) {
-				$valid_affiliate = true;
+				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
+					$old_status = $affiliate['status'];
+					$result = false !== $wpdb->query( $wpdb->prepare(
+						"UPDATE $affiliates_table SET status = 'pending' WHERE affiliate_id = %d",
+						intval( $affiliate_id )
+					) );
+					if ( $result ) {
+						do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+						do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, 'pending' );
+					}
+					unset( $result );
+					unset( $affiliate );
+				}
 			}
-
-			if ( $valid_affiliate ) {
-				$result = false !== $wpdb->query(
-						$query = $wpdb->prepare(
-								"UPDATE $affiliates_table SET status = 'pending' WHERE affiliate_id = %d",
-								intval( $affiliate_id )
-								)
-						);
-				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
-			}
+			unset( $check );
 		}
 	}
 
