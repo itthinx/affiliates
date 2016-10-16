@@ -384,7 +384,6 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 						do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
 						do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, 'active' );
 					}
-					unset( $result );
 					unset( $affiliate );
 				}
 			}
@@ -434,7 +433,6 @@ function affiliates_admin_affiliates_bulk_status_pending_submit() {
 						do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
 						do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, 'pending' );
 					}
-					unset( $result );
 					unset( $affiliate );
 				}
 			}
