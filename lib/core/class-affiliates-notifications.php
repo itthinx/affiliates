@@ -142,10 +142,10 @@ class Affiliates_Notifications {
 	public static function get_default( $which ) {
 		$text = '';
 		switch ( $which ) {
-			case DEFAULT_REGISTRATION_PENDING_SUBJECT :
+			case self::DEFAULT_REGISTRATION_PENDING_SUBJECT :
 				$text = __( '[[site_title]] Your username and password', 'affiliates' );
 				break;
-			case DEFAULT_REGISTRATION_PENDING_MESSAGE :
+			case self::DEFAULT_REGISTRATION_PENDING_MESSAGE :
 				$text = __(
 'Username: [username]<br/>
 Password: [password]<br/>
@@ -155,10 +155,10 @@ Your request to join the Affiliate Program is pending approval.<br/>',
 					'affiliates'
 				);
 				break;
-			case DEFAULT_REGISTRATION_ACTIVE_SUBJECT :
+			case self::DEFAULT_REGISTRATION_ACTIVE_SUBJECT :
 				$text = __( '[[site_title]] Your username and password', 'affiliates' );
 				break;
-			case DEFAULT_REGISTRATION_ACTIVE_MESSAGE :
+			case self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE :
 				$text = __(
 'Username: [username]<br/>
 Password: [password]<br/>
@@ -168,10 +168,10 @@ Thanks for joining the Affiliate Program.<br/>',
 					'affiliates'
 				);
 				break;
-			case DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT :
+			case self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT :
 				$text = __( '[[site_title]] Welcome to the Affiliate Program', 'affiliates' );
 				break;
-			case DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE :
+			case self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE :
 				$text = __(
 'Congratulations [user_login],<br/>
 <br/>
@@ -180,10 +180,10 @@ Your request to join the Affiliate Program has been approved.<br/>
 					'affiliates'
 				);
 				break;
-			case DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT :
+			case self::DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT :
 				$text = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 				break;
-			case DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE :
+			case self::DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE :
 				$text = __(
 'New affiliate registration on your site [site_title]:<br/>
 <br/>
@@ -193,10 +193,10 @@ This affiliate is pending approval.<br/>',
 					'affiliates'
 				);
 				break;
-			case DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT :
+			case self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT :
 				$text = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
 				break;
-			case DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE :
+			case self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE :
 				$text = __(
 'New affiliate registration on your site [site_title]:<br/>
 <br/>
