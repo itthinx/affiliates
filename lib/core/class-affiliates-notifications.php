@@ -100,7 +100,7 @@ class Affiliates_Notifications {
 	 * Singleton instance.
 	 * @var Affiliates_Notifications
 	 */
-	protected static $instance = null;
+	private static $instance = null;
 
 	/**
 	 * Singleton constructor.
