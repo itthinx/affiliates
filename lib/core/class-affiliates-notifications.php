@@ -36,27 +36,65 @@ class Affiliates_Notifications {
 	const REGISTRATION_NOTIFY_ADMIN          = 'aff_notify_admin';
 	const REGISTRATION_NOTIFY_ADMIN_DEFAULT  = true;
 
-	public static $default_registration_pending_subject;
-	public static $default_registration_pending_message;
-	public static $default_registration_active_subject;
-	public static $default_registration_active_message;
+	/**
+	 * Message subject when new affiliate is pending.
+	 * @var string
+	 */
+	const DEFAULT_REGISTRATION_PENDING_SUBJECT = 'default_registration_pending_subject';
+
+	/**
+	 * Message body when new affiliate is pending.
+	 * @var string
+	 */
+	const DEFAULT_REGISTRATION_PENDING_MESSAGE = 'default_registration_pending_message';
+
+	/**
+	 * Message subject when new affiliate is registered and automatically active.
+	 * @var string
+	 */
+	const DEFAULT_REGISTRATION_ACTIVE_SUBJECT  = 'default_registration_active_subject';
+
+	/**
+	 * Message body when new affiliate is registered and automatically active.
+	 * @var string
+	 */
+	const DEFAULT_REGISTRATION_ACTIVE_MESSAGE  = 'default_registration_active_message';
 
 	/**
 	 * Default message subject when an affiliate has been accepted, passing from pending to active status.
 	 * @var string
 	 */
-	public static $default_affiliate_pending_to_active_subject;
+	const DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT = 'default_affiliate_pending_to_active_subject';
 
 	/**
 	 * Default message body when an affiliate has been accepted, passing from pending to active status.
 	 * @var string
 	 */
-	public static $default_affiliate_pending_to_active_message;
+	const DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE = 'default_affiliate_pending_to_active_message';
 
-	public static $default_admin_registration_pending_subject;
-	public static $default_admin_registration_pending_message;
-	public static $default_admin_registration_active_subject;
-	public static $default_admin_registration_active_message;
+	/**
+	 * Admin message subject for new pending affiliate.
+	 * @var string
+	 */
+	const DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT = 'default_admin_registration_pending_subject';
+
+	/**
+	 * Admin message body for new pending affiliate.
+	 * @var string
+	 */
+	const DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE = 'default_admin_registration_pending_message';
+
+	/**
+	 * Admin message subject for new activated affiliate.
+	 * @var string
+	 */
+	const DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT = 'default_admin_registration_active_subject';
+
+	/**
+	 * Admin message body for new activated affiliate.
+	 * @var string
+	 */
+	const DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE = 'default_admin_registration_active_message';
 
 	/**
 	 * Singleton instance.
@@ -95,54 +133,86 @@ class Affiliates_Notifications {
 	}
 
 	/**
-	 * Adds hooks and actions for notifications.
+	 * Returns the default message subject or message body template identified by $which.
+	 * These are the defaults used to construct notifications.
+	 * 
+	 * @param string $which self::DEFAULT_REGISTRATION_PENDING_SUBJECT, self::DEFAULT_REGISTRATION_PENDING_MESSAGE, ...
+	 * @return string message template (may contain tokens)
 	 */
-	public static function init() {
-
-		// The emails subject and message
-		self::$default_registration_pending_subject = __( '[[site_title]] Your username and password', 'affiliates' );
-		self::$default_registration_pending_message = __(
+	public static function get_default( $which ) {
+		$text = '';
+		switch ( $which ) {
+			case DEFAULT_REGISTRATION_PENDING_SUBJECT :
+				$text = __( '[[site_title]] Your username and password', 'affiliates' );
+				break;
+			case DEFAULT_REGISTRATION_PENDING_MESSAGE :
+				$text = __(
 'Username: [username]<br/>
 Password: [password]<br/>
 [site_login_url]<br/>
 <br/>
 Your request to join the Affiliate Program is pending approval.<br/>',
-			'affiliates'
-		);
-		self::$default_registration_active_subject = __( '[[site_title]] Your username and password', 'affiliates' );
-		self::$default_registration_active_message = __(
+					'affiliates'
+				);
+				break;
+			case DEFAULT_REGISTRATION_ACTIVE_SUBJECT :
+				$text = __( '[[site_title]] Your username and password', 'affiliates' );
+				break;
+			case DEFAULT_REGISTRATION_ACTIVE_MESSAGE :
+				$text = __(
 'Username: [username]<br/>
 Password: [password]<br/>
 [site_login_url]<br/>
 <br/>
 Thanks for joining the Affiliate Program.<br/>',
-			'affiliates'
-		);
-		self::$default_affiliate_pending_to_active_subject = __( '[[site_title]] Welcome to the Affiliate Program', 'affiliates' );
-		self::$default_affiliate_pending_to_active_message = __(
+					'affiliates'
+				);
+				break;
+			case DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT :
+				$text = __( '[[site_title]] Welcome to the Affiliate Program', 'affiliates' );
+				break;
+			case DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE :
+				$text = __(
 'Congratulations [user_login],<br/>
 <br/>
 Your request to join the Affiliate Program has been approved.<br/>
 [site_url]<br/>',
-			'affiliates'
-		);
-		self::$default_admin_registration_pending_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
-		self::$default_admin_registration_pending_message = __(
+					'affiliates'
+				);
+				break;
+			case DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT :
+				$text = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
+				break;
+			case DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE :
+				$text = __(
 'New affiliate registration on your site [site_title]:<br/>
 <br/>
 Username: [user_login]<br/>
 E-mail: [user_email]<br/>
 This affiliate is pending approval.<br/>',
-			'affiliates'
-		);
-		self::$default_admin_registration_active_subject = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
-		self::$default_admin_registration_active_message = __(
+					'affiliates'
+				);
+				break;
+			case DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT :
+				$text = __( '[[site_title]] New Affiliate Registration', 'affiliates' );
+				break;
+			case DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE :
+				$text = __(
 'New affiliate registration on your site [site_title]:<br/>
 <br/>
 Username: [user_login]<br/>
 E-mail: [user_email]<br/>',
-			'affiliates'
-		);
+					'affiliates'
+				);
+				break;
+		}
+		return $text;
+	}
+
+	/**
+	 * Adds hooks and actions for notifications.
+	 */
+	public static function init() {
 
 		// registration notifications
 		add_filter( 'pre_option_aff_notify_affiliate_user', array( self::$instance, 'pre_option_aff_notify_affiliate_user' ) );
@@ -201,11 +271,11 @@ E-mail: [user_email]<br/>',
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
-				$registration_subject = self::$default_admin_registration_pending_subject;
+				$registration_subject = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT );
 				break;
 			case 'active':
 			default:
-				$registration_subject = self::$default_admin_registration_active_subject;
+				$registration_subject = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT );
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -225,11 +295,11 @@ E-mail: [user_email]<br/>',
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
-				$registration_message = self::$default_admin_registration_pending_message;
+				$registration_message = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE );
 				break;
 			case 'active':
 			default:
-				$registration_message = self::$default_admin_registration_active_message;
+				$registration_message = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE );
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -261,11 +331,11 @@ E-mail: [user_email]<br/>',
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
-				$registration_subject = self::$default_registration_pending_subject;
+				$registration_subject = self::get_default( self::DEFAULT_REGISTRATION_PENDING_SUBJECT );
 				break;
 			case 'active':
 			default:
-				$registration_subject = self::$default_registration_active_subject;
+				$registration_subject = self::get_default( self::DEFAULT_REGISTRATION_ACTIVE_SUBJECT );
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -285,11 +355,11 @@ E-mail: [user_email]<br/>',
 		$status = get_option( 'aff_status', null );
 		switch ( $status ) {
 			case 'pending' :
-				$registration_message = self::$default_registration_pending_message;
+				$registration_message = self::get_default( self::DEFAULT_REGISTRATION_PENDING_MESSAGE );
 				break;
 			case 'active':
 			default:
-				$registration_message = self::$default_registration_active_message;
+				$registration_message = self::get_default( self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE);
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -319,7 +389,7 @@ E-mail: [user_email]<br/>',
 	public static function affiliates_updated_affiliate_status_subject( $subject, $params, $old_status, $new_status ) {
 
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_subject = self::$default_affiliate_pending_to_active_subject;
+		$status_subject = self::get_default( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT );
 
 		$tokens = self::get_registration_tokens( $params );
 		$subject = self::substitute_tokens( stripslashes( $status_subject ), $tokens );
@@ -335,7 +405,7 @@ E-mail: [user_email]<br/>',
 	 */
 	public static function  affiliates_updated_affiliate_status_message( $message, $params, $old_status, $new_status ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
-		$status_message = self::$default_affiliate_pending_to_active_message;
+		$status_message = self::get_default( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE );
 
 		$tokens = self::get_registration_tokens( $params );
 		$message = self::substitute_tokens( stripslashes( $status_message ), $tokens );
@@ -455,7 +525,7 @@ E-mail: [user_email]<br/>',
 			$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 			if ( $user = get_userdata( $user_id ) ) {
 				if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
-					$message  = self::$default_affiliate_pending_to_active_message;
+					$message  = self::get_default( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE );
 					$params = array(
 						'user_id'  => $user_id,
 						'user'     => $user,
