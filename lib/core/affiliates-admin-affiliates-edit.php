@@ -28,21 +28,21 @@ if ( !defined( 'ABSPATH' ) ) {
  * @param int $affiliate_id affiliate id
  */
 function affiliates_admin_affiliates_edit( $affiliate_id ) {
-	
+
 	global $wpdb;
-	
+
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
-	
+
 	$affiliate = affiliates_get_affiliate( intval( $affiliate_id ) );
-	
+
 	if ( empty( $affiliate ) ) {
 		wp_die( __( 'No such affiliate.', 'affiliates' ) );
 	}
-	
+
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
-	
+
 	$affiliate_user        = null;
 	$affiliate_user_edit   = '';
 	$affiliate_user_fields = '';
@@ -103,7 +103,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 				__( 'Edit an affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
-	
+
 		'<form id="edit-affiliate" action="' . esc_url( $current_url ) . '" method="post">' .
 		'<div class="affiliate edit">' .
 		'<input id="affiliate-id-field" name="affiliate-id-field" type="hidden" value="' . esc_attr( intval( $affiliate_id ) ) . '"/>' .
@@ -166,24 +166,22 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'</label>' .
 		'</div>';
 
-		$output .=
-		
-			'<div class="field">' .
-			'<label class="field-label">' .
-			'<span class="label">' .
-			__( 'Status', 'affiliates' ) .
-			'</span>' .
-			' ' .
-			'<select id="status" name="status" class="datafield">' .
-			'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __( 'Active', 'affiliates' ) . '</option>' .
-			'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __( 'Pending', 'affiliates' ) . '</option>' .
-			'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __( 'Deleted', 'affiliates' ) . '</option>' .
-			'</select>' .
-			'</label>' .
-			'</div>';
+	$output .=
+		'<div class="field">' .
+		'<label class="field-label">' .
+		'<span class="label">' .
+		__( 'Status', 'affiliates' ) .
+		'</span>' .
+		' ' .
+		'<select id="status" name="status" class="datafield">' .
+		'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __( 'Active', 'affiliates' ) . '</option>' .
+		'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __( 'Pending', 'affiliates' ) . '</option>' .
+		'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __( 'Deleted', 'affiliates' ) . '</option>' .
+		'</select>' .
+		'</label>' .
+		'</div>';
 
 	$output .=
-
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-edit', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
 		'<input class="button button-primary" type="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
@@ -191,12 +189,11 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		' ' .
 		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', 'affiliates' ) . '</a>' .
 		'</div>' .
-
 		'</div>' . // .affiliate.edit
 		'</form>' .
 		'</div>'; // .manage-affiliates
-	
-		echo $output;
+
+	echo $output;
 
 	affiliates_footer();
 } // function affiliates_admin_affiliates_edit
@@ -205,21 +202,21 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
  * Handle edit form submission.
  */
 function affiliates_admin_affiliates_edit_submit() {
-	
+
 	global $wpdb, $affiliates_version;
 	$result = true;
-	
+
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
-	
+
 	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE],  'affiliates-edit' ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
-	
+
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
-	
+
 	$affiliate_id = isset( $_POST['affiliate-id-field'] ) ? $_POST['affiliate-id-field'] : null;
 	$is_direct = false;
 	$affiliate = null;
@@ -228,28 +225,28 @@ function affiliates_admin_affiliates_edit_submit() {
 		intval( $affiliate_id ) ) ) ) {
 		$is_direct = isset( $affiliate->type ) && ( $affiliate->type == AFFILIATES_DIRECT_TYPE );
 	}
-	
+
 	if ( empty( $affiliate ) ) {
 		wp_die( __( 'No such affiliate.', 'affiliates' ) );
 	}
-	
+
 	$name = isset( $_POST['name-field'] ) ? $_POST['name-field'] : null;
 	// don't change the name of the pseudo-affiliate
 	if ( $is_direct ) {
 		$name = AFFILIATES_DIRECT_NAME;
 	}
 	if ( !empty( $name ) ) {
-		
+
 		// Note the trickery (*) that has to be used because wpdb::prepare() is not
 		// able to handle null values.
 		// @see http://core.trac.wordpress.org/ticket/11622
 		// @see http://core.trac.wordpress.org/ticket/12819
-		
+
 		$data = array(
 			'name' => $name
 		);
 		$formats = array( '%s' );
-		
+
 		$email = trim( $_POST['email-field'] );
 		if ( is_email( $email ) ) {
 			$data['email'] = $email;
@@ -258,7 +255,7 @@ function affiliates_admin_affiliates_edit_submit() {
 			$data['email'] = null; // (*)
 			$formats[] = 'NULL'; // (*)
 		}
-		
+
 		$from_date = $_POST['from-date-field'];
 		if ( empty( $from_date ) ) {
 			$from_date = date( 'Y-m-d', time() );
@@ -267,7 +264,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		}
 		$data['from_date'] = $from_date;
 		$formats[] = '%s';
-		
+
 		$thru_date = $_POST['thru-date-field'];
 		if ( !empty( $thru_date ) && strtotime( $thru_date ) < strtotime( $from_date ) ) {
 			// thru_date is before from_date => set to null
@@ -281,7 +278,7 @@ function affiliates_admin_affiliates_edit_submit() {
 			$data['thru_date'] = null; // (*)
 			$formats[] = 'NULL'; // (*)
 		}
-		
+
 		$status = $_POST['status'];
 		$old_status = $affiliate->status;
 		if ( empty( $status ) ) {
@@ -289,7 +286,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		}
 		$data['status'] = $status;
 		$formats[] = '%s';
-		
+
 		$sets = array();
 		$values = array();
 		$j = 0;
@@ -340,9 +337,9 @@ function affiliates_admin_affiliates_edit_submit() {
 	} else {
 		$result = false;
 	}
-	
+
 	return $result;
-	
+
 } // function affiliates_admin_affiliates_edit_submit
 
 /**
@@ -367,24 +364,27 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
 	if ( $affiliate_ids ) {
 		foreach ( $affiliate_ids as $affiliate_id ) {
-			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
-					intval( $affiliate_id ) );
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND status != 'active' AND (type IS NULL OR type != %s)",
+				intval( $affiliate_id ),
+				AFFILIATES_DIRECT_TYPE
+			);
 			if ( $wpdb->query( $check ) ) {
-				$valid_affiliate = true;
+				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
+					$old_status = $affiliate['status'];
+					$result = false !== $wpdb->query( $wpdb->prepare(
+						"UPDATE $affiliates_table SET status = 'active' WHERE affiliate_id = %d",
+						intval( $affiliate_id )
+					) );
+					if ( $result ) {
+						do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+						do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, 'active' );
+					}
+					unset( $affiliate );
+				}
 			}
-				
-			if ( $valid_affiliate ) {
-				$result = false !== $wpdb->query(
-						$query = $wpdb->prepare(
-								"UPDATE $affiliates_table SET status = 'active' WHERE affiliate_id = %d",
-								intval( $affiliate_id )
-								)
-						);
-				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
-			}
+			unset( $check );
 		}
 	}
 
@@ -413,24 +413,27 @@ function affiliates_admin_affiliates_bulk_status_pending_submit() {
 	$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
 	if ( $affiliate_ids ) {
 		foreach ( $affiliate_ids as $affiliate_id ) {
-			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-					"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
-					intval( $affiliate_id ) );
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND status != 'pending' AND (type IS NULL OR type != %s)",
+				intval( $affiliate_id ),
+				AFFILIATES_DIRECT_TYPE
+			);
 			if ( $wpdb->query( $check ) ) {
-				$valid_affiliate = true;
+				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
+					$old_status = $affiliate['status'];
+					$result = false !== $wpdb->query( $wpdb->prepare(
+						"UPDATE $affiliates_table SET status = 'pending' WHERE affiliate_id = %d",
+						intval( $affiliate_id )
+					) );
+					if ( $result ) {
+						do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+						do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, 'pending' );
+					}
+					unset( $affiliate );
+				}
 			}
-
-			if ( $valid_affiliate ) {
-				$result = false !== $wpdb->query(
-						$query = $wpdb->prepare(
-								"UPDATE $affiliates_table SET status = 'pending' WHERE affiliate_id = %d",
-								intval( $affiliate_id )
-								)
-						);
-				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
-			}
+			unset( $check );
 		}
 	}
 

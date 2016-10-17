@@ -105,8 +105,6 @@ function affiliates_admin_affiliates() {
 								case 'status-pending' :
 									affiliates_admin_affiliates_bulk_status_pending_submit();
 									break;
-								default :
-									break;
 							}
 						}
 					}
