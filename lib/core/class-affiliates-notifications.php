@@ -359,7 +359,7 @@ E-mail: [user_email]<br/>',
 				break;
 			case 'active':
 			default:
-				$registration_message = self::get_default( self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE);
+				$registration_message = self::get_default( self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE );
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
