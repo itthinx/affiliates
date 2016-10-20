@@ -406,5 +406,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.16.0 =
+= 2.16.1 =
 This release updates the translation files.
