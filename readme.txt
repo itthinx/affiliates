@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.6.1
-Stable tag: 2.16.0
+Stable tag: 2.16.1
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -86,6 +86,10 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
     Affiliates can sign up automatically and can also be added manually with or without user accounts.
 
+* Affiliate approval and notifications
+
+    Affiliates can be approved manually or automatically and notifications are sent that inform them and the administrator of their status.
+
 * Feedback is welcome
 
     Do you have feature requests or want to provide feedback? Please get in touch, the Affiliates plugins evolve with your needs.
@@ -94,7 +98,7 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
     The Affiliates plugin is free and Open Source. If you want to use it, simply install it from your WordPress Dashboard or download it from WordPress.org.
 
-    Affiliates Pro and Enterprise are contributor releases with additional features. Contributions help to make the plugins even more awesome. Thanks!
+    Affiliates Pro and Enterprise are premium releases with additional features. Your support helps to make the plugins even more awesome. Thanks!
 
 * Quick & Easy Installation
 
@@ -340,6 +344,10 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.16.1 =
+* Updated pot and translation files.
+* Updated the Spanish translation.
+
 = 2.16.0 =
 * Added the possibility to approve new affiliates with a status option.
 * Added a Notifications section where you can enable to notify administrator and affiliates on registration.
@@ -402,6 +410,5 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Upgrade Notice ==
 
-= 2.16.0 =
-This release adds the status option for new affiliates, which allows to approve new affiliates before being active.
-We've also added a Notifications section where you can enable to notify the administrator and the affiliates on registration.
+= 2.16.1 =
+This release updates the translation files.

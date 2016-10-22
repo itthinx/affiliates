@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 2.16.1 =
+* Updated pot and translation files.
+* Updated the Spanish translation.
+
 = 2.16.0 =
 * Added the possibility to approve new affiliates with a status option.
 * Added a Notifications section where you can enable to notify administrator and affiliates on registration.
