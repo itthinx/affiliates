@@ -86,6 +86,10 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
     Affiliates can sign up automatically and can also be added manually with or without user accounts.
 
+* Affiliate approval and notifications
+
+    Affiliates can be approved manually or automatically and notifications are sent that inform them and the administrator of their status.
+
 * Feedback is welcome
 
     Do you have feature requests or want to provide feedback? Please get in touch, the Affiliates plugins evolve with your needs.
@@ -94,7 +98,7 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
     The Affiliates plugin is free and Open Source. If you want to use it, simply install it from your WordPress Dashboard or download it from WordPress.org.
 
-    Affiliates Pro and Enterprise are contributor releases with additional features. Contributions help to make the plugins even more awesome. Thanks!
+    Affiliates Pro and Enterprise are premium releases with additional features. Your support helps to make the plugins even more awesome. Thanks!
 
 * Quick & Easy Installation
 
