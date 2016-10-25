@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2016-10-19 17:47+0200\n"
+        "POT-Creation-Date: 2016-10-25 09:54+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1917,7 +1917,7 @@ msgid   "This should normally be enabled, especially when the status for new "
 msgstr  ""
 
 #: lib/core/class-affiliates-admin-notifications.php:154
-msgid   "This should normally be enabled, so that new affiliates receives "
+msgid   "This should normally be enabled, so that new affiliates receive "
         "their username and password to be able to log in and access their "
         "account."
 msgstr  ""

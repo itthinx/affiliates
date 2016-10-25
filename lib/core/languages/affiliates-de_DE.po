@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-19 18:13+0200\n"
-"PO-Revision-Date: 2016-10-25 09:14+0200\n"
+"POT-Creation-Date: 2016-10-25 09:56+0200\n"
+"PO-Revision-Date: 2016-10-25 09:58+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -2196,9 +2196,12 @@ msgstr ""
 
 #: lib/core/class-affiliates-admin-notifications.php:154
 msgid ""
-"This should normally be enabled, so that new affiliates receives their "
+"This should normally be enabled, so that new affiliates receive their "
 "username and password to be able to log in and access their account."
 msgstr ""
+"Dies sollte normalerweise aktiviert sein, damit neue Partner ihren "
+"Nutzernamen und Passwort erhalten, sich anmelden und auf ihr Konto zugreifen "
+"können."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:548
 #: lib/core/affiliates-admin-hits-affiliate.php:608
