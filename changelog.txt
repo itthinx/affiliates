@@ -1,5 +1,10 @@
 == Affiliates - Changelog ==
 
+= 2.16.2 =
+* Updated the German translation.
+* Updated the Spanish translation.
+* Fixed wording in notifications.
+
 = 2.16.1 =
 * Updated pot and translation files.
 * Updated the Spanish translation.

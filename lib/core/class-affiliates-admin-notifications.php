@@ -151,7 +151,7 @@ class Affiliates_Admin_Notifications {
 		'<p class="description">' .
 		__( 'Send new affiliates an email when their user account is created.', 'affiliates' ) .
 		' ' .
-		__( 'This should normally be enabled, so that new affiliates receives their username and password to be able to log in and access their account.', 'affiliates' ) .
+		__( 'This should normally be enabled, so that new affiliates receive their username and password to be able to log in and access their account.', 'affiliates' ) .
 		'</p>' .
 
 		'<p>' .

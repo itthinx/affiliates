@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-19 18:13+0200\n"
-"PO-Revision-Date: 2016-10-19 18:13+0200\n"
+"POT-Creation-Date: 2016-10-25 09:56+0200\n"
+"PO-Revision-Date: 2016-10-25 09:58+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_;_e;_x;_ngettext\n"
 "X-Poedit-Basepath: .\n"
@@ -142,6 +142,8 @@ msgid ""
 "<em>Pending</em> will require manual approval of new affiliates. <em>Active</"
 "em> will accept new affiliates automatically."
 msgstr ""
+"Mit <em>Ausstehend</em> werden neue Partner manuell zugelassen. <em>Aktiv</"
+"em> lässt neue Partner automatisch zu."
 
 #: lib/core/wp-init.php:1465
 msgid "<em>Referrals</em> are recording commissions and referral data."
@@ -358,7 +360,7 @@ msgstr "Gesamtsumme für abgelehnte Transaktionen."
 #: lib/core/affiliates-admin-affiliates-edit.php:177
 #: lib/core/class-affiliates-settings-registration.php:155
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: lib/core/affiliates-admin-affiliates-add.php:112
 #: lib/core/affiliates-admin-affiliates.php:299
@@ -406,7 +408,7 @@ msgstr "Optionen verwalten"
 
 #: lib/core/class-affiliates-admin-notifications.php:103
 msgid "Administrator"
-msgstr ""
+msgstr "Administrator"
 
 #: lib/core/affiliates-admin-add-ons.php:154
 msgid "Advanced shortcodes including banners and graphs"
@@ -765,6 +767,10 @@ msgid ""
 "Your request to join the Affiliate Program has been approved.<br/>\n"
 "[site_url]<br/>"
 msgstr ""
+"Glückwünsche [user_login],<br/>\n"
+"<br/>\n"
+"Ihr Antrag dem Partnerprogramm beizutreten wurde bewilligt.<br/>\n"
+"[site_url]<br/>"
 
 #: lib/core/class-affiliates-settings-integrations.php:48
 msgid "Contact Form 7"
@@ -843,7 +849,7 @@ msgstr "All Daten bei Deaktivierung löschen"
 
 #: lib/core/affiliates-admin-affiliates-edit.php:179
 msgid "Deleted"
-msgstr ""
+msgstr "Gelöscht"
 
 #: lib/core/affiliates-admin-referral-edit.php:195
 #: lib/core/affiliates-admin-referral-remove.php:107
@@ -933,7 +939,7 @@ msgstr "Partnerregistrierung ermöglichen"
 #: lib/core/class-affiliates-admin-notifications.php:148
 #: lib/core/class-affiliates-admin-notifications.php:206
 msgid "Enable registration emails"
-msgstr ""
+msgstr "Emails zur Registrierung aktivieren"
 
 #: lib/core/affiliates-admin-user-registration.php:131
 msgid "Enable the WooCommerce customer registration integration"
@@ -1209,7 +1215,7 @@ msgstr ""
 
 #: lib/core/affiliates-admin-affiliates.php:488
 msgid "Include active affiliates"
-msgstr ""
+msgstr "Aktive Partner einschließen"
 
 #: lib/core/affiliates-admin-affiliates.php:482
 #: lib/core/affiliates-admin-hits-affiliate.php:428
@@ -1220,7 +1226,7 @@ msgstr "Inoperative Partner einschließen"
 
 #: lib/core/affiliates-admin-affiliates.php:494
 msgid "Include pending affiliates"
-msgstr ""
+msgstr "Ausstehende Partner einschließen"
 
 #: lib/core/affiliates-admin-affiliates.php:500
 msgid "Include removed affiliates"
@@ -1337,6 +1343,10 @@ msgid ""
 "Username: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>"
 msgstr ""
+"Neue Partnerregistrierung auf ihrer Seite [site_title]:<br/>\n"
+"<br/>\n"
+"Benutzername: [user_login]<br/>\n"
+"E-mail: [user_email]<br/>"
 
 #: lib/core/class-affiliates-notifications.php:188
 msgid ""
@@ -1346,6 +1356,11 @@ msgid ""
 "E-mail: [user_email]<br/>\n"
 "This affiliate is pending approval.<br/>"
 msgstr ""
+"Neue Partnerregistrierung auf ihrer Seite [site_title]:<br/>\n"
+"<br/>\n"
+"Benutzername: [user_login]<br/>\n"
+"E-mail: [user_email]<br/>\n"
+"Dieser Partner wartet auf Zulassung.<br/>"
 
 #: lib/core/wp-init.php:1152
 msgid "No encoding"
@@ -1377,7 +1392,7 @@ msgstr ""
 #: lib/core/class-affiliates-admin-notifications.php:59
 #: lib/core/wp-init.php:1391 lib/core/wp-init.php:1392
 msgid "Notifications"
-msgstr ""
+msgstr "Benachrichtigungen"
 
 #: lib/core/affiliates-admin-add-ons.php:166
 msgid "Notifications including customizable messages"
@@ -1589,7 +1604,7 @@ msgstr "Die Registrierung ist derzeit geschlossen."
 #: lib/core/class-affiliates-admin-notifications.php:143
 #: lib/core/class-affiliates-admin-notifications.php:201
 msgid "Registration notifications"
-msgstr ""
+msgstr "Benachrichtigungen zur Registrierung"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:363
 #: lib/core/affiliates-admin-hits-affiliate.php:369
@@ -1697,20 +1712,22 @@ msgstr "Senden"
 
 #: lib/core/class-affiliates-admin-notifications.php:152
 msgid "Send new affiliates an email when their user account is created."
-msgstr ""
+msgstr "Neuen Partnern eine E-Mail senden wenn ihr Benutzerkonto erstellt ist."
 
 #: lib/core/class-affiliates-admin-notifications.php:210
 msgid ""
 "Send the administrator an email when a new affiliate user account is created."
 msgstr ""
+"Dem Administrator eine E-Mail senden wenn ein neues Partnerkonto erstellt "
+"ist."
 
 #: lib/core/affiliates-admin-affiliates.php:552
 msgid "Set status to Active"
-msgstr ""
+msgstr "Status auf Aktiv setzen"
 
 #: lib/core/affiliates-admin-affiliates.php:551
 msgid "Set status to Pending"
-msgstr ""
+msgstr "Status auf Ausstehend setzen"
 
 #: lib/core/class-affiliates-settings.php:184 lib/core/wp-init.php:1366
 msgid "Settings"
@@ -2018,6 +2035,8 @@ msgid ""
 "This determines if new affiliate applications require manual approval or "
 "whether they are accepted automatically."
 msgstr ""
+"Dies bestimmt ob neue Anfragen auf Partnerkonten manuell zugelassen werden "
+"müssen oder ob diese automatisch akzeptiert werden."
 
 #: lib/core/class-affiliates-settings.php:110
 msgid ""
@@ -2172,12 +2191,17 @@ msgid ""
 "This should normally be enabled, especially when the status for new "
 "affiliates is pending approval by the administrator."
 msgstr ""
+"Dies sollte normalerweise aktiviert sein, speziell wenn die Aktivierung "
+"neuer Partner durch den Administrator zugelassen werden muss."
 
 #: lib/core/class-affiliates-admin-notifications.php:154
 msgid ""
-"This should normally be enabled, so that new affiliates receives their "
+"This should normally be enabled, so that new affiliates receive their "
 "username and password to be able to log in and access their account."
 msgstr ""
+"Dies sollte normalerweise aktiviert sein, damit neue Partner ihren "
+"Nutzernamen und Passwort erhalten, sich anmelden und auf ihr Konto zugreifen "
+"können."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:548
 #: lib/core/affiliates-admin-hits-affiliate.php:608
@@ -2308,6 +2332,11 @@ msgid ""
 "<br/>\n"
 "Thanks for joining the Affiliate Program.<br/>"
 msgstr ""
+"Benutzername: [username]<br/>\n"
+"Passwort: [password]<br/>\n"
+"[site_login_url]<br/>\n"
+"<br/>\n"
+"Danke dass Sie dem Partnerprogramm beigetreten sind.<br/>"
 
 #: lib/core/class-affiliates-notifications.php:150
 msgid ""
@@ -2317,6 +2346,11 @@ msgid ""
 "<br/>\n"
 "Your request to join the Affiliate Program is pending approval.<br/>"
 msgstr ""
+"Benutzername: [username]<br/>\n"
+"Passwort: [password]<br/>\n"
+"[site_login_url]<br/>\n"
+"<br/>\n"
+"Ihr Antrag dem Partnerprogramm beizutreten steht noch aus.<br/>"
 
 #: lib/core/class-affiliates-totals.php:615
 msgid ""
@@ -2443,12 +2477,12 @@ msgstr ""
 
 #: lib/core/class-affiliates-registration.php:130
 msgid "Your affiliate application is pending approval."
-msgstr ""
+msgstr "Ihr Antrag als Partner steht noch aus."
 
 #: lib/core/class-affiliates-notifications.php:538
 #, php-format
 msgid "[%s] Affiliate program"
-msgstr ""
+msgstr "[%s] Partnerprogramm"
 
 #: lib/core/class-affiliates-registration.php:789
 #, php-format
@@ -2463,16 +2497,16 @@ msgstr "[%s] Ihr Nutzername und Passwort"
 #: lib/core/class-affiliates-notifications.php:184
 #: lib/core/class-affiliates-notifications.php:197
 msgid "[[site_title]] New Affiliate Registration"
-msgstr ""
+msgstr "[[site_title]] Neue Partnerregistrierung"
 
 #: lib/core/class-affiliates-notifications.php:172
 msgid "[[site_title]] Welcome to the Affiliate Program"
-msgstr ""
+msgstr "[[site_title]] Willkommen zum Partnerprogramm"
 
 #: lib/core/class-affiliates-notifications.php:146
 #: lib/core/class-affiliates-notifications.php:159
 msgid "[[site_title]] Your username and password"
-msgstr ""
+msgstr "[%s] Ihr Nutzername und Passwort"
 
 #: lib/core/class-affiliates-settings-integrations.php:84
 msgid "eShop (light)"
