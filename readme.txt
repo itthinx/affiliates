@@ -344,6 +344,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.16.2 =
+*
+
 = 2.16.1 =
 * Updated pot and translation files.
 * Updated the Spanish translation.
@@ -352,63 +355,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * Added the possibility to approve new affiliates with a status option.
 * Added a Notifications section where you can enable to notify administrator and affiliates on registration.
 
-= 2.15.12 =
-* Updated the flot library to version 0.8.3.
-* Improved the graph tooltip position to be displayed within bounds.
-* Updated Settings tabs according to the WordPress appearance.
-
-= 2.15.11 =
-* Fixed the affiliates_is_not_referred shortcode. Direct doesn't interfere with the content displayed.
-
-= 2.15.10 =
-* Altered the hits table definition for MySQL 5.7.3 compatibility, see https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-3.html
-
-= 2.15.9 =
-* Added filters: 'affiliates_thanks_sign_up_text' and 'affiliates_check_confirmation_text' on registration form.
-* Added button class to buttons on registration form settings.
-
-= 2.15.8 =
-* Updated pot and translation files.
-* Updated the German translation.
-* Updated the Spanish translation.
-
-= 2.15.7 =
-* Added the [affiliates_user_meta] shortcode which allows to render user meta data.
-* Updated the Spanish translation.
-
-= 2.15.6 =
-* Added the [affiliates_bloginfo] shortcode.
-* Extended the functionality provided by the [affiliates_url] shortcode adding the 'url' attribute.
-
-= 2.15.5 =
-* Added affiliates delete bulk option.
-* For WordPress translation : Added Text Domain and Domain Path header tags.
-
-= 2.15.4 =
-* For WordPress translation : Substituted constants with string literals as language domain indicators.
-* Moved the complete changelog to changelog.txt.
-
-= 2.15.3 =
-* Updated the admin buttons translation.
-* Updated the German translation.
-* Updated the Spanish translation.
-* Updated the translation template file.
-
-= 2.15.2 =
-* Fixed an unescaped underscore in the SQL query for the test to find pages containing Affiliates shortcodes.
-
-= 2.15.1 =
-* WordPress 4.5 compatibility tested.
-* Fixed an issue with affiliate fields not showing updated value on first load.
-
-= 2.15.0 =
-* Added the $affiliates_request_encoded_id global which provides the referring affiliate's ID if
-  recognized during a request.
-* Added the [referrer] shortcode which allows to render information about the referring affiliate.
-* Added the [affiliates_is_referred] shortcode which allows to display content conditionally for referred visitors.
-* Added the [affiliates_is_not_referred] shortcode which allows to display content conditionally for referred visitors.
+The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
 == Upgrade Notice ==
 
-= 2.16.1 =
+= 2.16.2 =
 This release updates the translation files.
