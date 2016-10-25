@@ -362,4 +362,4 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 == Upgrade Notice ==
 
 = 2.16.2 =
-This release updates the translation files.
+This release updates the German and Spanish translation.
