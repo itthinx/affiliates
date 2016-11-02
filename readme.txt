@@ -344,6 +344,9 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 
 == Changelog ==
 
+= 2.16.3 =
+* Updated the French translation.
+
 = 2.16.2 =
 * Updated the German translation.
 * Updated the Spanish translation.
