@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Francais (fr_FR)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-02 13:02+0100\n"
-"PO-Revision-Date: 2016-11-03 17:18+0100\n"
+"PO-Revision-Date: 2016-11-03 17:46+0100\n"
 "Last-Translator: Johan WALTER <johan.walter@massagefactory.eu>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1970,7 +1970,7 @@ msgstr ""
 
 #: lib/core/affiliates-admin-affiliates-remove.php:163
 msgid "There are no affiliates."
-msgstr ""
+msgstr "Il n'y a pas d'affiliés."
 
 #: lib/core/class-affiliates-shortcodes.php:622
 msgid "There are no earnings yet."
@@ -2002,7 +2002,7 @@ msgstr[1] "Il y a %d affiliés"
 #: lib/core/class-affiliates-totals.php:749
 #, php-format
 msgid "These referrals could not be updated to <em>%s</em>."
-msgstr ""
+msgstr "Ces renvois n'ont pas pu être mis à jour vers <em>%s</em>."
 
 #: lib/core/class-affiliates-totals.php:741
 #, php-format
@@ -2010,15 +2010,17 @@ msgid ""
 "These referrals have been omitted because their status must not be changed "
 "to <em>%s</em>."
 msgstr ""
+"Ces renvois ont été omis parce que leur statut ne doit pas être changé en "
+"<em>%s</em>."
 
 #: lib/core/class-affiliates-totals.php:734
 #, php-format
 msgid "These referrals have been updated to <em>%s</em>."
-msgstr ""
+msgstr "Ces renvois ont été mises à jour vers <em>%s</em>."
 
 #: lib/core/class-affiliates-totals.php:673
 msgid "This action can not be undone*."
-msgstr ""
+msgstr "Cette action ne peut pas être annulée*."
 
 #: lib/core/affiliates-admin-add-ons.php:202
 msgid ""
@@ -2026,6 +2028,9 @@ msgid ""
 "placing affiliate links on Facebook, from that generated through Twitter and "
 "other sources."
 msgstr ""
+"Cela permet aux affiliés de faire la distinction entre le revenu qu'ils ont "
+"généré en plaçant des liens d'affiliation sur Facebook, de ceux générés par "
+"Twitter et d'autres sources."
 
 #: lib/core/class-affiliates-contact.php:301
 msgid ""
@@ -2040,12 +2045,16 @@ msgid ""
 "This determines if new affiliate applications require manual approval or "
 "whether they are accepted automatically."
 msgstr ""
+"Cela détermine si les nouvelles applications d'affiliation nécessitent une "
+"approbation manuelle ou si elles sont acceptées automatiquement."
 
 #: lib/core/class-affiliates-settings.php:110
 msgid ""
 "This is intended as a guidance and you can safely hide this message when "
 "finished."
 msgstr ""
+"Ceci est conçu comme un guide et vous pouvez cacher ce message en toute "
+"sécurité lorsque vous avez terminé."
 
 #: lib/core/class-affiliates-settings-referrals.php:108
 msgid ""
@@ -2063,18 +2072,24 @@ msgid ""
 "This light integration is suitable to be used with the <a href=\"http://"
 "wordpress.org/plugins/affiliates/\">Affiliates</a> plugin."
 msgstr ""
+"Cette intégration légère peut être utilisée avec le plugin <a href=\"http://"
+"wordpress.org/plugins/affiliates/\">Affiliates</a>."
 
 #: lib/core/wp-init.php:1489
 msgid ""
 "This link uses a parameter in the URL to record visits you receive through "
 "your affiliates."
 msgstr ""
+"Ce lien utilise un paramètre dans l'URL pour enregistrer les visites que "
+"vous recevez par vos affiliés."
 
 #: lib/core/class-affiliates-settings-referrals.php:165
 msgid ""
 "This option allows an affiliate to earn a commission on a transaction that "
 "involves the affiliate as a customer or lead."
 msgstr ""
+"Cette option permet à un affilié de gagner une commission sur une "
+"transaction qui implique l'affilié en tant que client ou client potentiel."
 
 #: lib/core/class-affiliates-settings-network.php:73
 msgid "This option should only be used to clean up after testing."
@@ -2096,6 +2111,10 @@ msgid ""
 "credited with referrals automatically after a customer has made a purchase "
 "through the online store powered by Ecwid."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec Ecwid. Avec cette intégration, les affiliés sont "
+"crédités des renvois automatiquement après qu'un client a fait un achat à "
+"travers le magasin en ligne propulsé par Ecwid."
 
 #: lib/core/class-affiliates-settings-integrations.php:63
 msgid ""
@@ -2103,6 +2122,9 @@ msgid ""
 "\">Affiliates</a> with Jigoshop. With this integration plugin, referrals are "
 "created automatically for your affiliates when sales are made."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec Jigoshop. Avec cette intégration, les renvois sont "
+"créées automatiquement pour vos affiliés lorsque les ventes sont effectuées."
 
 #: lib/core/class-affiliates-settings-integrations.php:39
 msgid ""
@@ -2110,6 +2132,9 @@ msgid ""
 "\">Affiliates</a> with WooCommerce. With this integration plugin, referrals "
 "are created automatically for your affiliates when sales are made."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec WooCommerce. Avec cette intégration, les renvois sont "
+"créées automatiquement pour vos affiliés lorsque les ventes sont effectuées."
 
 #: lib/core/class-affiliates-settings-integrations.php:87
 msgid ""
@@ -2117,6 +2142,9 @@ msgid ""
 "\">Affiliates</a> with eShop. With this integration plugin, referrals are "
 "created automatically for your affiliates when sales are made through eShop."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec eShop. Avec cette intégration, les renvois sont "
+"créées automatiquement pour vos affiliés lorsque les ventes sont effectuées."
 
 #: lib/core/class-affiliates-settings-integrations.php:51
 msgid ""
@@ -2127,6 +2155,12 @@ msgid ""
 "integration stores data from submitted forms and tracks form submissions to "
 "the referring affiliate."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a>, <a href=\"http://www.itthinx.com/plugins/affiliates-pro/"
+"\">Affiliates Pro</a> et <a href=\"http://www.itthinx.com/plugins/affiliates-"
+"enterprise/\">Affiliates Enterprise</a> avec Contact Form 7. Cette "
+"intégration stocke les données des formulaires soumis et suit les "
+"soumissions de formulaire à l'affilié référant."
 
 #: lib/core/class-affiliates-settings-integrations.php:75
 msgid ""
@@ -2137,6 +2171,12 @@ msgid ""
 "this integration plugin, referrals are created automatically for your "
 "affiliates when sales are made."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a>, <a href=\"http://www.itthinx.com/plugins/affiliates-pro/"
+"\">Affiliates Pro</a> et <a href=\"http://www.itthinx.com/plugins/affiliates-"
+"enterprise/\">Affiliates Enterprise</a> avec WP e-Commerce. Avec cette "
+"intégration, les renvois sont créées automatiquement pour vos affiliés "
+"lorsque les ventes sont effectuées."
 
 #: lib/core/affiliates-admin-referral-remove.php:155
 #: lib/core/affiliates-admin-referral-remove.php:158
@@ -2358,7 +2398,7 @@ msgstr "Visites et Renvois"
 
 #: lib/core/class-affiliates-settings-integrations.php:72
 msgid "WP e-Commerce"
-msgstr ""
+msgstr "WP e-Commerce"
 
 #: lib/core/class-affiliates-settings-registration.php:57
 msgid "Website"
@@ -2388,7 +2428,7 @@ msgstr ""
 
 #: lib/core/class-affiliates-settings-integrations.php:36
 msgid "WooCommerce (light)"
-msgstr ""
+msgstr "WooCommerce (light)"
 
 #: lib/core/class-affiliates-registration-widget.php:118
 msgid ""
@@ -2485,7 +2525,7 @@ msgstr "[[site_title]] Votre nom d’utilisateur et mot de passe"
 
 #: lib/core/class-affiliates-settings-integrations.php:84
 msgid "eShop (light)"
-msgstr ""
+msgstr "eShop (light)"
 
 #~ msgid ""
 #~ "<em>Referrals</em> are recorded by request through the use of an API "
