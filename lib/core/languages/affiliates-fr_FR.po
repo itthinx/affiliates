@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Francais (fr_FR)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-02 13:02+0100\n"
-"PO-Revision-Date: 2016-11-03 17:46+0100\n"
+"PO-Revision-Date: 2016-11-08 20:57+0100\n"
 "Last-Translator: Johan WALTER <johan.walter@massagefactory.eu>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1548,8 +1548,8 @@ msgid ""
 "Recommended choices for the referral status are <em>Accepted</em> and "
 "<em>Pending</em>."
 msgstr ""
-"Les choix recommandés pour le statut de renvois sont <em>Accepté</em> et "
-"<em>En Attente</em>."
+"Les choix recommandés pour l’état de renvois sont <em>Accepté</em> et <em>En "
+"Attente</em>."
 
 #: lib/core/affiliates-admin-add-ons.php:39
 msgid "Recommended plugins and extensions"
@@ -1771,7 +1771,7 @@ msgstr "Résumés des statistiques"
 #: lib/core/class-affiliates-settings-registration.php:151
 #: lib/core/class-affiliates-totals.php:770
 msgid "Status"
-msgstr "Statuts"
+msgstr "État"
 
 #: lib/core/class-affiliates-settings-referrals.php:127
 msgid "Store direct referrals"
@@ -1954,7 +1954,7 @@ msgid ""
 "The status for referrals that record commissions when affiliates refer new "
 "users."
 msgstr ""
-"Le statut des renvois qui enregistrent les commissions lorsque les affiliés "
+"L’état des renvois qui enregistrent les commissions lorsque les affiliés "
 "renvoient de nouveaux utilisateurs."
 
 #: lib/core/affiliates-admin-affiliates.php:626
@@ -2010,8 +2010,8 @@ msgid ""
 "These referrals have been omitted because their status must not be changed "
 "to <em>%s</em>."
 msgstr ""
-"Ces renvois ont été omis parce que leur statut ne doit pas être changé en "
-"<em>%s</em>."
+"Ces renvois ont été omis parce que leur état ne doit pas être changé en <em>"
+"%s</em>."
 
 #: lib/core/class-affiliates-totals.php:734
 #, php-format
@@ -2200,8 +2200,8 @@ msgid ""
 "This should normally be enabled, especially when the status for new "
 "affiliates is pending approval by the administrator."
 msgstr ""
-"Cela devrait normalement être activé, en particulier lorsque le statut des "
-"nouvelles filiales est en attente d'approbation par l'administrateur."
+"Cela devrait normalement être activé, en particulier lorsque l’état des "
+"nouvelles affiliés est en attente d'approbation par l'administrateur."
 
 #: lib/core/class-affiliates-admin-notifications.php:154
 msgid ""
