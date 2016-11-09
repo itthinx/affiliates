@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Francais (fr_FR)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-02 13:02+0100\n"
-"PO-Revision-Date: 2016-11-09 12:00+0100\n"
+"PO-Revision-Date: 2016-11-09 12:55+0100\n"
 "Last-Translator: Johan WALTER <johan.walter@massagefactory.eu>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -854,7 +854,7 @@ msgstr "Supprimé"
 #: lib/core/affiliates-admin-referral-remove.php:107
 #: lib/core/affiliates-admin-referrals.php:697
 msgid "Description"
-msgstr "Descripción"
+msgstr "Description"
 
 #: lib/core/affiliates-admin-referrals.php:471
 msgid "Descriptions"
