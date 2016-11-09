@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Francais (fr_FR)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-19 18:13+0200\n"
-"PO-Revision-Date: 2016-10-19 18:13+0200\n"
+"POT-Creation-Date: 2016-11-02 13:02+0100\n"
+"PO-Revision-Date: 2016-11-09 12:55+0100\n"
 "Last-Translator: Johan WALTER <johan.walter@massagefactory.eu>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -23,7 +23,7 @@ msgstr ""
 #: lib/core/class-affiliates-dashboard-widget.php:121
 #, php-format
 msgid "%1$s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #: lib/core/class-affiliates-pagination.php:140
 #, php-format
@@ -88,12 +88,15 @@ msgstr ""
 #: lib/core/affiliates-admin-referral-edit.php:217
 msgid "* Required when an amount is provided. Examples: USD, GBP, EUR, ..."
 msgstr ""
+"* Obligatoire quand une quantité est fourni. Exemples: USD, GBP, EUR, ..."
 
 #: lib/core/class-affiliates-totals.php:678
 msgid ""
 "*To undo, each referral would have to be set to the desired status "
 "individually."
 msgstr ""
+"* Pour annuler, chaque renvoi doit être défini à l'état désiré "
+"individuellement."
 
 #: lib/core/class-affiliates-pagination.php:96
 #, php-format
@@ -136,10 +139,13 @@ msgid ""
 "<em>Pending</em> will require manual approval of new affiliates. <em>Active</"
 "em> will accept new affiliates automatically."
 msgstr ""
+"<em>En Attente</em> nécessitera l'approbation manuelle des nouveaux "
+"affiliés. <Em>Actif</em> acceptera les nouveaux affiliés automatiquement."
 
 #: lib/core/wp-init.php:1465
 msgid "<em>Referrals</em> are recording commissions and referral data."
 msgstr ""
+"<em>Renvois</em> enregistrent des commissions et des données de référence."
 
 #: lib/core/wp-init.php:1464
 msgid "<em>Visits</em> are unique and daily requests for affiliate links."
@@ -151,37 +157,39 @@ msgstr ""
 #: lib/core/class-affiliates-dashboard-widget.php:99
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Accepted</span>"
-msgstr ""
+msgstr "<span style=\"cursor:help\" title=\"%s\">Accepté</span>"
 
 #: lib/core/affiliates-admin-affiliates.php:690
 #: lib/core/class-affiliates-dashboard-widget.php:96
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Closed</span>"
-msgstr ""
+msgstr "<span style=\"cursor:help\" title=\"%s\">Fermée</span>"
 
 #: lib/core/affiliates-admin-affiliates.php:696
 #: lib/core/class-affiliates-dashboard-widget.php:102
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Pending</span>"
-msgstr ""
+msgstr "<span style=\"cursor:help\" title=\"%s\">En Attente</span>"
 
 #: lib/core/affiliates-admin-affiliates.php:699
 #: lib/core/class-affiliates-dashboard-widget.php:105
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Rejected</span>"
-msgstr ""
+msgstr "<span style=\"cursor:help\" title=\"%s\">Rejeté</span>"
 
 #: lib/core/affiliates-admin-user-registration.php:228
 msgid ""
 "<strong>Accepted</strong> if these referrals should grant payable "
 "commissions to affiliates without the need for further review."
 msgstr ""
+"<strong>Accepté</strong> si ces renvois devraient accorder des commissions à "
+"payer aux affiliés sans qu'il soit nécessaire de procéder à un nouvel examen."
 
 #: lib/core/class-affiliates-registration.php:235
 #: lib/core/class-affiliates-shortcodes.php:888
 #: lib/core/class-affiliates-shortcodes.php:904
 msgid "<strong>ERROR</strong>"
-msgstr ""
+msgstr "<strong>Erreur</strong>"
 
 #: lib/core/class-affiliates-registration.php:505
 #, php-format
@@ -236,6 +244,8 @@ msgid ""
 "<strong>Pending</strong> if these referrals are to be reviewed before the "
 "commissions should be taken into account for affiliate payouts."
 msgstr ""
+"<strong>En Attente</strong> si ces renvois doivent être examinés avant que "
+"les commissions sont prises en compte pour les paiements d'affiliation."
 
 #: lib/core/affiliates-admin.php:462
 msgid "<strong>Referrals:</strong>"
@@ -328,27 +338,27 @@ msgstr "Accéder à votre profil"
 #: lib/core/affiliates-admin-affiliates.php:693
 #: lib/core/class-affiliates-dashboard-widget.php:99
 msgid "Accumulated total for accepted referrals (commissions unpaid)."
-msgstr ""
+msgstr "Total accumulé pour les renvois acceptés (commissions non payées)."
 
 #: lib/core/affiliates-admin-affiliates.php:690
 #: lib/core/class-affiliates-dashboard-widget.php:96
 msgid "Accumulated total for closed referrals (commissions paid)."
-msgstr ""
+msgstr "Total accumulé pour les renvois fermée (commissions payées)."
 
 #: lib/core/affiliates-admin-affiliates.php:696
 #: lib/core/class-affiliates-dashboard-widget.php:102
 msgid "Accumulated total for pending referrals."
-msgstr ""
+msgstr "Total accumulé pour les renvois en attente."
 
 #: lib/core/affiliates-admin-affiliates.php:699
 #: lib/core/class-affiliates-dashboard-widget.php:105
 msgid "Accumulated total for rejected referrals."
-msgstr ""
+msgstr "Total accumulé pour les renvois rejetées."
 
 #: lib/core/affiliates-admin-affiliates-edit.php:177
 #: lib/core/class-affiliates-settings-registration.php:155
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #: lib/core/affiliates-admin-affiliates-add.php:112
 #: lib/core/affiliates-admin-affiliates.php:299
@@ -359,7 +369,7 @@ msgstr "Ajouter"
 
 #: lib/core/class-affiliates-settings-registration.php:227
 msgid "Add a field"
-msgstr ""
+msgstr "Ajouter un champ"
 
 #: lib/core/affiliates-admin-affiliates-add.php:50
 msgid "Add a new affiliate"
@@ -368,7 +378,7 @@ msgstr "Ajouter un nouvel affilié"
 #: lib/core/affiliates-admin-add-ons.php:218 lib/core/wp-init.php:1406
 #: lib/core/wp-init.php:1407
 msgid "Add-Ons"
-msgstr ""
+msgstr "Add-Ons"
 
 #: lib/core/affiliates-admin-add-ons.php:132
 msgid ""
@@ -378,6 +388,11 @@ msgid ""
 "Events Manager, Formidable Forms, Formidable Pro and Gravity Forms "
 "integrations."
 msgstr ""
+"Les intégrations supplémentaires et avancées accessibles avec Affiliates Pro "
+"et Affiliates Enterprise incluent des intégrations de partage social avec "
+"AddToAny et AddThis, soutien des commissions d'affiliation basées sur les "
+"intégrations Pay Per Click (PPC), Events Manager, Formidable Forms, "
+"Formidable Pro et Gravity Forms."
 
 #: lib/core/class-affiliates-settings-general.php:119
 #: lib/core/class-affiliates-settings-general.php:174
@@ -391,11 +406,11 @@ msgstr "Administrateur options"
 
 #: lib/core/class-affiliates-admin-notifications.php:103
 msgid "Administrator"
-msgstr ""
+msgstr "Administrateur"
 
 #: lib/core/affiliates-admin-add-ons.php:154
 msgid "Advanced shortcodes including banners and graphs"
-msgstr ""
+msgstr "Codes courts avancés incluant des bannières et des graphiques"
 
 #: lib/core/affiliates-admin-affiliates.php:424
 #: lib/core/affiliates-admin-hits-affiliate.php:330
@@ -429,15 +444,15 @@ msgstr "Encodage de l'ID affilié"
 
 #: lib/core/class-affiliates-admin-user-profile.php:81
 msgid "Affiliate Information"
-msgstr ""
+msgstr "Information d’Affilié"
 
 #: lib/core/class-affiliates-settings-registration.php:139
 msgid "Affiliate Registration"
-msgstr ""
+msgstr "Enregistrement d’Affilié"
 
 #: lib/core/class-affiliates-settings-registration.php:171
 msgid "Affiliate Registration Form"
-msgstr ""
+msgstr "Formulaire d’Enregistrement d’Affilié"
 
 #: lib/core/class-affiliates-settings-general.php:220
 msgid "Affiliate URL parameter name"
@@ -445,11 +460,11 @@ msgstr "Parametre du nom de l'URL d'affilié"
 
 #: lib/core/affiliates-admin-add-ons.php:138
 msgid "Affiliate attributes for individual commission rates, coupons, ..."
-msgstr ""
+msgstr "Attributs d'affilié pour les taux de commission, les coupons, ..."
 
 #: lib/core/affiliates-admin-add-ons.php:200
 msgid "Affiliate campaign management and tracking."
-msgstr ""
+msgstr "Gestion et suivi des campagnes d'affiliation."
 
 #: lib/core/wp-init.php:1486
 msgid "Affiliate link"
@@ -457,7 +472,7 @@ msgstr "Lien de l'affilié"
 
 #: lib/core/affiliates-admin-add-ons.php:170
 msgid "Affiliate link generator form"
-msgstr ""
+msgstr "Formulaire générateur de lien d'affiliation"
 
 #: lib/core/class-affiliates-admin-notifications.php:102
 #: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1426
@@ -472,23 +487,23 @@ msgstr "Affilié & Renvois"
 
 #: lib/core/class-affiliates-settings-integrations.php:49
 msgid "Affiliates Contact Form 7 Integration"
-msgstr ""
+msgstr "Intégration Affiliates Contact Form 7"
 
 #: lib/core/class-affiliates-settings-integrations.php:97
 msgid "Affiliates Ecwid Light"
-msgstr ""
+msgstr "Affiliates Ecwid Light"
 
 #: lib/core/affiliates-admin-add-ons.php:184
 msgid "Affiliates Enterprise"
-msgstr ""
+msgstr "Affiliates Enterprise"
 
 #: lib/core/affiliates-admin-add-ons.php:31
 msgid "Affiliates Extensions and Add-Ons"
-msgstr ""
+msgstr "Extensions et compléments de Affiliates"
 
 #: lib/core/class-affiliates-settings-integrations.php:61
 msgid "Affiliates Jigoshop Integration Light"
-msgstr ""
+msgstr "Intégration Affiliates Jigoshop Light"
 
 #: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1283
 msgid "Affiliates Overview"
@@ -496,19 +511,19 @@ msgstr "Vue globale des affiliés"
 
 #: lib/core/affiliates-admin-add-ons.php:121
 msgid "Affiliates Pro"
-msgstr ""
+msgstr "Affiliates Pro"
 
 #: lib/core/wp-init.php:1365
 msgid "Affiliates Settings"
-msgstr ""
+msgstr "Paramètres des Affiliés"
 
 #: lib/core/class-affiliates-settings-integrations.php:73
 msgid "Affiliates WP e-Commerce Integration"
-msgstr ""
+msgstr "Intégration Affiliates WP e-Commerce"
 
 #: lib/core/class-affiliates-settings-integrations.php:37
 msgid "Affiliates WooCommerce Integration Light"
-msgstr ""
+msgstr "Intégration Affiliates WooCommerce Light"
 
 #: lib/core/class-affiliates-contact.php:146
 msgid "Affiliates contact form submission"
@@ -516,7 +531,7 @@ msgstr "Formulaire de soumission d'affiliés"
 
 #: lib/core/class-affiliates-settings-integrations.php:85
 msgid "Affiliates eShop Integration Light"
-msgstr ""
+msgstr "Intégration Affiliates eShop Light"
 
 #: lib/core/class-affiliates-settings-network.php:63
 msgid "Affiliates network data"
@@ -533,28 +548,31 @@ msgstr "Autoriser l'enregistrement d'affilié"
 #: lib/core/class-affiliates-settings-referrals.php:177
 msgid "Allow affiliates to apply coupons that are assigned to them."
 msgstr ""
+"Permettre aux affiliés d'appliquer des coupons qui leur sont attribués."
 
 #: lib/core/class-affiliates-settings-referrals.php:173
 msgid "Allow auto-coupons"
-msgstr ""
+msgstr "Permettre auto-coupons"
 
 #: lib/core/class-affiliates-settings-referrals.php:159
 msgid "Allow auto-referrals"
-msgstr ""
+msgstr "Permettre auto-renvois"
 
 #: lib/core/class-affiliates-settings-referrals.php:146
 msgid "Allow duplicate referrals"
-msgstr ""
+msgstr "Permettre les renvois en double"
 
 #: lib/core/class-affiliates-settings-referrals.php:150
 msgid ""
 "Allow to record duplicate referrals for the same affiliate (based on amount, "
 "currency, internal type and reference)."
 msgstr ""
+"Autoriser l'enregistrement des renvois en double pour le même affilié (selon "
+"le montant, la devise, le type interne et la référence)."
 
 #: lib/core/affiliates-admin-referrals.php:468
 msgid "Also search in descriptions"
-msgstr ""
+msgstr "Rechercher aussi dans les descriptions"
 
 #: lib/core/affiliates-admin-referral-edit.php:205
 #: lib/core/affiliates-admin-referral-remove.php:113
@@ -584,7 +602,7 @@ msgstr "Appliquer"
 
 #: lib/core/class-affiliates-settings-referrals.php:154
 msgid "Auto-referrals"
-msgstr ""
+msgstr "Auto-renvois"
 
 #: lib/core/class-affiliates-settings-referrals.php:167
 msgid ""
@@ -592,6 +610,10 @@ msgid ""
 "the same user or user email as the affiliate’s, or when it involves the use "
 "of a coupon assigned to the affiliate."
 msgstr ""
+"Les auto-renvois sont identifiés comme tels lorsqu'une transaction est "
+"traitée pour le même utilisateur ou le même courrier électronique que les "
+"affiliés ou lorsqu'elle implique l'utilisation d'un coupon attribué à "
+"l'affilié."
 
 #: lib/core/affiliates-admin-referral-edit.php:252
 msgid "Back"
@@ -599,15 +621,15 @@ msgstr "Retour"
 
 #: lib/core/affiliates-admin-add-ons.php:158
 msgid "Banner management"
-msgstr ""
+msgstr "Gestion des bannières"
 
 #: lib/core/affiliates-admin-user-registration.php:145
 msgid "Base Amount"
-msgstr ""
+msgstr "Montant de Base"
 
 #: lib/core/affiliates-admin-affiliates.php:549
 msgid "Bulk Actions"
-msgstr ""
+msgstr "Actions Groupées"
 
 #: lib/core/class-affiliates-settings-network.php:75
 msgid ""
@@ -696,26 +718,26 @@ msgstr "Cliquez pour ajouter un nouvel affilié"
 
 #: lib/core/affiliates-admin-referrals.php:262
 msgid "Click to add a referral manually"
-msgstr ""
+msgstr "Cliquez pour ajouter un renvois manuellement"
 
 #: lib/core/class-affiliates-totals.php:328
 #: lib/core/class-affiliates-totals.php:663
 msgid "Click to close these referrals"
-msgstr ""
+msgstr "Cliquez pour fermer ces renvois"
 
 #: lib/core/class-affiliates-totals.php:332
 #: lib/core/class-affiliates-totals.php:667
 msgid "Close Referrals"
-msgstr ""
+msgstr "Fermer Renvois"
 
 #: lib/core/class-affiliates-totals.php:331
 #: lib/core/class-affiliates-totals.php:666
 msgid "Close referrals"
-msgstr ""
+msgstr "Fermer renvois"
 
 #: lib/core/class-affiliates-totals.php:660
 msgid "Close these referrals by clicking:"
-msgstr ""
+msgstr "Fermez ces renvois en cliquant sur:"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:361
 #: lib/core/affiliates-admin-hits-affiliate.php:367
@@ -735,7 +757,7 @@ msgstr "Fermé"
 
 #: lib/core/class-affiliates-totals.php:544
 msgid "Closing referrals"
-msgstr ""
+msgstr "Clôture des renvois"
 
 #: lib/core/class-affiliates-notifications.php:176
 msgid ""
@@ -744,10 +766,14 @@ msgid ""
 "Your request to join the Affiliate Program has been approved.<br/>\n"
 "[site_url]<br/>"
 msgstr ""
+"Félicitations [user_login],<br/>\n"
+"<br/>\n"
+"Votre demande d'adhésion au programme d'affiliation a été approuvée.<br/>\n"
+"[site_url]<br/>"
 
 #: lib/core/class-affiliates-settings-integrations.php:48
 msgid "Contact Form 7"
-msgstr ""
+msgstr "Contact Form 7"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:610
 msgid "Count"
@@ -755,7 +781,7 @@ msgstr "Compte"
 
 #: lib/core/class-affiliates-settings.php:134
 msgid "Create an Affiliate Area"
-msgstr ""
+msgstr "Créer un Espace d'Affilié"
 
 #: lib/core/affiliates-admin-referrals.php:397
 #: lib/core/affiliates-admin-user-registration.php:186
@@ -772,11 +798,11 @@ msgstr "Devise - Code a 3 lettres, ex.: EUR, USD:"
 #: lib/core/affiliates-admin-referral-edit.php:213
 #: lib/core/affiliates-admin-referral-remove.php:119
 msgid "Currency ID"
-msgstr ""
+msgstr "ID Devise"
 
 #: lib/core/affiliates-admin-add-ons.php:162
 msgid "Customizable affiliate registration email"
-msgstr ""
+msgstr "Email d'enregistrement personnalisable"
 
 #: lib/core/affiliates-admin-referrals.php:649
 #: lib/core/affiliates-admin-referrals.php:668
@@ -793,7 +819,7 @@ msgstr "Date"
 #: lib/core/affiliates-admin-referral-edit.php:185
 #: lib/core/affiliates-admin-referral-remove.php:101
 msgid "Date & Time"
-msgstr ""
+msgstr "Date & Heure"
 
 #: lib/core/class-affiliates-settings-referrals.php:104
 msgid "Days"
@@ -822,17 +848,17 @@ msgstr "Effacer toutes les donnees du plugin a la desactivation"
 
 #: lib/core/affiliates-admin-affiliates-edit.php:179
 msgid "Deleted"
-msgstr ""
+msgstr "Supprimé"
 
 #: lib/core/affiliates-admin-referral-edit.php:195
 #: lib/core/affiliates-admin-referral-remove.php:107
 #: lib/core/affiliates-admin-referrals.php:697
 msgid "Description"
-msgstr "Descripción"
+msgstr "Description"
 
 #: lib/core/affiliates-admin-referrals.php:471
 msgid "Descriptions"
-msgstr ""
+msgstr "Descriptions"
 
 #: lib/core/constants.php:104
 msgctxt "pseudo-affiliate name"
@@ -845,15 +871,15 @@ msgstr "Renvois directs"
 
 #: lib/core/class-affiliates-settings-general.php:262
 msgid "Do not assign permissions to open access for affiliates here."
-msgstr ""
+msgstr "Ne pas attribuer d'autorisations d'accès aux affiliés ici."
 
 #: lib/core/class-affiliates-settings-registration.php:215
 msgid "Down"
-msgstr ""
+msgstr "Descendre"
 
 #: lib/core/class-affiliates-settings-referrals.php:141
 msgid "Duplicate referrals"
-msgstr ""
+msgstr "Renvois en double"
 
 #: lib/core/class-affiliates-registration.php:777
 #, php-format
@@ -862,11 +888,11 @@ msgstr "E-mail: %s"
 
 #: lib/core/class-affiliates-shortcodes.php:563
 msgid "Earnings"
-msgstr ""
+msgstr "Revenus"
 
 #: lib/core/class-affiliates-settings-integrations.php:96
 msgid "Ecwid (light)"
-msgstr ""
+msgstr "Ecwid (light)"
 
 #: lib/core/affiliates-admin-affiliates.php:430
 #: lib/core/affiliates-admin-affiliates.php:644
@@ -882,7 +908,7 @@ msgstr "Editer %s"
 
 #: lib/core/affiliates-admin-referral-edit.php:152
 msgid "Edit Referral"
-msgstr ""
+msgstr "Modifier Renvois"
 
 #: lib/core/affiliates-admin-affiliates-edit.php:103
 msgid "Edit an affiliate"
@@ -906,16 +932,16 @@ msgstr "Email : %s"
 
 #: lib/core/class-affiliates-settings.php:129
 msgid "Enable Affiliate Registration"
-msgstr ""
+msgstr "Activer Enregistrement d'Affilié"
 
 #: lib/core/class-affiliates-admin-notifications.php:148
 #: lib/core/class-affiliates-admin-notifications.php:206
 msgid "Enable registration emails"
-msgstr ""
+msgstr "Activer emails d'enregistrement"
 
 #: lib/core/affiliates-admin-user-registration.php:131
 msgid "Enable the WooCommerce customer registration integration"
-msgstr ""
+msgstr "Activer l'intégration de l'enregistrement des clients WooCommerce"
 
 #: lib/core/class-affiliates-settings-integrations.php:139
 #, php-format
@@ -923,14 +949,16 @@ msgid ""
 "Enable the built-in integration if the options provided under <a href=\"%s"
 "\">User Registration</a> are sufficient."
 msgstr ""
+"Activez l'intégration intégrée si les options fournies sous <a href=\"%s"
+"\">Enregistrement d'Utilisateur</a> sont suffisantes."
 
 #: lib/core/affiliates-admin-user-registration.php:121
 msgid "Enable the user registration integration"
-msgstr ""
+msgstr "Activer l'intégration d'enregistrement des utilisateurs"
 
 #: lib/core/class-affiliates-settings-registration.php:181
 msgid "Enabled"
-msgstr ""
+msgstr "Activée"
 
 #: lib/core/affiliates-admin-referrals.php:505
 msgid "Expand data"
@@ -956,27 +984,27 @@ msgstr "Afficher les renvois"
 
 #: lib/core/affiliates-admin-add-ons.php:150
 msgid "Export Totals and Mass Payment File generation"
-msgstr ""
+msgstr "Exportations des totaux et génération de fichiers de paiement en masse"
 
 #: lib/core/affiliates-admin-add-ons.php:146
 msgid "Extended totals report with additional filters"
-msgstr ""
+msgstr "Rapport de totaux étendu avec des filtres supplémentaires"
 
 #: lib/core/class-affiliates-shortcodes.php:592
 msgid "F Y"
-msgstr ""
+msgstr "F Y"
 
 #: lib/core/class-affiliates-totals.php:747
 msgid "Failed"
-msgstr ""
+msgstr "Échoué"
 
 #: lib/core/class-affiliates-settings-registration.php:187
 msgid "Field Label"
-msgstr ""
+msgstr "Étiquette du Champ"
 
 #: lib/core/class-affiliates-settings-registration.php:184
 msgid "Field Name"
-msgstr ""
+msgstr "Nom du Champ"
 
 #: lib/core/affiliates-admin-affiliates.php:302
 #: lib/core/affiliates-admin-affiliates.php:439
@@ -993,11 +1021,11 @@ msgstr "Prénom"
 
 #: lib/core/affiliates-admin-add-ons.php:142
 msgid "Fixed, percentage or formula based commissions"
-msgstr ""
+msgstr "Commissions fixes, en pourcentage ou en formule"
 
 #: lib/core/affiliates-admin-referral-edit.php:189
 msgid "Format : YYYY-MM-DD HH:MM:SS"
-msgstr ""
+msgstr "Format : YYYY-MM-DD HH:MM:SS"
 
 #: lib/core/affiliates-admin-add-ons.php:222
 msgid ""
@@ -1005,6 +1033,9 @@ msgid ""
 "com/plugins-overview/\">Overview</a> page and in the <a href=\"http://www."
 "itthinx.com/shop/\">Shop</a>."
 msgstr ""
+"Les extensions gratuites et premium sont répertoriées sur la page <a href="
+"\"http://www.itthinx.com/plugins-overview/\">Overview</a> et dans la <a href="
+"\"http://www.itthinx.com/shop/\">Boutique</a>."
 
 #: lib/core/affiliates-admin-affiliates-add.php:93
 #: lib/core/affiliates-admin-affiliates-edit.php:152
@@ -1033,7 +1064,7 @@ msgstr "Des affiliés actifs et affiliés non-actifs :"
 
 #: lib/core/class-affiliates-settings.php:59
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: lib/core/class-affiliates-settings-pages.php:64
 msgid "Generate"
@@ -1041,7 +1072,7 @@ msgstr "Generer"
 
 #: lib/core/class-affiliates-settings-pages.php:53
 msgid "Generator"
-msgstr ""
+msgstr "Générateur"
 
 #: lib/core/wp-init.php:1589
 msgid "Get Affiliates Pro"
@@ -1050,6 +1081,7 @@ msgstr "Obtenez Affiliates Pro"
 #: lib/core/affiliates-admin-add-ons.php:35
 msgid "Get additional features and access to premium support!"
 msgstr ""
+"Obtenez des fonctionnalités supplémentaires et accédez à un soutien premium!"
 
 #: lib/core/wp-init.php:1480
 msgid ""
@@ -1064,10 +1096,13 @@ msgid ""
 "Here you can enable the built-in User Registration integration which allows "
 "to grant commissions to affiliates when they refer new users."
 msgstr ""
+"Ici, vous pouvez activer l’intégration d’enregistrement d’utilisateur "
+"intégrée qui permet d'accorder des commissions aux affiliés quand ils "
+"renvoient de nouveaux utilisateurs."
 
 #: lib/core/class-affiliates-settings.php:154
 msgid "Hide this"
-msgstr ""
+msgstr "Cache ça"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:332
 #: lib/core/affiliates-admin-hits-affiliate.php:602
@@ -1086,7 +1121,7 @@ msgstr ""
 
 #: lib/core/affiliates-admin-referral-remove.php:68
 msgid "I do not know how to delete what does not exist."
-msgstr ""
+msgstr "Je ne sais pas comment supprimer ce qui n'existe pas."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:609
 #: lib/core/affiliates-admin-hits.php:534
@@ -1114,26 +1149,38 @@ msgid ""
 "<strong>Base Amount</strong> must be used instead of the <strong>Amount</"
 "strong>."
 msgstr ""
+"Si les renvois à plusieurs niveaux sont activées et les taux de niveau ne "
+"sont pas relatifs, ce <strong>Montant de Base</strong> doit être utilisé à "
+"la place du <strong>Montant</strong>."
 
 #: lib/core/affiliates-admin-user-registration.php:153
 msgid ""
 "If set, this <strong>Base Amount</strong> takes precedence over the "
 "<strong>Amount</strong>."
 msgstr ""
+"S'il est défini, ce <strong>Montant de Base</strong> a priorité sur le "
+"<strong>Montant</strong>."
 
 #: lib/core/affiliates-admin-user-registration.php:135
 msgid ""
 "If the user registration integration should create referrals for new "
 "customers that register at checkout, this option should be enabled."
 msgstr ""
+"Si l'intégration d'enregistrement d'utilisateur doit créer des renvois pour "
+"les nouveaux clients qui s'inscrivent au moment du paiement, cette option "
+"doit être activée."
 
 #: lib/core/class-affiliates-totals.php:619
 msgid "If these referrals can be closed, click the confirmation button below."
 msgstr ""
+"Si ces renvois peuvent être fermés, cliquez sur le bouton de confirmation ci-"
+"dessous."
 
 #: lib/core/class-affiliates-settings-referrals.php:163
 msgid "If this option is enabled, affiliates are allowed to refer themselves."
 msgstr ""
+"Si cette option est activée, les affiliés sont autorisés à se référer eux-"
+"mêmes."
 
 #: lib/core/class-affiliates-settings-referrals.php:131
 msgid ""
@@ -1168,7 +1215,7 @@ msgstr ""
 
 #: lib/core/affiliates-admin-affiliates.php:488
 msgid "Include active affiliates"
-msgstr ""
+msgstr "Inclure les affiliés actifs"
 
 #: lib/core/affiliates-admin-affiliates.php:482
 #: lib/core/affiliates-admin-hits-affiliate.php:428
@@ -1179,7 +1226,7 @@ msgstr "Inclure les affiliés inactifs"
 
 #: lib/core/affiliates-admin-affiliates.php:494
 msgid "Include pending affiliates"
-msgstr ""
+msgstr "Inclure les affiliés en attente"
 
 #: lib/core/affiliates-admin-affiliates.php:500
 msgid "Include removed affiliates"
@@ -1188,20 +1235,24 @@ msgstr "Inclure les affiliés effacés"
 #: lib/core/affiliates-admin-add-ons.php:196
 msgid "Includes all additional features available in Affiliates Pro."
 msgstr ""
+"Inclut toutes les fonctionnalités supplémentaires disponibles dans "
+"Affiliates Pro."
 
 #: lib/core/class-affiliates-settings.php:139
 msgid "Install an Integration"
-msgstr ""
+msgstr "Installer une intégration"
 
 #: lib/core/class-affiliates-settings.php:63
 msgid "Integrations"
-msgstr ""
+msgstr "Intégrations"
 
 #: lib/core/class-affiliates-settings-integrations.php:119
 msgid ""
 "Integrations link the affiliate system to e-commerce plugins and other "
 "platforms."
 msgstr ""
+"Les intégrations relient le système d'affiliation à des plugins de commerce "
+"électronique et à d'autres plateformes."
 
 #: lib/core/class-affiliates-contact.php:304
 msgid "It has two purposes:"
@@ -1210,10 +1261,11 @@ msgstr "Cela a 2 buts :"
 #: lib/core/class-affiliates-settings-pages.php:92
 msgid "It seems that you do not have any pages set up for your affiliates yet."
 msgstr ""
+"Il semble que vous n'avez pas encore de pages configurées pour vos affiliés."
 
 #: lib/core/class-affiliates-settings-integrations.php:60
 msgid "Jigoshop (light)"
-msgstr ""
+msgstr "Jigoshop (light)"
 
 #: lib/core/class-affiliates-settings-registration.php:54
 msgid "Last Name"
@@ -1257,11 +1309,11 @@ msgstr "Message"
 
 #: lib/core/class-affiliates-shortcodes.php:560
 msgid "Month"
-msgstr ""
+msgstr "Mois"
 
 #: lib/core/affiliates-admin-add-ons.php:206
 msgid "Multi-tier capability with unlimited levels and rates."
-msgstr ""
+msgstr "Capacité multi-niveaux avec des niveaux et des taux illimités."
 
 #: lib/core/affiliates-admin-affiliates-add.php:60
 #: lib/core/affiliates-admin-affiliates-edit.php:114
@@ -1282,7 +1334,7 @@ msgstr "Nouvel affilié"
 
 #: lib/core/affiliates-admin-referral-edit.php:150
 msgid "New Referral"
-msgstr ""
+msgstr "Nouveau Renvois"
 
 #: lib/core/class-affiliates-registration.php:775
 #, php-format
@@ -1296,6 +1348,10 @@ msgid ""
 "Username: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>"
 msgstr ""
+"Nouvel enregistrement d'affilié sur votre site [site_title]:<br/>\n"
+"<br/>\n"
+"Nom d'utilisateur: [user_login]<br/>\n"
+"Email: [user_email]<br/>"
 
 #: lib/core/class-affiliates-notifications.php:188
 msgid ""
@@ -1305,6 +1361,11 @@ msgid ""
 "E-mail: [user_email]<br/>\n"
 "This affiliate is pending approval.<br/>"
 msgstr ""
+"Nouvel enregistrement d'affilié sur votre site [site_title]:<br/>\n"
+"<br/>\n"
+"Nom d'utilisateur: [user_login]<br/>\n"
+"Email: [user_email]<br/>\n"
+"Cette affilié est en attente d’approbation.<br/>"
 
 #: lib/core/wp-init.php:1152
 msgid "No encoding"
@@ -1312,7 +1373,7 @@ msgstr "Pas d'encodage"
 
 #: lib/core/class-affiliates-admin-user-profile.php:127
 msgid "No specific affiliate information is available."
-msgstr ""
+msgstr "Aucune information spécifique d’affilié est disponible."
 
 #: lib/core/affiliates-admin-affiliates-edit.php:41
 #: lib/core/affiliates-admin-affiliates-edit.php:230
@@ -1323,7 +1384,7 @@ msgstr "Cet affilié est inconnu."
 #: lib/core/class-affiliates-dashboard-widget.php:126
 #: lib/core/class-affiliates-shortcodes.php:612
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: lib/core/wp-init.php:1473
 msgid ""
@@ -1336,15 +1397,15 @@ msgstr ""
 #: lib/core/class-affiliates-admin-notifications.php:59
 #: lib/core/wp-init.php:1391 lib/core/wp-init.php:1392
 msgid "Notifications"
-msgstr ""
+msgstr "Notifications"
 
 #: lib/core/affiliates-admin-add-ons.php:166
 msgid "Notifications including customizable messages"
-msgstr ""
+msgstr "Notifications incluant des messages personnalisables"
 
 #: lib/core/class-affiliates-totals.php:739
 msgid "Omitted"
-msgstr ""
+msgstr "Omis"
 
 #: lib/core/wp-init.php:1496
 msgid ""
@@ -1356,21 +1417,21 @@ msgstr ""
 
 #: lib/core/wp-init.php:1543
 msgid "Online documentation"
-msgstr ""
+msgstr "Documentation en ligne"
 
 #: lib/core/class-affiliates-settings-pages.php:78
 #: lib/core/class-affiliates-settings.php:61
 msgid "Pages"
-msgstr ""
+msgstr "Pages"
 
 #: lib/core/class-affiliates-settings-registration.php:58
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: lib/core/class-affiliates-registration.php:810
 #, php-format
 msgid "Password: %s"
-msgstr ""
+msgstr "Mot de passe: %s"
 
 #: lib/core/affiliates-admin-affiliates-edit.php:178
 #: lib/core/affiliates-admin-hits-affiliate.php:362
@@ -1400,6 +1461,9 @@ msgid ""
 "they do not even need to click an affiliate link. Supported methods are "
 "image and iframe tracking pixels."
 msgstr ""
+"Pixel Tracking rend encore plus facile pour les Affiliés de référencer les "
+"clients, car ils n'ont même pas besoin de cliquer sur un lien d'affiliation. "
+"Les méthodes prises en charge sont les pixels de suivi image et iframe."
 
 #: lib/core/class-affiliates-registration.php:300
 msgid "Please check your email for the confirmation link."
@@ -1410,17 +1474,21 @@ msgid ""
 "Please confirm removal of the following affiliates. This action cannot be "
 "undone."
 msgstr ""
+"Veuillez confirmer la suppression des affiliés suivants. Cette action ne "
+"peut pas être annulée."
 
 #: lib/core/affiliates-admin-add-ons.php:134
 msgid ""
 "Please consult the Shop pages for an updated list of included integrations."
 msgstr ""
+"Veuillez consulter les pages de la Boutique pour obtenir une liste mise à "
+"jour des intégrations incluses."
 
 #: lib/core/class-affiliates-registration.php:237
 #: lib/core/class-affiliates-shortcodes.php:890
 #, php-format
 msgid "Please fill out the field <em>%s</em>."
-msgstr ""
+msgstr "Veuillez remplir le champ <em>%s</em>."
 
 #: lib/core/wp-init.php:1565
 #, php-format
@@ -1428,21 +1496,28 @@ msgid ""
 "Please give it a <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
 "&#9733;&#9733;&#9733;&#9733;</a> rating!"
 msgstr ""
+"S'il vous plaît donnez-lui un évaluation <a style=\"text-decoration:none;\" "
+"href=\"%s\">&#9733;&#9733;&#9733;&#9733;&#9733;</a>!"
 
 #: lib/core/class-affiliates-settings-pages.php:123
 msgid ""
 "Please refer to the <a href=\"http://docs.itthinx.com/document/affiliates/"
 "\">Documentation</a> for more details."
 msgstr ""
+"Veuillez consulter la <a href=\"http://docs.itthinx.com/document/affiliates/"
+"\">Documentation</a> pour plus de détails."
 
 #: lib/core/class-affiliates-settings.php:108
 msgid ""
 "Please review the following suggested steps to set up the affiliate system."
 msgstr ""
+"Veuillez consulter les étapes suggérées suivantes pour configurer le système "
+"d'affiliation."
 
 #: lib/core/class-affiliates-totals.php:609
 msgid "Please review the list of referrals that will be <em>closed</em>."
 msgstr ""
+"Veuillez consulter la liste des références qui seront <em>fermées</em>."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:549
 #: lib/core/affiliates-admin-hits.php:478
@@ -1453,11 +1528,11 @@ msgstr "Poster"
 
 #: lib/core/class-affiliates-settings-pages.php:62
 msgid "Press the button to generate a default affiliate area."
-msgstr ""
+msgstr "Appuyez sur le bouton pour générer un Espace d'Affilié par défaut."
 
 #: lib/core/affiliates-admin-referral-remove.php:161
 msgid "Pretty pointless ..."
-msgstr ""
+msgstr "Assez inutile ..."
 
 #: lib/core/class-affiliates-settings-network.php:69
 msgid "READ AND UNDERSTAND the following before activating this option:"
@@ -1473,34 +1548,38 @@ msgid ""
 "Recommended choices for the referral status are <em>Accepted</em> and "
 "<em>Pending</em>."
 msgstr ""
+"Les choix recommandés pour l’état de renvois sont <em>Accepté</em> et <em>En "
+"Attente</em>."
 
 #: lib/core/affiliates-admin-add-ons.php:39
 msgid "Recommended plugins and extensions"
-msgstr ""
+msgstr "Extensions recommandés"
 
 #: lib/core/class-affiliates-settings-general.php:240
 msgid "Redirect"
-msgstr ""
+msgstr "Redirection"
 
 #: lib/core/class-affiliates-settings-general.php:244
 msgid ""
 "Redirect to destination without Affiliate URL parameter, after a hit on an "
 "affiliate link has been detected."
 msgstr ""
+"Rediriger vers destination sans paramètre d'URL d'affiliation, après qu'un "
+"incident sur un lien d'affiliation a été détecté."
 
 #: lib/core/class-affiliates-settings-general.php:235
 msgid "Redirection"
-msgstr ""
+msgstr "Redirection"
 
 #: lib/core/affiliates-admin-referral-edit.php:242
 #: lib/core/affiliates-admin-referral-remove.php:137
 msgid "Reference"
-msgstr ""
+msgstr "Renvois"
 
 #: lib/core/affiliates-admin-user-registration.php:212
 #: lib/core/class-affiliates-totals.php:344
 msgid "Referral Status"
-msgstr ""
+msgstr "États de Renvois"
 
 #: lib/core/class-affiliates-settings-referrals.php:99
 msgid "Referral timeout"
@@ -1518,7 +1597,7 @@ msgstr "Renvois"
 
 #: lib/core/class-affiliates-settings.php:60
 msgid "Registration"
-msgstr ""
+msgstr "Enregistrement"
 
 #: lib/core/class-affiliates-registration.php:163
 msgid "Registration is currently closed."
@@ -1527,7 +1606,7 @@ msgstr "Les inscriptions sont actuellement fermées"
 #: lib/core/class-affiliates-admin-notifications.php:143
 #: lib/core/class-affiliates-admin-notifications.php:201
 msgid "Registration notifications"
-msgstr ""
+msgstr "Notifications d'Enregistrement"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:363
 #: lib/core/affiliates-admin-hits-affiliate.php:369
@@ -1553,19 +1632,19 @@ msgstr "Rejeté"
 #: lib/core/affiliates-admin-referrals.php:628
 #: lib/core/class-affiliates-settings-registration.php:217
 msgid "Remove"
-msgstr "Enlever"
+msgstr "Supprimer"
 
 #: lib/core/affiliates-admin-referral-remove.php:45
 msgid "Remove a Referral"
-msgstr ""
+msgstr "Supprimer un Renvois"
 
 #: lib/core/affiliates-admin-affiliates.php:550
 msgid "Remove affiliate"
-msgstr ""
+msgstr "Supprimer l'affilié"
 
 #: lib/core/affiliates-admin-affiliates-remove.php:176
 msgid "Remove affiliates"
-msgstr ""
+msgstr "Supprimer les affiliés"
 
 #: lib/core/affiliates-admin-affiliates-remove.php:68
 msgid "Remove an affiliate"
@@ -1573,16 +1652,16 @@ msgstr "Retirer un affilié"
 
 #: lib/core/affiliates-admin-referral-remove.php:145
 msgid "Remove this referral? This action can not be undone."
-msgstr ""
+msgstr "Supprimer cette renvois? Cette action ne peut pas être annulée."
 
 #: lib/core/class-affiliates-shortcodes.php:995
 #, php-format
 msgid "Repeat %s"
-msgstr ""
+msgstr "Répéter %s"
 
 #: lib/core/class-affiliates-settings-registration.php:190
 msgid "Required"
-msgstr ""
+msgstr "Obligatoire"
 
 #: lib/core/affiliates-admin-affiliates.php:522
 #: lib/core/affiliates-admin-hits-affiliate.php:445
@@ -1594,11 +1673,11 @@ msgstr "Resultats par page"
 
 #: lib/core/affiliates-admin-referral-remove.php:63
 msgid "Return"
-msgstr ""
+msgstr "Retour"
 
 #: lib/core/class-affiliates-settings.php:124
 msgid "Review General Settings"
-msgstr ""
+msgstr "Vérifiez les Paramètres Généraux."
 
 #: lib/core/class-affiliates-settings-general.php:274
 msgid "Robots"
@@ -1619,11 +1698,11 @@ msgstr "Role"
 #: lib/core/class-affiliates-settings-registration.php:235
 #: lib/core/class-affiliates-shortcodes.php:1014
 msgid "Save"
-msgstr "Sauvegarder"
+msgstr "Enregistrer"
 
 #: lib/core/class-affiliates-shortcodes.php:932
 msgid "Saved"
-msgstr ""
+msgstr "Enregistré"
 
 #: lib/core/affiliates-admin-referrals.php:463
 msgid "Search"
@@ -1636,37 +1715,43 @@ msgstr "Envoyer"
 #: lib/core/class-affiliates-admin-notifications.php:152
 msgid "Send new affiliates an email when their user account is created."
 msgstr ""
+"Envoyez un email à vos nouveaux affiliés lorsque leur compte d'utilisateur "
+"est créé."
 
 #: lib/core/class-affiliates-admin-notifications.php:210
 msgid ""
 "Send the administrator an email when a new affiliate user account is created."
 msgstr ""
+"Envoyer un email à l'administrateur lorsqu'un nouveau compte d'utilisateur "
+"d'affilié est créé."
 
 #: lib/core/affiliates-admin-affiliates.php:552
 msgid "Set status to Active"
-msgstr ""
+msgstr "Définir l'état Actif"
 
 #: lib/core/affiliates-admin-affiliates.php:551
 msgid "Set status to Pending"
-msgstr ""
+msgstr "Définir l'état En Attente"
 
 #: lib/core/class-affiliates-settings.php:184 lib/core/wp-init.php:1366
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 #: lib/core/class-affiliates-settings.php:237
 msgid "Settings saved."
-msgstr ""
+msgstr "Paramètres enregistrés."
 
 #: lib/core/affiliates-admin-affiliates.php:506
 msgid "Show accumulated referral totals"
-msgstr ""
+msgstr "Montrer les totaux des renvois accumulés"
 
 #: lib/core/class-affiliates-dashboard-widget.php:151
 msgid ""
 "Shows accumulated referral totals for all time when left empty, or for the "
 "last number of days set."
 msgstr ""
+"Montrer les totaux des renvois accumulés pour tous les temps si laissé vide, "
+"ou pour le dernier nombre de jours mis."
 
 #: lib/core/class-affiliates-registration.php:120
 msgid "Sign Up"
@@ -1686,7 +1771,7 @@ msgstr "Résumés des statistiques"
 #: lib/core/class-affiliates-settings-registration.php:151
 #: lib/core/class-affiliates-totals.php:770
 msgid "Status"
-msgstr "Statuts"
+msgstr "État"
 
 #: lib/core/class-affiliates-settings-referrals.php:127
 msgid "Store direct referrals"
@@ -1712,6 +1797,10 @@ msgid ""
 "<a style=\"text-decoration:none;\" href=\"http://www.itthinx.com\" target="
 "\"_blank\">itthinx</a>."
 msgstr ""
+"Merci d'utiliser le plugin <a style=\"text-decoration:none;\" href=\"http://"
+"www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> de <a "
+"style=\"text-decoration:none;\" href=\"http://www.itthinx.com\" target="
+"\"_blank\">itthinx</a>."
 
 #: lib/core/class-affiliates-registration.php:298
 msgid "Thanks for signing up!"
@@ -1724,17 +1813,17 @@ msgstr "Merci !"
 #: lib/core/class-affiliates-settings-integrations.php:182
 #, php-format
 msgid "The <a href=\"%s\">%s</a> plugin is installed and activated."
-msgstr ""
+msgstr "L'extension <a href=\"%s\">%s</a> est installé et activé."
 
 #: lib/core/class-affiliates-settings-integrations.php:173
 #, php-format
 msgid "The <a href=\"%s\">%s</a> plugin is installed but not activated."
-msgstr ""
+msgstr "L'extension <a href=\"%s\">%s</a> est installé mais pas activé."
 
 #: lib/core/class-affiliates-settings-integrations.php:164
 #, php-format
 msgid "The <a href=\"%s\">%s</a> plugin is not installed."
-msgstr ""
+msgstr "L'extension <a href=\"%s\">%s</a> n'est pas installé."
 
 #: lib/core/affiliates-admin-add-ons.php:174
 msgid ""
@@ -1742,6 +1831,9 @@ msgid ""
 "provides up-to-date information on the Affiliates, Affiliates Pro and "
 "Affiliates Enterprise plugin features."
 msgstr ""
+"Le site <a href=\"http://docs.itthinx.com/\">Documentation</a> fournit "
+"également des informations à jour sur les fonctionnalités des extensions "
+"Affiliates, Affiliates Pro et Affiliates Enterprise."
 
 #: lib/core/class-affiliates-settings-general.php:85
 #, php-format
@@ -1800,12 +1892,17 @@ msgid ""
 "an affiliate link, a suggested referral will be valid until %d days after "
 "she or he clicked that affiliate link."
 msgstr ""
+"La valeur par défaut est %d. Dans ce cas, si un visiteur vient sur votre "
+"site via un lien d'affilié, un renvoi suggéré sera valide jusqu'à %d jours "
+"après qu'il ou elle a cliqué sur ce lien d'affiliation."
 
 #: lib/core/class-affiliates-settings-registration.php:173
 msgid ""
 "The following fields are provided on the affiliate registration form "
 "rendered by the <code>[affiliates_registration]</code> shortcode."
 msgstr ""
+"Les champs suivants sont fournis sur le formulaire d'enregistrement "
+"d'affilié fourni par le code court <code>[affiliates_registration]</code>."
 
 #: lib/core/class-affiliates-settings-pages.php:72
 msgid ""
@@ -1813,44 +1910,52 @@ msgid ""
 "of-the-box affiliate area or as a framework for customized affiliate areas "
 "and pages."
 msgstr ""
+"La page générée contient des codes courts d'Affiliés et peut être utilisé "
+"comme un Espace d'Affilié prêt à l'emploi ou comme un modèle pour les "
+"espaces d'affiliées et pages personnalisées."
 
 #: lib/core/class-affiliates-settings-integrations.php:121
 msgid ""
 "The integrations are required to record referrals, as these award affiliates "
 "with commissions based on referred purchases or platform-specific actions."
 msgstr ""
+"Les intégrations sont requises pour enregistrer les renvois, car celles-ci "
+"attribuent des commissions aux affiliées basées sur des achats référencés ou "
+"des actions spécifiques à une plateforme."
 
 #: lib/core/class-affiliates-shortcodes.php:906
 #, php-format
 msgid "The passwords for the field <em>%s</em> do not match."
-msgstr ""
+msgstr "Les mots de passe du champ <em>%s</em> ne correspondent pas."
 
 #: lib/core/affiliates-admin-referral-edit.php:109
 msgid "The referral could not be saved."
-msgstr ""
+msgstr "Impossible d'enregistrer le renvoi."
 
 #: lib/core/affiliates-admin-referral-edit.php:84
 msgid "The referral has been created."
-msgstr ""
+msgstr "Le renvoi a été créé."
 
 #: lib/core/affiliates-admin-referral-remove.php:61
 msgid "The referral has been removed."
-msgstr ""
+msgstr "Le renvoi a été supprimé."
 
 #: lib/core/affiliates-admin-referral-edit.php:104
 #: lib/core/affiliates-admin-referral-edit.php:122
 msgid "The referral has been saved."
-msgstr ""
+msgstr "Le renvois a été enregistrée."
 
 #: lib/core/affiliates-admin-referral-edit.php:88
 msgid "The referral has not been created. Duplicate?"
-msgstr ""
+msgstr "Le renvoi n'a pas été créé. Double?"
 
 #: lib/core/affiliates-admin-user-registration.php:218
 msgid ""
 "The status for referrals that record commissions when affiliates refer new "
 "users."
 msgstr ""
+"L’état des renvois qui enregistrent les commissions lorsque les affiliés "
+"renvoient de nouveaux utilisateurs."
 
 #: lib/core/affiliates-admin-affiliates.php:626
 #, php-format
@@ -1865,11 +1970,11 @@ msgstr ""
 
 #: lib/core/affiliates-admin-affiliates-remove.php:163
 msgid "There are no affiliates."
-msgstr ""
+msgstr "Il n'y a pas d'affiliés."
 
 #: lib/core/class-affiliates-shortcodes.php:622
 msgid "There are no earnings yet."
-msgstr ""
+msgstr "Il n'y a pas des revenus encore."
 
 #: lib/core/affiliates-admin-affiliates.php:731
 #: lib/core/affiliates-admin-hits-affiliate.php:634
@@ -1897,7 +2002,7 @@ msgstr[1] "Il y a %d affiliés"
 #: lib/core/class-affiliates-totals.php:749
 #, php-format
 msgid "These referrals could not be updated to <em>%s</em>."
-msgstr ""
+msgstr "Ces renvois n'ont pas pu être mis à jour vers <em>%s</em>."
 
 #: lib/core/class-affiliates-totals.php:741
 #, php-format
@@ -1905,15 +2010,17 @@ msgid ""
 "These referrals have been omitted because their status must not be changed "
 "to <em>%s</em>."
 msgstr ""
+"Ces renvois ont été omis parce que leur état ne doit pas être changé en <em>"
+"%s</em>."
 
 #: lib/core/class-affiliates-totals.php:734
 #, php-format
 msgid "These referrals have been updated to <em>%s</em>."
-msgstr ""
+msgstr "Ces renvois ont été mises à jour vers <em>%s</em>."
 
 #: lib/core/class-affiliates-totals.php:673
 msgid "This action can not be undone*."
-msgstr ""
+msgstr "Cette action ne peut pas être annulée*."
 
 #: lib/core/affiliates-admin-add-ons.php:202
 msgid ""
@@ -1921,6 +2028,9 @@ msgid ""
 "placing affiliate links on Facebook, from that generated through Twitter and "
 "other sources."
 msgstr ""
+"Cela permet aux affiliés de faire la distinction entre le revenu qu'ils ont "
+"généré en plaçant des liens d'affiliation sur Facebook, de ceux générés par "
+"Twitter et d'autres sources."
 
 #: lib/core/class-affiliates-contact.php:301
 msgid ""
@@ -1935,12 +2045,16 @@ msgid ""
 "This determines if new affiliate applications require manual approval or "
 "whether they are accepted automatically."
 msgstr ""
+"Cela détermine si les nouvelles applications d'affiliation nécessitent une "
+"approbation manuelle ou si elles sont acceptées automatiquement."
 
 #: lib/core/class-affiliates-settings.php:110
 msgid ""
 "This is intended as a guidance and you can safely hide this message when "
 "finished."
 msgstr ""
+"Ceci est conçu comme un guide et vous pouvez cacher ce message en toute "
+"sécurité lorsque vous avez terminé."
 
 #: lib/core/class-affiliates-settings-referrals.php:108
 msgid ""
@@ -1958,18 +2072,24 @@ msgid ""
 "This light integration is suitable to be used with the <a href=\"http://"
 "wordpress.org/plugins/affiliates/\">Affiliates</a> plugin."
 msgstr ""
+"Cette intégration légère peut être utilisée avec le plugin <a href=\"http://"
+"wordpress.org/plugins/affiliates/\">Affiliates</a>."
 
 #: lib/core/wp-init.php:1489
 msgid ""
 "This link uses a parameter in the URL to record visits you receive through "
 "your affiliates."
 msgstr ""
+"Ce lien utilise un paramètre dans l'URL pour enregistrer les visites que "
+"vous recevez par vos affiliés."
 
 #: lib/core/class-affiliates-settings-referrals.php:165
 msgid ""
 "This option allows an affiliate to earn a commission on a transaction that "
 "involves the affiliate as a customer or lead."
 msgstr ""
+"Cette option permet à un affilié de gagner une commission sur une "
+"transaction qui implique l'affilié en tant que client ou client potentiel."
 
 #: lib/core/class-affiliates-settings-network.php:73
 msgid "This option should only be used to clean up after testing."
@@ -1980,8 +2100,9 @@ msgstr ""
 msgid "This page containing Affiliates shortcodes has been detected :"
 msgid_plural ""
 "These pages containing Affiliates shortcodes have been detected :"
-msgstr[0] ""
+msgstr[0] "Cette page contenant des codes courts des Affiliés a été détectée :"
 msgstr[1] ""
+"Ces pages contenant des codes courts des Affiliés ont été détectées:"
 
 #: lib/core/class-affiliates-settings-integrations.php:99
 msgid ""
@@ -1990,6 +2111,10 @@ msgid ""
 "credited with referrals automatically after a customer has made a purchase "
 "through the online store powered by Ecwid."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec Ecwid. Avec cette intégration, les affiliés sont "
+"crédités des renvois automatiquement après qu'un client a fait un achat à "
+"travers le magasin en ligne propulsé par Ecwid."
 
 #: lib/core/class-affiliates-settings-integrations.php:63
 msgid ""
@@ -1997,6 +2122,9 @@ msgid ""
 "\">Affiliates</a> with Jigoshop. With this integration plugin, referrals are "
 "created automatically for your affiliates when sales are made."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec Jigoshop. Avec cette intégration, les renvois sont "
+"créées automatiquement pour vos affiliés lorsque les ventes sont effectuées."
 
 #: lib/core/class-affiliates-settings-integrations.php:39
 msgid ""
@@ -2004,6 +2132,9 @@ msgid ""
 "\">Affiliates</a> with WooCommerce. With this integration plugin, referrals "
 "are created automatically for your affiliates when sales are made."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec WooCommerce. Avec cette intégration, les renvois sont "
+"créées automatiquement pour vos affiliés lorsque les ventes sont effectuées."
 
 #: lib/core/class-affiliates-settings-integrations.php:87
 msgid ""
@@ -2011,6 +2142,9 @@ msgid ""
 "\">Affiliates</a> with eShop. With this integration plugin, referrals are "
 "created automatically for your affiliates when sales are made through eShop."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a> avec eShop. Avec cette intégration, les renvois sont "
+"créées automatiquement pour vos affiliés lorsque les ventes sont effectuées."
 
 #: lib/core/class-affiliates-settings-integrations.php:51
 msgid ""
@@ -2021,6 +2155,12 @@ msgid ""
 "integration stores data from submitted forms and tracks form submissions to "
 "the referring affiliate."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a>, <a href=\"http://www.itthinx.com/plugins/affiliates-pro/"
+"\">Affiliates Pro</a> et <a href=\"http://www.itthinx.com/plugins/affiliates-"
+"enterprise/\">Affiliates Enterprise</a> avec Contact Form 7. Cette "
+"intégration stocke les données des formulaires soumis et suit les "
+"soumissions de formulaire à l'affilié référant."
 
 #: lib/core/class-affiliates-settings-integrations.php:75
 msgid ""
@@ -2031,11 +2171,17 @@ msgid ""
 "this integration plugin, referrals are created automatically for your "
 "affiliates when sales are made."
 msgstr ""
+"Cette extension intègre <a href=\"http://wordpress.org/plugins/affiliates/"
+"\">Affiliates</a>, <a href=\"http://www.itthinx.com/plugins/affiliates-pro/"
+"\">Affiliates Pro</a> et <a href=\"http://www.itthinx.com/plugins/affiliates-"
+"enterprise/\">Affiliates Enterprise</a> avec WP e-Commerce. Avec cette "
+"intégration, les renvois sont créées automatiquement pour vos affiliés "
+"lorsque les ventes sont effectuées."
 
 #: lib/core/affiliates-admin-referral-remove.php:155
 #: lib/core/affiliates-admin-referral-remove.php:158
 msgid "This referral does not exist."
-msgstr ""
+msgstr "Cette renvois n'existe pas."
 
 #: lib/core/wp-init.php:1456
 msgid "This screen offers an overview with basic statistical data."
@@ -2046,18 +2192,25 @@ msgid ""
 "This section is only intended to grant administrative access on affiliate "
 "management functions to privileged roles."
 msgstr ""
+"Cette section est uniquement destinée à accorder l'accès administratif aux "
+"fonctions de gestion d'affiliés à des rôles privilégiés."
 
 #: lib/core/class-affiliates-admin-notifications.php:212
 msgid ""
 "This should normally be enabled, especially when the status for new "
 "affiliates is pending approval by the administrator."
 msgstr ""
+"Cela devrait normalement être activé, en particulier lorsque l’état des "
+"nouvelles affiliés est en attente d'approbation par l'administrateur."
 
 #: lib/core/class-affiliates-admin-notifications.php:154
 msgid ""
-"This should normally be enabled, so that new affiliates receives their "
+"This should normally be enabled, so that new affiliates receive their "
 "username and password to be able to log in and access their account."
 msgstr ""
+"Cela devrait normalement être activé, de sorte que les nouveaux affiliés "
+"reçoivent leur nom d'utilisateur et mot de passe pour pouvoir se connecter "
+"et accéder à leur compte."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:548
 #: lib/core/affiliates-admin-hits-affiliate.php:608
@@ -2099,12 +2252,12 @@ msgstr ""
 
 #: lib/core/class-affiliates-totals.php:295
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: lib/core/class-affiliates-totals.php:157 lib/core/wp-init.php:1351
 #: lib/core/wp-init.php:1352
 msgid "Totals"
-msgstr ""
+msgstr "Totaux"
 
 #: lib/core/affiliates-admin-affiliates.php:657
 msgid "URL Parameter"
@@ -2138,11 +2291,11 @@ msgstr "Jusqu'a : %s"
 
 #: lib/core/class-affiliates-settings-registration.php:214
 msgid "Up"
-msgstr ""
+msgstr "Élever"
 
 #: lib/core/class-affiliates-totals.php:732
 msgid "Updated"
-msgstr ""
+msgstr "Actualisé"
 
 #: lib/core/class-affiliates-settings.php:113
 #, php-format
@@ -2150,16 +2303,20 @@ msgid ""
 "Use the <a href=\"%s\">Settings</a> section to review or adjust the system "
 "anytime."
 msgstr ""
+"Utilisez la section <a href=\"%s\">Paramètres</a> pour examiner ou ajuster "
+"le système à tout moment."
 
 #: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1378
 #: lib/core/wp-init.php:1379
 msgid "User Registration"
-msgstr ""
+msgstr "Enregistrement d'Utilisateur"
 
 #: lib/core/class-affiliates-settings-integrations.php:136
 msgid ""
 "User registrations do not require a specific integration to be installed."
 msgstr ""
+"Les enregistrements d'utilisateur ne nécessitent pas une intégration "
+"spécifique pour être installé."
 
 #: lib/core/affiliates-admin-affiliates-add.php:83
 #: lib/core/affiliates-admin-affiliates-edit.php:138
@@ -2190,6 +2347,11 @@ msgid ""
 "<br/>\n"
 "Thanks for joining the Affiliate Program.<br/>"
 msgstr ""
+"Nom d'utilisateur: [username]<br/>\n"
+"Mot de passe: [password]<br/>\n"
+"[site_login_url]<br/>\n"
+"<br/>\n"
+"Merci de s'inscrire au Programme d'Affiliation.<br/>"
 
 #: lib/core/class-affiliates-notifications.php:150
 msgid ""
@@ -2199,6 +2361,12 @@ msgid ""
 "<br/>\n"
 "Your request to join the Affiliate Program is pending approval.<br/>"
 msgstr ""
+"Nom d'utilisateur: [username]<br/>\n"
+"Mot de passe: [password]<br/>\n"
+"[site_login_url]<br/>\n"
+"<br/>\n"
+"Votre demande d'adhésion au Programme d'Affiliation est en attente "
+"d'approbation.<br/>"
 
 #: lib/core/class-affiliates-totals.php:615
 msgid ""
@@ -2206,10 +2374,14 @@ msgid ""
 "should be <em>closed</em>. If there are unwanted or too many referrals "
 "shown, restrict your filter settings."
 msgstr ""
+"Habituellement seulement les renvois qui sont acceptés et ont été payés "
+"devraient être fermés. S’il y a des renvois non désirés ou trop des renvois "
+"montrés, restreindre les paramètres de filtrage."
 
 #: lib/core/class-affiliates-settings-referrals.php:179
 msgid "Verification is supported for coupons managed through WooCommerce."
 msgstr ""
+"La vérification est prise en charge pour les coupons gérés par WooCommerce."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:331
 msgid "Visitors"
@@ -2226,7 +2398,7 @@ msgstr "Visites et Renvois"
 
 #: lib/core/class-affiliates-settings-integrations.php:72
 msgid "WP e-Commerce"
-msgstr ""
+msgstr "WP e-Commerce"
 
 #: lib/core/class-affiliates-settings-registration.php:57
 msgid "Website"
@@ -2240,16 +2412,23 @@ msgid ""
 "set, the referral amount equals this base amount multipied by the referral "
 "rate."
 msgstr ""
+"Quand un affilié réfère un nouvel utilisateur, un renvoi est enregistré, "
+"accordant à l’affilié un montant dans la devise choisie. Le montant est "
+"calculé en tenant compte de ce montant de base. Par exemple, si un taux "
+"général de renvois est fixé, le montant de renvois est égale à ce montant de "
+"base produit par le taux de renvoi."
 
 #: lib/core/affiliates-admin-user-registration.php:172
 msgid ""
 "When an affiliate refers a new user, a referral is recorded, granting the "
 "affiliate this amount in the chosen currency."
 msgstr ""
+"Quand un affilié réfère un nouvel utilisateur, un renvoi est enregistré, "
+"accordant l’affilié ce montant dans la devise choisie."
 
 #: lib/core/class-affiliates-settings-integrations.php:36
 msgid "WooCommerce (light)"
-msgstr ""
+msgstr "WooCommerce (light)"
 
 #: lib/core/class-affiliates-registration-widget.php:118
 msgid ""
@@ -2269,24 +2448,33 @@ msgid ""
 "You can install available integrations in the <a href=\"%s\">Plugins</a> "
 "section."
 msgstr ""
+"Vous pouvez installer des intégrations disponibles dans la section <a href="
+"\"%s\">Extensions</a>."
 
 #: lib/core/class-affiliates-settings-integrations.php:125
 msgid ""
 "You can manage available integrations here, this includes the installation "
 "and activation of integrations with e-commerce and other systems."
 msgstr ""
+"Vous pouvez gérer les intégrations disponibles ici, ce qui inclut "
+"l’installation et l’activation des intégrations avec les systèmes de "
+"commerce électronique et d’autres systèmes."
 
 #: lib/core/class-affiliates-settings-pages.php:120
 msgid ""
 "You can modify the default affiliate area and also create customized pages "
 "for your affiliates using shortcodes."
 msgstr ""
+"Vous pouvez modifier l'Espace Affilié par défaut et également créer des "
+"pages personnalisées pour vos affiliés en utilisant des codes courts."
 
 #: lib/core/class-affiliates-settings-pages.php:95
 msgid ""
 "You can use the page generation option to create the default affiliate area "
 "for your affiliates."
 msgstr ""
+"Vous pouvez utiliser l’option de génération de la page pour créer l'Espace "
+"Affilié par défaut pour vos affiliés."
 
 #: lib/core/wp-init.php:1491
 #, php-format
@@ -2299,15 +2487,17 @@ msgid ""
 "You only need to install integrations with plugins that are actually used on "
 "the site."
 msgstr ""
+"Vous avez seulement besoin d'installer les intégrations avec les plugins qui "
+"sont réellement utilisés sur le site."
 
 #: lib/core/class-affiliates-registration.php:130
 msgid "Your affiliate application is pending approval."
-msgstr ""
+msgstr "Votre demande d’affiliation est en attente d’approbation."
 
 #: lib/core/class-affiliates-notifications.php:538
 #, php-format
 msgid "[%s] Affiliate program"
-msgstr ""
+msgstr "[%s] Programme d’Affiliation"
 
 #: lib/core/class-affiliates-registration.php:789
 #, php-format
@@ -2317,25 +2507,25 @@ msgstr "[%s] Nouvel enregistrement d'un affilié"
 #: lib/core/class-affiliates-registration.php:822
 #, php-format
 msgid "[%s] Your username and password"
-msgstr ""
+msgstr "[%s] Votre nom d’utilisateur et mot de passe"
 
 #: lib/core/class-affiliates-notifications.php:184
 #: lib/core/class-affiliates-notifications.php:197
 msgid "[[site_title]] New Affiliate Registration"
-msgstr ""
+msgstr "[[site_title]] Nouvelle enregistrement d’Affilié"
 
 #: lib/core/class-affiliates-notifications.php:172
 msgid "[[site_title]] Welcome to the Affiliate Program"
-msgstr ""
+msgstr "[[site_title]] Bienvenue au Programme d’Affiliation"
 
 #: lib/core/class-affiliates-notifications.php:146
 #: lib/core/class-affiliates-notifications.php:159
 msgid "[[site_title]] Your username and password"
-msgstr ""
+msgstr "[[site_title]] Votre nom d’utilisateur et mot de passe"
 
 #: lib/core/class-affiliates-settings-integrations.php:84
 msgid "eShop (light)"
-msgstr ""
+msgstr "eShop (light)"
 
 #~ msgid ""
 #~ "<em>Referrals</em> are recorded by request through the use of an API "
