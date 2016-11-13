@@ -50,7 +50,7 @@ function affiliates_admin_user_registration() {
 
 			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 				delete_option( 'aff_customer_registration_enabled' );
-				if ( !empty( $_POST['enabled'] ) ) {
+				if ( !empty( $_POST['customer_enabled'] ) ) {
 					add_option( 'aff_customer_registration_enabled', 'yes', '', 'no' );
 				}
 			}
@@ -126,7 +126,7 @@ function affiliates_admin_user_registration() {
 	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		echo '<div class="field customer-registration-enabled">';
 		echo '<label>';
-		printf( '<input type="checkbox" name="enabled" value="1" %s />', $customer_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
+		printf( '<input type="checkbox" name="customer_enabled" value="1" %s />', $customer_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
 		echo ' ';
 		echo __( 'Enable the WooCommerce customer registration integration', 'affiliates' );
 		echo '</label>';
