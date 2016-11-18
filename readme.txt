@@ -367,5 +367,5 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 
 == Upgrade Notice ==
 
-= 2.16.3 =
-This release fixes an issue with WooCommerce customer registration option.
+= 2.16.4 =
+This release fixes an issue with the Settings of the User Integration (with the WooCommerce customer registration option).
