@@ -37,10 +37,9 @@ class Affiliates_User_Registration {
 	public static function init() {
 		if ( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) {
 			add_action( 'user_register', array( __CLASS__, 'user_register' ) );
-
-			if ( get_option( 'aff_customer_registration_enabled', 'no' ) == 'yes' ) {
-				add_action( 'woocommerce_created_customer', array( __CLASS__, 'woocommerce_created_customer' ), 10, 3 );
-			}
+		}
+		if ( get_option( 'aff_customer_registration_enabled', 'no' ) == 'yes' ) {
+			add_action( 'woocommerce_created_customer', array( __CLASS__, 'woocommerce_created_customer' ), 10, 3 );
 		}
 	}
 
