@@ -28,6 +28,10 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_User_Registration {
 
+	/**
+	 * Referral type used for user registration referrals.
+	 * @var string
+	 */
 	const REFERRAL_TYPE = 'user';
 
 	/**

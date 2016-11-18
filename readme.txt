@@ -345,7 +345,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 == Changelog ==
 
 = 2.16.4 =
-* Fixed issue with WooCommerce customer registration option.
+* Fixed an issue with the WooCommerce customer registration option.
 
 = 2.16.3 =
 * Updated the French translation.
