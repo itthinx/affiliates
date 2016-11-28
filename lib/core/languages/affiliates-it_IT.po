@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Affiliates\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-19 18:15+0200\n"
-"PO-Revision-Date: 2016-10-19 18:15+0200\n"
+"POT-Creation-Date: 2016-11-28 17:56+0100\n"
+"PO-Revision-Date: 2016-11-28 18:02+0100\n"
 "Last-Translator: Rob <nonsoloarte@gmailcom>\n"
 "Language-Team: itthinx\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Bookmarks: -1,-1,175,70,-1,-1,-1,-1,-1,-1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -495,7 +495,7 @@ msgstr ""
 
 #: lib/core/wp-init.php:1365
 msgid "Affiliates Settings"
-msgstr ""
+msgstr "Affiliates Impostazioni"
 
 #: lib/core/class-affiliates-settings-integrations.php:73
 msgid "Affiliates WP e-Commerce Integration"
@@ -1592,7 +1592,7 @@ msgstr ""
 
 #: lib/core/class-affiliates-settings.php:124
 msgid "Review General Settings"
-msgstr ""
+msgstr "Rivedere le Impostazioni Generali"
 
 #: lib/core/class-affiliates-settings-general.php:274
 msgid "Robots"
@@ -1646,11 +1646,11 @@ msgstr ""
 
 #: lib/core/class-affiliates-settings.php:184 lib/core/wp-init.php:1366
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #: lib/core/class-affiliates-settings.php:237
 msgid "Settings saved."
-msgstr ""
+msgstr "Impostazioni salvate."
 
 #: lib/core/affiliates-admin-affiliates.php:506
 msgid "Show accumulated referral totals"
@@ -2050,7 +2050,7 @@ msgstr ""
 
 #: lib/core/class-affiliates-admin-notifications.php:154
 msgid ""
-"This should normally be enabled, so that new affiliates receives their "
+"This should normally be enabled, so that new affiliates receive their "
 "username and password to be able to log in and access their account."
 msgstr ""
 
@@ -2092,12 +2092,12 @@ msgstr ""
 
 #: lib/core/class-affiliates-totals.php:295
 msgid "Total"
-msgstr ""
+msgstr "Totale"
 
 #: lib/core/class-affiliates-totals.php:157 lib/core/wp-init.php:1351
 #: lib/core/wp-init.php:1352
 msgid "Totals"
-msgstr ""
+msgstr "Totali"
 
 #: lib/core/affiliates-admin-affiliates.php:657
 msgid "URL Parameter"
@@ -2143,6 +2143,8 @@ msgid ""
 "Use the <a href=\"%s\">Settings</a> section to review or adjust the system "
 "anytime."
 msgstr ""
+"Utilizzare la sezione delle <a href=\"%s\">Impostazioni</a> di rivedere o "
+"regolare il sistema in qualsiasi momento."
 
 #: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1378
 #: lib/core/wp-init.php:1379

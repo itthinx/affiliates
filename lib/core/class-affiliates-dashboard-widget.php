@@ -111,9 +111,10 @@ class Affiliates_Dashboard_Widget {
 		$output .= '</thead>';
 		$output .= '</tr>';
 		$output .= '<tbody>';
+		$is_rtl = function_exists( 'is_rtl' ) && is_rtl();
 		$output .= '<tr>';
 		foreach( $totals as $status => $total ) {
-			$output .= '<td style="vertical-align:top">';
+			$output .= sprintf( '<td style="%s">', 'vertical-align:top;' . !$is_rtl ? 'text-align:right;padding-left:1.62em;padding-right:1em;' : 'padding-left:1em;padding-right:1.62em;' );
 			$output .= '<ul>';
 			if ( $total ) {
 				foreach( $total as $currency => $amount ) {
