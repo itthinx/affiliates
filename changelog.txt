@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 2.16.5 =
+* Rendering amounts more consistently in dashboard widget.
+* Updated some Italian translations.
+
 = 2.16.4 =
 * Fixed an issue with the WooCommerce customer registration option.
 
