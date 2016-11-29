@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Affiliates\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 17:56+0100\n"
-"PO-Revision-Date: 2016-11-28 18:02+0100\n"
+"PO-Revision-Date: 2016-11-29 15:06+0100\n"
 "Last-Translator: Rob <nonsoloarte@gmailcom>\n"
 "Language-Team: itthinx\n"
 "Language: it_IT\n"
@@ -1329,7 +1329,7 @@ msgstr ""
 #: lib/core/class-affiliates-admin-notifications.php:59
 #: lib/core/wp-init.php:1391 lib/core/wp-init.php:1392
 msgid "Notifications"
-msgstr ""
+msgstr "Notifiche"
 
 #: lib/core/affiliates-admin-add-ons.php:166
 msgid "Notifications including customizable messages"
@@ -2149,7 +2149,7 @@ msgstr ""
 #: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1378
 #: lib/core/wp-init.php:1379
 msgid "User Registration"
-msgstr ""
+msgstr "Registrazione Utente"
 
 #: lib/core/class-affiliates-settings-integrations.php:136
 msgid ""
