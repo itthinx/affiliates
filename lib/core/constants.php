@@ -165,6 +165,21 @@ define( 'AFFILIATES_REFERRAL_STATUS_REJECTED', 'rejected' );
 define( 'AFFILIATES_REFERRAL_STATUS_CLOSED', 'closed' );
 
 /**
+ * @var string affiliate status active
+ */
+define( 'AFFILIATES_AFFILIATE_STATUS_ACTIVE', 'active' );
+
+/**
+ * @var string affiliate status pending
+ */
+define( 'AFFILIATES_AFFILIATE_STATUS_PENDING', 'pending' );
+
+/**
+ * @var string affiliate status deleted
+ */
+define( 'AFFILIATES_AFFILIATE_STATUS_DELETED', 'deleted' );
+
+/**
  * @var string qualifies as affiliate
  */
 //define( 'AFFILIATES_IS_AFFILIATE', 'aff_is_affiliate' );
