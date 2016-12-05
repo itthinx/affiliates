@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 2.16.6 =
+* Totals : allow to filter by affiliate status.
+* WordPress 4.7 compatibility tested.
+
 = 2.16.5 =
 * Rendering amounts more consistently in dashboard widget.
 * Updated some Italian translations.
