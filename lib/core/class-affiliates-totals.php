@@ -364,7 +364,7 @@ class Affiliates_Totals {
 		$affiliate_status_select .= '<option value="" ' . ( empty( $affiliate_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
 		foreach ( $affiliate_status_descriptions as $key => $label ) {
 			$selected = $key == $affiliate_status ? ' selected="selected" ' : '';
-			$affiliate_status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . $label . '</option>';
+			$affiliate_status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 		}
 		$affiliate_status_select .= '</select>';
 
@@ -381,7 +381,7 @@ class Affiliates_Totals {
 		$status_select .= '<option value="" ' . ( empty( $referral_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
 		foreach ( $status_descriptions as $key => $label ) {
 			$selected = $key == $referral_status ? ' selected="selected" ' : '';
-			$status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . $label . '</option>';
+			$status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 		}
 		$status_select .= '</select>';
 
