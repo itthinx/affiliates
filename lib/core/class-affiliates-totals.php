@@ -71,6 +71,7 @@ class Affiliates_Totals {
 		$from_datetime        = null;
 		$thru_date            = $affiliates_options->get_option( 'totals_thru_date', null );
 		$thru_datetime        = null;
+		$affiliate_status     = $affiliates_options->get_option( 'totals_affiliate_status', null );
 		$referral_status      = $affiliates_options->get_option( 'totals_referral_status', null );
 		$currency_id          = $affiliates_options->get_option( 'totals_currency_id', null );
 
@@ -83,6 +84,7 @@ class Affiliates_Totals {
 		if ( isset( $_POST['clear_filters'] ) ) {
 			$affiliates_options->delete_option( 'totals_from_date' );
 			$affiliates_options->delete_option( 'totals_thru_date' );
+			$affiliates_options->delete_option( 'totals_affiliate_status' );
 			$affiliates_options->delete_option( 'totals_referral_status' );
 			$affiliates_options->delete_option( 'totals_currency_id' );
 
@@ -90,6 +92,7 @@ class Affiliates_Totals {
 			$from_datetime   = null;
 			$thru_date       = null;
 			$thru_datetime   = null;
+			$affiliate_status = null;
 			$referral_status = null;
 			$currency_id     = null;
 
@@ -114,6 +117,13 @@ class Affiliates_Totals {
 					$thru_date = null;
 					$affiliates_options->delete_option( 'totals_thru_date' );
 				}
+			}
+
+			if ( !empty( $_POST['affiliate_status'] ) && ( $affiliate_status = Affiliates_Utility::verify_affiliate_status( $_POST['affiliate_status'] ) ) ) {
+				$affiliates_options->update_option( 'totals_affiliate_status', $affiliate_status );
+			} else {
+				$affiliate_status = null;
+				$affiliates_options->delete_option( 'totals_affiliate_status' );
 			}
 
 			if ( !empty( $_POST['referral_status'] ) && ( $referral_status = Affiliates_Utility::verify_referral_status_transition( $_POST['referral_status'], $_POST['referral_status'] ) ) ) {
@@ -224,6 +234,11 @@ class Affiliates_Totals {
 			$filter_params[] = $thru_datetime;
 		}
 
+		if ( $affiliate_status ) {
+			$filters[] = " a.status = %s ";
+			$filter_params[] = $affiliate_status;
+		}
+
 		if ( $referral_status ) {
 			$filters[] = " r.status = %s ";
 			$filter_params[] = $referral_status;
@@ -305,6 +320,9 @@ class Affiliates_Totals {
 		if ( !empty( $thru_date ) ) {
 			$mp_params .= "&thru_date=" . urlencode( $thru_date );
 		}
+		if ( !empty( $affiliate_status ) ) {
+			$mp_params .= "&affiliate_status=" . urlencode( $affiliate_status );
+		}
 		if ( !empty( $referral_status ) ) {
 			$mp_params .= "&referral_status=" . urlencode( $referral_status );
 		}
@@ -334,6 +352,22 @@ class Affiliates_Totals {
 		$output .= "</p>";
 		$output .= '</div>';
 
+		$affiliate_status_descriptions = array(
+				AFFILIATES_AFFILIATE_STATUS_ACTIVE => __( 'Active', 'affiliates' ),
+				AFFILIATES_AFFILIATE_STATUS_PENDING   => __( 'Pending', 'affiliates' ),
+				AFFILIATES_AFFILIATE_STATUS_DELETED => __( 'Deleted', 'affiliates' ),
+		);
+		
+		$affiliate_status_select = '<label class="affiliate-status-filter" for="affiliate_status">' . __('Affiliate Status', 'affiliates' ) . '</label>';
+		$affiliate_status_select .= ' ';
+		$affiliate_status_select .= '<select class="affiliate-status-filter" name="affiliate_status">';
+		$affiliate_status_select .= '<option value="" ' . ( empty( $affiliate_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
+		foreach ( $affiliate_status_descriptions as $key => $label ) {
+			$selected = $key == $affiliate_status ? ' selected="selected" ' : '';
+			$affiliate_status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
+		}
+		$affiliate_status_select .= '</select>';
+
 		$status_descriptions = array(
 			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
 			AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
@@ -347,7 +381,7 @@ class Affiliates_Totals {
 		$status_select .= '<option value="" ' . ( empty( $referral_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
 		foreach ( $status_descriptions as $key => $label ) {
 			$selected = $key == $referral_status ? ' selected="selected" ' : '';
-			$status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . $label . '</option>';
+			$status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 		}
 		$status_select .= '</select>';
 
@@ -376,6 +410,7 @@ class Affiliates_Totals {
 					'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
 					'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
 					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
+					$affiliate_status_select .
 					'</p>
 					<p>' .
 					wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false ) .
@@ -507,6 +542,7 @@ class Affiliates_Totals {
 		$thru_date            = isset( $params['thru_date'] ) ? $params['thru_date'] : null;
 		$thru_datetime        = $thru_date ? DateHelper::u2s( $thru_date, 24*3600 ) : null;
 
+		$affiliate_status     = isset( $params['affiliate_status'] ) ? Affiliates_Utility::verify_affiliate_status( $params['affiliate_status'] ) : null;
 		$referral_status      = isset( $params['referral_status'] ) ? Affiliates_Utility::verify_referral_status_transition( $params['referral_status'], $params['referral_status'] ) : null;
 		$currency_id          = isset( $params['currency_id'] ) ? Affiliates_Utility::verify_currency_id( $params['currency_id'] ) : null;
 
@@ -562,6 +598,11 @@ class Affiliates_Totals {
 			} else if ( $thru_datetime ) {
 				$filters[] = " r.datetime < %s ";
 				$filter_params[] = $thru_datetime;
+			}
+
+			if ( $affiliate_status ) {
+				$filters[] = " a.status = %s ";
+				$filter_params[] = $affiliate_status;
 			}
 
 			if ( $referral_status ) {
@@ -631,6 +672,9 @@ class Affiliates_Totals {
 						}
 						if ( !empty( $thru_date ) ) {
 							$mp_params .= "&thru_date=" . urlencode( $thru_date );
+						}
+						if ( !empty( $affiliate_status ) ) {
+							$mp_params .= "&affiliate_status=" . urlencode( $affiliate_status );
 						}
 						if ( !empty( $referral_status ) ) {
 							$mp_params .= "&referral_status=" . urlencode( $referral_status );

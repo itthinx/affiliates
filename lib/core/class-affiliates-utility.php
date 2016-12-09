@@ -198,5 +198,23 @@ class Affiliates_Utility {
 		}
 		return $result;
 	}
-	
+
+	/**
+	 * Verifies affiliate states.
+	 *
+	 * @param string $status
+	 * @return status or false on failure to verify
+	 */
+	static function verify_affiliate_status( $status ) {
+		$result = false;
+		switch ( $status ) {
+			case AFFILIATES_AFFILIATE_STATUS_ACTIVE :
+			case AFFILIATES_AFFILIATE_STATUS_PENDING :
+			case AFFILIATES_AFFILIATE_STATUS_DELETED :
+				$result = $status;
+				break;
+		}
+		return $result;
+	}
+
 }// class Affiliates_Utility
