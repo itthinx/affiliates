@@ -376,4 +376,4 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 == Upgrade Notice ==
 
 = 2.16.6 =
-This release allows to filter by affiliate status in Totals section. And it's tested with Wordpress 4.7
+This release allows to filter by affiliate status in the Totals section. And it's tested with Wordpress 4.7.
