@@ -401,8 +401,6 @@ class Affiliates_Totals {
 				'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 				'<form id="setfilters" action="" method="post">' .
 					'<p>' .
-					$affiliate_status_select .
-					' ' .
 					$status_select .
 					' ' .
 					$currency_select .
@@ -412,6 +410,7 @@ class Affiliates_Totals {
 					'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
 					'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
 					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
+					$affiliate_status_select .
 					'</p>
 					<p>' .
 					wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false ) .
