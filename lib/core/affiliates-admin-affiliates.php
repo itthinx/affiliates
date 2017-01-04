@@ -27,15 +27,19 @@ if ( !defined( 'ABSPATH' ) ) {
 
 define( 'AFFILIATES_AFFILIATES_PER_PAGE', 10 );
 
-define( 'AFFILIATES_ADMIN_AFFILIATES_NONCE_1', 'affiliates-nonce-1');
-define( 'AFFILIATES_ADMIN_AFFILIATES_NONCE_2', 'affiliates-nonce-2');
+define( 'AFFILIATES_ADMIN_AFFILIATES_NONCE_1', 'affiliates-nonce-1' );
+define( 'AFFILIATES_ADMIN_AFFILIATES_NONCE_2', 'affiliates-nonce-2' );
 define( 'AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE', 'affiliates-filter-nonce' );
 define( 'AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE', 'affiliates-action-nonce' );
 
-require_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
-require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-add.php');
-require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-edit.php');
-require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-remove.php');
+define( 'AFFILIATES_ADMIN_AFFILIATES_NO_ERROR', 001 );
+define( 'AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY', 002 );
+define( 'AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME', 003 );
+
+require_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php' );
+require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-add.php' );
+require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-edit.php' );
+require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-remove.php' );
 
 /**
  * Affiliate table and action handling.
@@ -61,24 +65,32 @@ function affiliates_admin_affiliates() {
 // 			'</p>';
 // 	}
 
+	$notice = '';
+
 	//
 	// handle actions
 	//
 	if ( isset( $_POST['action'] ) ) {
+		$notice_msg = '';
 		//  handle action submit - do it
 		switch( $_POST['action'] ) {
 			case 'add' :
-				if ( !affiliates_admin_affiliates_add_submit() ) {
+				if ( ( $error = affiliates_admin_affiliates_add_submit() ) !== AFFILIATES_ADMIN_AFFILIATES_NO_ERROR ) {
+					$_POST['error'] = $error;
 					return affiliates_admin_affiliates_add();
 				}
+				$notice_msg = __( 'Affiliate added.', 'affiliates' );
 				break;
 			case 'edit' :
-				if ( !affiliates_admin_affiliates_edit_submit() ) {
+				if ( ( $error = affiliates_admin_affiliates_edit_submit() ) !== AFFILIATES_ADMIN_AFFILIATES_NO_ERROR ) {
+					$_POST['error'] = $error;
 					return affiliates_admin_affiliates_edit( $_POST['affiliate-id-field'] );
 				}
+				$notice_msg = __( 'Affiliate updated.', 'affiliates' );
 				break;
 			case 'remove' :
 				affiliates_admin_affiliates_remove_submit();
+				$notice_msg = __( 'Affiliate removed.', 'affiliates' );
 				break;
 			// bulk actions on affiliates: remove affiliates
 			case 'affiliate-action' :
@@ -109,8 +121,12 @@ function affiliates_admin_affiliates() {
 						}
 					}
 				}
+				$notice_msg = __( 'Bulk action executed', 'affiliates' );
 				break;
 		}
+		$notice .= '<div class="updated">';
+		$notice .= $notice_msg;
+		$notice .= '</div>';
 	} else if ( isset ( $_GET['action'] ) ) {
 		// handle action request - show form
 		switch( $_GET['action'] ) {
@@ -292,6 +308,8 @@ function affiliates_admin_affiliates() {
 		'<h1>' .
 		__( 'Manage Affiliates', 'affiliates' ) .
 		'</h1>';
+
+	$output .= $notice;
 
 	$show_filters = $affiliates_options->get_option( 'show_filters', true );
 
