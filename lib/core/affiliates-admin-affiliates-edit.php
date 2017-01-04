@@ -355,7 +355,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		}
 
 		// hook
-		if ( !empty( $affiliate_id ) ) {
+		if ( ( $result === AFFILIATES_ADMIN_AFFILIATES_NO_ERROR ) && ( !empty( $affiliate_id ) ) ) {
 			do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
 			if ( !empty( $status ) ) {
 				do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, $status );
