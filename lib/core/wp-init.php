@@ -382,7 +382,9 @@ function affiliates_setup() {
 				PRIMARY KEY     (affiliate_id, date, time, ip),
 				INDEX           aff_hits_ddt (date, datetime),
 				INDEX           aff_hits_dtd (datetime, date),
-				INDEX           aff_hits_acm (affiliate_id, campaign_id)
+				INDEX           aff_hits_acm (affiliate_id, campaign_id),
+				INDEX           aff_hits_src_uri (src_uri_id),
+				INDEX           aff_hits_dest_uri (dest_uri_id)
 			) $charset_collate;";
 	}
 	$uris_table = _affiliates_get_tablename( 'uris' );
@@ -392,7 +394,8 @@ function affiliates_setup() {
 				uri             VARCHAR(2048) NOT NULL,
 				type             VARCHAR(10) DEFAULT NULL,
 				PRIMARY KEY     (uri_id),
-				INDEX           aff_uris_uri (uri)
+				INDEX        uri (uri(100)),
+				INDEX        type (type)
 			) $charset_collate;";
 	}
 	$robots_table = _affiliates_get_tablename( 'robots' );
@@ -509,7 +512,9 @@ function affiliates_update( $previous_version = null ) {
 	if ( empty( $column ) ) {
 		$queries[] = "ALTER TABLE " . $hits_table . "
 		ADD COLUMN src_uri_id BIGINT(20) UNSIGNED DEFAULT NULL,
-		ADD COLUMN dest_uri_id BIGINT(20) UNSIGNED DEFAULT NULL;";
+		ADD COLUMN dest_uri_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD INDEX aff_hits_src_uri (src_uri_id),
+		ADD INDEX aff_hits_dest_uri (dest_uri_id);";
 	}
 
 	$referrals_table = _affiliates_get_tablename( 'referrals' );

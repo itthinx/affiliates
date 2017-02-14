@@ -28,7 +28,17 @@ if ( !defined( 'ABSPATH' ) ) {
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 
 function affiliates_admin_hits_uri() {
-	
+	render_affiliates_admin_hits_uri();
+}
+
+/**
+ * Render the traffics table & filter.
+ * Used from dashboard section and shortcode.
+ * @param array $columns Columns to display.
+ * @param boolean $display Echo the result or return as string.
+ * @return string if $display is false.
+ */
+function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 	global $wpdb, $affiliates_options;
 
 	$output = '';
@@ -103,7 +113,7 @@ function affiliates_admin_hits_uri() {
 			}
 		} else if ( isset( $_POST['affiliate_id'] ) ) { // empty && isset => '' => all
 			$affiliate_id = null;
-			$affiliates_options->delete_option( 'hits_uri_affiliate_id' );	
+			$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		}
 
 			// src_uri
@@ -152,7 +162,7 @@ function affiliates_admin_hits_uri() {
 		'</div>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
-	
+
 	if ($row_count <= 0) {
 		$row_count = $affiliates_options->get_option( 'affiliates_hits_uri_per_page', AFFILIATES_HITS_PER_PAGE );
 	} else {
@@ -166,7 +176,7 @@ function affiliates_admin_hits_uri() {
 	if ( $paged < 0 ) {
 		$paged = 0;
 	} 
-	
+
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'date' :
@@ -181,7 +191,7 @@ function affiliates_admin_hits_uri() {
 		default:
 			$orderby = 'date';
 	}
-	
+
 	$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
 	switch ( $order ) {
 		case 'asc' :
@@ -257,18 +267,7 @@ function affiliates_admin_hits_uri() {
 	if ( $paged != 0 ) {
 		$offset = ( $paged - 1 ) * $row_count;
 	}
-			
-	// Get the summarized results, these are grouped by date.
-	// If there were any referral on a date without a hit, it would not be included:
-	// Example conditions:
-	// - 2011-02-01 23:59:59 hit recorded
-	// - 2011-02-02 00:10:05 referral recorded
-	// - no hits recorded on 2011-02-02
-	// =>
-	// - the referral will not show up
-	// So, for ratio calculation, only the date with actual visits and referrals will show up.
-	// Referrals on dates without visits would give an infinite ratio (x referrals / 0 visits).
-	// We have a separate page which shows all referrals.
+
 	$query = $wpdb->prepare("
 			SELECT
 			*,
@@ -290,38 +289,44 @@ function affiliates_admin_hits_uri() {
 
 	$results = $wpdb->get_results( $query, OBJECT );
 
-	$column_display_names = array(
-		'date'      => __( 'Date', 'affiliates' ) . '*',
-		'name'      => __( 'Affiliate', 'affiliates' ),
-		'visits'    => __( 'Visits', 'affiliates' ),
-		'hits'      => __( 'Hits', 'affiliates' ),
-		'referrals' => __( 'Referrals', 'affiliates' ),
-		'src_uri'   => __( 'Source URI', 'affiliates' ),
-		'dest_uri'  => __( 'Landing URI', 'affiliates' )
-	);
-	
-	$output .= '<div id="" class="hits-overview">';
-		
-	$affiliates = affiliates_get_affiliates( true );
-	$affiliates_select = '';
-	if ( !empty( $affiliates ) ) {
-		$affiliates_select .= '<label class="affiliate-id-filter">';
-		$affiliates_select .= __( 'Affiliate', 'affiliates' );
-		$affiliates_select .= ' ';
-		$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
-		$affiliates_select .= '<option value="">--</option>';
-		foreach ( $affiliates as $affiliate ) {
-			if ( $affiliate_id == $affiliate['affiliate_id']) {
-				$selected = ' selected="selected" ';
-			} else {
-				$selected = '';
-			}
-			$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
-		}
-		$affiliates_select .= '</select>';
-		$affiliates_select .= '</label>';
+	if ( isset( $columns ) && ( sizeof( $columns ) > 0 ) ) {
+		$column_display_names = $columns;
+	} else {
+		$column_display_names = array(
+			'date'      => __( 'Date', 'affiliates' ) . '*',
+			'name'      => __( 'Affiliate', 'affiliates' ),
+			'visits'    => __( 'Visits', 'affiliates' ),
+			'hits'      => __( 'Hits', 'affiliates' ),
+			'referrals' => __( 'Referrals', 'affiliates' ),
+			'src_uri'   => __( 'Source URI', 'affiliates' ),
+			'dest_uri'  => __( 'Landing URI', 'affiliates' )
+		);
 	}
-	
+
+	$output .= '<div id="" class="hits-overview">';
+
+	$affiliates_select = '';
+	if ( isset( $column_display_names['name'] ) ) {
+		$affiliates = affiliates_get_affiliates( true );
+		if ( !empty( $affiliates ) ) {
+			$affiliates_select .= '<label class="affiliate-id-filter">';
+			$affiliates_select .= __( 'Affiliate', 'affiliates' );
+			$affiliates_select .= ' ';
+			$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
+			$affiliates_select .= '<option value="">--</option>';
+			foreach ( $affiliates as $affiliate ) {
+				if ( $affiliate_id == $affiliate['affiliate_id']) {
+					$selected = ' selected="selected" ';
+				} else {
+					$selected = '';
+				}
+				$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
+			}
+			$affiliates_select .= '</select>';
+			$affiliates_select .= '</label>';
+		}
+	}
+
 	$output .=
 		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
@@ -381,7 +386,7 @@ function affiliates_admin_hits_uri() {
 			</form>
 		</div>
 		';
-		
+
 	if ( $paginate ) {
 	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
@@ -394,13 +399,13 @@ function affiliates_admin_hits_uri() {
 		$output .= '</div>';
 		$output .= '</form>';
 	}
-					
+
 	$output .= '
 		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
 		<thead>
 			<tr>
 			';
-	
+
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
 			'orderby' => $key,
@@ -424,22 +429,22 @@ function affiliates_admin_hits_uri() {
 
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
-			
+
 			$result = $results[$i];
-			
+
 			$referrals = affiliates_get_referrals_by_hits( $result->date, $result->src_uri_id, $result->dest_uri_id );
-			
+
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			$output .= "<td class='date'>$result->date</td>";
+			$output .= isset( $column_display_names['date'] ) ? "<td class='date'>$result->date</td>" : '';
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
-			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
-			$output .= "<td class='visits'>$result->visits</td>";
-			$output .= "<td class='hits'>$result->hits</td>";
-			$output .= "<td class='referrals'>$referrals</td>";
-			$output .= "<td class='src-uri'>$result->src_uri</td>";
-			$output .= "<td class='dest-uri'>$result->dest_uri</td>";
+			$output .= isset( $column_display_names['name'] ) ? "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>" : '';
+			$output .= isset( $column_display_names['visits'] ) ? "<td class='visits'>$result->visits</td>" : '';
+			$output .= isset( $column_display_names['hits'] ) ? "<td class='hits'>$result->hits</td>" : '';
+			$output .= isset( $column_display_names['referrals'] ) ? "<td class='referrals'>$referrals</td>" : '';
+			$output .= isset( $column_display_names['src_uri'] ) ? "<td class='src-uri'>$result->src_uri</td>" : '';
+			$output .= isset( $column_display_names['dest_uri'] ) ? "<td class='dest-uri'>$result->dest_uri</td>" : '';
 			$output .= '</tr>';
-			
+
 			/*
 			if ( $expanded || $expanded_referrals || $expanded_hits ) {
 
@@ -454,7 +459,7 @@ function affiliates_admin_hits_uri() {
 						$referrals_filter_params[] = $affiliate_id;
 					}
 					$referrals_orderby = "datetime $order";
-					
+
 					$referrals_query = $wpdb->prepare(
 						"SELECT *
 						FROM $referrals_table r
@@ -496,21 +501,21 @@ function affiliates_admin_hits_uri() {
 						$output .= '</td></tr>';
 					}
 				} // if $expanded_referrals
-				
+
 				//
 				// expanded : hits ----------------------------------------
 				//
-				
+
 				if ( $expanded_hits ) {
 					// get the detailed results for hits
 					$details_orderby = "date $order, time $order";
-					
+
 					$details_filters = " WHERE h.date = %s ";
 					$details_filter_params = array( $result->date );
 					if ( $affiliate_id ) {
 						$details_filters .= " AND h.affiliate_id = %d ";
 						$details_filter_params[] = $affiliate_id;
-					}					
+					}
 
 					$details_query = $wpdb->prepare(
 						"SELECT *
@@ -556,10 +561,10 @@ function affiliates_admin_hits_uri() {
 	} else {
 		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 	}
-		
+
 	$output .= '</tbody>';
 	$output .= '</table>';
-					
+
 	if ( $paginate ) {
 	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination( $count, null, $row_count );
@@ -578,9 +583,14 @@ function affiliates_admin_hits_uri() {
 			) .
 			'</p>';
 	$output .= '</div>'; // .visits-overview
-	echo $output;
-	affiliates_footer();
-} // function affiliates_admin_hits_uri()
+
+	if ( $display ) {
+		echo $output;
+		affiliates_footer();
+	} else {
+		return $output;
+	}
+} // function render_affiliates_admin_hits_uri()
 
 /**
  * Counts the referrals generated from a (date, src_uri_id, dest_uri_id) combination (a row in uri's table)
@@ -642,9 +652,9 @@ function affiliates_get_referrals_by_hits( $date = null, $src_uri_id = null, $de
 			ORDER BY datetime DESC
 			";
 			$last_hit = $wpdb->get_row( $query, OBJECT );
-			
+
 			if ( $last_hit && ( $last_hit->datetime == $hit->datetime ) ) {
-				
+
 				// if this is the last one ...
 				// Search if this generated referrals
 				$query = "
@@ -654,9 +664,9 @@ function affiliates_get_referrals_by_hits( $date = null, $src_uri_id = null, $de
 				LEFT JOIN $hits_table h ON ( h.affiliate_id = r.affiliate_id ) AND ( h.ip = r.ip ) AND ( date(h.datetime) <= date(r.datetime) )
 				WHERE ( h.ip = $hit->ip ) AND ( h.affiliate_id = $hit->affiliate_id ) AND ( date( h.datetime ) <= date('$hit->datetime') ) and ( date('$hit->datetime') <= date(r.datetime) )
 				";
-				
+
 				$result = $wpdb->get_row( $query, OBJECT );
-				
+
 				if ( sizeof( $result ) > 0 ){
 					$total_referrals += $result->num_referrals;
 				}
