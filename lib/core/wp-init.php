@@ -1440,8 +1440,8 @@ function affiliates_admin_menu() {
 	// hits by URIs
 	$page = add_submenu_page(
 		'affiliates-admin',
-		__( 'URIs & Referrals', 'affiliates' ),
-		__( 'URIs & Referrals', 'affiliates' ),
+		__( 'Traffics', 'affiliates' ),
+		__( 'Traffics', 'affiliates' ),
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin-hits-uri',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_hits_uri' )

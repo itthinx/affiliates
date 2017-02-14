@@ -23,7 +23,7 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Shows hits by date
+// Shows traffics section
 
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 
@@ -147,7 +147,7 @@ function affiliates_admin_hits_uri() {
 	$output .=
 		'<div>' .
 			'<h1>' .
-				__( "URI's & Referrals", 'affiliates' ) .
+				__( "Traffics", 'affiliates' ) .
 			'</h1>' .
 		'</div>';
 
@@ -583,15 +583,12 @@ function affiliates_admin_hits_uri() {
 } // function affiliates_admin_hits_uri()
 
 /**
- * Counts the referrals generated from a hit.
- * The conditions are:
- * - From the same affiliate_id
- * && the same ip
- * && the last hit with the same affiliate_id and ip and before of the referral datetime. 
- * @param int $hit_id
- * @param int $affiliate_id
- * @param string $ip
- * @param string $datetime
+ * Counts the referrals generated from a (date, src_uri_id, dest_uri_id) combination (a row in uri's table)
+ * A referral is associated to a visit, if this visit is the last one from the affiliate_id and ip, and the referral was generated after that.
+ * @param string $date
+ * @param int $src_uri_id
+ * @param int $dest_uri_id
+ * @return int The number of referrals
  */
 function affiliates_get_referrals_by_hits( $date = null, $src_uri_id = null, $dest_uri_id = null ) {
 	global $wpdb;
