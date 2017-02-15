@@ -36,7 +36,7 @@ function affiliates_admin_hits_uri() {
  * Used from dashboard section and shortcode.
  * @param array $columns Columns to display.
  * @param boolean $display Echo the result or return as string.
- * @return string if $display is false.
+ * @return string if $display is false, else directly display the result.
  */
 function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 	global $wpdb, $affiliates_options;
@@ -444,119 +444,6 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 			$output .= isset( $column_display_names['src_uri'] ) ? "<td class='src-uri'>$result->src_uri</td>" : '';
 			$output .= isset( $column_display_names['dest_uri'] ) ? "<td class='dest-uri'>$result->dest_uri</td>" : '';
 			$output .= '</tr>';
-
-			/*
-			if ( $expanded || $expanded_referrals || $expanded_hits ) {
-
-				//
-				// expanded : referrals ----------------------------------------
-				//
-				if ( $expanded_referrals ) {
-					$referrals_filters = " WHERE date(datetime) = %s ";
-					$referrals_filter_params = array( $result->date );
-					if ( $affiliate_id ) {
-						$referrals_filters .= " AND r.affiliate_id = %d ";
-						$referrals_filter_params[] = $affiliate_id;
-					}
-					$referrals_orderby = "datetime $order";
-
-					$referrals_query = $wpdb->prepare(
-						"SELECT *
-						FROM $referrals_table r
-						LEFT JOIN $affiliates_table a ON r.affiliate_id = a.affiliate_id
-						$referrals_filters
-						ORDER BY $referrals_orderby
-						",
-						$referrals_filter_params
-					);
-					$referrals = $wpdb->get_results( $referrals_query, OBJECT );
-					if ( count($referrals) > 0 ) {
-						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-						$output .= '<td colspan="5">';
-						$output .= '<div class="details-referrals">';
-						$output .= '<p class="description">' . __( 'Referrals', 'affiliates' ) . '</p>';
-						$output .= '
-							<table id="details-referrals-' . esc_attr( $result->date ) . '" class="details-referrals" cellspacing="0">
-							<thead>
-							<tr>
-							<th scope="col" class="datetime">' . __( 'Time', 'affiliates' ) . '</th>
-							<th scope="col" class="post-id">' . __( 'Post', 'affiliates' ) . '</th>
-							<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
-							</tr>
-							</thead>
-							<tbody>
-							';
-						foreach ( $referrals as $referral ) {
-							$output .= '<tr class="details-referrals ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-//							$output .= "<td class='datetime'>$referral->datetime</td>";
-							$output .= '<td class="datetime">' . DateHelper::s2u( $referral->datetime ) . '</td>';
-							$link = get_permalink( $referral->post_id );
-							$title = get_the_title( $referral->post_id );
-							$output .= '<td class="post-id"><a href="' . esc_attr( $link ) . '" target="_blank">' . wp_filter_nohtml_kses( $title ) . '</a></td>';
-							$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $referral->name ) ) . "</td>";
-							$output .= '</tr>';
-						}
-						$output .= '</tbody></table>';
-						$output .= '</div>'; // .details-referrals
-						$output .= '</td></tr>';
-					}
-				} // if $expanded_referrals
-
-				//
-				// expanded : hits ----------------------------------------
-				//
-
-				if ( $expanded_hits ) {
-					// get the detailed results for hits
-					$details_orderby = "date $order, time $order";
-
-					$details_filters = " WHERE h.date = %s ";
-					$details_filter_params = array( $result->date );
-					if ( $affiliate_id ) {
-						$details_filters .= " AND h.affiliate_id = %d ";
-						$details_filter_params[] = $affiliate_id;
-					}
-
-					$details_query = $wpdb->prepare(
-						"SELECT *
-						FROM $hits_table h
-						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-						$details_filters
-						ORDER BY $details_orderby
-						",
-						$details_filter_params
-					);
-					$hits = $wpdb->get_results( $details_query, OBJECT );
-					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-					$output .= '<td colspan="5">';
-					$output .= '<div class="details-hits">';
-					$output .= '<p class="description">' . __( 'Hits', 'affiliates' ) . '</p>';
-					$output .= '
-						<table id="details-hits-' . esc_attr( $result->date ) . '" class="details-hits" cellspacing="0">
-						<thead>
-						<tr>
-						<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>
-						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
-						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
-						</tr>
-						</thead>
-						<tbody>
-						';
-					foreach ( $hits as $hit ) {
-						$output .= '<tr class=" details ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-//						$output .= "<td class='time'>$hit->time</td>";
-						$output .= '<td class="time">' . DateHelper::s2u( $hit->datetime ) . '</td>';
-						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
-						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
-						$output .= '</tr>';
-					}
-					$output .= '</tbody></table>';
-					$output .= '</div>'; // .details-hits
-					$output .= '</td></tr>';
-				} // if $expanded_hits
-
-			} // expanded
-			*/
 		}
 	} else {
 		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
