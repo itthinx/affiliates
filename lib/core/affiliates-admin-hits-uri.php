@@ -43,7 +43,7 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 
 	$output = '';
 
-	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
+	if ( is_admin() && !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 
@@ -327,51 +327,70 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 		}
 	}
 
-	$output .=
-		'<div class="filters">' .
-			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
-			'<form id="setfilters" action="" method="post">' .
+	if ( isset( $column_display_names['date'] ) || 
+		isset( $column_display_names['name'] ) ||
+		isset( $column_display_names['src_uri'] ) ||
+		isset( $column_display_names['dest_uri'] ) ) {
+		$output .=
+			'<div class="filters">' .
+				'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
+				'<form id="setfilters" action="" method="post">' .
+	
+					'<div class="filter-section">' .
+					$affiliates_select .
+					'</div>';
+		if ( isset( $column_display_names['date'] ) ) {
+			$output .=
+					'<div class="filter-section">' .
+					'<label class="from-date-filter">' .
+					__( 'From', 'affiliates' ) .
+					' ' .
+					'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
+					'</label>' .
+					' ' .
+					'<label class="thru-date-filter">' .
+					__( 'Until', 'affiliates' ) .
+					' ' .
+					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
+					'</label>' .
+					'</div>';
+		}
+		if ( isset( $column_display_names['src_uri'] ) || isset( $column_display_names['dest_uri'] ) ) {
+			$output .=
+					'<div class="filter-section">';
+		}
+		if ( isset( $column_display_names['src_uri'] ) ) {
+			$output .=
+					'<label class="src-uri-filter">' .
+					__( 'Source URI', 'affiliates' ) .
+					' ' .
+					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( $src_uri ) . '"/>'.
+					'</label>' .
+					' ';
+		}
+		if ( isset( $column_display_names['dest_uri'] ) ) {
+			$output .=
+					'<label class="dest-uri-filter">' .
+					__( 'Landing URI', 'affiliates' ) .
+					' ' .
+					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( $dest_uri ) . '"/>'.
+					'</label>';
+		}
+		if ( isset( $column_display_names['src_uri'] ) || isset( $column_display_names['dest_uri'] ) ) {
+			$output .=
+			'</div>';
+		}
 
-				'<div class="filter-section">' .
-				$affiliates_select .
-				'</div>' .
-
-				'<div class="filter-section">' .
-				'<label class="from-date-filter">' .
-				__( 'From', 'affiliates' ) .
-				' ' .
-				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-				'</label>' .
-				' ' .
-				'<label class="thru-date-filter">' .
-				__( 'Until', 'affiliates' ) .
-				' ' .
-				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
-				'</label>' .
-				'</div>' .
-
-				'<div class="filter-section">' .
-				'<label class="src-uri-filter">' .
-				__( 'Source URI', 'affiliates' ) .
-				' ' .
-				'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( $src_uri ) . '"/>'.
-				'</label>' .
-				' ' .
-				'<label class="dest-uri-filter">' .
-				__( 'Landing URI', 'affiliates' ) .
-				' ' .
-				'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( $dest_uri ) . '"/>'.
-				'</label>' .
-				'</div>' .
-
-				'<div class="filter-buttons">' .
-				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-				'<input type="hidden" value="submitted" name="submitted"/>' .
-				'</div>' .
-			'</form>' .
-		'</div>';
+		$output .=
+					'<div class="filter-buttons">' .
+					wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
+					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+					'<input type="hidden" value="submitted" name="submitted"/>' .
+					'</div>' .
+				'</form>' .
+			'</div>';
+	}
 
 	$output .= '
 		<div class="page-options">
