@@ -140,14 +140,14 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 		}
 	}
 
-	if ( isset( $_POST['paged'] ) ) {
+	if ( isset( $_POST['uris_paged'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-	$current_url = remove_query_arg( 'paged', $current_url );
+	$current_url = remove_query_arg( 'uris_paged', $current_url );
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
@@ -172,7 +172,7 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 	if ( $offset < 0 ) {
 		$offset = 0;
 	}
-	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 0;
+	$paged = isset( $_REQUEST['uris_paged'] ) ? intval( $_REQUEST['uris_paged'] ) : 0;
 	if ( $paged < 0 ) {
 		$paged = 0;
 	} 
@@ -303,7 +303,7 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 		);
 	}
 
-	$output .= '<div id="" class="hits-overview">';
+	$output .= '<div id="" class="hits-uris-overview">';
 
 	$affiliates_select = '';
 	if ( isset( $column_display_names['name'] ) ) {
@@ -408,7 +408,7 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 
 	if ( $paginate ) {
 	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
-		$pagination = new Affiliates_Pagination($count, null, $row_count);
+		$pagination = new Affiliates_Pagination( $count, null, $row_count, 'uris_paged' );
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
 		$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_NONCE_2, true, false );
@@ -473,7 +473,7 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 
 	if ( $paginate ) {
 	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
-		$pagination = new Affiliates_Pagination( $count, null, $row_count );
+		$pagination = new Affiliates_Pagination( $count, null, $row_count, 'uris_paged' );
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
 		$output .= '</div>';
