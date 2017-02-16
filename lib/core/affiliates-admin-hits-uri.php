@@ -23,12 +23,12 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Shows traffics section
+// Shows traffic section
 
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 
 /**
- * Render the traffics table & filter.
+ * Render the traffic table & filter.
  */
 function affiliates_admin_hits_uri() {
 	global $wpdb, $affiliates_options;
@@ -145,7 +145,7 @@ function affiliates_admin_hits_uri() {
 	$output .=
 		'<div>' .
 			'<h1>' .
-				__( "Traffics", 'affiliates' ) .
+				__( "Traffic", 'affiliates' ) .
 			'</h1>' .
 		'</div>';
 
