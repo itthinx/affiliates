@@ -27,18 +27,10 @@ if ( !defined( 'ABSPATH' ) ) {
 
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
 
-function affiliates_admin_hits_uri() {
-	render_affiliates_admin_hits_uri();
-}
-
 /**
  * Render the traffics table & filter.
- * Used from dashboard section and shortcode.
- * @param array $columns Columns to display.
- * @param boolean $display Echo the result or return as string.
- * @return string if $display is false, else directly display the result.
  */
-function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
+function affiliates_admin_hits_uri() {
 	global $wpdb, $affiliates_options;
 
 	$output = '';
@@ -52,7 +44,6 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 		isset( $_POST['thru_date'] ) ||
 		isset( $_POST['clear_filters'] ) ||
 		isset( $_POST['affiliate_id'] ) ||
-		isset( $_POST['expanded_hits'] ) ||
 		isset( $_POST['src_uri'] ) ||
 		isset( $_POST['dest_uri'] )
 	) {
@@ -67,7 +58,6 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 	$affiliate_id       = $affiliates_options->get_option( 'hits_uri_affiliate_id', null );
 	$src_uri            = $affiliates_options->get_option( 'hits_uri_src_uri', null );
 	$dest_uri           = $affiliates_options->get_option( 'hits_uri_dest_uri', null );
-	$expanded_hits      = $affiliates_options->get_option( 'hits_expanded_hits', null );
 
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'hits_uri_from_date' );
@@ -75,8 +65,6 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 		$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		$affiliates_options->delete_option( 'hits_uri_dest_uri' );
-		$affiliates_options->delete_option( 'hits_uri_group_src_uri' );
-		$affiliates_options->delete_option( 'hits_uri_group_dest_uri' );
 		$from_date = null;
 		$thru_date = null;
 		$affiliate_id = null;
@@ -289,59 +277,47 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 
 	$results = $wpdb->get_results( $query, OBJECT );
 
-	if ( isset( $columns ) && ( sizeof( $columns ) > 0 ) ) {
-		$column_display_names = $columns;
-	} else {
-		$column_display_names = array(
-			'date'      => __( 'Date', 'affiliates' ) . '*',
-			'name'      => __( 'Affiliate', 'affiliates' ),
-			'visits'    => __( 'Visits', 'affiliates' ),
-			'hits'      => __( 'Hits', 'affiliates' ),
-			'referrals' => __( 'Referrals', 'affiliates' ),
-			'src_uri'   => __( 'Source URI', 'affiliates' ),
-			'dest_uri'  => __( 'Landing URI', 'affiliates' )
-		);
-	}
-
+	$column_display_names = array(
+		'date'      => __( 'Date', 'affiliates' ) . '*',
+		'name'      => __( 'Affiliate', 'affiliates' ),
+		'visits'    => __( 'Visits', 'affiliates' ),
+		'hits'      => __( 'Hits', 'affiliates' ),
+		'referrals' => __( 'Referrals', 'affiliates' ),
+		'src_uri'   => __( 'Source URI', 'affiliates' ),
+		'dest_uri'  => __( 'Landing URI', 'affiliates' )
+	);
+	
 	$output .= '<div id="" class="hits-uris-overview">';
 
 	$affiliates_select = '';
-	if ( isset( $column_display_names['name'] ) ) {
-		$affiliates = affiliates_get_affiliates( true );
-		if ( !empty( $affiliates ) ) {
-			$affiliates_select .= '<label class="affiliate-id-filter">';
-			$affiliates_select .= __( 'Affiliate', 'affiliates' );
-			$affiliates_select .= ' ';
-			$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
-			$affiliates_select .= '<option value="">--</option>';
-			foreach ( $affiliates as $affiliate ) {
-				if ( $affiliate_id == $affiliate['affiliate_id']) {
-					$selected = ' selected="selected" ';
-				} else {
-					$selected = '';
-				}
-				$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
+	$affiliates = affiliates_get_affiliates( true );
+	if ( !empty( $affiliates ) ) {
+		$affiliates_select .= '<label class="affiliate-id-filter">';
+		$affiliates_select .= __( 'Affiliate', 'affiliates' );
+		$affiliates_select .= ' ';
+		$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
+		$affiliates_select .= '<option value="">--</option>';
+		foreach ( $affiliates as $affiliate ) {
+			if ( $affiliate_id == $affiliate['affiliate_id']) {
+				$selected = ' selected="selected" ';
+			} else {
+				$selected = '';
 			}
-			$affiliates_select .= '</select>';
-			$affiliates_select .= '</label>';
+			$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
 		}
+		$affiliates_select .= '</select>';
+		$affiliates_select .= '</label>';
 	}
 
-	if ( isset( $column_display_names['date'] ) || 
-		isset( $column_display_names['name'] ) ||
-		isset( $column_display_names['src_uri'] ) ||
-		isset( $column_display_names['dest_uri'] ) ) {
-		$output .=
-			'<div class="filters">' .
-				'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
-				'<form id="setfilters" action="" method="post">' .
-	
-					'<div class="filter-section">' .
+	$output .=
+		'<div class="filters">' .
+			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
+			'<form id="setfilters" action="" method="post">' .
+
+				'<div class="filter-section">' .
 					$affiliates_select .
-					'</div>';
-		if ( isset( $column_display_names['date'] ) ) {
-			$output .=
-					'<div class="filter-section">' .
+				'</div>' .
+				'<div class="filter-section">' .
 					'<label class="from-date-filter">' .
 					__( 'From', 'affiliates' ) .
 					' ' .
@@ -353,58 +329,39 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 					' ' .
 					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
 					'</label>' .
-					'</div>';
-		}
-		if ( isset( $column_display_names['src_uri'] ) || isset( $column_display_names['dest_uri'] ) ) {
-			$output .=
-					'<div class="filter-section">';
-		}
-		if ( isset( $column_display_names['src_uri'] ) ) {
-			$output .=
+				'</div>' .
+				'<div class="filter-section">' .
 					'<label class="src-uri-filter">' .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
 					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( $src_uri ) . '"/>'.
 					'</label>' .
-					' ';
-		}
-		if ( isset( $column_display_names['dest_uri'] ) ) {
-			$output .=
+					' ' .
 					'<label class="dest-uri-filter">' .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
 					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( $dest_uri ) . '"/>'.
-					'</label>';
-		}
-		if ( isset( $column_display_names['src_uri'] ) || isset( $column_display_names['dest_uri'] ) ) {
-			$output .=
-			'</div>';
-		}
-
-		$output .=
-					'<div class="filter-buttons">' .
-					wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
+					'</label>' .
+				'</div>' .
+				'<div class="filter-buttons">' .
+				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
+				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+				'<input type="hidden" value="submitted" name="submitted"/>' .
+				'</div>' .
+			'</form>' .
+		'</div>' .
+		'<div class="page-options">' .
+			'<form id="setrowcount" action="" method="post">' .
+				'<div>' .
+					'<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
+					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />' .
+					wp_nonce_field( "admin", AFFILIATES_ADMIN_HITS_NONCE_1, true, false ) .
 					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-					'<input type="hidden" value="submitted" name="submitted"/>' .
-					'</div>' .
-				'</form>' .
-			'</div>';
-	}
-
-	$output .= '
-		<div class="page-options">
-			<form id="setrowcount" action="" method="post">
-				<div>
-					<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
-					//<input name="page" type="hidden" value="' . esc_attr( $page ) . '"/>
-					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
-					' . wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_NONCE_1, true, false ) . '
-					<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
-				</div>
-			</form>
-		</div>
-		';
+				'</div>' .
+			'</form>' .
+		'</div>
+	';
 
 	if ( $paginate ) {
 	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
@@ -454,14 +411,14 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 			$referrals = affiliates_get_referrals_by_hits( $result->date, $result->src_uri_id, $result->dest_uri_id );
 
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			$output .= isset( $column_display_names['date'] ) ? "<td class='date'>$result->date</td>" : '';
+			$output .= "<td class='date'>$result->date</td>";
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
-			$output .= isset( $column_display_names['name'] ) ? "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>" : '';
-			$output .= isset( $column_display_names['visits'] ) ? "<td class='visits'>$result->visits</td>" : '';
-			$output .= isset( $column_display_names['hits'] ) ? "<td class='hits'>$result->hits</td>" : '';
-			$output .= isset( $column_display_names['referrals'] ) ? "<td class='referrals'>$referrals</td>" : '';
-			$output .= isset( $column_display_names['src_uri'] ) ? "<td class='src-uri'>$result->src_uri</td>" : '';
-			$output .= isset( $column_display_names['dest_uri'] ) ? "<td class='dest-uri'>$result->dest_uri</td>" : '';
+			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
+			$output .= "<td class='visits'>$result->visits</td>";
+			$output .= "<td class='hits'>$result->hits</td>";
+			$output .= "<td class='referrals'>$referrals</td>";
+			$output .= "<td class='src-uri'>$result->src_uri</td>";
+			$output .= "<td class='dest-uri'>$result->dest_uri</td>";
 			$output .= '</tr>';
 		}
 	} else {
@@ -490,13 +447,9 @@ function render_affiliates_admin_hits_uri( $columns = null, $display = true ) {
 			'</p>';
 	$output .= '</div>'; // .visits-overview
 
-	if ( $display ) {
-		echo $output;
-		affiliates_footer();
-	} else {
-		return $output;
-	}
-} // function render_affiliates_admin_hits_uri()
+	echo $output;
+	affiliates_footer();
+} // function affiliates_admin_hits_uri()
 
 /**
  * Counts the referrals generated from a (date, src_uri_id, dest_uri_id) combination (a row in uri's table)
