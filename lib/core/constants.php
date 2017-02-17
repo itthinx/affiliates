@@ -195,3 +195,6 @@ define( 'AFFILIATES_ADMIN_REFERRALS_NONCE',   'affiliates-admin-referrals-nonce'
 // URIS
 define( 'AFFILIATES_SRC_URI', 'src' );
 define( 'AFFILIATES_DEST_URI', 'dest' );
+
+// User agents
+define( 'AFFILIATES_USER_AGENT_MAX_LENGTH', 255 );
