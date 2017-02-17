@@ -505,10 +505,12 @@ function affiliates_admin_hits() {
 						$details_filter_params[] = $affiliate_id;
 					}
 
+					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
 					$details_query = $wpdb->prepare(
 						"SELECT *
 						FROM $hits_table h
 						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+						LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id
 						$details_filters
 						ORDER BY $details_orderby
 						",
@@ -526,6 +528,7 @@ function affiliates_admin_hits() {
 						<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>
 						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
 						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
+						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -536,6 +539,7 @@ function affiliates_admin_hits() {
 						$output .= '<td class="time">' . DateHelper::s2u( $hit->datetime ) . '</td>';
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
+						$output .= "<td class='hit-user-agent'>" . esc_html( $hit->user_agent ) . "</td>";
 						$output .= '</tr>';
 					}
 					$output .= '</tbody></table>';

@@ -4,6 +4,8 @@
 * Added a new Traffic section with URI stats.
 * Source URIs and landing URIs are stored for hits on affiliate links.
 * User agents are stored for hits on affiliate links.
+* Hit stats now show user agents in the Visits & Referrals section.
+* Hit stats now show user agents in the Affiliates & Referrals section.
 
 = 2.16.7 =
 * Changing the username related to an affiliate if the username doesn't exist shows an error.

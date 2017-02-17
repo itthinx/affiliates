@@ -586,15 +586,17 @@ function affiliates_admin_hits_affiliate() {
 						$details_filters .= " datetime < %s ";
 						$details_filter_params[] = $thru_datetime;
 					}
+					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
 					$details_query = $wpdb->prepare(
 						"SELECT *
 						FROM $hits_table h
 						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+						LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id
 						$details_filters
 						ORDER BY $details_orderby
 						",
 						$details_filter_params
-					);					
+					);
 					$hits = $wpdb->get_results( $details_query, OBJECT );
 					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 					$output .= '<td colspan="5">';
@@ -609,6 +611,7 @@ function affiliates_admin_hits_affiliate() {
 						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
 						<th scope="col" class="count">' . __( 'Count', 'affiliates' ) . '</th>
 						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
+						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -622,6 +625,7 @@ function affiliates_admin_hits_affiliate() {
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='count'>$hit->count</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
+						$output .= "<td class='hit-user-agent'>" . esc_html( $hit->user_agent ) . "</td>";
 						$output .= '</tr>';
 					}
 					$output .= '</tbody></table>';

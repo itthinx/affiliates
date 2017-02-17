@@ -975,10 +975,11 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
 	$user_agent_id = affiliates_maybe_record_user_agent_id( $user_agent );
+
 	if ( $user_agent_id ) {
 		$columns .= ',user_agent_id';
-		$formats .= ',%s';
-		$values[] = $user_agent; // this is escaped with prepare
+		$formats .= ',%d';
+		$values[] = $user_agent_id;
 	}
 
 	$columns .= ')';
@@ -988,18 +989,19 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		do_action(
 			'affiliates_hit',
 			array(
-				'affiliate_id' => $affiliate_id,
-				'campaign_id'  => $campaign_id,
-				'date'         => $date,
-				'time'         => $time,
-				'datetime'     => $datetime,
-				'ip'           => $ip_address,
-				'ipv6'         => null,
-				'is_robot'     => $is_robot,
-				'user_id'      => $user_id,
-				'type'         => $type,
-				'src_uri_id'   => $src_uri_id,
-				'dest_uri_id'  => $dest_uri_id
+				'affiliate_id'  => $affiliate_id,
+				'campaign_id'   => $campaign_id,
+				'date'          => $date,
+				'time'          => $time,
+				'datetime'      => $datetime,
+				'ip'            => $ip_address,
+				'ipv6'          => null,
+				'is_robot'      => $is_robot,
+				'user_id'       => $user_id,
+				'type'          => $type,
+				'src_uri_id'    => $src_uri_id,
+				'dest_uri_id'   => $dest_uri_id,
+				'user_agent_id' => $user_agent_id
 			)
 		);
 	}
