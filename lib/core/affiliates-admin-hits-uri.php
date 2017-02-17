@@ -2,7 +2,7 @@
 /**
  * affiliates-admin-hits-uri.php
  * 
- * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2010-2017 "kento" Karim Rahimpur www.itthinx.com
  * 
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
@@ -16,7 +16,7 @@
  * 
  * @author Karim Rahimpur
  * @package affiliates
- * @since affiliates 1.0.0
+ * @since affiliates 2.17.0
  */
 
 if ( !defined( 'ABSPATH' ) ) {
@@ -137,17 +137,14 @@ function affiliates_admin_hits_uri() {
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'uris_paged', $current_url );
 
-	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
-	$referrals_table = _affiliates_get_tablename( 'referrals' );
-	$hits_table = _affiliates_get_tablename( 'hits' );
-	$uris_table = _affiliates_get_tablename( 'uris' );
+	$affiliates_table  = _affiliates_get_tablename( 'affiliates' );
+	$referrals_table   = _affiliates_get_tablename( 'referrals' );
+	$hits_table        = _affiliates_get_tablename( 'hits' );
+	$uris_table        = _affiliates_get_tablename( 'uris' );
 
-	$output .=
-		'<div>' .
-			'<h1>' .
-				__( "Traffic", 'affiliates' ) .
-			'</h1>' .
-		'</div>';
+	$output .= '<h1>';
+	$output .= __( 'Traffic', 'affiliates' );
+	$output .= '</h1>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
 
@@ -163,7 +160,7 @@ function affiliates_admin_hits_uri() {
 	$paged = isset( $_REQUEST['uris_paged'] ) ? intval( $_REQUEST['uris_paged'] ) : 0;
 	if ( $paged < 0 ) {
 		$paged = 0;
-	} 
+	}
 
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
@@ -256,24 +253,23 @@ function affiliates_admin_hits_uri() {
 		$offset = ( $paged - 1 ) * $row_count;
 	}
 
-	$query = $wpdb->prepare("
-			SELECT
-			*,
-			su.uri src_uri,
-			du.uri dest_uri,
-			count(distinct ip) visits,
-			sum(count) hits
-			FROM $hits_table h
-			LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-			LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-			LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-			$filters
-			GROUP BY date, su.uri, du.uri
-			ORDER BY $orderby $order
-			LIMIT $row_count OFFSET $offset
-			",
-			$filter_params
-			);
+	$query = $wpdb->prepare(
+		"SELECT
+		*,
+		su.uri src_uri,
+		du.uri dest_uri,
+		count(distinct ip) visits,
+		sum(count) hits
+		FROM $hits_table h
+		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
+		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
+		$filters
+		GROUP BY date, su.uri, du.uri
+		ORDER BY $orderby $order
+		LIMIT $row_count OFFSET $offset",
+		$filter_params
+	);
 
 	$results = $wpdb->get_results( $query, OBJECT );
 
@@ -286,8 +282,8 @@ function affiliates_admin_hits_uri() {
 		'src_uri'   => __( 'Source URI', 'affiliates' ),
 		'dest_uri'  => __( 'Landing URI', 'affiliates' )
 	);
-	
-	$output .= '<div id="" class="hits-uris-overview">';
+
+	$output .= '<div class="hits-uris-overview">';
 
 	$affiliates_select = '';
 	$affiliates = affiliates_get_affiliates( true );
@@ -376,11 +372,9 @@ function affiliates_admin_hits_uri() {
 		$output .= '</form>';
 	}
 
-	$output .= '
-		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
-		<thead>
-			<tr>
-			';
+	$output .= '<table id="" class="wp-list-table widefat fixed" cellspacing="0">';
+	$output .= '<thead>';
+	$output .= '<tr>';
 
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
@@ -398,10 +392,9 @@ function affiliates_admin_hits_uri() {
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
 
-	$output .= '</tr>
-		</thead>
-		<tbody>
-		';
+	$output .= '</tr>';
+	$output .= '</thead>';
+	$output .= '<tbody>';
 
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
@@ -417,8 +410,8 @@ function affiliates_admin_hits_uri() {
 			$output .= "<td class='visits'>$result->visits</td>";
 			$output .= "<td class='hits'>$result->hits</td>";
 			$output .= "<td class='referrals'>$referrals</td>";
-			$output .= "<td class='src-uri'>$result->src_uri</td>";
-			$output .= "<td class='dest-uri'>$result->dest_uri</td>";
+			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) );
+			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) );
 			$output .= '</tr>';
 		}
 	} else {
