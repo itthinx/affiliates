@@ -330,13 +330,13 @@ function affiliates_admin_hits_uri() {
 					'<label class="src-uri-filter">' .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
-					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( $src_uri ) . '"/>'.
+					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( esc_url( $src_uri ) ) . '"/>'.
 					'</label>' .
 					' ' .
 					'<label class="dest-uri-filter">' .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
-					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( $dest_uri ) . '"/>'.
+					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( esc_url( $dest_uri ) ) . '"/>'.
 					'</label>' .
 				'</div>' .
 				'<div class="filter-buttons">' .
