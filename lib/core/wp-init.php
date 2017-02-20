@@ -811,7 +811,8 @@ function affiliates_maybe_record_uri( $type = null, $uri = null ) {
 	$uri = null;
 	switch ( $type ) {
 		case AFFILIATES_DEST_URI :
-			$uri = home_url(add_query_arg(array(),$wp->request));
+			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$uri = $current_url;
 			break;
 		case AFFILIATES_SRC_URI :
 		default :
