@@ -272,7 +272,8 @@ function affiliates_admin_affiliates_add_submit() {
 
 			do_action( 'affiliates_added_affiliate', intval( $affiliate_id ) );
 		}
-
 	}
+
 	return $result;
+
 } // function affiliates_admin_affiliates_add_submit

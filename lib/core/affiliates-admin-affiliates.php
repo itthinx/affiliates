@@ -83,8 +83,9 @@ function affiliates_admin_affiliates() {
 				$notice_msg = __( 'Affiliate added.', 'affiliates' );
 				break;
 			case 'edit' :
-				if ( ( $error = affiliates_admin_affiliates_edit_submit() ) !== AFFILIATES_ADMIN_AFFILIATES_NO_ERROR ) {
-					$_POST['error'] = $error;
+				$result = affiliates_admin_affiliates_edit_submit();
+				if ( !empty( $result['errors'] ) ) {
+					$_POST['errors'] = $result['errors'];
 					return affiliates_admin_affiliates_edit( $_POST['affiliate-id-field'] );
 				}
 				$notice_msg = __( 'Affiliate updated.', 'affiliates' );
