@@ -104,21 +104,23 @@ function affiliates_admin_hits_uri() {
 			$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		}
 
-			// src_uri
+		// src_uri
+		$_POST['src_uri'] = trim( $_POST['src_uri'] );
 		if ( !empty( $_POST['src_uri'] ) ) {
-			$src_uri = trim( $_POST['src_uri'] );
+			$src_uri = $_POST['src_uri'];
 			$affiliates_options->update_option( 'hits_uri_src_uri', $src_uri );
-		} else if ( isset( $_POST['src_uri'] ) ) {  // empty
+		} else if ( isset( $_POST['src_uri'] ) ) { // empty
 			$src_uri = null;
 			$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		}
 		// dest_uri
+		$_POST['dest_uri'] = trim( $_POST['dest_uri'] );
 		if ( !empty( $_POST['dest_uri'] ) ) {
-			$dest_uri = trim( $_POST['dest_uri'] );
-			$affiliates_options->update_option( 'hits_uri_dest_uri', '' );
-		} else if ( isset( $_POST['dest_uri'] ) ) {  // empty
+			$dest_uri = $_POST['dest_uri'];
+			$affiliates_options->update_option( 'hits_uri_dest_uri', $dest_uri );
+		} else if ( isset( $_POST['dest_uri'] ) )  { // empty
 			$dest_uri = null;
-			$affiliates_options->delete_option( 'hits_uri_src_uri' );
+			$affiliates_options->delete_option( 'hits_uri_dest_uri' );
 		}
 	}
 
@@ -220,11 +222,11 @@ function affiliates_admin_hits_uri() {
 
 	if ( $src_uri ) {
 		$filters .= " AND su.uri LIKE '%%%s%%' ";
-		$filter_params[] = $src_uri;
+		$filter_params[] = $wpdb->esc_like( $src_uri );
 	}
 	if ( $dest_uri ) {
 		$filters .= " AND du.uri LIKE '%%%s%%' ";
-		$filter_params[] = $dest_uri;
+		$filter_params[] = $wpdb->esc_like( $dest_uri );
 	}
 
 	// how many are there ?
@@ -330,13 +332,13 @@ function affiliates_admin_hits_uri() {
 					'<label class="src-uri-filter">' .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
-					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( esc_url( $src_uri ) ) . '"/>'.
+					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( stripslashes( $src_uri ) ) . '"/>'.
 					'</label>' .
 					' ' .
 					'<label class="dest-uri-filter">' .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
-					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( esc_url( $dest_uri ) ) . '"/>'.
+					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>'.
 					'</label>' .
 				'</div>' .
 				'<div class="filter-buttons">' .
