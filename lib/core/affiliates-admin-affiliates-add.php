@@ -254,7 +254,6 @@ function affiliates_admin_affiliates_add_submit() {
 		if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
 			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 		}
-
 		if ( !empty( $affiliate_id ) ) {
 			// user association
 			$new_associated_user_login = trim( $_POST['user-field'] );
@@ -269,10 +268,8 @@ function affiliates_admin_affiliates_add_submit() {
 					}
 				}
 			}
-
 			do_action( 'affiliates_added_affiliate', intval( $affiliate_id ) );
 		}
-
 	}
 	return $result;
 } // function affiliates_admin_affiliates_add_submit
