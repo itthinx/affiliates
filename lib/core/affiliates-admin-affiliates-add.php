@@ -44,21 +44,23 @@ function affiliates_admin_affiliates_add() {
 	$thru_date = isset( $_POST['thru-date-field'] ) ? $_POST['thru-date-field'] : '';
 
 	$notice = '';
-	if ( isset( $_POST['error'] ) )  {
-		$notice_msg = '';
-		switch ( $_POST['error'] ) {
-			case AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY :
-				$notice_msg = __( 'Name can not be empty.', 'affiliates' );
-				break;
-			case AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME :
-				$notice_msg = __( 'The username does not exist.', 'affiliates' );
-				break;
-			default:
-				$notice_msg = __( 'Something went wrong.', 'affiliates' );
-				break;
+	if ( isset( $_POST['errors'] ) && is_array( $_POST['errors'] ) ) {
+		$notice_msg = array();
+		foreach( $_POST['errors'] as $error ) {
+			switch ( $error ) {
+				case AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY :
+					$notice_msg[] = __( 'Name can not be empty.', 'affiliates' );
+					break;
+				case AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME :
+					$notice_msg[] = __( 'The username does not exist.', 'affiliates' );
+					break;
+				default:
+					$notice_msg[] = __( 'Something went wrong.', 'affiliates' );
+					break;
+			}
 		}
 		$notice .= '<div class="updated error">';
-		$notice .= $notice_msg;
+		$notice .= implode( '<br/>', $notice_msg );
 		$notice .= '</div>';
 	}
 
@@ -147,15 +149,18 @@ function affiliates_admin_affiliates_add() {
 
 /**
  * Handle add affiliate form submission.
- * @return int error_value:
- * 		AFFILIATES_ADMIN_AFFILIATES_NO_ERROR  -- No errors
- * 		AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY
- * 		AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME
+ * 
+ * Possible error values:
+ * - AFFILIATES_ADMIN_AFFILIATES_NO_ERROR
+ * - AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY
+ * - AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME
+ * 
+ * @return array with errors
  */
 function affiliates_admin_affiliates_add_submit() {
 
 	global $wpdb;
-	$result = AFFILIATES_ADMIN_AFFILIATES_NO_ERROR;
+	$result = array();
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
@@ -168,8 +173,25 @@ function affiliates_admin_affiliates_add_submit() {
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 
-	$name = isset( $_POST['name-field'] ) ? $_POST['name-field'] : null;
-	if ( !empty( $name ) ) {
+	// field validation
+
+	$name = isset( $_POST['name-field'] ) ? trim( $_POST['name-field'] ) : null;
+	if ( empty( $name ) ) {
+		$result['errors'][] = AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY;
+	}
+
+	$login_valid = true;
+	if ( !empty( $_POST['user-field'] ) ) {
+		$login = trim( $_POST['user-field'] );
+		if ( !empty( $login ) ) {
+			if ( !get_user_by( 'login', $login ) ) {
+				$login_valid = false;
+				$result['errors'][] = AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME;
+			}
+		}
+	}
+
+	if ( !empty( $name ) && $login_valid ) {
 
 		// Note the trickery (*) that has to be used because wpdb::prepare() is not
 		// able to handle null values.
@@ -229,39 +251,25 @@ function affiliates_admin_affiliates_add_submit() {
 		$data_['status'] = get_option( 'aff_status', 'active' );
 		$formats_[] = '%s';
 
-		// user association
-		$new_associated_user_login = trim( $_POST['user-field'] );
-		if ( !empty( $new_associated_user_login ) ) {
-			$new_associated_user = get_user_by( 'login', $new_associated_user_login );
-			if ( $new_associated_user ) {
-				// Create the affiliate
-				if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
-					$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
-				}
-				// new association
-				if ( !empty( $affiliate_id ) ) {
+		if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
+			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
+		}
+		if ( !empty( $affiliate_id ) ) {
+			// user association
+			$new_associated_user_login = trim( $_POST['user-field'] );
+			// new association
+			if ( !empty( $affiliate_id ) && !empty( $new_associated_user_login ) ) {
+				$new_associated_user = get_user_by( 'login', $new_associated_user_login );
+				if ( !empty( $new_associated_user ) ) {
 					if ( $wpdb->query( $wpdb->prepare( "INSERT INTO $affiliates_users_table SET affiliate_id = %d, user_id = %d", intval( $affiliate_id ), intval( $new_associated_user->ID ) ) ) ) {
 						if ( empty( $email ) && !empty( $new_associated_user->user_email ) ) {
 							$wpdb->query( $wpdb->prepare( "UPDATE $affiliates_table SET email = %s WHERE affiliate_id = %d", $new_associated_user->user_email, $affiliate_id ) );
 						}
 					}
 				}
-			} else {
-				$result = AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME;
 			}
-		} else {
-			// Create the affiliate
-			if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
-				$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
-			}
-		}
-
-		// hook
-		if ( ( $result === AFFILIATES_ADMIN_AFFILIATES_NO_ERROR ) && ( !empty( $affiliate_id ) ) ) {
 			do_action( 'affiliates_added_affiliate', intval( $affiliate_id ) );
 		}
-	} else {
-		$result = AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY;
 	}
 	return $result;
 } // function affiliates_admin_affiliates_add_submit
