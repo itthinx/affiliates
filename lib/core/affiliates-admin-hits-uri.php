@@ -388,9 +388,16 @@ function affiliates_admin_hits_uri() {
 			$lorder = strtolower( $order );
 			$class = "$key manage-column sorted $lorder";
 		} else {
-			$class = "$key manage-column sortable";
+			$class = "$key manage-column";
+			if ( $key !== 'referrals') {
+				$class .= ' sortable';
+			}
 		}
-		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
+		if ( $key !== 'referrals' ) {
+			$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . esc_html( $column_display_name ) . '</span><span class="sorting-indicator"></span></a>';
+		} else {
+			$column_display_name = esc_html( $column_display_name );
+		}
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
 
