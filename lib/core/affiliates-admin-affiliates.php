@@ -75,8 +75,9 @@ function affiliates_admin_affiliates() {
 		//  handle action submit - do it
 		switch( $_POST['action'] ) {
 			case 'add' :
-				if ( ( $error = affiliates_admin_affiliates_add_submit() ) !== AFFILIATES_ADMIN_AFFILIATES_NO_ERROR ) {
-					$_POST['error'] = $error;
+				$result = affiliates_admin_affiliates_add_submit();
+				if ( !empty( $result['errors'] ) ) {
+					$_POST['errors'] = $result['errors'];
 					return affiliates_admin_affiliates_add();
 				}
 				$notice_msg = __( 'Affiliate added.', 'affiliates' );
