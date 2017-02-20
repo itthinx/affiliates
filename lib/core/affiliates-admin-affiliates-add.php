@@ -229,23 +229,30 @@ function affiliates_admin_affiliates_add_submit() {
 		$data_['status'] = get_option( 'aff_status', 'active' );
 		$formats_[] = '%s';
 
-		if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
-			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
-		}
-
 		// user association
 		$new_associated_user_login = trim( $_POST['user-field'] );
-		// new association
-		if ( !empty( $affiliate_id ) && !empty( $new_associated_user_login ) ) {
+		if ( !empty( $new_associated_user_login ) ) {
 			$new_associated_user = get_user_by( 'login', $new_associated_user_login );
-			if ( !empty( $new_associated_user ) ) {
-				if ( $wpdb->query( $wpdb->prepare( "INSERT INTO $affiliates_users_table SET affiliate_id = %d, user_id = %d", intval( $affiliate_id ), intval( $new_associated_user->ID ) ) ) ) {
-					if ( empty( $email ) && !empty( $new_associated_user->user_email ) ) {
-						$wpdb->query( $wpdb->prepare( "UPDATE $affiliates_table SET email = %s WHERE affiliate_id = %d", $new_associated_user->user_email, $affiliate_id ) );
+			if ( $new_associated_user ) {
+				// Create the affiliate
+				if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
+					$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
+				}
+				// new association
+				if ( !empty( $affiliate_id ) ) {
+					if ( $wpdb->query( $wpdb->prepare( "INSERT INTO $affiliates_users_table SET affiliate_id = %d, user_id = %d", intval( $affiliate_id ), intval( $new_associated_user->ID ) ) ) ) {
+						if ( empty( $email ) && !empty( $new_associated_user->user_email ) ) {
+							$wpdb->query( $wpdb->prepare( "UPDATE $affiliates_table SET email = %s WHERE affiliate_id = %d", $new_associated_user->user_email, $affiliate_id ) );
+						}
 					}
 				}
 			} else {
 				$result = AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME;
+			}
+		} else {
+			// Create the affiliate
+			if ( $wpdb->insert( $affiliates_table, $data_, $formats_ ) ) {
+				$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			}
 		}
 
