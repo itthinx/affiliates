@@ -310,7 +310,7 @@ function affiliates_setup() {
 	// 64 + 1 + 255 = 320 octets
 	// Then again, people change their minds ... we'll assume 512 as sufficient.
 	// Note: WP's user.user_email is varchar(100) @see wp-admin/includes/schema.php
-		
+
 	// IPv6 addr
 	// FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF = 340282366920938463463374607431768211455
 	// Note that ipv6 is not part of the PK but can be handled using
@@ -347,12 +347,7 @@ function affiliates_setup() {
 			) $charset_collate;";
 		// @see http://bugs.mysql.com/bug.php?id=27645 as of now (2011-03-19) NOW() can not be specified as the default value for a datetime column
 	}
-	// A note about whether or not to record information about
-	// http_user_agent here: No, we don't do that!
-	// Our business is to record hits on affiliate links, not
-	// to gather statistical data about user agents. For our
-	// purpose, it does not add value to record that and if
-	// one wishes to do so, there are better solutions anyhow.
+
 	// IMPORTANT:
 	// datetime -- records the datetime with respect to the server's timezone
 	// date and time are are also with respect to the server's timezone
