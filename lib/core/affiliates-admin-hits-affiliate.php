@@ -453,7 +453,7 @@ function affiliates_admin_hits_affiliate() {
 		';
 		
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
@@ -642,7 +642,7 @@ function affiliates_admin_hits_affiliate() {
 	$output .= '</table>';
 					
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );

@@ -676,8 +676,8 @@ function affiliates_admin_affiliates() {
 				'<br/>' .
 				__( 'URL Parameter', 'affiliates' ) .
 				': ' .
-				 '<span class="affiliate-link-param">' . '?' . $pname . '=' . $encoded_id . '</span>';
-				 // @deprecated
+				'<span class="affiliate-link-param">' . '?' . $pname . '=' . $encoded_id . '</span>';
+				// @deprecated
 // 				'<br/>' .
 // 				__( 'Pretty', 'affiliates' ) .
 // 				': ' .
