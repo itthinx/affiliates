@@ -419,8 +419,8 @@ function affiliates_admin_hits_uri() {
 			$output .= "<td class='visits'>$result->visits</td>";
 			$output .= "<td class='hits'>$result->hits</td>";
 			$output .= "<td class='referrals'>$referrals</td>";
-			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) );
-			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) );
+			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= '</tr>';
 		}
 	} else {
