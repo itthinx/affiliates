@@ -492,14 +492,14 @@ function affiliates_get_referrals_by_hits( $date = null, $src_uri_id = null, $de
 	}
 
 	// select the hits in this row ( date - src-uri - dest-uri )
-	$query = $wpdb->prepare("
-			SELECT
-			*
-			FROM $hits_table h
-			$filters
-			",
-			$filter_params
-			);
+	$query = $wpdb->prepare(
+		"SELECT
+		*
+		FROM $hits_table h
+		$filters
+		",
+		$filter_params
+	);
 	$hits = $wpdb->get_results( $query, OBJECT );
 
 	if ( $hits && sizeof( $hits ) > 0 ) {
