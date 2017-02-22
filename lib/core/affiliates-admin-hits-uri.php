@@ -279,10 +279,10 @@ function affiliates_admin_hits_uri() {
 		*,
 		su.uri src_uri,
 		du.uri dest_uri,
-		COUNT(distinct ip) visits,
+		COUNT(distinct h.ip) visits,
 		SUM(count) hits,
 		COUNT(r.referral_id) referrals
-		FROM (SELECT h1.affiliate_id, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
+		FROM (SELECT h1.affiliate_id, h1.ip, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
