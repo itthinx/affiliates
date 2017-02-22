@@ -255,17 +255,38 @@ function affiliates_admin_hits_uri() {
 		$offset = ( $paged - 1 ) * $row_count;
 	}
 
+	// @todo remove old query
+// 	$query = $wpdb->prepare(
+// 		"SELECT
+// 		*,
+// 		su.uri src_uri,
+// 		du.uri dest_uri,
+// 		COUNT(distinct ip) visits,
+// 		SUM(count) hits
+// 		FROM $hits_table h
+// 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+// 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
+// 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
+// 		$filters
+// 		GROUP BY date, su.uri, du.uri
+// 		ORDER BY $orderby $order
+// 		LIMIT $row_count OFFSET $offset",
+// 		$filter_params
+// 	);
+
 	$query = $wpdb->prepare(
 		"SELECT
 		*,
 		su.uri src_uri,
 		du.uri dest_uri,
-		count(distinct ip) visits,
-		sum(count) hits
-		FROM $hits_table h
+		COUNT(distinct ip) visits,
+		SUM(count) hits,
+		COUNT(r.referral_id) referrals
+		FROM (SELECT h1.affiliate_id, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM wp_aff_hits h1) AS h
 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
+		LEFT JOIN $referrals_table r ON r.affiliate_id = h.affiliate_id AND r.datetime >= h.datetime AND (h.next_datetime IS NULL OR r.datetime < h.next_datetime)
 		$filters
 		GROUP BY date, su.uri, du.uri
 		ORDER BY $orderby $order
@@ -418,7 +439,7 @@ function affiliates_admin_hits_uri() {
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
 			$output .= "<td class='visits'>$result->visits</td>";
 			$output .= "<td class='hits'>$result->hits</td>";
-			$output .= "<td class='referrals'>$referrals</td>";
+			$output .= "<td class='referrals'>$result->referrals || $referrals</td>";
 			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= '</tr>';
