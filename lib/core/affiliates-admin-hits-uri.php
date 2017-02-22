@@ -276,7 +276,8 @@ function affiliates_admin_hits_uri() {
 
 	$query = $wpdb->prepare(
 		"SELECT
-		*,
+		h.*,
+		a.name,
 		su.uri src_uri,
 		du.uri dest_uri,
 		COUNT(distinct h.ip) visits,
@@ -288,7 +289,7 @@ function affiliates_admin_hits_uri() {
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
 		LEFT JOIN $referrals_table r ON r.affiliate_id = h.affiliate_id AND r.datetime >= h.datetime AND (h.next_datetime IS NULL OR r.datetime < h.next_datetime)
 		$filters
-		GROUP BY date, su.uri, du.uri
+		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
 		ORDER BY $orderby $order
 		LIMIT $row_count OFFSET $offset",
 		$filter_params
