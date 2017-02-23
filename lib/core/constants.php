@@ -56,6 +56,11 @@ define( 'AFFILIATES_COOKIE_TIMEOUT_DAYS', 30 );
 define( 'AFFILIATES_COOKIE_NAME', 'wp_affiliates' );
 
 /**
+ * @var string this cookie stores the hash id
+ */
+define( 'AFFILIATES_HASH_COOKIE_NAME', '_h_affiliates' );
+
+/**
  * @var string (default) affiliate URL parameter name
  */
 define( 'AFFILIATES_PNAME', 'affiliates' );

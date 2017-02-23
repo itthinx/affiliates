@@ -350,6 +350,7 @@ See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliate
 * User agents are stored for hits on affiliate links.
 * Hit stats now show user agents in the Visits & Referrals section.
 * Hit stats now show user agents in the Affiliates & Referrals section.
+* Added hit references for referrals.
 
 = 2.16.7 =
 * Changing the username related to an affiliate if the username doesn't exist shows an error.
