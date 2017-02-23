@@ -25,13 +25,13 @@ if ( !defined( 'ABSPATH' ) ) {
 
 // Shows traffic section
 
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
-
 /**
  * Render the traffic table & filter.
  */
 function affiliates_admin_hits_uri() {
 	global $wpdb, $affiliates_options;
+
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 
 	$output = '';
 
