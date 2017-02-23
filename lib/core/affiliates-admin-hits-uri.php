@@ -46,7 +46,8 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['affiliate_id'] ) ||
 		isset( $_POST['src_uri'] ) ||
 		isset( $_POST['dest_uri'] ) ||
-		isset( $_POST['status'] )
+		isset( $_POST['status'] ) ||
+		isset( $_POST['min_referrals'] )
 	) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
@@ -60,6 +61,7 @@ function affiliates_admin_hits_uri() {
 	$src_uri            = $affiliates_options->get_option( 'hits_uri_src_uri', null );
 	$dest_uri           = $affiliates_options->get_option( 'hits_uri_dest_uri', null );
 	$status             = $affiliates_options->get_option( 'hits_uri_status', null );
+	$min_referrals      = $affiliates_options->get_option( 'hits_uri_min_referrals', null );
 
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'hits_uri_from_date' );
@@ -68,12 +70,14 @@ function affiliates_admin_hits_uri() {
 		$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		$affiliates_options->delete_option( 'hits_uri_dest_uri' );
 		$affiliates_options->delete_option( 'hits_uri_status' );
+		$affiliates_options->delete_option( 'hits_uri_min_referrals' );
 		$from_date = null;
 		$thru_date = null;
 		$affiliate_id = null;
 		$src_uri = null;
 		$dest_uri = null;
 		$status = null;
+		$min_referrals = null;
 	} else if ( isset( $_POST['submitted'] ) ) {
 		// filter by date(s)
 		if ( !empty( $_POST['from_date'] ) ) {
@@ -147,6 +151,14 @@ function affiliates_admin_hits_uri() {
 		} else {
 			$status = null;
 			$affiliates_options->delete_option( 'hits_uri_status' );
+		}
+
+		// minimum number of referrals
+		if ( !empty( $_POST['min_referrals'] ) ) {
+			$min_referrals = max( 0, intval( $_POST['min_referrals'] ) );
+		} else if ( isset( $_POST['min_referrals'] ) ) { // empty && isset => '' => all
+			$min_referrals = null;
+			$affiliates_options->delete_option( 'hits_uri_min_referrals' );
 		}
 	}
 
@@ -257,6 +269,11 @@ function affiliates_admin_hits_uri() {
 		$filter_params[] = $wpdb->esc_like( $dest_uri );
 	}
 
+	$having = '';
+	if ( $min_referrals ) {
+		$having = " HAVING COUNT(r.hit_id) >= " . intval( $min_referrals ). " ";
+	}
+
 	$status_condition = '';
 	if ( is_array( $status ) && count( $status ) > 0 ) {
 		$status_condition = " AND r.status IN ('" . implode( "','", $status ) . "') ";
@@ -264,12 +281,16 @@ function affiliates_admin_hits_uri() {
 
 	// how many are there ?
 	$count_query = $wpdb->prepare(
-		"SELECT date FROM $hits_table h
+		"SELECT
+		h.affiliate_id,
+		COUNT(r.hit_id) referrals
+		FROM $hits_table h
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
 		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri",
+		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		$having",
 		$filter_params
 	);
 
@@ -346,6 +367,7 @@ function affiliates_admin_hits_uri() {
 		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
 		$filters
 		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		$having
 		ORDER BY $orderby $order
 		LIMIT $row_count OFFSET $offset",
 		$filter_params
@@ -431,19 +453,25 @@ function affiliates_admin_hits_uri() {
 					'<label class="src-uri-filter">' .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
-					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( stripslashes( $src_uri ) ) . '"/>'.
+					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( stripslashes( $src_uri ) ) . '"/>' .
 					'</label>' .
 					' ' .
 					'<label class="dest-uri-filter">' .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
-					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>'.
+					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>' .
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
 				'<span style="padding-right:1em">' . __( 'Referral Status', 'affiliates' ) . '</span>' .
 				' ' .
 				$status_checkboxes .
+				' ' .
+				'<label class="min-referrals-filter">' .
+				__( 'Minimum', 'affiliates' ) .
+				' ' .
+				sprintf( '<input class="min-referrals-filter" title="%s" name="min_referrals" type="number" value="%d" min="0"/>', esc_attr( __( 'Minimum number of referrals', 'affiliates' ) ), esc_attr( $min_referrals ) ) .
+				'</label>' .
 				'</div>' .
 				'<div class="filter-buttons">' .
 				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
