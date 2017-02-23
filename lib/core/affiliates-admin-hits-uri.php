@@ -45,7 +45,8 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['clear_filters'] ) ||
 		isset( $_POST['affiliate_id'] ) ||
 		isset( $_POST['src_uri'] ) ||
-		isset( $_POST['dest_uri'] )
+		isset( $_POST['dest_uri'] ) ||
+		isset( $_POST['status'] )
 	) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
@@ -58,6 +59,7 @@ function affiliates_admin_hits_uri() {
 	$affiliate_id       = $affiliates_options->get_option( 'hits_uri_affiliate_id', null );
 	$src_uri            = $affiliates_options->get_option( 'hits_uri_src_uri', null );
 	$dest_uri           = $affiliates_options->get_option( 'hits_uri_dest_uri', null );
+	$status             = $affiliates_options->get_option( 'hits_uri_status', null );
 
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'hits_uri_from_date' );
@@ -65,11 +67,13 @@ function affiliates_admin_hits_uri() {
 		$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		$affiliates_options->delete_option( 'hits_uri_dest_uri' );
+		$affiliates_options->delete_option( 'hits_uri_status' );
 		$from_date = null;
 		$thru_date = null;
 		$affiliate_id = null;
 		$src_uri = null;
 		$dest_uri = null;
+		$status = null;
 	} else if ( isset( $_POST['submitted'] ) ) {
 		// filter by date(s)
 		if ( !empty( $_POST['from_date'] ) ) {
@@ -121,6 +125,28 @@ function affiliates_admin_hits_uri() {
 		} else if ( isset( $_POST['dest_uri'] ) )  { // empty
 			$dest_uri = null;
 			$affiliates_options->delete_option( 'hits_uri_dest_uri' );
+		}
+
+		// referrals status
+		if ( !empty( $_POST['status'] ) ) {
+			if ( is_array( $_POST['status'] ) ) {
+				$stati = array();
+				foreach( $_POST['status'] as $status ) {
+					if ( $status = Affiliates_Utility::verify_referral_status_transition( $status, $status ) ) {
+						$stati[] = $status;
+					}
+				}
+				if ( count( $stati ) > 0 ) {
+					$status = $stati;
+					$affiliates_options->update_option( 'hits_uri_status', $stati );
+				} else {
+					$status = null;
+					$affiliates_options->delete_option( 'hits_uri_status' );
+				}
+			}
+		} else {
+			$status = null;
+			$affiliates_options->delete_option( 'hits_uri_status' );
 		}
 	}
 
@@ -229,6 +255,11 @@ function affiliates_admin_hits_uri() {
 		$filter_params[] = $wpdb->esc_like( $dest_uri );
 	}
 
+	$status_condition = '';
+	if ( is_array( $status ) && count( $status ) > 0 ) {
+		$status_condition = " AND r.status IN ('" . implode( "','", $status ) . "') ";
+	}
+
 	// how many are there ?
 	$count_query = $wpdb->prepare(
 		"SELECT date FROM $hits_table h
@@ -274,6 +305,28 @@ function affiliates_admin_hits_uri() {
 // 		$filter_params
 // 	);
 
+	// based on time-period between hits
+// 	$query = $wpdb->prepare(
+// 		"SELECT
+// 		h.*,
+// 		a.name,
+// 		su.uri src_uri,
+// 		du.uri dest_uri,
+// 		COUNT(distinct h.ip) visits,
+// 		SUM(count) hits,
+// 		COUNT(r.referral_id) referrals
+// 		FROM (SELECT h1.affiliate_id, h1.ip, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
+// 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+// 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
+// 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
+// 		LEFT JOIN $referrals_table r ON r.affiliate_id = h.affiliate_id AND r.datetime >= h.datetime AND (h.next_datetime IS NULL OR r.datetime < h.next_datetime)
+// 		$filters
+// 		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+// 		ORDER BY $orderby $order
+// 		LIMIT $row_count OFFSET $offset",
+// 		$filter_params
+// 	);
+
 	$query = $wpdb->prepare(
 		"SELECT
 		h.*,
@@ -282,14 +335,14 @@ function affiliates_admin_hits_uri() {
 		du.uri dest_uri,
 		COUNT(distinct h.ip) visits,
 		SUM(count) hits,
-		COUNT(r.referral_id) referrals
-		FROM (SELECT h1.affiliate_id, h1.ip, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
+		COUNT(r.hit_id) referrals
+		FROM (SELECT h1.hit_id, h1.affiliate_id, h1.ip, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.affiliate_id = h.affiliate_id AND r.datetime >= h.datetime AND (h.next_datetime IS NULL OR r.datetime < h.next_datetime)
+		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		GROUP BY h.affiliate_id, h.date, su.uri, du.uri, r.hit_id
 		ORDER BY $orderby $order
 		LIMIT $row_count OFFSET $offset",
 		$filter_params
@@ -329,6 +382,27 @@ function affiliates_admin_hits_uri() {
 		$affiliates_select .= '</label>';
 	}
 
+	$status_descriptions = array(
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
+	);
+	$status_icons = array(
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED => "<img class='icon' alt='" . __( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>",
+		AFFILIATES_REFERRAL_STATUS_CLOSED   => "<img class='icon' alt='" . __( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>",
+		AFFILIATES_REFERRAL_STATUS_PENDING  => "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>",
+		AFFILIATES_REFERRAL_STATUS_REJECTED => "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>",
+	);
+	$status_checkboxes = '';
+	foreach ( $status_descriptions as $key => $label ) {
+		$checked = empty( $status ) || is_array( $status ) && in_array( $key, $status ) ? ' checked="checked" ' : '';
+		$status_checkboxes .= '<label style="padding-right:1em;">';
+		$status_checkboxes .= sprintf( '<input type="checkbox" name="status[]" value="%s" %s />',  esc_attr( $key ), $checked );
+		$status_checkboxes .= $status_icons[$key] . ' ' . $label;
+		$status_checkboxes .= '</label>';
+	}
+
 	$output .=
 		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
@@ -362,6 +436,11 @@ function affiliates_admin_hits_uri() {
 					' ' .
 					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>'.
 					'</label>' .
+				'</div>' .
+				'<div class="filter-section">' .
+				'<span style="padding-right:1em">' . __( 'Referral Status', 'affiliates' ) . '</span>' .
+				' ' .
+				$status_checkboxes .
 				'</div>' .
 				'<div class="filter-buttons">' .
 				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
@@ -405,17 +484,17 @@ function affiliates_admin_hits_uri() {
 			'orderby' => $key,
 			'order' => $switch_order
 		);
-		$class = "";
+		$class = '';
 		if ( strcmp( $key, $orderby ) == 0 ) {
 			$lorder = strtolower( $order );
 			$class = "$key manage-column sorted $lorder";
 		} else {
 			$class = "$key manage-column";
-			if ( $key !== 'referrals') {
+			if ( $key !== '' ) { // empty because we have no unsortable column right now *
 				$class .= ' sortable';
 			}
 		}
-		if ( $key !== 'referrals' ) {
+		if ( $key !== '' ) { // * see above
 			$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . esc_html( $column_display_name ) . '</span><span class="sorting-indicator"></span></a>';
 		} else {
 			$column_display_name = esc_html( $column_display_name );
