@@ -198,9 +198,11 @@ function affiliates_admin_hits_uri() {
 		case 'referrals' :
 		case 'src_uri' :
 		case 'dest_uri' :
+		case 'name' :
 			break;
 		case 'affiliate_id' :
 			$orderby = 'name';
+			break;
 		default:
 			$orderby = 'date';
 	}
