@@ -267,8 +267,9 @@ function affiliates_admin_hits_uri() {
 		"SELECT date FROM $hits_table h
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
+		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
 		$filters
-		GROUP BY date, su.uri, du.uri",
+		GROUP BY h.affiliate_id, h.date, su.uri, du.uri",
 		$filter_params
 	);
 
@@ -338,13 +339,13 @@ function affiliates_admin_hits_uri() {
 		COUNT(distinct h.ip) visits,
 		SUM(count) hits,
 		COUNT(r.hit_id) referrals
-		FROM (SELECT h1.hit_id, h1.affiliate_id, h1.ip, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
+		FROM $hits_table h
 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
 		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri, r.hit_id
+		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
 		ORDER BY $orderby $order
 		LIMIT $row_count OFFSET $offset",
 		$filter_params
