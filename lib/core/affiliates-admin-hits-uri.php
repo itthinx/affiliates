@@ -432,15 +432,13 @@ function affiliates_admin_hits_uri() {
 
 			$result = $results[$i];
 
-			$referrals = affiliates_get_referrals_by_hits( $result->date, $result->src_uri_id, $result->dest_uri_id );
-
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 			$output .= "<td class='date'>$result->date</td>";
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
 			$output .= "<td class='visits'>$result->visits</td>";
 			$output .= "<td class='hits'>$result->hits</td>";
-			$output .= "<td class='referrals'>$result->referrals || $referrals</td>";
+			$output .= "<td class='referrals'>$result->referrals</td>";
 			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= '</tr>';
