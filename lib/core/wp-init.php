@@ -729,6 +729,10 @@ function affiliates_parse_request( &$wp ) {
 
 	global $wpdb, $affiliates_options, $affiliates_request_encoded_id;
 
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return;
+	}
+
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
 	if ( isset( $wp->query_vars[$pname] ) ) {
