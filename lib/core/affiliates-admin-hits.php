@@ -159,16 +159,13 @@ function affiliates_admin_hits() {
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$hits_table = _affiliates_get_tablename( 'hits' );
-	
-	$output .=
-		'<div>' .
-			'<h1>' .
-				__( 'Visits & Referrals', 'affiliates' ) .
-			'</h1>' .
-		'</div>';
+
+	$output .= '<h1>';
+	$output .= __( 'Visits & Referrals', 'affiliates' );
+	$output .= '</h1>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
-	
+
 	if ($row_count <= 0) {
 		$row_count = $affiliates_options->get_option( 'affiliates_hits_per_page', AFFILIATES_HITS_PER_PAGE );
 	} else {
@@ -182,7 +179,7 @@ function affiliates_admin_hits() {
 	if ( $paged < 0 ) {
 		$paged = 0;
 	} 
-	
+
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'date' :
@@ -298,9 +295,9 @@ function affiliates_admin_hits() {
 		'referrals' => __( 'Referrals', 'affiliates' ),
 		'ratio'     => __( 'Ratio', 'affiliates' )
 	);
-	
+
 	$output .= '<div id="" class="hits-overview">';
-		
+
 	$affiliates = affiliates_get_affiliates( true, !$show_inoperative );
 	$affiliates_select = '';
 	if ( !empty( $affiliates ) ) {
@@ -387,9 +384,9 @@ function affiliates_admin_hits() {
 			</form>
 		</div>
 		';
-		
+
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
@@ -400,13 +397,11 @@ function affiliates_admin_hits() {
 		$output .= '</div>';
 		$output .= '</form>';
 	}
-					
-	$output .= '
-		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
-		<thead>
-			<tr>
-			';
-	
+
+	$output .= '<table id="" class="wp-list-table widefat fixed" cellspacing="0">';
+	$output .= '<thead>';
+	$output .= '<tr>';
+
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
 			'orderby' => $key,
@@ -422,12 +417,11 @@ function affiliates_admin_hits() {
 		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
-	
-	$output .= '</tr>
-		</thead>
-		<tbody>
-		';
-		
+
+	$output .= '</tr>';
+	$output .= '</thead>';
+	$output .= '<tbody>';
+
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
 			
@@ -440,7 +434,7 @@ function affiliates_admin_hits() {
 			$output .= "<td class='referrals'>$result->referrals</td>";
 			$output .= "<td class='ratio'>$result->ratio</td>";
 			$output .= '</tr>';
-			
+
 			if ( $expanded || $expanded_referrals || $expanded_hits ) {
 
 				//
@@ -496,11 +490,10 @@ function affiliates_admin_hits() {
 						$output .= '</td></tr>';
 					}
 				} // if $expanded_referrals
-				
+
 				//
 				// expanded : hits ----------------------------------------
 				//
-				
 				if ( $expanded_hits ) {
 					// get the detailed results for hits
 					$details_orderby = "date $order, time $order";
@@ -510,12 +503,17 @@ function affiliates_admin_hits() {
 					if ( $affiliate_id ) {
 						$details_filters .= " AND h.affiliate_id = %d ";
 						$details_filter_params[] = $affiliate_id;
-					}					
+					}
 
+					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+					$uris_table = _affiliates_get_tablename( 'uris' );
 					$details_query = $wpdb->prepare(
-						"SELECT *
+						"SELECT h.*, a.*, ua.*, src.uri src_uri, dest.uri dest_uri
 						FROM $hits_table h
 						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+						LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id
+						LEFT JOIN $uris_table src ON h.src_uri_id = src.uri_id
+						LEFT JOIN $uris_table dest ON h.dest_uri_id = dest.uri_id
 						$details_filters
 						ORDER BY $details_orderby
 						",
@@ -533,6 +531,9 @@ function affiliates_admin_hits() {
 						<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>
 						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
 						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>
+						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -543,6 +544,9 @@ function affiliates_admin_hits() {
 						$output .= '<td class="time">' . DateHelper::s2u( $hit->datetime ) . '</td>';
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
+						$output .= "<td class='src-uri'>" . esc_html( $hit->src_uri ) . "</td>";
+						$output .= "<td class='dest-uri'>" . esc_html( $hit->dest_uri ) . "</td>";
+						$output .= "<td class='hit-user-agent'>" . esc_html( $hit->user_agent ) . "</td>";
 						$output .= '</tr>';
 					}
 					$output .= '</tbody></table>';
@@ -555,27 +559,26 @@ function affiliates_admin_hits() {
 	} else {
 		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 	}
-		
+
 	$output .= '</tbody>';
 	$output .= '</table>';
-					
+
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination( $count, null, $row_count );
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
-		$output .= '</div>';			
+		$output .= '</div>';
 	}
 
 	$server_dtz = DateHelper::getServerDateTimeZone();
-	$output .=
-		'<p>' .
-			sprintf(
-				__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
-				$server_dtz->getName(),
-				$server_dtz->getOffset( new DateTime() ) / 3600.0
-			) .
-			'</p>';
+	$output .= '<p>';
+	$output .= sprintf(
+		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		$server_dtz->getName(),
+		$server_dtz->getOffset( new DateTime() ) / 3600.0
+	);
+	$output .= '</p>';
 	$output .= '</div>'; // .visits-overview
 	echo $output;
 	affiliates_footer();

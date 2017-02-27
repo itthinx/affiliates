@@ -535,7 +535,7 @@ function affiliates_admin_referrals() {
 		';
 		
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
@@ -706,16 +706,16 @@ function affiliates_admin_referrals() {
 	} else {
 		$output .= '<tr><td colspan="' . $column_count . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 	}
-		
+
 	$output .= '</tbody>';
 	$output .= '</table>';
-					
+
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination( $count, null, $row_count );
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
-		$output .= '</div>';			
+		$output .= '</div>';
 	}
 
 	$output .= '</div>'; // .referrals-overview

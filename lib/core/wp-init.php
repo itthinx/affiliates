@@ -310,7 +310,7 @@ function affiliates_setup() {
 	// 64 + 1 + 255 = 320 octets
 	// Then again, people change their minds ... we'll assume 512 as sufficient.
 	// Note: WP's user.user_email is varchar(100) @see wp-admin/includes/schema.php
-		
+
 	// IPv6 addr
 	// FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF = 340282366920938463463374607431768211455
 	// Note that ipv6 is not part of the PK but can be handled using
@@ -336,23 +336,20 @@ function affiliates_setup() {
 				status       varchar(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
 				type         varchar(10) NULL,
 				reference    VARCHAR(100) DEFAULT NULL,
+				hit_id       BIGINT(20) UNSIGNED DEFAULT NULL,
 				PRIMARY KEY  (referral_id),
 				INDEX        aff_referrals_apd (affiliate_id, post_id, datetime),
-				INDEX        aff_referrals_da (datetime, affiliate_id),
+				INDEX        aff_referrals_da  (datetime, affiliate_id),
 				INDEX        aff_referrals_sda (status, datetime, affiliate_id),
 				INDEX        aff_referrals_tda (type, datetime, affiliate_id),
 				INDEX        aff_referrals_ref (reference(20)),
 				INDEX        aff_referrals_ac  (affiliate_id, campaign_id),
-				INDEX        aff_referrals_c   (campaign_id)
+				INDEX        aff_referrals_c   (campaign_id),
+				INDEX        aff_referrals_h   (hit_id)
 			) $charset_collate;";
 		// @see http://bugs.mysql.com/bug.php?id=27645 as of now (2011-03-19) NOW() can not be specified as the default value for a datetime column
 	}
-	// A note about whether or not to record information about
-	// http_user_agent here: No, we don't do that!
-	// Our business is to record hits on affiliate links, not
-	// to gather statistical data about user agents. For our
-	// purpose, it does not add value to record that and if
-	// one wishes to do so, there are better solutions anyhow.
+
 	// IMPORTANT:
 	// datetime -- records the datetime with respect to the server's timezone
 	// date and time are are also with respect to the server's timezone
@@ -366,6 +363,8 @@ function affiliates_setup() {
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $hits_table . "'" ) != $hits_table ) {
 		$queries[] = "CREATE TABLE " . $hits_table . "(
+				hit_id          BIGINT(20) UNSIGNED NOT NULL auto_increment,
+				hash            CHAR(64) DEFAULT NULL,
 				affiliate_id    BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 				campaign_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				date            DATE NOT NULL,
@@ -373,15 +372,45 @@ function affiliates_setup() {
 				datetime        DATETIME NOT NULL,
 				ip              INT(10) UNSIGNED NOT NULL DEFAULT 0,
 				ipv6            DECIMAL(39,0) UNSIGNED DEFAULT NULL,
+				src_uri_id      BIGINT(20) UNSIGNED DEFAULT NULL,
+				dest_uri_id     BIGINT(20) UNSIGNED DEFAULT NULL,
+				user_agent_id   BIGINT(20) UNSIGNED DEFAULT NULL,
 				is_robot        TINYINT(1) DEFAULT 0,
 				user_id         BIGINT(20) UNSIGNED DEFAULT NULL,
 				count           INT DEFAULT 1,
 				type            VARCHAR(10) DEFAULT NULL,
-				PRIMARY KEY     (affiliate_id, date, time, ip),
+				PRIMARY KEY     (hit_id),
+				INDEX           aid_d_t_ip (affiliate_id,date,time,ip),
+				INDEX           hash (hash),
 				INDEX           aff_hits_ddt (date, datetime),
 				INDEX           aff_hits_dtd (datetime, date),
-				INDEX           aff_hits_acm (affiliate_id, campaign_id)
+				INDEX           aff_hits_acm (affiliate_id, campaign_id),
+				INDEX           aff_hits_src_uri (src_uri_id),
+				INDEX           aff_hits_dest_uri (dest_uri_id),
+				INDEX           aff_hits_ua (user_agent_id)
 			) $charset_collate;";
+	}
+
+	$uris_table = _affiliates_get_tablename( 'uris' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $uris_table . "'" ) != $uris_table ) {
+		$queries[] = "CREATE TABLE " . $uris_table . "(
+				uri_id      BIGINT(20) UNSIGNED NOT NULL auto_increment,
+				uri         VARCHAR(2048) NOT NULL,
+				type        VARCHAR(10) DEFAULT NULL,
+				PRIMARY KEY (uri_id),
+				INDEX       uri (uri(100)),
+				INDEX       type (type)
+			) $charset_collate;";
+	}
+	// add the user_agents table
+	$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $user_agents_table . "'" ) != $user_agents_table ) {
+		$queries[] = "CREATE TABLE " . $user_agents_table . "(
+				user_agent_id BIGINT(20) UNSIGNED NOT NULL auto_increment,
+				user_agent    VARCHAR(255) NOT NULL,
+				PRIMARY KEY   (user_agent_id),
+				INDEX         user_agent (user_agent(32))
+				) $charset_collate;";
 	}
 	$robots_table = _affiliates_get_tablename( 'robots' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $robots_table . "'" ) != $robots_table ) {
@@ -491,6 +520,56 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_hits_acm (affiliate_id, campaign_id);";
 	}
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'hit_id'" );
+	if ( empty( $column ) ) {
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		ADD COLUMN hit_id BIGINT(20) UNSIGNED NOT NULL auto_increment,
+		ADD COLUMN hash CHAR(64) DEFAULT NULL,
+		DROP PRIMARY KEY,
+		ADD PRIMARY KEY (hit_id),
+		ADD INDEX aid_d_t_ip (affiliate_id,date,time,ip),
+		ADD INDEX hash (hash);";
+	}
+
+	// URIs ... from 2.17.0
+	// add the uris table
+	$uris_table = _affiliates_get_tablename( 'uris' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $uris_table . "'" ) != $uris_table ) {
+		$queries[] = "CREATE TABLE " . $uris_table . "(
+		uri_id      BIGINT(20) UNSIGNED NOT NULL auto_increment,
+		uri         VARCHAR(2048) NOT NULL,
+		type        VARCHAR(10) DEFAULT NULL,
+		PRIMARY KEY (uri_id),
+		INDEX       uri (uri(100)),
+		INDEX       type (type)
+		) $charset_collate;";
+	}
+	// add uri columns and indexes to the hits table
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'src_uri_id'" );
+	if ( empty( $column ) ) {
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		ADD COLUMN src_uri_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD COLUMN dest_uri_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD INDEX aff_hits_src_uri (src_uri_id),
+		ADD INDEX aff_hits_dest_uri (dest_uri_id);";
+	}
+	// add the user_agents table
+	$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $user_agents_table . "'" ) != $user_agents_table ) {
+		$queries[] = "CREATE TABLE " . $user_agents_table . "(
+		user_agent_id BIGINT(20) UNSIGNED NOT NULL auto_increment,
+		user_agent    VARCHAR(255) NOT NULL,
+		PRIMARY KEY   (user_agent_id),
+		INDEX         user_agent (user_agent(32))
+		) $charset_collate;";
+	}
+	// add the user_agent_id column to the hits table
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'user_agent_id'" );
+	if ( empty( $column ) ) {
+		$queries[] = "ALTER TABLE " . $hits_table . "
+		ADD COLUMN user_agent_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD INDEX aff_hits_ua (user_agent_id);";
+	}
 
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$column          = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'campaign_id'" );
@@ -499,6 +578,12 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN campaign_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_ac (affiliate_id, campaign_id),
 		ADD INDEX aff_referrals_c (campaign_id);";
+	}
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'hit_id'" );
+	if ( empty( $column ) ) {
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		ADD COLUMN hit_id BIGINT(20) UNSIGNED DEFAULT NULL,
+		ADD INDEX aff_referrals_h (hit_id);";
 	}
 
 	// MySQL 5.7.3 PK requirements
@@ -560,6 +645,7 @@ function affiliates_cleanup( $delete = false ) {
 		}
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referrals' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'hits' ) );
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'uris' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'affiliates' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'robots' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'affiliates_users' ) );
@@ -643,6 +729,10 @@ function affiliates_parse_request( &$wp ) {
 
 	global $wpdb, $affiliates_options, $affiliates_request_encoded_id;
 
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return;
+	}
+
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
 	if ( isset( $wp->query_vars[$pname] ) ) {
@@ -669,6 +759,7 @@ function affiliates_parse_request( &$wp ) {
 			}
 		}
 		$affiliates_request_encoded_id = $encoded_id;
+		$hit = affiliates_record_hit( $affiliate_id );
 		setcookie(
 			AFFILIATES_COOKIE_NAME,
 			$encoded_id,
@@ -676,7 +767,15 @@ function affiliates_parse_request( &$wp ) {
 			SITECOOKIEPATH,
 			COOKIE_DOMAIN
 		);
-		affiliates_record_hit( $affiliate_id );
+		if ( !empty( $hit['hash'] ) ) {
+			setcookie(
+				AFFILIATES_HASH_COOKIE_NAME,
+				$hit['hash'],
+				$expire,
+				SITECOOKIEPATH,
+				COOKIE_DOMAIN
+			);
+		}
 		affiliates_pixel_request();
 		unset( $wp->query_vars[$pname] ); // we use this to avoid ending up on the blog listing page
 		if ( get_option( 'aff_redirect', false ) !== false ) {
@@ -727,14 +826,117 @@ function affiliates_pixel_request() {
 }
 
 /**
+ * Record an uris entry if this doesn't exist.
+ * @param string $type AFFILIATES_SRC_URI | AFFILIATES_DEST_URI
+ * @param string $uri url string
+ * @return int|null uri_id added or existed. Null if there is a problem
+ */
+function affiliates_maybe_record_uri( $type = null, $uri = null ) {
+	global $wpdb, $wp;
+
+	$uri_id = null;
+
+	$table = _affiliates_get_tablename( 'uris' );
+
+	$uri = null;
+	switch ( $type ) {
+		case AFFILIATES_DEST_URI :
+			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$uri = esc_url_raw( $current_url );
+			break;
+		case AFFILIATES_SRC_URI :
+		default :
+			if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
+				$uri = esc_url_raw( $_SERVER['HTTP_REFERER'] );
+			}
+			$type = AFFILIATES_SRC_URI;
+			break;
+	}
+
+	if ( $uri !== null ) {
+		$got_uri = $wpdb->get_var( $wpdb->prepare( "SELECT uri_id FROM $table WHERE uri = %s", $uri ) );
+
+		if ( !$got_uri ) {
+
+			$columns    = '(';
+			$formats    = '(';
+			$values     = array();
+
+			$columns .= 'uri';
+			$formats .= '%s';
+			$values[] = $uri;
+
+			if ( $type ) {
+				$columns .= ',type';
+				$formats .= ',%s';
+				$values[] = $type;
+			}
+
+			$columns .= ')';
+			$formats .= ')';
+			$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats", $values );
+			if ( $wpdb->query( $query ) ) {
+				if ( $uri_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" ) ) {
+					do_action(
+						'affiliates_uri_added',
+						array(
+							'uri_id'       => $uri_id,
+							'uri'          => $uri,
+							'type'          => $type
+						)
+					);
+				}
+			}
+		} else {  // already exists
+			$uri_id = intval( $got_uri );
+		}
+	}
+	return $uri_id;
+}
+
+/**
+ * Records a new user agent or retrieves the existing entry's id and returns it.
+ * @param unknown $user_agent
+ */
+function affiliates_maybe_record_user_agent_id( $user_agent ) {
+
+	global $wpdb;
+
+	$user_agent = substr( $user_agent, 0, AFFILIATES_USER_AGENT_MAX_LENGTH );
+
+	$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+	$q = $wpdb->prepare( "SELECT user_agent_id FROM $user_agents_table WHERE user_agent = %s", $user_agent );
+	$user_agent_id = $wpdb->get_var( $q );
+	if ( !$user_agent_id ) {
+		$q = $wpdb->prepare( "INSERT INTO $user_agents_table (user_agent) VALUES (%s)", $user_agent );
+		$wpdb->query( $q );
+		if ( $user_agent_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" ) ) {
+			do_action(
+				'affiliates_user_agent_added',
+				array(
+					'user_agent_id' => $user_agent_id,
+					'user_agent'    => $user_agent
+				)
+			);
+		}
+	}
+	return $user_agent_id;
+}
+
+/**
  * Record a hit on an affiliate link.
  *
  * @param int $affiliate_id the affiliate's id
  * @param int $now UNIX timestamp to use, if null the current time is used
  * @param string $type the type of hit to record
+ * @return array ID of the inserted hit
  */
 function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
+
 	global $wpdb;
+
+	$result = null;
+
 	// add a hit
 	// @todo check/store IPv6 addresses
 	//$http_user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -746,10 +948,12 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$date     = date( 'Y-m-d' , $now );
 	$time     = date( 'H:i:s' , $now );
 	$datetime = date( 'Y-m-d H:i:s' , $now );
+	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $table" );
+	$hash     = hash( 'sha256', '' . $n . $affiliate_id . $now );
 
-	$columns    = '(affiliate_id, date, time, datetime, type';
-	$formats    = '(%d,%s,%s,%s,%s';
-	$values     = array( $affiliate_id, $date, $time, $datetime, $type );
+	$columns  = '(hash, affiliate_id, date, time, datetime, type';
+	$formats  = '(%s,%d,%s,%s,%s,%s';
+	$values   = array( $hash, $affiliate_id, $date, $time, $datetime, $type );
 
 	$ip_address = $_SERVER['REMOTE_ADDR'];
 	if ( PHP_INT_SIZE >= 8 ) {
@@ -793,26 +997,57 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 			}
 		}
 	}
+	// uris
+	$src_uri_id = affiliates_maybe_record_uri( AFFILIATES_SRC_URI );
+	if ( $src_uri_id !== null ) {
+		$columns .= ',src_uri_id';
+		$formats .= ',%d';
+		$values[] = intval( $src_uri_id );
+	}
+	$dest_uri_id = affiliates_maybe_record_uri( AFFILIATES_DEST_URI );
+	if ( $dest_uri_id !== null ) {
+		$columns .= ',dest_uri_id';
+		$formats .= ',%d';
+		$values[] = intval( $dest_uri_id );
+	}
+
+	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+	$user_agent_id = affiliates_maybe_record_user_agent_id( $user_agent );
+
+	if ( $user_agent_id ) {
+		$columns .= ',user_agent_id';
+		$formats .= ',%d';
+		$values[] = $user_agent_id;
+	}
+
 	$columns .= ')';
 	$formats .= ')';
 	$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
 	if ( $wpdb->query( $query ) ) {
+		$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
+		$result = array(
+			'hit_id'        => $hit_id,
+			'hash'          => $hash,
+			'affiliate_id'  => $affiliate_id,
+			'campaign_id'   => $campaign_id,
+			'date'          => $date,
+			'time'          => $time,
+			'datetime'      => $datetime,
+			'ip'            => $ip_address,
+			'ipv6'          => null,
+			'is_robot'      => $is_robot,
+			'user_id'       => $user_id,
+			'type'          => $type,
+			'src_uri_id'    => $src_uri_id,
+			'dest_uri_id'   => $dest_uri_id,
+			'user_agent_id' => $user_agent_id
+		);
 		do_action(
 			'affiliates_hit',
-			array(
-				'affiliate_id' => $affiliate_id,
-				'campaign_id'  => $campaign_id,
-				'date'         => $date,
-				'time'         => $time,
-				'datetime'     => $datetime,
-				'ip'           => $ip_address,
-				'ipv6'         => null,
-				'is_robot'     => $is_robot,
-				'user_id'      => $user_id,
-				'type'         => $type
-			)
+			$result
 		);
 	}
+	return $result;
 }
 
 /**
@@ -866,13 +1101,15 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
 	require_once( 'class-affiliates-service.php' );
 	$affiliate_id = Affiliates_Service::get_referrer_id();
 	if ( $affiliate_id ) {
-		$affiliate_id = affiliates_add_referral($affiliate_id, $post_id, $description, $data, $amount, $currency_id, $status, $type, $reference );
+		$hit_id = Affiliates_Service::get_hit_id();
+		$affiliate_id = affiliates_add_referral( $affiliate_id, $post_id, $description, $data, $amount, $currency_id, $status, $type, $reference, $hit_id );
 	}
 	return $affiliate_id;
 }
 
 /**
  * Store a referral.
+ * 
  * @param int $affiliate_id
  * @param int  $post_id
  * @param string $description
@@ -882,9 +1119,10 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
  * @param string $status
  * @param string $type
  * @param string $reference
+ * @param int $hit_id
  * @return int
  */
-function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null ) {
+function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null ) {
 	global $wpdb;
 
 	if ( $affiliate_id ) {
@@ -948,17 +1186,23 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 			$formats .= ',%s ';
 			$values[] = get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 		}
-			
+
 		if ( !empty( $type ) ) {
 			$columns  .= ',type ';
 			$formats  .= ',%s';
 			$values[] = $type;
 		}
-			
+
 		if ( !empty( $reference ) ) {
 			$columns  .= ',reference ';
 			$formats  .= ',%s';
 			$values[] = $reference;
+		}
+
+		if ( !empty( $hit_id ) ) {
+			$columns  .= ',hit_id ';
+			$formats  .= ',%d';
+			$values[] = intval( $hit_id );
 		}
 
 		$columns .= ")";
@@ -985,7 +1229,8 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 								'currency_id' => $currency_id,
 								'status' => $status,
 								'type' => $type,
-								'reference' => $reference
+								'reference' => $reference,
+								'hit_id' => $hit_id
 							)
 						);
 					}
@@ -1263,6 +1508,7 @@ if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-uri.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-user-profile.php';
@@ -1326,6 +1572,19 @@ function affiliates_admin_menu() {
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin-hits-affiliate',
 		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_hits_affiliate' )
+	);
+	$pages[] = $page;
+	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
+	add_action( 'admin_print_scripts-' . $page, 'affiliates_admin_print_scripts' );
+
+	// hits by URIs
+	$page = add_submenu_page(
+		'affiliates-admin',
+		__( 'Traffic', 'affiliates' ),
+		__( 'Traffic', 'affiliates' ),
+		AFFILIATES_ACCESS_AFFILIATES,
+		'affiliates-admin-hits-uri',
+		apply_filters( 'affiliates_add_submenu_page_function', 'affiliates_admin_hits_uri' )
 	);
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );

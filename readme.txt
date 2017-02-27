@@ -3,8 +3,8 @@ Contributors: itthinx, proaktion
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
-Tested up to: 4.7
-Stable tag: 2.16.6
+Tested up to: 4.7.2
+Stable tag: 2.17.0
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -320,29 +320,43 @@ See [Useful Plugins](http://www.itthinx.com/useful-plugins/).
 
 == Screenshots ==
 
-See [Affiliates Screenshots](http://www.itthinx.com/plugins/affiliates/affiliates-screenshots/)
+See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more details.
 
 1. Overview - shows summarized information based on current and historic data
 2. Manage Affiliates - where affiliates links for your site's partners are maintained
 3. Visits & Referrals - per-day view of information about visits and referrals generated through affiliate links
 4. Affiliates & Referrals - per-affiliate view of information about visits and referrals generated through affiliate links
-5. Referrals I - per-referrals view of information about referrals
-6. Referrals II - showing detailed information stored along with referrals obtained through the Affiliates Contact widget
-7. Totals - accumulated totals per affiliate and mark referrals as paid for time periods
-8. Settings > General - where general plugin options are maintained
-9. Settings > Registration - customizable affiliate registration
-10. Menu - the Affiliates menu
-11. Dashboard Widget - showing accumulated totals for referrals on the administrative dashboard
-12. Contact Widget - Usable example widget for lead generation and referrals with applied commission rate
-13. Contact Widget - Visitor's view (theme Twenty Eleven)
-14. Registration Widget - Lets visitors sign up to your affiliate program, fully automated. Also available as a shortcode to embed on pages.
-15. Registration Form - Visitor's view of a customized registration form.
-16. Registration Widget - View of a visitor's successful form submission to join the site's affiliate program.
-17. Affiliate Area I - This is showing the part of the generated Affiliate Area where an affiliate sees the affiliate URL and link when logged in.
-18. Affiliate Area II - This shows performance data on commissions and monthly earnings for an affiliate who is logged in.
-19. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users and customers.
+5. Traffic - showing daily affiliate traffic
+6. Referrals I - per-referrals view of information about referrals
+7. Referrals II - showing detailed information stored along with referrals obtained through the Affiliates Contact widget
+8. Totals - accumulated totals per affiliate and mark referrals as paid for time periods
+9. Settings > General - where general plugin options are maintained
+10. Settings > Registration - customizable affiliate registration
+11. Notifications - Affiliate and Administrator notifications
+12. Menu - the Affiliates menu
+13. Dashboard Widget - showing accumulated totals for referrals on the administrative dashboard
+14. Contact Widget - Usable example widget for lead generation and referrals with applied commission rate
+15. Contact Widget - Visitor's view (theme Twenty Eleven)
+16. Registration Widget - Lets visitors sign up to your affiliate program, fully automated. Also available as a shortcode to embed on pages.
+17. Registration Form - Visitor's view of a customized registration form.
+18. Registration Widget - View of a visitor's successful form submission to join the site's affiliate program.
+19. Affiliate Area I - This is showing the part of the generated Affiliate Area where an affiliate sees the affiliate URL and link when logged in.
+20. Affiliate Area II - This shows performance data on commissions and monthly earnings for an affiliate who is logged in.
+21. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users and customers.
 
 == Changelog ==
+
+= 2.17.0 =
+* Added a new Traffic section with URI stats.
+* Source URIs and landing URIs are stored for hits on affiliate links.
+* User agents are stored for hits on affiliate links.
+* Hit stats now show user agents in the Visits & Referrals section.
+* Hit stats now show user agents in the Affiliates & Referrals section.
+* Added hit references for referrals.
+
+= 2.16.7 =
+* Changing the username related to an affiliate if the username doesn't exist shows an error.
+* Added notifications when add/edit/remove affiliates from the dashboard.
 
 = 2.16.6 =
 * Totals : allow to filter by affiliate status.
@@ -375,5 +389,5 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 
 == Upgrade Notice ==
 
-= 2.16.6 =
-This release allows to filter by affiliate status in the Totals section. And it's tested with Wordpress 4.7.
+= 2.17.0 =
+* This release adds a new Traffic section and stores source and destination URIs and user agents for incoming affiliate links.

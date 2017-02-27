@@ -96,6 +96,27 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	$thru_date   = isset( $_POST['thru-date-field'] ) ? $_POST['thru-date-field'] : $affiliate['thru_date'];
 	$status      = isset( $_POST['status'] ) ? $_POST['status'] : $affiliate['status'];
 
+	$notice = '';
+	if ( isset( $_POST['errors'] ) && is_array( $_POST['errors'] ) ) {
+		$notice_msg = array();
+		foreach( $_POST['errors'] as $error ) {
+			switch ( $error ) {
+				case AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY :
+					$notice_msg[] = __( 'Name can not be empty.', 'affiliates' );
+					break;
+				case AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME :
+					$notice_msg[] = __( 'The username does not exist.', 'affiliates' );
+					break;
+				default:
+					$notice_msg[] = __( 'Something went wrong.', 'affiliates' );
+					break;
+			}
+		}
+		$notice .= '<div class="updated error">';
+		$notice .= implode( '<br/>', $notice_msg );
+		$notice .= '</div>';
+	}
+
 	$output =
 		'<div class="manage-affiliates">' .
 		'<div>' .
@@ -103,6 +124,8 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 				__( 'Edit an affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
+
+		$notice .
 
 		'<form id="edit-affiliate" action="' . esc_url( $current_url ) . '" method="post">' .
 		'<div class="affiliate edit">' .
@@ -200,11 +223,15 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 /**
  * Handle edit form submission.
+ * @return int error_value:
+ * 		AFFILIATES_ADMIN_AFFILIATES_NO_ERROR  -- No errors
+ * 		AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY
+ * 		AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME
  */
 function affiliates_admin_affiliates_edit_submit() {
 
 	global $wpdb, $affiliates_version;
-	$result = true;
+	$result = array();
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
@@ -230,12 +257,25 @@ function affiliates_admin_affiliates_edit_submit() {
 		wp_die( __( 'No such affiliate.', 'affiliates' ) );
 	}
 
-	$name = isset( $_POST['name-field'] ) ? $_POST['name-field'] : null;
-	// don't change the name of the pseudo-affiliate
-	if ( $is_direct ) {
-		$name = AFFILIATES_DIRECT_NAME;
+	// field validation
+
+	$name = isset( $_POST['name-field'] ) ? trim( $_POST['name-field'] ) : null;
+	if ( empty( $name ) ) {
+		$result['errors'][] = AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY;
 	}
-	if ( !empty( $name ) ) {
+
+	$login_valid = true;
+	if ( !empty( $_POST['user-field'] ) ) {
+		$login = trim( $_POST['user-field'] );
+		if ( !empty( $login ) ) {
+			if ( !get_user_by( 'login', $login ) ) {
+				$login_valid = false;
+				$result['errors'][] = AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME;
+			}
+		}
+	}
+
+	if ( !empty( $name ) && $login_valid ) {
 
 		// Note the trickery (*) that has to be used because wpdb::prepare() is not
 		// able to handle null values.
@@ -328,14 +368,10 @@ function affiliates_admin_affiliates_edit_submit() {
 		}
 
 		// hook
-		if ( !empty( $affiliate_id ) ) {
-			do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
-			if ( !empty( $status ) ) {
-				do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, $status );
-			}
+		do_action( 'affiliates_updated_affiliate', intval( $affiliate_id ) );
+		if ( !empty( $status ) ) {
+			do_action( 'affiliates_updated_affiliate_status', intval( $affiliate_id ), $old_status, $status );
 		}
-	} else {
-		$result = false;
 	}
 
 	return $result;

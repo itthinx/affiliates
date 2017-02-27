@@ -56,6 +56,11 @@ define( 'AFFILIATES_COOKIE_TIMEOUT_DAYS', 30 );
 define( 'AFFILIATES_COOKIE_NAME', 'wp_affiliates' );
 
 /**
+ * @var string this cookie stores the hash id
+ */
+define( 'AFFILIATES_HASH_COOKIE_NAME', '_h_affiliates' );
+
+/**
  * @var string (default) affiliate URL parameter name
  */
 define( 'AFFILIATES_PNAME', 'affiliates' );
@@ -184,10 +189,17 @@ define( 'AFFILIATES_AFFILIATE_STATUS_DELETED', 'deleted' );
  */
 //define( 'AFFILIATES_IS_AFFILIATE', 'aff_is_affiliate' );
 
-// constants used in affiliates-admin-hits.php & affiliaets-admin-referrals.php
+// constants used in affiliates-admin-hits.php & affiliaets-admin-referrals.php & affilites-admin-hits-uri.php
 define( 'AFFILIATES_HITS_PER_PAGE', 10 );
 define( 'AFFILIATES_ADMIN_OVERVIEW_NONCE',    'affiliates-admin-overview-nonce' );
 define( 'AFFILIATES_ADMIN_HITS_NONCE_1',      'affiliates-admin-hits-nonce-1' );
 define( 'AFFILIATES_ADMIN_HITS_NONCE_2',      'affiliates-admin-hits-nonce-2' );
 define( 'AFFILIATES_ADMIN_HITS_FILTER_NONCE', 'affiliates-admin-hits-filter-nonce' );
 define( 'AFFILIATES_ADMIN_REFERRALS_NONCE',   'affiliates-admin-referrals-nonce' );
+
+// URIS
+define( 'AFFILIATES_SRC_URI', 'src' );
+define( 'AFFILIATES_DEST_URI', 'dest' );
+
+// User agents
+define( 'AFFILIATES_USER_AGENT_MAX_LENGTH', 255 );

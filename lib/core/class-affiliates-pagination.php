@@ -28,18 +28,21 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Pagination {
 	
+	
 	/**
 	 * Constructor
 	 * @param int $total_items how many items there are to display
 	 * @param int $total_pages how many pages there are, normally leave set to null
 	 * @param int $per_page how many results to show on each page
+	 * @param string $paged_var name used on pagination. 'paged' can not be used in frontend, it is filtered.
 	 */
-	function __construct($total_items, $total_pages, $per_page) {
+	function __construct($total_items, $total_pages, $per_page, $paged_var = 'paged' ) {
 		$this->set_pagination_args(
 			array(
 				'total_items' => $total_items,
 				'total_pages' => $total_pages,
-				'per_page'    => $per_page
+				'per_page'    => $per_page,
+				'paged_var'   => $paged_var
 			)
 		);
 	}
@@ -49,8 +52,8 @@ class Affiliates_Pagination {
 	 * @return int the current page number
 	 */
 	function get_pagenum() {
-		$pagenum = isset( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : 0;
-		if ( !isset( $_REQUEST['paged'] ) ) { // needed with rewritten page added
+		$pagenum = isset( $_REQUEST[$this->_pagination_args['paged_var']] ) ? absint( $_REQUEST[$this->_pagination_args['paged_var']] ) : 0;
+		if ( !isset( $_REQUEST[$this->_pagination_args['paged_var']] ) ) { // needed with rewritten page added
 			if ( preg_match( "/(\/page\/)(\d+)/", $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], $matches ) ) {
 				$pagenum = absint( $matches[2] );
 			}
@@ -73,6 +76,7 @@ class Affiliates_Pagination {
 			'total_items' => 0,
 			'total_pages' => 0,
 			'per_page' => 0,
+			'paged_var' => 'paged'
 		) );
 
 		if ( !$args['total_pages'] && $args['per_page'] > 0 )
@@ -115,14 +119,14 @@ class Affiliates_Pagination {
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
 			'first-page' . $disable_first,
 			esc_attr__( 'Go to the first page' ),
-			esc_url( remove_query_arg( 'paged', $current_url ) ),
+			esc_url( remove_query_arg( $this->_pagination_args['paged_var'], $current_url ) ),
 			'&laquo;'
 		);
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
 			'prev-page' . $disable_first,
 			esc_attr__( 'Go to the previous page' ),
-			esc_url( add_query_arg( 'paged', max( 1, $current-1 ), $current_url ) ),
+			esc_url( add_query_arg( $this->_pagination_args['paged_var'], max( 1, $current-1 ), $current_url ) ),
 			'&lsaquo;'
 		);
 
@@ -131,7 +135,7 @@ class Affiliates_Pagination {
 		else
 			$html_current_page = sprintf( "<input class='current-page' title='%s' type='text' name='%s' value='%s' size='%d' />",
 				esc_attr__( 'Current page' ),
-				esc_attr( 'paged' ),
+				esc_attr( $this->_pagination_args['paged_var'] ),
 				$current,
 				strlen( $total_pages )
 			);
@@ -142,14 +146,14 @@ class Affiliates_Pagination {
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
 			'next-page' . $disable_last,
 			esc_attr__( 'Go to the next page' ),
-			esc_url( add_query_arg( 'paged', min( $total_pages, $current+1 ), $current_url ) ),
+			esc_url( add_query_arg( $this->_pagination_args['paged_var'], min( $total_pages, $current+1 ), $current_url ) ),
 			'&rsaquo;'
 		);
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
 			'last-page' . $disable_last,
 			esc_attr__( 'Go to the last page' ),
-			esc_url( add_query_arg( 'paged', $total_pages, $current_url ) ),
+			esc_url( add_query_arg( $this->_pagination_args['paged_var'], $total_pages, $current_url ) ),
 			'&raquo;'
 		);
 

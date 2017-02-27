@@ -453,7 +453,7 @@ function affiliates_admin_hits_affiliate() {
 		';
 		
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
@@ -586,15 +586,20 @@ function affiliates_admin_hits_affiliate() {
 						$details_filters .= " datetime < %s ";
 						$details_filter_params[] = $thru_datetime;
 					}
+					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+					$uris_table = _affiliates_get_tablename( 'uris' );
 					$details_query = $wpdb->prepare(
-						"SELECT *
+						"SELECT h.*, a.*, ua.*, src.uri src_uri, dest.uri dest_uri
 						FROM $hits_table h
 						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+						LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id
+						LEFT JOIN $uris_table src ON h.src_uri_id = src.uri_id
+						LEFT JOIN $uris_table dest ON h.dest_uri_id = dest.uri_id
 						$details_filters
 						ORDER BY $details_orderby
 						",
 						$details_filter_params
-					);					
+					);
 					$hits = $wpdb->get_results( $details_query, OBJECT );
 					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 					$output .= '<td colspan="5">';
@@ -609,6 +614,9 @@ function affiliates_admin_hits_affiliate() {
 						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
 						<th scope="col" class="count">' . __( 'Count', 'affiliates' ) . '</th>
 						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>
+						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -622,6 +630,9 @@ function affiliates_admin_hits_affiliate() {
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='count'>$hit->count</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
+						$output .= "<td class='src-uri'>" . esc_html( $hit->src_uri ) . "</td>";
+						$output .= "<td class='dest-uri'>" . esc_html( $hit->dest_uri ) . "</td>";
+						$output .= "<td class='hit-user-agent'>" . esc_html( $hit->user_agent ) . "</td>";
 						$output .= '</tr>';
 					}
 					$output .= '</tbody></table>';
@@ -638,7 +649,7 @@ function affiliates_admin_hits_affiliate() {
 	$output .= '</table>';
 					
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );

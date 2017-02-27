@@ -177,7 +177,7 @@ function affiliates_admin() {
 	$query = "SELECT date, sum(count) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$hit_results = $wpdb->get_results( $wpdb->prepare( $query,
 		$from_date, $thru_date, $from_date, $thru_date
-	 ));
+	) );
 	$hits = array();
 	foreach( $hit_results as $hit_result ) {
 		$hits[$hit_result->date] = $hit_result->hits;

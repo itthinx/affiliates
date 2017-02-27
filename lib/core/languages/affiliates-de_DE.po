@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-25 09:56+0200\n"
-"PO-Revision-Date: 2016-10-25 09:58+0200\n"
+"POT-Creation-Date: 2017-02-17 11:39+0100\n"
+"PO-Revision-Date: 2017-02-17 11:39+0100\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -16,18 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_;_e;_x;_ngettext\n"
 "X-Poedit-Basepath: .\n"
 
-#: lib/core/affiliates-admin-affiliates.php:716
-#: lib/core/class-affiliates-dashboard-widget.php:121
+#: lib/core/affiliates-admin-affiliates.php:734
+#: lib/core/class-affiliates-dashboard-widget.php:122
 #, php-format
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
-#: lib/core/class-affiliates-pagination.php:140
+#: lib/core/class-affiliates-pagination.php:144
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
@@ -68,16 +68,17 @@ msgstr "%10d Besuche"
 msgid "%d Day Charts"
 msgstr "%d Tagesgrafik"
 
-#: lib/core/affiliates-admin-affiliates.php:607
-#: lib/core/class-affiliates-totals.php:459
+#: lib/core/affiliates-admin-affiliates.php:625
+#: lib/core/class-affiliates-totals.php:494
 msgid "(inoperative)"
 msgstr "(ungültig)"
 
-#: lib/core/affiliates-admin-affiliates.php:599
-#: lib/core/class-affiliates-totals.php:453
+#: lib/core/affiliates-admin-affiliates.php:617
+#: lib/core/class-affiliates-totals.php:488
 msgid "(removed)"
 msgstr "(entfernt)"
 
+#: lib/core/affiliates-admin-hits-uri.php:443
 #: lib/core/affiliates-admin-hits.php:574
 #, php-format
 msgid ""
@@ -92,7 +93,7 @@ msgid "* Required when an amount is provided. Examples: USD, GBP, EUR, ..."
 msgstr ""
 "* Wird benötigt wenn ein Betrag angegeben ist. Beispiele: USD, GBP, EUR, ..."
 
-#: lib/core/class-affiliates-totals.php:678
+#: lib/core/class-affiliates-totals.php:722
 msgid ""
 "*To undo, each referral would have to be set to the desired status "
 "individually."
@@ -100,14 +101,14 @@ msgstr ""
 "*Um dies rückgängig zu machen müsste jede Transaktion einzeln zum "
 "gewünschten Status gesetzt werden."
 
-#: lib/core/class-affiliates-pagination.php:96
+#: lib/core/class-affiliates-pagination.php:100
 #, php-format
 msgid "1 item"
 msgid_plural "%s items"
 msgstr[0] "%s Posten"
 msgstr[1] "%s Posten"
 
-#: lib/core/wp-init.php:1460
+#: lib/core/wp-init.php:1584
 msgid ""
 "<em>All time</em> includes data from any affiliates, including deleted "
 "affiliates."
@@ -115,7 +116,7 @@ msgstr ""
 "<em>Gesamte Zeit</em> umfasst Daten aller Partner, einschließlich gelöschten "
 "Partnern."
 
-#: lib/core/wp-init.php:1458
+#: lib/core/wp-init.php:1582
 msgid ""
 "<em>From operative affiliates:</em> includes affiliates that are currently "
 "active. This excludes affiliates whose dates are not currently valid as well "
@@ -125,7 +126,7 @@ msgstr ""
 "Dies schließt Partner aus deren Daten aktuell nicht gültig sind oder solche "
 "die gelöscht wurden."
 
-#: lib/core/wp-init.php:1459
+#: lib/core/wp-init.php:1583
 msgid ""
 "<em>From operative and non-operative affiliates:</em> excludes deleted "
 "affiliates."
@@ -133,7 +134,7 @@ msgstr ""
 "<em>Von operativen und nicht operativen Partnern:</em> dies schließt "
 "gelöschte Partner aus."
 
-#: lib/core/wp-init.php:1463
+#: lib/core/wp-init.php:1587
 msgid "<em>Hits</em> are HTTP requests for affiliate links."
 msgstr "<em>Treffer</em> sind HTTP Anfragen auf Partnerlinks."
 
@@ -145,34 +146,34 @@ msgstr ""
 "Mit <em>Ausstehend</em> werden neue Partner manuell zugelassen. <em>Aktiv</"
 "em> lässt neue Partner automatisch zu."
 
-#: lib/core/wp-init.php:1465
+#: lib/core/wp-init.php:1589
 msgid "<em>Referrals</em> are recording commissions and referral data."
 msgstr ""
 "<em>Transaktionen</em> zeichnen Kommissionen und Transaktionsdaten auf."
 
-#: lib/core/wp-init.php:1464
+#: lib/core/wp-init.php:1588
 msgid "<em>Visits</em> are unique and daily requests for affiliate links."
 msgstr "<em>Besuche</em> zeichnen tägliche Anfragen für Partnerlinks auf."
 
-#: lib/core/affiliates-admin-affiliates.php:693
+#: lib/core/affiliates-admin-affiliates.php:711
 #: lib/core/class-affiliates-dashboard-widget.php:99
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Accepted</span>"
 msgstr "<span style=\"cursor:help\" title=\"%s\">Akzeptiert</span>"
 
-#: lib/core/affiliates-admin-affiliates.php:690
+#: lib/core/affiliates-admin-affiliates.php:708
 #: lib/core/class-affiliates-dashboard-widget.php:96
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Closed</span>"
 msgstr "<span style=\"cursor:help\" title=\"%s\">Geschlossen</span>"
 
-#: lib/core/affiliates-admin-affiliates.php:696
+#: lib/core/affiliates-admin-affiliates.php:714
 #: lib/core/class-affiliates-dashboard-widget.php:102
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Pending</span>"
 msgstr "<span style=\"cursor:help\" title=\"%s\">Ausstehend</span>"
 
-#: lib/core/affiliates-admin-affiliates.php:699
+#: lib/core/affiliates-admin-affiliates.php:717
 #: lib/core/class-affiliates-dashboard-widget.php:105
 #, php-format
 msgid "<span style=\"cursor:help\" title=\"%s\">Rejected</span>"
@@ -271,10 +272,10 @@ msgstr "Ein Minimum an Berechtigungen wird beibehalten."
 #: lib/core/affiliates-admin-user-registration.php:194
 #: lib/core/affiliates-admin.php:312 lib/core/affiliates-admin.php:452
 #: lib/core/class-affiliates-settings-referrals.php:80
-#: lib/core/class-affiliates-totals.php:338
-#: lib/core/class-affiliates-totals.php:727
-#: lib/core/class-affiliates-totals.php:773
-#: lib/core/class-affiliates-totals.php:779
+#: lib/core/class-affiliates-totals.php:372
+#: lib/core/class-affiliates-totals.php:771
+#: lib/core/class-affiliates-totals.php:817
+#: lib/core/class-affiliates-totals.php:823
 msgid "Accepted"
 msgstr "Akzeptiert"
 
@@ -284,29 +285,33 @@ msgid "Access affiliates"
 msgstr "Partner abrufen"
 
 #: lib/core/affiliates-admin-affiliates-add.php:32
-#: lib/core/affiliates-admin-affiliates-add.php:136
-#: lib/core/affiliates-admin-affiliates-add.php:140
+#: lib/core/affiliates-admin-affiliates-add.php:161
+#: lib/core/affiliates-admin-affiliates-add.php:165
 #: lib/core/affiliates-admin-affiliates-edit.php:35
-#: lib/core/affiliates-admin-affiliates-edit.php:210
-#: lib/core/affiliates-admin-affiliates-edit.php:214
-#: lib/core/affiliates-admin-affiliates-edit.php:355
-#: lib/core/affiliates-admin-affiliates-edit.php:359
-#: lib/core/affiliates-admin-affiliates-edit.php:404
-#: lib/core/affiliates-admin-affiliates-edit.php:408
+#: lib/core/affiliates-admin-affiliates-edit.php:235
+#: lib/core/affiliates-admin-affiliates-edit.php:239
+#: lib/core/affiliates-admin-affiliates-edit.php:382
+#: lib/core/affiliates-admin-affiliates-edit.php:386
+#: lib/core/affiliates-admin-affiliates-edit.php:431
+#: lib/core/affiliates-admin-affiliates-edit.php:435
 #: lib/core/affiliates-admin-affiliates-remove.php:35
 #: lib/core/affiliates-admin-affiliates-remove.php:105
 #: lib/core/affiliates-admin-affiliates-remove.php:109
 #: lib/core/affiliates-admin-affiliates-remove.php:149
 #: lib/core/affiliates-admin-affiliates-remove.php:238
 #: lib/core/affiliates-admin-affiliates-remove.php:242
-#: lib/core/affiliates-admin-affiliates.php:53
-#: lib/core/affiliates-admin-affiliates.php:138
-#: lib/core/affiliates-admin-affiliates.php:272
-#: lib/core/affiliates-admin-affiliates.php:278
+#: lib/core/affiliates-admin-affiliates.php:57
+#: lib/core/affiliates-admin-affiliates.php:154
+#: lib/core/affiliates-admin-affiliates.php:288
+#: lib/core/affiliates-admin-affiliates.php:294
 #: lib/core/affiliates-admin-hits-affiliate.php:43
 #: lib/core/affiliates-admin-hits-affiliate.php:57
 #: lib/core/affiliates-admin-hits-affiliate.php:176
 #: lib/core/affiliates-admin-hits-affiliate.php:182
+#: lib/core/affiliates-admin-hits-uri.php:39
+#: lib/core/affiliates-admin-hits-uri.php:51
+#: lib/core/affiliates-admin-hits-uri.php:127
+#: lib/core/affiliates-admin-hits-uri.php:133
 #: lib/core/affiliates-admin-hits.php:37 lib/core/affiliates-admin-hits.php:51
 #: lib/core/affiliates-admin-hits.php:146
 #: lib/core/affiliates-admin-hits.php:152
@@ -326,9 +331,9 @@ msgstr "Partner abrufen"
 #: lib/core/class-affiliates-settings-network.php:46
 #: lib/core/class-affiliates-settings.php:167
 #: lib/core/class-affiliates-totals.php:49
-#: lib/core/class-affiliates-totals.php:79
-#: lib/core/class-affiliates-totals.php:136
-#: lib/core/class-affiliates-totals.php:142
+#: lib/core/class-affiliates-totals.php:80
+#: lib/core/class-affiliates-totals.php:146
+#: lib/core/class-affiliates-totals.php:152
 msgid "Access denied."
 msgstr "Zugriff verweigert."
 
@@ -337,33 +342,34 @@ msgstr "Zugriff verweigert."
 msgid "Access your profile"
 msgstr "Auf mein Profil"
 
-#: lib/core/affiliates-admin-affiliates.php:693
+#: lib/core/affiliates-admin-affiliates.php:711
 #: lib/core/class-affiliates-dashboard-widget.php:99
 msgid "Accumulated total for accepted referrals (commissions unpaid)."
 msgstr "Gesamtsumme für akzeptierte Transaktionen (unbezahlte Kommissionen)."
 
-#: lib/core/affiliates-admin-affiliates.php:690
+#: lib/core/affiliates-admin-affiliates.php:708
 #: lib/core/class-affiliates-dashboard-widget.php:96
 msgid "Accumulated total for closed referrals (commissions paid)."
 msgstr "Gesamtsumme für geschlossene Transaktionen (bezahlte Kommissionen)."
 
-#: lib/core/affiliates-admin-affiliates.php:696
+#: lib/core/affiliates-admin-affiliates.php:714
 #: lib/core/class-affiliates-dashboard-widget.php:102
 msgid "Accumulated total for pending referrals."
 msgstr "Gesamtsumme für ausstehende Transaktionen."
 
-#: lib/core/affiliates-admin-affiliates.php:699
+#: lib/core/affiliates-admin-affiliates.php:717
 #: lib/core/class-affiliates-dashboard-widget.php:105
 msgid "Accumulated total for rejected referrals."
 msgstr "Gesamtsumme für abgelehnte Transaktionen."
 
-#: lib/core/affiliates-admin-affiliates-edit.php:177
+#: lib/core/affiliates-admin-affiliates-edit.php:198
 #: lib/core/class-affiliates-settings-registration.php:155
+#: lib/core/class-affiliates-totals.php:356
 msgid "Active"
 msgstr "Aktiv"
 
-#: lib/core/affiliates-admin-affiliates-add.php:112
-#: lib/core/affiliates-admin-affiliates.php:299
+#: lib/core/affiliates-admin-affiliates-add.php:133
+#: lib/core/affiliates-admin-affiliates.php:317
 #: lib/core/affiliates-admin-referrals.php:264
 #: lib/core/affiliates-admin-referrals.php:266
 msgid "Add"
@@ -373,12 +379,12 @@ msgstr "Erstellen"
 msgid "Add a field"
 msgstr "Feld erstellen"
 
-#: lib/core/affiliates-admin-affiliates-add.php:50
+#: lib/core/affiliates-admin-affiliates-add.php:69
 msgid "Add a new affiliate"
 msgstr "Partner erstellen"
 
-#: lib/core/affiliates-admin-add-ons.php:218 lib/core/wp-init.php:1406
-#: lib/core/wp-init.php:1407
+#: lib/core/affiliates-admin-add-ons.php:218 lib/core/wp-init.php:1530
+#: lib/core/wp-init.php:1531
 msgid "Add-Ons"
 msgstr "Add-Ons"
 
@@ -414,11 +420,13 @@ msgstr "Administrator"
 msgid "Advanced shortcodes including banners and graphs"
 msgstr "Fortgeschrittene Shortcodes inklusive Banner und Grafiken"
 
-#: lib/core/affiliates-admin-affiliates.php:424
+#: lib/core/affiliates-admin-affiliates.php:442
 #: lib/core/affiliates-admin-hits-affiliate.php:330
 #: lib/core/affiliates-admin-hits-affiliate.php:343
 #: lib/core/affiliates-admin-hits-affiliate.php:550
 #: lib/core/affiliates-admin-hits-affiliate.php:611
+#: lib/core/affiliates-admin-hits-uri.php:282
+#: lib/core/affiliates-admin-hits-uri.php:296
 #: lib/core/affiliates-admin-hits.php:308
 #: lib/core/affiliates-admin-hits.php:479
 #: lib/core/affiliates-admin-hits.php:535
@@ -426,8 +434,8 @@ msgstr "Fortgeschrittene Shortcodes inklusive Banner und Grafiken"
 #: lib/core/affiliates-admin-referral-remove.php:94
 #: lib/core/affiliates-admin-referrals.php:395
 #: lib/core/affiliates-admin-referrals.php:411
-#: lib/core/class-affiliates-totals.php:292
-#: lib/core/class-affiliates-totals.php:767
+#: lib/core/class-affiliates-totals.php:307
+#: lib/core/class-affiliates-totals.php:811
 #: lib/core/class-affiliates-ui-elements.php:53
 msgid "Affiliate"
 msgstr "Partner"
@@ -456,9 +464,17 @@ msgstr "Partneranmeldung"
 msgid "Affiliate Registration Form"
 msgstr "Anmeldeformular für Partner"
 
+#: lib/core/class-affiliates-totals.php:361
+msgid "Affiliate Status"
+msgstr ""
+
 #: lib/core/class-affiliates-settings-general.php:220
 msgid "Affiliate URL parameter name"
 msgstr "Name des URL-Parameters für Partner"
+
+#: lib/core/affiliates-admin-affiliates.php:82
+msgid "Affiliate added."
+msgstr ""
 
 #: lib/core/affiliates-admin-add-ons.php:138
 msgid "Affiliate attributes for individual commission rates, coupons, ..."
@@ -468,7 +484,7 @@ msgstr "Partnerattribute für individuelle Kommissionsraten, Gutscheine, ..."
 msgid "Affiliate campaign management and tracking."
 msgstr "Partnerkampagnen und Tracking."
 
-#: lib/core/wp-init.php:1486
+#: lib/core/wp-init.php:1610
 msgid "Affiliate link"
 msgstr "Partnerlink"
 
@@ -476,14 +492,22 @@ msgstr "Partnerlink"
 msgid "Affiliate link generator form"
 msgstr "Partnerlink Generatorformular"
 
+#: lib/core/affiliates-admin-affiliates.php:93
+msgid "Affiliate removed."
+msgstr ""
+
+#: lib/core/affiliates-admin-affiliates.php:89
+msgid "Affiliate updated."
+msgstr ""
+
 #: lib/core/class-affiliates-admin-notifications.php:102
-#: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1426
-#: lib/core/wp-init.php:1427 lib/core/wp-init.php:1448
+#: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1550
+#: lib/core/wp-init.php:1551 lib/core/wp-init.php:1572
 msgid "Affiliates"
 msgstr "Partner"
 
-#: lib/core/affiliates-admin-hits-affiliate.php:196 lib/core/wp-init.php:1324
-#: lib/core/wp-init.php:1325
+#: lib/core/affiliates-admin-hits-affiliate.php:196 lib/core/wp-init.php:1435
+#: lib/core/wp-init.php:1436
 msgid "Affiliates & Referrals"
 msgstr "Partner & Transaktionen"
 
@@ -507,7 +531,7 @@ msgstr "Affiliates Erweiterungen und Add-Ons"
 msgid "Affiliates Jigoshop Integration Light"
 msgstr "Affiliates Jigoshop Integration Light"
 
-#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1283
+#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1394
 msgid "Affiliates Overview"
 msgstr "Partnerübersicht"
 
@@ -515,7 +539,7 @@ msgstr "Partnerübersicht"
 msgid "Affiliates Pro"
 msgstr "Affiliates Pro"
 
-#: lib/core/wp-init.php:1365
+#: lib/core/wp-init.php:1489
 msgid "Affiliates Settings"
 msgstr "Affiliates Einstellungen"
 
@@ -579,7 +603,7 @@ msgstr "Auch in Beschreibungen suchen"
 #: lib/core/affiliates-admin-referral-remove.php:113
 #: lib/core/affiliates-admin-referrals.php:396
 #: lib/core/affiliates-admin-user-registration.php:166
-#: lib/core/class-affiliates-totals.php:768
+#: lib/core/class-affiliates-totals.php:812
 msgid "Amount"
 msgstr "Betrag"
 
@@ -587,17 +611,19 @@ msgstr "Betrag"
 msgid "Amount (use . for decimals):"
 msgstr "Betrag (für Dezimalzahlen . verwenden):"
 
-#: lib/core/affiliates-admin-affiliates.php:511
-#: lib/core/affiliates-admin-affiliates.php:525
-#: lib/core/affiliates-admin-affiliates.php:554
+#: lib/core/affiliates-admin-affiliates.php:529
+#: lib/core/affiliates-admin-affiliates.php:543
+#: lib/core/affiliates-admin-affiliates.php:572
 #: lib/core/affiliates-admin-hits-affiliate.php:434
 #: lib/core/affiliates-admin-hits-affiliate.php:449
+#: lib/core/affiliates-admin-hits-uri.php:348
+#: lib/core/affiliates-admin-hits-uri.php:360
 #: lib/core/affiliates-admin-hits.php:370
 #: lib/core/affiliates-admin-hits.php:385
 #: lib/core/affiliates-admin-referrals.php:517
 #: lib/core/affiliates-admin-referrals.php:531
-#: lib/core/affiliates-admin.php:156 lib/core/class-affiliates-totals.php:382
-#: lib/core/class-affiliates-totals.php:396
+#: lib/core/affiliates-admin.php:156 lib/core/class-affiliates-totals.php:417
+#: lib/core/class-affiliates-totals.php:431
 msgid "Apply"
 msgstr "Anwenden"
 
@@ -627,9 +653,13 @@ msgstr "Bannerverwaltung"
 msgid "Base Amount"
 msgstr "Basisbetrag"
 
-#: lib/core/affiliates-admin-affiliates.php:549
+#: lib/core/affiliates-admin-affiliates.php:567
 msgid "Bulk Actions"
 msgstr "Aktion wählen"
+
+#: lib/core/affiliates-admin-affiliates.php:124
+msgid "Bulk action executed"
+msgstr ""
 
 #: lib/core/class-affiliates-settings-network.php:75
 msgid ""
@@ -696,8 +726,8 @@ msgstr ""
 "Kodierung die Partnerlinks die auf ihre Seite zeigen nicht aktualisiert, "
 "dann werden auch keine Treffer, Besuche oder Transaktionen aufgezeichnet."
 
-#: lib/core/affiliates-admin-affiliates-add.php:115
-#: lib/core/affiliates-admin-affiliates-edit.php:190
+#: lib/core/affiliates-admin-affiliates-add.php:136
+#: lib/core/affiliates-admin-affiliates-edit.php:211
 #: lib/core/affiliates-admin-affiliates-remove.php:85
 #: lib/core/affiliates-admin-affiliates-remove.php:216
 #: lib/core/affiliates-admin-referral-edit.php:252
@@ -705,15 +735,16 @@ msgstr ""
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: lib/core/affiliates-admin-affiliates.php:512
+#: lib/core/affiliates-admin-affiliates.php:530
 #: lib/core/affiliates-admin-hits-affiliate.php:435
+#: lib/core/affiliates-admin-hits-uri.php:349
 #: lib/core/affiliates-admin-hits.php:371
 #: lib/core/affiliates-admin-referrals.php:518
-#: lib/core/affiliates-admin.php:157 lib/core/class-affiliates-totals.php:383
+#: lib/core/affiliates-admin.php:157 lib/core/class-affiliates-totals.php:418
 msgid "Clear"
 msgstr "Säubern"
 
-#: lib/core/affiliates-admin-affiliates.php:299
+#: lib/core/affiliates-admin-affiliates.php:317
 msgid "Click to add a new affiliate"
 msgstr "Klicken um einen neuen Partner zu erstellen"
 
@@ -721,22 +752,22 @@ msgstr "Klicken um einen neuen Partner zu erstellen"
 msgid "Click to add a referral manually"
 msgstr "Klicken um eine Transaktion manuell zu erstellen"
 
-#: lib/core/class-affiliates-totals.php:328
-#: lib/core/class-affiliates-totals.php:663
+#: lib/core/class-affiliates-totals.php:346
+#: lib/core/class-affiliates-totals.php:707
 msgid "Click to close these referrals"
 msgstr "Klicken um diese Transaktionen zu schließen"
 
-#: lib/core/class-affiliates-totals.php:332
-#: lib/core/class-affiliates-totals.php:667
+#: lib/core/class-affiliates-totals.php:350
+#: lib/core/class-affiliates-totals.php:711
 msgid "Close Referrals"
 msgstr "Transaktionen schließen"
 
-#: lib/core/class-affiliates-totals.php:331
-#: lib/core/class-affiliates-totals.php:666
+#: lib/core/class-affiliates-totals.php:349
+#: lib/core/class-affiliates-totals.php:710
 msgid "Close referrals"
 msgstr "Transaktionen schließen"
 
-#: lib/core/class-affiliates-totals.php:660
+#: lib/core/class-affiliates-totals.php:704
 msgid "Close these referrals by clicking:"
 msgstr "Transaktionen schließen durch Klick auf:"
 
@@ -749,14 +780,14 @@ msgstr "Transaktionen schließen durch Klick auf:"
 #: lib/core/affiliates-admin-user-registration.php:195
 #: lib/core/affiliates-admin.php:334 lib/core/affiliates-admin.php:453
 #: lib/core/class-affiliates-settings-referrals.php:81
-#: lib/core/class-affiliates-totals.php:339
-#: lib/core/class-affiliates-totals.php:728
-#: lib/core/class-affiliates-totals.php:774
-#: lib/core/class-affiliates-totals.php:780
+#: lib/core/class-affiliates-totals.php:373
+#: lib/core/class-affiliates-totals.php:772
+#: lib/core/class-affiliates-totals.php:818
+#: lib/core/class-affiliates-totals.php:824
 msgid "Closed"
 msgstr "Geschlossen"
 
-#: lib/core/class-affiliates-totals.php:544
+#: lib/core/class-affiliates-totals.php:580
 msgid "Closing referrals"
 msgstr "Transaktionen schließen"
 
@@ -786,9 +817,9 @@ msgstr "Einen Partnerbereich erstellen"
 
 #: lib/core/affiliates-admin-referrals.php:397
 #: lib/core/affiliates-admin-user-registration.php:186
-#: lib/core/class-affiliates-totals.php:296
-#: lib/core/class-affiliates-totals.php:355
-#: lib/core/class-affiliates-totals.php:769
+#: lib/core/class-affiliates-totals.php:311
+#: lib/core/class-affiliates-totals.php:389
+#: lib/core/class-affiliates-totals.php:813
 msgid "Currency"
 msgstr "Währung"
 
@@ -811,9 +842,10 @@ msgid "Data"
 msgstr "Daten"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:607
+#: lib/core/affiliates-admin-hits-uri.php:281
 #: lib/core/affiliates-admin-hits.php:295
 #: lib/core/affiliates-admin-referrals.php:393
-#: lib/core/class-affiliates-totals.php:765
+#: lib/core/class-affiliates-totals.php:809
 msgid "Date"
 msgstr "Datum"
 
@@ -827,7 +859,7 @@ msgid "Days"
 msgstr "Tage"
 
 #: lib/core/affiliates-admin.php:153
-#: lib/core/class-affiliates-dashboard-widget.php:139
+#: lib/core/class-affiliates-dashboard-widget.php:140
 msgid "Days back"
 msgstr "Tage zurück"
 
@@ -847,7 +879,8 @@ msgstr "Alle Partnerdaten bei Netzwerdeaktivierung löschen"
 msgid "Delete all plugin data on deactivation"
 msgstr "All Daten bei Deaktivierung löschen"
 
-#: lib/core/affiliates-admin-affiliates-edit.php:179
+#: lib/core/affiliates-admin-affiliates-edit.php:200
+#: lib/core/class-affiliates-totals.php:358
 msgid "Deleted"
 msgstr "Gelöscht"
 
@@ -896,8 +929,8 @@ msgstr "Einkünfte"
 msgid "Ecwid (light)"
 msgstr "Ecwid (light)"
 
-#: lib/core/affiliates-admin-affiliates.php:430
-#: lib/core/affiliates-admin-affiliates.php:644
+#: lib/core/affiliates-admin-affiliates.php:448
+#: lib/core/affiliates-admin-affiliates.php:662
 #: lib/core/affiliates-admin-referrals.php:621
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -912,17 +945,17 @@ msgstr "%s bearbeiten"
 msgid "Edit Referral"
 msgstr "Transaktion bearbeiten"
 
-#: lib/core/affiliates-admin-affiliates-edit.php:103
+#: lib/core/affiliates-admin-affiliates-edit.php:122
 msgid "Edit an affiliate"
 msgstr "Partner bearbeiten"
 
-#: lib/core/affiliates-admin-affiliates-add.php:70
-#: lib/core/affiliates-admin-affiliates-edit.php:124
-#: lib/core/affiliates-admin-affiliates.php:425
-#: lib/core/affiliates-admin-affiliates.php:455
+#: lib/core/affiliates-admin-affiliates-add.php:91
+#: lib/core/affiliates-admin-affiliates-edit.php:145
+#: lib/core/affiliates-admin-affiliates.php:443
+#: lib/core/affiliates-admin-affiliates.php:473
 #: lib/core/class-affiliates-contact.php:177
 #: lib/core/class-affiliates-settings-registration.php:56
-#: lib/core/class-affiliates-totals.php:293
+#: lib/core/class-affiliates-totals.php:308
 msgid "Email"
 msgstr "E-Mail"
 
@@ -996,7 +1029,7 @@ msgstr "Erweiterter Summenreport mit zusätzlichen Filtern"
 msgid "F Y"
 msgstr "F Y"
 
-#: lib/core/class-affiliates-totals.php:747
+#: lib/core/class-affiliates-totals.php:791
 msgid "Failed"
 msgstr "Gescheitert"
 
@@ -1008,12 +1041,13 @@ msgstr "Feldetikett"
 msgid "Field Name"
 msgstr "Feldname"
 
-#: lib/core/affiliates-admin-affiliates.php:302
-#: lib/core/affiliates-admin-affiliates.php:439
+#: lib/core/affiliates-admin-affiliates.php:320
+#: lib/core/affiliates-admin-affiliates.php:457
 #: lib/core/affiliates-admin-hits-affiliate.php:382
+#: lib/core/affiliates-admin-hits-uri.php:314
 #: lib/core/affiliates-admin-hits.php:326
 #: lib/core/affiliates-admin-referrals.php:454
-#: lib/core/affiliates-admin.php:146 lib/core/class-affiliates-totals.php:367
+#: lib/core/affiliates-admin.php:146 lib/core/class-affiliates-totals.php:401
 msgid "Filters"
 msgstr "Filter"
 
@@ -1039,14 +1073,15 @@ msgstr ""
 "plugins-overview/\">Overview</a> Seite sowie im <a href=\"http://www.itthinx."
 "com/shop/\">Shop</a> erhältlich."
 
-#: lib/core/affiliates-admin-affiliates-add.php:93
-#: lib/core/affiliates-admin-affiliates-edit.php:152
-#: lib/core/affiliates-admin-affiliates.php:427
-#: lib/core/affiliates-admin-affiliates.php:468
+#: lib/core/affiliates-admin-affiliates-add.php:114
+#: lib/core/affiliates-admin-affiliates-edit.php:173
+#: lib/core/affiliates-admin-affiliates.php:445
+#: lib/core/affiliates-admin-affiliates.php:486
 #: lib/core/affiliates-admin-hits-affiliate.php:391
+#: lib/core/affiliates-admin-hits-uri.php:322
 #: lib/core/affiliates-admin-hits.php:335
 #: lib/core/affiliates-admin-referrals.php:477
-#: lib/core/affiliates-admin.php:149 lib/core/class-affiliates-totals.php:375
+#: lib/core/affiliates-admin.php:149 lib/core/class-affiliates-totals.php:409
 msgid "From"
 msgstr "Von"
 
@@ -1076,7 +1111,7 @@ msgstr "Generieren"
 msgid "Generator"
 msgstr "Generator"
 
-#: lib/core/wp-init.php:1589
+#: lib/core/wp-init.php:1713
 msgid "Get Affiliates Pro"
 msgstr "Affiliates Pro holen"
 
@@ -1085,7 +1120,7 @@ msgid "Get additional features and access to premium support!"
 msgstr ""
 "Erhalten Sie Zugang zu zusätzlichen Leistungsmerkmalen und Premium Support!"
 
-#: lib/core/wp-init.php:1480
+#: lib/core/wp-init.php:1604
 msgid ""
 "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</"
 "strong> affiliates."
@@ -1106,6 +1141,7 @@ msgstr "Verbergen"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:332
 #: lib/core/affiliates-admin-hits-affiliate.php:602
+#: lib/core/affiliates-admin-hits-uri.php:284
 #: lib/core/affiliates-admin-hits.php:297
 #: lib/core/affiliates-admin-hits.php:528 lib/core/affiliates-admin.php:298
 msgid "Hits"
@@ -1128,14 +1164,14 @@ msgstr "Ich weiss nicht wie ich etwas löschen soll das nicht existiert."
 msgid "IP"
 msgstr "IP"
 
-#: lib/core/affiliates-admin-affiliates.php:423
-#: lib/core/affiliates-admin-affiliates.php:443
-#: lib/core/class-affiliates-totals.php:291
+#: lib/core/affiliates-admin-affiliates.php:441
+#: lib/core/affiliates-admin-affiliates.php:461
+#: lib/core/class-affiliates-totals.php:306
 msgid "Id"
 msgstr "Id"
 
-#: lib/core/affiliates-admin-affiliates-add.php:76
-#: lib/core/affiliates-admin-affiliates-edit.php:131
+#: lib/core/affiliates-admin-affiliates-add.php:97
+#: lib/core/affiliates-admin-affiliates-edit.php:152
 msgid ""
 "If a valid <strong>Username</strong> is specified and no email is given, the "
 "user's email address will be used automatically."
@@ -1170,7 +1206,7 @@ msgstr ""
 "Kunden beim Checkout aufzeichnen soll, dann sollte diese Option aktiviert "
 "werden."
 
-#: lib/core/class-affiliates-totals.php:619
+#: lib/core/class-affiliates-totals.php:660
 msgid "If these referrals can be closed, click the confirmation button below."
 msgstr ""
 "Wenn diese Transaktionen geschlossen werden können, dann klicken Sie unten "
@@ -1213,22 +1249,22 @@ msgstr ""
 "Sollten ihre Partner Links die auf dem vorigen Parameter basieren verwenden, "
 "dann <strong>müssen</strong> diese ihre Links aktualisieren."
 
-#: lib/core/affiliates-admin-affiliates.php:488
+#: lib/core/affiliates-admin-affiliates.php:506
 msgid "Include active affiliates"
 msgstr "Aktive Partner einschließen"
 
-#: lib/core/affiliates-admin-affiliates.php:482
+#: lib/core/affiliates-admin-affiliates.php:500
 #: lib/core/affiliates-admin-hits-affiliate.php:428
 #: lib/core/affiliates-admin-hits.php:363
 #: lib/core/affiliates-admin-referrals.php:511
 msgid "Include inoperative affiliates"
 msgstr "Inoperative Partner einschließen"
 
-#: lib/core/affiliates-admin-affiliates.php:494
+#: lib/core/affiliates-admin-affiliates.php:512
 msgid "Include pending affiliates"
 msgstr "Ausstehende Partner einschließen"
 
-#: lib/core/affiliates-admin-affiliates.php:500
+#: lib/core/affiliates-admin-affiliates.php:518
 msgid "Include removed affiliates"
 msgstr "Gelöschte Partner einschließen"
 
@@ -1264,15 +1300,20 @@ msgstr "Es scheint Sie haben noch keine Seiten für ihre Partner."
 msgid "Jigoshop (light)"
 msgstr "Jigoshop (light)"
 
+#: lib/core/affiliates-admin-hits-uri.php:287
+#: lib/core/affiliates-admin-hits-uri.php:341
+msgid "Landing URI"
+msgstr ""
+
 #: lib/core/class-affiliates-settings-registration.php:54
 msgid "Last Name"
 msgstr "Nachname"
 
-#: lib/core/affiliates-admin-affiliates.php:653
+#: lib/core/affiliates-admin-affiliates.php:671
 msgid "Link"
 msgstr "Link"
 
-#: lib/core/affiliates-admin-affiliates.php:432
+#: lib/core/affiliates-admin-affiliates.php:450
 msgid "Links"
 msgstr "Links"
 
@@ -1285,7 +1326,7 @@ msgstr "<a href=\"%s\">Hier</a> anmelden."
 msgid "Log out"
 msgstr "Abmelden"
 
-#: lib/core/wp-init.php:1153
+#: lib/core/wp-init.php:1263
 msgid "MD5"
 msgstr "MD5"
 
@@ -1293,8 +1334,8 @@ msgstr "MD5"
 msgid "Make sure to back up your data or do not enable this option."
 msgstr "Bitte sichern Sie ihre Daten oder aktivieren Sie diese Option nicht."
 
-#: lib/core/affiliates-admin-affiliates.php:293 lib/core/wp-init.php:1298
-#: lib/core/wp-init.php:1299
+#: lib/core/affiliates-admin-affiliates.php:309 lib/core/wp-init.php:1409
+#: lib/core/wp-init.php:1410
 msgid "Manage Affiliates"
 msgstr "Partner Verwalten"
 
@@ -1310,9 +1351,9 @@ msgstr "Monat"
 msgid "Multi-tier capability with unlimited levels and rates."
 msgstr "Gestaffelte Partner mit unbegrenzten Levels und Raten."
 
-#: lib/core/affiliates-admin-affiliates-add.php:60
-#: lib/core/affiliates-admin-affiliates-edit.php:114
-#: lib/core/affiliates-admin-affiliates.php:449
+#: lib/core/affiliates-admin-affiliates-add.php:81
+#: lib/core/affiliates-admin-affiliates-edit.php:135
+#: lib/core/affiliates-admin-affiliates.php:467
 #: lib/core/class-affiliates-contact.php:175
 msgid "Name"
 msgstr "Name"
@@ -1323,7 +1364,12 @@ msgstr "Name"
 msgid "Name : %s"
 msgstr "Name : %s"
 
-#: lib/core/affiliates-admin-affiliates.php:299
+#: lib/core/affiliates-admin-affiliates-add.php:51
+#: lib/core/affiliates-admin-affiliates-edit.php:104
+msgid "Name can not be empty."
+msgstr ""
+
+#: lib/core/affiliates-admin-affiliates.php:317
 msgid "New Affiliate"
 msgstr "Neuer Partner"
 
@@ -1362,7 +1408,7 @@ msgstr ""
 "E-mail: [user_email]<br/>\n"
 "Dieser Partner wartet auf Zulassung.<br/>"
 
-#: lib/core/wp-init.php:1152
+#: lib/core/wp-init.php:1262
 msgid "No encoding"
 msgstr "Keine Kodierung"
 
@@ -1371,17 +1417,17 @@ msgid "No specific affiliate information is available."
 msgstr "Spezifische Partnerinformation ist nicht erhältlich."
 
 #: lib/core/affiliates-admin-affiliates-edit.php:41
-#: lib/core/affiliates-admin-affiliates-edit.php:230
+#: lib/core/affiliates-admin-affiliates-edit.php:255
 #: lib/core/affiliates-admin-affiliates-remove.php:41
 msgid "No such affiliate."
 msgstr "Partner existiert nicht."
 
-#: lib/core/class-affiliates-dashboard-widget.php:126
+#: lib/core/class-affiliates-dashboard-widget.php:127
 #: lib/core/class-affiliates-shortcodes.php:612
 msgid "None"
 msgstr "Nichts"
 
-#: lib/core/wp-init.php:1473
+#: lib/core/wp-init.php:1597
 msgid ""
 "Note that <em>deleted</em> affiliates are not literally deleted but marked "
 "as such so that data that has been collected will still be accesible."
@@ -1390,7 +1436,7 @@ msgstr ""
 "beibehalten."
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1391 lib/core/wp-init.php:1392
+#: lib/core/wp-init.php:1515 lib/core/wp-init.php:1516
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
@@ -1398,11 +1444,11 @@ msgstr "Benachrichtigungen"
 msgid "Notifications including customizable messages"
 msgstr "Benachrichtigungen mit anpassbaren Nachrichten"
 
-#: lib/core/class-affiliates-totals.php:739
+#: lib/core/class-affiliates-totals.php:783
 msgid "Omitted"
 msgstr "Ausgelassen"
 
-#: lib/core/wp-init.php:1496
+#: lib/core/wp-init.php:1620
 msgid ""
 "Once a visitor has landed on your site through an affiliate link, referrals "
 "may be recorded and attributed to the affiliate."
@@ -1410,7 +1456,7 @@ msgstr ""
 "Wenn ein Besucher über ein Partnerlink auf ihre Seite kommt, dann können "
 "Transaktionen aufgezeichnet werden die dem Partner zugewiesen werden."
 
-#: lib/core/wp-init.php:1543
+#: lib/core/wp-init.php:1667
 msgid "Online documentation"
 msgstr "Online-Dokumentation"
 
@@ -1428,7 +1474,7 @@ msgstr "Passwort"
 msgid "Password: %s"
 msgstr "Passwort: %s"
 
-#: lib/core/affiliates-admin-affiliates-edit.php:178
+#: lib/core/affiliates-admin-affiliates-edit.php:199
 #: lib/core/affiliates-admin-hits-affiliate.php:362
 #: lib/core/affiliates-admin-hits-affiliate.php:368
 #: lib/core/affiliates-admin-referral-edit.php:224
@@ -1439,10 +1485,11 @@ msgstr "Passwort: %s"
 #: lib/core/affiliates-admin.php:320 lib/core/affiliates-admin.php:454
 #: lib/core/class-affiliates-settings-referrals.php:82
 #: lib/core/class-affiliates-settings-registration.php:158
-#: lib/core/class-affiliates-totals.php:340
-#: lib/core/class-affiliates-totals.php:729
-#: lib/core/class-affiliates-totals.php:775
-#: lib/core/class-affiliates-totals.php:781
+#: lib/core/class-affiliates-totals.php:357
+#: lib/core/class-affiliates-totals.php:374
+#: lib/core/class-affiliates-totals.php:773
+#: lib/core/class-affiliates-totals.php:819
+#: lib/core/class-affiliates-totals.php:825
 msgid "Pending"
 msgstr "Ausstehend"
 
@@ -1485,7 +1532,7 @@ msgstr ""
 msgid "Please fill out the field <em>%s</em>."
 msgstr "Bitte geben Sie etwas an für das Feld <em>%s</em>."
 
-#: lib/core/wp-init.php:1565
+#: lib/core/wp-init.php:1689
 #, php-format
 msgid ""
 "Please give it a <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
@@ -1509,7 +1556,7 @@ msgstr ""
 "Bitte beachten Sie die folgenden empfohlenen Schritte zur Instandsetzung des "
 "Partnersystems."
 
-#: lib/core/class-affiliates-totals.php:609
+#: lib/core/class-affiliates-totals.php:650
 msgid "Please review the list of referrals that will be <em>closed</em>."
 msgstr ""
 "Bitte überprüfen Sie die Liste der Transaktionen die <em>geschlossen</em> "
@@ -1518,7 +1565,7 @@ msgstr ""
 #: lib/core/affiliates-admin-hits-affiliate.php:549
 #: lib/core/affiliates-admin-hits.php:478
 #: lib/core/affiliates-admin-referrals.php:394
-#: lib/core/class-affiliates-totals.php:766
+#: lib/core/class-affiliates-totals.php:810
 msgid "Post"
 msgstr "Artikel"
 
@@ -1575,7 +1622,7 @@ msgid "Reference"
 msgstr "Referenz"
 
 #: lib/core/affiliates-admin-user-registration.php:212
-#: lib/core/class-affiliates-totals.php:344
+#: lib/core/class-affiliates-totals.php:378
 msgid "Referral Status"
 msgstr "Transaktionsstatus"
 
@@ -1585,11 +1632,12 @@ msgstr "Empfehlungs-Zeitbegrenzung"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:333
 #: lib/core/affiliates-admin-hits-affiliate.php:543
+#: lib/core/affiliates-admin-hits-uri.php:285
 #: lib/core/affiliates-admin-hits.php:298
 #: lib/core/affiliates-admin-hits.php:472
 #: lib/core/affiliates-admin-referrals.php:255
-#: lib/core/class-affiliates-settings.php:62 lib/core/wp-init.php:1337
-#: lib/core/wp-init.php:1338
+#: lib/core/class-affiliates-settings.php:62 lib/core/wp-init.php:1461
+#: lib/core/wp-init.php:1462
 msgid "Referrals"
 msgstr "Transaktionen"
 
@@ -1615,17 +1663,17 @@ msgstr "Benachrichtigungen zur Registrierung"
 #: lib/core/affiliates-admin-user-registration.php:197
 #: lib/core/affiliates-admin.php:327 lib/core/affiliates-admin.php:455
 #: lib/core/class-affiliates-settings-referrals.php:83
-#: lib/core/class-affiliates-totals.php:341
-#: lib/core/class-affiliates-totals.php:730
-#: lib/core/class-affiliates-totals.php:776
-#: lib/core/class-affiliates-totals.php:782
+#: lib/core/class-affiliates-totals.php:375
+#: lib/core/class-affiliates-totals.php:774
+#: lib/core/class-affiliates-totals.php:820
+#: lib/core/class-affiliates-totals.php:826
 msgid "Rejected"
 msgstr "Abgelehnt"
 
 #: lib/core/affiliates-admin-affiliates-remove.php:82
 #: lib/core/affiliates-admin-affiliates-remove.php:214
-#: lib/core/affiliates-admin-affiliates.php:431
-#: lib/core/affiliates-admin-affiliates.php:647
+#: lib/core/affiliates-admin-affiliates.php:449
+#: lib/core/affiliates-admin-affiliates.php:665
 #: lib/core/affiliates-admin-referral-remove.php:148
 #: lib/core/affiliates-admin-referrals.php:628
 #: lib/core/class-affiliates-settings-registration.php:217
@@ -1636,7 +1684,7 @@ msgstr "Entfernen"
 msgid "Remove a Referral"
 msgstr "Transaktion löschen"
 
-#: lib/core/affiliates-admin-affiliates.php:550
+#: lib/core/affiliates-admin-affiliates.php:568
 msgid "Remove affiliate"
 msgstr "Partner löschen"
 
@@ -1661,11 +1709,12 @@ msgstr "Wiederhole %s"
 msgid "Required"
 msgstr "Erforderlich"
 
-#: lib/core/affiliates-admin-affiliates.php:522
+#: lib/core/affiliates-admin-affiliates.php:540
 #: lib/core/affiliates-admin-hits-affiliate.php:445
+#: lib/core/affiliates-admin-hits-uri.php:357
 #: lib/core/affiliates-admin-hits.php:381
 #: lib/core/affiliates-admin-referrals.php:528
-#: lib/core/class-affiliates-totals.php:393
+#: lib/core/class-affiliates-totals.php:428
 msgid "Results per page"
 msgstr "Resultate pro Seite"
 
@@ -1685,7 +1734,7 @@ msgstr "Robots"
 msgid "Role"
 msgstr "Rolle"
 
-#: lib/core/affiliates-admin-affiliates-edit.php:187
+#: lib/core/affiliates-admin-affiliates-edit.php:208
 #: lib/core/affiliates-admin-referral-edit.php:250
 #: lib/core/affiliates-admin-user-registration.php:238
 #: lib/core/class-affiliates-admin-notifications.php:159
@@ -1721,15 +1770,15 @@ msgstr ""
 "Dem Administrator eine E-Mail senden wenn ein neues Partnerkonto erstellt "
 "ist."
 
-#: lib/core/affiliates-admin-affiliates.php:552
+#: lib/core/affiliates-admin-affiliates.php:570
 msgid "Set status to Active"
 msgstr "Status auf Aktiv setzen"
 
-#: lib/core/affiliates-admin-affiliates.php:551
+#: lib/core/affiliates-admin-affiliates.php:569
 msgid "Set status to Pending"
 msgstr "Status auf Ausstehend setzen"
 
-#: lib/core/class-affiliates-settings.php:184 lib/core/wp-init.php:1366
+#: lib/core/class-affiliates-settings.php:184 lib/core/wp-init.php:1490
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -1737,11 +1786,11 @@ msgstr "Einstellungen"
 msgid "Settings saved."
 msgstr "Einstellungen gespeichert."
 
-#: lib/core/affiliates-admin-affiliates.php:506
+#: lib/core/affiliates-admin-affiliates.php:524
 msgid "Show accumulated referral totals"
 msgstr "Gesamtsumme der Transaktionen anzeigen"
 
-#: lib/core/class-affiliates-dashboard-widget.php:151
+#: lib/core/class-affiliates-dashboard-widget.php:152
 msgid ""
 "Shows accumulated referral totals for all time when left empty, or for the "
 "last number of days set."
@@ -1753,19 +1802,29 @@ msgstr ""
 msgid "Sign Up"
 msgstr "Registrieren"
 
+#: lib/core/affiliates-admin-affiliates-add.php:57
+#: lib/core/affiliates-admin-affiliates-edit.php:110
+msgid "Something went wrong."
+msgstr ""
+
+#: lib/core/affiliates-admin-hits-uri.php:286
+#: lib/core/affiliates-admin-hits-uri.php:335
+msgid "Source URI"
+msgstr ""
+
 #: lib/core/affiliates-admin.php:414
 msgid "Statistics Summary"
 msgstr "Statistischer Überblick"
 
-#: lib/core/affiliates-admin-affiliates-edit.php:173
-#: lib/core/affiliates-admin-affiliates.php:429
+#: lib/core/affiliates-admin-affiliates-edit.php:194
+#: lib/core/affiliates-admin-affiliates.php:447
 #: lib/core/affiliates-admin-hits-affiliate.php:404
 #: lib/core/affiliates-admin-referral-edit.php:229
 #: lib/core/affiliates-admin-referral-remove.php:131
 #: lib/core/affiliates-admin-referrals.php:398
 #: lib/core/affiliates-admin-referrals.php:441
 #: lib/core/class-affiliates-settings-registration.php:151
-#: lib/core/class-affiliates-totals.php:770
+#: lib/core/class-affiliates-totals.php:814
 msgid "Status"
 msgstr "Status"
 
@@ -1786,7 +1845,7 @@ msgstr "Bedingungen und Konditionen"
 msgid "Terms page: <em>%s</em>"
 msgstr "Seite mit den Bedingungen: <em>%s</em>"
 
-#: lib/core/wp-init.php:1562
+#: lib/core/wp-init.php:1686
 msgid ""
 "Thank you for using the <a style=\"text-decoration:none;\" href=\"http://www."
 "itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by "
@@ -1857,7 +1916,7 @@ msgstr ""
 "vorgeschlagene Name ist <em>nicht gültig</em>. Nur kleine Buchstaben und der "
 "Unterstrich _ darf darin vorkommen."
 
-#: lib/core/wp-init.php:1468
+#: lib/core/wp-init.php:1592
 msgid ""
 "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that "
 "can be used to record lead referrals."
@@ -1950,7 +2009,12 @@ msgstr ""
 "Der Status von Transaktionen die Kommissionen aufzeichnen when Partner neue "
 "Nutzer empfehlen."
 
-#: lib/core/affiliates-admin-affiliates.php:626
+#: lib/core/affiliates-admin-affiliates-add.php:54
+#: lib/core/affiliates-admin-affiliates-edit.php:107
+msgid "The username does not exist."
+msgstr ""
+
+#: lib/core/affiliates-admin-affiliates.php:644
 #, php-format
 msgid ""
 "There are different email addresses on record for the affiliate and the "
@@ -1969,12 +2033,13 @@ msgstr "Es sind keine Partner vorhanden."
 msgid "There are no earnings yet."
 msgstr "Es gibt noch keine Einkünfte."
 
-#: lib/core/affiliates-admin-affiliates.php:731
+#: lib/core/affiliates-admin-affiliates.php:749
 #: lib/core/affiliates-admin-hits-affiliate.php:634
+#: lib/core/affiliates-admin-hits-uri.php:425
 #: lib/core/affiliates-admin-hits.php:556
 #: lib/core/affiliates-admin-referrals.php:707
-#: lib/core/class-affiliates-totals.php:480
-#: lib/core/class-affiliates-totals.php:812
+#: lib/core/class-affiliates-totals.php:515
+#: lib/core/class-affiliates-totals.php:856
 msgid "There are no results."
 msgstr "Keine Resultate."
 
@@ -1992,12 +2057,12 @@ msgid_plural "There are %d operative affiliates"
 msgstr[0] "Ein Partner is operativ"
 msgstr[1] "Es sind %d Partner operativ"
 
-#: lib/core/class-affiliates-totals.php:749
+#: lib/core/class-affiliates-totals.php:793
 #, php-format
 msgid "These referrals could not be updated to <em>%s</em>."
 msgstr "Diese Transaktionen konnten nicht auf <em>%s</em> aktualisiert werden."
 
-#: lib/core/class-affiliates-totals.php:741
+#: lib/core/class-affiliates-totals.php:785
 #, php-format
 msgid ""
 "These referrals have been omitted because their status must not be changed "
@@ -2006,12 +2071,12 @@ msgstr ""
 "Diese Transaktionen wurden übersprungen da ihr Status nicht auf <em>%s</em> "
 "gesetzt werden darf."
 
-#: lib/core/class-affiliates-totals.php:734
+#: lib/core/class-affiliates-totals.php:778
 #, php-format
 msgid "These referrals have been updated to <em>%s</em>."
 msgstr "Diese Transaktionen wurden auf <em>%s</em> aktualisiert."
 
-#: lib/core/class-affiliates-totals.php:673
+#: lib/core/class-affiliates-totals.php:717
 msgid "This action can not be undone*."
 msgstr "Dies kann nicht rückgängig gemacht werden*."
 
@@ -2065,7 +2130,7 @@ msgstr ""
 "Diese light Integration eignet sich zur Verwendung mit dem <a href=\"http://"
 "wordpress.org/plugins/affiliates/\">Affiliates</a> Plugin."
 
-#: lib/core/wp-init.php:1489
+#: lib/core/wp-init.php:1613
 msgid ""
 "This link uses a parameter in the URL to record visits you receive through "
 "your affiliates."
@@ -2172,7 +2237,7 @@ msgstr ""
 msgid "This referral does not exist."
 msgstr "Diese Transaktion existiert nicht."
 
-#: lib/core/wp-init.php:1456
+#: lib/core/wp-init.php:1580
 msgid "This screen offers an overview with basic statistical data."
 msgstr ""
 "Diese Ansicht bietet eine Übersicht mit grundlegenden statistischen Daten."
@@ -2230,7 +2295,7 @@ msgid ""
 msgstr ""
 "Um als Beispiel zu dienen wie man die API des Affiliates Plugins verwendet."
 
-#: lib/core/wp-init.php:1469
+#: lib/core/wp-init.php:1593
 #, php-format
 msgid ""
 "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
@@ -2238,16 +2303,21 @@ msgstr ""
 "Um es zu verwenden, ziehen Sie das Widget auf einen <a href=\"%s"
 "\">Widgetbereich</a>."
 
-#: lib/core/class-affiliates-totals.php:295
+#: lib/core/class-affiliates-totals.php:310
 msgid "Total"
 msgstr "Summe"
 
-#: lib/core/class-affiliates-totals.php:157 lib/core/wp-init.php:1351
-#: lib/core/wp-init.php:1352
+#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1475
+#: lib/core/wp-init.php:1476
 msgid "Totals"
 msgstr "Summen"
 
-#: lib/core/affiliates-admin-affiliates.php:657
+#: lib/core/affiliates-admin-hits-uri.php:148 lib/core/wp-init.php:1448
+#: lib/core/wp-init.php:1449
+msgid "Traffic"
+msgstr ""
+
+#: lib/core/affiliates-admin-affiliates.php:675
 msgid "URL Parameter"
 msgstr "URL Parameter"
 
@@ -2259,14 +2329,15 @@ msgstr ""
 "Um Transaktionen aufzuzeichnen müssen die Partnerlinks den Namen des "
 "jetzigen URL Parameters berücksichtigen."
 
-#: lib/core/affiliates-admin-affiliates-add.php:103
-#: lib/core/affiliates-admin-affiliates-edit.php:162
-#: lib/core/affiliates-admin-affiliates.php:428
-#: lib/core/affiliates-admin-affiliates.php:474
+#: lib/core/affiliates-admin-affiliates-add.php:124
+#: lib/core/affiliates-admin-affiliates-edit.php:183
+#: lib/core/affiliates-admin-affiliates.php:446
+#: lib/core/affiliates-admin-affiliates.php:492
 #: lib/core/affiliates-admin-hits-affiliate.php:397
+#: lib/core/affiliates-admin-hits-uri.php:328
 #: lib/core/affiliates-admin-hits.php:341
 #: lib/core/affiliates-admin-referrals.php:483
-#: lib/core/affiliates-admin.php:151 lib/core/class-affiliates-totals.php:377
+#: lib/core/affiliates-admin.php:151 lib/core/class-affiliates-totals.php:411
 msgid "Until"
 msgstr "Bis"
 
@@ -2280,7 +2351,7 @@ msgstr "Bis : %s"
 msgid "Up"
 msgstr "Hoch"
 
-#: lib/core/class-affiliates-totals.php:732
+#: lib/core/class-affiliates-totals.php:776
 msgid "Updated"
 msgstr "Aktualisiert"
 
@@ -2293,8 +2364,8 @@ msgstr ""
 "Verwenden Sie die <a href=\"%s\">Einstellungen</a> um das System jederzeit "
 "anzupassen."
 
-#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1378
-#: lib/core/wp-init.php:1379
+#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1502
+#: lib/core/wp-init.php:1503
 msgid "User Registration"
 msgstr "Nutzerregistrierung"
 
@@ -2303,12 +2374,12 @@ msgid ""
 "User registrations do not require a specific integration to be installed."
 msgstr "Die Registrierung von Nutzern benötigt keine spezifische Integration."
 
-#: lib/core/affiliates-admin-affiliates-add.php:83
-#: lib/core/affiliates-admin-affiliates-edit.php:138
-#: lib/core/affiliates-admin-affiliates.php:426
-#: lib/core/affiliates-admin-affiliates.php:461
+#: lib/core/affiliates-admin-affiliates-add.php:104
+#: lib/core/affiliates-admin-affiliates-edit.php:159
+#: lib/core/affiliates-admin-affiliates.php:444
+#: lib/core/affiliates-admin-affiliates.php:479
 #: lib/core/class-affiliates-settings-registration.php:55
-#: lib/core/class-affiliates-totals.php:294
+#: lib/core/class-affiliates-totals.php:309
 msgid "Username"
 msgstr "Nutzername"
 
@@ -2352,7 +2423,7 @@ msgstr ""
 "<br/>\n"
 "Ihr Antrag dem Partnerprogramm beizutreten steht noch aus.<br/>"
 
-#: lib/core/class-affiliates-totals.php:615
+#: lib/core/class-affiliates-totals.php:656
 msgid ""
 "Usually only referrals that are <em>accepted</em> and have been paid out "
 "should be <em>closed</em>. If there are unwanted or too many referrals "
@@ -2373,12 +2444,13 @@ msgstr ""
 msgid "Visitors"
 msgstr "Besucher"
 
+#: lib/core/affiliates-admin-hits-uri.php:283
 #: lib/core/affiliates-admin-hits.php:296 lib/core/affiliates-admin.php:305
 msgid "Visits"
 msgstr "Besuche"
 
-#: lib/core/affiliates-admin-hits.php:166 lib/core/wp-init.php:1311
-#: lib/core/wp-init.php:1312
+#: lib/core/affiliates-admin-hits.php:166 lib/core/wp-init.php:1422
+#: lib/core/wp-init.php:1423
 msgid "Visits & Referrals"
 msgstr "Besuche & Transaktionen"
 
@@ -2462,7 +2534,7 @@ msgstr ""
 "Sie können die Seitengenerierung verwenden um einen Partnerbereich für ihre "
 "Partner zu erstellen."
 
-#: lib/core/wp-init.php:1491
+#: lib/core/wp-init.php:1615
 #, php-format
 msgid "You may also append the ?%s=... part to links to your posts."
 msgstr "Sie können auch den Teil ?%s=... zu Links hinzufügen."

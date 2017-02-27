@@ -241,7 +241,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			 __( 'Redirect to destination without Affiliate URL parameter, after a hit on an affiliate link has been detected.', 'affiliates' ) .
+			__( 'Redirect to destination without Affiliate URL parameter, after a hit on an affiliate link has been detected.', 'affiliates' ) .
 			'</p>';
 
 		echo

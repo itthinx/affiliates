@@ -138,4 +138,33 @@ class Affiliates_Service {
 		return apply_filters( 'affiliates_service_ids', $result, $service );
 	}
 
+	/**
+	 * Returns the hit ID based on hash if present and valid, otherwise null.
+	 * 
+	 * @param string $service
+	 * @return int hit ID or null
+	 */
+	public static function get_hit_id( $service = null ) {
+
+		global $wpdb;
+
+		$result = null;
+		switch ( $service ) {
+			default :
+				if ( isset( $_COOKIE[AFFILIATES_HASH_COOKIE_NAME] ) ) {
+					$affiliate_id = self::get_referrer_id( $service );
+					$hash = trim( $_COOKIE[AFFILIATES_HASH_COOKIE_NAME] );
+					$hits_table = _affiliates_get_tablename( 'hits' );
+					$row = $wpdb->get_row( $wpdb->prepare(
+						"SELECT hit_id, hash, affiliate_id FROM $hits_table WHERE affiliate_id = %d AND hash = %s",
+						intval( $affiliate_id ),
+						$hash
+					) );
+					if ( $row && !empty( $row->hit_id ) ) {
+						$result = $row->hit_id;
+					}
+				}
+		}
+		return $result;
+	}
 }

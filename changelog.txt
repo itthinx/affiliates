@@ -1,5 +1,20 @@
 == Affiliates - Changelog ==
 
+= 2.17.0 =
+* Added a new Traffic section with URI stats.
+* Source URIs and landing URIs are stored for hits on affiliate links.
+* User agents are stored for hits on affiliate links.
+* Hit stats now show user agents in the Visits & Referrals section.
+* Hit stats now show source and landing URIs in the Visits & Referrals section.
+* Hit stats now show user agents in the Affiliates & Referrals section.
+* Hit stats now show source and landing URIs in the Affiliates & Referrals section.
+* Added hit references for referrals.
+* Improved request handling to exclude during AJAX.
+
+= 2.16.7 =
+* Changing the username related to an affiliate if the username doesn't exist shows an error.
+* Added notifications when add/edit/remove affiliates from the dashboard.
+
 = 2.16.6 =
 * Totals : allow to filter by affiliate status.
 * WordPress 4.7 compatibility tested.
