@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2017-02-26 18:49+0100\n"
+        "POT-Creation-Date: 2017-02-27 12:19+0100\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,7 @@ msgid   "(removed)"
 msgstr  ""
 
 #: lib/core/affiliates-admin-hits-uri.php:575
-#: lib/core/affiliates-admin-hits.php:570
+#: lib/core/affiliates-admin-hits.php:577
 #, php-format
 msgid   "* Date is given for the server's time zone : %s, which has an offset "
         "of %s hours with respect to GMT."
@@ -377,12 +377,12 @@ msgstr  ""
 #: lib/core/affiliates-admin-hits-affiliate.php:330
 #: lib/core/affiliates-admin-hits-affiliate.php:343
 #: lib/core/affiliates-admin-hits-affiliate.php:550
-#: lib/core/affiliates-admin-hits-affiliate.php:613
+#: lib/core/affiliates-admin-hits-affiliate.php:616
 #: lib/core/affiliates-admin-hits-uri.php:380
 #: lib/core/affiliates-admin-hits-uri.php:394
 #: lib/core/affiliates-admin-hits.php:305
 #: lib/core/affiliates-admin-hits.php:473
-#: lib/core/affiliates-admin-hits.php:530
+#: lib/core/affiliates-admin-hits.php:533
 #: lib/core/affiliates-admin-referral-edit.php:167
 #: lib/core/affiliates-admin-referral-remove.php:94
 #: lib/core/affiliates-admin-referrals.php:395
@@ -725,7 +725,7 @@ msgstr  ""
 msgid   "Contact Form 7"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:612
+#: lib/core/affiliates-admin-hits-affiliate.php:615
 msgid   "Count"
 msgstr  ""
 
@@ -759,7 +759,7 @@ msgstr  ""
 msgid   "Data"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:609
+#: lib/core/affiliates-admin-hits-affiliate.php:612
 #: lib/core/affiliates-admin-hits-uri.php:379
 #: lib/core/affiliates-admin-hits.php:292
 #: lib/core/affiliates-admin-referrals.php:393
@@ -1044,10 +1044,10 @@ msgid   "Hide this"
 msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:332
-#: lib/core/affiliates-admin-hits-affiliate.php:604
+#: lib/core/affiliates-admin-hits-affiliate.php:607
 #: lib/core/affiliates-admin-hits-uri.php:382
 #: lib/core/affiliates-admin-hits.php:294
-#: lib/core/affiliates-admin-hits.php:523 lib/core/affiliates-admin.php:298
+#: lib/core/affiliates-admin-hits.php:526 lib/core/affiliates-admin.php:298
 msgid   "Hits"
 msgstr  ""
 
@@ -1060,8 +1060,8 @@ msgstr  ""
 msgid   "I do not know how to delete what does not exist."
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:611
-#: lib/core/affiliates-admin-hits.php:529
+#: lib/core/affiliates-admin-hits-affiliate.php:614
+#: lib/core/affiliates-admin-hits.php:532
 msgid   "IP"
 msgstr  ""
 
@@ -1173,8 +1173,10 @@ msgstr  ""
 msgid   "Jigoshop (light)"
 msgstr  ""
 
+#: lib/core/affiliates-admin-hits-affiliate.php:618
 #: lib/core/affiliates-admin-hits-uri.php:385
 #: lib/core/affiliates-admin-hits-uri.php:460
+#: lib/core/affiliates-admin-hits.php:535
 msgid   "Landing URI"
 msgstr  ""
 
@@ -1645,8 +1647,10 @@ msgstr  ""
 msgid   "Something went wrong."
 msgstr  ""
 
+#: lib/core/affiliates-admin-hits-affiliate.php:617
 #: lib/core/affiliates-admin-hits-uri.php:384
 #: lib/core/affiliates-admin-hits-uri.php:454
+#: lib/core/affiliates-admin-hits.php:534
 msgid   "Source URI"
 msgstr  ""
 
@@ -1832,9 +1836,9 @@ msgid   "There are no earnings yet."
 msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:751
-#: lib/core/affiliates-admin-hits-affiliate.php:638
+#: lib/core/affiliates-admin-hits-affiliate.php:645
 #: lib/core/affiliates-admin-hits-uri.php:557
-#: lib/core/affiliates-admin-hits.php:553
+#: lib/core/affiliates-admin-hits.php:560
 #: lib/core/affiliates-admin-referrals.php:707
 #: lib/core/class-affiliates-totals.php:515
 #: lib/core/class-affiliates-totals.php:856
@@ -2005,9 +2009,9 @@ msgid   "This should normally be enabled, so that new affiliates receive "
 msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:548
-#: lib/core/affiliates-admin-hits-affiliate.php:610
+#: lib/core/affiliates-admin-hits-affiliate.php:613
 #: lib/core/affiliates-admin-hits.php:471
-#: lib/core/affiliates-admin-hits.php:528
+#: lib/core/affiliates-admin-hits.php:531
 msgid   "Time"
 msgstr  ""
 
@@ -2089,8 +2093,8 @@ msgid   "Use the <a href=\"%s\">Settings</a> section to review or adjust the "
         "system anytime."
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:614
-#: lib/core/affiliates-admin-hits.php:531
+#: lib/core/affiliates-admin-hits-affiliate.php:619
+#: lib/core/affiliates-admin-hits.php:536
 msgid   "User Agent"
 msgstr  ""
 
