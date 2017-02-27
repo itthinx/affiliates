@@ -143,6 +143,7 @@ div.details-hits {
 .affiliates-overview .page-options,
 .hits-overview .page-options,
 .hits-affiliates-overview .page-options,
+.hits-uris-overview .page-options,
 .referrals-overview .page-options {
 	float: left;
 	display: inline;
@@ -152,26 +153,29 @@ div.details-hits {
 .affiliates-overview .tablenav.top,
 .hits-overview .tablenav.top,
 .hits-affiliates-overview .tablenav.top,
+.hits-uris-overview .tablenav.top,
 .referrals-overview .tablenav.top {
 	display: inline;
 	width: 250px;
 }
 
 .hits-overview .odd,
-.hits-affiliates-overview .odd {
-  background-color: #fff;
+.hits-affiliates-overview .odd,
+.hits-uris-overview .odd {
+	background-color: #fff;
 }
 
 .hits-overview .even,
-.hits-affiliates-overview .even {
-  background-color: #f9f9f9;
+.hits-affiliates-overview .even,
+.hits-uris-overview .even {
+	background-color: #f9f9f9;
 }
 
 .referrals-overview .odd {
-  background-color: #fcfcfc;
+	background-color: #fcfcfc;
 }
 .referrals-overview .even {
-  background-color: #f3f3f3;
+	background-color: #f3f3f3;
 }
 .referrals-overview .even .widefat,
 .referrals-overview .odd .widefat {
