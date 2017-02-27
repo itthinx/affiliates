@@ -506,11 +506,14 @@ function affiliates_admin_hits() {
 					}
 
 					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+					$uris_table = _affiliates_get_tablename( 'uris' );
 					$details_query = $wpdb->prepare(
-						"SELECT *
+						"SELECT h.*, a.*, ua.*, src.uri src_uri, dest.uri dest_uri
 						FROM $hits_table h
 						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 						LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id
+						LEFT JOIN $uris_table src ON h.src_uri_id = src.uri_id
+						LEFT JOIN $uris_table dest ON h.dest_uri_id = dest.uri_id
 						$details_filters
 						ORDER BY $details_orderby
 						",
@@ -528,6 +531,8 @@ function affiliates_admin_hits() {
 						<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>
 						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
 						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>
 						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
 						</tr>
 						</thead>
@@ -539,6 +544,8 @@ function affiliates_admin_hits() {
 						$output .= '<td class="time">' . DateHelper::s2u( $hit->datetime ) . '</td>';
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
+						$output .= "<td class='src-uri'>" . esc_html( $hit->src_uri ) . "</td>";
+						$output .= "<td class='dest-uri'>" . esc_html( $hit->dest_uri ) . "</td>";
 						$output .= "<td class='hit-user-agent'>" . esc_html( $hit->user_agent ) . "</td>";
 						$output .= '</tr>';
 					}

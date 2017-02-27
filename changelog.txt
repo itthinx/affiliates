@@ -5,7 +5,9 @@
 * Source URIs and landing URIs are stored for hits on affiliate links.
 * User agents are stored for hits on affiliate links.
 * Hit stats now show user agents in the Visits & Referrals section.
+* Hit stats now show source and landing URIs in the Visits & Referrals section.
 * Hit stats now show user agents in the Affiliates & Referrals section.
+* Hit stats now show source and landing URIs in the Affiliates & Referrals section.
 * Added hit references for referrals.
 * Improved request handling to exclude during AJAX.
 
