@@ -322,19 +322,19 @@ function affiliates_setup() {
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referrals_table . "'" ) != $referrals_table ) {
 		$queries[] = "CREATE TABLE " . $referrals_table . "(
 				referral_id  BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-				affiliate_id bigint(20) unsigned NOT NULL default '0',
-				campaign_id  bigint(20) UNSIGNED DEFAULT NULL,
-				post_id      bigint(20) unsigned NOT NULL default '0',
-				datetime     datetime NOT NULL,
-				description  varchar(5000),
-				ip           int(10) unsigned default NULL,
-				ipv6         decimal(39,0) unsigned default NULL,
-				user_id      bigint(20) unsigned default NULL,
-				amount       decimal(18,2) default NULL,
-				currency_id  char(3) default NULL,
-				data         longtext default NULL,
-				status       varchar(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
-				type         varchar(10) NULL,
+				affiliate_id BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+				campaign_id  BIGINT(20) UNSIGNED DEFAULT NULL,
+				post_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+				datetime     DATETIME NOT NULL,
+				description  VARCHAR(5000),
+				ip           INT(10) UNSIGNED DEFAULT NULL,
+				ipv6         DECIMAL(39,0) UNSIGNED DEFAULT NULL,
+				user_id      BIGINT(20) UNSIGNED DEFAULT NULL,
+				amount       DECIMAL(24,6) DEFAULT NULL,
+				currency_id  CHAR(3) DEFAULT NULL,
+				data         LONGTEXT DEFAULT NULL,
+				status       VARCHAR(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
+				type         VARCHAR(10) NULL,
 				reference    VARCHAR(100) DEFAULT NULL,
 				hit_id       BIGINT(20) UNSIGNED DEFAULT NULL,
 				PRIMARY KEY  (referral_id),
@@ -415,8 +415,8 @@ function affiliates_setup() {
 	$robots_table = _affiliates_get_tablename( 'robots' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $robots_table . "'" ) != $robots_table ) {
 		$queries[] = "CREATE TABLE " . $robots_table . "(
-				robot_id    bigint(20) unsigned NOT NULL auto_increment,
-				name        varchar(100) NOT NULL,
+				robot_id    BIGINT(20) UNSIGNED NOT NULL auto_increment,
+				name        VARCHAR(100) NOT NULL,
 				PRIMARY KEY (robot_id),
 				INDEX       aff_robots_n (name)
 			) $charset_collate;";
@@ -424,8 +424,8 @@ function affiliates_setup() {
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_users_table . "'" ) != $affiliates_users_table ) {
 		$queries[] = "CREATE TABLE " . $affiliates_users_table . "(
-				affiliate_id bigint(20) unsigned NOT NULL,
-				user_id      bigint(20) unsigned NOT NULL,
+				affiliate_id BIGINT(20) UNSIGNED NOT NULL,
+				user_id      BIGINT(20) UNSIGNED NOT NULL,
 				PRIMARY KEY (affiliate_id, user_id)
 			) $charset_collate;";
 	}
@@ -584,6 +584,11 @@ function affiliates_update( $previous_version = null ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
 		ADD COLUMN hit_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_h (hit_id);";
+	}
+	// Referrals amount precision to DECIMAL(24,6) ... from 3.0.0
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
 	// MySQL 5.7.3 PK requirements

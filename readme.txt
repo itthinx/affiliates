@@ -3,8 +3,8 @@ Contributors: itthinx, proaktion
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
-Tested up to: 4.7.2
-Stable tag: 2.17.0
+Tested up to: 4.7.3
+Stable tag: 3.0.0
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -346,6 +346,12 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 == Changelog ==
 
+= 3.0.0 =
+* This is a major new release of the plugin, please make sure to back up your site and database
+  before your upgrade and make sure to review the changelog to be aware of the implications of
+  upgrading to this version.
+* Enhanced the precision with which referral values are stored.
+
 = 2.17.0 =
 * Added a new Traffic section with URI stats.
 * Source URIs and landing URIs are stored for hits on affiliate links.
@@ -389,5 +395,7 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 
 == Upgrade Notice ==
 
-= 2.17.0 =
-* This release adds a new Traffic section and stores source and destination URIs and user agents for incoming affiliate links.
+= 3.0.0 =
+* This is a major new release of the plugin, please make sure to back up your site and database
+  before your upgrade and make sure to review the changelog to be aware of the implications of
+  upgrading to this version.
