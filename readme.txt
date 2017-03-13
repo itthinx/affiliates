@@ -352,6 +352,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
   upgrading to this version.
 * Enhanced the precision with which referral values are stored.
 * Enhances the data model to allow for fine-grained referrals.
+* Fixed an issue on affiliates_earnings shortcode related to dates and next month.
 
 = 2.17.0 =
 * Added a new Traffic section with URI stats.
