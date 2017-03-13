@@ -350,6 +350,22 @@ function affiliates_setup() {
 		// @see http://bugs.mysql.com/bug.php?id=27645 as of now (2011-03-19) NOW() can not be specified as the default value for a datetime column
 	}
 
+	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
+		$queries[] = "CREATE TABLE " . $referral_items_table . "(
+			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+			referral_id      BIGINT(20) UNSIGNED DEFAULT NOT NULL DEFAULT '0',
+			amount           DECIMAL(24,6) DEFAULT NULL,
+			currency_id      CHAR(3) DEFAULT NULL,
+			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
+			type             VARCHAR(10) NULL,
+			reference        VARCHAR(100) DEFAULT NULL,
+			PRIMARY KEY      (referral_item_id),
+			INDEX            referral_id (referral_id),
+			INDEX            reference (reference(20))
+		) $charset_collate;";
+	}
+
 	// IMPORTANT:
 	// datetime -- records the datetime with respect to the server's timezone
 	// date and time are are also with respect to the server's timezone
@@ -589,6 +605,23 @@ function affiliates_update( $previous_version = null ) {
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
 		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
+	}
+
+	// add the referral_items table
+	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
+		$queries[] = "CREATE TABLE " . $referral_items_table . "(
+			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+			referral_id      BIGINT(20) UNSIGNED DEFAULT NOT NULL DEFAULT '0',
+			amount           DECIMAL(24,6) DEFAULT NULL,
+			currency_id      CHAR(3) DEFAULT NULL,
+			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
+			type             VARCHAR(10) NULL,
+			reference        VARCHAR(100) DEFAULT NULL,
+			PRIMARY KEY      (referral_item_id),
+			INDEX            referral_id (referral_id),
+			INDEX            reference (reference(20))
+		) $charset_collate;";
 	}
 
 	// MySQL 5.7.3 PK requirements

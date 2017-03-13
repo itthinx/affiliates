@@ -351,6 +351,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
   before your upgrade and make sure to review the changelog to be aware of the implications of
   upgrading to this version.
 * Enhanced the precision with which referral values are stored.
+* Enhances the data model to allow for fine-grained referrals.
 
 = 2.17.0 =
 * Added a new Traffic section with URI stats.
