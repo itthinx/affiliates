@@ -71,8 +71,12 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
     Referrals and affiliate link statistics are recorded and available instantly, as transactions are processed.
     Integration with virtually any E-Commerce platform
-    
+
     Information for affiliates on the front end: show affiliates information about their referrals including totals by currency and referral status.
+
+* Traffic Statistics
+
+    View traffic statistics per day, affiliate, source and landing page including clicks, visits and related referrals per affiliate.
 
 * Affiliates provides an API which makes it compatible to use with virtually any E-Commerce and Membership system.
 
