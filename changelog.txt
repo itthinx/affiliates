@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 2.17.1 =
+* Fixed user_agents table is not deleted on cleanup.
+* Fixed an issue related to showing earnings for certain dates.
+
 = 2.17.0 =
 * Added a new Traffic section with URI stats.
 * Source URIs and landing URIs are stored for hits on affiliate links.
