@@ -513,7 +513,9 @@ function affiliates_admin_hits_uri() {
 			$output .= '</tr>';
 		}
 	} else {
-		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="5">';
+		$output .= __( 'There are no results.', 'affiliates' );
+		$output .= '</td></tr>';
 	}
 
 	$output .= '</tbody>';
@@ -528,15 +530,14 @@ function affiliates_admin_hits_uri() {
 	}
 
 	$server_dtz = DateHelper::getServerDateTimeZone();
-	$output .=
-		'<p>' .
-			sprintf(
-				__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
-				$server_dtz->getName(),
-				$server_dtz->getOffset( new DateTime() ) / 3600.0
-			) .
-			'</p>';
-	$output .= '</div>'; // .visits-overview
+	$output .= '<p>';
+	$output .= sprintf(
+		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		$server_dtz->getName(),
+		$server_dtz->getOffset( new DateTime() ) / 3600.0
+	);
+	$output .= '</p>';
+	$output .= '</div>'; // .hits-uris-overview
 
 	echo $output;
 	affiliates_footer();
