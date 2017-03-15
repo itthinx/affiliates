@@ -276,7 +276,8 @@ function affiliates_admin_hits_uri() {
 
 	$status_condition = '';
 	if ( is_array( $status ) && count( $status ) > 0 ) {
-		$status_condition = " AND r.status IN ('" . implode( "','", $status ) . "') ";
+		$status_condition = " AND ( r.status IS NULL OR r.status IN ('" . implode( "','", $status ) . "') ) ";
+		$filters .= $status_condition;
 	}
 
 	// how many are there ?
@@ -287,9 +288,9 @@ function affiliates_admin_hits_uri() {
 		FROM $hits_table h
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
+		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
 		$having",
 		$filter_params
 	);
@@ -323,9 +324,9 @@ function affiliates_admin_hits_uri() {
 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
+		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
 		$having
 		ORDER BY $orderby $order
 		LIMIT $row_count OFFSET $offset",

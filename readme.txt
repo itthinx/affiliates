@@ -353,6 +353,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 = 2.17.1 =
 * Fixed user_agents table is not deleted on cleanup.
 * Fixed an issue related to showing earnings for certain dates.
+* Improved the traffic queries which solves performance issues with large data sets.
 
 = 2.17.0 =
 * Added a new Traffic section with URI stats.
@@ -367,4 +368,4 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 == Upgrade Notice ==
 
 = 2.17.1 =
-* This release fixes an issue related to showing earnings and another issue related to cleaning up on deletion.
+* This release fixes performance issues with large traffic data sets, an issue related to showing earnings and another issue related to cleaning up on deletion.
