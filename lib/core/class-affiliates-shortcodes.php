@@ -569,7 +569,7 @@ class Affiliates_Shortcodes {
 				$referrals_table = _affiliates_get_tablename( 'referrals' );
 				if ( $range = $wpdb->get_row( "SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ")") ) {
 					if ( !empty( $range->from_datetime ) ) { // Covers for NULL when no referrals recorded yet, too.
-						$t = strtotime(  'first day of ' . $range->from_datetime );
+						$t = strtotime( date( 'Y-m-01 00:00:00', strtotime( $range->from_datetime ) ) );
 						$eom = strtotime( date( 'Y-m-t 23:59:59', time() ) );
 						while ( $t < $eom ) {
 							$from = date( 'Y-m', $t ) . '-01 00:00:00';

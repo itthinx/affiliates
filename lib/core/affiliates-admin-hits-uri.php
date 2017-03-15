@@ -276,7 +276,8 @@ function affiliates_admin_hits_uri() {
 
 	$status_condition = '';
 	if ( is_array( $status ) && count( $status ) > 0 ) {
-		$status_condition = " AND r.status IN ('" . implode( "','", $status ) . "') ";
+		$status_condition = " AND ( r.status IS NULL OR r.status IN ('" . implode( "','", $status ) . "') ) ";
+		$filters .= $status_condition;
 	}
 
 	// how many are there ?
@@ -287,9 +288,9 @@ function affiliates_admin_hits_uri() {
 		FROM $hits_table h
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
+		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
 		$having",
 		$filter_params
 	);
@@ -310,47 +311,6 @@ function affiliates_admin_hits_uri() {
 		$offset = ( $paged - 1 ) * $row_count;
 	}
 
-	// @todo remove old query
-// 	$query = $wpdb->prepare(
-// 		"SELECT
-// 		*,
-// 		su.uri src_uri,
-// 		du.uri dest_uri,
-// 		COUNT(distinct ip) visits,
-// 		SUM(count) hits
-// 		FROM $hits_table h
-// 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-// 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-// 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-// 		$filters
-// 		GROUP BY date, su.uri, du.uri
-// 		ORDER BY $orderby $order
-// 		LIMIT $row_count OFFSET $offset",
-// 		$filter_params
-// 	);
-
-	// based on time-period between hits
-// 	$query = $wpdb->prepare(
-// 		"SELECT
-// 		h.*,
-// 		a.name,
-// 		su.uri src_uri,
-// 		du.uri dest_uri,
-// 		COUNT(distinct h.ip) visits,
-// 		SUM(count) hits,
-// 		COUNT(r.referral_id) referrals
-// 		FROM (SELECT h1.affiliate_id, h1.ip, h1.count, h1.date, h1.datetime, h1.src_uri_id, h1.dest_uri_id, (SELECT MIN(datetime) FROM $hits_table h2 WHERE h2.affiliate_id = h1.affiliate_id AND h2.datetime > h1.datetime) next_datetime FROM $hits_table h1) AS h
-// 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-// 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-// 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-// 		LEFT JOIN $referrals_table r ON r.affiliate_id = h.affiliate_id AND r.datetime >= h.datetime AND (h.next_datetime IS NULL OR r.datetime < h.next_datetime)
-// 		$filters
-// 		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
-// 		ORDER BY $orderby $order
-// 		LIMIT $row_count OFFSET $offset",
-// 		$filter_params
-// 	);
-
 	$query = $wpdb->prepare(
 		"SELECT
 		h.*,
@@ -364,9 +324,9 @@ function affiliates_admin_hits_uri() {
 		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
 		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
 		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id $status_condition
+		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
 		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri, du.uri
+		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
 		$having
 		ORDER BY $orderby $order
 		LIMIT $row_count OFFSET $offset",
@@ -554,7 +514,9 @@ function affiliates_admin_hits_uri() {
 			$output .= '</tr>';
 		}
 	} else {
-		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="5">';
+		$output .= __( 'There are no results.', 'affiliates' );
+		$output .= '</td></tr>';
 	}
 
 	$output .= '</tbody>';
@@ -569,15 +531,14 @@ function affiliates_admin_hits_uri() {
 	}
 
 	$server_dtz = DateHelper::getServerDateTimeZone();
-	$output .=
-		'<p>' .
-			sprintf(
-				__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
-				$server_dtz->getName(),
-				$server_dtz->getOffset( new DateTime() ) / 3600.0
-			) .
-			'</p>';
-	$output .= '</div>'; // .visits-overview
+	$output .= '<p>';
+	$output .= sprintf(
+		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		$server_dtz->getName(),
+		$server_dtz->getOffset( new DateTime() ) / 3600.0
+	);
+	$output .= '</p>';
+	$output .= '</div>'; // .hits-uris-overview
 
 	echo $output;
 	affiliates_footer();

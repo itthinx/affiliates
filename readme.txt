@@ -71,8 +71,12 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
     Referrals and affiliate link statistics are recorded and available instantly, as transactions are processed.
     Integration with virtually any E-Commerce platform
-    
+
     Information for affiliates on the front end: show affiliates information about their referrals including totals by currency and referral status.
+
+* Traffic Statistics
+
+    View traffic statistics per day, affiliate, source and landing page including clicks, visits and related referrals per affiliate.
 
 * Affiliates provides an API which makes it compatible to use with virtually any E-Commerce and Membership system.
 
@@ -354,6 +358,11 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Enhances the data model to allow for fine-grained referrals.
 * Fixed an issue on affiliates_earnings shortcode related to dates and next month.
 
+= 2.17.1 =
+* Fixed user_agents table is not deleted on cleanup.
+* Fixed an issue related to showing earnings for certain dates.
+* Improved the traffic queries which solves performance issues with large data sets.
+
 = 2.17.0 =
 * Added a new Traffic section with URI stats.
 * Source URIs and landing URIs are stored for hits on affiliate links.
@@ -361,37 +370,6 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Hit stats now show user agents in the Visits & Referrals section.
 * Hit stats now show user agents in the Affiliates & Referrals section.
 * Added hit references for referrals.
-
-= 2.16.7 =
-* Changing the username related to an affiliate if the username doesn't exist shows an error.
-* Added notifications when add/edit/remove affiliates from the dashboard.
-
-= 2.16.6 =
-* Totals : allow to filter by affiliate status.
-* WordPress 4.7 compatibility tested.
-
-= 2.16.5 =
-* Rendering amounts more consistently in dashboard widget.
-* Updated some Italian translations.
-
-= 2.16.4 =
-* Fixed an issue with the WooCommerce customer registration option.
-
-= 2.16.3 =
-* Updated the French translation.
-
-= 2.16.2 =
-* Updated the German translation.
-* Updated the Spanish translation.
-* Fixed wording in notifications.
-
-= 2.16.1 =
-* Updated pot and translation files.
-* Updated the Spanish translation.
-
-= 2.16.0 =
-* Added the possibility to approve new affiliates with a status option.
-* Added a Notifications section where you can enable to notify administrator and affiliates on registration.
 
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
