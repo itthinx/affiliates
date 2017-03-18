@@ -354,7 +354,7 @@ function affiliates_setup() {
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
 		$queries[] = "CREATE TABLE " . $referral_items_table . "(
 			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-			referral_id      BIGINT(20) UNSIGNED DEFAULT NOT NULL DEFAULT '0',
+			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 			amount           DECIMAL(24,6) DEFAULT NULL,
 			currency_id      CHAR(3) DEFAULT NULL,
 			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
@@ -529,6 +529,14 @@ function affiliates_update( $previous_version = null ) {
 	$result  = true;
 	$queries = array();
 
+	$charset_collate = '';
+	if ( ! empty( $wpdb->charset ) ) {
+		$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
+	}
+	if ( ! empty( $wpdb->collate ) ) {
+		$charset_collate .= " COLLATE $wpdb->collate";
+	}
+
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	$column     = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'campaign_id'" );
 	if ( empty( $column ) ) {
@@ -612,7 +620,7 @@ function affiliates_update( $previous_version = null ) {
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
 		$queries[] = "CREATE TABLE " . $referral_items_table . "(
 			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-			referral_id      BIGINT(20) UNSIGNED DEFAULT NOT NULL DEFAULT '0',
+			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 			amount           DECIMAL(24,6) DEFAULT NULL,
 			currency_id      CHAR(3) DEFAULT NULL,
 			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
