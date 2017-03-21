@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 2.18.0 =
+* Enhanced the precision with which referral values are stored.
+
 = 2.17.1 =
 * Fixed user_agents table is not deleted on cleanup.
 * Fixed an issue related to showing earnings for certain dates.

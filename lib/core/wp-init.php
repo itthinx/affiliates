@@ -330,7 +330,7 @@ function affiliates_setup() {
 				ip           int(10) unsigned default NULL,
 				ipv6         decimal(39,0) unsigned default NULL,
 				user_id      bigint(20) unsigned default NULL,
-				amount       decimal(18,2) default NULL,
+				amount       DECIMAL(24,6) DEFAULT NULL,
 				currency_id  char(3) default NULL,
 				data         longtext default NULL,
 				status       varchar(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
@@ -584,6 +584,11 @@ function affiliates_update( $previous_version = null ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
 		ADD COLUMN hit_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_h (hit_id);";
+	}
+	// Referrals amount precision to DECIMAL(24,6) ... from 2.18.0
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.18.0' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
 	// MySQL 5.7.3 PK requirements
