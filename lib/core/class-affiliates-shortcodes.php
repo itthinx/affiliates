@@ -579,7 +579,7 @@ class Affiliates_Shortcodes {
 								if ( $totals = self::get_total( $affiliate_id, $from, $thru ) ) {
 									if ( count( $totals ) > 0 ) {
 										foreach ( $totals as $currency_id => $total ) {
-											$sums[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, AFFILIATES_REFERRAL_AMOUNT_DECIMALS ) : $total;
+											$sums[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
 										}
 									}
 								}

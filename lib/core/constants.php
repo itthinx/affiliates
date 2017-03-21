@@ -139,10 +139,12 @@ define( 'AFFILIATES_ADMINISTER_OPTIONS', 'aff_admin_options');
  */
 define( 'AFFILIATES_REGISTRATION_PASSWORD_LENGTH', 12 );
 
-/** 
- * @var int decimal places for referral amount
- */
-define( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS', apply_filters( 'affiliates_referral_amount_decimals', 2 ) );
+if ( !defined( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS' ) ) {
+	/**
+	 * @var int decimal places for referral amount
+	 */
+	define( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS', 2 );
+}
 
 /**
  * @var int number of characters in currency id

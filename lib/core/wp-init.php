@@ -2342,3 +2342,13 @@ function affiliates_get_affiliate_url( $url, $affiliate_id ) {
 	}
 	return affiliates_compose_url( $components );
 }
+
+/**
+ * Returns the precision for referral amount decimals.
+ * 
+ * @param string $context provided for future extensions and passed in the filter
+ * @return int decimals for referral amounts
+ */
+function affiliates_get_referral_amount_decimals( $context = null ) {
+	return apply_filters( 'affiliates_referral_amount_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS, $context );
+}
