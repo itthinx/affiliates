@@ -2346,9 +2346,20 @@ function affiliates_get_affiliate_url( $url, $affiliate_id ) {
 /**
  * Returns the precision for referral amount decimals.
  * 
- * @param string $context provided for future extensions and passed in the filter
+ * Uses the constants :
+ * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS for empty or default context ''
+ * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY for context 'display'
+ * 
+ * @param string $context provided and passed in the filter, default '', allows also 'display'
  * @return int decimals for referral amounts
  */
 function affiliates_get_referral_amount_decimals( $context = null ) {
-	return apply_filters( 'affiliates_referral_amount_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS, $context );
+	switch( $context ) {
+		case 'display' :
+			$result = apply_filters( 'affiliates_referral_amount_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY, $context );
+			break;
+		default :
+			$result = apply_filters( 'affiliates_referral_amount_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS, $context );
+	}
+	return $result;
 }

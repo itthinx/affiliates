@@ -146,6 +146,13 @@ if ( !defined( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS' ) ) {
 	define( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS', 2 );
 }
 
+if ( !defined( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY' ) ) {
+	/**
+	 * @var int decimal places for referral amounts displayed
+	 */
+	define( 'AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY', 2 );
+}
+
 /**
  * @var int number of characters in currency id
  */

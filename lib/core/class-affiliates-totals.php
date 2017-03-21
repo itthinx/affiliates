@@ -506,7 +506,7 @@ class Affiliates_Totals {
 				$output .= "<td class='affiliate-email'>" . $result->email . "</td>";
 				$output .= "<td class='affiliate-user-login'>" . $result->user_login . "</td>";
 
-				$output .= "<td class='total'>$result->total</td>";
+				$output .= sprintf( '<td class="total">%s</td>', esc_html( bcadd( '0', $result->total, affiliates_get_referral_amount_decimals( 'display' ) ) ) );
 				$output .= "<td class='currency-id'>$result->currency_id</td>";
 
 				$output .= '</tr>';
