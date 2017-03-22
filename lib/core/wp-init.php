@@ -683,6 +683,8 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_user_registration_currency' );
 		delete_option( 'aff_user_registration_enabled' );
 		delete_option( 'aff_user_registration_referral_status' );
+		delete_site_option( 'affiliates-init-time' );
+		delete_metadata( 'user', null, 'affiliates-hide-review-notice', null, true );
 	}
 }
 
