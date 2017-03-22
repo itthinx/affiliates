@@ -851,7 +851,7 @@ class Affiliates_Totals {
 				$title = get_the_title( $result->post_id );
 				$output .= '<td class="post_title">' . wp_filter_nohtml_kses( $title ) . '</td>';
 				$output .= "<td class='name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . "</td>";
-				$output .= "<td class='amount'>" . stripslashes( wp_filter_nohtml_kses( $result->amount ) ) . "</td>";
+				$output .= "<td class='amount'>" . stripslashes( wp_filter_nohtml_kses( affiliates_format_referral_amount( $result->amount, 'display' ) ) ) . "</td>";
 				$output .= "<td class='currency_id'>" . stripslashes( wp_filter_nohtml_kses( $result->currency_id ) ) . "</td>";
 				$output .= "<td class='status'>";
 				$output .= isset( $status_icons[$result->status] ) ? $status_icons[$result->status] : '';
