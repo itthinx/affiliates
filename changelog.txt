@@ -6,6 +6,7 @@
 * Fixed the affiliates_referral_amount_decimals filter.
 * We now allow to define the constant AFFILIATES_REFERRAL_AMOUNT_DECIMALS in wp-config.php.
 * Added the AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY constant which can also be overridden in wp-config.php.
+* Added the notice class.
 
 = 2.17.1 =
 * Fixed user_agents table is not deleted on cleanup.

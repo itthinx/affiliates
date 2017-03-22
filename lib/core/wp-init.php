@@ -71,6 +71,9 @@ if ( is_admin() ) {
 	}
 }
 
+// affiliates notice
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-notice.php';
+
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
 /**
