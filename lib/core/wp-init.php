@@ -71,6 +71,9 @@ if ( is_admin() ) {
 	}
 }
 
+// affiliates notice
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-notice.php';
+
 add_action( 'widgets_init', 'affiliates_widgets_init' );
 
 /**
@@ -330,7 +333,7 @@ function affiliates_setup() {
 				ip           int(10) unsigned default NULL,
 				ipv6         decimal(39,0) unsigned default NULL,
 				user_id      bigint(20) unsigned default NULL,
-				amount       decimal(18,2) default NULL,
+				amount       DECIMAL(24,6) DEFAULT NULL,
 				currency_id  char(3) default NULL,
 				data         longtext default NULL,
 				status       varchar(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
@@ -585,6 +588,11 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN hit_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_h (hit_id);";
 	}
+	// Referrals amount precision to DECIMAL(24,6) ... from 2.18.0
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.18.0' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
+	}
 
 	// MySQL 5.7.3 PK requirements
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.15.10' ) < 0 ) {
@@ -675,6 +683,8 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_user_registration_currency' );
 		delete_option( 'aff_user_registration_enabled' );
 		delete_option( 'aff_user_registration_referral_status' );
+		delete_site_option( 'affiliates-init-time' );
+		delete_metadata( 'user', null, 'affiliates-hide-review-notice', null, true );
 	}
 }
 
@@ -2336,4 +2346,41 @@ function affiliates_get_affiliate_url( $url, $affiliate_id ) {
 		$components['query'] = $query;
 	}
 	return affiliates_compose_url( $components );
+}
+
+/**
+ * Returns the precision for referral amount decimals.
+ * 
+ * Uses the constants :
+ * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS for empty or default context ''
+ * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY for context 'display'
+ * 
+ * @param string $context provided and passed in the filter, default '', allows also 'display'
+ * @return int decimals for referral amounts
+ */
+function affiliates_get_referral_amount_decimals( $context = null ) {
+	switch( $context ) {
+		case 'display' :
+			$result = apply_filters( 'affiliates_referral_amount_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY, $context );
+			break;
+		default :
+			$result = apply_filters( 'affiliates_referral_amount_decimals', AFFILIATES_REFERRAL_AMOUNT_DECIMALS, $context );
+	}
+	return $result;
+}
+
+/**
+ * Returns the referral amount formatted.
+ * 
+ * @param number $amount
+ * @param string $context see affiliates_get_referral_amount_decimals()
+ * @return string
+ */
+function affiliates_format_referral_amount( $amount, $context = '' ) {
+	if ( function_exists( 'bcadd' ) ) {
+		return bcadd( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
+	} else {
+		$scale = intval( affiliates_get_referral_amount_decimals( $context ) );
+		return sprintf( '%.' . $scale . 'F', $amount );
+	}
 }

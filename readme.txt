@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: ads, AddToAny, AddThis, advertising, affiliate, affiliate marketing, affiliate plugin, affiliate tool, affiliates, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral, referral links, referrer, sales, shopping cart, TheCartPress, track, transaction, WooCommerce, WP e-Commerce
 Requires at least: 4.0.0
 Tested up to: 4.7.3
-Stable tag: 2.17.1
+Stable tag: 2.18.0
 License: GPLv3
 
 The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
@@ -350,6 +350,14 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 == Changelog ==
 
+= 2.18.0 =
+* Enhanced the precision with which referral values are stored.
+* Added the affiliates_get_referral_amount_decimals() and affiliates_format_referral_amount() functions.
+* Fixed the affiliates_referral_amount_decimals filter.
+* We now allow to define the constant AFFILIATES_REFERRAL_AMOUNT_DECIMALS in wp-config.php.
+* Added the AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY constant which can also be overridden in wp-config.php.
+* Added the notice class.
+
 = 2.17.1 =
 * Fixed user_agents table is not deleted on cleanup.
 * Fixed an issue related to showing earnings for certain dates.
@@ -367,5 +375,5 @@ The complete historical list of changes by version is in the [changelog.txt](htt
 
 == Upgrade Notice ==
 
-= 2.17.1 =
-* This release fixes performance issues with large traffic data sets, an issue related to showing earnings and another issue related to cleaning up on deletion.
+= 2.18.0 =
+* This release enhances the precision with which referral values are stored.
