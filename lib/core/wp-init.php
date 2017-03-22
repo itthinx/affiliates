@@ -2366,3 +2366,19 @@ function affiliates_get_referral_amount_decimals( $context = null ) {
 	}
 	return $result;
 }
+
+/**
+ * Returns the referral amount formatted.
+ * 
+ * @param number $amount
+ * @param string $context see affiliates_get_referral_amount_decimals()
+ * @return string
+ */
+function affiliates_format_referral_amount( $amount, $context = '' ) {
+	if ( function_exists( 'bcadd' ) ) {
+		return bcadd( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
+	} else {
+		$scale = intval( affiliates_get_referral_amount_decimals( $context ) );
+		return sprintf( '%.' . $scale . 'f', $amount );
+	}
+}

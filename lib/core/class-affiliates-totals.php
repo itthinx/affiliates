@@ -485,7 +485,7 @@ class Affiliates_Totals {
 				$class_deleted = '';
 				if ( $is_deleted = ( strcmp( $result->status, 'deleted' ) == 0 ) ) {
 					$class_deleted = ' deleted ';
-					$name_suffix .= " " . __( '(removed)', 'affiliates' );
+					$name_suffix .= ' ' . __( '(removed)', 'affiliates' );
 				}
 
 				$class_inoperative = '';
@@ -495,24 +495,31 @@ class Affiliates_Totals {
 				}
 
 				$output .= '<tr class="' . $class_deleted . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-				$output .= "<td class='affiliate-id'>";
+				$output .= '<td class="affiliate-id">';
 				if ( affiliates_encode_affiliate_id( $result->affiliate_id ) != $result->affiliate_id ) {
-					$output .= '<span class="encoded-hint" title="' . affiliates_encode_affiliate_id( $result->affiliate_id ) . '">' . $result->affiliate_id . '</span>';
+					$output .= '<span class="encoded-hint" title="' . esc_attr( affiliates_encode_affiliate_id( $result->affiliate_id ) ) . '">' . esc_html( $result->affiliate_id ) . '</span>';
 				} else {
-					$output .= $result->affiliate_id;
+					$output .= esc_html( $result->affiliate_id );
 				}
-				$output .= "</td>";
-				$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . "</td>";
-				$output .= "<td class='affiliate-email'>" . $result->email . "</td>";
-				$output .= "<td class='affiliate-user-login'>" . $result->user_login . "</td>";
+				$output .= '</td>';
+				$output .= '<td class="affiliate-name">' . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . '</td>';
+				$output .= '<td class="affiliate-email">' . esc_html( $result->email ) . '</td>';
+				$output .= '<td class="affiliate-user-login">' . $result->user_login . '</td>';
 
-				$output .= sprintf( '<td class="total">%s</td>', esc_html( bcadd( '0', $result->total, affiliates_get_referral_amount_decimals( 'display' ) ) ) );
-				$output .= "<td class='currency-id'>$result->currency_id</td>";
+				$output .= sprintf(
+					'<td class="total">%s</td>',
+					esc_html( affiliates_format_referral_amount( $result->total, 'display' ) )
+				);
+				$output .= '<td class="currency-id">' . esc_html( $result->currency_id ) . '</td>';
 
 				$output .= '</tr>';
 			}
 		} else {
-			$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __( 'There are no results.', 'affiliates' ) . '</td></tr>';
+			$output .= '<tr>';
+			$output .= '<td colspan="' . count( $column_display_names ) . '">';
+			$output .= __( 'There are no results.', 'affiliates' );
+			$output .= '</td>';
+			$output .= '</tr>';
 		}
 
 		$output .= '</tbody>';
@@ -535,7 +542,7 @@ class Affiliates_Totals {
 
 		global $wpdb;
 
-		$output = "";
+		$output = '';
 
 		$from_date            = isset( $params['from_date'] ) ? $params['from_date'] : null;
 		$from_datetime        = $from_date ? DateHelper::u2s( $from_date ) : null;

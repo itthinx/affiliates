@@ -733,7 +733,11 @@ function affiliates_admin_affiliates() {
 						$output .= '<ul>';
 						foreach( $total as $currency => $amount ) {
 							$output .= '<li>';
-							$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $amount ); // translators: first is a three-letter currency code, second is a monetary amount
+							$output .= sprintf(
+								__( '%1$s %2$s', 'affiliates' ), // translators: first is a three-letter currency code, second is a monetary amount
+								esc_html( $currency ),
+								esc_html( affiliates_format_referral_amount( $amount, 'display' ) )
+							);
 							$output .= '</li>';
 						}
 						$output .= '</ul>';

@@ -579,7 +579,11 @@ class Affiliates_Shortcodes {
 								if ( $totals = self::get_total( $affiliate_id, $from, $thru ) ) {
 									if ( count( $totals ) > 0 ) {
 										foreach ( $totals as $currency_id => $total ) {
-											$sums[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
+											if ( function_exists( 'bcadd' ) ) {
+												$sums[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
+											} else {
+												$sums[$currency_id] = isset( $sums[$currency_id] ) ? $sums[$currency_id] + $total : $total;
+											}
 										}
 									}
 								}
@@ -600,14 +604,14 @@ class Affiliates_Shortcodes {
 									$output .= '<li>';
 									$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
 									$output .= '&nbsp;';
-									$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', 2 ) ), $total, $currency_id );
+									$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', affiliates_get_referral_amount_decimals( 'display' ) ) ), $total, $currency_id );
 									$output .= '</li>';
 								}
 								$output .= '</ul>';
 							} else if ( count( $sums ) > 0 ) {
 								$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
 								$output .= '&nbsp;';
-								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', 2 ) ), $total, $currency_id );
+								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', affiliates_get_referral_amount_decimals( 'display' ) ) ), $total, $currency_id );
 							} else {
 								$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', 'affiliates' ) );
 							}

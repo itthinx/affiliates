@@ -352,7 +352,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 = 2.18.0 =
 * Enhanced the precision with which referral values are stored.
-* Added the affiliates_get_referral_amount_decimals() function.
+* Added the affiliates_get_referral_amount_decimals() and affiliates_format_referral_amount() functions.
 * Fixed the affiliates_referral_amount_decimals filter.
 * We now allow to define the constant AFFILIATES_REFERRAL_AMOUNT_DECIMALS in wp-config.php.
 * Added the AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY constant which can also be overridden in wp-config.php.
