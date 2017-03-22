@@ -518,7 +518,7 @@ function affiliates_admin_referrals() {
 				'<label class="expanded-filter">' .
 				'<input class="expanded-filter" name="expanded_items" type="checkbox" ' . ( $expanded_items ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Expand items', AFFILIATES_PRO_PLUGIN_DOMAIN ) .
+				__( 'Expand items', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-inoperative-filter">' .
@@ -714,15 +714,15 @@ function affiliates_admin_referrals() {
 					$output .= "<td colspan='$column_count'>";
 					$output .= '<div class="view-toggle">';
 					$output .= "<div class='expander'>$expander</div>";
-					$output .= '<div class="view-toggle-label">' . __( 'Items', AFFILIATES_PRO_PLUGIN_DOMAIN ) . '</div>';
+					$output .= '<div class="view-toggle-label">' . __( 'Items', 'affiliates' ) . '</div>';
 					$output .= "<div class='view' $items_view_style>";
 					$output .= '<table class="referral-items wp-list-table widefat fixed" cellspacing="0">';
 					$output .= '<thead>';
 					$output .= '<tr>';
-					$output .= '<th scope="col" class="reference">' . __( 'Reference', AFFILIATES_PRO_PLUGIN_DOMAIN ) . '</th>';
-					$output .= '<th scope="col" class="amount">' . __( 'Amount', AFFILIATES_PRO_PLUGIN_DOMAIN ) . '</th>';
-					$output .= '<th scope="col" class="currency_id">' . __( 'Currency', AFFILIATES_PRO_PLUGIN_DOMAIN ) . '</th>';
-					$output .= '<th scope="col" class="rate_id">' . __( 'Rate ID', AFFILIATES_PRO_PLUGIN_DOMAIN ) . '</th>';
+					$output .= '<th scope="col" class="reference">' . __( 'Reference', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="amount">' . __( 'Amount', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="currency_id">' . __( 'Currency', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="rate_id">' . __( 'Rate ID', 'affiliates' ) . '</th>';
 					$output .= '</tr>';
 					$output .= '</thead>';
 					$output .= '<tbody>';
