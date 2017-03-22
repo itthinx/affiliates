@@ -2379,6 +2379,6 @@ function affiliates_format_referral_amount( $amount, $context = '' ) {
 		return bcadd( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
 	} else {
 		$scale = intval( affiliates_get_referral_amount_decimals( $context ) );
-		return sprintf( '%.' . $scale . 'f', $amount );
+		return sprintf( '%.' . $scale . 'F', $amount );
 	}
 }
