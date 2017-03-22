@@ -17,7 +17,7 @@
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
- */	
+ */
 
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,15 +29,15 @@ include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
  * Referrals screen.
  */
 function affiliates_admin_referrals() {
-	
+
 	global $wpdb, $affiliates_options;
-	
+
 	$output = '';
-	
+
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
-	
+
 	// $_GET actions
 	if ( isset( $_GET['action'] ) ) {
 		switch ( $_GET['action'] ) {
@@ -57,7 +57,7 @@ function affiliates_admin_referrals() {
 				break;
 		}
 	}
-	
+
 	if (
 		isset( $_POST['from_date'] ) ||
 		isset( $_POST['thru_date'] ) ||
@@ -74,15 +74,15 @@ function affiliates_admin_referrals() {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	$posts_table = $wpdb->prefix . 'posts';
-	
+
 	// actions
 // 	if ( isset( $_POST['affiliate_id'] ) && isset( $_POST['post_id'] ) && isset( $_POST['datetime'] ) && isset( $_POST['action'] ) ) {
-		
+
 // 		if ( isset( $_POST['status'] ) ) {
 // 			$referral = $wpdb->get_row(
 // 				$wpdb->prepare(
@@ -106,9 +106,9 @@ function affiliates_admin_referrals() {
 // 					);
 // 				}
 // 			}
-// 		}		
+// 		}
 // 	}
-	
+
 	// filters
 	$from_date            = $affiliates_options->get_option( 'referrals_from_date', null );
 	$thru_date            = $affiliates_options->get_option( 'referrals_thru_date', null );
@@ -121,7 +121,7 @@ function affiliates_admin_referrals() {
 	$expanded_data        = $affiliates_options->get_option( 'referrals_expanded_data', null );
 	$expanded_items       = $affiliates_options->get_option( 'referrals_expanded_items', null );
 	$show_inoperative     = $affiliates_options->get_option( 'referrals_show_inoperative', null );
-	
+
 	if ( !isset( $_POST['action'] ) && isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'referrals_from_date' );
 		$affiliates_options->delete_option( 'referrals_thru_date' );
@@ -176,9 +176,9 @@ function affiliates_admin_referrals() {
 			}
 		} else if ( isset( $_POST['affiliate_id'] ) ) { // empty && isset => '' => all
 			$affiliate_id = null;
-			$affiliates_options->delete_option( 'referrals_affiliate_id' );	
+			$affiliates_options->delete_option( 'referrals_affiliate_id' );
 		}
-		
+
 		if ( !empty( $_POST['status'] ) ) {
 			if ( $status = Affiliates_Utility::verify_referral_status_transition( $_POST['status'], $_POST['status'] ) ) {
 				$affiliates_options->update_option( 'referrals_status', $status );
@@ -190,7 +190,7 @@ function affiliates_admin_referrals() {
 			$status = null;
 			$affiliates_options->delete_option( 'referrals_status' );
 		}
-		
+
 		if ( !empty( $_POST['search'] ) ) {
 			$search = $_POST['search'];
 			$affiliates_options->update_option( 'referrals_search', $_POST['search'] );
@@ -205,7 +205,7 @@ function affiliates_admin_referrals() {
 			$search_description = false;
 			$affiliates_options->delete_option( 'referrals_search_description' );
 		}
-		
+
 		// expanded details?
 		if ( !empty( $_POST['expanded'] ) ) {
 			$expanded = true;
@@ -243,29 +243,29 @@ function affiliates_admin_referrals() {
 			$affiliates_options->delete_option( 'referrals_show_inoperative' );
 		}
 	}
-	
+
 	if ( isset( $_POST['row_count'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	if ( isset( $_POST['paged'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'paged', $current_url );
-	
+
 	$output .=
 		'<div>' .
 		'<h1>' .
 		__( 'Referrals', 'affiliates' ) .
 		'</h1>' .
 		'</div>';
-	
+
 	$output .= '<div class="manage add">';
 	$output .= sprintf(
 		'<a title="%s" class="add button" href="%s"><img class="icon" alt="%s" src="%s" /><span class="label">%s</span></a>',
@@ -281,7 +281,7 @@ function affiliates_admin_referrals() {
 	$output .= '</div>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
-	
+
 	if ($row_count <= 0) {
 		$row_count = $affiliates_options->get_option( 'referrals_per_page', AFFILIATES_HITS_PER_PAGE );
 	} else {
@@ -295,7 +295,7 @@ function affiliates_admin_referrals() {
 	if ( $paged < 0 ) {
 		$paged = 0;
 	} 
-	
+
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'datetime' :
@@ -308,7 +308,7 @@ function affiliates_admin_referrals() {
 		default :
 			$orderby = 'datetime';
 	}
-	
+
 	$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
 	switch ( $order ) {
 		case 'asc' :
@@ -362,7 +362,7 @@ function affiliates_admin_referrals() {
 			$filter_params[] = $search;
 		}
 	}
-	
+
 	// how many are there ?
 	$count_query = $wpdb->prepare(
 		"SELECT count(*) FROM $referrals_table r
@@ -371,7 +371,7 @@ function affiliates_admin_referrals() {
 		$filter_params
 	);
 	$count = $wpdb->get_var( $count_query );
-	
+
 	if ( $count > $row_count ) {
 		$paginate = true;
 	} else {
@@ -384,7 +384,7 @@ function affiliates_admin_referrals() {
 	if ( $paged != 0 ) {
 		$offset = ( $paged - 1 ) * $row_count;
 	}
-			
+
 	$query = $wpdb->prepare("
 		SELECT r.*, a.affiliate_id, a.name 
 		FROM $referrals_table r
@@ -396,7 +396,7 @@ function affiliates_admin_referrals() {
 		",
 		$filter_params + $filter_params
 	);
-	
+
 	$results = $wpdb->get_results( $query, OBJECT );
 
 	$column_display_names = array(
@@ -409,11 +409,11 @@ function affiliates_admin_referrals() {
 		'edit'        => '',
 		'remove'      => '',
 	);
-	
+
 	$column_count = count( $column_display_names );
-	
+
 	$output .= '<div id="referrals-overview" class="referrals-overview">';
-		
+
 	$affiliates = affiliates_get_affiliates( true, !$show_inoperative );
 	$affiliates_select = '';
 	if ( !empty( $affiliates ) ) {
@@ -433,7 +433,7 @@ function affiliates_admin_referrals() {
 		$affiliates_select .= '</select>';
 		$affiliates_select .= '</label>';
 	}
-	
+
 	$status_descriptions = array(
 		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
 		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
@@ -446,7 +446,7 @@ function affiliates_admin_referrals() {
 		AFFILIATES_REFERRAL_STATUS_PENDING  => "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>",
 		AFFILIATES_REFERRAL_STATUS_REJECTED => "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>",
 	);
-	
+
 	$status_select = '<label class="status-filter">';
 	$status_select .= __( 'Status', 'affiliates' );
 	$status_select .= ' ';
@@ -536,7 +536,7 @@ function affiliates_admin_referrals() {
 				'</div>' .
 			'</form>' .
 		'</div>';
-						
+
 	$output .= '
 		<div class="page-options">
 			<form id="setrowcount" action="" method="post">
@@ -549,7 +549,7 @@ function affiliates_admin_referrals() {
 			</form>
 		</div>
 		';
-		
+
 	if ( $paginate ) {
 		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
@@ -562,13 +562,13 @@ function affiliates_admin_referrals() {
 		$output .= '</div>';
 		$output .= '</form>';
 	}
-					
+
 	$output .= '
 		<table id="referrals" class="referrals wp-list-table widefat fixed" cellspacing="0">
 		<thead>
 			<tr>
 			';
-	
+
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
 			'orderby' => $key,
@@ -584,18 +584,18 @@ function affiliates_admin_referrals() {
 		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
-	
+
 	$output .= '</tr>
 		</thead>
 		<tbody>
 		';
-		
+
 	if ( count( $results ) > 0 ) {
 
 		for ( $i = 0; $i < count( $results ); $i++ ) {
-			
+
 			$result = $results[$i];
-							
+
 			$output .= '<tr class="details-referrals ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 			$output .= '<td class="datetime">' . DateHelper::s2u( $result->datetime ) . '</td>';
 			$link = get_permalink( $result->post_id );
@@ -604,7 +604,7 @@ function affiliates_admin_referrals() {
 			$output .= "<td class='name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . "</td>";
 			$output .= "<td class='amount'>" . stripslashes( wp_filter_nohtml_kses( $result->amount ) ) . "</td>";
 			$output .= "<td class='currency_id'>" . stripslashes( wp_filter_nohtml_kses( $result->currency_id ) ) . "</td>";
-			
+
 			$output .= "<td class='status'>";
 			$output .= isset( $status_icons[$result->status] ) ? $status_icons[$result->status] : '';
 			$output .= ' ';
@@ -646,7 +646,7 @@ function affiliates_admin_referrals() {
 			$output .= '</td>';
 
 			$output .= '</tr>';
-			
+
 			$data = $result->data;
 			if ( !empty( $data )  && $expanded ) {
 				if ( $expanded_data ) {
@@ -732,7 +732,7 @@ function affiliates_admin_referrals() {
 							$item_amount = $item->amount;
 							$item_currency_id = $item->currency_id;
 							$item_rate_id = $item->rate_id;
-			
+
 							$output .= "<tr id='referral-item-$i'>";
 							$output .= '<td class="referral-item-reference">';
 							$output .= stripslashes( wp_filter_nohtml_kses( $item_reference ) );
