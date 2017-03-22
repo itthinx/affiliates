@@ -167,7 +167,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= '<span class="title">' . __( 'Affiliate', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$affiliates = affiliates_get_affiliates( true, true );
-	$output .= '<select name="affiliate_id">';
+	$output .= '<select name="affiliate_id" class="affiliates-uie" >';
 	foreach ( $affiliates as $affiliate ) {
 		if ( $affiliate_id == $affiliate['affiliate_id']) {
 			$selected = ' selected="selected" ';
@@ -179,6 +179,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= '</select>';
 	$output .= '</label>';
 	$output .= '</p>';
+	$output .= Affiliates_UI_Elements::render_select( 'select.affiliates-uie' );
 
 	$output .= '<p>';
 	$output .= '<label>';
