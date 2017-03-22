@@ -1556,10 +1556,7 @@ if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-uri.php';
-
-	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
-		include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
-	}
+	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
 
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-user-profile.php';
