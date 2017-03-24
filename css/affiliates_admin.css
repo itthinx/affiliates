@@ -135,6 +135,9 @@ a.removefromaffiliate {
 .totals {
 	margin-right: 1em;
 }
+.totals-overview td.total {
+	text-align: right;
+}
 
 div.details-referrals,
 div.details-hits {
