@@ -649,9 +649,9 @@ function affiliates_admin_affiliates() {
 			$output .= "<td class='affiliate-user-login'>";
 			if ( !empty( $result->ID ) ) {
 				if ( current_user_can( 'edit_user',  $result->ID ) ) {
-					$output .= '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$result->ID" ) . '">' . $result->user_login . '</a>';
+					$output .= '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$result->ID" ) . '">' . esc_html( $result->user_login ) . '</a>';
 				} else {
-					$output .= $result->user_login;
+					$output .= esc_html( $result->user_login );
 				}
 			}
 

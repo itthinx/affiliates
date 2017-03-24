@@ -504,7 +504,7 @@ class Affiliates_Totals {
 				$output .= '</td>';
 				$output .= '<td class="affiliate-name">' . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . '</td>';
 				$output .= '<td class="affiliate-email">' . esc_html( $result->email ) . '</td>';
-				$output .= '<td class="affiliate-user-login">' . $result->user_login . '</td>';
+				$output .= '<td class="affiliate-user-login">' . esc_html( $result->user_login ) . '</td>';
 
 				$output .= sprintf(
 					'<td class="total">%s</td>',
