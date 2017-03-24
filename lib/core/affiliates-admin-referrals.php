@@ -119,6 +119,7 @@ function affiliates_admin_referrals() {
 	$expanded             = $affiliates_options->get_option( 'referrals_expanded', null );
 	$expanded_description = $affiliates_options->get_option( 'referrals_expanded_description', null );
 	$expanded_data        = $affiliates_options->get_option( 'referrals_expanded_data', null );
+	$expanded_items       = $affiliates_options->get_option( 'referrals_expanded_items', null );
 	$show_inoperative     = $affiliates_options->get_option( 'referrals_show_inoperative', null );
 
 	if ( !isset( $_POST['action'] ) && isset( $_POST['clear_filters'] ) ) {
@@ -130,6 +131,7 @@ function affiliates_admin_referrals() {
 		$affiliates_options->delete_option( 'referrals_expanded' );
 		$affiliates_options->delete_option( 'referrals_expanded_description' );
 		$affiliates_options->delete_option( 'referrals_expanded_data' );
+		$affiliates_options->delete_option( 'referrals_expanded_items' );
 		$affiliates_options->delete_option( 'referrals_show_inoperative' );
 		$from_date = null;
 		$thru_date = null;
@@ -140,6 +142,7 @@ function affiliates_admin_referrals() {
 		$expanded = null;
 		$expanded_data = null;
 		$expanded_description = null;
+		$expanded_items = null;
 		$show_inoperative = null;
 	} else if ( !isset( $_POST['action'] ) && isset( $_POST['submitted'] ) ) {
 
@@ -224,6 +227,13 @@ function affiliates_admin_referrals() {
 		} else {
 			$expanded_description = false;
 			$affiliates_options->delete_option( 'referrals_expanded_description' );
+		}
+		if ( !empty( $_POST['expanded_items'] ) ) {
+			$expanded_items = true;
+			$affiliates_options->update_option( 'referrals_expanded_items', true );
+		} else {
+			$expanded_items = false;
+			$affiliates_options->delete_option( 'referrals_expanded_items' );
 		}
 		if ( !empty( $_POST['show_inoperative'] ) ) {
 			$show_inoperative = true;
@@ -456,6 +466,7 @@ function affiliates_admin_referrals() {
 
 				'<div class="filter-section">' .
 				$affiliates_select .
+				Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
 				' ' .
 				$status_select .
 				' ' .
@@ -503,6 +514,12 @@ function affiliates_admin_referrals() {
 				'<input class="expanded-filter" name="expanded_data" type="checkbox" ' . ( $expanded_data ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
 				__( 'Expand data', 'affiliates' ) .
+				'</label>' .
+				' ' .
+				'<label class="expanded-filter">' .
+				'<input class="expanded-filter" name="expanded_items" type="checkbox" ' . ( $expanded_items ? 'checked="checked"' : '' ) . '/>' .
+				' ' .
+				__( 'Expand items', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-inoperative-filter">' .
@@ -680,6 +697,66 @@ function affiliates_admin_referrals() {
 						$output .= '</td>';
 						$output .= '</tr>';
 					}
+					$output .= '</table>';
+					$output .= '</div>'; // .view
+					$output .= '</div>'; // .view-toggle
+					$output .= '</td>';
+					$output .= '</tr>';
+				}
+			}
+
+			if ( $expanded && class_exists( 'Affiliates_Referral_WordPress' ) ) {
+				if ( $expanded_items ) {
+					$items_view_style = '';
+					$expander = AFFILIATES_EXPANDER_RETRACT;
+				} else {
+					$items_view_style = ' style="display:none;" ';
+					$expander = AFFILIATES_EXPANDER_EXPAND;
+				}
+				$referral = new Affiliates_Referral_WordPress();
+				$referral->read( $result->referral_id );
+				$items = $referral->referral_items;
+				if ( $items ) {
+					$output .= '<tr class="items ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+					$output .= "<td colspan='$column_count'>";
+					$output .= '<div class="view-toggle">';
+					$output .= "<div class='expander'>$expander</div>";
+					$output .= '<div class="view-toggle-label">' . __( 'Items', 'affiliates' ) . '</div>';
+					$output .= "<div class='view' $items_view_style>";
+					$output .= '<table class="referral-items wp-list-table widefat fixed" cellspacing="0">';
+					$output .= '<thead>';
+					$output .= '<tr>';
+					$output .= '<th scope="col" class="reference">' . __( 'Reference', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="amount">' . __( 'Amount', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="currency_id">' . __( 'Currency', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="rate_id">' . __( 'Rate ID', 'affiliates' ) . '</th>';
+					$output .= '</tr>';
+					$output .= '</thead>';
+					$output .= '<tbody>';
+					if ( is_array( $items ) ) {
+						foreach ( $items as $item ) {
+							$item_reference = $item->reference;
+							$item_amount = $item->amount;
+							$item_currency_id = $item->currency_id;
+							$item_rate_id = $item->rate_id;
+
+							$output .= "<tr id='referral-item-$i'>";
+							$output .= '<td class="referral-item-reference">';
+							$output .= stripslashes( wp_filter_nohtml_kses( $item_reference ) );
+							$output .= '</td>';
+							$output .= '<td class="referral-item-amount">';
+							$output .= stripslashes( wp_filter_nohtml_kses( $item_amount ) );
+							$output .= '</td>';
+							$output .= '<td class="referral-item-currency">';
+							$output .= stripslashes( wp_filter_kses( $item_currency_id ) );
+							$output .= '</td>';
+							$output .= '<td class="referral-item-rate_id">';
+							$output .= intval( $item_rate_id );
+							$output .= '</td>';
+							$output .= '</tr>';
+						}
+					}
+					$output .= '</tbody>';
 					$output .= '</table>';
 					$output .= '</div>'; // .view
 					$output .= '</div>'; // .view-toggle

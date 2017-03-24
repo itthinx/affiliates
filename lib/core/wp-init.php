@@ -125,6 +125,19 @@ function affiliates_admin_print_scripts() {
 	wp_enqueue_script( 'flot', AFFILIATES_PLUGIN_URL . 'js/graph/flot/jquery.flot.min.js', array( 'jquery' ), $affiliates_version );
 	wp_enqueue_script( 'flot-resize', AFFILIATES_PLUGIN_URL . 'js/graph/flot/jquery.flot.resize.min.js', array( 'jquery', 'flot' ), $affiliates_version );
 
+	// Selectize
+	$screen = get_current_screen();
+	if ( isset( $screen->id ) ) {
+		switch( $screen->id ) {
+			case 'affiliates_page_affiliates-admin-referrals' :
+			case 'affiliates_page_affiliates-admin-hits-uri' :
+			case 'affiliates_page_affiliates-admin-hits-affiliate' :
+			case 'affiliates_page_affiliates-admin-hits' :
+				Affiliates_UI_Elements::enqueue( 'select' );
+				break;
+		}
+	}
+
 //	echo '
 //		<script type="text/javascript">
 //			var fooText = "' . __( 'Foo', 'affiliates' ) . '";
@@ -1563,6 +1576,7 @@ if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-uri.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
+
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-user-profile.php';
 	add_action( 'admin_menu', 'affiliates_admin_menu' );
