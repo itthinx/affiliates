@@ -47,7 +47,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$affiliate_id = isset( $_POST['affiliate_id'] ) ? intval( $_POST['affiliate_id'] ) : null;
 	$datetime     = isset( $_POST['datetime'] ) ? date( 'Y-m-d H:i:s', strtotime( $_POST['datetime'] ) ) : date( 'Y-m-d H:i:s', time() );
 	$description  = isset( $_POST['description'] ) ? wp_strip_all_tags( $_POST['description'] ) : '';
-	$amount       = !empty( $_POST['amount'] ) ? bcadd( '0', $_POST['amount'] , AFFILIATES_REFERRAL_AMOUNT_DECIMALS ) : null;
+	$amount       = !empty( $_POST['amount'] ) ? affiliates_format_referral_amount( $_POST['amount'] ) : null;
 	$currency_id  = substr( strtoupper( isset( $_POST['currency_id'] ) ? wp_strip_all_tags( $_POST['currency_id'] ) : '' ), 0, 3 );
 	$status       = $affiliates_options->get_option( 'referrals_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
 	if ( isset( $_POST['status'] ) ) {

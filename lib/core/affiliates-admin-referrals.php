@@ -603,7 +603,13 @@ function affiliates_admin_referrals() {
 			$title = get_the_title( $result->post_id );
 			$output .= '<td class="post_title"><a href="' . esc_attr( $link ) . '" target="_blank">' . wp_filter_nohtml_kses( $title ) . '</a></td>';
 			$output .= "<td class='name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . "</td>";
-			$output .= "<td class='amount'>" . stripslashes( wp_filter_nohtml_kses( $result->amount ) ) . "</td>";
+			$output .= sprintf(
+				'<td style="cursor:help" title="%s" class="amount">%s</td>',
+				esc_attr( $result->amount ),
+				stripslashes( wp_filter_nohtml_kses(
+					affiliates_format_referral_amount( $result->amount, 'display' )
+				) )
+			);
 			$output .= "<td class='currency_id'>" . stripslashes( wp_filter_nohtml_kses( $result->currency_id ) ) . "</td>";
 
 			$output .= "<td class='status'>";

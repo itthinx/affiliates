@@ -649,9 +649,9 @@ function affiliates_admin_affiliates() {
 			$output .= "<td class='affiliate-user-login'>";
 			if ( !empty( $result->ID ) ) {
 				if ( current_user_can( 'edit_user',  $result->ID ) ) {
-					$output .= '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$result->ID" ) . '">' . $result->user_login . '</a>';
+					$output .= '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$result->ID" ) . '">' . esc_html( $result->user_login ) . '</a>';
 				} else {
-					$output .= $result->user_login;
+					$output .= esc_html( $result->user_login );
 				}
 			}
 
@@ -733,7 +733,11 @@ function affiliates_admin_affiliates() {
 						$output .= '<ul>';
 						foreach( $total as $currency => $amount ) {
 							$output .= '<li>';
-							$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $amount ); // translators: first is a three-letter currency code, second is a monetary amount
+							$output .= sprintf(
+								__( '%1$s %2$s', 'affiliates' ), // translators: first is a three-letter currency code, second is a monetary amount
+								esc_html( $currency ),
+								esc_html( affiliates_format_referral_amount( $amount, 'display' ) )
+							);
 							$output .= '</li>';
 						}
 						$output .= '</ul>';
