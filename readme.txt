@@ -354,8 +354,15 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * This is a major new release of the plugin, please make sure to back up your site and database
   before your upgrade and make sure to review the changelog to be aware of the implications of
   upgrading to this version.
-* Enhanced the precision with which referral values are stored.
 * Enhances the data model to allow for fine-grained referrals.
+
+= 2.18.0 =
+* Enhanced the precision with which referral values are stored.
+* Added the affiliates_get_referral_amount_decimals() and affiliates_format_referral_amount() functions.
+* Fixed the affiliates_referral_amount_decimals filter.
+* We now allow to define the constant AFFILIATES_REFERRAL_AMOUNT_DECIMALS in wp-config.php.
+* Added the AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY constant which can also be overridden in wp-config.php.
+* Added the notice class.
 
 = 2.17.1 =
 * Fixed user_agents table is not deleted on cleanup.

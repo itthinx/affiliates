@@ -140,25 +140,28 @@ class Affiliates_Utility {
 	 */
 	static function verify_referral_amount( $amount ) {
 		$result = false;
-		if ( preg_match( "/([0-9,]+)?(\.[0-9]+)?/", $amount, $matches ) ) {
-			if ( isset( $matches[1] ) ) {
-				$n = str_replace(",", "", $matches[1] );
-			} else {
-				$n = "0";
-			}
-			if ( isset( $matches[2] ) ) {
-				// exceeding decimals are TRUNCATED
-				$d = substr( $matches[2], 1, AFFILIATES_REFERRAL_AMOUNT_DECIMALS );
-			} else {
-				$d = "0";
-			}
-			if ( isset( $matches[1] ) || isset( $matches[2] ) ) {
-				$result = $n . "." . $d;
+		if ( is_numeric( $amount ) ) {
+			$amount = sprintf( '%.' . ( affiliates_get_referral_amount_decimals() + 1 ) . 'F', $amount );
+			if ( preg_match( "/([0-9,]+)?(\.[0-9]+)?/", $amount, $matches ) ) {
+				if ( isset( $matches[1] ) ) {
+					$n = str_replace(",", "", $matches[1] );
+				} else {
+					$n = "0";
+				}
+				if ( isset( $matches[2] ) ) {
+					// exceeding decimals are TRUNCATED
+					$d = substr( $matches[2], 1, affiliates_get_referral_amount_decimals() );
+				} else {
+					$d = "0";
+				}
+				if ( isset( $matches[1] ) || isset( $matches[2] ) ) {
+					$result = $n . "." . $d;
+				}
 			}
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Verify and return currency id.
 	 * @param string $currency_id
