@@ -109,6 +109,15 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 	}
 
 	/**
+	 * Returns the registered integrations.
+	 * 
+	 * @return array
+	 */
+	public static function get_integrations() {
+		return self::$integrations;
+	}
+
+	/**
 	 * Renders the integrations section.
 	 */
 	public static function section() {
