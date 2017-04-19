@@ -66,7 +66,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	if ( isset( $_POST['save'] ) ) {
 		if ( !wp_verify_nonce( $_POST['referral-nonce'], 'save' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
-		} else {			
+		} else {
 			if ( !empty( $affiliate_id ) ) {
 				if ( empty( $referral_id ) ) {
 					add_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
