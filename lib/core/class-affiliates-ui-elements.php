@@ -78,6 +78,12 @@ class Affiliates_UI_Elements {
 	 */
 	public static function affiliates_select( $args = array() ) {
 
+		$defaults = array(
+			'name' => 'affiliate_id',
+			'class' => 'affiliates-uie',
+			'label-class' => ''
+		);
+		$args = array_merge( $defaults, $args );
 		$affiliate_id = null;
 		if ( isset( $args['affiliate_id'] ) ) {
 			$affiliate_id = intval( $args['affiliate_id'] );
@@ -90,18 +96,18 @@ class Affiliates_UI_Elements {
 		$affiliates = affiliates_get_affiliates( true, !$show_inoperative );
 		$affiliates_select = '';
 		if ( !empty( $affiliates ) ) {
-			$affiliates_select .= '<label class="affiliate-id-filter">';
+			$affiliates_select .= sprintf( '<label class="%s">', esc_attr( $args['label-class'] ) );
 			$affiliates_select .= __( 'Affiliate', 'affiliates' );
 			$affiliates_select .= ' ';
-			$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
-			$affiliates_select .= '<option value="">--</option>';
+			$affiliates_select .= sprintf( '<select class="%s" name="%s">', esc_attr( $args['class'] ), esc_attr( $args['name'] ) );
+			$affiliates_select .= sprintf( '<option value="" %s>--</option>', empty( $affiliate_id ) ? ' selected="selected" ' : '' );
 			foreach ( $affiliates as $affiliate ) {
 				if ( $affiliate_id == $affiliate['affiliate_id']) {
 					$selected = ' selected="selected" ';
 				} else {
 					$selected = '';
 				}
-				$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
+				$affiliates_select .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $affiliate['affiliate_id'] ), $selected, esc_html( $affiliate['name'] ) );
 			}
 			$affiliates_select .= '</select>';
 			$affiliates_select .= '</label>';
@@ -111,7 +117,7 @@ class Affiliates_UI_Elements {
 
 	/**
 	 * Render select script and style.
-	 * @param string $selector identifying the select, default: select.groups-uie
+	 * @param string $selector identifying the select, default: select.affiliates-uie
 	 * @param boolean $script render the script, default: true
 	 * @param boolean $on_document_ready whether to trigger on document ready, default: true
 	 * @param boolean $create allow to create items, default: false (only with selectize)
