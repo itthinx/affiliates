@@ -70,12 +70,13 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 			if ( !empty( $affiliate_id ) ) {
 				if ( empty( $referral_id ) ) {
 					add_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
-					if ( apply_filters(
+					$action = apply_filters(
 						'affiliates_admin_referral_edit_add_referral',
-						true,
-						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' ),
-						$output
-					) ) {
+						array( 'add_referral' => true, 'output' => '' ),
+						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
+					);
+					$output .= !empty( $action['output'] ) ? $action['output'] : '';
+					if ( isset( $action['add_referral'] ) && $action['add_referral'] ) {
 						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference );
 					}
 					remove_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
@@ -90,12 +91,13 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 						$output .= '<div class="warning">' . __( 'The referral has not been created. Duplicate?', 'affiliates' ) . '</div>';
 					}
 				} else {
-					if ( apply_filters(
+					$action = apply_filters(
 						'affiliates_admin_referral_edit_update_referral',
-						true,
-						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' ),
-						$output
-					) ) {
+						array( 'update_referral' => true, 'output' => '' ),
+						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
+					);
+					$output .= !empty( $action['output'] ) ? $action['output'] : '';
+					if ( isset( $action['update_referral'] ) && $action['update_referral'] ) {
 						if ( affiliates_update_referral( $referral_id, array(
 							'affiliate_id' => intval( $affiliate_id ),
 							'datetime'     => $datetime,
