@@ -70,42 +70,12 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 			if ( !empty( $affiliate_id ) ) {
 				if ( empty( $referral_id ) ) {
 					add_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
-					if ( class_exists( 'Affiliates_Referral_WordPress' ) ) {
-						$r = new Affiliates_Referral_WordPress();
-						//$r->add_referrals( array( $affiliate_id ), null, $description, null, null, $amount, $currency_id, $status, 'manual', $reference );
-						$r->affiliate_id = $affiliate_id;
-						$r->description  = $description;
-						$r->amount       = $amount;
-						$r->currency_id  = $currency_id;
-						$r->status       = $status;
-						$r->type         = 'manual';
-						$r->reference    = $reference;
-
-						// items
-						$num_item_references  = isset( $_POST['item_reference'] ) ? sizeof( $_POST['item_reference'] ) : 0;
-						$item_id              = isset( $_POST['item_id'] ) ? $_POST['item_id'] : 0;
-						$item_reference       = isset( $_POST['item_reference'] ) ? $_POST['item_reference'] : "";
-						$item_type            = isset( $_POST['item_type'] ) ? $_POST['item_type'] : "";
-						$item_rate_id         = isset( $_POST['item_rate_id'] ) ? $_POST['item_rate_id'] : 0;
-						$item_amount          = isset( $_POST['item_amount'] ) ? $_POST['item_amount'] : 0;
-						$item_currency_id     = isset( $_POST['item_currency_id'] ) ? $_POST['item_currency_id'] : "";
-
-						$referral_items = array();
-						for ( $cnt=0; $cnt < $num_item_references; $cnt++ ) {
-							$referral_items[] = new Affiliates_Referral_Item( array(
-									'referral_item_id' => empty( $item_id[$cnt] ) ? null : intval( $item_id[$cnt] ),
-									'reference'        => $item_reference[$cnt],
-									'type'             => $item_type[$cnt],
-									'rate_id'          => $item_rate_id[$cnt],
-									'amount'           => $item_amount[$cnt],
-									'currency_id'      => $item_currency_id[$cnt],
-									'referral_id'      => $referral_id
-							) );
-						}
-						$r->referral_items = $referral_items;
-
-						$r->create();
-					} else {
+					if ( apply_filters(
+						'affiliates_admin_referral_edit_add_referral',
+						true,
+						compact( $referral_id, $affiliate_id, $datetime, $description, $amount, $currency_id, $status, $reference ),
+						$output
+					) ) {
 						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference );
 					}
 					remove_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
@@ -120,61 +90,12 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 						$output .= '<div class="warning">' . __( 'The referral has not been created. Duplicate?', 'affiliates' ) . '</div>';
 					}
 				} else {
-					if ( class_exists( 'Affiliates_Referral_WordPress' ) ) {
-						try {
-							$r = new Affiliates_Referral_WordPress();
-							$r->read( $referral_id );
-
-							// items
-							$num_item_references  = isset( $_POST['item_reference'] ) ? sizeof( $_POST['item_reference'] ) : 0;
-							$item_id              = isset( $_POST['item_id'] ) ? $_POST['item_id'] : 0;
-							$item_reference       = isset( $_POST['item_reference'] ) ? $_POST['item_reference'] : "";
-							$item_type            = isset( $_POST['item_type'] ) ? $_POST['item_type'] : "";
-							$item_rate_id         = isset( $_POST['item_rate_id'] ) ? $_POST['item_rate_id'] : 0;
-							$item_amount          = isset( $_POST['item_amount'] ) ? $_POST['item_amount'] : 0;
-							$item_currency_id     = isset( $_POST['item_currency_id'] ) ? $_POST['item_currency_id'] : "";
-
-							$referral_items = array();
-							for ( $cnt=0; $cnt < $num_item_references; $cnt++ ) {
-								$referral_items[] = new Affiliates_Referral_Item( array(
-										'referral_item_id' => empty( $item_id[$cnt] ) ? null : intval( $item_id[$cnt] ),
-										'reference'        => $item_reference[$cnt],
-										'type'             => $item_type[$cnt],
-										'rate_id'          => $item_rate_id[$cnt],
-										'amount'           => $item_amount[$cnt],
-										'currency_id'      => $item_currency_id[$cnt],
-										'referral_id'      => $referral_id
-								) );
-							}
-
-							$r->referral_items = $referral_items;
-
-							$r->affiliate_id = intval( $affiliate_id );
-							$r->datetime = $datetime;
-							$r->description = $description;
-							$r->amount = $amount;
-							$r->currency_id = $currency_id;
-							$r->status = $status;
-							$r->reference = $reference;
-
-							if ( $r->update( array(
-								'affiliate_id' => intval( $affiliate_id ),
-								'datetime'     => $datetime,
-								'description'  => $description,
-								'amount'       => $amount,
-								'currency_id'  => $currency_id,
-								'status'       => $status,
-								'reference'    => $reference
-							) ) ) {
-								$output .= '<br/>';
-								$output .= '<div class="info">' . __( 'The referral has been saved.', 'affiliates' ) . '</div>';
-								$saved = true;
-							}
-						} catch ( Exception $ex ) {
-							$output .= '<br/>';
-							$output .= '<div class="error">' . __( 'The referral could not be saved.', 'affiliates' ) . '</div>';
-						}
-					} else {
+					if ( apply_filters(
+						'affiliates_admin_referral_edit_update_referral',
+						true,
+						compact( $referral_id, $affiliate_id, $datetime, $description, $amount, $currency_id, $status, $reference ),
+						$output
+					) ) {
 						if ( affiliates_update_referral( $referral_id, array(
 							'affiliate_id' => intval( $affiliate_id ),
 							'datetime'     => $datetime,
@@ -312,78 +233,11 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= '</label>';
 	$output .= '</p>';
 
-	// Referral items on Pro/Enterprise version
-	if ( class_exists( 'Affiliates_Referral_Item' ) ) {
-		$r = new Affiliates_Referral_WordPress();
-		$r->read( $referral_id );
-		$output .= sprintf( '<img src="%s" alt="%s" class="img_add_item_action" />', AFFILIATES_PLUGIN_URL . 'images/add.png', __( 'Add', 'affiliates' ) );
-		$output .= '<table class="referral_items" id="referral_items">';
-		$output .= '<thead>';
-		$output .= '<th>';
-		$output .= __( 'ID', 'affiliates' );
-		$output .= '</th>';
-		$output .= '<th>';
-		$output .= __( 'Reference', 'affiliates' );
-		$output .= '</th>';
-		$output .= '<th>';
-		$output .= __( 'Type', 'affiliates' );
-		$output .= '</th>';
-		$output .= '<th>';
-		$output .= __( 'Rate ID', 'affiliates' );
-		$output .= '</th>';
-		$output .= '<th>';
-		$output .= __( 'Amount', 'affiliates' );
-		$output .= '</th>';
-		$output .= '<th>';
-		$output .= __( 'Currency', 'affiliates' );
-		$output .= '</th>';
-		$output .= '<th>';
-		$output .= '';
-		$output .= '</th>';
-		$output .= '</thead>';
-		$i = 0;
-		$output .= '<tbody>';
-
-		// Global javascript variables needed
-		$output .= '<script type="text/javascript">';
-		$output .= 'affiliates_plugin_url = \'' . AFFILIATES_PLUGIN_URL . '\';';
-		$output .= 'affiliates_remove_string = \'' . __( 'Remove', 'affiliates' ) . '\';';
-		$output .= '</script>';
-
-		if ( ( $r->referral_items ) && ( sizeof( $r->referral_items ) > 0 ) ) {
-			foreach ( $r->referral_items as $referral_item ) {
-				$output .= sprintf( '<tr id="row_%s">', $i );
-				$output .= '<td>';
-				$output .= $referral_item->referral_item_id;
-				$output .= sprintf( '<input type="hidden" name="item_id[]" value="%s"></input>', $referral_item->referral_item_id );
-				$output .= '</td>';
-				$output .= '<td>';
-				$output .= sprintf( '<input type="text" name="item_reference[]" value="%s"></input>', $referral_item->reference );
-				$output .= '</td>';
-				$output .= '<td>';
-				$output .= sprintf( '<input type="text" name="item_type[]" value="%s"></input>', $referral_item->type );
-				$output .= '</td>';
-				$output .= '<td>';
-				$output .= sprintf( '<input type="text" name="item_rate_id[]" value="%s"></input>', $referral_item->rate_id );
-				$output .= '</td>';
-				$output .= '<td>';
-				$output .= sprintf( '<input type="text" name="item_amount[]" value="%s"></input>', $referral_item->amount );
-				$output .= '</td>';
-				$output .= '<td>';
-				$output .= sprintf( '<input type="text" name="item_currency_id[]" value="%s"></input>', $referral_item->currency_id );
-				$output .= '</td>';
-				$output .= '<td class="actions">';
-				$output .= sprintf( '<img src="%s" alt="%s" class="img_remove_action" row_id="%d" />', AFFILIATES_PLUGIN_URL . 'images/remove.png', __( 'Remove', 'affiliates' ), $i );
-				$output .= '</td>';
-				$output .= '</tr>';
-				$i++;
-			}
-		}
-		$output .= '</tbody>';
-		$output .= '</table>';
-		$output .= '<input type="hidden" name="num_items" id="num_items" value="' . $i . '"></input>';
-	}
-	$output .= '<p></p>'; // margin
+	$output .= apply_filters(
+		'affiliates_admin_referral_edit_form_suffix',
+		'',
+		compact( $referral_id, $affiliate_id, $datetime, $description, $amount, $currency_id, $status, $reference )
+	);
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
 
