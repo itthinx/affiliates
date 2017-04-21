@@ -715,7 +715,7 @@ function affiliates_admin_referrals() {
 				$output .= apply_filters(
 					'affiliates_admin_referrals_expanded_items',
 					'',
-					array_merge( compact( $expanded_items, $column_count, $i ), array( 'referral_id' => $result->referral_id ) )
+					array( 'referral_id' => $result->referral_id, 'column_count' => $column_count, 'expanded_items' => $expanded_items, 'i' => $i )
 				);
 			}
 
