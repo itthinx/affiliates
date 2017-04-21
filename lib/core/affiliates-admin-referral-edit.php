@@ -73,7 +73,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					if ( apply_filters(
 						'affiliates_admin_referral_edit_add_referral',
 						true,
-						compact( $referral_id, $affiliate_id, $datetime, $description, $amount, $currency_id, $status, $reference ),
+						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' ),
 						$output
 					) ) {
 						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference );
@@ -93,7 +93,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					if ( apply_filters(
 						'affiliates_admin_referral_edit_update_referral',
 						true,
-						compact( $referral_id, $affiliate_id, $datetime, $description, $amount, $currency_id, $status, $reference ),
+						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' ),
 						$output
 					) ) {
 						if ( affiliates_update_referral( $referral_id, array(
@@ -236,7 +236,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= apply_filters(
 		'affiliates_admin_referral_edit_form_suffix',
 		'',
-		compact( $referral_id, $affiliate_id, $datetime, $description, $amount, $currency_id, $status, $reference )
+		compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
 	);
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
