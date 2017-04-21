@@ -228,12 +228,14 @@ function affiliates_admin_referrals() {
 			$expanded_description = false;
 			$affiliates_options->delete_option( 'referrals_expanded_description' );
 		}
-		if ( !empty( $_POST['expanded_items'] ) ) {
-			$expanded_items = true;
-			$affiliates_options->update_option( 'referrals_expanded_items', true );
-		} else {
-			$expanded_items = false;
-			$affiliates_options->delete_option( 'referrals_expanded_items' );
+		if ( class_exists( 'Affiliates_Referral_Item' ) ) {
+			if ( !empty( $_POST['expanded_items'] ) ) {
+				$expanded_items = true;
+				$affiliates_options->update_option( 'referrals_expanded_items', true );
+			} else {
+				$expanded_items = false;
+				$affiliates_options->delete_option( 'referrals_expanded_items' );
+			}
 		}
 		if ( !empty( $_POST['show_inoperative'] ) ) {
 			$show_inoperative = true;
@@ -516,11 +518,15 @@ function affiliates_admin_referrals() {
 				__( 'Expand data', 'affiliates' ) .
 				'</label>' .
 				' ' .
-				'<label class="expanded-filter">' .
-				'<input class="expanded-filter" name="expanded_items" type="checkbox" ' . ( $expanded_items ? 'checked="checked"' : '' ) . '/>' .
-				' ' .
-				__( 'Expand items', 'affiliates' ) .
-				'</label>' .
+				( class_exists( 'Affiliates_Referral_Item' ) ?
+					'<label class="expanded-filter">' .
+					'<input class="expanded-filter" name="expanded_items" type="checkbox" ' . ( $expanded_items ? 'checked="checked"' : '' ) . '/>' .
+					' ' .
+					__( 'Expand items', 'affiliates' ) .
+					'</label>'
+					:
+					''
+				) .
 				' ' .
 				'<label class="show-inoperative-filter">' .
 				'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
@@ -705,7 +711,7 @@ function affiliates_admin_referrals() {
 				}
 			}
 
-			if ( $expanded && class_exists( 'Affiliates_Referral_WordPress' ) ) {
+			if ( $expanded && class_exists( 'Affiliates_Referral_Item' ) ) {
 				if ( $expanded_items ) {
 					$items_view_style = '';
 					$expander = AFFILIATES_EXPANDER_RETRACT;
