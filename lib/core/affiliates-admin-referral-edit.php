@@ -69,20 +69,25 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 		} else {
 			if ( !empty( $affiliate_id ) ) {
 				if ( empty( $referral_id ) ) {
-					add_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
 					$action = apply_filters(
 						'affiliates_admin_referral_edit_add_referral',
 						array( 'add_referral' => true, 'output' => '' ),
 						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
 					);
 					$output .= !empty( $action['output'] ) ? $action['output'] : '';
-					if ( isset( $action['add_referral'] ) && $action['add_referral'] ) {
-						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference );
+					if ( !empty( $action['referral_id'] ) ) {
+						$referral_id = $action['referral_id'];
 					}
-					remove_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
-					global $captured_referral_id;
-					if ( isset( $captured_referral_id ) ) {
-						$referral_id = $captured_referral_id;
+					if ( isset( $action['add_referral'] ) && $action['add_referral'] ) {
+						global $captured_referral_id;
+						add_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
+						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference );
+						remove_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
+						if ( !empty( $captured_referral_id ) ) {
+							$referral_id = $captured_referral_id;
+						}
+					}
+					if ( !empty( $referral_id ) ) {
 						$output .= '<br/>';
 						$output .= '<div class="info">' . __( 'The referral has been created.', 'affiliates' ) . '</div>';
 						$saved = true;
