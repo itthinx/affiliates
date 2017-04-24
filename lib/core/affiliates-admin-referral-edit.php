@@ -138,7 +138,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 		}
 	}
 
-	$output .= '<div class="referral">';
+	$output .= sprintf( '<div class="referral %s referrals-overview">', empty( $referral_id ) ? 'new-referral' : 'edit-referral' );
 	$output .= '<h1>';
 	if ( empty( $referral_id ) ) {
 		$output .= __( 'New Referral', 'affiliates' );
