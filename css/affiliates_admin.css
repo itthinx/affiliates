@@ -237,6 +237,9 @@ div.details-hits {
 	margin-bottom: 1em;
 	border: 1px solid #ddd;
 }
+.manage.add {
+	margin-right: 1em;
+}
 .manage a.add {
 	text-decoration: none;
 	cursor: pointer;

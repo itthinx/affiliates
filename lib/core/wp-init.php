@@ -347,6 +347,7 @@ function affiliates_setup() {
 				ipv6         DECIMAL(39,0) UNSIGNED DEFAULT NULL,
 				user_id      BIGINT(20) UNSIGNED DEFAULT NULL,
 				amount       DECIMAL(24,6) DEFAULT NULL,
+				base_amount  DECIMAL(24,6) DEFAULT NULL,
 				currency_id  CHAR(3) DEFAULT NULL,
 				data         LONGTEXT DEFAULT NULL,
 				status       VARCHAR(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
@@ -372,6 +373,7 @@ function affiliates_setup() {
 			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 			amount           DECIMAL(24,6) DEFAULT NULL,
+			line_amount      DECIMAL(24,6) DEFAULT NULL,
 			currency_id      CHAR(3) DEFAULT NULL,
 			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
 			type             VARCHAR(10) NULL,
@@ -632,6 +634,12 @@ function affiliates_update( $previous_version = null ) {
 		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
+	// add the base_amount column to the referrals table ... from 3.0.0
+	if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		ADD COLUMN base_amount DECIMAL(24,6) DEFAULT NULL;";
+	}
+
 	// add the referral_items table
 	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
@@ -639,6 +647,7 @@ function affiliates_update( $previous_version = null ) {
 			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 			amount           DECIMAL(24,6) DEFAULT NULL,
+			line_amount      DECIMAL(24,6) DEFAULT NULL,
 			currency_id      CHAR(3) DEFAULT NULL,
 			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
 			type             VARCHAR(10) NULL,
