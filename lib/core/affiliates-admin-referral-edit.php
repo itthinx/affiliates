@@ -82,7 +82,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					if ( isset( $action['add_referral'] ) && $action['add_referral'] ) {
 						global $captured_referral_id;
 						add_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
-						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference );
+						affiliates_add_referral( $affiliate_id, null, $description, null, $amount, $currency_id, $status, 'manual', $reference, null, $reference_amount );
 						remove_action( 'affiliates_referral', 'affiliates_admin_referral_capture_id' );
 						if ( !empty( $captured_referral_id ) ) {
 							$referral_id = $captured_referral_id;

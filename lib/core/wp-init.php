@@ -1197,7 +1197,7 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
  * @param int $hit_id
  * @return int
  */
-function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null ) {
+function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null ) {
 	global $wpdb;
 
 	if ( $affiliate_id ) {
@@ -1280,6 +1280,14 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 			$values[] = intval( $hit_id );
 		}
 
+		if ( !empty( $reference_amount ) ) {
+			if ( $reference_amount = Affiliates_Utility::verify_referral_amount( $reference_amount ) ) {
+				$columns .= ",reference_amount ";
+				$formats .= ",%s ";
+				$values[] = $reference_amount;
+			}
+		}
+
 		$columns .= ")";
 		$formats .= ")";
 
@@ -1305,7 +1313,8 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 								'status' => $status,
 								'type' => $type,
 								'reference' => $reference,
-								'hit_id' => $hit_id
+								'hit_id' => $hit_id,
+								'reference_amount' => $reference_amount
 							)
 						);
 					}
@@ -1427,6 +1436,7 @@ function affiliates_update_referral( $referral_id, $attributes ) {
 							$old_values[] = $current_value;
 						}
 						break;
+					case 'reference_amount' :
 					case 'amount' :
 						if ( $value = Affiliates_Utility::verify_referral_amount( $value ) ) {
 							$set[]        = " $key = %s ";
