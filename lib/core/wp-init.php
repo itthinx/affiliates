@@ -347,7 +347,7 @@ function affiliates_setup() {
 				ipv6         DECIMAL(39,0) UNSIGNED DEFAULT NULL,
 				user_id      BIGINT(20) UNSIGNED DEFAULT NULL,
 				amount       DECIMAL(24,6) DEFAULT NULL,
-				base_amount  DECIMAL(24,6) DEFAULT NULL,
+				reference_amount DECIMAL(24,6) DEFAULT NULL,
 				currency_id  CHAR(3) DEFAULT NULL,
 				data         LONGTEXT DEFAULT NULL,
 				status       VARCHAR(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
@@ -634,10 +634,10 @@ function affiliates_update( $previous_version = null ) {
 		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
-	// add the base_amount column to the referrals table ... from 3.0.0
+	// add the reference_amount column to the referrals table ... from 3.0.0
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
-		ADD COLUMN base_amount DECIMAL(24,6) DEFAULT NULL;";
+		ADD COLUMN reference_amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
 	// add the referral_items table
