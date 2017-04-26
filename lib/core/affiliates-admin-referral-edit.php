@@ -73,7 +73,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					$action = apply_filters(
 						'affiliates_admin_referral_edit_add_referral',
 						array( 'add_referral' => true, 'output' => '' ),
-						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'reference_amount', 'amount', 'currency_id', 'status', 'reference' )
+							compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference', 'reference_amount' )
 					);
 					$output .= !empty( $action['output'] ) ? $action['output'] : '';
 					if ( !empty( $action['referral_id'] ) ) {
@@ -100,7 +100,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					$action = apply_filters(
 						'affiliates_admin_referral_edit_update_referral',
 						array( 'update_referral' => true, 'output' => '' ),
-						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
+						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference', 'reference_amount' )
 					);
 					$output .= !empty( $action['output'] ) ? $action['output'] : '';
 					if ( isset( $action['update_referral'] ) && $action['update_referral'] ) {
