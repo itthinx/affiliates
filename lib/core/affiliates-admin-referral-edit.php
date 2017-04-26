@@ -47,6 +47,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$affiliate_id = isset( $_POST['affiliate_id'] ) ? intval( $_POST['affiliate_id'] ) : null;
 	$datetime     = isset( $_POST['datetime'] ) ? date( 'Y-m-d H:i:s', strtotime( $_POST['datetime'] ) ) : date( 'Y-m-d H:i:s', time() );
 	$description  = isset( $_POST['description'] ) ? wp_strip_all_tags( $_POST['description'] ) : '';
+	$reference_amount = !empty( $_POST['reference_amount'] ) ? affiliates_format_referral_amount( $_POST['reference_amount'] ) : null;
 	$amount       = !empty( $_POST['amount'] ) ? affiliates_format_referral_amount( $_POST['amount'] ) : null;
 	$currency_id  = substr( strtoupper( isset( $_POST['currency_id'] ) ? wp_strip_all_tags( $_POST['currency_id'] ) : '' ), 0, 3 );
 	$status       = $affiliates_options->get_option( 'referrals_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED );
@@ -72,7 +73,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					$action = apply_filters(
 						'affiliates_admin_referral_edit_add_referral',
 						array( 'add_referral' => true, 'output' => '' ),
-						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
+						compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'reference_amount', 'amount', 'currency_id', 'status', 'reference' )
 					);
 					$output .= !empty( $action['output'] ) ? $action['output'] : '';
 					if ( !empty( $action['referral_id'] ) ) {
@@ -107,6 +108,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 							'affiliate_id' => intval( $affiliate_id ),
 							'datetime'     => $datetime,
 							'description'  => $description,
+							'reference_amount' => $reference_amount,
 							'amount'       => $amount,
 							'currency_id'  => $currency_id,
 							'status'       => $status,
@@ -130,6 +132,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 				$affiliate_id = $referral->affiliate_id;
 				$datetime     = $referral->datetime;
 				$description  = $referral->description;
+				$reference_amount = $referral->reference_amount;
 				$amount       = $referral->amount;
 				$currency_id  = $referral->currency_id;
 				$status       = $referral->status;
@@ -240,10 +243,18 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= '</label>';
 	$output .= '</p>';
 
+	$output .= '<p>';
+	$output .= '<label>';
+	$output .= '<span class="title">' . __( 'Reference Amount', 'affiliates' ) . '</span>';
+	$output .= ' ';
+	$output .= sprintf( '<input type="text" name="reference_amount" value="%s" />', esc_attr( $reference_amount ) );
+	$output .= '</label>';
+	$output .= '</p>';
+
 	$output .= apply_filters(
 		'affiliates_admin_referral_edit_form_suffix',
 		'',
-		compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'amount', 'currency_id', 'status', 'reference' )
+		compact( 'referral_id', 'affiliate_id', 'datetime', 'description', 'reference_amount', 'amount', 'currency_id', 'status', 'reference' )
 	);
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
