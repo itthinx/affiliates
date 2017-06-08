@@ -1857,6 +1857,7 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 			$show_affiliates_help = true;
 			break;
 		default:
+			$show_affiliates_help = strpos( $screen_id, 'affiliates_page_affiliates' ) !== false;
 	}
 
 	if ( !defined( 'AFFILIATES_PRO_PLUGIN_DOMAIN' ) && !defined( 'AFFILIATES_ENTERPRISE_PLUGIN_DOMAIN' ) ) {
