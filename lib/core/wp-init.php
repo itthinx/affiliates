@@ -354,6 +354,7 @@ function affiliates_setup() {
 				type         VARCHAR(10) NULL,
 				reference    VARCHAR(100) DEFAULT NULL,
 				hit_id       BIGINT(20) UNSIGNED DEFAULT NULL,
+				integration  VARCHAR(255) DEFAULT NULL,
 				PRIMARY KEY  (referral_id),
 				INDEX        aff_referrals_apd (affiliate_id, post_id, datetime),
 				INDEX        aff_referrals_da  (datetime, affiliate_id),
@@ -362,7 +363,8 @@ function affiliates_setup() {
 				INDEX        aff_referrals_ref (reference(20)),
 				INDEX        aff_referrals_ac  (affiliate_id, campaign_id),
 				INDEX        aff_referrals_c   (campaign_id),
-				INDEX        aff_referrals_h   (hit_id)
+				INDEX        aff_referrals_h   (hit_id),
+				INDEX        integration (integration(20))
 			) $charset_collate;";
 		// @see http://bugs.mysql.com/bug.php?id=27645 as of now (2011-03-19) NOW() can not be specified as the default value for a datetime column
 	}
@@ -636,10 +638,12 @@ function affiliates_update( $previous_version = null ) {
 		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
-	// add the reference_amount column to the referrals table ... from 3.0.0
+	// add the reference_amount and integration columns to the referrals table ... from 3.0.0
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
-		ADD COLUMN reference_amount DECIMAL(24,6) DEFAULT NULL;";
+		ADD COLUMN reference_amount DECIMAL(24,6) DEFAULT NULL,
+		ADD COLUMN integration VARCHAR(255) DEFAULT NULL,
+		ADD INDEX integration (integration(20));";
 	}
 
 	// add the referral_items table ... from 3.0.0
