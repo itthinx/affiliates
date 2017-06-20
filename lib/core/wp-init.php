@@ -378,9 +378,11 @@ function affiliates_setup() {
 			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
 			type             VARCHAR(10) NULL,
 			reference        VARCHAR(100) DEFAULT NULL,
+			object_id        BIGINT(20) UNSIGNED DEFAULT NULL,
 			PRIMARY KEY      (referral_item_id),
 			INDEX            referral_id (referral_id),
-			INDEX            reference (reference(20))
+			INDEX            reference (reference(20)),
+			INDEX            object_id (object_id)
 		) $charset_collate;";
 	}
 
@@ -640,7 +642,7 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN reference_amount DECIMAL(24,6) DEFAULT NULL;";
 	}
 
-	// add the referral_items table
+	// add the referral_items table ... from 3.0.0
 	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
 		$queries[] = "CREATE TABLE " . $referral_items_table . "(
@@ -652,9 +654,11 @@ function affiliates_update( $previous_version = null ) {
 			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
 			type             VARCHAR(10) NULL,
 			reference        VARCHAR(100) DEFAULT NULL,
+			object_id        BIGINT(20) UNSIGNED DEFAULT NULL,
 			PRIMARY KEY      (referral_item_id),
 			INDEX            referral_id (referral_id),
-			INDEX            reference (reference(20))
+			INDEX            reference (reference(20)),
+			INDEX            object_id (object_id)
 		) $charset_collate;";
 	}
 
