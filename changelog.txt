@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 2.18.2 =
+* WordPress 4.8 compatibility tested.
+
 = 2.18.1 =
 * Added some adjustments for compatibility with WooCommerce 3.0.0.
 
