@@ -1,13 +1,11 @@
 == Affiliates - Changelog ==
 
-= 3.0.1 =
-* Fixed class-affiliates-user-registration.php class load
-
 = 3.0.0 =
 * This is a major new release of the plugin, please make sure to back up your site and database
   before your upgrade and make sure to review the changelog to be aware of the implications of
   upgrading to this version.
 * Enhances the data model to allow for fine-grained referrals.
+* Fixed class-affiliates-user-registration.php class load.
  
 = 2.18.0 =
 * Enhanced the precision with which referral values are stored.
