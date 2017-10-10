@@ -639,12 +639,15 @@ function affiliates_update( $previous_version = null ) {
 	}
 
 	// add the reference_amount and integration columns to the referrals table ... from 3.0.0
-	if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
+	// if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'reference_amount'" );
+	if ( empty( $column ) ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
 		ADD COLUMN reference_amount DECIMAL(24,6) DEFAULT NULL,
 		ADD COLUMN integration VARCHAR(255) DEFAULT NULL,
 		ADD INDEX integration (integration(20));";
 	}
+	// }
 
 	// add the referral_items table ... from 3.0.0
 	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
