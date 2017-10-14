@@ -356,27 +356,6 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
   upgrading to this version.
 * Enhances the data model to allow for fine-grained referrals.
 
-= 2.18.0 =
-* Enhanced the precision with which referral values are stored.
-* Added the affiliates_get_referral_amount_decimals() and affiliates_format_referral_amount() functions.
-* Fixed the affiliates_referral_amount_decimals filter.
-* We now allow to define the constant AFFILIATES_REFERRAL_AMOUNT_DECIMALS in wp-config.php.
-* Added the AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY constant which can also be overridden in wp-config.php.
-* Added the notice class.
-
-= 2.17.1 =
-* Fixed user_agents table is not deleted on cleanup.
-* Fixed an issue related to showing earnings for certain dates.
-* Improved the traffic queries which solves performance issues with large data sets.
-
-= 2.17.0 =
-* Added a new Traffic section with URI stats.
-* Source URIs and landing URIs are stored for hits on affiliate links.
-* User agents are stored for hits on affiliate links.
-* Hit stats now show user agents in the Visits & Referrals section.
-* Hit stats now show user agents in the Affiliates & Referrals section.
-* Added hit references for referrals.
-
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
 == Upgrade Notice ==

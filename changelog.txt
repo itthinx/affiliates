@@ -5,7 +5,14 @@
   before your upgrade and make sure to review the changelog to be aware of the implications of
   upgrading to this version.
 * Enhances the data model to allow for fine-grained referrals.
+* Fixed PHP Notice due to undefined variable $charset_collate.
  
+ = 2.18.2 =
+* WordPress 4.8 compatibility tested.
+
+= 2.18.1 =
+* Added some adjustments for compatibility with WooCommerce 3.0.0.
+
 = 2.18.0 =
 * Enhanced the precision with which referral values are stored.
 * Added the affiliates_get_referral_amount_decimals() and affiliates_format_referral_amount() functions.
