@@ -355,6 +355,8 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
   before your upgrade and make sure to review the changelog to be aware of the implications of
   upgrading to this version.
 * Enhances the data model to allow for fine-grained referrals.
+* Fixed PHP Notice due to undefined variable $charset_collate.
+* Fixed use of deprecated properties with WC 3.x
 
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 

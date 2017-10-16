@@ -6,6 +6,7 @@
   upgrading to this version.
 * Enhances the data model to allow for fine-grained referrals.
 * Fixed PHP Notice due to undefined variable $charset_collate.
+* Fixed use of deprecated properties with WC 3.x
  
  = 2.18.2 =
 * WordPress 4.8 compatibility tested.
