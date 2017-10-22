@@ -726,6 +726,7 @@ function affiliates_cleanup( $delete = false ) {
 			$role->remove_cap( AFFILIATES_ADMINISTER_AFFILIATES );
 			$role->remove_cap( AFFILIATES_ADMINISTER_OPTIONS );
 		}
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referral_items' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referrals' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'hits' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'uris' ) );
