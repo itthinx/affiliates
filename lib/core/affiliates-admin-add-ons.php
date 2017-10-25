@@ -84,7 +84,7 @@ function affiliates_admin_add_ons() {
 		),
 		'affiliates-products' => array(
 			'title'   => 'Affiliates Products',
-			'content' => 'This extension requires WooCommerce and provides product commissions for distribution and vendors. This extension automatically grants commissions for product partners or affiliates on specific product sales. It is suitable if you want to grant an affiliate a fixed commission on every sale of a product.',
+			'content' => 'This extension requires WooCommerce and provides product commissions for distribution and vendors. It automatically grants commissions on product sales to assigned partners or affiliates. It is suitable to share revenue on every sale of one or more products.',
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-products.png',
 			'url'     => 'http://www.itthinx.com/shop/affiliates-products/',
 			'index'   => 100
