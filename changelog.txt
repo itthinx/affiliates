@@ -9,6 +9,7 @@
 * Fixed use of deprecated properties with WC 3.x
 * Added the Affiliates Ninja Forms to the integrations.
 * Added formatting options to the affiliate selectize renderer.
+* Updated the review notice appearance.
  
  = 2.18.2 =
 * WordPress 4.8 compatibility tested.

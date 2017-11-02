@@ -95,8 +95,18 @@ class Affiliates_Notice {
 		if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 			$current_url = add_query_arg( self::HIDE_REVIEW_NOTICE, true, $current_url );
-	
-			$output = '<div class="updated">';
+
+			$output = '';
+
+			$output .= '<style type="text/css">';
+			$output .= 'div.search-live-rating {';
+			$output .= sprintf( 'background: url(%s) #fff no-repeat 8px 8px;', AFFILIATES_PLUGIN_URL . '/images/affiliates-256x256.png' );
+			$output .= 'padding-left: 76px ! important;';
+			$output .= 'background-size: 64px 64px;';
+			$output .= '}';
+			$output .= '</style>';
+
+			$output .= '<div class="updated affiliates-rating">';
 			$output .= '<p>';
 			$output .= __( 'Many thanks for using <strong>Affiliates</strong>!', 'affiliates' );
 			$output .= ' ';
