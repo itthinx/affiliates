@@ -79,9 +79,11 @@ class Affiliates_UI_Elements {
 	public static function affiliates_select( $args = array() ) {
 
 		$defaults = array(
-			'name' => 'affiliate_id',
-			'class' => 'affiliates-uie',
-			'label-class' => ''
+			'name'        => 'affiliate_id',
+			'class'       => 'affiliates-uie',
+			'label-class' => '',
+			'label-prefix' => '',
+			'label-suffix' => ''
 		);
 		$args = array_merge( $defaults, $args );
 		$affiliate_id = null;
@@ -97,7 +99,9 @@ class Affiliates_UI_Elements {
 		$affiliates_select = '';
 		if ( !empty( $affiliates ) ) {
 			$affiliates_select .= sprintf( '<label class="%s">', esc_attr( $args['label-class'] ) );
+			$affiliates_select .= $args['label-prefix'];
 			$affiliates_select .= __( 'Affiliate', 'affiliates' );
+			$affiliates_select .= $args['label-suffix'];
 			$affiliates_select .= ' ';
 			$affiliates_select .= sprintf( '<select class="%s" name="%s">', esc_attr( $args['class'] ), esc_attr( $args['name'] ) );
 			$affiliates_select .= sprintf( '<option value="" %s>--</option>', empty( $affiliate_id ) ? ' selected="selected" ' : '' );
