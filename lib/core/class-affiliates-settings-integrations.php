@@ -56,6 +56,18 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
 				'platforms'    => array( 'contact-form-7' )
 			),
+			'affiliates-ninja-forms' => array(
+				'title'        => __( 'Ninja Forms', 'affiliates' ),
+				'plugin_title' => __( 'Affiliates Ninja Forms Integration', 'affiliates' ),
+				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ninja-forms/',
+				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/plugins/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/plugins/affiliates-enterprise/">Affiliates Enterprise</a> with Ninja Forms. Affiliates can sign up through forms handled with Ninja Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+				'plugin_file'  => 'affiliates-ninja-forms/affiliates-ninja-forms.php',
+				'notes'        => '',
+				'repository'   => 'wordpress',
+				'access'       => 'free',
+				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
+				'platforms'    => array( 'ninja-forms' )
+			),
 			'affiliates-jigoshop-light' => array(
 				'title'        => __( 'Jigoshop (light)', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Jigoshop Integration Light', 'affiliates' ),
