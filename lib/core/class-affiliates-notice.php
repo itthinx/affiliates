@@ -99,7 +99,7 @@ class Affiliates_Notice {
 			$output = '';
 
 			$output .= '<style type="text/css">';
-			$output .= 'div.search-live-rating {';
+			$output .= 'div.affiliates-rating {';
 			$output .= sprintf( 'background: url(%s) #fff no-repeat 8px 8px;', AFFILIATES_PLUGIN_URL . '/images/affiliates-256x256.png' );
 			$output .= 'padding-left: 76px ! important;';
 			$output .= 'background-size: 64px 64px;';
