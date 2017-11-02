@@ -27,17 +27,18 @@ Referrals are stored and attributed to an affiliate, for example if clients plac
 **Integrations**
 
 To use Affiliates together with an e-commerce plugin, you also need to install the appropriate integration plugin.
-Available free e-commerce integrations include
+Available free integrations include
 [WooCommerce](http://wordpress.org/plugins/affiliates-woocommerce-light),
+[Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7),
+[Ninja Forms](http://wordpress.org/plugins/affiliates-ninja-forms),
 [Jigoshop](http://wordpress.org/plugins/affiliates-jigoshop-light),
 [WP e-Commerce](http://wordpress.org/plugins/affiliates-wp-e-commerce),
 [Ecwid](http://wordpress.org/plugins/affiliates-ecwid-light),
 [eShop](http://wordpress.org/plugins/affiliates-eshop-light).
-To grant commissions based on forms and track leads you can use [Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7).
 
 **Premium Integrations**
 
-[Affiliates Pro](http://www.itthinx.com/plugins/affiliates-pro) adds [Pay per Click](http://www.itthinx.com/plugins/affiliates-ppc/) commissions
+[Affiliates Pro](http://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise/) add [Pay per Click](http://www.itthinx.com/plugins/affiliates-ppc/) commissions
 and provides access to advanced integrations with
 [WooCommerce](http://www.itthinx.com/plugins/affiliates-woocommerce),
 [Jigoshop](http://www.itthinx.com/plugins/affiliates-jigoshop),
@@ -48,20 +49,22 @@ and provides access to advanced integrations with
 [PayPal](http://www.itthinx.com/plugins/affiliates-pro-paypal) and
 [Events Manager](http://www.itthinx.com/plugins/affiliates-events-manager/) to grant commissions on bookings.
 
-The integrations with social sharing platforms [AddToAny](http://www.itthinx.com/plugins/affiliates-addtoany/)
-and [AddThis](http://www.itthinx.com/plugins/affiliates-addthis/) make it easy for affiliates to share their links.
+Included with [Affiliates Pro](http://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise/) are the integrations with social sharing platforms [AddToAny](http://www.itthinx.com/plugins/affiliates-addtoany/)
+and [AddThis](http://www.itthinx.com/plugins/affiliates-addthis/) to make it even easier for affiliates to share their links.
 
-Integrations with popular forms plugins include 
-[Contact Form 7](http://www.itthinx.com/plugins/affiliates-pro-contact-form-7),
+Integrations with popular form plugins include 
+[Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7),
+[Ninja Forms](http://wordpress.org/plugins/affiliates-ninja-forms),
 [Gravity Forms](http://www.itthinx.com/plugins/affiliates-gravityforms/)
 and [Formidable Forms and Formidable Pro](http://www.itthinx.com/plugins/affiliates-formidable/).
 
 [Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels.
 
 Other extensions include [Affiliates Is Referred](https://github.com/itthinx/affiliates-is-referred) which adds shortcodes to show content conditionally based on whether a visitor was referred (or not) by an affiliate,
-[Affiliates Products](http://www.itthinx.com/plugins/affiliates-products/) which handles product commissions for product partners and affiliates on product sales,
-[Affiliates Users](http://www.itthinx.com/plugins/affiliates-users/) to automatically create affiliate accounts for new users
-and [Affiliates by Username](http://www.itthinx.com/plugins/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
+[Affiliates Coupons](http://www.itthinx.com/shop/affiliates-coupons/) to create WooCommerce coupons for affiliates automatically and in bulk,
+[Affiliates Products](http://www.itthinx.com/shop/affiliates-products/) which handles WooCommerce product commissions for product partners and affiliates on product sales,
+[Affiliates Users](http://www.itthinx.com/shop/affiliates-users/) to automatically create affiliate accounts for new users
+and [Affiliates by Username](http://www.itthinx.com/shop/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
 
 Additional resources can be found on [GitHub](https://github.com/itthinx).
 
