@@ -196,7 +196,7 @@ function affiliates_admin() {
 	// referrals per day
 	$query = "SELECT count(referral_id) referrals, date(datetime) date FROM $referrals_table WHERE status = %s AND date(datetime) >= %s AND date(datetime) <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_ACCEPTED, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED, $from_date, $thru_date
 	));
 	$accepted = array();
 	foreach( $results as $result ) {
@@ -204,7 +204,7 @@ function affiliates_admin() {
 	}
 	
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date
 	));
 	$closed = array();
 	foreach( $results as $result ) {
@@ -212,7 +212,7 @@ function affiliates_admin() {
 	}
 	
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date
 	));
 	$pending = array();
 	foreach( $results as $result ) {
