@@ -3,70 +3,94 @@ Contributors: itthinx, proaktion
 Donate link: http://www.itthinx.com/plugins/affiliates
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
 Requires at least: 4.0.0
-Tested up to: 4.8.2
+Tested up to: 4.8.3
+Requires PHP: 5.5.0
 Stable tag: 3.0.0
 License: GPLv3
 
-The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
+The Affiliates system provides the most powerful tools to run a successful Affiliate Marketing Program.
 
 == Description ==
 
-The Affiliates system provides powerful tools to maintain an Affiliate Marketing Program.
+The Affiliates system allows you to run a successful Affiliate Marketing Program. It comprises a set of the most powerful growth-oriented tools.
 
-_Important features include automated affiliate registration, an unlimited affiliate management section and the ability to integrate Affiliates with virtually any E-Commerce platform. Commissions on referred users are built in, free and premium integrations with e-commerce systems are available._
+Important features include automated affiliate registration, an unlimited affiliate management section and the ability to integrate Affiliates with virtually any platform, including e-commerce, memberships, forms, lead generation and tracking and many more.
+Commissions on referred users are built in, free and premium integrations with e-commerce systems are available.
 
-**The Affiliates plugin provides an affiliate system for sellers, shops, and membership sites who want to get started with their affiliate program right "out of the box".**
+The Affiliates plugin provides an affiliate system for sellers, shops, and membership sites who want to get started with their affiliate program right "out of the box".
 
-It also provides a solid framework for developers, who wish to build customized solutions based on a sound data model. With unlimited affiliate program management tools available on the back end and a set of shortcodes to provide Affiliates information on their performance on the front end, there is everything you need to start an affiliate program.
+It also provides a solid framework for developers, who wish to build customized solutions based on a sound data model.
+With unlimited affiliate program management tools available on the back end and a set of shortcodes to provide Affiliates information on their performance on the front end, there is everything you need to start an affiliate program.
 
-To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with **affiliate links**, the _Affiliates_ plugin is a powerful solution.
+To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with **affiliate links**, the _Affiliates_ plugin is the most powerful free solution.
 
 Simply put, the affiliates plugin is used to manage affiliates, create referrals and track visits to your site through affiliate links.
-Referrals are stored and attributed to an affiliate, for example if clients place orders on your site and you need to credit your affiliates. You can show your affiliates how well they perform, by embedding simple shortcodes on a page.
+Referrals are stored and attributed to an affiliate, for example if clients place orders on your site and you need to credit your affiliates.
+You can show your affiliates how well they perform, by embedding simple shortcodes on a page.
 
-**Integrations**
+**Free Integrations and Extensions**
 
-To use Affiliates together with an e-commerce plugin, you also need to install the appropriate integration plugin.
-Available free integrations include
-[WooCommerce](http://wordpress.org/plugins/affiliates-woocommerce-light),
-[Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7),
-[Ninja Forms](http://wordpress.org/plugins/affiliates-ninja-forms),
-[Jigoshop](http://wordpress.org/plugins/affiliates-jigoshop-light),
-[WP e-Commerce](http://wordpress.org/plugins/affiliates-wp-e-commerce),
-[Ecwid](http://wordpress.org/plugins/affiliates-ecwid-light),
-[eShop](http://wordpress.org/plugins/affiliates-eshop-light).
-
-**Premium Integrations**
-
-[Affiliates Pro](http://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise/) add [Pay per Click](http://www.itthinx.com/plugins/affiliates-ppc/) commissions
-and provides access to advanced integrations with
-[WooCommerce](http://www.itthinx.com/plugins/affiliates-woocommerce),
-[Jigoshop](http://www.itthinx.com/plugins/affiliates-jigoshop),
-[TheCartPress](http://www.itthinx.com/plugins/affiliates-thecartpress/),
-[WP e-Commerce](http://www.itthinx.com/plugins/affiliates-wp-e-commerce),
-[eShop](http://www.itthinx.com/plugins/affiliates-eshop),
-[Ecwid](http://www.itthinx.com/plugins/affiliates-ecwid),
-[PayPal](http://www.itthinx.com/plugins/affiliates-pro-paypal) and
-[Events Manager](http://www.itthinx.com/plugins/affiliates-events-manager/) to grant commissions on bookings.
-
-Included with [Affiliates Pro](http://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise/) are the integrations with social sharing platforms [AddToAny](http://www.itthinx.com/plugins/affiliates-addtoany/)
-and [AddThis](http://www.itthinx.com/plugins/affiliates-addthis/) to make it even easier for affiliates to share their links.
-
-Integrations with popular form plugins include 
-[Contact Form 7](http://wordpress.org/plugins/affiliates-contact-form-7),
-[Ninja Forms](http://wordpress.org/plugins/affiliates-ninja-forms),
-[Gravity Forms](http://www.itthinx.com/plugins/affiliates-gravityforms/)
-and [Formidable Forms and Formidable Pro](http://www.itthinx.com/plugins/affiliates-formidable/).
-
-[Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels.
-
-Other extensions include [Affiliates Is Referred](https://github.com/itthinx/affiliates-is-referred) which adds shortcodes to show content conditionally based on whether a visitor was referred (or not) by an affiliate,
-[Affiliates Coupons](http://www.itthinx.com/shop/affiliates-coupons/) to create WooCommerce coupons for affiliates automatically and in bulk,
-[Affiliates Products](http://www.itthinx.com/shop/affiliates-products/) which handles WooCommerce product commissions for product partners and affiliates on product sales,
-[Affiliates Users](http://www.itthinx.com/shop/affiliates-users/) to automatically create affiliate accounts for new users
-and [Affiliates by Username](http://www.itthinx.com/shop/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
+- [Affiliates Import](https://wordpress.org/plugins/affiliates-import) : Allows to import affiliate accounts in bulk from a text file. This is also useful to migrate to [Affiliates](https://wordpress.org/plugins/affiliates/), [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/).
+- [Affiliates WooCommerce Light](https://wordpress.org/plugins/affiliates-woocommerce-light) : Run your affiliate program with [WooCommerce](http://wordpress.org/plugins/woocommerce/), referrals are created automatically for your affiliates when they refer sales.
+- [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals.
+- [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions.
+- [Affiliates BuddyPress](https://wordpress.org/plugins/affiliates-buddypress) : Display affiliate content in the [BuddyPress](https://wordpress.org/plugins/buddypress/) user profile.
+- [Affiliates Captcha](https://wordpress.org/plugins/affiliates-captcha) : The captcha will appear on the affiliate registration form when the [Captcha](https://wordpress.org/plugins/captcha/) plugin is used.
+- [Affiliates reCAPTCHA](https://wordpress.org/plugins/affiliates-recaptcha) : This integrates [reCAPTCHA](https://www.google.com/recaptcha/) with the affiliate registration form.
 
 Additional resources can be found on [GitHub](https://github.com/itthinx).
+
+Currently deprecated integrations:
+[Ecwid](https://wordpress.org/plugins/affiliates-ecwid-light),
+[eShop](https://wordpress.org/plugins/affiliates-eshop-light),
+[Jigoshop](https://wordpress.org/plugins/affiliates-jigoshop-light),
+[WP e-Commerce](https://wordpress.org/plugins/affiliates-wp-e-commerce).
+We recommend to use the other systems and integrations instead of the deprecated ones.
+
+
+**Premium Integrations and Extensions included with Affiliates Pro and Affiliates Enterprise**
+
+- [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) provides all features available in the free _Affiliates_ system and includes additional features like Banner Management, advanced Notifications, additional Shortcodes, advanced commission Rates, affiliate export features, advanced Totals with mass payment files and exports, more integrations and unlocks advanced integration features.
+- [Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional shortcodes.
+
+[Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) come with additional features, extensions and integrations. Among these are:
+
+E-Commerce and Events
+
+- [Affiliates WooCommerce](https://www.itthinx.com/plugins/affiliates-woocommerce/) : Our advanced integration for WooCommerce includes automated status synchronization, recurring referrals and product rates.
+- [Affiliates Events Manager](http://www.itthinx.com/plugins/affiliates-events-manager/) The integration records referrals and essential booking data for referred bookings. It allows to grant commissions on bookings with [Events Manager](https://wordpress.org/plugins/events-manager/).
+- [Affiliates PayPal](http://www.itthinx.com/plugins/affiliates-pro-paypal/) : Integrates with PayPal and allows to grant commissions on purchases made with Payment Buttons.
+
+Social Sharing Platforms ... make it even easier for affiliates to share their links
+
+- [Affiliates AddThis](http://www.itthinx.com/plugins/affiliates-addthis) : This integration with [AddThis](http://www.addthis.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
+- [Affiliates AddToAny](http://www.itthinx.com/plugins/affiliates-addtoany) : This integration with [AddToAny](http://www.addtoany.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
+
+Advertising
+
+- [Affiliates Pay per Click](https://www.itthinx.com/plugins/affiliates-ppc/) : Pay affiliate commissions based on clicks or visits to affiliate links.
+
+Forms
+
+- [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms/) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
+- [Affiliates Formidable](https://www.itthinx.com/plugins/affiliates-formidable/) : This integration can be used to record and track form submissions and pay affiliate partners commissions on leads or successful purchases with [Formidable Forms](https://wordpress.org/plugins/formidable/).
+- [Affiliates Gravity Forms](https://www.itthinx.com/plugins/affiliates-gravityforms/) : This extension allows to record referrals for form submissions and to create affiliate accounts for new users based on [Gravity Forms](http://www.gravityforms.com).
+- [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) it unlocks advanced features.
+
+**Premium Extensions available separately**
+
+- [Affiliates Coupons](http://www.itthinx.com/shop/affiliates-coupons/) to create WooCommerce coupons for affiliates automatically and in bulk.
+- [Affiliates Users](http://www.itthinx.com/shop/affiliates-users/) to automatically create affiliate accounts for new users
+- [Affiliates by Username](http://www.itthinx.com/shop/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
+- [Affiliates Permanent](https://www.itthinx.com/shop/affiliates-permanent/) : This extension is useful if you want to grant your affiliates commissions on all purchases made by customers they refer.
+- [Affiliates Products](http://www.itthinx.com/shop/affiliates-products/) which handles WooCommerce product commissions for product partners and affiliates on product sales,
+
+
+
+
+
+
+
 
 **Features**
 
@@ -360,6 +384,10 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Enhances the data model to allow for fine-grained referrals.
 * Fixed PHP Notice due to undefined variable $charset_collate.
 * Fixed use of deprecated properties with WC 3.x
+* Added the Affiliates Ninja Forms to the integrations.
+* Added formatting options to the affiliate selectize renderer.
+* Updated the review notice appearance.
+* Fixed several PHP notices produces due to wrong number of parameters passed to prepare() on the Affiliates Overview admin screen.
 
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
