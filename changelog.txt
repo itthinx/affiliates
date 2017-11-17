@@ -11,6 +11,7 @@
 * Added formatting options to the affiliate selectize renderer.
 * Updated the review notice appearance.
 * Fixed several PHP notices produces due to wrong number of parameters passed to prepare() on the Affiliates Overview admin screen.
+* Wordpress 4.9 compatible.
  
  = 2.18.2 =
 * WordPress 4.8 compatibility tested.

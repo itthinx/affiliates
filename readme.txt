@@ -3,7 +3,7 @@ Contributors: itthinx, proaktion
 Donate link: http://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
 Requires at least: 4.0.0
-Tested up to: 4.8.3
+Tested up to: 4.9
 Requires PHP: 5.5.0
 Stable tag: 3.0.0
 License: GPLv3
@@ -393,6 +393,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Added formatting options to the affiliate selectize renderer.
 * Updated the review notice appearance.
 * Fixed several PHP notices produces due to wrong number of parameters passed to prepare() on the Affiliates Overview admin screen.
+* Wordpress 4.9 compatible.
 
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
