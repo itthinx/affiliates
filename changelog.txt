@@ -12,6 +12,8 @@
 * Updated the review notice appearance.
 * Fixed several PHP notices produces due to wrong number of parameters passed to prepare() on the Affiliates Overview admin screen.
 * Wordpress 4.9 compatible.
+* Removed deprecated and unmaintained entries from the Integrations section in the Settings.
+* Added new entries to the Integrations section for Events Manager, Formidable Forms.
  
  = 2.18.2 =
 * WordPress 4.8 compatibility tested.
