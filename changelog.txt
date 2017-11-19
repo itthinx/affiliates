@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 2.18.3 =
+* WordPress 4.9 compatibility tested.
+
 = 2.18.2 =
 * WordPress 4.8 compatibility tested.
 
