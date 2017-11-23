@@ -456,3 +456,13 @@ div.referral.remove span.title {
 	display: block;
 	color: #333;
 }
+li.add-ons:hover {
+	position: relative;
+}
+.affiliates-admin-add-ons ul.add-ons h3 img:hover {
+	position: absolute;
+	-webkit-transition: width 0.3s ease-out;
+	-moz-transition: width 0.3s ease-out;
+	-o-transition: width 0.3s ease-out;
+	width: 272px;
+}
