@@ -205,7 +205,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$output .= '<p class="description">';
 		$output .= sprintf(
 			__( 'Please also refer to the <a href="%s">Add-Ons</a> for additional extensions.', 'affiliates' ),
-			esc_attr( admin_url( 'admin.php?page=affiliates-admin-add-ons' ) )
+			esc_url( admin_url( 'admin.php?page=affiliates-admin-add-ons' ) )
 		);
 		$output .= '</p>';
 
@@ -220,7 +220,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$output .= '</p>';
 		} else {
 			$output .= '<p class="description">';
-			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section.', 'affiliates' ), esc_attr( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
+			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section.', 'affiliates' ), esc_url( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
 			$output .= '</p>';
 		}
 		$output .= '<p class="description">';
@@ -231,7 +231,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$output .= ' ';
 		$output .= sprintf(
 			__( 'Enable the built-in integration if the options provided under <a href="%s">User Registration</a> are sufficient.', 'affiliates' ),
-			esc_attr( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) )
+			esc_url( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) )
 		);
 		$output .= '</p>';
 
