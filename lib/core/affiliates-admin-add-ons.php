@@ -35,6 +35,13 @@ function affiliates_admin_add_ons() {
 	echo __( 'Get additional features and access to premium support!', 'affiliates' );
 	echo '</p>';
 
+	echo '<p>';
+	printf(
+		__( 'Please also refer to the available <a href="%s">Integrations</a>.', 'affiliates' ),
+		esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) )
+	);
+	echo '</p>';
+
 	echo '<h2>';
 	echo __( 'Recommended plugins and extensions', 'affiliates' );
 	echo '</h2>';

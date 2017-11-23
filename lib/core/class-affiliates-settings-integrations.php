@@ -203,6 +203,13 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$output = '';
 
 		$output .= '<p class="description">';
+		$output .= sprintf(
+			__( 'Please also refer to the <a href="%s">Add-Ons</a> for additional extensions.', 'affiliates' ),
+			esc_attr( admin_url( 'admin.php?page=affiliates-admin-add-ons' ) )
+		);
+		$output .= '</p>';
+
+		$output .= '<p class="description">';
 		$output .= __( 'Integrations link the affiliate system to e-commerce plugins and other platforms.', 'affiliates' );
 		$output .= ' ';
 		$output .= __( 'The integrations are required to record referrals, as these award affiliates with commissions based on referred purchases or platform-specific actions.', 'affiliates' );
