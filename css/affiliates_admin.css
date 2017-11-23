@@ -442,6 +442,7 @@ div.referral.remove span.title {
 	margin: 0 8px 0 0;
 	display: block;
 	float: left;
+	width: 105px;
 }
 .affiliates-admin-add-ons ul.add-ons a {
 	text-decoration: none;

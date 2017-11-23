@@ -75,7 +75,7 @@ function affiliates_admin_add_ons() {
 			'url'     => 'https://wordpress.org/plugins/affiliates-captcha/',
 			'index'   => 20
 		),
-		'affiliates-captcha' => array(
+		'affiliates-recaptcha' => array(
 			'title'   => 'Affiliates reCAPTCHA <span style="color:#f00">FREE</span>',
 			'content' => 'This extension integrates with Google\'s reCAPTCHA service for the affiliate registration form.',
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-recaptcha.png',
