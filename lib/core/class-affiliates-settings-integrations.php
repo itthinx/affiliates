@@ -29,6 +29,7 @@ if ( !defined( 'ABSPATH' ) ) {
 class Affiliates_Settings_Integrations extends Affiliates_Settings {
 
 	private static $integrations = null;
+	private static $premium_integrations = null;
 
 	public static function init() {
 		self::$integrations =  array(
@@ -142,6 +143,47 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 // 			)
 		);
 		self::$integrations = apply_filters( 'affiliates_settings_integrations', self::$integrations );
+		self::$premium_integrations = array(
+			'affiliates-addtoany' => array(
+				'title'        => __( 'AddToAny', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="http://www.addtoany.com/">AddToAny</a> &hellip; <em>&ldquo;The Universal Sharing Platform&rdquo;</em>. The <a href="https://wordpress.org/plugins/add-to-any/">Share Buttons by AddToAny</a> are required.', 'affiliates' ),
+				'notes'        =>
+					__( 'Makes it even easier to share using affiliate links automatically.', 'affiliates' ) .
+					' ' .
+					__( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-addthis' => array(
+				'title'        => __( 'AddThis', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="http://www.addthis.com/">AddThis</a> &hellip; <em>&ldquo;Website tools that drive more shares, follows and conversions&rdquo;</em>. The <a href="https://wordpress.org/plugins/addthis/">Smart Website Tools</a> by AddThis are required.', 'affiliates' ),
+				'notes'        =>
+					__( 'Makes it even easier to share using affiliate links automatically.', 'affiliates' ) .
+					' ' .
+					__( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-ppc' => array(
+				'title'        => __( 'Pay per Click', 'affiliates' ),
+				'description'  => __( 'Pay affiliate commissions based on clicks or visits to affiliate links. This plugin adds the possibility to grant commissions based on Pay per Click, Pay per Visit and Pay per Daily Visit with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'notes'        => __( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-gravityforms' => array(
+				'title'        => __( 'Gravity Forms', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="https://www.e-junkie.com/ecom/gb.php?cl=54585&c=ib&aff=290919">Gravity Forms</a>.', 'affiliates' ),
+				'notes'        =>
+					__( 'This extension allows to record referrals for form submissions and to create affiliate accounts (requires the Gravity Forms User Registation Add-On) for new users based on Gravity Forms.', 'affiliates' ) .
+					' ' .
+					__( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-paypal' => array(
+				'title'        => __( 'PayPal', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with PayPal Payments Standard. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made.', 'affiliates' ),
+				'notes'        => __( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>. Note that this integration is not intended to be used for e-commerce systems that provide their own PayPal Payments Standard gateway.', 'affiliates' ),
+				'class'        => 'ext'
+			)
+		);
 	}
 
 	/**
@@ -262,6 +304,38 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		}
 		$list .= '</ul>';
 		$output .= $list;
+
+		if ( AFFILIATES_PLUGIN_NAME === 'affiliates' ) {
+			$output .= '<h2>';
+			$output .= esc_html__( 'Premium Integrations', 'affiliates' );
+			$output .= '</h2>';
+			$output .= '<p>';
+			$output .= sprintf(
+				__( 'These integrations are available with <a href="%s">Affiliates Pro</a> and <a href="%s">Affiliates Enterprise</a>.', 'affiliates' ),
+				esc_url( 'https://www.itthinx.com/shop/affiliates-pro/' ),
+				esc_url( 'https://www.itthinx.com/shop/affiliates-enterprise/' )
+			);
+			$output .= '</p>';
+			$list = '<ul class="integrations">';
+			foreach( self::$premium_integrations as $key => $integration ) {
+				$integration_class = isset( $integration['class'] ) ? $integration['class'] : '';
+				$list .= sprintf( '<li id="integration-%s">', $key );
+				$list .= sprintf( '<div class="integration %s">', $integration_class );
+				$list .= '<h3>' . $integration['title'] . '</h3>';
+				$list .= '<p class="description">';
+				$list .= $integration['description'];
+				$list .= '</p>';
+				if ( !empty( $integration['notes'] ) ) {
+					$list .= '<p class="notes">';
+					$list .= $integration['notes'];
+					$list .= '</p>';
+				}
+				$list .= '</div>';
+				$list .= '</li>';
+			}
+			$list .= '</ul>';
+			$output .= $list;
+		}
 
 		echo $output;
 
