@@ -1942,14 +1942,18 @@ function affiliates_footer( $render = true ) {
  * @param boolean $render
  */
 function affiliates_donate( $render = true, $small = false ) {
-	$donate = sprintf(
-		'<a class="button" href="http://www.itthinx.com/shop/">%s</a>',
-		__( 'Get Affiliates Pro', 'affiliates' )
+	$output = '<style type="text/css">';
+	$output .= '.button.affiliates-premium-button { background-color: #5da64f; color: #ffffff; font-weight: bold; }';
+	$output .= '.button.affiliates-shop-button { background-color: #d65d4f; color: #ffffff; font-weight: bold; }';
+	$output .= '.button.affiliates-premium-button:hover, .button.affiliates-shop-button:hover { background-color: #004fa6; color: #ffffff; font-weight: bold; }';
+	$output .= '</style>';
+	$output .= sprintf(
+		'<a class="button affiliates-premium-button" href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> <a class="button affiliates-premium-button" href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> <a class="button affiliates-shop-button" href="http://www.itthinx.com/shop/">Shop</a>'
 	);
 	if ( $render ) {
-		echo $donate;
+		echo $output;
 	} else {
-		return $donate;
+		return $output;
 	}
 }
 
