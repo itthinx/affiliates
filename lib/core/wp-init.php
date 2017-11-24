@@ -1943,8 +1943,8 @@ function affiliates_footer( $render = true ) {
  */
 function affiliates_donate( $render = true, $small = false ) {
 	$output = '<style type="text/css">';
-	$output .= '.button.affiliates-premium-button { background-color: #5da64f; color: #ffffff; font-weight: bold; }';
-	$output .= '.button.affiliates-shop-button { background-color: #d65d4f; color: #ffffff; font-weight: bold; }';
+	$output .= '.button.affiliates-premium-button { background-color: #5da64f; color: #ffffff; font-weight: bold; border-top-color: #8dd67f; border-bottom-color: #2d761f; border-left-color: #7dc66f; border-right-color: #3d862f; }';
+	$output .= '.button.affiliates-shop-button { background-color: #d65d4f; color: #ffffff; font-weight: bold; border-top-color: #f67d6f; border-bottom-color: #a62d1f; border-left-color: #e66d5f; border-right-color: #b63d2f; }';
 	$output .= '.button.affiliates-premium-button:hover, .button.affiliates-shop-button:hover { background-color: #004fa6; color: #ffffff; font-weight: bold; }';
 	$output .= '</style>';
 	$output .= sprintf(
