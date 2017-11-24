@@ -389,11 +389,13 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Enhances the data model to allow for fine-grained referrals.
 * Fixed PHP Notice due to undefined variable $charset_collate.
 * Fixed use of deprecated properties with WC 3.x
-* Added the Affiliates Ninja Forms to the integrations.
 * Added formatting options to the affiliate selectize renderer.
 * Updated the review notice appearance.
 * Fixed several PHP notices produces due to wrong number of parameters passed to prepare() on the Affiliates Overview admin screen.
 * Wordpress 4.9 compatible.
+* Removed deprecated and unmaintained entries from the Integrations section in the Settings.
+* Added new entries to the Integrations section for Events Manager, Formidable Forms, Ninja Forms.
+* Updated the Add-Ons section with Affiliates Import and other free add-ons.
 
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
