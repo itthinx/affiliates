@@ -396,6 +396,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Removed deprecated and unmaintained entries from the Integrations section in the Settings.
 * Added new entries to the Integrations section for Events Manager, Formidable Forms, Ninja Forms.
 * Updated the Add-Ons section with Affiliates Import and other free add-ons.
+* Fixed the WooCommerce customer registration integration option is independent from the the user registration integration option.
 
 The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
