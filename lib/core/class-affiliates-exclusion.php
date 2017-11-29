@@ -107,8 +107,24 @@ class Affiliates_Exclusion {
 							}
 						}
 					}
+					self::add_filters();
 				}
-				self::add_filters();
+			}
+		} else {
+			if ( $valid && !empty( $coupon ) && !empty( $coupon->id ) && !empty( $coupon->code ) ) {
+				if ( method_exists( 'Affiliates_Attributes_WordPress', 'get_affiliate_for_coupon' ) ) {
+					self::remove_filters();
+					if ( $affiliate_id = Affiliates_Attributes_WordPress::get_affiliate_for_coupon( $coupon->code ) ) {
+						if ( $user_id = get_current_user_id() ) {
+							if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
+								if ( in_array( $affiliate_id, $affiliate_ids ) ) {
+									$valid = false;
+								}
+							}
+						}
+					}
+					self::add_filters();
+				}
 			}
 		}
 		return $valid;
@@ -140,6 +156,7 @@ class Affiliates_Exclusion {
 					self::remove_filters();
 					foreach ( $cart->applied_coupons as $key => $code ) {
 						$coupon = new WC_Coupon( $code );
+						$coupon_code = method_exists( $coupon, 'get_code' ) ? $coupon->get_code() : $coupon->code;
 						if ( ! is_wp_error( $coupon->is_valid() ) ) {
 
 							$coupon_code = method_exists( $coupon, 'get_code' ) ? $coupon->get_code() : $coupon->code;

@@ -60,7 +60,7 @@ class Affiliates_Notice {
 	 * Hooked on the admin_init action.
 	 */
 	public static function admin_init() {
-		if ( is_admin() && current_user_can( 'activate_plugins' ) ) {
+		if ( current_user_can( 'activate_plugins' ) ) {
 			$user_id = get_current_user_id();
 			if ( !empty( $_GET[self::HIDE_REVIEW_NOTICE] ) ) {
 				add_user_meta( $user_id, self::HIDE_REVIEW_NOTICE, true );
