@@ -661,9 +661,10 @@ class Affiliates_Registration {
 	 * 
 	 * @param int $user_id user id
 	 * @param array $userdata affiliate data
+	 * @param string $status affiliate status
 	 * @return if successful new affiliate's id, otherwise false
 	 */
-	public static function store_affiliate( $user_id, $userdata ) {
+	public static function store_affiliate( $user_id, $userdata, $status = null ) {
 		global $wpdb;
 
 		$result = false;
@@ -679,7 +680,14 @@ class Affiliates_Registration {
 		);
 		$formats = array( '%s', '%s', '%s' );
 		// pending affiliate status?
-		$affiliate_status = get_option( 'aff_status', 'active' );
+		switch( $status ) {
+			case 'active' :
+			case 'pending' :
+				$affiliate_status = $status;
+				break;
+			default :
+				$affiliate_status = get_option( 'aff_status', 'active' );
+		}
 		if ( $affiliate_status == 'pending' ) {
 			$data['status'] = 'pending';
 			$formats[] = '%s';

@@ -56,6 +56,7 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					"DELETE FROM $referrals_table WHERE referral_id = %d",
 					intval( $_POST['referral_id'] )
 				) ) ) {
+					do_action( 'affiliates_deleted_referral', intval( $_POST['referral_id'] ) );
 					$output .= '<br/>';
 					$output .= '<div class="info">';
 					$output .= __( 'The referral has been removed.', 'affiliates' );

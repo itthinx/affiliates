@@ -325,6 +325,7 @@ function affiliates_admin_hits() {
 
 				'<div class="filter-section">' .
 				$affiliates_select .
+				Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
 				'</div>' .
 
 				'<div class="filter-section">' .

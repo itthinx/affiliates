@@ -237,6 +237,9 @@ div.details-hits {
 	margin-bottom: 1em;
 	border: 1px solid #ddd;
 }
+.manage.add {
+	margin-right: 1em;
+}
 .manage a.add {
 	text-decoration: none;
 	cursor: pointer;
@@ -439,6 +442,7 @@ div.referral.remove span.title {
 	margin: 0 8px 0 0;
 	display: block;
 	float: left;
+	width: 105px;
 }
 .affiliates-admin-add-ons ul.add-ons a {
 	text-decoration: none;
@@ -451,4 +455,14 @@ div.referral.remove span.title {
 	clear: both;
 	display: block;
 	color: #333;
+}
+li.add-ons:hover {
+	position: relative;
+}
+.affiliates-admin-add-ons ul.add-ons h3 img:hover {
+	position: absolute;
+	-webkit-transition: width 0.3s ease-out;
+	-moz-transition: width 0.3s ease-out;
+	-o-transition: width 0.3s ease-out;
+	width: 272px;
 }

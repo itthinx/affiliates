@@ -35,6 +35,13 @@ function affiliates_admin_add_ons() {
 	echo __( 'Get additional features and access to premium support!', 'affiliates' );
 	echo '</p>';
 
+	echo '<p>';
+	printf(
+		__( 'Please also refer to the available <a href="%s">Integrations</a>.', 'affiliates' ),
+		esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) )
+	);
+	echo '</p>';
+
 	echo '<h2>';
 	echo __( 'Recommended plugins and extensions', 'affiliates' );
 	echo '</h2>';
@@ -53,6 +60,34 @@ function affiliates_admin_add_ons() {
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-enterprise.png',
 			'url'     => 'http://www.itthinx.com/shop/affiliates-enterprise/',
 			'index'   => 10
+		),
+		'affiliates-import' => array(
+			'title'   => 'Affiliates Import <span style="color:#f00">FREE</span>',
+			'content' => 'This extension allows to import affiliate accounts from a text file into the affiliate system.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-import.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-import/',
+			'index'   => 20
+		),
+		'affiliates-buddypress' => array(
+			'title'   => 'Affiliates BuddyPress <span style="color:#f00">FREE</span>',
+			'content' => 'This integration with BuddyPress helps to display affiliate content in the BuddyPress user profile.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-buddypress.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-buddypress/',
+			'index'   => 20
+		),
+		'affiliates-captcha' => array(
+			'title'   => 'Affiliates Captcha <span style="color:#f00">FREE</span>',
+			'content' => 'Activate this extension and the Captcha will appear on the affiliate registration form when the Captcha plugin is activated.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-captcha.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-captcha/',
+			'index'   => 20
+		),
+		'affiliates-recaptcha' => array(
+			'title'   => 'Affiliates reCAPTCHA <span style="color:#f00">FREE</span>',
+			'content' => 'This extension integrates with Google\'s reCAPTCHA service for the affiliate registration form.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-recaptcha.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-recaptcha/',
+			'index'   => 20
 		),
 		'affiliates-by-username' => array(
 			'title'   => 'Affiliates by Username',
@@ -84,7 +119,7 @@ function affiliates_admin_add_ons() {
 		),
 		'affiliates-products' => array(
 			'title'   => 'Affiliates Products',
-			'content' => 'This extension requires WooCommerce and provides product commissions for distribution and vendors. This extension automatically grants commissions for product partners or affiliates on specific product sales. It is suitable if you want to grant an affiliate a fixed commission on every sale of a product.',
+			'content' => 'This extension requires WooCommerce and provides product commissions for distribution and vendors. It automatically grants commissions on product sales to assigned partners or affiliates. It is suitable to share revenue on every sale of one or more products.',
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-products.png',
 			'url'     => 'http://www.itthinx.com/shop/affiliates-products/',
 			'index'   => 100

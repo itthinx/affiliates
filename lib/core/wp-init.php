@@ -56,7 +56,10 @@ include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration-widget.php' 
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php' ); // don't make it conditional on is_admin(), get_total() is used in Manage Affiliates
 
 // built-in user registration integration
-if ( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) {
+if (
+	( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) ||
+	( get_option( 'aff_customer_registration_enabled', 'no' ) == 'yes' )
+) {
 	require_once AFFILIATES_CORE_LIB . '/class-affiliates-user-registration.php';
 }
 
@@ -124,6 +127,19 @@ function affiliates_admin_print_scripts() {
 	wp_enqueue_script( 'excanvas', AFFILIATES_PLUGIN_URL . 'js/graph/flot/excanvas.min.js', array( 'jquery' ), $affiliates_version );
 	wp_enqueue_script( 'flot', AFFILIATES_PLUGIN_URL . 'js/graph/flot/jquery.flot.min.js', array( 'jquery' ), $affiliates_version );
 	wp_enqueue_script( 'flot-resize', AFFILIATES_PLUGIN_URL . 'js/graph/flot/jquery.flot.resize.min.js', array( 'jquery', 'flot' ), $affiliates_version );
+
+	// Selectize
+	$screen = get_current_screen();
+	if ( isset( $screen->id ) ) {
+		switch( $screen->id ) {
+			case 'affiliates_page_affiliates-admin-referrals' :
+			case 'affiliates_page_affiliates-admin-hits-uri' :
+			case 'affiliates_page_affiliates-admin-hits-affiliate' :
+			case 'affiliates_page_affiliates-admin-hits' :
+				Affiliates_UI_Elements::enqueue( 'select' );
+				break;
+		}
+	}
 
 //	echo '
 //		<script type="text/javascript">
@@ -325,21 +341,23 @@ function affiliates_setup() {
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referrals_table . "'" ) != $referrals_table ) {
 		$queries[] = "CREATE TABLE " . $referrals_table . "(
 				referral_id  BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-				affiliate_id bigint(20) unsigned NOT NULL default '0',
-				campaign_id  bigint(20) UNSIGNED DEFAULT NULL,
-				post_id      bigint(20) unsigned NOT NULL default '0',
-				datetime     datetime NOT NULL,
-				description  varchar(5000),
-				ip           int(10) unsigned default NULL,
-				ipv6         decimal(39,0) unsigned default NULL,
-				user_id      bigint(20) unsigned default NULL,
+				affiliate_id BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+				campaign_id  BIGINT(20) UNSIGNED DEFAULT NULL,
+				post_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+				datetime     DATETIME NOT NULL,
+				description  VARCHAR(5000),
+				ip           INT(10) UNSIGNED DEFAULT NULL,
+				ipv6         DECIMAL(39,0) UNSIGNED DEFAULT NULL,
+				user_id      BIGINT(20) UNSIGNED DEFAULT NULL,
 				amount       DECIMAL(24,6) DEFAULT NULL,
-				currency_id  char(3) default NULL,
-				data         longtext default NULL,
-				status       varchar(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
-				type         varchar(10) NULL,
+				reference_amount DECIMAL(24,6) DEFAULT NULL,
+				currency_id  CHAR(3) DEFAULT NULL,
+				data         LONGTEXT DEFAULT NULL,
+				status       VARCHAR(10) NOT NULL DEFAULT '" . AFFILIATES_REFERRAL_STATUS_ACCEPTED . "',
+				type         VARCHAR(10) NULL,
 				reference    VARCHAR(100) DEFAULT NULL,
 				hit_id       BIGINT(20) UNSIGNED DEFAULT NULL,
+				integration  VARCHAR(255) DEFAULT NULL,
 				PRIMARY KEY  (referral_id),
 				INDEX        aff_referrals_apd (affiliate_id, post_id, datetime),
 				INDEX        aff_referrals_da  (datetime, affiliate_id),
@@ -348,9 +366,29 @@ function affiliates_setup() {
 				INDEX        aff_referrals_ref (reference(20)),
 				INDEX        aff_referrals_ac  (affiliate_id, campaign_id),
 				INDEX        aff_referrals_c   (campaign_id),
-				INDEX        aff_referrals_h   (hit_id)
+				INDEX        aff_referrals_h   (hit_id),
+				INDEX        integration (integration(20))
 			) $charset_collate;";
 		// @see http://bugs.mysql.com/bug.php?id=27645 as of now (2011-03-19) NOW() can not be specified as the default value for a datetime column
+	}
+
+	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
+		$queries[] = "CREATE TABLE " . $referral_items_table . "(
+			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+			amount           DECIMAL(24,6) DEFAULT NULL,
+			line_amount      DECIMAL(24,6) DEFAULT NULL,
+			currency_id      CHAR(3) DEFAULT NULL,
+			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
+			type             VARCHAR(20) NULL,
+			reference        VARCHAR(100) DEFAULT NULL,
+			object_id        BIGINT(20) UNSIGNED DEFAULT NULL,
+			PRIMARY KEY      (referral_item_id),
+			INDEX            referral_id (referral_id),
+			INDEX            reference (reference(20)),
+			INDEX            object_id (object_id)
+		) $charset_collate;";
 	}
 
 	// IMPORTANT:
@@ -418,8 +456,8 @@ function affiliates_setup() {
 	$robots_table = _affiliates_get_tablename( 'robots' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $robots_table . "'" ) != $robots_table ) {
 		$queries[] = "CREATE TABLE " . $robots_table . "(
-				robot_id    bigint(20) unsigned NOT NULL auto_increment,
-				name        varchar(100) NOT NULL,
+				robot_id    BIGINT(20) UNSIGNED NOT NULL auto_increment,
+				name        VARCHAR(100) NOT NULL,
 				PRIMARY KEY (robot_id),
 				INDEX       aff_robots_n (name)
 			) $charset_collate;";
@@ -427,8 +465,8 @@ function affiliates_setup() {
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_users_table . "'" ) != $affiliates_users_table ) {
 		$queries[] = "CREATE TABLE " . $affiliates_users_table . "(
-				affiliate_id bigint(20) unsigned NOT NULL,
-				user_id      bigint(20) unsigned NOT NULL,
+				affiliate_id BIGINT(20) UNSIGNED NOT NULL,
+				user_id      BIGINT(20) UNSIGNED NOT NULL,
 				PRIMARY KEY (affiliate_id, user_id)
 			) $charset_collate;";
 	}
@@ -516,6 +554,14 @@ function affiliates_update( $previous_version = null ) {
 	$result  = true;
 	$queries = array();
 
+	$charset_collate = '';
+	if ( ! empty( $wpdb->charset ) ) {
+		$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
+	}
+	if ( ! empty( $wpdb->collate ) ) {
+		$charset_collate .= " COLLATE $wpdb->collate";
+	}
+
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	$column     = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'campaign_id'" );
 	if ( empty( $column ) ) {
@@ -588,10 +634,42 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN hit_id BIGINT(20) UNSIGNED DEFAULT NULL,
 		ADD INDEX aff_referrals_h (hit_id);";
 	}
+
 	// Referrals amount precision to DECIMAL(24,6) ... from 2.18.0
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.18.0' ) < 0 ) {
 		$queries[] = "ALTER TABLE " . $referrals_table . "
 		MODIFY amount DECIMAL(24,6) DEFAULT NULL;";
+	}
+
+	// add the reference_amount and integration columns to the referrals table ... from 3.0.0
+	// if ( !empty( $previous_version ) && version_compare( $previous_version, '3.0.0' ) < 0 ) {
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $referrals_table LIKE 'reference_amount'" );
+	if ( empty( $column ) ) {
+		$queries[] = "ALTER TABLE " . $referrals_table . "
+		ADD COLUMN reference_amount DECIMAL(24,6) DEFAULT NULL,
+		ADD COLUMN integration VARCHAR(255) DEFAULT NULL,
+		ADD INDEX integration (integration(20));";
+	}
+	// }
+
+	// add the referral_items table ... from 3.0.0
+	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
+		$queries[] = "CREATE TABLE " . $referral_items_table . "(
+			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+			amount           DECIMAL(24,6) DEFAULT NULL,
+			line_amount      DECIMAL(24,6) DEFAULT NULL,
+			currency_id      CHAR(3) DEFAULT NULL,
+			rate_id          BIGINT(20) UNSIGNED DEFAULT NULL,
+			type             VARCHAR(20) NULL,
+			reference        VARCHAR(100) DEFAULT NULL,
+			object_id        BIGINT(20) UNSIGNED DEFAULT NULL,
+			PRIMARY KEY      (referral_item_id),
+			INDEX            referral_id (referral_id),
+			INDEX            reference (reference(20)),
+			INDEX            object_id (object_id)
+		) $charset_collate;";
 	}
 
 	// MySQL 5.7.3 PK requirements
@@ -651,6 +729,7 @@ function affiliates_cleanup( $delete = false ) {
 			$role->remove_cap( AFFILIATES_ADMINISTER_AFFILIATES );
 			$role->remove_cap( AFFILIATES_ADMINISTER_OPTIONS );
 		}
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referral_items' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referrals' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'hits' ) );
 		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'uris' ) );
@@ -1133,7 +1212,7 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
  * @param int $hit_id
  * @return int
  */
-function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null ) {
+function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null ) {
 	global $wpdb;
 
 	if ( $affiliate_id ) {
@@ -1216,6 +1295,14 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 			$values[] = intval( $hit_id );
 		}
 
+		if ( !empty( $reference_amount ) ) {
+			if ( $reference_amount = Affiliates_Utility::verify_referral_amount( $reference_amount ) ) {
+				$columns .= ",reference_amount ";
+				$formats .= ",%s ";
+				$values[] = $reference_amount;
+			}
+		}
+
 		$columns .= ")";
 		$formats .= ")";
 
@@ -1241,7 +1328,8 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 								'status' => $status,
 								'type' => $type,
 								'reference' => $reference,
-								'hit_id' => $hit_id
+								'hit_id' => $hit_id,
+								'reference_amount' => $reference_amount
 							)
 						);
 					}
@@ -1363,6 +1451,7 @@ function affiliates_update_referral( $referral_id, $attributes ) {
 							$old_values[] = $current_value;
 						}
 						break;
+					case 'reference_amount' :
 					case 'amount' :
 						if ( $value = Affiliates_Utility::verify_referral_amount( $value ) ) {
 							$set[]        = " $key = %s ";
@@ -1521,6 +1610,7 @@ if ( is_admin() ) {
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-uri.php';
 	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
+
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
 	include_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-user-profile.php';
 	add_action( 'admin_menu', 'affiliates_admin_menu' );
@@ -1782,6 +1872,7 @@ function affiliates_contextual_help( $contextual_help, $screen_id, $screen ) {
 			$show_affiliates_help = true;
 			break;
 		default:
+			$show_affiliates_help = strpos( $screen_id, 'affiliates_page_affiliates' ) !== false;
 	}
 
 	if ( !defined( 'AFFILIATES_PRO_PLUGIN_DOMAIN' ) && !defined( 'AFFILIATES_ENTERPRISE_PLUGIN_DOMAIN' ) ) {
@@ -1854,14 +1945,18 @@ function affiliates_footer( $render = true ) {
  * @param boolean $render
  */
 function affiliates_donate( $render = true, $small = false ) {
-	$donate = sprintf(
-		'<a class="button" href="http://www.itthinx.com/shop/">%s</a>',
-		__( 'Get Affiliates Pro', 'affiliates' )
+	$output = '<style type="text/css">';
+	$output .= '.button.affiliates-premium-button { background-color: #5da64f; color: #ffffff; font-weight: bold; border-top-color: #8dd67f; border-bottom-color: #2d761f; border-left-color: #7dc66f; border-right-color: #3d862f; }';
+	$output .= '.button.affiliates-shop-button { background-color: #d65d4f; color: #ffffff; font-weight: bold; border-top-color: #f67d6f; border-bottom-color: #a62d1f; border-left-color: #e66d5f; border-right-color: #b63d2f; }';
+	$output .= '.button.affiliates-premium-button:hover, .button.affiliates-shop-button:hover { background-color: #004fa6; color: #ffffff; font-weight: bold; }';
+	$output .= '</style>';
+	$output .= sprintf(
+		'<a class="button affiliates-premium-button" href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> <a class="button affiliates-premium-button" href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> <a class="button affiliates-shop-button" href="http://www.itthinx.com/shop/">Shop</a>'
 	);
 	if ( $render ) {
-		echo $donate;
+		echo $output;
 	} else {
-		return $donate;
+		return $output;
 	}
 }
 

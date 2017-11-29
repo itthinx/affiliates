@@ -119,6 +119,7 @@ function affiliates_admin_referrals() {
 	$expanded             = $affiliates_options->get_option( 'referrals_expanded', null );
 	$expanded_description = $affiliates_options->get_option( 'referrals_expanded_description', null );
 	$expanded_data        = $affiliates_options->get_option( 'referrals_expanded_data', null );
+	$expanded_items       = $affiliates_options->get_option( 'referrals_expanded_items', null );
 	$show_inoperative     = $affiliates_options->get_option( 'referrals_show_inoperative', null );
 
 	if ( !isset( $_POST['action'] ) && isset( $_POST['clear_filters'] ) ) {
@@ -130,6 +131,7 @@ function affiliates_admin_referrals() {
 		$affiliates_options->delete_option( 'referrals_expanded' );
 		$affiliates_options->delete_option( 'referrals_expanded_description' );
 		$affiliates_options->delete_option( 'referrals_expanded_data' );
+		$affiliates_options->delete_option( 'referrals_expanded_items' );
 		$affiliates_options->delete_option( 'referrals_show_inoperative' );
 		$from_date = null;
 		$thru_date = null;
@@ -140,6 +142,7 @@ function affiliates_admin_referrals() {
 		$expanded = null;
 		$expanded_data = null;
 		$expanded_description = null;
+		$expanded_items = null;
 		$show_inoperative = null;
 	} else if ( !isset( $_POST['action'] ) && isset( $_POST['submitted'] ) ) {
 
@@ -224,6 +227,15 @@ function affiliates_admin_referrals() {
 		} else {
 			$expanded_description = false;
 			$affiliates_options->delete_option( 'referrals_expanded_description' );
+		}
+		if ( class_exists( 'Affiliates_Referral_Item' ) ) {
+			if ( !empty( $_POST['expanded_items'] ) ) {
+				$expanded_items = true;
+				$affiliates_options->update_option( 'referrals_expanded_items', true );
+			} else {
+				$expanded_items = false;
+				$affiliates_options->delete_option( 'referrals_expanded_items' );
+			}
 		}
 		if ( !empty( $_POST['show_inoperative'] ) ) {
 			$show_inoperative = true;
@@ -456,6 +468,7 @@ function affiliates_admin_referrals() {
 
 				'<div class="filter-section">' .
 				$affiliates_select .
+				Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
 				' ' .
 				$status_select .
 				' ' .
@@ -504,6 +517,16 @@ function affiliates_admin_referrals() {
 				' ' .
 				__( 'Expand data', 'affiliates' ) .
 				'</label>' .
+				' ' .
+				( class_exists( 'Affiliates_Referral_Item' ) ?
+					'<label class="expanded-filter">' .
+					'<input class="expanded-filter" name="expanded_items" type="checkbox" ' . ( $expanded_items ? 'checked="checked"' : '' ) . '/>' .
+					' ' .
+					__( 'Expand items', 'affiliates' ) .
+					'</label>'
+					:
+					''
+				) .
 				' ' .
 				'<label class="show-inoperative-filter">' .
 				'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
@@ -686,6 +709,14 @@ function affiliates_admin_referrals() {
 					$output .= '</td>';
 					$output .= '</tr>';
 				}
+			}
+
+			if ( $expanded ) {
+				$output .= apply_filters(
+					'affiliates_admin_referrals_expanded_items',
+					'',
+					array( 'referral_id' => $result->referral_id, 'column_count' => $column_count, 'expanded_items' => $expanded_items, 'i' => $i )
+				);
 			}
 
 			if ( !empty( $result->description ) && $expanded ) {

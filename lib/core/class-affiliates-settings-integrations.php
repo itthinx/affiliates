@@ -29,6 +29,7 @@ if ( !defined( 'ABSPATH' ) ) {
 class Affiliates_Settings_Integrations extends Affiliates_Settings {
 
 	private static $integrations = null;
+	private static $premium_integrations = null;
 
 	public static function init() {
 		self::$integrations =  array(
@@ -48,7 +49,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'Contact Form 7', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Contact Form 7 Integration', 'affiliates' ),
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-contact-form-7/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/plugins/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/plugins/affiliates-enterprise/">Affiliates Enterprise</a> with Contact Form 7. This integration stores data from submitted forms and tracks form submissions to the referring affiliate.', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Contact Form 7. This integration stores data from submitted forms and tracks form submissions to the referring affiliate.', 'affiliates' ),
 				'plugin_file'  => 'affiliates-contact-form-7/affiliates-contact-form-7.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
@@ -56,56 +57,142 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
 				'platforms'    => array( 'contact-form-7' )
 			),
-			'affiliates-jigoshop-light' => array(
-				'title'        => __( 'Jigoshop (light)', 'affiliates' ),
-				'plugin_title' => __( 'Affiliates Jigoshop Integration Light', 'affiliates' ),
-				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-jigoshop-light/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with Jigoshop. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
-				'plugin_file'  => 'affiliates-jigoshop-light/affiliates-jigoshop-light.php',
-				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
-				'repository'   => 'wordpress',
-				'access'       => 'free',
-				'targets'      => array( 'affiliates' ),
-				'platforms'    => array( 'jigoshop' )
-			),
-			'affiliates-wp-e-commerce' => array(
-				'title'       => __( 'WP e-Commerce', 'affiliates' ),
-				'plugin_title' => __( 'Affiliates WP e-Commerce Integration', 'affiliates' ),
-				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-wp-e-commerce/',
-				'description' => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/plugins/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/plugins/affiliates-enterprise/">Affiliates Enterprise</a> with WP e-Commerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
-				'plugin_file' => 'affiliates-wp-e-commerce/affiliates-wp-e-commerce.php',
+			'affiliates-events-manager' => array(
+				'title'        => __( 'Events Manager', 'affiliates' ),
+				'plugin_title' => __( 'Affiliates Events Manager Integration', 'affiliates' ),
+				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-events-manager/',
+				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Events Manager. This integration allows to record referraks to grant affiliates commissions on referred bookings.', 'affiliates' ),
+				'plugin_file'  => 'affiliates-events-manager/affiliates-events-manager.php',
 				'notes'        => '',
-				'repository' => 'wordpress',
-				'access'        => 'free',
+				'repository'   => 'wordpress',
+				'access'       => 'free',
 				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
-				'platforms'    => array( 'wp-e-commerce' )
+				'platforms'    => array( 'events-manager' )
 			),
-			'affiliates-eshop-light' => array(
-				'title'        => __( 'eShop (light)', 'affiliates' ),
-				'plugin_title' => __( 'Affiliates eShop Integration Light', 'affiliates' ),
-				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-eshop-light/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with eShop. With this integration plugin, referrals are created automatically for your affiliates when sales are made through eShop.', 'affiliates' ),
-				'plugin_file'  => 'affiliates-eshop-light/affiliates-eshop-light.php',
-				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+			'affiliates-formidable' => array(
+				'title'        => __( 'Formidable Forms', 'affiliates' ),
+				'plugin_title' => __( 'Affiliates Formidable Forms Integration', 'affiliates' ),
+				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-formidable/',
+				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Formidable Forms. Affiliates can sign up through forms handled with Formidable Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+				'plugin_file'  => 'affiliates-formidable/affiliates-formidable.php',
+				'notes'        => '',
 				'repository'   => 'wordpress',
 				'access'       => 'free',
-				'targets'      => array( 'affiliates' ),
-				'platforms'    => array( 'eshop' )
+				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
+				'platforms'    => array( 'formidable' )
 			),
-			'affiliates-ecwid-light' => array(
-				'title'        => __( 'Ecwid (light)', 'affiliates' ),
-				'plugin_title' => __( 'Affiliates Ecwid Light', 'affiliates' ),
-				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ecwid-light/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with Ecwid. With this integration plugin, affiliates are credited with referrals automatically after a customer has made a purchase through the online store powered by Ecwid.', 'affiliates' ),
-				'plugin_file'  => 'affiliates-ecwid-light/affiliates-ecwid-light.php',
-				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+			'affiliates-ninja-forms' => array(
+				'title'        => __( 'Ninja Forms', 'affiliates' ),
+				'plugin_title' => __( 'Affiliates Ninja Forms Integration', 'affiliates' ),
+				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ninja-forms/',
+				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Ninja Forms. Affiliates can sign up through forms handled with Ninja Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+				'plugin_file'  => 'affiliates-ninja-forms/affiliates-ninja-forms.php',
+				'notes'        => '',
 				'repository'   => 'wordpress',
 				'access'       => 'free',
-				'targets'      => array( 'affiliates' ),
-				'platforms'    => array( 'ecwid' )
-			)
+				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
+				'platforms'    => array( 'ninja-forms' )
+			),
+// 			'affiliates-jigoshop-light' => array(
+// 				'title'        => __( 'Jigoshop (light)', 'affiliates' ),
+// 				'plugin_title' => __( 'Affiliates Jigoshop Integration Light', 'affiliates' ),
+// 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-jigoshop-light/',
+// 				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with Jigoshop. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
+// 				'plugin_file'  => 'affiliates-jigoshop-light/affiliates-jigoshop-light.php',
+// 				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+// 				'repository'   => 'wordpress',
+// 				'access'       => 'free',
+// 				'targets'      => array( 'affiliates' ),
+// 				'platforms'    => array( 'jigoshop' )
+// 			),
+// 			'affiliates-wp-e-commerce' => array(
+// 				'title'       => __( 'WP e-Commerce', 'affiliates' ),
+// 				'plugin_title' => __( 'Affiliates WP e-Commerce Integration', 'affiliates' ),
+// 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-wp-e-commerce/',
+// 				'description' => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with WP e-Commerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
+// 				'plugin_file' => 'affiliates-wp-e-commerce/affiliates-wp-e-commerce.php',
+// 				'notes'        => '',
+// 				'repository' => 'wordpress',
+// 				'access'        => 'free',
+// 				'targets'      => array( 'affiliates', 'affiliates-pro', 'affiliates-enterprise' ),
+// 				'platforms'    => array( 'wp-e-commerce' )
+// 			),
+// 			'affiliates-eshop-light' => array(
+// 				'title'        => __( 'eShop (light)', 'affiliates' ),
+// 				'plugin_title' => __( 'Affiliates eShop Integration Light', 'affiliates' ),
+// 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-eshop-light/',
+// 				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with eShop. With this integration plugin, referrals are created automatically for your affiliates when sales are made through eShop.', 'affiliates' ),
+// 				'plugin_file'  => 'affiliates-eshop-light/affiliates-eshop-light.php',
+// 				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+// 				'repository'   => 'wordpress',
+// 				'access'       => 'free',
+// 				'targets'      => array( 'affiliates' ),
+// 				'platforms'    => array( 'eshop' )
+// 			),
+// 			'affiliates-ecwid-light' => array(
+// 				'title'        => __( 'Ecwid (light)', 'affiliates' ),
+// 				'plugin_title' => __( 'Affiliates Ecwid Light', 'affiliates' ),
+// 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-ecwid-light/',
+// 				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with Ecwid. With this integration plugin, affiliates are credited with referrals automatically after a customer has made a purchase through the online store powered by Ecwid.', 'affiliates' ),
+// 				'plugin_file'  => 'affiliates-ecwid-light/affiliates-ecwid-light.php',
+// 				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+// 				'repository'   => 'wordpress',
+// 				'access'       => 'free',
+// 				'targets'      => array( 'affiliates' ),
+// 				'platforms'    => array( 'ecwid' )
+// 			)
 		);
 		self::$integrations = apply_filters( 'affiliates_settings_integrations', self::$integrations );
+		self::$premium_integrations = array(
+			'affiliates-addtoany' => array(
+				'title'        => __( 'AddToAny', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="http://www.addtoany.com/">AddToAny</a> &hellip; <em>&ldquo;The Universal Sharing Platform&rdquo;</em>. The <a href="https://wordpress.org/plugins/add-to-any/">Share Buttons by AddToAny</a> are required.', 'affiliates' ),
+				'notes'        =>
+					__( 'Makes it even easier to share using affiliate links automatically.', 'affiliates' ) .
+					' ' .
+					__( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-addthis' => array(
+				'title'        => __( 'AddThis', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="http://www.addthis.com/">AddThis</a> &hellip; <em>&ldquo;Website tools that drive more shares, follows and conversions&rdquo;</em>. The <a href="https://wordpress.org/plugins/addthis/">Smart Website Tools</a> by AddThis are required.', 'affiliates' ),
+				'notes'        =>
+					__( 'Makes it even easier to share using affiliate links automatically.', 'affiliates' ) .
+					' ' .
+					__( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-ppc' => array(
+				'title'        => __( 'Pay per Click', 'affiliates' ),
+				'description'  => __( 'Pay affiliate commissions based on clicks or visits to affiliate links. This plugin adds the possibility to grant commissions based on Pay per Click, Pay per Visit and Pay per Daily Visit with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'notes'        => __( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-gravityforms' => array(
+				'title'        => __( 'Gravity Forms', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="https://www.e-junkie.com/ecom/gb.php?cl=54585&c=ib&aff=290919">Gravity Forms</a>.', 'affiliates' ),
+				'notes'        =>
+					__( 'This extension allows to record referrals for form submissions and to create affiliate accounts (requires the Gravity Forms User Registation Add-On) for new users based on Gravity Forms.', 'affiliates' ) .
+					' ' .
+					__( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext'
+			),
+			'affiliates-paypal' => array(
+				'title'        => __( 'PayPal', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with PayPal Payments Standard. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made.', 'affiliates' ),
+				'notes'        => __( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>. Note that this integration is not intended to be used for e-commerce systems that provide their own PayPal Payments Standard gateway.', 'affiliates' ),
+				'class'        => 'ext'
+			)
+		);
+	}
+
+	/**
+	 * Returns the registered integrations.
+	 * 
+	 * @return array
+	 */
+	public static function get_integrations() {
+		return self::$integrations;
 	}
 
 	/**
@@ -114,6 +201,13 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 	public static function section() {
 
 		$output = '';
+
+		$output .= '<p class="description">';
+		$output .= sprintf(
+			__( 'Please also refer to the <a href="%s">Add-Ons</a> for additional extensions.', 'affiliates' ),
+			esc_url( admin_url( 'admin.php?page=affiliates-admin-add-ons' ) )
+		);
+		$output .= '</p>';
 
 		$output .= '<p class="description">';
 		$output .= __( 'Integrations link the affiliate system to e-commerce plugins and other platforms.', 'affiliates' );
@@ -126,7 +220,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$output .= '</p>';
 		} else {
 			$output .= '<p class="description">';
-			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section.', 'affiliates' ), esc_attr( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
+			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section.', 'affiliates' ), esc_url( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
 			$output .= '</p>';
 		}
 		$output .= '<p class="description">';
@@ -137,7 +231,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		$output .= ' ';
 		$output .= sprintf(
 			__( 'Enable the built-in integration if the options provided under <a href="%s">User Registration</a> are sufficient.', 'affiliates' ),
-			esc_attr( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) )
+			esc_url( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) )
 		);
 		$output .= '</p>';
 
@@ -217,6 +311,38 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		}
 		$list .= '</ul>';
 		$output .= $list;
+
+		if ( AFFILIATES_PLUGIN_NAME === 'affiliates' ) {
+			$output .= '<h2>';
+			$output .= esc_html__( 'Premium Integrations', 'affiliates' );
+			$output .= '</h2>';
+			$output .= '<p>';
+			$output .= sprintf(
+				__( 'These integrations are available with <a href="%s">Affiliates Pro</a> and <a href="%s">Affiliates Enterprise</a>.', 'affiliates' ),
+				esc_url( 'https://www.itthinx.com/shop/affiliates-pro/' ),
+				esc_url( 'https://www.itthinx.com/shop/affiliates-enterprise/' )
+			);
+			$output .= '</p>';
+			$list = '<ul class="integrations">';
+			foreach( self::$premium_integrations as $key => $integration ) {
+				$integration_class = isset( $integration['class'] ) ? $integration['class'] : '';
+				$list .= sprintf( '<li id="integration-%s">', $key );
+				$list .= sprintf( '<div class="integration %s">', $integration_class );
+				$list .= '<h3>' . $integration['title'] . '</h3>';
+				$list .= '<p class="description">';
+				$list .= $integration['description'];
+				$list .= '</p>';
+				if ( !empty( $integration['notes'] ) ) {
+					$list .= '<p class="notes">';
+					$list .= $integration['notes'];
+					$list .= '</p>';
+				}
+				$list .= '</div>';
+				$list .= '</li>';
+			}
+			$list .= '</ul>';
+			$output .= $list;
+		}
 
 		echo $output;
 

@@ -92,19 +92,18 @@ class Affiliates_Exclusion {
 
 		global $woocommerce;
 
+		$code = method_exists( $coupon, 'get_code' ) ? $coupon->get_code() : $coupon->code;
+		$id   = method_exists( $coupon, 'get_id' ) ? $coupon->get_id() : $coupon->id;
+
 		// Only perform checks if the coupon is valid at this stage.
-		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '3.0.0' ) >= 0 ) {
-			$coupon_id = $coupon->get_id();
-			$coupon_code = $coupon->get_code();
-			if ( $valid && !empty( $coupon ) && !empty( $coupon_id ) && !empty( $coupon_code ) ) {
-				if ( method_exists( 'Affiliates_Attributes_WordPress', 'get_affiliate_for_coupon' ) ) {
-					self::remove_filters();
-					if ( $affiliate_id = Affiliates_Attributes_WordPress::get_affiliate_for_coupon( $coupon_code ) ) {
-						if ( $user_id = get_current_user_id() ) {
-							if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
-								if ( in_array( $affiliate_id, $affiliate_ids ) ) {
-									$valid = false;
-								}
+		if ( $valid && !empty( $coupon ) && !empty( $id ) && !empty( $code ) ) {
+			if ( method_exists( 'Affiliates_Attributes_WordPress', 'get_affiliate_for_coupon' ) ) {
+				self::remove_filters();
+				if ( $affiliate_id = Affiliates_Attributes_WordPress::get_affiliate_for_coupon( $code ) ) {
+					if ( $user_id = get_current_user_id() ) {
+						if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
+							if ( in_array( $affiliate_id, $affiliate_ids ) ) {
+								$valid = false;
 							}
 						}
 					}
@@ -159,6 +158,8 @@ class Affiliates_Exclusion {
 						$coupon = new WC_Coupon( $code );
 						$coupon_code = method_exists( $coupon, 'get_code' ) ? $coupon->get_code() : $coupon->code;
 						if ( ! is_wp_error( $coupon->is_valid() ) ) {
+
+							$coupon_code = method_exists( $coupon, 'get_code' ) ? $coupon->get_code() : $coupon->code;
 
 							if ( $affiliate_id = Affiliates_Attributes_WordPress::get_affiliate_for_coupon( $coupon_code ) ) {
 								if ( $user_id = get_current_user_id() ) {

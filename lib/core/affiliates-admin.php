@@ -176,7 +176,7 @@ function affiliates_admin() {
 	// hits per day
 	$query = "SELECT date, sum(count) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$hit_results = $wpdb->get_results( $wpdb->prepare( $query,
-		$from_date, $thru_date, $from_date, $thru_date
+		$from_date, $thru_date
 	) );
 	$hits = array();
 	foreach( $hit_results as $hit_result ) {
@@ -186,7 +186,7 @@ function affiliates_admin() {
 	// visits per day
 	$query = "SELECT count(DISTINCT IP) visits, date FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$visit_results = $wpdb->get_results( $wpdb->prepare( $query,
-		$from_date, $thru_date, $from_date, $thru_date
+		$from_date, $thru_date
 	));
 	$visits = array();
 	foreach( $visit_results as $visit_result ) {
@@ -196,7 +196,7 @@ function affiliates_admin() {
 	// referrals per day
 	$query = "SELECT count(referral_id) referrals, date(datetime) date FROM $referrals_table WHERE status = %s AND date(datetime) >= %s AND date(datetime) <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_ACCEPTED, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED, $from_date, $thru_date
 	));
 	$accepted = array();
 	foreach( $results as $result ) {
@@ -204,7 +204,7 @@ function affiliates_admin() {
 	}
 	
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date
 	));
 	$closed = array();
 	foreach( $results as $result ) {
@@ -212,7 +212,7 @@ function affiliates_admin() {
 	}
 	
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date
 	));
 	$pending = array();
 	foreach( $results as $result ) {
@@ -220,7 +220,7 @@ function affiliates_admin() {
 	}
 	
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
-		AFFILIATES_REFERRAL_STATUS_REJECTED, $from_date, $thru_date, $from_date, $thru_date
+		AFFILIATES_REFERRAL_STATUS_REJECTED, $from_date, $thru_date
 	));
 	$rejected = array();
 	foreach( $results as $result ) {
