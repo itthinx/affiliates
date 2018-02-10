@@ -4,8 +4,8 @@ Donate link: http://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
 Requires at least: 4.0.0
 Tested up to: 4.9
-Requires PHP: 5.5.0
-Stable tag: 3.0.0
+Requires PHP: 5.6.0
+Stable tag: 3.0.1
 License: GPLv3
 
 The Affiliates system provides the most powerful tools to run a successful Affiliate Marketing Program.
@@ -382,6 +382,10 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 == Changelog ==
 
+= 3.0.1 =
+* WordPress 4.9.4 compatibility checked.
+* Minimum PHP version required is now 5.6.0.
+
 = 3.0.0 =
 * This is a major new release of the plugin, please make sure to back up your site and database
   before your upgrade and make sure to review the changelog to be aware of the implications of
@@ -398,9 +402,13 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 * Updated the Add-Ons section with Affiliates Import and other free add-ons.
 * Fixed the WooCommerce customer registration integration option is independent from the the user registration integration option.
 
-The complete historical list of changes by version is in the [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
+The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
 == Upgrade Notice ==
+
+= 3.0.1 =
+* For updates from version 3.0.0 this is a minor upgrade, where the WordPress 4.9.4 compatibility
+  has been checked and the minimum PHP version required has been increased to 5.6.0.
 
 = 3.0.0 =
 * This is a major new release of the plugin, please make sure to back up your site and database

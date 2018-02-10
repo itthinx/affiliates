@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 3.0.1 =
+* WordPress 4.9.4 compatibility checked.
+* Minimum PHP version required is now 5.6.0.
+
 = 3.0.0 =
 * This is a major new release of the plugin, please make sure to back up your site and database
   before your upgrade and make sure to review the changelog to be aware of the implications of
