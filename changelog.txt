@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 3.0.2 =
+* Fixed issue when Wordpress has its own directory.
+
 = 3.0.1 =
 * WordPress 4.9.4 compatibility checked.
 * Minimum PHP version required is now 5.6.0.

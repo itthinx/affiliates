@@ -850,21 +850,16 @@ function affiliates_parse_request( &$wp ) {
 		}
 		$affiliates_request_encoded_id = $encoded_id;
 		$hit = affiliates_record_hit( $affiliate_id );
-		setcookie(
-			AFFILIATES_COOKIE_NAME,
-			$encoded_id,
-			$expire,
-			SITECOOKIEPATH,
-			COOKIE_DOMAIN
-		);
+
+		setcookie( AFFILIATES_COOKIE_NAME, $encoded_id, $expire, COOKIEPATH, COOKIE_DOMAIN );
+		if ( SITECOOKIEPATH != COOKIEPATH ) {
+			setcookie( AFFILIATES_COOKIE_NAME, $encoded_id, $expire, SITECOOKIEPATH, COOKIE_DOMAIN );
+		}
 		if ( !empty( $hit['hash'] ) ) {
-			setcookie(
-				AFFILIATES_HASH_COOKIE_NAME,
-				$hit['hash'],
-				$expire,
-				SITECOOKIEPATH,
-				COOKIE_DOMAIN
-			);
+			setcookie( AFFILIATES_HASH_COOKIE_NAME, $hit['hash'], $expire, COOKIEPATH, COOKIE_DOMAIN );
+			if ( SITECOOKIEPATH != COOKIEPATH ) {
+				setcookie( AFFILIATES_HASH_COOKIE_NAME, $hit['hash'], $expire, SITECOOKIEPATH, COOKIE_DOMAIN );
+			}
 		}
 		affiliates_pixel_request();
 		unset( $wp->query_vars[$pname] ); // we use this to avoid ending up on the blog listing page
