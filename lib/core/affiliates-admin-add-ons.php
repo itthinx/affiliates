@@ -28,15 +28,22 @@ function affiliates_admin_add_ons() {
 	echo '<div class="affiliates-admin-add-ons add-ons">';
 
 	echo '<h1>';
-	echo __( 'Affiliates Extensions and Add-Ons', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliates Extensions and Add-Ons', 'affiliates' );
 	echo '</h1>';
 
 	echo '<p>';
-	echo __( 'Get additional features and access to premium support!', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Get additional features and access to premium support!', 'affiliates' );
+	echo '</p>';
+
+	echo '<p>';
+	printf(
+		__( 'Please also refer to the available <a href="%s">Integrations</a>.', 'affiliates' ),
+		esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) )
+	);
 	echo '</p>';
 
 	echo '<h2>';
-	echo __( 'Recommended plugins and extensions', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Recommended plugins and extensions', 'affiliates' );
 	echo '</h2>';
 
 	$entries = array(
@@ -53,6 +60,34 @@ function affiliates_admin_add_ons() {
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-enterprise.png',
 			'url'     => 'http://www.itthinx.com/shop/affiliates-enterprise/',
 			'index'   => 10
+		),
+		'affiliates-import' => array(
+			'title'   => 'Affiliates Import <span style="color:#f00">FREE</span>',
+			'content' => 'This extension allows to import affiliate accounts from a text file into the affiliate system.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-import.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-import/',
+			'index'   => 20
+		),
+		'affiliates-buddypress' => array(
+			'title'   => 'Affiliates BuddyPress <span style="color:#f00">FREE</span>',
+			'content' => 'This integration with BuddyPress helps to display affiliate content in the BuddyPress user profile.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-buddypress.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-buddypress/',
+			'index'   => 20
+		),
+		'affiliates-captcha' => array(
+			'title'   => 'Affiliates Captcha <span style="color:#f00">FREE</span>',
+			'content' => 'Activate this extension and the Captcha will appear on the affiliate registration form when the Captcha plugin is activated.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-captcha.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-captcha/',
+			'index'   => 20
+		),
+		'affiliates-recaptcha' => array(
+			'title'   => 'Affiliates reCAPTCHA <span style="color:#f00">FREE</span>',
+			'content' => 'This extension integrates with Google\'s reCAPTCHA service for the affiliate registration form.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-recaptcha.png',
+			'url'     => 'https://wordpress.org/plugins/affiliates-recaptcha/',
+			'index'   => 20
 		),
 		'affiliates-by-username' => array(
 			'title'   => 'Affiliates by Username',
@@ -84,7 +119,7 @@ function affiliates_admin_add_ons() {
 		),
 		'affiliates-products' => array(
 			'title'   => 'Affiliates Products',
-			'content' => 'This extension requires WooCommerce and provides product commissions for distribution and vendors. This extension automatically grants commissions for product partners or affiliates on specific product sales. It is suitable if you want to grant an affiliate a fixed commission on every sale of a product.',
+			'content' => 'This extension requires WooCommerce and provides product commissions for distribution and vendors. It automatically grants commissions on product sales to assigned partners or affiliates. It is suitable to share revenue on every sale of one or more products.',
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-products.png',
 			'url'     => 'http://www.itthinx.com/shop/affiliates-products/',
 			'index'   => 100
@@ -118,7 +153,7 @@ function affiliates_admin_add_ons() {
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 
 	echo '<h2>';
-	echo __( 'Affiliates Pro', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliates Pro', 'affiliates' );
 	echo '</h2>';
 
 	echo sprintf( '<img class="screenshot" alt="Affiliates Pro Menu" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Affiliates Pro Menu-small.png' );
@@ -129,49 +164,49 @@ function affiliates_admin_add_ons() {
 	echo '<ul>';
 
 	echo '<li>';
-	echo __( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
 	echo ' ';
-	echo __( 'Please consult the Shop pages for an updated list of included integrations.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Please consult the Shop pages for an updated list of included integrations.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Affiliate attributes for individual commission rates, coupons, ...', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliate attributes for individual commission rates, coupons, ...', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Fixed, percentage or formula based commissions', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Fixed, percentage or formula based commissions', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Extended totals report with additional filters', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Extended totals report with additional filters', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Export Totals and Mass Payment File generation', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Export Totals and Mass Payment File generation', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Advanced shortcodes including banners and graphs', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Advanced shortcodes including banners and graphs', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Banner management', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Banner management', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Customizable affiliate registration email', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Customizable affiliate registration email', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Notifications including customizable messages', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Notifications including customizable messages', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Affiliate link generator form', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliate link generator form', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'The <a href="http://docs.itthinx.com/">Documentation</a> site also provides up-to-date information on the Affiliates, Affiliates Pro and Affiliates Enterprise plugin features.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'The <a href="http://docs.itthinx.com/">Documentation</a> site also provides up-to-date information on the Affiliates, Affiliates Pro and Affiliates Enterprise plugin features.', 'affiliates' );
 	echo '</li>';
 
 	echo '</ul>';
@@ -181,7 +216,7 @@ function affiliates_admin_add_ons() {
 	if ( ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) || ( AFFILIATES_PLUGIN_NAME == 'affiliates-pro' ) ) {
 
 	echo '<h2>';
-	echo __( 'Affiliates Enterprise', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliates Enterprise', 'affiliates' );
 	echo '</h2>';
 
 	echo sprintf( '<img class="screenshot enterprise" alt="Multiple Tiers" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Multi-tiered Referrals-small.png' );
@@ -193,21 +228,21 @@ function affiliates_admin_add_ons() {
 	echo '<ul>';
 
 	echo '<li>';
-	echo __( 'Includes all additional features available in Affiliates Pro.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Affiliate campaign management and tracking.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Affiliate campaign management and tracking.', 'affiliates' );
 	echo ' ';
-	echo __( 'This allows affiliates to distinguish between income they generate by placing affiliate links on Facebook, from that generated through Twitter and other sources.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'This allows affiliates to distinguish between income they generate by placing affiliate links on Facebook, from that generated through Twitter and other sources.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Multi-tier capability with unlimited levels and rates.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Multi-tier capability with unlimited levels and rates.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', 'affiliates' );
 	echo '</li>';
 
 	echo '</ul>';
@@ -215,11 +250,11 @@ function affiliates_admin_add_ons() {
 	}
 
 	echo '<h2>';
-	echo __( 'Add-Ons', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Add-Ons', 'affiliates' );
 	echo '</h2>';
 
 	echo '<p>';
-	echo __( 'Free and premium extensions are listed on the <a href="http://www.itthinx.com/plugins-overview/">Overview</a> page and in the <a href="http://www.itthinx.com/shop/">Shop</a>.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Free and premium extensions are listed on the <a href="http://www.itthinx.com/plugins-overview/">Overview</a> page and in the <a href="http://www.itthinx.com/shop/">Shop</a>.', 'affiliates' );
 	echo '</p>';
 
 	echo '</div>';

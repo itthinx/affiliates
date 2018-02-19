@@ -45,12 +45,12 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				$post_ids = Affiliates_Generator::setup_pages();
 				foreach ( $post_ids as $post_id ) {
 					$link = '<a href="' . get_permalink( $post_id ) . '" target="_blank">' . get_the_title( $post_id ) . '</a>';
-					$pages_generated_info .= '<div class="info">' . __( sprintf( 'The %s page has been created.', $link ), AFFILIATES_PLUGIN_DOMAIN ) . '</div>';
+					$pages_generated_info .= '<div class="info">' . __( sprintf( 'The %s page has been created.', $link ), 'affiliates' ) . '</div>';
 				}
 			}
 		}
 
-		echo '<h3>' . __( 'Generator', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
+		echo '<h3>' . __( 'Generator', 'affiliates' ) . '</h3>';
 
 		//
 		// Generator form
@@ -59,9 +59,9 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 			'<form action="" name="options" method="post">' .
 			'<div>' .
 			'<p>' .
-			__( 'Press the button to generate a default affiliate area.', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Press the button to generate a default affiliate area.', 'affiliates' ) .
 			' ' .
-			'<input class="generate button" name="generate" type="submit" value="' . __( 'Generate', AFFILIATES_PLUGIN_DOMAIN ) .'" />' .
+			'<input class="generate button" name="generate" type="submit" value="' . __( 'Generate', 'affiliates' ) .'" />' .
 			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_GEN_NONCE, true, false ) .
 			'</p>' .
 			$pages_generated_info.
@@ -69,30 +69,30 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 			'</form>';
 		
 		echo '<p>';
-		echo __( 'The generated page contains Affiliates shortcodes and can be used as an out-of-the-box affiliate area or as a framework for customized affiliate areas and pages.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'The generated page contains Affiliates shortcodes and can be used as an out-of-the-box affiliate area or as a framework for customized affiliate areas and pages.', 'affiliates' );
 		echo '</p>';
 
 		//
 		// Pages containing affiliates shortcodes
 		//
-		echo '<h3>' . __( 'Pages', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
+		echo '<h3>' . __( 'Pages', 'affiliates' ) . '</h3>';
 
 		global $wpdb;
 		$post_options = '';
 		$post_ids = array();
 		// We also have [referrer_id] and [referrer_user] but these are not essential in
 		// determining whether an affiliate page has been set up.
-		$posts = $wpdb->get_results( "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[affiliates_%' AND post_status = 'publish'" );
+		$posts = $wpdb->get_results( "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[affiliates\_%' AND post_status = 'publish'" );
 		foreach( $posts as $post ) {
 			$post_ids[] = $post->ID;
 		}
 
 		if ( count( $posts ) == 0 ) {
 			echo '<p>';
-			echo __( 'It seems that you do not have any pages set up for your affiliates yet.', AFFILIATES_PLUGIN_DOMAIN );
+			echo __( 'It seems that you do not have any pages set up for your affiliates yet.', 'affiliates' );
 			echo '</p>';
 			echo '<p>';
-			echo __( 'You can use the page generation option to create the default affiliate area for your affiliates.', AFFILIATES_PLUGIN_DOMAIN );
+			echo __( 'You can use the page generation option to create the default affiliate area for your affiliates.', 'affiliates' );
 			echo '</p>';
 		} else {
 			echo '<p>';
@@ -100,7 +100,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				'This page containing Affiliates shortcodes has been detected :',
 				'These pages containing Affiliates shortcodes have been detected :',
 				count( $posts ),
-				AFFILIATES_PLUGIN_DOMAIN
+				'affiliates'
 			);
 			echo '</p>';
 			$post_list = '<ul>';
@@ -117,10 +117,10 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		}
 
 		echo '<p>';
-		_e( 'You can modify the default affiliate area and also create customized pages for your affiliates using shortcodes.', AFFILIATES_PLUGIN_DOMAIN );
+		_e( 'You can modify the default affiliate area and also create customized pages for your affiliates using shortcodes.', 'affiliates' );
 		echo '</p>';
 		echo '<p>';
-		_e( 'Please refer to the <a href="http://docs.itthinx.com/document/affiliates/">Documentation</a> for more details.', AFFILIATES_PLUGIN_DOMAIN );
+		_e( 'Please refer to the <a href="http://docs.itthinx.com/document/affiliates/">Documentation</a> for more details.', 'affiliates' );
 		echo '</p>';
 
 		affiliates_footer();

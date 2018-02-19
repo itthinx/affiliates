@@ -34,7 +34,7 @@ function affiliates_admin_hits() {
 	$output = '';
 	
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 	
 	if (
@@ -48,7 +48,7 @@ function affiliates_admin_hits() {
 		isset( $_POST['show_inoperative'] )
 	) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
 	
@@ -143,13 +143,13 @@ function affiliates_admin_hits() {
 	
 	if ( isset( $_POST['row_count'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
 	
 	if ( isset( $_POST['paged'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' ) ) {
-			wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
 	
@@ -159,16 +159,13 @@ function affiliates_admin_hits() {
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$hits_table = _affiliates_get_tablename( 'hits' );
-	
-	$output .=
-		'<div>' .
-			'<h1>' .
-				__( 'Visits & Referrals', AFFILIATES_PLUGIN_DOMAIN ) .
-			'</h1>' .
-		'</div>';
+
+	$output .= '<h1>';
+	$output .= __( 'Visits & Referrals', 'affiliates' );
+	$output .= '</h1>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
-	
+
 	if ($row_count <= 0) {
 		$row_count = $affiliates_options->get_option( 'affiliates_hits_per_page', AFFILIATES_HITS_PER_PAGE );
 	} else {
@@ -182,7 +179,7 @@ function affiliates_admin_hits() {
 	if ( $paged < 0 ) {
 		$paged = 0;
 	} 
-	
+
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'date' :
@@ -292,20 +289,20 @@ function affiliates_admin_hits() {
 	$results = $wpdb->get_results( $query, OBJECT );		
 
 	$column_display_names = array(
-		'date'      => __( 'Date', AFFILIATES_PLUGIN_DOMAIN ) . '*',
-		'visits'    => __( 'Visits', AFFILIATES_PLUGIN_DOMAIN ),
-		'hits'      => __( 'Hits', AFFILIATES_PLUGIN_DOMAIN ),
-		'referrals' => __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ),
-		'ratio'     => __( 'Ratio', AFFILIATES_PLUGIN_DOMAIN )
+		'date'      => __( 'Date', 'affiliates' ) . '*',
+		'visits'    => __( 'Visits', 'affiliates' ),
+		'hits'      => __( 'Hits', 'affiliates' ),
+		'referrals' => __( 'Referrals', 'affiliates' ),
+		'ratio'     => __( 'Ratio', 'affiliates' )
 	);
-	
+
 	$output .= '<div id="" class="hits-overview">';
-		
+
 	$affiliates = affiliates_get_affiliates( true, !$show_inoperative );
 	$affiliates_select = '';
 	if ( !empty( $affiliates ) ) {
 		$affiliates_select .= '<label class="affiliate-id-filter">';
-		$affiliates_select .= __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN );
+		$affiliates_select .= __( 'Affiliate', 'affiliates' );
 		$affiliates_select .= ' ';
 		$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
 		$affiliates_select .= '<option value="">--</option>';
@@ -323,22 +320,23 @@ function affiliates_admin_hits() {
 	
 	$output .=
 		'<div class="filters">' .
-			'<label class="description" for="setfilters">' . __( 'Filters', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
 
 				'<div class="filter-section">' .
 				$affiliates_select .
+				Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
 				'</div>' .
 
 				'<div class="filter-section">' .
 				'<label class="from-date-filter">' .
-				__( 'From', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'From', 'affiliates' ) .
 				' ' .
 				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
 				'</label>' .
 				' ' .
 				'<label class="thru-date-filter">' .
-				__( 'Until', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Until', 'affiliates' ) .
 				' ' .
 				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
 				'</label>' .
@@ -348,27 +346,27 @@ function affiliates_admin_hits() {
 				'<label class="expanded-filter">' .
 				'<input class="expanded-filter" name="expanded_referrals" type="checkbox" ' . ( $expanded_referrals ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Expand referrals', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Expand referrals', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="expanded-filter">' .
 				'<input class="expanded-filter" name="expanded_hits" type="checkbox" ' . ( $expanded_hits ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Expand hits', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Expand hits', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-inoperative-filter">' .
 				'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Include inoperative affiliates', AFFILIATES_PLUGIN_DOMAIN ) .
+				__( 'Include inoperative affiliates', 'affiliates' ) .
 				'</label>' .
-//				'<label class="expanded-filter" for="expanded">' . __( 'Expand details', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+//				'<label class="expanded-filter" for="expanded">' . __( 'Expand details', 'affiliates' ) . '</label>' .
 //				'<input class="expanded-filter" name="expanded" type="checkbox" ' . ( $expanded ? 'checked="checked"' : '' ) . '/>' .
 				'</div>' .
 				'<div class="filter-buttons">' .
 				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
 				'<input type="hidden" value="submitted" name="submitted"/>' .
 				'</div>' .
 			'</form>' .
@@ -378,18 +376,18 @@ function affiliates_admin_hits() {
 		<div class="page-options">
 			<form id="setrowcount" action="" method="post">
 				<div>
-					<label for="row_count">' . __('Results per page', AFFILIATES_PLUGIN_DOMAIN ) . '</label>' .
+					<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
 					//<input name="page" type="hidden" value="' . esc_attr( $page ) . '"/>
 					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
 					' . wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_NONCE_1, true, false ) . '
-					<input class="button" type="submit" value="' . __( 'Apply', AFFILIATES_PLUGIN_DOMAIN ) . '"/>
+					<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
 				</div>
 			</form>
 		</div>
 		';
-		
+
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
@@ -400,13 +398,11 @@ function affiliates_admin_hits() {
 		$output .= '</div>';
 		$output .= '</form>';
 	}
-					
-	$output .= '
-		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
-		<thead>
-			<tr>
-			';
-	
+
+	$output .= '<table id="" class="wp-list-table widefat fixed" cellspacing="0">';
+	$output .= '<thead>';
+	$output .= '<tr>';
+
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
 			'orderby' => $key,
@@ -422,12 +418,11 @@ function affiliates_admin_hits() {
 		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
-	
-	$output .= '</tr>
-		</thead>
-		<tbody>
-		';
-		
+
+	$output .= '</tr>';
+	$output .= '</thead>';
+	$output .= '<tbody>';
+
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
 			
@@ -440,7 +435,7 @@ function affiliates_admin_hits() {
 			$output .= "<td class='referrals'>$result->referrals</td>";
 			$output .= "<td class='ratio'>$result->ratio</td>";
 			$output .= '</tr>';
-			
+
 			if ( $expanded || $expanded_referrals || $expanded_hits ) {
 
 				//
@@ -469,14 +464,14 @@ function affiliates_admin_hits() {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
 						$output .= '<div class="details-referrals">';
-						$output .= '<p class="description">' . __( 'Referrals', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+						$output .= '<p class="description">' . __( 'Referrals', 'affiliates' ) . '</p>';
 						$output .= '
 							<table id="details-referrals-' . esc_attr( $result->date ) . '" class="details-referrals" cellspacing="0">
 							<thead>
 							<tr>
-							<th scope="col" class="datetime">' . __( 'Time', AFFILIATES_PLUGIN_DOMAIN ) . '</th>
-							<th scope="col" class="post-id">' . __( 'Post', AFFILIATES_PLUGIN_DOMAIN ) . '</th>
-							<th scope="col" class="affiliate-id">' . __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN ) . '</th>
+							<th scope="col" class="datetime">' . __( 'Time', 'affiliates' ) . '</th>
+							<th scope="col" class="post-id">' . __( 'Post', 'affiliates' ) . '</th>
+							<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -496,11 +491,10 @@ function affiliates_admin_hits() {
 						$output .= '</td></tr>';
 					}
 				} // if $expanded_referrals
-				
+
 				//
 				// expanded : hits ----------------------------------------
 				//
-				
 				if ( $expanded_hits ) {
 					// get the detailed results for hits
 					$details_orderby = "date $order, time $order";
@@ -510,12 +504,17 @@ function affiliates_admin_hits() {
 					if ( $affiliate_id ) {
 						$details_filters .= " AND h.affiliate_id = %d ";
 						$details_filter_params[] = $affiliate_id;
-					}					
+					}
 
+					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
+					$uris_table = _affiliates_get_tablename( 'uris' );
 					$details_query = $wpdb->prepare(
-						"SELECT *
+						"SELECT h.*, a.*, ua.*, src.uri src_uri, dest.uri dest_uri
 						FROM $hits_table h
 						LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
+						LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id
+						LEFT JOIN $uris_table src ON h.src_uri_id = src.uri_id
+						LEFT JOIN $uris_table dest ON h.dest_uri_id = dest.uri_id
 						$details_filters
 						ORDER BY $details_orderby
 						",
@@ -525,14 +524,17 @@ function affiliates_admin_hits() {
 					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 					$output .= '<td colspan="5">';
 					$output .= '<div class="details-hits">';
-					$output .= '<p class="description">' . __( 'Hits', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+					$output .= '<p class="description">' . __( 'Hits', 'affiliates' ) . '</p>';
 					$output .= '
 						<table id="details-hits-' . esc_attr( $result->date ) . '" class="details-hits" cellspacing="0">
 						<thead>
 						<tr>
-						<th scope="col" class="time">' . __( 'Time', AFFILIATES_PLUGIN_DOMAIN ) . '</th>
-						<th scope="col" class="ip">' . __( 'IP', AFFILIATES_PLUGIN_DOMAIN ) . '</th>
-						<th scope="col" class="affiliate-id">' . __( 'Affiliate', AFFILIATES_PLUGIN_DOMAIN ) . '</th>
+						<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>
+						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
+						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>
+						<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>
+						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -543,6 +545,9 @@ function affiliates_admin_hits() {
 						$output .= '<td class="time">' . DateHelper::s2u( $hit->datetime ) . '</td>';
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
+						$output .= "<td class='src-uri'>" . esc_html( $hit->src_uri ) . "</td>";
+						$output .= "<td class='dest-uri'>" . esc_html( $hit->dest_uri ) . "</td>";
+						$output .= "<td class='hit-user-agent'>" . esc_html( $hit->user_agent ) . "</td>";
 						$output .= '</tr>';
 					}
 					$output .= '</tbody></table>';
@@ -553,29 +558,28 @@ function affiliates_admin_hits() {
 			} // expanded
 		}
 	} else {
-		$output .= '<tr><td colspan="5">' . __('There are no results.', AFFILIATES_PLUGIN_DOMAIN ) . '</td></tr>';
+		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 	}
-		
+
 	$output .= '</tbody>';
 	$output .= '</table>';
-					
+
 	if ( $paginate ) {
-	  require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination( $count, null, $row_count );
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
-		$output .= '</div>';			
+		$output .= '</div>';
 	}
 
 	$server_dtz = DateHelper::getServerDateTimeZone();
-	$output .=
-		'<p>' .
-			sprintf(
-				__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", AFFILIATES_PLUGIN_DOMAIN ),
-				$server_dtz->getName(),
-				$server_dtz->getOffset( new DateTime() ) / 3600.0
-			) .
-			'</p>';
+	$output .= '<p>';
+	$output .= sprintf(
+		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		$server_dtz->getName(),
+		$server_dtz->getOffset( new DateTime() ) / 3600.0
+	);
+	$output .= '</p>';
 	$output .= '</div>'; // .visits-overview
 	echo $output;
 	affiliates_footer();

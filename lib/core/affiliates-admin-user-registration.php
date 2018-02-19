@@ -28,15 +28,15 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-user-registration.php';
 function affiliates_admin_user_registration() {
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-		wp_die( __( 'Access denied.', AFFILIATES_PLUGIN_DOMAIN ) );
+		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
 
 	echo '<h1>';
-	echo __( 'User Registration', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'User Registration', 'affiliates' );
 	echo '</h1>';
 
 	echo '<p class="description">';
-	echo __( 'Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.', 'affiliates' );
 	echo '</p>';
 
 	// save
@@ -50,7 +50,7 @@ function affiliates_admin_user_registration() {
 
 			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 				delete_option( 'aff_customer_registration_enabled' );
-				if ( !empty( $_POST['enabled'] ) ) {
+				if ( !empty( $_POST['customer_enabled'] ) ) {
 					add_option( 'aff_customer_registration_enabled', 'yes', '', 'no' );
 				}
 			}
@@ -118,7 +118,7 @@ function affiliates_admin_user_registration() {
 	echo '<label>';
 	printf( '<input type="checkbox" name="enabled" value="1" %s />', $user_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
 	echo ' ';
-	echo __( 'Enable the user registration integration', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Enable the user registration integration', 'affiliates' );
 	echo '</label>';
 	echo '</div>';
 
@@ -126,13 +126,13 @@ function affiliates_admin_user_registration() {
 	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		echo '<div class="field customer-registration-enabled">';
 		echo '<label>';
-		printf( '<input type="checkbox" name="enabled" value="1" %s />', $customer_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
+		printf( '<input type="checkbox" name="customer_enabled" value="1" %s />', $customer_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
 		echo ' ';
-		echo __( 'Enable the WooCommerce customer registration integration', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Enable the WooCommerce customer registration integration', 'affiliates' );
 		echo '</label>';
 		echo ' ';
 		echo '<span class="description">';
-		echo __( 'If the user registration integration should create referrals for new customers that register at checkout, this option should be enabled.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'If the user registration integration should create referrals for new customers that register at checkout, this option should be enabled.', 'affiliates' );
 		echo '</span>';
 		echo '</div>';
 	}
@@ -142,18 +142,18 @@ function affiliates_admin_user_registration() {
 		echo '<div class="field user-registration-base-amount">';
 		echo '<label>';
 		echo '<span class="label">';
-		echo __( 'Base Amount', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Base Amount', 'affiliates' );
 		echo '</span>';
 		echo ' ';
 		printf( '<input type="text" name="base_amount" value="%s"/>', esc_attr( $user_registration_base_amount ) );
 		echo '</label>';
 		echo '<span class="description">';
-		echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate.', 'affiliates' );
 		echo ' ';
-		echo __( 'If set, this <strong>Base Amount</strong> takes precedence over the <strong>Amount</strong>.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'If set, this <strong>Base Amount</strong> takes precedence over the <strong>Amount</strong>.', 'affiliates' );
 		if ( AFFILIATES_PLUGIN_NAME == 'affiliates-enterprise' ) {
 			echo ' ';
-			echo __( 'If multi-tiered referrals are enabled and level rates are not relative, this <strong>Base Amount</strong> must be used instead of the <strong>Amount</strong>.', AFFILIATES_PLUGIN_DOMAIN );
+			echo __( 'If multi-tiered referrals are enabled and level rates are not relative, this <strong>Base Amount</strong> must be used instead of the <strong>Amount</strong>.', 'affiliates' );
 		}
 		echo '</span>';
 		echo '</div>';
@@ -163,13 +163,13 @@ function affiliates_admin_user_registration() {
 	echo '<div class="field user-registration-amount">';
 	echo '<label>';
 	echo '<span class="label">';
-	echo __( 'Amount', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Amount', 'affiliates' );
 	echo '</span>';
 	echo ' ';
 	printf( '<input type="text" name="amount" value="%s"/>', esc_attr( $user_registration_amount ) );
 	echo '</label>';
 	echo '<span class="description">';
-	echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate this amount in the chosen currency.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate this amount in the chosen currency.', 'affiliates' );
 	echo '</span>';
 	echo '</div>';
 
@@ -183,7 +183,7 @@ function affiliates_admin_user_registration() {
 	echo '<div class="field user-registration-currency">';
 	echo '<label>';
 	echo '<span class="label">';
-	echo __( 'Currency', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Currency', 'affiliates' );
 	echo '</span>';
 	echo ' ';
 	echo $currency_select;
@@ -191,10 +191,10 @@ function affiliates_admin_user_registration() {
 	echo '</div>';
 
 	$status_descriptions = array(
-		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', AFFILIATES_PLUGIN_DOMAIN ),
-		AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', AFFILIATES_PLUGIN_DOMAIN ),
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
+		AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 	);
 	$status_select = "<select name='status'>";
 	foreach ( $status_descriptions as $status_key => $status_value ) {
@@ -209,33 +209,33 @@ function affiliates_admin_user_registration() {
 	echo '<div class="field user-registration-referral-status">';
 	echo '<label>';
 	echo '<span class="label">';
-	echo __( 'Referral Status', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Referral Status', 'affiliates' );
 	echo '</span>';
 	echo ' ';
 	echo $status_select;
 	echo '</label>';
 	echo '<p class="description">';
-	echo __( 'The status for referrals that record commissions when affiliates refer new users.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'The status for referrals that record commissions when affiliates refer new users.', 'affiliates' );
 	echo '</p>';
 	echo '</div>';
 
 	echo '<p>';
-	echo __( 'Recommended choices for the referral status are <em>Accepted</em> and <em>Pending</em>.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( 'Recommended choices for the referral status are <em>Accepted</em> and <em>Pending</em>.', 'affiliates' );
 	echo '</p>';
 
 	echo '<ul>';
 	echo '<li>';
-	echo __( '<strong>Accepted</strong> if these referrals should grant payable commissions to affiliates without the need for further review.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( '<strong>Accepted</strong> if these referrals should grant payable commissions to affiliates without the need for further review.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( '<strong>Pending</strong> if these referrals are to be reviewed before the commissions should be taken into account for affiliate payouts.', AFFILIATES_PLUGIN_DOMAIN );
+	echo __( '<strong>Pending</strong> if these referrals are to be reviewed before the commissions should be taken into account for affiliate payouts.', 'affiliates' );
 	echo '</li>';
 	echo '</ul>';
 
 	echo '<div class="buttons">';
 	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
-	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>';
+	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>';
 	echo '<input type="hidden" name="action" value="save"/>';
 	echo '</div>';
 

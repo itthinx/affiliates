@@ -50,12 +50,12 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		self::$default_fields = array(
-			'first_name' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'First Name', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'last_name'  => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Last Name', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'user_login' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Username', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'user_email' => array( 'obligatory' => true, 'enabled' => true, 'label' => __( 'Email', AFFILIATES_PLUGIN_DOMAIN ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'user_url'	 => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', AFFILIATES_PLUGIN_DOMAIN ), 'required' => false, 'is_default' => true, 'type' => 'text' ),
-			'password'	 => array( 'obligatory' => false, 'enabled' => false, 'label' => __( 'Password', AFFILIATES_PLUGIN_DOMAIN ), 'required' => false, 'is_default' => true, 'type' => 'password' )
+			'first_name' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'First Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+			'last_name'  => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Last Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+			'user_login' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Username', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+			'user_email' => array( 'obligatory' => true, 'enabled' => true, 'label' => __( 'Email', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+			'user_url'	 => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'text' ),
+			'password'	 => array( 'obligatory' => false, 'enabled' => false, 'label' => __( 'Password', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'password' )
 		);
 	}
 
@@ -77,8 +77,16 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				delete_option( 'aff_registration' );
 				add_option( 'aff_registration', !empty( $_POST['registration'] ), '', 'no' );
 
-				delete_option( 'aff_notify_admin' );
-				add_option( 'aff_notify_admin', !empty( $_POST['notify_admin'] ), '', 'no' );
+				delete_option( 'aff_status' );
+				$status = !empty( $_POST['affiliate_status'] ) ? $_POST['affiliate_status'] : 'active';
+				switch( $status ) {
+					case 'active' :
+					case 'pending' :
+						break;
+					default :
+						$status = 'active';
+				}
+				add_option( 'aff_status', $status, '', 'no' );
 
 				if ( !get_option( 'aff_registration_fields' ) ) {
 					add_option( 'aff_registration_fields', self::$default_fields, '', 'no' );
@@ -123,33 +131,46 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		}
 
 		$registration = get_option( 'aff_registration', get_option( 'users_can_register', false ) );
-		$notify_admin = get_option( 'aff_notify_admin', get_option( 'aff_notify_admin', true ) );
+		$affiliate_status = get_option( 'aff_status', 'active' );
 
 		echo
 			'<form action="" name="options" method="post">' .
 			'<div>' .
-			'<h3>' . __( 'Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>' .
+			'<h3>' . __( 'Affiliate Registration', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="registration" type="checkbox" ' . ( $registration ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
-			__( 'Allow affiliate registration', AFFILIATES_PLUGIN_DOMAIN ) .
+			__( 'Allow affiliate registration', 'affiliates' ) .
 			'</label>' .
 			'</p>';
 
 		echo
 			'<p>' .
 			'<label>' .
-			'<input name="notify_admin" type="checkbox" ' . ( $notify_admin ? 'checked="checked"' : '' ) . '/>' .
+			__( 'Status', 'affiliates' ) .
 			' ' .
-			__( 'Notify the site admin when a new affiliate is registered', AFFILIATES_PLUGIN_DOMAIN ) .
+			'<select name="affiliate_status">' .
+			sprintf( '<option value="active" %s>', $affiliate_status == 'active' ? ' selected="selected" ' : '' ) .
+			__( 'Active', 'affiliates' ) .
+			'</option>' .
+			sprintf( '<option value="pending" %s>', $affiliate_status == 'pending' ? ' selected="selected" ' : '' ) .
+			__( 'Pending', 'affiliates' ) .
+			'</option>' .
+			'</select>' .
 			'</label>' .
 			'</p>';
 
+		echo '<p>';
+		echo __( 'This determines if new affiliate applications require manual approval or whether they are accepted automatically.', 'affiliates' );
+		echo ' ';
+		echo __( '<em>Pending</em> will require manual approval of new affiliates. <em>Active</em> will accept new affiliates automatically.', 'affiliates' );
+		echo '</p>';
+
 		// registration fields
-		echo '<h3>' . __( 'Affiliate Registration Form', AFFILIATES_PLUGIN_DOMAIN ) . '</h3>';
+		echo '<h3>' . __( 'Affiliate Registration Form', 'affiliates' ) . '</h3>';
 		echo '<p class="description">';
-		echo __( 'The following fields are provided on the affiliate registration form rendered by the <code>[affiliates_registration]</code> shortcode.', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'The following fields are provided on the affiliate registration form rendered by the <code>[affiliates_registration]</code> shortcode.', 'affiliates' );
 		echo '</p>';
 		$registration_fields = get_option( 'aff_registration_fields', self::$default_fields );
 		echo '<div id="registration-fields">';
@@ -157,16 +178,16 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '<thead>';
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Enabled', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Enabled', 'affiliates' );
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Field Name', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Field Name', 'affiliates' );
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Field Label', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Field Label', 'affiliates' );
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Required', AFFILIATES_PLUGIN_DOMAIN );
+		echo __( 'Required', 'affiliates' );
 		echo '</th>';
 		echo '<tr>';
 		echo '<th>';
@@ -190,10 +211,10 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			echo '</td>';
 			echo '<td>';
 			echo sprintf( '<input type="hidden" name="field-type[%d]" value="%s" />', $i, $field['type'] );
-			echo sprintf( '<button class="field-up" type="button" value="%d">%s</button>', $i, esc_html( __( 'Up', AFFILIATES_PLUGIN_DOMAIN ) ) );
-			echo sprintf( '<button class="field-down" type="button" value="%d">%s</button>', $i, esc_html( __( 'Down', AFFILIATES_PLUGIN_DOMAIN ) ) );
+			echo sprintf( '<button class="field-up button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Up', 'affiliates' ) ) );
+			echo sprintf( '<button class="field-down button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Down', 'affiliates' ) ) );
 			if ( !$field['is_default'] ) {
-				echo sprintf( '<button class="field-remove" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', AFFILIATES_PLUGIN_DOMAIN ) ) );
+				echo sprintf( '<button class="field-remove button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', 'affiliates' ) ) );
 			}
 			echo '</td>';
 			echo '</tr>';
@@ -203,7 +224,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '</table>';
 
 		echo '<p>';
-		echo sprintf( '<button class="field-add" type="button" value="%d">%s</button>', $i, esc_html( __( 'Add a field', AFFILIATES_PLUGIN_DOMAIN ) ) );
+		echo sprintf( '<button class="field-add button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Add a field', 'affiliates' ) ) );
 		echo '</p>';
 
 		echo '</div>'; // #registration-fields
@@ -211,7 +232,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo
 			'<p>' .
 			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) .
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', AFFILIATES_PLUGIN_DOMAIN ) . '"/>' .
+			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
 			'</p>' .
 			'</div>' .
 			'</form>';

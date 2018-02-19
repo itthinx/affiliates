@@ -117,9 +117,21 @@ class Affiliates_Registration {
 
 		wp_enqueue_style( 'affiliates' );
 
-		self::$submit_button_label = __( 'Sign Up', AFFILIATES_PLUGIN_DOMAIN );
+		self::$submit_button_label = __( 'Sign Up', 'affiliates' );
 
 		$output = '';
+
+		//
+		// Existing affiliate pending approval
+		//
+		if ( affiliates_user_is_affiliate_status( null, 'pending' ) ) {
+			$output .= '<div class="affiliates-registration registered pending">';
+			$output .= '<p>';
+			$output .= __( 'Your affiliate application is pending approval.', 'affiliates' );
+			$output .= '</p>';
+			$output .= '</div>';
+			return $output;
+		}
 
 		//
 		// Existing affiliate
@@ -127,7 +139,7 @@ class Affiliates_Registration {
 		if ( $is_affiliate = affiliates_user_is_affiliate() ) {
 			$output .= '<div class="affiliates-registration registered">';
 			$output .= '<p>';
-			$output .= __( 'You are already registered as an affiliate.', AFFILIATES_PLUGIN_DOMAIN );
+			$output .= __( 'You are already registered as an affiliate.', 'affiliates' );
 			$output .= '</p>';
 			if ( isset( $options['registered_profile_link_url'] ) ) {
 				$output .= '<p>';
@@ -135,7 +147,7 @@ class Affiliates_Registration {
 				if ( isset( $options['registered_profile_link_text'] ) ) {
 					$output .= wp_filter_kses( $options['registered_profile_link_text'] );
 				} else {
-					$output .= __( 'Access your profile', AFFILIATES_PLUGIN_DOMAIN );
+					$output .= __( 'Access your profile', 'affiliates' );
 				}
 				$output .= '</a>';
 				$output .= '</p>';
@@ -148,7 +160,7 @@ class Affiliates_Registration {
 		// Registration closed
 		//
 		if ( !get_option( 'aff_registration', get_option( 'users_can_register', false ) ) ) {
-			$output .= '<p>' . __( 'Registration is currently closed.', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+			$output .= '<p>' . __( 'Registration is currently closed.', 'affiliates' ) . '</p>';
 			return $output;
 		}
 
@@ -220,9 +232,9 @@ class Affiliates_Registration {
 					if ( $field['required'] && empty( $value ) ) {
 						$error = true;
 						$output .= '<div class="error">';
-						$output .= __( '<strong>ERROR</strong>', AFFILIATES_PLUGIN_DOMAIN );
+						$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 						$output .= ' : ';
-						$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', AFFILIATES_PLUGIN_DOMAIN ), $field['label'] );
+						$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
 						$output .= '</div>';
 					}
 					$registration_fields[$name]['value'] = $value;
@@ -283,15 +295,15 @@ class Affiliates_Registration {
 						wp_safe_redirect( $redirect_url );
 						exit();
 					} else {
-						$output .= '<p>' . __( 'Thanks for signing up!', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+						$output .= apply_filters( 'affiliates_thanks_sign_up_text', '<p>' . __( 'Thanks for signing up!', 'affiliates' ) . '</p>' );
 						if ( !$is_logged_in ) {
-							$output .= '<p>' . __( 'Please check your email for the confirmation link.', AFFILIATES_PLUGIN_DOMAIN ) . '</p>';
+							$output .= apply_filters( 'affiliates_check_confirmation_text', '<p>' . __( 'Please check your email for the confirmation link.', 'affiliates' ) . '</p>' );
 							if ( $redirect && !$is_widget ) {
 								$output .= '<script type="text/javascript">window.location="' . esc_url( $redirect_url ) . '";</script>';
 							} else {
 								$output .= '<p>';
 								$output .= sprintf(
-									__( 'Log in <a href="%s">here</a>.', AFFILIATES_PLUGIN_DOMAIN ),
+									__( 'Log in <a href="%s">here</a>.', 'affiliates' ),
 									esc_url( apply_filters( 'affiliates_registration_login_redirect_url', get_site_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) )
 								);
 								$output .= '</p>';
@@ -303,7 +315,7 @@ class Affiliates_Registration {
 								if ( isset( $options['registered_profile_link_text'] ) ) {
 									$output .= wp_filter_kses( $options['registered_profile_link_text'] );
 								} else {
-									$output .= __( 'Access your profile', AFFILIATES_PLUGIN_DOMAIN );
+									$output .= __( 'Access your profile', 'affiliates' );
 								}
 								$output .= '</a>';
 								$output .= '</p>';
@@ -352,7 +364,7 @@ class Affiliates_Registration {
 				if ( $terms_post ) {
 					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
 					$terms = sprintf(
-						apply_filters( 'affiliates_terms_post_link_text', __( 'By signing up, you indicate that you have read and agree to the %s.', AFFILIATES_PLUGIN_DOMAIN ) ),
+						apply_filters( 'affiliates_terms_post_link_text', __( 'By signing up, you indicate that you have read and agree to the %s.', 'affiliates' ) ),
 						$terms_post_link
 					);
 				}
@@ -444,22 +456,22 @@ class Affiliates_Registration {
 
 		// Check the username
 		if ( $sanitized_user_login == '' ) {
-			$errors->add( 'empty_username', __( '<strong>ERROR</strong>: Please enter a username.', AFFILIATES_PLUGIN_DOMAIN ) );
+			$errors->add( 'empty_username', __( '<strong>ERROR</strong>: Please enter a username.', 'affiliates' ) );
 		} elseif ( ! validate_username( $sanitized_user_login ) ) {
-			$errors->add( 'invalid_username', __( '<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.', AFFILIATES_PLUGIN_DOMAIN ) );
+			$errors->add( 'invalid_username', __( '<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.', 'affiliates' ) );
 			$sanitized_user_login = '';
 		} elseif ( username_exists( $sanitized_user_login ) ) {
-			$errors->add( 'username_exists', __( '<strong>ERROR</strong>: This username is already registered, please choose another one.', AFFILIATES_PLUGIN_DOMAIN ) );
+			$errors->add( 'username_exists', __( '<strong>ERROR</strong>: This username is already registered, please choose another one.', 'affiliates' ) );
 		}
 
 		// Check the e-mail address
 		if ( $user_email == '' ) {
-			$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please type your e-mail address.', AFFILIATES_PLUGIN_DOMAIN ) );
+			$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please type your e-mail address.', 'affiliates' ) );
 		} elseif ( ! is_email( $user_email ) ) {
-			$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.', AFFILIATES_PLUGIN_DOMAIN ) );
+			$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.', 'affiliates' ) );
 			$user_email = '';
 		} elseif ( email_exists( $user_email ) ) {
-			$errors->add( 'email_exists', __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', AFFILIATES_PLUGIN_DOMAIN ) );
+			$errors->add( 'email_exists', __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', 'affiliates' ) );
 		}
 
 		do_action( 'register_post', $sanitized_user_login, $user_email, $errors );
@@ -529,13 +541,13 @@ class Affiliates_Registration {
 
 			// Check the e-mail address
 			if ( $user_email == '' ) {
-				$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please type your e-mail address.', AFFILIATES_PLUGIN_DOMAIN ) );
+				$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please type your e-mail address.', 'affiliates' ) );
 			} elseif ( ! is_email( $user_email ) ) {
-				$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.', AFFILIATES_PLUGIN_DOMAIN ) );
+				$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.', 'affiliates' ) );
 				$user_email = '';
 			} elseif ( $other_user_id = email_exists( $user_email ) ) {
 				if ( $other_user_id != $user_id ) {
-					$errors->add( 'email_exists', __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', AFFILIATES_PLUGIN_DOMAIN ) );
+					$errors->add( 'email_exists', __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', 'affiliates' ) );
 				}
 			}
 
@@ -649,9 +661,10 @@ class Affiliates_Registration {
 	 * 
 	 * @param int $user_id user id
 	 * @param array $userdata affiliate data
+	 * @param string $status affiliate status
 	 * @return if successful new affiliate's id, otherwise false
 	 */
-	public static function store_affiliate( $user_id, $userdata ) {
+	public static function store_affiliate( $user_id, $userdata, $status = null ) {
 		global $wpdb;
 
 		$result = false;
@@ -666,6 +679,19 @@ class Affiliates_Registration {
 			'from_date' => esc_sql( $today ),
 		);
 		$formats = array( '%s', '%s', '%s' );
+		// pending affiliate status?
+		switch( $status ) {
+			case 'active' :
+			case 'pending' :
+				$affiliate_status = $status;
+				break;
+			default :
+				$affiliate_status = get_option( 'aff_status', 'active' );
+		}
+		if ( $affiliate_status == 'pending' ) {
+			$data['status'] = 'pending';
+			$formats[] = '%s';
+		}
 		if ( $wpdb->insert( $affiliates_table, $data, $formats ) ) {
 			$affiliate_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			// create association
@@ -754,9 +780,9 @@ class Affiliates_Registration {
 		// we want to reverse this for the plain text arena of emails.
 		$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 
-		$message  = sprintf( __( 'New affiliate registration on your site %s:', AFFILIATES_PLUGIN_DOMAIN ), $blogname ) . "\r\n\r\n";
-		$message .= sprintf( __( 'Username: %s', AFFILIATES_PLUGIN_DOMAIN ), $user_login ) . "\r\n\r\n";
-		$message .= sprintf( __( 'E-mail: %s', AFFILIATES_PLUGIN_DOMAIN ), $user_email ) . "\r\n";
+		$message  = sprintf( __( 'New affiliate registration on your site %s:', 'affiliates' ), $blogname ) . "\r\n\r\n";
+		$message .= sprintf( __( 'Username: %s', 'affiliates' ), $user_login ) . "\r\n\r\n";
+		$message .= sprintf( __( 'E-mail: %s', 'affiliates' ), $user_email ) . "\r\n";
 
 		if ( get_option( 'aff_notify_admin', true ) ) {
 			$params = array(
@@ -768,10 +794,11 @@ class Affiliates_Registration {
 			);
 			@wp_mail(
 				apply_filters( 'affiliates_admin_email', get_option( 'admin_email' ) ),
-				apply_filters( 'affiliates_new_affiliate_registration_subject', sprintf( __( '[%s] New Affiliate Registration', AFFILIATES_PLUGIN_DOMAIN ), $blogname ), $params ),
+				apply_filters( 'affiliates_new_affiliate_registration_subject', sprintf( __( '[%s] New Affiliate Registration', 'affiliates' ), $blogname ), $params ),
 				apply_filters( 'affiliates_new_affiliate_registration_message', $message, $params ),
 				apply_filters( 'affiliates_new_affiliate_registration_headers', '', $params )
 			);
+
 		}
 
 	}
@@ -787,8 +814,8 @@ class Affiliates_Registration {
 		$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 		if ( !empty( $plaintext_pass ) ) {
 			if ( get_option( 'aff_notify_affiliate_user', 'yes' ) != 'no' ) {
-				$message  = sprintf( __( 'Username: %s', AFFILIATES_PLUGIN_DOMAIN ), $user->user_login) . "\r\n";
-				$message .= sprintf( __( 'Password: %s', AFFILIATES_PLUGIN_DOMAIN ), $plaintext_pass ) . "\r\n";
+				$message  = sprintf( __( 'Username: %s', 'affiliates' ), $user->user_login) . "\r\n";
+				$message .= sprintf( __( 'Password: %s', 'affiliates' ), $plaintext_pass ) . "\r\n";
 				$message .= wp_login_url() . "\r\n";
 				$params = array(
 					'user_id'  => $user_id,
@@ -800,7 +827,7 @@ class Affiliates_Registration {
 				);
 				@wp_mail(
 					$user->user_email,
-					apply_filters( 'affiliates_new_affiliate_user_registration_subject', sprintf( __( '[%s] Your username and password', AFFILIATES_PLUGIN_DOMAIN ), $blogname ), $params ),
+					apply_filters( 'affiliates_new_affiliate_user_registration_subject', sprintf( __( '[%s] Your username and password', 'affiliates' ), $blogname ), $params ),
 					apply_filters( 'affiliates_new_affiliate_user_registration_message', $message, $params ),
 					apply_filters( 'affiliates_new_affiliate_user_registration_headers', '', $params )
 				);

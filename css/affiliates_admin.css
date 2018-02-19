@@ -102,17 +102,41 @@ a.removefromaffiliate {
 .affiliates-overview .even.deleted.inoperative {
 	background-color: #edd;
 }
+.affiliates-overview .odd.pending,
+.affiliates-overview .odd.pending.inoperative {
+	background-color: #fec;
+}
+.affiliates-overview .even.pending,
+.affiliates-overview .even.pending.inoperative {
+	background-color: #ffd;
+}
+.affiliates-overview th.check-column {
+	vertical-align: top;
+	padding: 4px 0 0 3px;
+}
+.affiliates-overview th.column-cb.check-column {
+	vertical-align: middle;
+}
+
+.affiliates-overview .page-options.right {
+	float:right;
+	text-align: right;
+}
 
 /* overviews */
 .affiliates-overview .tablenav-pages,
 .hits-overview,
 .hits-affiliates-overview,
 .manage-affiliates,
+.hits-uris-overview,
 .referrals-overview {
 	padding-right: 1em;
 }
 .totals {
 	margin-right: 1em;
+}
+.totals-overview td.total {
+	text-align: right;
 }
 
 div.details-referrals,
@@ -123,6 +147,7 @@ div.details-hits {
 .affiliates-overview .page-options,
 .hits-overview .page-options,
 .hits-affiliates-overview .page-options,
+.hits-uris-overview .page-options,
 .referrals-overview .page-options {
 	float: left;
 	display: inline;
@@ -132,26 +157,29 @@ div.details-hits {
 .affiliates-overview .tablenav.top,
 .hits-overview .tablenav.top,
 .hits-affiliates-overview .tablenav.top,
+.hits-uris-overview .tablenav.top,
 .referrals-overview .tablenav.top {
 	display: inline;
 	width: 250px;
 }
 
 .hits-overview .odd,
-.hits-affiliates-overview .odd {
-  background-color: #fff;
+.hits-affiliates-overview .odd,
+.hits-uris-overview .odd {
+	background-color: #fff;
 }
 
 .hits-overview .even,
-.hits-affiliates-overview .even {
-  background-color: #f9f9f9;
+.hits-affiliates-overview .even,
+.hits-uris-overview .even {
+	background-color: #f9f9f9;
 }
 
 .referrals-overview .odd {
-  background-color: #fcfcfc;
+	background-color: #fcfcfc;
 }
 .referrals-overview .even {
-  background-color: #f3f3f3;
+	background-color: #f3f3f3;
 }
 .referrals-overview .even .widefat,
 .referrals-overview .odd .widefat {
@@ -209,6 +237,9 @@ div.details-hits {
 	margin-bottom: 1em;
 	border: 1px solid #ddd;
 }
+.manage.add {
+	margin-right: 1em;
+}
 .manage a.add {
 	text-decoration: none;
 	cursor: pointer;
@@ -230,6 +261,7 @@ div.details-hits {
 
 .affiliate-id-filter,
 .status-filter,
+.affiliate-status-filter,
 .affiliate-name-filter,
 .affiliate-email-filter,
 .affiliate-user-login-filter,
@@ -410,6 +442,7 @@ div.referral.remove span.title {
 	margin: 0 8px 0 0;
 	display: block;
 	float: left;
+	width: 105px;
 }
 .affiliates-admin-add-ons ul.add-ons a {
 	text-decoration: none;
@@ -422,4 +455,14 @@ div.referral.remove span.title {
 	clear: both;
 	display: block;
 	color: #333;
+}
+li.add-ons:hover {
+	position: relative;
+}
+.affiliates-admin-add-ons ul.add-ons h3 img:hover {
+	position: absolute;
+	-webkit-transition: width 0.3s ease-out;
+	-moz-transition: width 0.3s ease-out;
+	-o-transition: width 0.3s ease-out;
+	width: 272px;
 }
