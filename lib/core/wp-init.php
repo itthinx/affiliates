@@ -850,11 +850,12 @@ function affiliates_parse_request( &$wp ) {
 		}
 		$affiliates_request_encoded_id = $encoded_id;
 		$hit = affiliates_record_hit( $affiliate_id );
+		$aff_cookie_path = apply_filters( 'affiliates_set_cookie_path', SITECOOKIEPATH != COOKIEPATH ? COOKIEPATH : SITECOOKIEPATH );
 		setcookie(
 			AFFILIATES_COOKIE_NAME,
 			$encoded_id,
 			$expire,
-			SITECOOKIEPATH,
+			$aff_cookie_path,
 			COOKIE_DOMAIN
 		);
 		if ( !empty( $hit['hash'] ) ) {
@@ -862,7 +863,7 @@ function affiliates_parse_request( &$wp ) {
 				AFFILIATES_HASH_COOKIE_NAME,
 				$hit['hash'],
 				$expire,
-				SITECOOKIEPATH,
+				$aff_cookie_path,
 				COOKIE_DOMAIN
 			);
 		}
