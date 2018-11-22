@@ -850,21 +850,27 @@ function affiliates_parse_request( &$wp ) {
 		}
 		$affiliates_request_encoded_id = $encoded_id;
 		$hit = affiliates_record_hit( $affiliate_id );
-		setcookie(
-			AFFILIATES_COOKIE_NAME,
-			$encoded_id,
-			$expire,
-			SITECOOKIEPATH,
-			COOKIE_DOMAIN
-		);
-		if ( !empty( $hit['hash'] ) ) {
+		$cookiepaths = array( COOKIEPATH );
+		if ( SITECOOKIEPATH != COOKIEPATH ) {
+			$cookiepaths[] = SITECOOKIEPATH;
+		}
+		foreach ( $cookiepaths as $cookiepath ) {
 			setcookie(
-				AFFILIATES_HASH_COOKIE_NAME,
-				$hit['hash'],
+				AFFILIATES_COOKIE_NAME,
+				$encoded_id,
 				$expire,
-				SITECOOKIEPATH,
+				$cookiepath,
 				COOKIE_DOMAIN
 			);
+			if ( !empty( $hit['hash'] ) ) {
+				setcookie(
+					AFFILIATES_HASH_COOKIE_NAME,
+					$hit['hash'],
+					$expire,
+					$cookiepath,
+					COOKIE_DOMAIN
+				);
+			}
 		}
 		affiliates_pixel_request();
 		unset( $wp->query_vars[$pname] ); // we use this to avoid ending up on the blog listing page
@@ -986,7 +992,7 @@ function affiliates_maybe_record_uri( $type = null, $uri = null ) {
 
 /**
  * Records a new user agent or retrieves the existing entry's id and returns it.
- * @param unknown $user_agent
+ * @param string $user_agent
  */
 function affiliates_maybe_record_user_agent_id( $user_agent ) {
 
@@ -1184,7 +1190,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
  * @param string|array $data additional information that should be stored along with the referral
  * @param string $amount referral amount - if used, a $currency_id must be given
  * @þaram string $currency_id three letter currency code - if used, an $amount must be given
- * @return affiliate id if a valid referral is recorded, otherwise false
+ * @return int affiliate id if a valid referral is recorded, otherwise false
  */
 function affiliates_suggest_referral( $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null ) {
 	global $wpdb, $affiliates_options;
@@ -1503,7 +1509,7 @@ function affiliates_get_id_encodings() {
  * Returns an encoded affiliate id.
  * If AFFILIATES_NO_ID_ENCODING is in effect, the $affiliate_id is returned as-is.
  * @param string|int $affiliate_id the affiliate id to encode
- * @return encoded affiliate id
+ * @return string|int encoded affiliate id
  */
 function affiliates_encode_affiliate_id( $affiliate_id ) {
 	global $affiliates_options;
@@ -1523,7 +1529,7 @@ function affiliates_encode_affiliate_id( $affiliate_id ) {
 /**
  * Checks if an affiliate id is from a currently valid affiliate.
  * @param string $affiliate_id the affiliate id
- * @return returns the affiliate id if valid, otherwise FALSE
+ * @return int|boolean returns the affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
 
@@ -1543,7 +1549,7 @@ function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
 /**
  * Checks if an affiliate id is from a currently valid affiliate.
  * @param string $affiliate_id the affiliate id
- * @return returns the affiliate id if valid, otherwise FALSE
+ * @return int|boolean returns the affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id( $affiliate_id ) {
 
@@ -1562,7 +1568,7 @@ function affiliates_check_affiliate_id( $affiliate_id ) {
 /**
  * Checks if an md5-encoded affiliate id is from a currently valid affiliate.
  * @param string $affiliate_id_md5 the md5-encoded affiliate id
- * @return returns the (unencoded) affiliate id if valid, otherwise FALSE
+ * @return int|boolean returns the (unencoded) affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
 
@@ -1580,7 +1586,7 @@ function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
 
 /**
  * Returns the first id of an affiliate of type AFFILIATES_DIRECT_TYPE.
- * @return returns the affiliate id (if there is at least one of type AFFILIATES_DIRECT_TYPE), otherwise FALSE
+ * @return int|boolean returns the affiliate id (if there is at least one of type AFFILIATES_DIRECT_TYPE), otherwise FALSE
  */
 function affiliates_get_direct_id() {
 	global $wpdb;
@@ -1993,7 +1999,7 @@ function affiliates_get_affiliate( $affiliate_id ) {
 /**
  * Return the user id related to an affiliate.
  * @param int $affiliate_id
- * @return user_id 
+ * @return int user_id
  */
 function affiliates_get_affiliate_user( $affiliate_id ) {
 	global $wpdb;
