@@ -1,5 +1,10 @@
 == Affiliates - Changelog ==
 
+= 3.1.0 =
+* WordPress 5.0 compatibility checked.
+* Setting COOKIEPATH and SITECOOKIEPATH when needed to solve issues with subfolder installs.
+* Fixed some internal documentation and added missing type info.
+
 = 3.0.1 =
 * WordPress 4.9.4 compatibility checked.
 * Minimum PHP version required is now 5.6.0.
