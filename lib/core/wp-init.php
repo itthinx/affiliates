@@ -55,6 +55,15 @@ include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration-widget.php' );
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php' ); // don't make it conditional on is_admin(), get_total() is used in Manage Affiliates
 
+// templates and dashboard
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-templates.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-referrals.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings.php';
+
 // built-in user registration integration
 if (
 	( get_option( 'aff_user_registration_enabled', 'no' ) == 'yes' ) ||
