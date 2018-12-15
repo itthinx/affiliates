@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.0.0 =
+* New Affiliates Dashboard.
+
 = 3.1.0 =
 * WordPress 5.0 compatibility checked.
 * Setting COOKIEPATH and SITECOOKIEPATH when needed to solve issues with subfolder installs.
