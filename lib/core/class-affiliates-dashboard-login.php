@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Dashboard section: Login
  */
-class Affiliates_Dashboard_Login {
+class Affiliates_Dashboard_Login extends Affiliates_Dashboard_Section {
 
 	/**
 	 * Initialization - adds the shortcode.
@@ -57,16 +57,10 @@ class Affiliates_Dashboard_Login {
 	 * @param array $params
 	 */
 	public function __construct( $params = array() ) {
+		$this->template = 'dashboard/login.php';
+		$this->require_user_id = false;
+		parent::__construct( $params );
 	}
 
-	/**
-	 * Outputs the dashboard login section.
-	 */
-	public function render() {
-		global $affiliates_dashboard_section;
-
-		$affiliates_dashboard_section = $this;
-		Affiliates_Templates::include_template( 'dashboard/login.php' );
-	}
 }
 Affiliates_Dashboard_Login::init();

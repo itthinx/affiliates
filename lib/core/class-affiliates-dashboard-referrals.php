@@ -26,12 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Dashboard section: Referrals
  */
-class Affiliates_Dashboard_Referrals {
-
-	/**
-	 * @var int
-	 */
-	private $user_id = null;
+class Affiliates_Dashboard_Referrals extends Affiliates_Dashboard_Section {
 
 	/**
 	 * Initialization - adds the shortcode.
@@ -65,40 +60,9 @@ class Affiliates_Dashboard_Referrals {
 	 * @param array $params
 	 */
 	public function __construct( $params = array() ) {
-		if ( isset( $params['user_id'] ) ) {
-			$this->user_id = intval( $params['user_id'] );
-		} else {
-			$this->user_id = get_current_user_id();
-		}
-		if ( $this->user_id === 0 ) {
-			$this->user_id = null;
-		} else {
-			$user = get_user_by( 'id', $this->user_id );
-			if ( $user === false || $user->ID === 0 ) {
-				$this->user_id = null;
-			}
-		}
-	}
-
-	/**
-	 * Outputs the dashboard referrals.
-	 */
-	public function render() {
-		global $affiliates_dashboard_section;
-
-		$affiliates_dashboard_section = $this;
-		if ( $this->user_id !== null ) {
-			Affiliates_Templates::include_template( 'dashboard/referrals.php' );
-		}
-	}
-
-	/**
-	 * Returns the user ID related to this instance.
-	 *
-	 * @return int or null
-	 */
-	public function get_user_id() {
-		return $this->user_id;
+		$this->template = 'dashboard/referrals.php';
+		$this->require_user_id = true;
+		parent::__construct( $params );
 	}
 
 }

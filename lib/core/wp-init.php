@@ -58,6 +58,8 @@ include_once( AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php' ); // don
 // templates and dashboard
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-templates.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard.php';
+require_once AFFILIATES_CORE_LIB . '/interface-affiliates-dashboard-section.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-section.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview.php';
