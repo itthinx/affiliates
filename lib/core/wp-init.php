@@ -64,6 +64,8 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login-block.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration-block.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-block.php';
