@@ -1,6 +1,6 @@
 <?php
 /**
- * class-affiliates-dashboard-login-block.php
+ * class-affiliates-dashboard-overview-block.php
  *
  * Copyright (c) 2010 - 2018 "kento" Karim Rahimpur www.itthinx.com
  *
@@ -24,9 +24,9 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Dashboard section: Login
+ * Dashboard section: Overview
  */
-class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
+class Affiliates_Dashboard_Overview_Block extends Affiliates_Dashboard_Overview {
 
 	/**
 	 * Adds our init action.
@@ -43,25 +43,25 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 
 			// Our script used to edit and render the blocks.
 			wp_register_script(
-				'affiliates-dashboard-login-block',
-				plugins_url( 'js/dashboard-login-block.js', AFFILIATES_FILE ),
+				'affiliates-dashboard-overview-block',
+				plugins_url( 'js/dashboard-overview-block.js', AFFILIATES_FILE ),
 				array( 'wp-blocks', 'wp-element' )
 			);
 
 			wp_localize_script(
-				'affiliates-dashboard-login-block',
-				'affiliates_dashboard_login_block',
+				'affiliates-dashboard-overview-block',
+				'affiliates_dashboard_overview_block',
 				array(
-					'keyword_affiliates'     => __( 'Affiliates', 'affiliates' ),
-					'keyword_dashboard'      => __( 'Dashboard', 'affiliates' ),
-					'keyword_login'          => __( 'Login', 'affiliates' ),
-					'dashboard_login_notice' => _x( 'Affiliates Dashboard Login', 'Notice shown when editing the Affiliates Dashboard Login block.', 'affiliates' )
+					'keyword_affiliates'        => __( 'Affiliates', 'affiliates' ),
+					'keyword_dashboard'         => __( 'Dashboard', 'affiliates' ),
+					'keyword_overview'          => __( 'Overview', 'affiliates' ),
+					'dashboard_overview_notice' => _x( 'Affiliates Dashboard Overview', 'Notice shown when editing the Affiliates Dashboard Overview block as a non-affiliate.', 'affiliates' )
 				)
 			);
 
 			// Our editor stylesheet - not required yet.
 			// wp_register_style(
-			//	'affiliates-dashboard-login-block-editor',
+			//	'affiliates-dashboard-overview-block-editor',
 			//	plugins_url( 'css/dashboard-blocks-editor.css', AFFILIATES_FILE ),
 			//	array( 'wp-edit-blocks' ),
 			//	AFFILIATES_CORE_VERSION
@@ -69,16 +69,16 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 
 			// Our front end stylesheet - not required yet.
 			// wp_register_style(
-			//	'affiliates-dashboard-login-block',
+			//	'affiliates-dashboard-overview-block',
 			//	plugins_url( 'css/dashboard-blocks.css', AFFILIATES_FILE ),
 			//	array(),
 			//	AFFILIATES_CORE_VERSION
 			// );
 
 			register_block_type(
-				'affiliates/dashboard-login',
+				'affiliates/dashboard-overview',
 				array(
-					'editor_script' => 'affiliates-dashboard-login-block',
+					'editor_script' => 'affiliates-dashboard-overview-block',
 					'render_callback' => array( __CLASS__, 'block' )
 				)
 			);
@@ -94,18 +94,20 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 	 * @return string
 	 */
 	public static function block( $atts, $content = '' ) {
-		// Render the login form:
-		$section = new Affiliates_Dashboard_Login();
-		ob_start();
-		$section->render();
-		$output = ob_get_clean();
+		$output = '';
+		if ( affiliates_user_is_affiliate( get_current_user_id() ) ) {
+			// Render the overview:
+			$section = new Affiliates_Dashboard_Overview();
+			ob_start();
+			$section->render();
+			$output = ob_get_clean();
+		}
 		// The following fixes a Gutenberg UX/UI bug : if the callback returns an empty string, you would see a spinner that never goes away.
 		// So we render something other than the empty string, to avoid the spinner being shown eternally.
 		// The form obviously won't be rendered when previewing in the editor because you're logged in.
 		// The REST_REQUEST ... part is trying to recognize it's a request to render the block on the back end.
 		if (
-			strlen( $output ) === 0 &&
-			is_user_logged_in() &&
+			( strlen( $output ) === 0 ) &&
 			defined( 'REST_REQUEST' ) && REST_REQUEST && isset( $_REQUEST['context'] ) && $_REQUEST['context'] === 'edit'
 		) {
 			$output .= '<div style="display:none"></div>';
@@ -114,4 +116,4 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 	}
 
 }
-Affiliates_Dashboard_Login_Block::init();
+Affiliates_Dashboard_Overview_Block::init();

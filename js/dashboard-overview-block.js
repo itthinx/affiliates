@@ -21,18 +21,18 @@
 if ( typeof wp !== 'undefined' ) {
 
 	//
-	// The Affiliates Dashboard Login block that renders the login form via its PHP callback.
-	// This also uses the ServerSideRender to "preview" the block in the editor - not much previewing as you're logged in but
-	// we render a notice so you're aware of it's there (and to avoid the spinner bug in blocks preview).
+	// The Affiliates Dashboard Overview block.
+	// This also uses the ServerSideRender to "preview" the block in the editor. If the viewer is not an affiliate,
+	// we render a notice. This avoids the spinner bug (never goes away when content is empty in blocks preview).
 	//
 	wp.blocks.registerBlockType(
-		'affiliates/dashboard-login',
+		'affiliates/dashboard-overview',
 		{
-			title       : 'Affiliates Dashboard Login',
-			description : 'Login form for the Affiliates Dashboard',
+			title       : 'Affiliates Dashboard Overview',
+			description : 'Overview section for the Affiliates Dashboard',
 			icon        : 'id',
 			category    : 'widgets',
-			keywords    : [ affiliates_dashboard_blocks.keyword_affiliates, affiliates_dashboard_blocks.keyword_dashboard, affiliates_dashboard_blocks.keyword_login ],
+			keywords    : [ affiliates_dashboard_overview_block.keyword_affiliates, affiliates_dashboard_overview_block.keyword_dashboard, affiliates_dashboard_overview_block.keyword_login ],
 			supports    : { html : false },
 			attributes  : {
 				header_tag : {
@@ -54,7 +54,7 @@ if ( typeof wp !== 'undefined' ) {
 						wp.element.createElement(
 							wp.components.ServerSideRender,
 							{
-								block : 'affiliates/dashboard-login',
+								block : 'affiliates/dashboard-overview',
 								attributes : props.attributes
 							}
 						),
@@ -67,7 +67,7 @@ if ( typeof wp !== 'undefined' ) {
 									backgroundColor : '#eee'
 								}
 							},
-							affiliates_dashboard_blocks.dashboard_login_notice
+							affiliates_dashboard_overview_block.dashboard_overview_notice
 						)
 					];
 				return fields;
