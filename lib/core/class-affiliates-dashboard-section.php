@@ -85,4 +85,5 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 			Affiliates_Templates::include_template( $this->template );
 		}
 	}
+
 }
