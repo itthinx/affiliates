@@ -29,26 +29,9 @@ if ( !defined( 'ABSPATH' ) ) {
 class Affiliates_Dashboard_Referrals extends Affiliates_Dashboard_Section {
 
 	/**
-	 * Initialization - adds the shortcode.
+	 * Initialization - nothing done here at current.
 	 */
 	public static function init() {
-		add_shortcode( 'affiliates_dashboard_referrals', array( __CLASS__, 'affiliates_dashboard_section_shortcode' ) );
-	}
-
-	/**
-	 * Shortcode handler for the section shortcode.
-	 *
-	 * @param array $atts shortcode attributes
-	 * @param string $content not used
-	 *
-	 * @return string
-	 */
-	public static function affiliates_dashboard_section_shortcode( $atts, $content = '' ) {
-		$section = new Affiliates_Dashboard_Referrals();
-		ob_start();
-		$section->render();
-		$output = ob_get_clean();
-		return $output;
 	}
 
 	/**

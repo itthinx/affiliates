@@ -61,18 +61,20 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard.php';
 require_once AFFILIATES_CORE_LIB . '/interface-affiliates-dashboard-section.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-section.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login.php';
-require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login-block.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-login-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration.php';
-require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration-block.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-registration-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview.php';
-require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-block.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-referrals.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-referrals-block.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-referrals-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings.php';
-require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings-shortcode.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings-block.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings-shortcode.php';
 
 // built-in user registration integration
 if (
