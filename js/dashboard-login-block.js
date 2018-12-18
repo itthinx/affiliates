@@ -1,5 +1,5 @@
 /*!
- * dashboard-blocks.js
+ * dashboard-login-block.js
  *
  * Copyright (c) 2010 - 2018 "kento" Karim Rahimpur www.itthinx.com
  *

@@ -1,5 +1,5 @@
 /*!
- * dashboard-overview-block.js
+ * dashboard-earnings-block.js
  *
  * Copyright (c) 2010 - 2018 "kento" Karim Rahimpur www.itthinx.com
  *
@@ -21,18 +21,18 @@
 if ( typeof wp !== 'undefined' ) {
 
 	//
-	// The Affiliates Dashboard Overview block.
+	// The Affiliates Dashboard Earnings block.
 	// This also uses the ServerSideRender to "preview" the block in the editor. If the viewer is not an affiliate,
 	// we render a notice. This avoids the spinner bug (never goes away when content is empty in blocks preview).
 	//
 	wp.blocks.registerBlockType(
-		'affiliates/dashboard-overview',
+		'affiliates/dashboard-earnings',
 		{
-			title       : 'Affiliates Dashboard Overview',
-			description : 'Overview section for the Affiliates Dashboard',
+			title       : 'Affiliates Dashboard Earnings',
+			description : 'Earnings section for the Affiliates Dashboard',
 			icon        : 'id',
 			category    : 'widgets',
-			keywords    : [ affiliates_dashboard_overview_block.keyword_affiliates, affiliates_dashboard_overview_block.keyword_dashboard, affiliates_dashboard_overview_block.keyword_login ],
+			keywords    : [ affiliates_dashboard_earnings_block.keyword_affiliates, affiliates_dashboard_earnings_block.keyword_dashboard, affiliates_dashboard_earnings_block.keyword_login ],
 			supports    : { html : false },
 			attributes  : {
 				header_tag : {
@@ -54,7 +54,7 @@ if ( typeof wp !== 'undefined' ) {
 						wp.element.createElement(
 							wp.components.ServerSideRender,
 							{
-								block : 'affiliates/dashboard-overview',
+								block : 'affiliates/dashboard-earnings',
 								attributes : props.attributes
 							}
 						),
@@ -67,7 +67,7 @@ if ( typeof wp !== 'undefined' ) {
 									backgroundColor : '#eee'
 								}
 							},
-							affiliates_dashboard_overview_block.dashboard_overview_notice
+							affiliates_dashboard_earnings_block.dashboard_earnings_notice
 						)
 					];
 				return fields;

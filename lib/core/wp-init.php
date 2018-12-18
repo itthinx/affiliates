@@ -71,6 +71,8 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-shortco
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-overview-block.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-referrals.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-earnings-block.php';
 
 // built-in user registration integration
 if (
