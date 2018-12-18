@@ -23,7 +23,7 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 
 /**
  * Referrals screen.

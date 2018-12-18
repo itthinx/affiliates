@@ -25,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 // Shows hits by date
 
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 
 function affiliates_admin_hits() {
 	

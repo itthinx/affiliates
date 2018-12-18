@@ -343,7 +343,7 @@ class Affiliates_Shortcodes {
 	 * @param string $until date/datetime
 	 */
 	private static function for_from_until( $for, &$from, &$until ) {
-		include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 		if ( $for === null ) {
 			if ( $from !== null ) {
 				$from = date( 'Y-m-d H:i:s', strtotime( DateHelper::u2s( $from ) ) );
@@ -386,7 +386,7 @@ class Affiliates_Shortcodes {
 	public static function affiliates_hits( $atts, $content = null ) {
 		global $wpdb;
 
-		include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 
 		remove_shortcode( 'affiliates_hits' );
 		$content = do_shortcode( $content );
