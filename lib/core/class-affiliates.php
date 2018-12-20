@@ -67,6 +67,8 @@ class Affiliates {
 				'HUF',
 				// Israeli New Sheqel
 				'ILS',
+				// Indian Rupee
+				'INR',
 				// Japanese Yen
 				'JPY',
 				// Malaysian Ringgit

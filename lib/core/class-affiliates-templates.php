@@ -54,9 +54,6 @@ class Affiliates_Templates {
 
 		if ( file_exists( $template_filename ) ) {
 			include $template_filename;
-		} else {
-			error_log( 'Not found ' . $template ); // @todo remove
-			error_log( '... ' . var_export( $template_filename, true ) ); // @todo remove
 		}
 
 	}
