@@ -37,4 +37,4 @@ global $affiliates_dashboard_section;
 ?>
 
 <h3><?php _e( 'Monthly Earnings', 'affiliates' ); ?></h3>
-<?php echo Affiliates_Shortcodes::affiliates_earnings( array() ); ?>
+<?php echo Affiliates_Shortcodes::affiliates_earnings( array( 'show_paid' => true ) ); ?>
