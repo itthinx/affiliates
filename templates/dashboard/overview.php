@@ -73,52 +73,52 @@ if ( isset( $totals['amounts_by_currency'] ) ) {
 
 <style type="text/css">
 .dashboard-section .stats-container {
-margin: 4px;
+	margin: 0;
 }
 .dashboard-section .stats-item {
-background-color: #f2f2f2;
-border-radius: 4px;
-margin: 4px;
-padding: 4px;
-text-align: center;
-font-size: 16px;
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	margin: 4px;
+	padding: 4px;
+	text-align: center;
+	font-size: 16px;
 }
 .dashboard-section .stats-item .stats-item-heading {
-font-weight: bold;
+	font-weight: bold;
 }
 .dashboard-section .stats-item .stats-item-value {
-font-size: 24px;
+	font-size: 24px;
 }
 .dashboard-section .graph {
-background-color: #fafafa;
-border-radius: 4px;
-margin: 4px;
+	background-color: #fafafa;
+	border-radius: 4px;
+	margin: 4px;
 }
 .dashboard-section .legend {
-display: flex;
-text-align: center;
-background-color: #f2f2f2;
-border-radius: 4px;
-margin: 4px;
+	display: flex;
+	text-align: center;
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	margin: 4px;
 }
 .dashboard-section .legend-item {
 flex-grow:1;
 }
 .dashboard-section .legend-item.active {
-background-color: #e0e0e0;
-border-radius: 2px;
+	background-color: #e0e0e0;
+	border-radius: 2px;
 }
 .dashboard-section .legend-item-label {
-font-size: 14px;
-display:inline-block;
-vertical-align:middle;
-padding: 4px;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align:middle;
+	padding: 4px;
 }
 .dashboard-section .legend-item-color {
-width: 16px;
-height: 16px;
-display:inline-block;
-vertical-align:middle;
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	vertical-align:middle;
 }
 </style>
 <div>

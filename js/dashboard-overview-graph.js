@@ -29,9 +29,9 @@ var affiliates_dashboard_overview_graph = {};
 			{
 				label : affiliates_dashboard_overview_graph_l12n.hits,
 				data : hits,
-				lines : { show : true },
-				yaxis : 2,
-				color : '#ccddff'
+				lines : { show : true, lineWidth : 1 },
+				yaxis : 1,
+				color : '#1761ff'
 			},
 			{
 				data : span,
@@ -43,9 +43,9 @@ var affiliates_dashboard_overview_graph = {};
 			{
 				label : affiliates_dashboard_overview_graph_l12n.visits,
 				data : visits,
-				lines : { show : true },
-				yaxis : 2,
-				color : '#ffddcc'
+				lines : { show : true, lineWidth : 1 },
+				yaxis : 1,
+				color : '#ff9e17'
 			},
 			{
 				data : span,
@@ -57,8 +57,8 @@ var affiliates_dashboard_overview_graph = {};
 			{
 				label : affiliates_dashboard_overview_graph_l12n.referrals,
 				data : referrals,
-				color : '#009900',
-				bars : { align : "center", show : true, barWidth : 1 },
+				color : '#179e17',
+				bars : { align : 'center', show : true, barWidth : 1 },
 				hoverable : true,
 				yaxis : 1
 			},
@@ -70,9 +70,9 @@ var affiliates_dashboard_overview_graph = {};
 		];
 
 		var legend = [
-			{ label : affiliates_dashboard_overview_graph_l12n.hits, color : '#ccddff', dataset : 'hits' },
-			{ label : affiliates_dashboard_overview_graph_l12n.visits, color : '#ffddcc', dataset : 'visits' },
-			{ label : affiliates_dashboard_overview_graph_l12n.referrals, color : '#009900', dataset : 'referrals' }
+			{ label : affiliates_dashboard_overview_graph_l12n.hits, color : '#1761ff', dataset : 'hits' },
+			{ label : affiliates_dashboard_overview_graph_l12n.visits, color : '#ff9e17', dataset : 'visits' },
+			{ label : affiliates_dashboard_overview_graph_l12n.referrals, color : '#179e17', dataset : 'referrals' }
 		];
 
 		var initial_dataset = null;
@@ -82,9 +82,9 @@ var affiliates_dashboard_overview_graph = {};
 				{
 					label : currency_id,
 					data : amounts_by_currency[currency_id],
-					color : '#000000',
-					lines : { show : true },
-					yaxis : 2
+					color : '#616161',
+					lines : { show : true, lineWidth : 1 },
+					yaxis : 1
 				},
 				{
 					data : span,
@@ -92,7 +92,7 @@ var affiliates_dashboard_overview_graph = {};
 					yaxis : 1
 				}
 			];
-			legend.push( { label : currency_id, color : '#000000', dataset : currency_id } );
+			legend.push( { label : currency_id, color : '#616161', dataset : currency_id } );
 			if ( initial_dataset === null ) {
 				initial_dataset = currency_id;
 			}
@@ -101,7 +101,7 @@ var affiliates_dashboard_overview_graph = {};
 		var options = {
 			xaxis : { ticks : ticks },
 			yaxis : { min : 0, tickDecimals : 0 },
-			yaxes : [ {}, { position : 'right' } ],
+			yaxes : [ {} ],
 			grid : { hoverable : true },
 			legend : { show : false }
 		};
