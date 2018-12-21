@@ -35,7 +35,6 @@ if ( !defined( 'ABSPATH' ) ) {
 global $affiliates_dashboard;
 
 do_action( 'affiliates_dashboard_before' );
-
 ?>
 <div class="affiliates-dashboard">
 	<div class="affiliates-dashboard-sections">
@@ -45,9 +44,11 @@ do_action( 'affiliates_dashboard_before' );
 		do_action( 'affiliates_dashboard_before_sections' );
 		foreach ( $sections as $section_key => $section ) {
 			do_action( 'affiliates_dashboard_before_section', $section_key );
-			echo sprintf( '<div class="affiliates-dashboard-section %s">', esc_attr( $section_key ) );
-			$section->render();
-			echo '</div>';
+			?>
+			<div class='affiliates-dashboard-section <?php esc_attr( $section_key ); ?>'>
+				<?php $section->render(); ?>
+			</div>
+			<?php
 			do_action( 'affiliates_dashboard_after_section', $section_key );
 		}
 		do_action( 'affiliates_dashboard_after_sections' );
