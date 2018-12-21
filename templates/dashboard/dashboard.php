@@ -38,22 +38,22 @@ do_action( 'affiliates_dashboard_before' );
 
 ?>
 <div class="affiliates-dashboard">
-<div class="affiliates-dashboard-sections">
-<?php
-$sections = $affiliates_dashboard->get_sections();
-if ( $sections !== null && count( $sections ) > 0 ) {
-	do_action( 'affiliates_dashboard_before_sections' );
-	foreach ( $sections as $section_key => $section ) {
-		do_action( 'affiliates_dashboard_before_section', $section_key );
-		echo sprintf( '<div class="affiliates-dashboard-section %s">', esc_attr( $section_key ) );
-		$section->render();
-		echo '</div>';
-		do_action( 'affiliates_dashboard_after_section', $section_key );
+	<div class="affiliates-dashboard-sections">
+	<?php
+	$sections = $affiliates_dashboard->get_sections();
+	if ( $sections !== null && count( $sections ) > 0 ) {
+		do_action( 'affiliates_dashboard_before_sections' );
+		foreach ( $sections as $section_key => $section ) {
+			do_action( 'affiliates_dashboard_before_section', $section_key );
+			echo sprintf( '<div class="affiliates-dashboard-section %s">', esc_attr( $section_key ) );
+			$section->render();
+			echo '</div>';
+			do_action( 'affiliates_dashboard_after_section', $section_key );
+		}
+		do_action( 'affiliates_dashboard_after_sections' );
 	}
-	do_action( 'affiliates_dashboard_after_sections' );
-}
-?>
-</div>
+	?>
+	</div>
 </div>
 <?php
 do_action( 'affiliates_dashboard_after' );

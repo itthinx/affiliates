@@ -92,12 +92,8 @@ class Affiliates_Dashboard {
 		global $affiliates_dashboard;
 
 		$affiliates_dashboard = $this;
-// 		if ( $this->user_id === null ) {
-// 			Affiliates_Templates::include_template( 'dashboard/login.php' );
-// 		} else {
-			$this->setup();
-			Affiliates_Templates::include_template( 'dashboard/dashboard.php' );
-// 		}
+		$this->setup();
+		Affiliates_Templates::include_template( 'dashboard/dashboard.php' );
 	}
 
 	/**
@@ -135,11 +131,10 @@ class Affiliates_Dashboard {
 				);
 			} else {
 				$sections = array(
-						'affiliates-dashboard-overview' => new Affiliates_Dashboard_Overview( array( 'user_id' => $this->user_id ) ),
-						'affiliates-dashboard-referrals' => new Affiliates_Dashboard_Referrals( array( 'user_id' => $this->user_id ) ),
-// 						'affiliates-dashboard-traffic' => new Affiliates_Dashboard_Traffic( array( 'user_id' => $this->user_id ) ),
-						'affiliates-dashboard-earnings' => new Affiliates_Dashboard_Earnings( array( 'user_id' => $this->user_id ) )
-					);
+					'affiliates-dashboard-overview' => new Affiliates_Dashboard_Overview( array( 'user_id' => $this->user_id ) ),
+					'affiliates-dashboard-referrals' => new Affiliates_Dashboard_Referrals( array( 'user_id' => $this->user_id ) ),
+					'affiliates-dashboard-earnings' => new Affiliates_Dashboard_Earnings( array( 'user_id' => $this->user_id ) )
+				);
 			}
 		}
 

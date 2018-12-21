@@ -28,10 +28,29 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
+	/**
+	 * @var int time period for recent stats, "days back"
+	 */
 	const PERIOD = 91;
 
+	/**
+	 * @var int trailing padding days
+	 */
+	const TRAIL = 1;
+
+	/**
+	 * @var int leading padding days
+	 */
+	const LEAD = 1;
+
+	/**
+	 * @var array time series
+	 */
 	private $series = array();
 
+	/**
+	 * @var array per currency totals
+	 */
 	private $totals = array();
 
 	/**
@@ -56,11 +75,10 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		$this->require_user_id = true;
 		parent::__construct( $params );
 
-		if ( !affiliates_user_is_affiliate() ) {
+		if ( !affiliates_user_is_affiliate( $this->user_id ) ) {
 			return;
 		}
 
-		// @todo register these and enqueue, also in wp-init.php
 		wp_enqueue_script( 'excanvas', AFFILIATES_PLUGIN_URL . 'js/graph/flot/excanvas.min.js', array( 'jquery' ), $affiliates_version );
 		wp_enqueue_script( 'flot', AFFILIATES_PLUGIN_URL . 'js/graph/flot/jquery.flot.min.js', array( 'jquery' ), $affiliates_version );
 		wp_enqueue_script( 'flot-resize', AFFILIATES_PLUGIN_URL . 'js/graph/flot/jquery.flot.resize.min.js', array( 'jquery', 'flot' ), $affiliates_version );
@@ -80,7 +98,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		$hits_table = _affiliates_get_tablename( 'hits' );
 		$referrals_table = _affiliates_get_tablename( 'referrals' );
 
-		$affiliate_ids = affiliates_get_user_affiliate( get_current_user_id() );
+		$affiliate_ids = affiliates_get_user_affiliate( $this->user_id );
 		$affiliate_id = array_shift( $affiliate_ids );
 
 		$hits_total = 0;
@@ -134,32 +152,34 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		$this->totals['referrals'] = $referrals_total;
 		$this->totals['amounts_by_currency'] = $amounts_by_currency_total;
 
+		// Build the time series represented in the graph.
 		$referrals_series = array();
 		$hits_series      = array();
 		$visits_series    = array();
 		$ticks            = array();
 		$dates            = array();
 		$amounts_by_currency_series = array();
-
-		$days_back = self::PERIOD;
-		$min_days_back = 14;
-		$day_interval = 7;
-
-		$trail = 1;
-		$ahead = 1;
-
-		for ( $day = -$days_back-$trail; $day <= $ahead; $day++ ) {
+		for ( $day = -self::PERIOD-self::TRAIL; $day <= self::LEAD; $day++ ) {
 			$date = date( 'Y-m-d', strtotime( $thru_date ) + $day * 3600 * 24 );
 			$dates[$day] = $date;
+			// For referrals we add an item with accumulated daily value.
 			if ( isset( $referrals[$date] ) ) {
 				$referrals_series[] = array( $day, intval( $referrals[$date] ) );
 			}
+			// For hits we add daily hits where there are any, otherwise we add a zero entry.
 			if ( isset( $hits[$date] ) ) {
-				$hits_series[]   = array( $day, intval( $hits[$date] ) );
+				$hits_series[] = array( $day, intval( $hits[$date] ) );
+			} else {
+				$hits_series[] = array( $day, 0 );
 			}
+			// ... same thing for visits.
 			if ( isset( $visits[$date] ) ) {
-				$visits_series[]   = array( $day, intval( $visits[$date] ) );
+				$visits_series[] = array( $day, intval( $visits[$date] ) );
+			} else {
+				$visits_series[] = array( $day, 0 );
 			}
+			// Where we have a value for a date (accumulated daily earnings), use it,
+			// otherwise add a 0 entry for the date.
 			foreach ( $amounts_by_currency as $currency_id => $amounts ) {
 				if ( isset( $amounts_by_currency[$currency_id][$date] ) ) {
 					$amounts_by_currency_series[$currency_id][] = array( $day, floatval( $amounts_by_currency[$currency_id][$date] ) );
@@ -167,33 +187,33 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 					$amounts_by_currency_series[$currency_id][] = array( $day, 0.0 );
 				}
 			}
-
-			// @todo review this as we don't actually need $min_days_back here
-			if ( $days_back <= ( $day_interval + $min_days_back ) ) {
-				$label   = date( 'm-d', strtotime( $date ) );
+			// Add a tick per month at day 1
+			$d = intval( date( 'd', strtotime( $date ) ) );
+			if ( $d === 1 ) {
+				// Note that the date_format option based format is just to wide :
+				// esc_html( date_i18n( get_option( 'date_format' ), strtotime( $date ) ) )
+				$label = esc_html( date_i18n( 'M Y', strtotime( $date ) ) );
 				$ticks[] = array( $day, $label );
-			} else if ( $days_back <= 91 ) {
-				$d = date( 'd', strtotime( $date ) );
-				if (  $d == '1' || $d == '15' ) {
-					$label   = date( 'm-d', strtotime( $date ) );
-					$ticks[] = array( $day, $label );
-				}
-			} else {
-				if ( date( 'd', strtotime( $date ) ) == '1' ) {
-					if ( date( 'm', strtotime( $date ) ) == '1' ) {
-						$label   = '<strong>' . date( 'Y', strtotime( $date ) ) . '</strong>';
-					} else {
-						$label   = date( 'm-d', strtotime( $date ) );
-					}
-					$ticks[] = array( $day, $label );
-				}
 			}
 		}
+
+		// The span series is used to add trailing and leading padding.
+		$span_series = array( array( intval( -self::PERIOD-self::TRAIL ), self::LEAD ), array( 0, 0 ) );
+
+		$this->series = array(
+			'hits'      => $hits_series,
+			'visits'    => $visits_series,
+			'referrals' => $referrals_series,
+			'span'      => $span_series,
+			'ticks'     => $ticks,
+			'dates'     => $dates,
+			'amounts_by_currency' => $amounts_by_currency_series
+		);
 
 		$referrals_series_json = json_encode( $referrals_series );
 		$hits_series_json      = json_encode( $hits_series );
 		$visits_series_json    = json_encode( $visits_series );
-		$span_series_json      = json_encode( array( array( intval( -$days_back-$trail ), $ahead ), array( 0, 0 ) ) );
+		$span_series_json      = json_encode( $span_series );
 		$ticks_json            = json_encode( $ticks );
 		$dates_json            = json_encode( $dates );
 		$amounts_by_currency_series_json = json_encode( $amounts_by_currency_series );
@@ -219,6 +239,11 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		echo '</script>';
 	}
 
+	/**
+	 * Provides the per-currency totals
+	 *
+	 * @return array
+	 */
 	public function get_totals() {
 		return $this->totals;
 	}
