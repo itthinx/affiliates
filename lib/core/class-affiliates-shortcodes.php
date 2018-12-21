@@ -754,10 +754,10 @@ class Affiliates_Shortcodes {
 
 				if ( count( $rows ) > 0 ) {
 					if ( $atts['page'] > 1 ) {
-						$output .= sprintf( '<a style="margin: 4px;" class="button" href="%s">%s</a>', esc_url( add_query_arg( 'earnings-page', $atts['page'] - 1, $url ) ), esc_html__( 'Previous', 'affiliates' ) );
+						$output .= sprintf( '<a style="margin: 4px;" class="button" href="%s">%s</a>', esc_url( add_query_arg( 'earnings-page', $atts['page'] - 1, $url ) ), esc_html_x( 'Previous', 'Label used to show previous page of affiliate earnings results', 'affiliates' ) );
 					}
 					if ( $atts['page'] < $pages ) {
-						$output .= sprintf( '<a style="margin: 4px;" class="button" href="%s">%s</a>', esc_url( add_query_arg( 'earnings-page', $atts['page'] + 1, $url ) ), esc_html__( 'Next', 'affiliates' ) );
+						$output .= sprintf( '<a style="margin: 4px;" class="button" href="%s">%s</a>', esc_url( add_query_arg( 'earnings-page', $atts['page'] + 1, $url ) ), esc_html_x( 'Next', 'Label used to show next page of affiliate earnings results', 'affiliates' ) );
 					}
 				}
 			}
