@@ -30,7 +30,7 @@ if ( typeof wp !== 'undefined' ) {
 		{
 			title       : 'Affiliates Dashboard Login',
 			description : 'Login form for the Affiliates Dashboard',
-			icon        : 'id',
+			icon        : 'admin-users',
 			category    : 'widgets',
 			keywords    : [ affiliates_dashboard_login_block.keyword_affiliates, affiliates_dashboard_login_block.keyword_dashboard, affiliates_dashboard_login_block.keyword_login ],
 			supports    : { html : false },

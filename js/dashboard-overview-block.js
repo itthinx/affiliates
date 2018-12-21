@@ -30,7 +30,7 @@ if ( typeof wp !== 'undefined' ) {
 		{
 			title       : 'Affiliates Dashboard Overview',
 			description : 'Overview section for the Affiliates Dashboard',
-			icon        : 'id',
+			icon        : 'chart-line',
 			category    : 'widgets',
 			keywords    : [ affiliates_dashboard_overview_block.keyword_affiliates, affiliates_dashboard_overview_block.keyword_dashboard, affiliates_dashboard_overview_block.keyword_login ],
 			supports    : { html : false },

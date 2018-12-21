@@ -30,7 +30,7 @@ if ( typeof wp !== 'undefined' ) {
 		{
 			title       : 'Affiliates Dashboard Earnings',
 			description : 'Earnings section for the Affiliates Dashboard',
-			icon        : 'id',
+			icon        : 'chart-bar',
 			category    : 'widgets',
 			keywords    : [ affiliates_dashboard_earnings_block.keyword_affiliates, affiliates_dashboard_earnings_block.keyword_dashboard, affiliates_dashboard_earnings_block.keyword_login ],
 			supports    : { html : false },
