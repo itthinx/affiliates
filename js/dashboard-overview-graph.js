@@ -24,55 +24,6 @@ var affiliates_dashboard_overview_graph = {};
 
 	affiliates_dashboard_overview_graph.render = function( container_id, legend_container_id, hits, visits, referrals, amounts_by_currency, span, ticks, dates ) {
 
-//		var data = [
-//			{
-//				label : affiliates_dashboard_overview_graph_l12n.hits,
-//				data : hits,
-//				lines : { show : true },
-//				yaxis : 2,
-//				color : '#ccddff'
-//			},
-//			{
-//				label : affiliates_dashboard_overview_graph_l12n.visits,
-//				data : visits,
-//				lines : { show : true },
-//				yaxis : 2,
-//				color : '#ffddcc'
-//			},
-//			{
-//				label : affiliates_dashboard_overview_graph_l12n.referrals,
-//				data : referrals,
-//				color : '#009900',
-//				bars : { align : "center", show : true, barWidth : 1 },
-//				hoverable : true,
-//				yaxis : 1
-//			},
-//			{
-//				data : span,
-//				lines : { show : false },
-//				yaxis : 1
-//			}
-//		];
-//
-//		var legend = [
-//			{ label : affiliates_dashboard_overview_graph_l12n.hits, color : '#ccddff' },
-//			{ label : affiliates_dashboard_overview_graph_l12n.visits, color : '#ffddcc' },
-//			{ label : affiliates_dashboard_overview_graph_l12n.referrals, color : '#009900' }
-//		];
-//
-//		for ( var currency_id in amounts_by_currency ) {
-//			data.push(
-//				{
-//					label : currency_id,
-//					data : amounts_by_currency[currency_id],
-//					color : '#000000',
-//					lines : { show : true },
-//					yaxis : 2
-//				}
-//			);
-//			legend.push( { label : currency_id, color : '#000000' } );
-//		}
-
 		var datasets = [];
 		datasets['hits'] = [
 			{
@@ -153,7 +104,6 @@ var affiliates_dashboard_overview_graph = {};
 			yaxes : [ {}, { position : 'right' } ],
 			grid : { hoverable : true },
 			legend : { show : false }
-//			legend : { show : true, container : '#' + legend_container_id }
 		};
 
 		$.plot( $( "#" + container_id ), datasets[initial_dataset], options );
