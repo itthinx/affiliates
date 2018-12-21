@@ -54,6 +54,11 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 	private $totals = array();
 
 	/**
+	 * @var int affiliate ID
+	 */
+	private $affiliate_id = null;
+
+	/**
 	 * Initialization - nothing done here at current.
 	 */
 	public static function init() {
@@ -100,6 +105,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		$affiliate_ids = affiliates_get_user_affiliate( $this->user_id );
 		$affiliate_id = array_shift( $affiliate_ids );
+		$this->affiliate_id = $affiliate_id;
 
 		$hits_total = 0;
 		$visits_total = 0;
@@ -220,6 +226,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		// Draw the graph ...
 		echo '<script type="text/javascript">';
+		echo 'if ( typeof jQuery !== "undefined" ) {';
 		echo 'jQuery( document ).ready( function() {';
 		echo 'if ( typeof affiliates_dashboard_overview_graph !== "undefined" ) {';
 		printf(
@@ -236,6 +243,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		);
 		echo '}';
 		echo '} );';
+		echo '}';
 		echo '</script>';
 	}
 
@@ -246,6 +254,15 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 	 */
 	public function get_totals() {
 		return $this->totals;
+	}
+
+	/**
+	 * Provides the affiliate ID.
+	 *
+	 * @return int
+	 */
+	public function get_affiliate_id() {
+		return $this->affiliate_id;
 	}
 }
 Affiliates_Dashboard_Overview::init();

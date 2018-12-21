@@ -34,42 +34,54 @@ if ( !defined( 'ABSPATH' ) ) {
 
 global $affiliates_dashboard_section;
 
-$totals = $affiliates_dashboard_section->get_totals();
-
-$hits = isset( $totals['hits'] ) ? intval( $totals['hits'] ) : 0;
-$visits = isset( $totals['visits'] ) ? intval( $totals['visits'] ) : 0;
+$totals    = $affiliates_dashboard_section->get_totals();
+$hits      = isset( $totals['hits'] ) ? intval( $totals['hits'] ) : 0;
+$visits    = isset( $totals['visits'] ) ? intval( $totals['visits'] ) : 0;
 $referrals = isset( $totals['referrals'] ) ? intval( $totals['referrals'] ) : 0;
-$amounts = array();
+$amounts   = array();
 if ( isset( $totals['amounts_by_currency'] ) ) {
 	foreach ( $totals['amounts_by_currency'] as $currency_id => $amount ) {
 		$amounts[$currency_id] = round( $amount, 2, PHP_ROUND_HALF_UP );
 	}
 }
+$pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
+$encoded_id = affiliates_encode_affiliate_id( $affiliates_dashboard_section->get_affiliate_id() );
+$link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any link to track referrals from your account.', 'affiliates' ), $pname, $encoded_id ), array( 'code' => array() ) );
 ?>
-
 <div class="dashboard-section dashboard-section-overview" style="display:grid">
-
-<div class="stats-container" style="display:flex">
-	<div class="stats-item" style="flex-grow:1">
-		<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
-		<div class="stats-item-value"><?php echo $hits; ?></div>
+	<div class="stats-container" style="display:flex">
+		<div class="stats-item" style="flex-grow:1">
+			<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
+			<div class="stats-item-value"><?php echo $hits; ?></div>
+		</div>
+		<div class="stats-item" style="flex-grow:1">
+			<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
+			<div class="stats-item-value"><?php echo $visits; ?></div>
+		</div>
+		<div class="stats-item" style="flex-grow:1">
+			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
+			<?php foreach ( $amounts as $currency_id => $amount ) { ?>
+				<div class="stats-item-value">
+					<span class="stats-item-currency"><?php echo $currency_id; ?> <span class="stats-item-amount"><?php echo $amount; ?></span>
+				</div>
+			<?php } ?>
+		</div>
 	</div>
-	<div class="stats-item" style="flex-grow:1">
-		<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
-		<div class="stats-item-value"><?php echo $visits; ?></div>
-	</div>
-	<div class="stats-item" style="flex-grow:1">
-		<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
-		<?php foreach ( $amounts as $currency_id => $amount ) { ?>
-			<div class="stats-item-value">
-				<span class="stats-item-currency"><?php echo $currency_id; ?> <span class="stats-item-amount"><?php echo $amount; ?></span>
-			</div>
-		<?php } ?>
+	<div id="affiliates-dashboard-overview-graph" class="graph" style="width:100%; height: 400px;"></div>
+	<div id="affiliates-dashboard-overview-legend" class="legend"></div>
+	<div class="affiliates-dashboard-overview-link">
+		<p><?php esc_html_e( 'Your affiliate URL:', 'affiliates' ); ?></p>
+		<p>
+			<textarea id="copy-to-clipboard-source" class="affiliate-url" readonly="readonly" onmouseover="this.focus();" onfocus="this.select();"><?php echo esc_html( Affiliates_Shortcodes::affiliates_url( array() ) ); ?></textarea>
+		</p>
+		<p>
+			<span class="button copy-to-clipboard-trigger" data-source="copy-to-clipboard-source">Copy to Clipboard</span>
+		</p>
+		<p>
+			<?php echo $link_info; ?>
+		</p>
 	</div>
 </div>
-
-<div id="affiliates-dashboard-overview-graph" class="graph" style="width:100%; height: 400px;"></div>
-<div id="affiliates-dashboard-overview-legend" class="legend"></div>
 
 <style type="text/css">
 .dashboard-section .stats-container {
@@ -121,13 +133,3 @@ flex-grow:1;
 	vertical-align:middle;
 }
 </style>
-<div>
-<p><?php _e( 'Your affiliate URL:', 'affiliates' ); ?></p>
-<p>
-<code>
-<?php echo Affiliates_Shortcodes::affiliates_url( array() ); ?>
-</code>
-</p>
-</div>
-
-</div>

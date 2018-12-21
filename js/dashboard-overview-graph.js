@@ -166,4 +166,16 @@ var affiliates_dashboard_overview_graph = {};
 		}
 	};
 
+	$( document ).ready( function() {
+		$( '.copy-to-clipboard-trigger' ).on( 'click', function( event ) {
+			var source = $( '#' + $( this ).data( 'source' ) );
+			if ( source.length ) {
+				source.select();
+				var text = source.text();
+				if ( document.execCommand( 'copy' ) ) {
+					$( source ).fadeOut( 100 ).fadeIn( 100 );
+				}
+			}
+		} );
+	} );
 } )( jQuery );
