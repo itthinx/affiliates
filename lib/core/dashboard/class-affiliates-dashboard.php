@@ -39,6 +39,11 @@ class Affiliates_Dashboard {
 	private $sections = null;
 
 	/**
+	 * @var string URL parameter used to identify the current section
+	 */
+	const SECTION_URL_PARAMETER = 'affiliates-dashboard-section';
+
+	/**
 	 * Initialization.
 	 */
 	public static function init() {
@@ -116,10 +121,9 @@ class Affiliates_Dashboard {
 	public function get_current_section() {
 		$section = null;
 		if ( $this->sections !== null ) {
-			if ( isset( $_REQUEST['affiliates-dashboard-section'] ) ) {
-				$key = $_REQUEST['affiliates-dashboard-section'];
+			if ( isset( $_REQUEST[self::SECTION_URL_PARAMETER] ) ) {
+				$key = $_REQUEST[self::SECTION_URL_PARAMETER];
 				if ( isset( $this->sections[$key] ) ) {
-					// $section = $this->sections[$key];
 					$section = $this->get_section( $key );
 				}
 			}
@@ -127,7 +131,6 @@ class Affiliates_Dashboard {
 				if ( count( $this->sections ) > 0 ) {
 					$section_keys = array_keys( $this->sections );
 					$first_key = array_shift( $section_keys );
-					//$section = $this->sections[$first_key];
 					$section = $this->get_section( $first_key );
 				}
 			}
@@ -197,6 +200,14 @@ class Affiliates_Dashboard {
 		uasort( $this->sections, array( __CLASS__, 'compare_sections' ) );
 	}
 
+	/**
+	 * Comparison callback.
+	 *
+	 * @param array $s1
+	 * @param array $s2
+	 *
+	 * @return int
+	 */
 	public static function compare_sections( $s1, $s2 ) {
 		$order1 = isset( $s1['parameters']['order'] ) ? $s1['parameters']['order'] : $s1['class']::get_default_order();
 		$order2 = isset( $s2['parameters']['order'] ) ? $s2['parameters']['order'] : $s2['class']::get_default_order();
