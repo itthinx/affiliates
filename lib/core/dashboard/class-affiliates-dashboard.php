@@ -39,26 +39,9 @@ class Affiliates_Dashboard {
 	private $sections = null;
 
 	/**
-	 * Initialization - adds the shortcode.
+	 * Initialization.
 	 */
 	public static function init() {
-		add_shortcode( 'affiliates_dashboard', array( __CLASS__, 'affiliates_dashboard_shortcode' ) );
-	}
-
-	/**
-	 * Shortcode handler for the [affiliates_dashboard] shortcode.
-	 *
-	 * @param array $atts shortcode attributes
-	 * @param string $content not used
-	 *
-	 * @return string
-	 */
-	public static function affiliates_dashboard_shortcode( $atts, $content = '' ) {
-		$dashboard = new Affiliates_Dashboard();
-		ob_start();
-		$dashboard->render();
-		$output = ob_get_clean();
-		return $output;
 	}
 
 	/**
