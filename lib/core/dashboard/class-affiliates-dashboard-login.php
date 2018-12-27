@@ -45,5 +45,13 @@ class Affiliates_Dashboard_Login extends Affiliates_Dashboard_Section {
 		parent::__construct( $params );
 	}
 
+	public static function get_name() {
+		return __( 'Login', 'affiliates' );
+	}
+
+	public static function get_key() {
+		return 'login';
+	}
+
 }
 Affiliates_Dashboard_Login::init();

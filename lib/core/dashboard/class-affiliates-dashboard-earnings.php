@@ -48,5 +48,13 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
 		parent::__construct( $params );
 	}
 
+	public static function get_name() {
+		return __( 'Earnings', 'affiliates' );
+	}
+
+	public static function get_key() {
+		return 'earnings';
+	}
+
 }
 Affiliates_Dashboard_Earnings::init();

@@ -48,5 +48,14 @@ class Affiliates_Dashboard_Registration extends Affiliates_Dashboard_Section {
 		parent::__construct( $params );
 	}
 
+	public static function get_name() {
+		return __( 'Registration', 'affiliates' );
+	}
+
+	public static function get_key() {
+		return 'registration';
+	}
+
+
 }
 Affiliates_Dashboard_Registration::init();

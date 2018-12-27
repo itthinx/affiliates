@@ -29,11 +29,37 @@ if ( !defined( 'ABSPATH' ) ) {
 interface I_Affiliates_Dashboard_Section {
 
 	/**
+	 * @var integer the default value for the order property
+	 */
+	const DEFAULT_ORDER = 100;
+
+	/**
+	 * Returns the key of the section.
+	 *
+	 * @return string section key
+	 */
+	public static function get_key();
+
+	/**
+	 * Returns the (maybe translated) name of the section.
+	 *
+	 * @return string section name
+	 */
+	public static function get_name();
+
+	/**
 	 * Returns the user ID related to the section instance (for whom it is to be rendered).
 	 *
 	 * @return int or null
 	 */
 	public function get_user_id();
+
+	/**
+	 * Returns the order of the section instance.
+	 *
+	 * @return int
+	 */
+	public function get_order();
 
 	/**
 	 * Outputs the dashboard section.

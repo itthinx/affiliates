@@ -37,24 +37,75 @@ global $affiliates_dashboard;
 do_action( 'affiliates_dashboard_before' );
 ?>
 <div class="affiliates-dashboard">
+	<?php do_action( 'affiliates_dashboard_before_sections' ); ?>
 	<div class="affiliates-dashboard-sections">
 	<?php
 	$sections = $affiliates_dashboard->get_sections();
+
 	if ( $sections !== null && count( $sections ) > 0 ) {
-		do_action( 'affiliates_dashboard_before_sections' );
-		foreach ( $sections as $section_key => $section ) {
-			do_action( 'affiliates_dashboard_before_section', $section_key );
-			?>
-			<div class='affiliates-dashboard-section <?php esc_attr( $section_key ); ?>'>
-				<?php $section->render(); ?>
-			</div>
-			<?php
-			do_action( 'affiliates_dashboard_after_section', $section_key );
+		$current = $affiliates_dashboard->get_current_section();
+
+		if ( $current !== null ) {
+			$current_section_key = $current->get_key();
 		}
-		do_action( 'affiliates_dashboard_after_sections' );
+
+		// section links
+		do_action( 'affiliates_dashboard_before_section_links', $sections );
+		?>
+		<div class="affiliates-dashboard-section-links">
+			<?php
+			foreach ( $sections as $section_key => $section ) {
+				?>
+				<div class='section-link-item <?php echo esc_attr( $section_key . ' ' . ( $section_key === $current_section_key ? 'active' : '' ) ); ?>'>
+					<a href="<?php echo esc_url( add_query_arg( 'affiliates-dashboard-section', $section_key ) ); ?>"><?php echo esc_html( $section['class']::get_name() ); ?></a>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+		<?php
+		do_action( 'affiliates_dashboard_after_section_links', $sections );
+
+		// current section
+		do_action( 'affiliates_dashboard_before_section', $current_section_key );
+		?>
+		<div class='affiliates-dashboard-section <?php echo esc_attr( $current_section_key ); ?>'>
+			<?php
+			if ( $current !== null ) {
+				$current->render();
+			}
+			?>
+		</div>
+		<?php
+		do_action( 'affiliates_dashboard_after_section', $current_section_key );
 	}
 	?>
 	</div>
+	<?php do_action( 'affiliates_dashboard_after_sections' ); ?>
 </div>
 <?php
 do_action( 'affiliates_dashboard_after' );
+?>
+<style type="text/css">
+.affiliates-dashboard-section-links {
+	display: flex;
+	text-align: center;
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	margin: 4px;
+}
+.affiliates-dashboard-section-links .section-link-item {
+	flex-grow: 1;
+	cursor: pointer;
+	border-bottom: 4px solid #9e9e9e;
+}
+.affiliates-dashboard-section-links .section-link-item a {
+	text-decoration: none;
+}
+.affiliates-dashboard-section-links .section-link-item.active {
+	font-weight: bold;
+	background-color: #e0e0e0;
+	border-radius: 2px;
+	border-bottom: 4px solid #616161;
+}
+</style>

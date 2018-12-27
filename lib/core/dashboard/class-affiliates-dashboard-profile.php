@@ -48,5 +48,14 @@ class Affiliates_Dashboard_Profile extends Affiliates_Dashboard_Section {
 		parent::__construct( $params );
 	}
 
+	public static function get_name() {
+		return __( 'Profile', 'affiliates' );
+	}
+
+	public static function get_key() {
+		return 'profile';
+	}
+
+
 }
 Affiliates_Dashboard_Profile::init();

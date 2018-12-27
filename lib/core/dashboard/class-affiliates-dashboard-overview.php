@@ -64,6 +64,12 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 	public static function init() {
 	}
 
+	public function __construct( $params = array() ) {
+		$this->template = 'dashboard/overview.php';
+		$this->require_user_id = true;
+		parent::__construct( $params );
+	}
+
 	/**
 	 * Create a new dashboard section instance.
 	 *
@@ -72,13 +78,9 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 	 *
 	 * @param array $params
 	 */
-	public function __construct( $params = array() ) {
+	public function render() {
 
 		global $wpdb, $affiliates_version;
-
-		$this->template = 'dashboard/overview.php';
-		$this->require_user_id = true;
-		parent::__construct( $params );
 
 		if ( !affiliates_user_is_affiliate( $this->user_id ) ) {
 			return;
@@ -245,6 +247,8 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		echo '} );';
 		echo '}';
 		echo '</script>';
+
+		parent::render();
 	}
 
 	/**
@@ -264,5 +268,14 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 	public function get_affiliate_id() {
 		return $this->affiliate_id;
 	}
+
+	public static function get_name() {
+		return __( 'Overview', 'affiliates' );
+	}
+
+	public static function get_key() {
+		return 'overview';
+	}
+
 }
 Affiliates_Dashboard_Overview::init();

@@ -89,6 +89,53 @@ class Affiliates_Dashboard {
 	}
 
 	/**
+	 * Returns the section instance for the given key.
+	 *
+	 * @param string $key
+	 *
+	 * @return Affiliates_Dashboard_Section or null
+	 */
+	public function get_section( $key ) {
+		$section = null;
+		if ( key_exists( $key, $this->sections ) ) {
+			if ( !isset( $this->section_objects[$key] ) ) {
+				$section = new $this->sections[$key]['class']( $this->sections[$key]['parameters'] );
+				$this->section_objects[$key] = $section;
+			} else {
+				$section = $this->section_objects[$key];
+			}
+		}
+		return $section;
+	}
+
+	/**
+	 * Returns the current section.
+	 *
+	 * @return string current section or null
+	 */
+	public function get_current_section() {
+		$section = null;
+		if ( $this->sections !== null ) {
+			if ( isset( $_REQUEST['affiliates-dashboard-section'] ) ) {
+				$key = $_REQUEST['affiliates-dashboard-section'];
+				if ( isset( $this->sections[$key] ) ) {
+					// $section = $this->sections[$key];
+					$section = $this->get_section( $key );
+				}
+			}
+			if ( $section === null ) {
+				if ( count( $this->sections ) > 0 ) {
+					$section_keys = array_keys( $this->sections );
+					$first_key = array_shift( $section_keys );
+					//$section = $this->sections[$first_key];
+					$section = $this->get_section( $first_key );
+				}
+			}
+		}
+		return $section;
+	}
+
+	/**
 	 * Returns the user ID related to this instance.
 	 *
 	 * @return int or null
@@ -104,24 +151,56 @@ class Affiliates_Dashboard {
 
 		if ( $this->user_id === null ) {
 			$sections = array(
-				'affiliates-dashboard-login'        => new Affiliates_Dashboard_Login(),
-				'affiliates-dashboard-registration' => new Affiliates_Dashboard_Registration()
+				Affiliates_Dashboard_Login::get_key() => array(
+					'class' => 'Affiliates_Dashboard_Login',
+					'parameters' => array()
+				),
+				Affiliates_Dashboard_Registration::get_key() => array(
+					'class' => 'Affiliates_Dashboard_Registration',
+					'parameters' => array()
+				)
 			);
 		} else {
 			if ( !affiliates_user_is_affiliate() ) {
 				$sections = array(
-					'affiliates-dashboard-registration' => new Affiliates_Dashboard_Registration( array( 'user_id' => $this->user_id ) )
+					Affiliates_Dashboard_Registration::get_key() => array(
+						'class' => 'Affiliates_Dashboard_Registration',
+						'parameters' => array( 'user_id' => $this->user_id )
+					)
 				);
 			} else {
 				$sections = array(
-					'affiliates-dashboard-overview' => new Affiliates_Dashboard_Overview( array( 'user_id' => $this->user_id ) ),
-					'affiliates-dashboard-earnings' => new Affiliates_Dashboard_Earnings( array( 'user_id' => $this->user_id ) ),
-					'affiliates-dashboard-profile'  => new Affiliates_Dashboard_Profile( array( 'user_id' => $this->user_id ) )
+					Affiliates_Dashboard_Overview::get_key() => array(
+						'class' => 'Affiliates_Dashboard_Overview',
+						'parameters' => array( 'user_id' => $this->user_id )
+					),
+					Affiliates_Dashboard_Earnings::get_key() => array(
+						'class' => 'Affiliates_Dashboard_Earnings',
+						'parameters' => array( 'user_id' => $this->user_id )
+					),
+					Affiliates_Dashboard_Profile::get_key()  => array(
+						'class' => 'Affiliates_Dashboard_Profile',
+						'parameters' => array( 'user_id' => $this->user_id )
+					)
 				);
 			}
 		}
 
 		$this->sections = apply_filters( 'affiliates_dashboard_setup_sections', $sections, $this );
+		$this->sort_sections();
+	}
+
+	/**
+	 * Sorts the associated dashboard sections based on their order.
+	 */
+	protected function sort_sections() {
+		uasort( $this->sections, array( __CLASS__, 'compare_sections' ) );
+	}
+
+	public static function compare_sections( $s1, $s2 ) {
+		$order1 = isset( $s1['parameters']['order'] ) ? $s1['parameters']['order'] : $s1['class']::get_default_order();
+		$order2 = isset( $s2['parameters']['order'] ) ? $s2['parameters']['order'] : $s2['class']::get_default_order();
+		return $order1 - $order2;
 	}
 }
 Affiliates_Dashboard::init();

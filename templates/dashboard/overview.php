@@ -48,6 +48,7 @@ $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
 $encoded_id = affiliates_encode_affiliate_id( $affiliates_dashboard_section->get_affiliate_id() );
 $link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any link to track referrals from your account.', 'affiliates' ), $pname, $encoded_id ), array( 'code' => array() ) );
 ?>
+<h3><?php _e( 'Overview', 'affiliates' ); ?></h3>
 <div class="dashboard-section dashboard-section-overview" style="display:grid">
 	<div class="stats-container" style="display:flex">
 		<div class="stats-item" style="flex-grow:1">

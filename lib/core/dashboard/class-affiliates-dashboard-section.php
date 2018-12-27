@@ -35,6 +35,11 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	protected $template = null;
 
 	/**
+	 * @var int the section's order
+	 */
+	protected $order = self::DEFAULT_ORDER;
+
+	/**
 	 * @var string Whether the template is only included for connected users.
 	 */
 	protected $require_user_id = false;
@@ -43,11 +48,13 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	 * Create a new dashboard section instance.
 	 *
 	 * Parameters :
-	 * - user_id : if not provided, will obtain it from the current user
+	 * - user_id : (int) if not provided, will obtain it from the current user
+	 * - order : (int) if provided, establishes the value for the section's order
 	 *
 	 * @param array $params
 	 */
 	public function __construct( $params = array() ) {
+		// user_id
 		if ( isset( $params['user_id'] ) ) {
 			$this->user_id = intval( $params['user_id'] );
 		} else {
@@ -61,6 +68,10 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 				$this->user_id = null;
 			}
 		}
+		// order
+		if ( isset( $params['order'] ) ) {
+			$this->order = intval( $params['order'] );
+		}
 	}
 
 	/**
@@ -70,6 +81,18 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	 */
 	public function get_user_id() {
 		return $this->user_id;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see I_Affiliates_Dashboard_Section::get_order()
+	 */
+	public function get_order() {
+		return $this->order;
+	}
+
+	public static function get_default_order() {
+		return self::DEFAULT_ORDER;
 	}
 
 	/**
