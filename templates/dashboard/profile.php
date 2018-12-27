@@ -1,6 +1,6 @@
 <?php
 /**
- * earnings.php
+ * profile.php
  *
  * Copyright (c) 2010 - 2018 "kento" Karim Rahimpur www.itthinx.com
  *
@@ -21,7 +21,7 @@
  * This is a template file. You can customize it by copying it
  * into the appropriate subfolder of your theme:
  *
- *   mytheme/affiliates/dashboard/earnings.php
+ *   mytheme/affiliates/dashboard/profile.php
  *
  * It is highly recommended to use a child theme for such customizations.
  * Child themes are suitable to keep things up-to-date when the parent
@@ -34,6 +34,8 @@ if ( !defined( 'ABSPATH' ) ) {
 
 global $affiliates_dashboard_section;
 ?>
-<h3><?php _e( 'Monthly Earnings', 'affiliates' ); ?></h3>
+<h3><?php _e( 'Profile', 'affiliates' ); ?></h3>
 <?php
-echo Affiliates_Shortcodes::affiliates_earnings( array( 'show_paid' => true ) );
+if ( affiliates_user_is_affiliate() ) {
+	echo Affiliates_Shortcodes::affiliates_fields( array() );
+}

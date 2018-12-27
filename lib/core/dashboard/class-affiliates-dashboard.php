@@ -132,7 +132,8 @@ class Affiliates_Dashboard {
 			} else {
 				$sections = array(
 					'affiliates-dashboard-overview' => new Affiliates_Dashboard_Overview( array( 'user_id' => $this->user_id ) ),
-					'affiliates-dashboard-earnings' => new Affiliates_Dashboard_Earnings( array( 'user_id' => $this->user_id ) )
+					'affiliates-dashboard-earnings' => new Affiliates_Dashboard_Earnings( array( 'user_id' => $this->user_id ) ),
+					'affiliates-dashboard-profile'  => new Affiliates_Dashboard_Profile( array( 'user_id' => $this->user_id ) )
 				);
 			}
 		}

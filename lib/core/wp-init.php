@@ -72,6 +72,9 @@ require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-overvi
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnings.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnings-block.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnings-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile-shortcode.php';
 
 // built-in user registration integration
 if (
