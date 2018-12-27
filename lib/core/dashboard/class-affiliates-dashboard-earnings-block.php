@@ -36,7 +36,7 @@ class Affiliates_Dashboard_Earnings_Block extends Affiliates_Dashboard_Earnings 
 	}
 
 	/**
-	 * Initialization - adds the shortcode.
+	 * Initialization - register the block.
 	 */
 	public static function wp_init() {
 		if ( function_exists( 'register_block_type' ) ) {
@@ -86,9 +86,9 @@ class Affiliates_Dashboard_Earnings_Block extends Affiliates_Dashboard_Earnings 
 	}
 
 	/**
-	 * Shortcode handler for the section shortcode.
+	 * Callback for the earnings section block.
 	 *
-	 * @param array $atts shortcode attributes
+	 * @param array $atts attributes
 	 * @param string $content not used
 	 *
 	 * @return string

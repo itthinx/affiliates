@@ -88,7 +88,7 @@ class Affiliates_Dashboard_Profile_Block extends Affiliates_Dashboard_Profile {
 	/**
 	 * Callback that renders the section block.
 	 *
-	 * @param array $atts shortcode attributes
+	 * @param array $atts attributes
 	 * @param string $content not used
 	 *
 	 * @return string
