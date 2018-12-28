@@ -119,7 +119,7 @@ var affiliates_dashboard_overview_graph = {};
 			if ( dataset === initial_dataset ) {
 				$( '#legend-item-' + dataset ).addClass( 'active' );
 			}
-			$( '#legend-item-' + dataset ).on( 'hover', function( event ) {
+			$( '#legend-item-' + dataset ).on( 'hover click touchstart', function( event ) {
 				$( '.legend-item' ).removeClass( 'active' );
 				$.plot( $( "#" + container_id ), datasets[$(this).data('dataset')], options );
 				$( this ).addClass( 'active' );
