@@ -89,6 +89,7 @@ do_action( 'affiliates_dashboard_after' );
 <style type="text/css">
 .affiliates-dashboard-section-links {
 	display: flex;
+	flex-wrap: wrap;
 	text-align: center;
 	background-color: #f2f2f2;
 	border-radius: 4px;
@@ -101,6 +102,7 @@ do_action( 'affiliates_dashboard_after' );
 }
 .affiliates-dashboard-section-links .section-link-item a {
 	text-decoration: none;
+	padding: 0 0.32em;
 }
 .affiliates-dashboard-section-links .section-link-item.active {
 	font-weight: bold;
