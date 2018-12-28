@@ -165,7 +165,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 				)
 			);
 		} else {
-			if ( !affiliates_user_is_affiliate() ) {
+			if ( !affiliates_user_is_affiliate( $this->user_id ) ) {
 				$sections = array(
 					Affiliates_Dashboard_Registration::get_key() => array(
 						'class' => 'Affiliates_Dashboard_Registration',
