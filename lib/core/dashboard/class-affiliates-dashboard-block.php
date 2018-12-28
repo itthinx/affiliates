@@ -95,7 +95,7 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 	public static function block( $atts, $content = '' ) {
 
 		// Render the dashboard:
-		$dashboard = new Affiliates_Dashboard();
+		$dashboard = Affiliates_Dashboard_Factory::get_dashboard_instance();
 		ob_start();
 		$dashboard->render();
 		$output = ob_get_clean();

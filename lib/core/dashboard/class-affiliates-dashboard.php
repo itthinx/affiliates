@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Dashboard view.
  */
-class Affiliates_Dashboard {
+class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 
 	/**
 	 * @var int
@@ -47,6 +47,7 @@ class Affiliates_Dashboard {
 	 * Initialization.
 	 */
 	public static function init() {
+		Affiliates_Dashboard_Factory::set_dashboard_class( __CLASS__ );
 	}
 
 	/**

@@ -44,7 +44,7 @@ class Affiliates_Dashboard_Shortcode extends Affiliates_Dashboard {
 	 * @return string
 	 */
 	public static function shortcode( $atts, $content = '' ) {
-		$dashboard = new Affiliates_Dashboard();
+		$dashboard = Affiliates_Dashboard_Factory::get_dashboard_instance();
 		ob_start();
 		$dashboard->render();
 		$output = ob_get_clean();
