@@ -33,11 +33,9 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 if ( !is_user_logged_in() ) {
-
-	echo '<p>';
-	_e( 'Please log in to access the affiliate area.', 'affiliates' );
-	echo '</p>';
-
+	?>
+	<h2><?php _e( 'Login', 'affiliates' ); ?></h2>
+	<p><?php _e( 'Please log in to access the affiliate area.', 'affiliates' ); ?></p>
+	<?php
 	echo Affiliates_Shortcodes::affiliates_login_redirect( array() );
-
 }

@@ -33,10 +33,12 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 if ( !affiliates_user_is_affiliate() ) {
+	?>
+	<h2><?php _e( 'Registration', 'affiliates' ); ?></h2>
+	<p>
+	<?php _e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
+	</p>
 
-	echo '<p>';
-	_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' );
-	echo '</p>';
-
+	<?php
 	echo Affiliates_Registration::affiliates_registration_shortcode( array() );
 }

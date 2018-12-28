@@ -34,7 +34,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 global $affiliates_dashboard_section;
 ?>
-<h3><?php _e( 'Profile', 'affiliates' ); ?></h3>
+<h2><?php _e( 'Profile', 'affiliates' ); ?></h2>
 <?php
 if ( affiliates_user_is_affiliate() ) {
 	echo Affiliates_Shortcodes::affiliates_fields( array() );

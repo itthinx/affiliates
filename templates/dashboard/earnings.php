@@ -34,6 +34,6 @@ if ( !defined( 'ABSPATH' ) ) {
 
 global $affiliates_dashboard_section;
 ?>
-<h3><?php _e( 'Monthly Earnings', 'affiliates' ); ?></h3>
+<h2><?php _e( 'Earnings', 'affiliates' ); ?></h2>
 <?php
 echo Affiliates_Shortcodes::affiliates_earnings( array( 'show_paid' => true ) );
