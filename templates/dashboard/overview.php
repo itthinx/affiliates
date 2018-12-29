@@ -47,7 +47,10 @@ if ( isset( $totals['amounts_by_currency'] ) ) {
 }
 $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
 $encoded_id = affiliates_encode_affiliate_id( $section->get_affiliate_id() );
-$link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any link to track referrals from your account.', 'affiliates' ), $pname, $encoded_id ), array( 'code' => array() ) );
+$link_info  = wp_kses(
+	sprintf( __( 'You can also add <code>?%s=%s</code> to any link on %s to track referrals from your account.', 'affiliates' ), $pname, $encoded_id, esc_url( site_url() ) ),
+	array( 'code' => array(), 'a' => array( 'href' => array() ) )
+);
 ?>
 <h2><?php esc_html_e( 'Overview', 'affiliates' ); ?></h2>
 <div class="dashboard-section dashboard-section-overview" style="display:grid">
@@ -71,6 +74,8 @@ $link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any
 	</div>
 	<div id="affiliates-dashboard-overview-graph" class="graph" style="width:100%; height: 400px;"></div>
 	<div id="affiliates-dashboard-overview-legend" class="legend"></div>
+	<br/>
+	<h3><?php esc_html_e( 'Links', 'affiliates' ); ?></h3>
 	<div class="affiliates-dashboard-overview-link">
 		<p><?php esc_html_e( 'Your affiliate URL:', 'affiliates' ); ?></p>
 		<p>
