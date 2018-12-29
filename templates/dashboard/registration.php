@@ -32,11 +32,15 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * @var Affiliates_Dashboard_Registration $section Section object available for use in the template.
+ */
+
 if ( !affiliates_user_is_affiliate() ) {
 	?>
-	<h2><?php _e( 'Registration', 'affiliates' ); ?></h2>
+	<h2><?php esc_html_e( 'Registration', 'affiliates' ); ?></h2>
 	<p>
-	<?php _e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
+	<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
 	</p>
 
 	<?php

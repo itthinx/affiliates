@@ -32,6 +32,10 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * @var Affiliates_Dashboard_Overview $section Section object available for use in the template.
+ */
+
 $totals    = $section->get_totals();
 $hits      = isset( $totals['hits'] ) ? intval( $totals['hits'] ) : 0;
 $visits    = isset( $totals['visits'] ) ? intval( $totals['visits'] ) : 0;
@@ -45,7 +49,7 @@ $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
 $encoded_id = affiliates_encode_affiliate_id( $section->get_affiliate_id() );
 $link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any link to track referrals from your account.', 'affiliates' ), $pname, $encoded_id ), array( 'code' => array() ) );
 ?>
-<h2><?php _e( 'Overview', 'affiliates' ); ?></h2>
+<h2><?php esc_html_e( 'Overview', 'affiliates' ); ?></h2>
 <div class="dashboard-section dashboard-section-overview" style="display:grid">
 	<div class="stats-container" style="display:flex">
 		<div class="stats-item" style="flex-grow:1">

@@ -31,7 +31,11 @@
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+/**
+ * @var Affiliates_Dashboard_Earnings $section Section object available for use in the template.
+ */
 ?>
-<h2><?php _e( 'Earnings', 'affiliates' ); ?></h2>
+<h2><?php esc_html_e( 'Earnings', 'affiliates' ); ?></h2>
 <?php
 echo Affiliates_Shortcodes::affiliates_earnings( array( 'show_paid' => true ) );

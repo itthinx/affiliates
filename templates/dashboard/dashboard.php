@@ -32,6 +32,10 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * @var Affiliates_Dashboard $dashboard Dashboard object available for use in the template.
+ */
+
 do_action( 'affiliates_dashboard_before' );
 ?>
 <div class="affiliates-dashboard">
