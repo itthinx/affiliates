@@ -32,18 +32,16 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-global $affiliates_dashboard;
-
 do_action( 'affiliates_dashboard_before' );
 ?>
 <div class="affiliates-dashboard">
 	<?php do_action( 'affiliates_dashboard_before_sections' ); ?>
 	<div class="affiliates-dashboard-sections">
 	<?php
-	$sections = $affiliates_dashboard->get_sections();
+	$sections = $dashboard->get_sections();
 
 	if ( $sections !== null && count( $sections ) > 0 ) {
-		$current = $affiliates_dashboard->get_current_section();
+		$current = $dashboard->get_current_section();
 
 		if ( $current !== null ) {
 			$current_section_key = $current->get_key();

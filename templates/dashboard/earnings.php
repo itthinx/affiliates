@@ -31,8 +31,6 @@
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-global $affiliates_dashboard_section;
 ?>
 <h2><?php _e( 'Earnings', 'affiliates' ); ?></h2>
 <?php

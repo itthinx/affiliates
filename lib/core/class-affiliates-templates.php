@@ -53,6 +53,9 @@ class Affiliates_Templates {
 		}
 
 		if ( file_exists( $template_filename ) ) {
+			if ( !empty( $args ) && is_array( $args ) ) {
+				extract( $args );
+			}
 			include $template_filename;
 		}
 

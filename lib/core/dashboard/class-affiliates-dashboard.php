@@ -78,11 +78,8 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 * Outputs the dashboard for a connected user or the login form if not logged in.
 	 */
 	public function render() {
-		global $affiliates_dashboard;
-
-		$affiliates_dashboard = $this;
 		$this->setup();
-		Affiliates_Templates::include_template( 'dashboard/dashboard.php' );
+		Affiliates_Templates::include_template( 'dashboard/dashboard.php', array( 'dashboard' => $this ) );
 	}
 
 	/**

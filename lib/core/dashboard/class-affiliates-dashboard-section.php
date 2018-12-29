@@ -99,13 +99,8 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	 * Outputs the dashboard section's template.
 	 */
 	public function render() {
-
-		global $affiliates_dashboard_section;
-
-		$affiliates_dashboard_section = $this;
-
 		if ( !$this->require_user_id || $this->user_id !== null ) {
-			Affiliates_Templates::include_template( $this->template );
+			Affiliates_Templates::include_template( $this->template, array( 'section' => $this ) );
 		}
 	}
 
