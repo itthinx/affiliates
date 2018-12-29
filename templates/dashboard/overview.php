@@ -35,11 +35,10 @@ if ( !defined( 'ABSPATH' ) ) {
 $totals    = $section->get_totals();
 $hits      = isset( $totals['hits'] ) ? intval( $totals['hits'] ) : 0;
 $visits    = isset( $totals['visits'] ) ? intval( $totals['visits'] ) : 0;
-$referrals = isset( $totals['referrals'] ) ? intval( $totals['referrals'] ) : 0;
 $amounts   = array();
 if ( isset( $totals['amounts_by_currency'] ) ) {
 	foreach ( $totals['amounts_by_currency'] as $currency_id => $amount ) {
-		$amounts[$currency_id] = round( $amount, 2, PHP_ROUND_HALF_UP );
+		$amounts[$currency_id] = round( $amount, affiliates_get_referral_amount_decimals( 'display' ), PHP_ROUND_HALF_UP );
 	}
 }
 $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
@@ -51,17 +50,17 @@ $link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any
 	<div class="stats-container" style="display:flex">
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
-			<div class="stats-item-value"><?php echo $hits; ?></div>
+			<div class="stats-item-value"><?php echo esc_html( $hits ); ?></div>
 		</div>
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
-			<div class="stats-item-value"><?php echo $visits; ?></div>
+			<div class="stats-item-value"><?php echo esc_html( $visits ); ?></div>
 		</div>
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
 			<?php foreach ( $amounts as $currency_id => $amount ) { ?>
 				<div class="stats-item-value">
-					<span class="stats-item-currency"><?php echo $currency_id; ?> <span class="stats-item-amount"><?php echo $amount; ?></span>
+					<span class="stats-item-currency"><?php echo esc_html( $currency_id ); ?> <span class="stats-item-amount"><?php echo esc_html( $amount ); ?></span>
 				</div>
 			<?php } ?>
 		</div>
@@ -74,7 +73,7 @@ $link_info  = wp_kses( sprintf( __( 'You can also add <code>?%s=%s</code> to any
 			<textarea id="copy-to-clipboard-source" class="affiliate-url" readonly="readonly" onmouseover="this.focus();" onfocus="this.select();"><?php echo esc_html( Affiliates_Shortcodes::affiliates_url( array() ) ); ?></textarea>
 		</p>
 		<p>
-			<span class="button copy-to-clipboard-trigger" data-source="copy-to-clipboard-source">Copy to Clipboard</span>
+			<span class="button copy-to-clipboard-trigger" data-source="copy-to-clipboard-source"><?php esc_html_e( 'Copy to Clipboard', 'affiliates' ); ?></span>
 		</p>
 		<p>
 			<?php echo $link_info; ?>
