@@ -97,6 +97,9 @@ var affiliates_dashboard_overview_graph = {};
 				initial_dataset = currency_id;
 			}
 		}
+		if ( initial_dataset === null ) {
+			initial_dataset = 'visits';
+		}
 
 		var options = {
 			xaxis : { ticks : ticks },
