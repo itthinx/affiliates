@@ -65,11 +65,17 @@ $link_info  = wp_kses(
 		</div>
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
-			<?php foreach ( $amounts as $currency_id => $amount ) { ?>
+			<?php if ( count ( $amounts ) > 0 ) :?>
+				<?php foreach ( $amounts as $currency_id => $amount ) : ?>
+					<div class="stats-item-value">
+						<span class="stats-item-currency"><?php echo esc_html( $currency_id ); ?></span> <span class="stats-item-amount"><?php echo esc_html( $amount ); ?></span>
+					</div>
+				<?php endforeach; ?>
+			<?php else :?>
 				<div class="stats-item-value">
-					<span class="stats-item-currency"><?php echo esc_html( $currency_id ); ?> <span class="stats-item-amount"><?php echo esc_html( $amount ); ?></span>
+					<span class="stats-item-currency"><span class="stats-item-amount">0</span>
 				</div>
-			<?php } ?>
+			<?php ?>
 		</div>
 	</div>
 	<div id="affiliates-dashboard-overview-graph" class="graph" style="width:100%; height: 400px;"></div>
