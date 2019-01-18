@@ -37,8 +37,9 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 
 $totals    = $section->get_totals();
-$hits      = isset( $totals['hits'] ) ? intval( $totals['hits'] ) : 0;
+// $hits      = isset( $totals['hits'] ) ? intval( $totals['hits'] ) : 0;
 $visits    = isset( $totals['visits'] ) ? intval( $totals['visits'] ) : 0;
+$referrals = isset( $totals['referrals'] ) ? intval( $totals['referrals'] ) : 0;
 $amounts   = array();
 if ( isset( $totals['amounts_by_currency'] ) ) {
 	foreach ( $totals['amounts_by_currency'] as $currency_id => $amount ) {
@@ -57,11 +58,11 @@ $link_info  = wp_kses(
 	<div class="stats-container" style="display:flex">
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
-			<div class="stats-item-value"><?php echo esc_html( $hits ); ?></div>
+			<div class="stats-item-value"><?php echo esc_html( $visits ); ?></div>
 		</div>
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
-			<div class="stats-item-value"><?php echo esc_html( $visits ); ?></div>
+			<div class="stats-item-value"><?php echo esc_html( $referrals ); ?></div>
 		</div>
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
