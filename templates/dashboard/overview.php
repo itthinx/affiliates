@@ -75,7 +75,7 @@ $link_info  = wp_kses(
 				<div class="stats-item-value">
 					<span class="stats-item-currency"><span class="stats-item-amount">0</span>
 				</div>
-			<?php ?>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div id="affiliates-dashboard-overview-graph" class="graph" style="width:100%; height: 400px;"></div>
