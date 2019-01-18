@@ -112,7 +112,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		$hits_total = 0;
 		$visits_total = 0;
 		$referrals_total = 0;
-		$amount_by_currency_total = array();
+		$amounts_by_currency_total = array();
 
 		// hits per day
 		$query = "SELECT date, sum(count) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND affiliate_id = %d GROUP BY date";
