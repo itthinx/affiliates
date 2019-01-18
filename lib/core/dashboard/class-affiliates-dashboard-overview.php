@@ -173,6 +173,8 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 			// For referrals we add an item with accumulated daily value.
 			if ( isset( $referrals[$date] ) ) {
 				$referrals_series[] = array( $day, intval( $referrals[$date] ) );
+			} else {
+				$referrals_series[] = array( $day, 0 );
 			}
 			// For hits we add daily hits where there are any, otherwise we add a zero entry.
 			if ( isset( $hits[$date] ) ) {
