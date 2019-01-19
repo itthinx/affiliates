@@ -200,10 +200,6 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 
 		$affiliate_id = $this->get_affiliate_id();
 
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		$current_url = remove_query_arg( 'clear_filters', $current_url );
-		$current_url = remove_query_arg( 'apply_filters', $current_url );
-
 		$per_page = !empty( $_REQUEST['per_page'] ) ?
 			min( max( 1, intval( trim( $_REQUEST['per_page'] ) ) ), self::MAX_PER_PAGE ) :
 			null;
@@ -223,8 +219,6 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 			unset( $_REQUEST['thru_date'] );
 			$from_date     = null;
 			$thru_date     = null;
-			$current_url = remove_query_arg( 'from_date', $current_url );
-			$current_url = remove_query_arg( 'thru_date', $current_url );
 		} else {
 			// filter by date(s)
 			if ( !empty( $_REQUEST['from_date'] ) ) {
