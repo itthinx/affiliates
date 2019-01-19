@@ -29,9 +29,7 @@ if ( !defined( 'ABSPATH' ) ) {
 class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 
 	/**
-	 * Second place after overview.
-	 *
-	 * @var integer
+	 * @var int Second place after overview.
 	 */
 	protected static $section_order = 200;
 
