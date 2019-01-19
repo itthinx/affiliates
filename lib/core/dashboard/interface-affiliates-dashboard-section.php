@@ -31,7 +31,7 @@ interface I_Affiliates_Dashboard_Section {
 	/**
 	 * @var integer the default value for the order property
 	 */
-	const DEFAULT_ORDER = 100;
+	const DEFAULT_SECTION_ORDER = 100;
 
 	/**
 	 * Returns the key of the section.
@@ -48,18 +48,11 @@ interface I_Affiliates_Dashboard_Section {
 	public static function get_name();
 
 	/**
-	 * Returns the default value for the order of section instances.
+	 * Returns the section order.
 	 *
 	 * @return int
 	 */
-	public static function get_default_order();
-
-	/**
-	 * Returns the order of the section instance.
-	 *
-	 * @return int
-	 */
-	public function get_order();
+	public static function get_section_order();
 
 	/**
 	 * Outputs the dashboard section.

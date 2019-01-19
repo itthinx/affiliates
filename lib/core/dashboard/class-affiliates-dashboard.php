@@ -240,8 +240,8 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 * @return int
 	 */
 	public static function compare_sections( $s1, $s2 ) {
-		$order1 = isset( $s1['parameters']['order'] ) ? $s1['parameters']['order'] : $s1['class']::get_default_order();
-		$order2 = isset( $s2['parameters']['order'] ) ? $s2['parameters']['order'] : $s2['class']::get_default_order();
+		$order1 = isset( $s1['parameters']['order'] ) ? $s1['parameters']['order'] : $s1['class']::get_section_order();
+		$order2 = isset( $s2['parameters']['order'] ) ? $s2['parameters']['order'] : $s2['class']::get_section_order();
 		return $order1 - $order2;
 	}
 }

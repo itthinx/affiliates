@@ -37,7 +37,7 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	/**
 	 * @var int the section's order
 	 */
-	protected $order = self::DEFAULT_ORDER;
+	protected static $section_order = self::DEFAULT_SECTION_ORDER;
 
 	/**
 	 * @var string Whether the template is only included for connected users.
@@ -51,10 +51,10 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 
 	/**
 	 * {@inheritDoc}
-	 * @see I_Affiliates_Dashboard_Section::get_default_order()
+	 * @see I_Affiliates_Dashboard_Section::get_section_order()
 	 */
-	public static function get_default_order() {
-		return self::$order;
+	public static function get_section_order() {
+		return self::$section_order;
 	}
 
 	/**
@@ -85,14 +85,6 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 		if ( isset( $params['order'] ) ) {
 			$this->order = intval( $params['order'] );
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @see I_Affiliates_Dashboard_Section::get_order()
-	 */
-	public function get_order() {
-		return $this->order;
 	}
 
 	/**

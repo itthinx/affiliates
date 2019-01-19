@@ -29,6 +29,13 @@ if ( !defined( 'ABSPATH' ) ) {
 class Affiliates_Dashboard_Registration extends Affiliates_Dashboard_Section {
 
 	/**
+	 * Second place after login.
+	 *
+	 * @var integer
+	 */
+	protected static $section_order = 200;
+
+	/**
 	 * Initialization - nothing done here at current.
 	 */
 	public static function init() {

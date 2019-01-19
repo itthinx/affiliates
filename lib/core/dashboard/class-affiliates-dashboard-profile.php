@@ -33,7 +33,7 @@ class Affiliates_Dashboard_Profile extends Affiliates_Dashboard_Section {
 	 *
 	 * @var integer
 	 */
-	protected $order = 1000;
+	protected static $section_order = 1000;
 
 	/**
 	 * Initialization - nothing done here at current.

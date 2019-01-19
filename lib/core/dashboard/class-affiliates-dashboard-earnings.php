@@ -33,7 +33,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	 *
 	 * @var integer
 	 */
-	protected $order = 200;
+	protected static $section_order = 200;
 
 	/**
 	 * @var array holds default values for options
