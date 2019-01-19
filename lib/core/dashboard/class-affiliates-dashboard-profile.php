@@ -42,6 +42,14 @@ class Affiliates_Dashboard_Profile extends Affiliates_Dashboard_Section {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * @see I_Affiliates_Dashboard_Section::get_section_order()
+	 */
+	public static function get_section_order() {
+		return self::$section_order;
+	}
+
+	/**
 	 * Create a new dashboard section instance.
 	 *
 	 * Parameters :

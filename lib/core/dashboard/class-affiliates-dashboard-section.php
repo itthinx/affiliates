@@ -50,6 +50,8 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	protected $url_parameters = array();
 
 	/**
+	 * Subclasses need to override to set a particular order.
+	 *
 	 * {@inheritDoc}
 	 * @see I_Affiliates_Dashboard_Section::get_section_order()
 	 */

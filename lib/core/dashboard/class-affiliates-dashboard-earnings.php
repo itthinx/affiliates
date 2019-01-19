@@ -48,6 +48,14 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	);
 
 	/**
+	 * {@inheritDoc}
+	 * @see I_Affiliates_Dashboard_Section::get_section_order()
+	 */
+	public static function get_section_order() {
+		return self::$section_order;
+	}
+
+	/**
 	 * Obtain the URL to the section maintaining current settings.
 	 * Specify an array of key-value pairs in $params for parameters to add or replace.
 	 * A key-value pair with value null in $params will remove a parameter.
