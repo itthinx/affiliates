@@ -184,7 +184,7 @@ if ( !defined( 'ABSPATH' ) ) {
 		<form action="<?php echo esc_url( $section->get_url( array( 'per_page' => null ) ) ); ?>" method="post">
 			<label class="row-count">
 				<?php esc_html_e( 'Results per page', 'affiliates' ); ?>
-				<input class="per-page" name="per_page" type="text" value="<?php echo esc_attr( $section->get_per_page() ); ?>" />
+				<input class="per-page" name="per_page" type="text" value="<?php echo esc_attr( $section->get_per_page() ); ?>" placeholder="<?php echo esc_attr( $section::PER_PAGE_DEFAULT ); ?>" />
 				<input class="button" type="submit" value="<?php esc_attr_e( 'Apply', 'affiliates' ); ?>"/>
 			</label>
 		</form>
