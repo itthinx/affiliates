@@ -137,6 +137,39 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	}
 
 	/**
+	 * Returns the URL to the dashboard with all section-specific parameters removed
+	 * and the parameters in $params added or replaced.
+	 *
+	 * @param array $params
+	 *
+	 * @return string
+	 */
+	public function get_url( $params = array() ) {
+		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		// Common filter parameters ...
+		$url_parameters = array( 'clear_filters', 'apply_filters' );
+		// Section-specific parameters ...
+		if ( $this->sections !== null ) {
+			foreach ( array_keys( $this->sections ) as $key ) {
+				$url_parameters = array_merge( $url_parameters, $this->get_section( $key )->get_url_parameters() );
+			}
+		}
+		// Remove all those parameters to obtain a clear URL for the dashboard that can still contain
+		// other parameters that are not related.
+		foreach ( $url_parameters as $parameter ) {
+			$current_url = remove_query_arg( $parameter, $current_url );
+		}
+		// Add/replace the requested parameters ...
+		foreach ( $params as $key => $value ) {
+			$current_url = remove_query_arg( $key, $current_url );
+			if ( $value !== null ) {
+				$current_url = add_query_arg( $key, $value, $current_url );
+			}
+		}
+		return $current_url;
+	}
+
+	/**
 	 * Returns the user ID related to this instance.
 	 *
 	 * @return int or null

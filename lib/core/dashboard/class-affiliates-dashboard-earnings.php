@@ -26,82 +26,12 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Dashboard section: Earnings
  */
-class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
-
-	/**
-	 * @var int default number of entries shown per page
-	 */
-	const PER_PAGE_DEFAULT = 20;
-
-	/**
-	 * @var int maximum number of entries shown per page
-	 */
-	const MAX_PER_PAGE = 1000;
-
-	/**
-	 * @var string used as date filter if not null
-	 */
-	private $from_date = null;
-
-	/**
-	 * @var string used as date filter if not null
-	 */
-	private $thru_date = null;
-
-	/**
-	 * @var string indicates sort order 'ASC' or 'DESC'
-	 */
-	private $sort_order = 'DESC';
-
-	/**
-	 * @var string indicates inverted sort order 'ASC' or 'DESC'
-	 */
-	private $switch_sort_order = 'ASC';
-
-	/**
-	 * @var string sort entries by ...
-	 */
-	private $orderby = 'date';
-
-	/**
-	 * @var int number of entries to show per page
-	 */
-	private $per_page = self::PER_PAGE_DEFAULT;
-
-	/**
-	 * @var int the current page index: 0, 1, 2, ...
-	 */
-	private $current_page = 0;
-
-	/**
-	 * @var array maps column keys to translated column heading titles and descriptions
-	 */
-	private $columns = array();
-
-	/**
-	 * @var array holds entries to show for the current results page
-	 */
-	private $entries = null;
-
-	/**
-	 * @var int how many entries there are in total (including and beyond those shown on the current page)
-	 */
-	private $count = 0;
-
-	/**
-	 * @var string current URL
-	 */
-	private $current_url = null;
-
-	/**
-	 * @var array URL parameters used for this view
-	 */
-	private $url_parameters = array();
+class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 
 	/**
 	 * @var array holds default values for options
 	 */
-	private static $defaults = array(
+	protected static $defaults = array(
 		// filter attributes
 		'from_date'          => null,
 		'thru_date'          => null,
@@ -109,33 +39,6 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
 		'per_page'           => self::PER_PAGE_DEFAULT,
 		'status'             => array( AFFILIATES_REFERRAL_STATUS_ACCEPTED, AFFILIATES_REFERRAL_STATUS_CLOSED )
 	);
-
-	/**
-	 * Filter by from date.
-	 *
-	 * @return string
-	 */
-	public function get_from_date() {
-		return $this->from_date;
-	}
-
-	/**
-	 * Filter by thru date.
-	 *
-	 * @return string
-	 */
-	public function get_thru_date() {
-		return $this->thru_date;
-	}
-
-	/**
-	 * Obtain the current URL.
-	 *
-	 * @return string current URL
-	 */
-	public function get_current_url() {
-		return $this->current_url;
-	}
 
 	/**
 	 * Obtain the URL to the section maintaining current settings.
@@ -188,80 +91,24 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
 	}
 
 	/**
-	 * @return int
-	 */
-	public function get_sort_order() {
-		return $this->sort_order;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_switch_sort_order() {
-		return $this->switch_sort_order;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_orderby() {
-		return $this->orderby;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_per_page() {
-		return $this->per_page;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_current_page() {
-		return $this->current_page;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_pages() {
-		$n = 0;
-		if ( $this->count > 0 ) {
-			$n = ceil( $this->count / $this->per_page );
-		}
-		return $n;
-	}
-
-	/**
-	 * @return array column keys mapped to translated column heading labels and descriptions
-	 */
-	public function get_columns() {
-		return $this->columns;
-	}
-
-	/**
-	 * Provides the entries to display for the current page.
-	 *
-	 * @return array of entries
-	 */
-	public function get_entries() {
-		return $this->entries;
-	}
-
-	/**
-	 * Provides the total number of entries available.
-	 *
-	 * @return int
-	 */
-	public function get_count() {
-		return $this->count;
-	}
-
-	/**
-	 * Initialization - nothing done here at current.
+	 * Pull in the DateHelper class used in the render() method.
 	 */
 	public static function init() {
+		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php' );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public static function get_name() {
+		return __( 'Earnings', 'affiliates' );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public static function get_key() {
+		return 'earnings';
 	}
 
 	/**
@@ -278,6 +125,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
 		parent::__construct( $params );
 
 		$this->url_parameters = array(
+			'earnings-page',
 			'per_page',
 			'from_date',
 			'thru_date',
@@ -335,24 +183,6 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
 			'title'       => __( 'Paid', 'affiliates' ),
 			'description' => __( 'The earnings paid for the period covered.', 'affiliates' )
 		);
-	}
-
-	public static function get_name() {
-		return __( 'Earnings', 'affiliates' );
-	}
-
-	public static function get_key() {
-		return 'earnings';
-	}
-
-	// @todo remove this when Affiliates_Dashboard_Section::get_affiliate_id() is available
-	public function get_affiliate_id() {
-		$affiliate_id = null;
-		if ( affiliates_user_is_affiliate( $this->get_user_id() ) ) {
-			$affiliate_ids = affiliates_get_user_affiliate( $this->get_user_id() );
-			$affiliate_id = array_shift( $affiliate_ids );
-		}
-		return $affiliate_id;
 	}
 
 	/**
@@ -416,7 +246,6 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section {
 		$this->from_date = $from_date;
 		$this->thru_date = $thru_date;
 		$this->current_page = $current_page;
-		$this->current_url = $current_url;
 
 		$this->orderby = isset( $_REQUEST['orderby'] ) ? $_REQUEST['orderby'] : $this->orderby;
 		switch ( $this->orderby ) {

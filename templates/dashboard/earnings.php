@@ -135,11 +135,11 @@ if ( !defined( 'ABSPATH' ) ) {
 		} else {
 			$class = "$key manage-column sortable";
 		}
-		$link = esc_url( add_query_arg( $order_options, $section->get_current_url() ) );
+		$link = $section->get_url( $order_options );
 		?>
 		<div class="cell heading <?php echo esc_attr( $class ); ?>">
 			<?php if ( $key === 'period' ) :?>
-			<a href="<?php echo $link; ?>" title="<?php echo esc_html( $column['description'] ); ?>">
+			<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_html( $column['description'] ); ?>">
 				<span><?php echo esc_html( $column['title'] ); ?></span><span class="sorting-indicator"><?php echo $arrow; ?></span>
 			</a>
 			<?php else : ?>
@@ -165,7 +165,6 @@ if ( !defined( 'ABSPATH' ) ) {
 	<?php else : ?>
 		<div class="cell odd full"><?php esc_html_e( 'There are no results.', 'affiliates' ); ?><div>
 	<?php endif; ?>
-
 </div><?php // .earnings-container ?>
 <?php
 	//

@@ -48,11 +48,11 @@ interface I_Affiliates_Dashboard_Section {
 	public static function get_name();
 
 	/**
-	 * Returns the user ID related to the section instance (for whom it is to be rendered).
+	 * Returns the default value for the order of section instances.
 	 *
-	 * @return int or null
+	 * @return int
 	 */
-	public function get_user_id();
+	public static function get_default_order();
 
 	/**
 	 * Returns the order of the section instance.
@@ -66,4 +66,24 @@ interface I_Affiliates_Dashboard_Section {
 	 */
 	public function render();
 
+	/**
+	 * Returns the ID of the affiliate related to the user of the section instance.
+	 *
+	 * @return int or null
+	 */
+	public function get_affiliate_id();
+
+	/**
+	 * Returns an array of URL parameter keys that are specific for the section.
+	 *
+	 * @return string[]
+	 */
+	public function get_url_parameters();
+
+	/**
+	 * Returns the user ID related to the section instance (for whom it is to be rendered).
+	 *
+	 * @return int or null
+	 */
+	public function get_user_id();
 }

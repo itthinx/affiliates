@@ -59,7 +59,7 @@ do_action( 'affiliates_dashboard_before' );
 			foreach ( $sections as $section_key => $section ) {
 				?>
 				<div class='section-link-item <?php echo esc_attr( $section_key . ' ' . ( $section_key === $current_section_key ? 'active' : '' ) ); ?>'>
-					<a href="<?php echo esc_url( add_query_arg( Affiliates_Dashboard::SECTION_URL_PARAMETER, $section_key ) ); ?>"><?php echo esc_html( $section['class']::get_name() ); ?></a>
+					<a href="<?php echo esc_url( $dashboard->get_url( array( Affiliates_Dashboard::SECTION_URL_PARAMETER => $section_key ) ) ); ?>"><?php echo esc_html( $section['class']::get_name() ); ?></a>
 				</div>
 				<?php
 			}
