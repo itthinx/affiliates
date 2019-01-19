@@ -54,7 +54,7 @@ abstract class Affiliates_Dashboard_Section implements I_Affiliates_Dashboard_Se
 	 * @see I_Affiliates_Dashboard_Section::get_default_order()
 	 */
 	public static function get_default_order() {
-		return self::DEFAULT_ORDER;
+		return self::$order;
 	}
 
 	/**
