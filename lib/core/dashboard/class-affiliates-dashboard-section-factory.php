@@ -33,15 +33,17 @@ class Affiliates_Dashboard_Section_Factory {
 	 *
 	 * @var string[Affiliates_Dashboard_Section]
 	 */
-	private $sections = null;
+	private static $sections = array();
 
 	/**
-	 * Create a new factory instance with a set of section classes.
+	 * Based on key-classname pairs, will set or replace key to class relations.
 	 *
 	 * @param string[Affiliates_Dashboard_Section] $sections
 	 */
-	public function __construct( $sections ) {
-		$this->sections = $sections;
+	public static function set_section_classes( $sections ) {
+		foreach ( $sections as $key => $class ) {
+			self::$sections[$key] = $class;
+		}
 	}
 
 	/**
@@ -50,8 +52,8 @@ class Affiliates_Dashboard_Section_Factory {
 	 * @param string $key section key
 	 * @param string $class classname
 	 */
-	public function set_section_class( $key, $class ) {
-		$this->sections[$key] = $class;
+	public static function set_section_class( $key, $class ) {
+		self::$sections[$key] = $class;
 	}
 
 	/**
@@ -63,10 +65,14 @@ class Affiliates_Dashboard_Section_Factory {
 	 *
 	 * @return Affiliates_Dashboard_Section new section instance or null
 	 */
-	public function get_section_instance( $key, $parameters ) {
+	public static function get_section_instance( $key, $parameters = null ) {
 		$section = null;
-		if ( isset( $this->sections[$key] ) ) {
-			$section = new $this->sections[$key]( $parameters );
+		if ( isset( self::$sections[$key] ) ) {
+			if ( $parameters === null ) {
+				$section = new self::$sections[$key]();
+			} else {
+				$section = new self::$sections[$key]( $parameters );
+			}
 		}
 		return $section;
 	}

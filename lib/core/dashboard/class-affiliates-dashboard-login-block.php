@@ -95,7 +95,10 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 	 */
 	public static function block( $atts, $content = '' ) {
 		// Render the login form:
-		$section = new Affiliates_Dashboard_Login();
+		/**
+		 * @var Affiliates_Dashboard_Login $section
+		 */
+		$section = Affiliates_Dashboard_Section_Factory::get_section_instance( Affiliates_Dashboard_Login::get_key() );
 		ob_start();
 		$section->render();
 		$output = ob_get_clean();

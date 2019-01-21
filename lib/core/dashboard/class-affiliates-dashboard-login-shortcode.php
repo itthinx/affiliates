@@ -44,7 +44,10 @@ class Affiliates_Dashboard_Login_Shortcode extends Affiliates_Dashboard_Login {
 	 * @return string
 	 */
 	public static function shortcode( $atts, $content = '' ) {
-		$section = new Affiliates_Dashboard_Login();
+		/**
+		 * @var Affiliates_Dashboard_Login $section
+		 */
+		$section = Affiliates_Dashboard_Section_Factory::get_section_instance( Affiliates_Dashboard_Login::get_key() );
 		ob_start();
 		$section->render();
 		$output = ob_get_clean();

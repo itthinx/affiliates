@@ -97,7 +97,10 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 		$output = '';
 		if ( !affiliates_user_is_affiliate( get_current_user_id() ) ) {
 			// Render the registration:
-			$section = new Affiliates_Dashboard_Registration();
+			/**
+			 * @var Affiliates_Dashboard_Registration $section
+			 */
+			$section = Affiliates_Dashboard_Section_Factory::get_section_instance( Affiliates_Dashboard_Registration::get_key() );
 			ob_start();
 			$section->render();
 			$output = ob_get_clean();

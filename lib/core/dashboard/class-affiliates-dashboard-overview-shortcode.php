@@ -46,7 +46,10 @@ class Affiliates_Dashboard_Overview_Shortcode extends Affiliates_Dashboard_Overv
 	public static function shortcode( $atts, $content = '' ) {
 		$output = '';
 		if ( affiliates_user_is_affiliate() ) {
-			$section = new Affiliates_Dashboard_Overview();
+			/**
+			 * @var Affiliates_Dashboard_Overview $section
+			 */
+			$section = Affiliates_Dashboard_Section_Factory::get_section_instance( Affiliates_Dashboard_Overview::get_key() );
 			ob_start();
 			$section->render();
 			$output = ob_get_clean();

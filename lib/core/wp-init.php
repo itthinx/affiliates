@@ -59,12 +59,9 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php'; // don't 
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-templates.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/interface-affiliates-dashboard.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-factory.php';
-require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard.php';
-require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-block.php';
-require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section-factory.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/interface-affiliates-dashboard-section.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/interface-affiliates-dashboard-section-table.php';
-require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section-factory.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section-table.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-login.php';
@@ -82,6 +79,9 @@ require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnin
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile-block.php';
 require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-shortcode.php';
 
 // built-in user registration integration
 if (

@@ -46,7 +46,10 @@ class Affiliates_Dashboard_Earnings_Shortcode extends Affiliates_Dashboard_Earni
 	public static function shortcode( $atts, $content = '' ) {
 		$output = '';
 		if ( affiliates_user_is_affiliate() ) {
-			$section = new Affiliates_Dashboard_Earnings();
+			/**
+			 * @var Affiliates_Dashboard_Earnings $section
+			 */
+			$section = Affiliates_Dashboard_Section_Factory::get_section_instance( Affiliates_Dashboard_Earnings::get_key() );
 			ob_start();
 			$section->render();
 			$output = ob_get_clean();

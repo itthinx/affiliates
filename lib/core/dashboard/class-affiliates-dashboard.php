@@ -48,6 +48,13 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 */
 	public static function init() {
 		Affiliates_Dashboard_Factory::set_dashboard_class( __CLASS__ );
+		Affiliates_Dashboard_Section_Factory::set_section_classes( array(
+			Affiliates_Dashboard_Earnings::get_key()     => Affiliates_Dashboard_Earnings::class,
+			Affiliates_Dashboard_Login::get_key()        => Affiliates_Dashboard_Login::class,
+			Affiliates_Dashboard_Overview::get_key()     => Affiliates_Dashboard_Overview::class,
+			Affiliates_Dashboard_Profile::get_key()      => Affiliates_Dashboard_Profile::class,
+			Affiliates_Dashboard_Registration::get_key() => Affiliates_Dashboard_Registration::class
+		) );
 	}
 
 	/**
@@ -102,7 +109,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 		$section = null;
 		if ( key_exists( $key, $this->sections ) ) {
 			if ( !isset( $this->section_objects[$key] ) ) {
-				$section = new $this->sections[$key]['class']( $this->sections[$key]['parameters'] );
+				$section = Affiliates_Dashboard_Section_Factory::get_section_instance( $key, $this->sections[$key]['parameters'] );
 				$this->section_objects[$key] = $section;
 			} else {
 				$section = $this->section_objects[$key];
