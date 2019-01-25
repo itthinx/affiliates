@@ -254,7 +254,7 @@ if ( !defined( 'ABSPATH' ) ) {
 	.dashboard-section .earnings-container .heading {
 		border: none;
 	}
-	.dashboard-section .earnings-container div.cell:nth-child(4) {
+	.dashboard-section .earnings-container div.cell:nth-child(3) {
 		border-bottom: 4px solid #9e9e9e;
 	}
 	.dashboard-section .earnings-container {
