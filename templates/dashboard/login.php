@@ -43,3 +43,15 @@ if ( !is_user_logged_in() ) {
 	<?php
 	echo Affiliates_Shortcodes::affiliates_login_redirect( array() );
 }
+?>
+<style type="text/css">
+	.affiliates-dashboard .affiliates-dashboard-section .login-username label,
+	.affiliates-dashboard .affiliates-dashboard-section .login-password label {
+		display: block;
+	}
+	.affiliates-dashboard .affiliates-dashboard-section .login-username input,
+	.affiliates-dashboard .affiliates-dashboard-section .login-password input {
+		max-width: 100%;
+		width: 320px;
+	}
+</style>
