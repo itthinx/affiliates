@@ -35,14 +35,18 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * @var Affiliates_Dashboard_Registration $section Section object available for use in the template.
  */
-
-if ( !affiliates_user_is_affiliate() ) {
-	?>
+?>
+<?php if ( !affiliates_user_is_affiliate() ) : ?>
 	<h2><?php esc_html_e( 'Registration', 'affiliates' ); ?></h2>
-	<p>
-	<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
-	</p>
-
-	<?php
-	echo Affiliates_Registration::affiliates_registration_shortcode( array() );
+	<div class="dashboard-section dashboard-section-registration">
+		<p>
+			<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
+		</p>
+		<?php echo Affiliates_Registration::render_form(); ?>
+	</div>
+<?php endif; ?>
+<style type="text/css">
+.affiliates-dashboard .dashboard-section-registration {
+	margin: 4px;
 }
+</style>
