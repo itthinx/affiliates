@@ -95,6 +95,9 @@ $link_info  = wp_kses(
 			<?php echo $link_info; ?>
 		</p>
 	</div>
+	<div class="affiliates-dashboard-logout">
+		<a href="<?php echo esc_url( wp_logout_url() ) ?>"><?php esc_html_e( 'Log out', 'affiliates' ); ?></a>
+	</div>
 </div>
 
 <style type="text/css">
@@ -145,5 +148,10 @@ flex-grow:1;
 	height: 16px;
 	display:inline-block;
 	vertical-align:middle;
+}
+.dashboard-section .affiliates-dashboard-logout {
+	margin: 4px;
+	padding: 4px;
+	text-align: right;
 }
 </style>
