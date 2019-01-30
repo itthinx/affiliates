@@ -45,6 +45,7 @@ if ( $affiliates_options == null ) {
 // utilities
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-utility.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-ui-elements.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-log.php';
 
 // ajax
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-ajax.php';
