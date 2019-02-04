@@ -63,44 +63,44 @@ if ( !defined( 'ABSPATH' ) ) {
 		//
 	?>
 	<style type="text/css">
-	.dashboard-section form.filters {
+	.dashboard-section-earnings form.filters {
 		background-color: #f2f2f2;
 		border-radius: 4px;
 		margin: 4px;
 		padding: 4px;
 	}
-	.dashboard-section .capsule-container {
+	.dashboard-section-earnings .capsule-container {
 		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, 25%);
 	}
-	.dashboard-section .capsule-container .capsule.half.left {
+	.dashboard-section-earnings .capsule-container .capsule.half.left {
 		grid-column: 1 / 3;
 	}
-	.dashboard-section .capsule-container .capsule.half.right {
+	.dashboard-section-earnings .capsule-container .capsule.half.right {
 		grid-column: 3 / 5;
 	}
-	.dashboard-section .capsule-container .capsule.full {
+	.dashboard-section-earnings .capsule-container .capsule.full {
 		grid-column: 1 / 5;
 	}
-	.dashboard-section .capsule-container .capsule {
+	.dashboard-section-earnings .capsule-container .capsule {
 		display: flex;
 		padding: 4px;
 		margin: 4px;
 		align-items: center;
 	}
-	.dashboard-section .capsule-container .capsule label {
+	.dashboard-section-earnings .capsule-container .capsule label {
 		padding: 0 4px;
 	}
-	.dashboard-section .capsule-container .capsule input {
+	.dashboard-section-earnings .capsule-container .capsule input {
 		flex: 1;
 		overflow: hidden;
 	}
-	.dashboard-section .filters .filter-buttons {
+	.dashboard-section-earnings .filters .filter-buttons {
 		display: flex;
 		margin: 4px;
 	}
-	.dashboard-section .filters .filter-buttons input {
+	.dashboard-section-earnings .filters .filter-buttons input {
 		flex: 1;
 		margin: 4px;
 	}
@@ -190,96 +190,96 @@ if ( !defined( 'ABSPATH' ) ) {
 		</form>
 	</div>
 <?php endif; ?>
-</div><?php // .affiliates-earnings ?>
+</div><?php // .dashboard-section-earnings ?>
 <?php
 	//
 	// Section styles
 	//
 ?>
 <style type="text/css">
-.dashboard-section .earnings-container {
+.dashboard-section-earnings-section .earnings-container {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 40% 30% 30%;
 	margin: 4px;
 }
-.dashboard-section .earnings-container .cell {
+.dashboard-section-earnings-section .earnings-container .cell {
 	word-break: break-all;
 	padding: 4px;
 	background-color: #f0f0f0;
 	padding: 4px;
 }
-.dashboard-section .earnings-container .cell.full {
+.dashboard-section-earnings .earnings-container .cell.full {
 	grid-column: 1 / -1;
 }
-.dashboard-section .earnings-container .period {
+.dashboard-section-earnings .earnings-container .period {
 	grid-column: 1 / 2;
 	word-break: break-word;
 }
-.dashboard-section .earnings-container .earnings {
+.dashboard-section-earnings .earnings-container .earnings {
 	grid-column: 2 / 3;
 }
-.dashboard-section .earnings-container .earnings:not(.heading) {
+.dashboard-section-earnings .earnings-container .earnings:not(.heading) {
 	text-align: right;
 }
-.dashboard-section .earnings-container .paid {
+.dashboard-section-earnings .earnings-container .paid {
 	grid-column: 3 / 4;
 }
-.dashboard-section .earnings-container .paid:not(.heading) {
+.dashboard-section-earnings .earnings-container .paid:not(.heading) {
 	text-align: right;
 }
 
-.dashboard-section .earnings-container .heading {
+.dashboard-section-earnings .earnings-container .heading {
 	background-color: #ffffff;
 	color: 171717;
 	font-weight: bold;
 	word-break: break-word;
 	border-bottom: 4px solid #9e9e9e;
 }
-.dashboard-section .earnings-container .odd {
+.dashboard-section-earnings .earnings-container .odd {
 	background-color: #ffffff;
 	color: #252525;
 }
-.dashboard-section .earnings-container .even {
+.dashboard-section-earnings .earnings-container .even {
 	background-color: #e0e0e0;
 	color: #171717;
 }
-.dashboard-section .section-navigation-options {
+.dashboard-section-earnings .section-navigation-options {
 	margin: 4px;
 }
-.dashboard-section .section-navigation-options input.per-page {
+.dashboard-section-earnings .section-navigation-options input.per-page {
 	width: 4em;
 }
 @media only screen and (max-width: 768px) {
-	.dashboard-section .earnings-container .heading {
+	.dashboard-section-earnings .earnings-container .heading {
 		border: none;
 	}
-	.dashboard-section .earnings-container div.cell:nth-child(3) {
+	.dashboard-section-earnings .earnings-container div.cell:nth-child(3) {
 		border-bottom: 4px solid #9e9e9e;
 	}
-	.dashboard-section .earnings-container {
+	.dashboard-section-earnings .earnings-container {
 		grid-template-columns: 100%;
 	}
-	.dashboard-section .earnings-container .period {
+	.dashboard-section-earnings .earnings-container .period {
 		grid-column: 1;
 		word-break: break-word;
 	}
-	.dashboard-section .earnings-container .earnings {
+	.dashboard-section-earnings .earnings-container .earnings {
 		grid-column: 1;
 	}
-	.dashboard-section .earnings-container .earnings:not(.heading) {
+	.dashboard-section-earnings .earnings-container .earnings:not(.heading) {
 		text-align: initial;
 	}
-	.dashboard-section .earnings-container .paid {
+	.dashboard-section-earnings .earnings-container .paid {
 		grid-column: 1;
 	}
-	.dashboard-section .earnings-container .paid:not(.heading) {
+	.dashboard-section-earnings .earnings-container .paid:not(.heading) {
 		text-align: initial;
 	}
-	.dashboard-section .earnings-container .heading {
+	.dashboard-section-earnings .earnings-container .heading {
 		font-size: small;
 	}
-	.dashboard-section .earnings-container .cell::before {
+	.dashboard-section-earnings .earnings-container .cell::before {
 		display: block;
 		font-size: smaller;
 		font-weight: bolder;
