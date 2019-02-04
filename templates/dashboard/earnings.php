@@ -163,7 +163,7 @@ if ( !defined( 'ABSPATH' ) ) {
 		endforeach;
 	?>
 	<?php else : ?>
-		<div class="cell odd full"><?php esc_html_e( 'There are no results.', 'affiliates' ); ?><div>
+		<div class="cell odd full"><?php esc_html_e( 'There are no results.', 'affiliates' ); ?></div>
 	<?php endif; ?>
 </div><?php // .earnings-container ?>
 <?php
