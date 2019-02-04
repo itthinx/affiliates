@@ -154,7 +154,15 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	public function get_url( $params = array() ) {
 		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		// Common filter parameters ...
-		$url_parameters = array( 'clear_filters', 'apply_filters' );
+		$url_parameters = array(
+			'clear_filters',
+			'apply_filters',
+			'affiliate_id',
+			'action',
+			'action2',
+			'_wpnonce',
+			'_wp_http_referer'
+		);
 		// Section-specific parameters ...
 		if ( $this->sections !== null ) {
 			foreach ( array_keys( $this->sections ) as $key ) {
