@@ -50,7 +50,7 @@ class Affiliates_Utility {
 	 * Filter xss
 	 * 
 	 * @param string $string input
-	 * @return filtered string
+	 * @return string filtered string
 	 */
 	static function filter_xss( $string ) {
 		// Remove NUL characters (ignored by some browsers)
@@ -80,7 +80,7 @@ class Affiliates_Utility {
 	/**
 	 * Returns captcha field markup.
 	 * 
-	 * @return captcha field markup
+	 * @return string captcha field markup
 	 */
 	static function captcha_get( $value ) {
 		$style = 'display:none;';
@@ -180,7 +180,7 @@ class Affiliates_Utility {
 	 * 
 	 * @param string $old_status
 	 * @param string $new_status
-	 * @return new status or false on failure to verify
+	 * @return string|boolean new status or false on failure to verify
 	 */
 	static function verify_referral_status_transition( $old_status, $new_status ) {
 		$result = false;
@@ -206,7 +206,7 @@ class Affiliates_Utility {
 	 * Verifies affiliate states.
 	 *
 	 * @param string $status
-	 * @return status or false on failure to verify
+	 * @return string|boolean status or false on failure to verify
 	 */
 	static function verify_affiliate_status( $status ) {
 		$result = false;

@@ -894,7 +894,7 @@ class Affiliates_Shortcodes {
 	 * Exclude the affiliates_url shortcode.
 	 * 
 	 * @param array $shortcodes
-	 * @return unknown
+	 * @return array
 	 */
 	public static function no_texturize_shortcodes( $shortcodes ) {
 		if ( !in_array( 'affiliates_url', $shortcodes ) ) {

@@ -68,22 +68,22 @@ if ( !defined( 'ABSPATH' ) ) {
  * Date translation and format helper.
  */
 class DateHelper {
-	
+
 	/**
 	 * @var string $datetimeFormat The format to express a datetime.
 	 */
 	private static $datetimeFormat = 'Y-m-d H:i:s';
-	
+
 	/**
 	 * @var string $dateFormat The format to express a date.
 	 */
 	private static $dateFormat = 'Y-m-d';
-	
+
 	/**
 	 * @var string $timeFormat The format to express a time.
 	 */
 	private static $timeFormat = 'H:i:s';
-	
+
 	/**
 	 * Convert a datetime within the STZ to a datetime within the UTZ frame of reference.
 	 * 
@@ -94,30 +94,30 @@ class DateHelper {
 	static function s2u( $sdatetime, $offset = 0 ) {
 		return self::_t2t( $sdatetime, 's2u', $offset );
 	}
-	
+
 	/**
 	 * Convert a datetime within the UTZ to a datetime within the STZ frame of reference.
 	 * 
-	 * @param unknown_type $datetime datetime with respect to UTZ, i.e. seen by the user
+	 * @param string $datetime datetime with respect to UTZ, i.e. seen by the user
 	 * @param int $offset the offset in seconds is added to the datetime
-	 * @return datetime with respect to STZ, i.e. stored at the server
+	 * @return string datetime with respect to STZ, i.e. stored at the server
 	 */
 	static function u2s( $udatetime, $offset = 0 ) {
 		return self::_t2t( $udatetime, 'u2s', $offset );
 	}
-	
+
 	/**
 	 * Does the actual conversion either way.
 	 * 
 	 * @param string $datetime datetime to convert
 	 * @param string $f function to use, either u2s or s2u
 	 * @param int $offset the offset in seconds is added to the datetime
-	 * @return converted datetime
+	 * @return string converted datetime
 	 */
 	private static function _t2t( $datetime, $f, $offset = 0 ) {
-		 
+
 		$datetime_ = null;
-		
+
 		switch ( $f ) {
 			case 'u2s' :
 				$delta = 1;
@@ -126,7 +126,7 @@ class DateHelper {
 				$delta = -1;
 				break;
 		}
-		
+
 		// If supported, adjust the dates for the site's/server's timezone:
 		if ( self::timezone_supported() ) {
 			$time = time();
@@ -138,7 +138,7 @@ class DateHelper {
 			} else {
 				$site_dtz = new DateTimeZone( $default_tz );
 			}
-			
+
 			// Server dates and times are with respect to the default timezone.
 			// The $offset is the difference between the default timezone's offset
 			// and the user's timezone offset, or the negative value if we convert
@@ -147,7 +147,7 @@ class DateHelper {
 			$tz_offset = $default_dtz->getOffset( new DateTime( "@$time" ) ) - $site_dtz->getOffset( new DateTime( "@$time" ) );
 			//echo "<div>tz_offset=$tz_offset</div>";
 			$datetime_ = date( 'Y-m-d H:i:s', strtotime( $datetime ) + $tz_offset * $delta + $offset );
-			
+
 		} else {
 			// If there is no support for timezones, there's nothing we can do.
 			// Just check the date and return it if it makes sense.
@@ -155,49 +155,49 @@ class DateHelper {
 		}
 		return $datetime_;
 	}
-	
+
 	/**
 	 * Returns a datetime formatted as a date without time component.
 	 * 
 	 * @param string $datetime the datetime to format as a date
-	 * @return formatted date
+	 * @return string formatted date
 	 */
 	static function formatDate( $datetime ) {
 		return date( self::$dateFormat, strtotime( $datetime ) );
 	}
-	
+
 	/**
 	 * Returns a datetime formatted as a time without date component.
 	 * 
 	 * @param string $datetime the datetime to format as a time
-	 * @return formatted time
+	 * @return string formatted time
 	 */
 	static function formatTime( $datetime ) {
 		return date( self::$timeFormat, strtotime( $datetime ) );
 	}
-	
+
 	/**
 	 * Returns a formatted datetime with a date and a time component.
 	 * 
 	 * @param string $datetime the datetime to format
-	 * @return formatted datetime
+	 * @return string formatted datetime
 	 */
 	static function formatDatetime( $datetime ) {
 		return date( self::$datetimeFormat, strtotime( $datetime ) );
 	}
-	
+
 	static function getServerDateTimeZone() {
 		$default_tz = date_default_timezone_get();
 		$default_dtz = new DateTimeZone( $default_tz );
 		return $default_dtz;
 	}
-	
+
 	static function getUserDateTimeZone() {
 		$tzstring = get_option('timezone_string');
 		$site_dtz = new DateTimeZone( $tzstring );
 		return $site_dtz;
 	}
-	
+
 	/**
 	 * Substitutes deprecated wp_timezone_supported().
 	 * The current (WP 5.2.1) just returns true. Unfortunately we can

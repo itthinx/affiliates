@@ -33,13 +33,13 @@ class Affiliates_Options {
 	 * 
 	 * @param string $option the option id
 	 * @param mixed $default default value to retrieve if option is not set
-	 * @return option value, $default if set or null
+	 * @return mixed option value, $default if set or null
 	 */
 	function get_option( $option, $default = null ) {
-		
+
 		$current_user = wp_get_current_user();
 		$value = null;
-		
+
 		if ( !empty( $current_user ) ) {
 			$options = get_option( 'affiliates_plugin' );
 			if ( is_array( $options ) && isset( $options[$current_user->ID] ) && is_array( $options[$current_user->ID] ) )	{
@@ -53,7 +53,7 @@ class Affiliates_Options {
 		}
 		return $value;
 	}
-	
+
 	/**
 	 * Updates a setting.
 	 *
@@ -71,7 +71,7 @@ class Affiliates_Options {
 			update_option( 'affiliates_plugin', $options );
 		}
 	}
-	
+
 	/**
 	 * Deletes a setting.
 	 * 
@@ -87,7 +87,7 @@ class Affiliates_Options {
 			}
 		}
 	}
-	
+
 	/**
 	 * Deletes all settings.
 	 */

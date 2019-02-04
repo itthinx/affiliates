@@ -37,7 +37,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * @var boolean always true
 	 */
 	private $is_singleton = true;
-	
+
 	/**
 	 * @var string captcha field id
 	 */
@@ -59,11 +59,11 @@ class Affiliates_Contact extends WP_Widget {
 		extract( $args );
 
 		$title = apply_filters( 'widget_title', $instance['title'] );
-		
+
 		$widget_id = $args['widget_id'];
-		
+
 		// output
-		
+
 		echo $before_widget;
 		if ( !empty( $title ) ) {
 			echo $before_title . $title . $after_title;
@@ -73,61 +73,61 @@ class Affiliates_Contact extends WP_Widget {
 		} else {
 			$ext = '-' . $widget_id;
 		}
-		
+
 		if ( $this->is_singleton ) {
 			Affiliates_Contact::render_form( '', isset( $instance['amount'] ) ? $instance['amount'] : null, isset( $instance['currency_id'] ) ? $instance['currency_id'] : null );
 		} else {
 			Affiliates_Contact::render_form( $widget_id, isset( $instance['amount'] ) ? $instance['amount'] : null, isset( $instance['currency_id'] ) ? $instance['currency_id'] : null );
-		}			
+		}
 		echo $after_widget;
 	}
-		
+
 	/**
 	 * Renders the contact form.
 	 * Remember NOT to use any form input elements named 'name', 'year', ... 
 	 * @static
 	 */
 	public static function render_form( $widget_id = '', $amount = null, $currency_id = null ) {
-		
+
 		wp_enqueue_style( 'affiliates' );
-		
+
 		$method = 'post';
 		$action = "";
-		
+
 		if ( !empty( $widget_id ) ) {
 			$ext = '-' . $widget_id;
 		} else {
 			$ext = '';
 		}
-		
+
 		$submit_name   = 'affiliates-contact-submit';
 		$nonce         = 'affiliates-contact-nonce';
 		$nonce_action  = 'affiliates-contact';
 		$send          = false;
-		
+
 		$sender_class  = '';
 		$email_class   = '';
 		$message_class = '';
 		$captcha       = '';
-			
+
 		$error         = false;
-		
+
 		if ( !empty( $_POST[$submit_name] ) ) {
-			
+
 			if ( !wp_verify_nonce( $_POST[$nonce], $nonce_action ) ) {
 				$error = true; // fail but don't give clues
 			}
-			
+
 			$captcha = $_POST[Affiliates_Contact::$captcha_field_id];
 			if ( !Affiliates_Contact::captcha_validates( $captcha ) ) {
 				$error = true; // dumbot
 			}
-		
+
 			$sender  = Affiliates_Contact::filter( $_POST['sender'] );
 			$email   = Affiliates_Contact::filter( $_POST['email'] );
 			$message = Affiliates_Contact::filter( $_POST['message'] );
-			
-			
+
+
 			if ( empty( $sender ) ) {
 				$sender_class .= ' class="missing" ';
 				$error = true;
@@ -140,7 +140,7 @@ class Affiliates_Contact extends WP_Widget {
 				$message_class .= ' class="missing" ';
 				$error = true;
 			}
-			
+
 			if ( !$error ) {
 				$send = true;
 				$description = __( 'Affiliates contact form submission', 'affiliates' );
@@ -160,13 +160,13 @@ class Affiliates_Contact extends WP_Widget {
 					}
 				}
 			}
-			
+
 		} else {
 			$sender  = '';
 			$email   = '';
 			$message = '';
 		}
-			
+
 		if ( !$send ) {
 			echo '<div class="affiliates-contact" id="affiliates-contact' . $ext . '">';
 			echo '<img id="affiliates-contact-throbber' . $ext . '" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
@@ -188,28 +188,28 @@ class Affiliates_Contact extends WP_Widget {
 			echo '<p>' . __( 'Thanks!', 'affiliates' ) . '</p>';
 		}
 	}
-		
+
 	/**
 	 * Filters mail header injection, html, ... 
-	 * @param unknown_type $unfiltered_value
+	 * @param string $unfiltered_value
 	 */
 	public static function filter( $unfiltered_value ) {
 		$mail_filtered_value = preg_replace('/(%0A|%0D|content-type:|to:|cc:|bcc:)/i', '', $unfiltered_value );
 		return stripslashes( wp_filter_nohtml_kses( Affiliates_Contact::filter_xss( trim( strip_tags( $mail_filtered_value ) ) ) ) );
 	}
-		
+
 	/**
 	 * Filter xss
 	 * 
 	 * @param string $string input
-	 * @return filtered string
+	 * @return string filtered string
 	 */
 	public static function filter_xss( $string ) {
 		// Remove NUL characters (ignored by some browsers)
 		$string = str_replace(chr(0), '', $string);
 		// Remove Netscape 4 JS entities
 		$string = preg_replace('%&\s*\{[^}]*(\}\s*;?|$)%', '', $string);
-		
+
 		// Defuse all HTML entities
 		$string = str_replace('&', '&amp;', $string);
 		// Change back only well-formed entities in our whitelist
@@ -228,11 +228,11 @@ class Affiliates_Contact extends WP_Widget {
 		>                 # just a >
 		)%x', '', $string);
 	}
-		
+
 	/**
 	 * Returns captcha field markup.
 	 * 
-	 * @return captcha field markup
+	 * @return string captcha field markup
 	 */
 	public static function captcha_get( $value ) {
 		$style = 'display:none;';
@@ -253,14 +253,14 @@ class Affiliates_Contact extends WP_Widget {
 		}
 		return $result;
 	}
-		
+
 	/**
 	 * Save widget options
 	 * 
 	 * @see WP_Widget::update()
 	 */
 	function update( $new_instance, $old_instance ) {
-		$settings = $old_instance;			
+		$settings = $old_instance;
 		$settings['title'] = strip_tags( $new_instance['title'] );
 		if ( !empty( $new_instance['amount'] ) ) {
 			$settings['amount'] =  Affiliates_Utility::verify_referral_amount( $new_instance['amount'] );
@@ -274,7 +274,7 @@ class Affiliates_Contact extends WP_Widget {
 		}
 		return $settings;
 	}
-	
+
 	/**
 	 * Output admin widget options form
 	 * 
