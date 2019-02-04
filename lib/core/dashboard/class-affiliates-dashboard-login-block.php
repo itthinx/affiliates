@@ -33,6 +33,50 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'wp_init' ) );
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_assets' ) );
+		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_assets' ) );
+	}
+
+	public static function enqueue_block_editor_assets() {
+		// Our script used to edit and render the blocks.
+		wp_register_script(
+			'affiliates-dashboard-login-block',
+			plugins_url( 'js/dashboard-login-block.js', AFFILIATES_FILE ),
+			array( 'wp-blocks', 'wp-element' ),
+			AFFILIATES_CORE_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			'affiliates-dashboard-login-block',
+			'affiliates_dashboard_login_block',
+			array(
+				'title'                  => _x( 'Affiliates Dashboard Login', 'block title', 'affiliates' ),
+				'description'            => _x( 'Displays the Login form from the Affiliates Dashboard', 'block description', 'affiliates' ),
+				'keyword_affiliates'     => __( 'Affiliates', 'affiliates' ),
+				'keyword_dashboard'      => __( 'Dashboard', 'affiliates' ),
+				'keyword_login'          => __( 'Login', 'affiliates' ),
+				'dashboard_login_notice' => _x( 'Affiliates Dashboard Login', 'Notice shown when editing the Affiliates Dashboard Login block.', 'affiliates' )
+			)
+		);
+
+		// Our editor stylesheet - not required yet.
+		// wp_register_style(
+		//	'affiliates-dashboard-login-block-editor',
+		//	plugins_url( 'css/dashboard-blocks-editor.css', AFFILIATES_FILE ),
+		//	array( 'wp-edit-blocks' ),
+		//	AFFILIATES_CORE_VERSION
+		// );
+	}
+
+	public static function enqueue_block_assets() {
+		// Our front end stylesheet - not required yet.
+		// wp_register_style(
+		//	'affiliates-dashboard-login-block',
+		//	plugins_url( 'css/dashboard-blocks.css', AFFILIATES_FILE ),
+		//	array(),
+		//	AFFILIATES_CORE_VERSION
+		// );
 	}
 
 	/**
@@ -40,43 +84,6 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 	 */
 	public static function wp_init() {
 		if ( function_exists( 'register_block_type' ) ) {
-
-			// Our script used to edit and render the blocks.
-			wp_register_script(
-				'affiliates-dashboard-login-block',
-				plugins_url( 'js/dashboard-login-block.js', AFFILIATES_FILE ),
-				array( 'wp-blocks', 'wp-element' )
-			);
-
-			wp_localize_script(
-				'affiliates-dashboard-login-block',
-				'affiliates_dashboard_login_block',
-				array(
-					'title'                  => _x( 'Affiliates Dashboard Login', 'block title', 'affiliates' ),
-					'description'            => _x( 'Displays the Login form from the Affiliates Dashboard', 'block description', 'affiliates' ),
-					'keyword_affiliates'     => __( 'Affiliates', 'affiliates' ),
-					'keyword_dashboard'      => __( 'Dashboard', 'affiliates' ),
-					'keyword_login'          => __( 'Login', 'affiliates' ),
-					'dashboard_login_notice' => _x( 'Affiliates Dashboard Login', 'Notice shown when editing the Affiliates Dashboard Login block.', 'affiliates' )
-				)
-			);
-
-			// Our editor stylesheet - not required yet.
-			// wp_register_style(
-			//	'affiliates-dashboard-login-block-editor',
-			//	plugins_url( 'css/dashboard-blocks-editor.css', AFFILIATES_FILE ),
-			//	array( 'wp-edit-blocks' ),
-			//	AFFILIATES_CORE_VERSION
-			// );
-
-			// Our front end stylesheet - not required yet.
-			// wp_register_style(
-			//	'affiliates-dashboard-login-block',
-			//	plugins_url( 'css/dashboard-blocks.css', AFFILIATES_FILE ),
-			//	array(),
-			//	AFFILIATES_CORE_VERSION
-			// );
-
 			register_block_type(
 				'affiliates/dashboard-login',
 				array(

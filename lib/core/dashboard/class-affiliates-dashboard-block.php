@@ -33,6 +33,47 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'wp_init' ) );
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_assets' ) );
+		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_assets' ) );
+	}
+
+	public static function enqueue_block_editor_assets() {
+		// Our script used to edit and render the blocks.
+		wp_register_script(
+			'affiliates-dashboard-block',
+			plugins_url( 'js/dashboard-block.js', AFFILIATES_FILE ),
+			array( 'wp-blocks', 'wp-element' )
+		);
+
+		wp_localize_script(
+			'affiliates-dashboard-block',
+			'affiliates_dashboard_block',
+			array(
+				'title'              => _x( 'Affiliates Dashboard', 'block title', 'affiliates' ),
+				'description'        => _x( 'Displays the complete Affiliates Dashboard with its sections', 'block description', 'affiliates' ),
+				'keyword_affiliates' => __( 'Affiliates', 'affiliates' ),
+				'keyword_dashboard'  => __( 'Dashboard', 'affiliates' ),
+				'dashboard_notice'   => _x( 'Affiliates Dashboard', 'Notice shown when editing the Affiliates Dashboard Profile block as a non-affiliate.', 'affiliates' )
+			)
+		);
+
+		// Our editor stylesheet - not required yet.
+		// wp_register_style(
+		//	'affiliates-dashboard-block-editor',
+		//	plugins_url( 'css/dashboard-blocks-editor.css', AFFILIATES_FILE ),
+		//	array( 'wp-edit-blocks' ),
+		//	AFFILIATES_CORE_VERSION
+		// );
+	}
+
+	public static function enqueue_block_assets() {
+		// Our front end stylesheet - not required yet.
+		// wp_register_style(
+		//	'affiliates-dashboard-block',
+		//	plugins_url( 'css/dashboard-blocks.css', AFFILIATES_FILE ),
+		//	array(),
+		//	AFFILIATES_CORE_VERSION
+		// );
 	}
 
 	/**
@@ -40,42 +81,6 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 	 */
 	public static function wp_init() {
 		if ( function_exists( 'register_block_type' ) ) {
-
-			// Our script used to edit and render the blocks.
-			wp_register_script(
-				'affiliates-dashboard-block',
-				plugins_url( 'js/dashboard-block.js', AFFILIATES_FILE ),
-				array( 'wp-blocks', 'wp-element' )
-			);
-
-			wp_localize_script(
-				'affiliates-dashboard-block',
-				'affiliates_dashboard_block',
-				array(
-					'title'              => _x( 'Affiliates Dashboard', 'block title', 'affiliates' ),
-					'description'        => _x( 'Displays the complete Affiliates Dashboard with its sections', 'block description', 'affiliates' ),
-					'keyword_affiliates' => __( 'Affiliates', 'affiliates' ),
-					'keyword_dashboard'  => __( 'Dashboard', 'affiliates' ),
-					'dashboard_notice'   => _x( 'Affiliates Dashboard', 'Notice shown when editing the Affiliates Dashboard Profile block as a non-affiliate.', 'affiliates' )
-				)
-			);
-
-			// Our editor stylesheet - not required yet.
-			// wp_register_style(
-			//	'affiliates-dashboard-block-editor',
-			//	plugins_url( 'css/dashboard-blocks-editor.css', AFFILIATES_FILE ),
-			//	array( 'wp-edit-blocks' ),
-			//	AFFILIATES_CORE_VERSION
-			// );
-
-			// Our front end stylesheet - not required yet.
-			// wp_register_style(
-			//	'affiliates-dashboard-block',
-			//	plugins_url( 'css/dashboard-blocks.css', AFFILIATES_FILE ),
-			//	array(),
-			//	AFFILIATES_CORE_VERSION
-			// );
-
 			register_block_type(
 				'affiliates/dashboard',
 				array(
