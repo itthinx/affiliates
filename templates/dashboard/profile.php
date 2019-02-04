@@ -36,8 +36,14 @@ if ( !defined( 'ABSPATH' ) ) {
  * @var Affiliates_Dashboard_Profile $section Section object available for use in the template.
  */
 ?>
-<h2><?php esc_html_e( 'Profile', 'affiliates' ); ?></h2>
-<?php
-if ( affiliates_user_is_affiliate() ) {
-	echo Affiliates_Shortcodes::affiliates_fields( array() );
+<?php if ( affiliates_user_is_affiliate() ) : ?>
+	<h2><?php esc_html_e( 'Profile', 'affiliates' ); ?></h2>
+	<div class="dashboard-section dashboard-section-profile">
+		<?php echo Affiliates_Shortcodes::affiliates_fields( array() ); ?>
+	</div><?php // .dashboard-section-profile ?>
+<?php endif; ?>
+<style type="text/css">
+.dashboard-section-profile {
+	margin: 4px;
 }
+</style>

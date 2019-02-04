@@ -43,10 +43,10 @@ if ( !defined( 'ABSPATH' ) ) {
 			<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
 		</p>
 		<?php echo Affiliates_Registration::render_form(); ?>
-	</div>
+	</div><?php // .dashboard-section-registration ?>
 <?php endif; ?>
 <style type="text/css">
-.affiliates-dashboard .dashboard-section-registration {
+.dashboard-section-registration {
 	margin: 4px;
 }
 </style>

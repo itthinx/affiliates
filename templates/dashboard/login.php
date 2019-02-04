@@ -44,12 +44,12 @@ if ( !defined( 'ABSPATH' ) ) {
 	</div>
 <?php endif; ?>
 <style type="text/css">
-	.affiliates-dashboard .dashboard-section-login .login-username label,
-	.affiliates-dashboard .dashboard-section-login .login-password label {
+	.dashboard-section-login .login-username label,
+	.dashboard-section-login .login-password label {
 		display: block;
 	}
-	.affiliates-dashboard .dashboard-section-login .login-username input,
-	.affiliates-dashboard .dashboard-section-login .login-password input {
+	.dashboard-section-login .login-username input,
+	.dashboard-section-login .login-password input {
 		max-width: 100%;
 		width: 320px;
 	}

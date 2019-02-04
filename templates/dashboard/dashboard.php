@@ -84,7 +84,7 @@ do_action( 'affiliates_dashboard_before' );
 	?>
 	</div>
 	<?php do_action( 'affiliates_dashboard_after_sections' ); ?>
-</div>
+</div><?php // .affiliates-dashboard ?>
 <?php
 do_action( 'affiliates_dashboard_after' );
 ?>

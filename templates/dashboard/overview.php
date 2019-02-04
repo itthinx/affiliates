@@ -98,13 +98,13 @@ $link_info  = wp_kses(
 	<div class="affiliates-dashboard-logout">
 		<a href="<?php echo esc_url( wp_logout_url() ) ?>"><?php esc_html_e( 'Log out', 'affiliates' ); ?></a>
 	</div>
-</div>
+</div><?php // .dashboard-section-overview ?>
 
 <style type="text/css">
-.dashboard-section .stats-container {
+.dashboard-section-overview .stats-container {
 	margin: 0;
 }
-.dashboard-section .stats-item {
+.dashboard-section-overview .stats-item {
 	background-color: #f2f2f2;
 	border-radius: 4px;
 	margin: 4px;
@@ -112,44 +112,44 @@ $link_info  = wp_kses(
 	text-align: center;
 	font-size: 16px;
 }
-.dashboard-section .stats-item .stats-item-heading {
+.dashboard-section-overview .stats-item .stats-item-heading {
 	font-weight: bold;
 }
-.dashboard-section .stats-item .stats-item-value {
+.dashboard-section-overview .stats-item .stats-item-value {
 	font-size: 24px;
 }
-.dashboard-section .graph {
+.dashboard-section-overview .graph {
 	background-color: #fafafa;
 	border-radius: 4px;
 	margin: 4px;
 }
-.dashboard-section .legend {
+.dashboard-section-overview .legend {
 	display: flex;
 	text-align: center;
 	background-color: #f2f2f2;
 	border-radius: 4px;
 	margin: 4px;
 }
-.dashboard-section .legend-item {
+.dashboard-section-overview .legend-item {
 flex-grow:1;
 }
-.dashboard-section .legend-item.active {
+.dashboard-section-overview .legend-item.active {
 	background-color: #e0e0e0;
 	border-radius: 2px;
 }
-.dashboard-section .legend-item-label {
+.dashboard-section-overview .legend-item-label {
 	font-size: 14px;
 	display:inline-block;
 	vertical-align:middle;
 	padding: 4px;
 }
-.dashboard-section .legend-item-color {
+.dashboard-section-overview .legend-item-color {
 	width: 16px;
 	height: 16px;
 	display:inline-block;
 	vertical-align:middle;
 }
-.dashboard-section .affiliates-dashboard-logout {
+.dashboard-section-overview .affiliates-dashboard-logout {
 	margin: 4px;
 	padding: 4px;
 	text-align: right;
