@@ -52,8 +52,10 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 				'affiliates-dashboard-registration-block',
 				'affiliates_dashboard_registration_block',
 				array(
-					'keyword_affiliates'        => __( 'Affiliates', 'affiliates' ),
-					'keyword_dashboard'         => __( 'Dashboard', 'affiliates' ),
+					'title'                         => _x( 'Affiliates Dashboard Registration', 'block title', 'affiliates' ),
+					'description'                   => _x( 'Displays the Registration form from the Affiliates Dashboard', 'block description', 'affiliates' ),
+					'keyword_affiliates'            => __( 'Affiliates', 'affiliates' ),
+					'keyword_dashboard'             => __( 'Dashboard', 'affiliates' ),
 					'keyword_registration'          => __( 'Registration', 'affiliates' ),
 					'dashboard_registration_notice' => _x( 'Affiliates Dashboard Registration', 'Notice shown when editing the Affiliates Dashboard Registration block as a non-affiliate.', 'affiliates' )
 				)

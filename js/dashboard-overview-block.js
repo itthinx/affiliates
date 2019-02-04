@@ -28,8 +28,8 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-overview',
 		{
-			title       : 'Affiliates Dashboard Overview',
-			description : 'Overview section for the Affiliates Dashboard',
+			title       : affiliates_dashboard_overview_block.title,
+			description : affiliates_dashboard_overview_block.description,
 			icon        : 'chart-line',
 			category    : 'widgets',
 			keywords    : [ affiliates_dashboard_overview_block.keyword_affiliates, affiliates_dashboard_overview_block.keyword_dashboard, affiliates_dashboard_overview_block.keyword_login ],

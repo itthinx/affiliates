@@ -28,8 +28,8 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-earnings',
 		{
-			title       : 'Affiliates Dashboard Earnings',
-			description : 'Earnings section for the Affiliates Dashboard',
+			title       : affiliates_dashboard_earnings_block.title,
+			description : affiliates_dashboard_earnings_block.description,
 			icon        : 'chart-bar',
 			category    : 'widgets',
 			keywords    : [ affiliates_dashboard_earnings_block.keyword_affiliates, affiliates_dashboard_earnings_block.keyword_dashboard, affiliates_dashboard_earnings_block.keyword_login ],

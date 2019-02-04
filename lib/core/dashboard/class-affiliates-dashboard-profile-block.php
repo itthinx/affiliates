@@ -52,8 +52,10 @@ class Affiliates_Dashboard_Profile_Block extends Affiliates_Dashboard_Profile {
 				'affiliates-dashboard-profile-block',
 				'affiliates_dashboard_profile_block',
 				array(
-					'keyword_affiliates'        => __( 'Affiliates', 'affiliates' ),
-					'keyword_dashboard'         => __( 'Dashboard', 'affiliates' ),
+					'title'                    => _x( 'Affiliates Dashboard Profile', 'block title', 'affiliates' ),
+					'description'              => _x( 'Displays the Profile section from the Affiliates Dashboard', 'block description', 'affiliates' ),
+					'keyword_affiliates'       => __( 'Affiliates', 'affiliates' ),
+					'keyword_dashboard'        => __( 'Dashboard', 'affiliates' ),
 					'keyword_profile'          => __( 'Profile', 'affiliates' ),
 					'dashboard_profile_notice' => _x( 'Affiliates Dashboard Profile', 'Notice shown when editing the Affiliates Dashboard Profile block as a non-affiliate.', 'affiliates' )
 				)

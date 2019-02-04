@@ -28,8 +28,8 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-registration',
 		{
-			title       : 'Affiliates Dashboard Registration',
-			description : 'Registration section for the Affiliates Dashboard',
+			title       : affiliates_dashboard_registration_block.title,
+			description : affiliates_dashboard_registration_block.description,
 			icon        : 'id',
 			category    : 'widgets',
 			keywords    : [ affiliates_dashboard_registration_block.keyword_affiliates, affiliates_dashboard_registration_block.keyword_dashboard, affiliates_dashboard_registration_block.keyword_login ],

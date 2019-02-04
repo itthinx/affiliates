@@ -52,6 +52,8 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 				'affiliates-dashboard-login-block',
 				'affiliates_dashboard_login_block',
 				array(
+					'title'                  => _x( 'Affiliates Dashboard Login', 'block title', 'affiliates' ),
+					'description'            => _x( 'Displays the Login form from the Affiliates Dashboard', 'block description', 'affiliates' ),
 					'keyword_affiliates'     => __( 'Affiliates', 'affiliates' ),
 					'keyword_dashboard'      => __( 'Dashboard', 'affiliates' ),
 					'keyword_login'          => __( 'Login', 'affiliates' ),

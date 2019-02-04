@@ -52,6 +52,8 @@ class Affiliates_Dashboard_Overview_Block extends Affiliates_Dashboard_Overview 
 				'affiliates-dashboard-overview-block',
 				'affiliates_dashboard_overview_block',
 				array(
+					'title'                     => _x( 'Affiliates Dashboard Overview', 'block title', 'affiliates' ),
+					'description'               => _x( 'Displays the Overview section from the Affiliates Dashboard', 'block description', 'affiliates' ),
 					'keyword_affiliates'        => __( 'Affiliates', 'affiliates' ),
 					'keyword_dashboard'         => __( 'Dashboard', 'affiliates' ),
 					'keyword_overview'          => __( 'Overview', 'affiliates' ),

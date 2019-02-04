@@ -52,6 +52,8 @@ class Affiliates_Dashboard_Earnings_Block extends Affiliates_Dashboard_Earnings 
 				'affiliates-dashboard-earnings-block',
 				'affiliates_dashboard_earnings_block',
 				array(
+					'title'                     => _x( 'Affiliates Dashboard Earnings', 'block title', 'affiliates' ),
+					'description'               => _x( 'Displays the Earnings section from the Affiliates Dashboard', 'block description', 'affiliates' ),
 					'keyword_affiliates'        => __( 'Affiliates', 'affiliates' ),
 					'keyword_dashboard'         => __( 'Dashboard', 'affiliates' ),
 					'keyword_earnings'          => __( 'Earnings', 'affiliates' ),
