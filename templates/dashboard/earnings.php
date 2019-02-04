@@ -197,13 +197,13 @@ if ( !defined( 'ABSPATH' ) ) {
 	//
 ?>
 <style type="text/css">
-.dashboard-section-earnings-section .earnings-container {
+.dashboard-section-earnings .earnings-container {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 40% 30% 30%;
 	margin: 4px;
 }
-.dashboard-section-earnings-section .earnings-container .cell {
+.dashboard-section-earnings .earnings-container .cell {
 	word-break: break-all;
 	padding: 4px;
 	background-color: #f0f0f0;
