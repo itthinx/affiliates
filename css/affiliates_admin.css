@@ -472,6 +472,9 @@ li.add-ons:hover {
 	padding: 0 10%;
 	font-size: 1.618em;
 	line-height: 2em;
+	margin-bottom: 0.62em;
+	border-bottom: 2px solid #e2e2e2;
+	padding-bottom: 0.62em;
 }
 .referral-stats-container .status {
 	grid-column: 1;

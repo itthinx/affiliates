@@ -486,8 +486,8 @@ function affiliates_admin() {
 			echo '<div class="count">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
 			echo '<div class="amount">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 			foreach ( $statuses as $status_id => $status ) {
-				$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
 				if ( isset( $stats[$status_id] ) ) {
+					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
 					printf(
 						'<div class="status">%s %s</div><div class="count">%d</div><div class="amount">%s %s</div>',
 						$status['icon'],
