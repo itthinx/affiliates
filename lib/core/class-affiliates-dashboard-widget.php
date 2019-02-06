@@ -118,8 +118,9 @@ class Affiliates_Dashboard_Widget {
 			$output .= '<ul>';
 			if ( $total ) {
 				foreach( $total as $currency => $amount ) {
+					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $amount );
 					$output .= '<li>';
-					$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $amount ); // translators: first is a three-letter currency code, second is a monetary amount
+					$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $display_amount ); // translators: first is a three-letter currency code, second is a monetary amount
 					$output .= '</li>';
 				}
 			} else {
