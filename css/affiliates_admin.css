@@ -466,3 +466,41 @@ li.add-ons:hover {
 	-o-transition: width 0.3s ease-out;
 	width: 272px;
 }
+.referral-stats-container {
+	display: grid;
+	grid-columns: 50% 25% 25%;
+	padding: 0 10%;
+	font-size: 1.618em;
+	line-height: 2em;
+}
+.referral-stats-container .status {
+	grid-column: 1;
+	text-align: left;
+}
+.referral-stats-container .count {
+	grid-column: 2;
+	text-align: center;
+}
+.referral-stats-container .amount {
+	grid-column: 3;
+	text-align: right;
+}
+.click-stats-container {
+	display: grid;
+	grid-columns: 50% 50%;
+	padding: 0 10%;
+	font-size: 1.618em;
+	line-height: 2em;
+}
+.click-stats-container .hits.count,
+.click-stats-container .visits.count {
+	grid-column: 1;
+	text-align: right;
+	margin: 0 0.62em;
+}
+.click-stats-container .hits.label,
+.click-stats-container .visits.label {
+	grid-column: 2;
+	text-align: left;
+	margin: 0 0.62em;
+}
