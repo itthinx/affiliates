@@ -476,6 +476,11 @@ li.add-ons:hover {
 	border-bottom: 2px solid #e2e2e2;
 	padding-bottom: 0.62em;
 }
+.referral-stats-container .status.heading,
+.referral-stats-container .count.heading,
+.referral-stats-container .amount.heading {
+	text-decoration: underline;
+}
 .referral-stats-container .status {
 	grid-column: 1;
 	text-align: left;

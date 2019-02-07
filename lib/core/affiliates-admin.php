@@ -482,9 +482,9 @@ function affiliates_admin() {
 	if ( count( $referral_stats ) > 0 ) {
 		foreach ( $referral_stats as $currency_id => $stats ) {
 			echo '<div class="referral-stats-container">';
-			echo '<div class="status">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
-			echo '<div class="count">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
-			echo '<div class="amount">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
+			echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+			echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
+			echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 			foreach ( $statuses as $status_id => $status ) {
 				if ( isset( $stats[$status_id] ) ) {
 					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
@@ -502,9 +502,9 @@ function affiliates_admin() {
 		}
 	} else {
 		echo '<div class="referral-stats-container">';
-		echo '<div class="status">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
-		echo '<div class="count">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
-		echo '<div class="amount">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
+		echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+		echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
+		echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 		echo '<div class="status">&mdash;</div>';
 		echo '<div class="count">&mdash;</div>';
 		echo '<div class="amount">&mdash;</div>';
