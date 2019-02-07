@@ -32,17 +32,17 @@ define( 'AFFILIATES_ADMIN_HITS_AFF_NONCE_2', 'affiliates-admin-hits-nonce-2' );
 define( 'AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE', 'affiliates-admin-hits-filter-nonce' );
 
 include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
-	
+
 function affiliates_admin_hits_affiliate() {
-	
+
 	global $wpdb, $affiliates_options;
-	
+
 	$output = '';
-	
+
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
 		wp_die( __( 'Access denied.', 'affiliates' ) );
 	}
-		
+
 	if (
 		isset( $_POST['from_date'] ) ||
 		isset( $_POST['thru_date'] ) ||
@@ -57,7 +57,7 @@ function affiliates_admin_hits_affiliate() {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	// filters
 	$from_date          = $affiliates_options->get_option( 'hits_affiliate_from_date', null );
 	$thru_date          = $affiliates_options->get_option( 'hits_affiliate_thru_date', null );
@@ -67,7 +67,7 @@ function affiliates_admin_hits_affiliate() {
 	$expanded_referrals = $affiliates_options->get_option( 'hits_affiliate_expanded_referrals', null );
 	$expanded_hits      = $affiliates_options->get_option( 'hits_affiliate_expanded_hits', null );
 	$show_inoperative   = $affiliates_options->get_option( 'hits_affiliate_show_inoperative', null );
-		
+
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'hits_affiliate_from_date' );
 		$affiliates_options->delete_option( 'hits_affiliate_thru_date' );
@@ -116,7 +116,7 @@ function affiliates_admin_hits_affiliate() {
 			}
 		} else if ( isset( $_POST['affiliate_id'] ) ) { // empty && isset => '' => all
 			$affiliate_id = null;
-			$affiliates_options->delete_option( 'hits_affiliate_affiliate_id' );	
+			$affiliates_options->delete_option( 'hits_affiliate_affiliate_id' );
 		}
 
 		if ( !empty( $_POST['status'] ) ) {
@@ -170,26 +170,26 @@ function affiliates_admin_hits_affiliate() {
 			$affiliates_options->delete_option( 'hits_affiliate_show_inoperative' );
 		}
 	}
-	
+
 	if ( isset( $_POST['row_count'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_1], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	if ( isset( $_POST['paged'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_2], 'admin' ) ) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
-	
+
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'paged', $current_url );
-	
+
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$hits_table = _affiliates_get_tablename( 'hits' );
-	
+
 	$output .=
 		'<div>' .
 			'<h1>' .
@@ -198,21 +198,18 @@ function affiliates_admin_hits_affiliate() {
 		'</div>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
-	
+
 	if ($row_count <= 0) {
 		$row_count = $affiliates_options->get_option( 'hits_affiliate_per_page', AFFILIATES_HITS_AFFILIATE_PER_PAGE );
 	} else {
 		$affiliates_options->update_option('hits_affiliate_per_page', $row_count );
 	}
-	$offset = isset( $_GET['offset'] ) ? intval( $_GET['offset'] ) : 0;
-	if ( $offset < 0 ) {
-		$offset = 0;
-	}
-	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 0;
-	if ( $paged < 0 ) {
-		$paged = 0;
+	// current page
+	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 1;
+	if ( $paged < 1 ) {
+		$paged = 1;
 	} 
-	
+
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'date' :
@@ -225,7 +222,7 @@ function affiliates_admin_hits_affiliate() {
 		default:
 			$orderby = 'name';
 	}
-	
+
 	$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
 	switch ( $order ) {
 		case 'asc' :
@@ -266,32 +263,7 @@ function affiliates_admin_hits_affiliate() {
 		$filters .= " AND h.affiliate_id = %d ";
 		$filter_params[] = $affiliate_id;
 	}
-	
-	// how many are there ?
-	$count_query = $wpdb->prepare(
-		"SELECT affiliate_id FROM $hits_table h
-		$filters
-		GROUP BY affiliate_id
-		",
-		$filter_params
-	);
-	
-	$wpdb->query( $count_query );
-	$count = $wpdb->num_rows;
-	
-	if ( $count > $row_count ) {
-		$paginate = true;
-	} else {
-		$paginate = false;
-	}
-	$pages = ceil ( $count / $row_count );
-	if ( $paged > $pages ) {
-		$paged = $pages;
-	}
-	if ( $paged != 0 ) {
-		$offset = ( $paged - 1 ) * $row_count;
-	}
-				
+
 	// Get the summarized results, these are grouped by date.
 	// Note: Referrals on dates without a hit will not be included.
 	// @see notes about this in affiliates_admin_hits()
@@ -307,24 +279,40 @@ function affiliates_admin_hits_affiliate() {
 	if ( is_array( $status ) && count( $status ) > 0 ) {
 		$status_condition = " AND status IN ('" . implode( "','", $status ) . "') ";
 	}
-	$query = $wpdb->prepare("
-			SELECT
-				*,
-				count(distinct ip) visits,
-				sum(count) hits,
-				(SELECT COUNT(*) FROM $referrals_table WHERE affiliate_id = h.affiliate_id $date_condition $status_condition ) referrals,
-				((SELECT COUNT(*) FROM $referrals_table WHERE affiliate_id = h.affiliate_id $date_condition $status_condition )/COUNT(DISTINCT ip)) ratio
-			FROM $hits_table h
-			LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-			$filters
-			GROUP BY h.affiliate_id
-			ORDER BY $orderby $order
-			LIMIT $row_count OFFSET $offset
-			",
-			$filter_params
-	);
 
-	$results = $wpdb->get_results( $query, OBJECT );
+	do {
+		$repeat = false;
+		$offset = ( $paged - 1 ) * $row_count;
+
+		$query = $wpdb->prepare(
+			"SELECT SQL_CALC_FOUND_ROWS " .
+			"*, " .
+			"count(distinct ip) visits, " .
+			"sum(count) hits, " .
+			"(SELECT COUNT(*) FROM $referrals_table WHERE affiliate_id = h.affiliate_id $date_condition $status_condition ) referrals, " .
+			"((SELECT COUNT(*) FROM $referrals_table WHERE affiliate_id = h.affiliate_id $date_condition $status_condition )/COUNT(DISTINCT ip)) ratio " .
+			"FROM $hits_table h " .
+			"LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id " .
+			"$filters " .
+			"GROUP BY h.affiliate_id " .
+			"ORDER BY $orderby $order " .
+			"LIMIT $row_count OFFSET $offset",
+			$filter_params
+		);
+
+		$results = $wpdb->get_results( $query, OBJECT );
+		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
+		if ( $count > $row_count ) {
+			$paginate = true;
+		} else {
+			$paginate = false;
+		}
+		$pages = max( array( 1, ceil( $count / $row_count ) ) );
+		if ( $paged > $pages ) {
+			$paged = $pages;
+			$repeat = true;
+		}
+	} while ( $repeat );
 
 	$column_display_names = array(
 		'name'         => __( 'Affiliate', 'affiliates' ),
@@ -333,7 +321,7 @@ function affiliates_admin_hits_affiliate() {
 		'referrals'    => __( 'Referrals', 'affiliates' ),
 		'ratio'        => __( 'Ratio', 'affiliates' )
 	);
-	
+
 	$output .= '<div id="" class="hits-affiliates-overview">';
 
 	$affiliates = affiliates_get_affiliates( true, !$show_inoperative );
@@ -400,7 +388,7 @@ function affiliates_admin_hits_affiliate() {
 				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
 				'</label>' .
 				'</div>' .
-				
+
 				'<div class="filter-section">' .
 				'<span style="padding-right:1em">' . __( 'Status', 'affiliates' ) . '</span>' .
 				' ' .
@@ -438,7 +426,7 @@ function affiliates_admin_hits_affiliate() {
 				'</div>' .
 			'</form>' .
 		'</div>';
-							
+
 	$output .= '
 		<div class="page-options">
 			<form id="setrowcount" action="" method="post">
@@ -452,7 +440,7 @@ function affiliates_admin_hits_affiliate() {
 			</form>
 		</div>
 		';
-		
+
 	if ( $paginate ) {
 		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
@@ -465,13 +453,13 @@ function affiliates_admin_hits_affiliate() {
 		$output .= '</div>';
 		$output .= '</form>';
 	}
-					
+
 	$output .= '
 		<table id="" class="wp-list-table widefat fixed" cellspacing="0">
 		<thead>
 			<tr>
 			';
-	
+
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
 			'orderby' => $key,
@@ -487,15 +475,15 @@ function affiliates_admin_hits_affiliate() {
 		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
-	
+
 	$output .= '</tr>
 		</thead>
 		<tbody>
 		';
-		
+
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
-			
+
 			$result = $results[$i];
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
@@ -505,9 +493,9 @@ function affiliates_admin_hits_affiliate() {
 			$output .= "<td class='referrals'>$result->referrals</td>";
 			$output .= "<td class='ratio'>$result->ratio</td>";
 			$output .= '</tr>';
-			
+
 			if ( $expanded || $expanded_referrals || $expanded_hits ) {
-				
+
 				//
 				// expanded : referrals ----------------------------------------
 				//
@@ -523,7 +511,7 @@ function affiliates_admin_hits_affiliate() {
 						$referrals_filters .= " AND datetime >= %s ";
 						$referrals_filter_params[] = $from_datetime;
 					} else if ( $thru_date ) {
-						$referrals_filters .= " datetime < %s ";
+						$referrals_filters .= " AND datetime < %s ";
 						$referrals_filter_params[] = $thru_datetime;
 					}
 					$referrals_orderby = "datetime $order";
@@ -567,7 +555,7 @@ function affiliates_admin_hits_affiliate() {
 						$output .= '</td></tr>';
 					}
 				} // if $expanded_referrals
-				
+
 				//
 				// expanded : hits ----------------------------------------
 				//
@@ -584,7 +572,7 @@ function affiliates_admin_hits_affiliate() {
 						$details_filters .= " AND datetime >= %s ";
 						$details_filter_params[] = $from_datetime;
 					} else if ( $thru_date ) {
-						$details_filters .= " datetime < %s ";
+						$details_filters .= " AND datetime < %s ";
 						$details_filter_params[] = $thru_datetime;
 					}
 					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
@@ -645,16 +633,16 @@ function affiliates_admin_hits_affiliate() {
 	} else {
 		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
 	}
-		
+
 	$output .= '</tbody>';
 	$output .= '</table>';
-					
+
 	if ( $paginate ) {
 		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
 		$pagination = new Affiliates_Pagination($count, null, $row_count);
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
-		$output .= '</div>';			
+		$output .= '</div>';
 	}
 
 	$output .= '</div>'; // .visits-overview

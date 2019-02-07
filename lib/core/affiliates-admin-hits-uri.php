@@ -193,13 +193,10 @@ function affiliates_admin_hits_uri() {
 	} else {
 		$affiliates_options->update_option('affiliates_hits_uri_per_page', $row_count );
 	}
-	$offset = isset( $_GET['offset'] ) ? intval( $_GET['offset'] ) : 0;
-	if ( $offset < 0 ) {
-		$offset = 0;
-	}
-	$paged = isset( $_REQUEST['uris_paged'] ) ? intval( $_REQUEST['uris_paged'] ) : 0;
-	if ( $paged < 0 ) {
-		$paged = 0;
+	// current page
+	$paged = isset( $_REQUEST['uris_paged'] ) ? intval( $_REQUEST['uris_paged'] ) : 1;
+	if ( $paged < 1 ) {
+		$paged = 1;
 	}
 
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
@@ -280,60 +277,46 @@ function affiliates_admin_hits_uri() {
 		$filters .= $status_condition;
 	}
 
-	// how many are there ?
-	$count_query = $wpdb->prepare(
-		"SELECT
-		h.affiliate_id,
-		COUNT(r.hit_id) referrals
-		FROM $hits_table h
-		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
-		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
-		$having",
-		$filter_params
-	);
-
-	$wpdb->query( $count_query );
-	$count = $wpdb->num_rows;
-
-	if ( $count > $row_count ) {
-		$paginate = true;
-	} else {
-		$paginate = false;
-	}
-	$pages = ceil ( $count / $row_count );
-	if ( $paged > $pages ) {
-		$paged = $pages;
-	}
-	if ( $paged != 0 ) {
+	do {
+		$repeat = false;
 		$offset = ( $paged - 1 ) * $row_count;
-	}
 
-	$query = $wpdb->prepare(
-		"SELECT
-		h.*,
-		a.name,
-		su.uri src_uri,
-		du.uri dest_uri,
-		COUNT(distinct h.ip) visits,
-		SUM(count) hits,
-		COUNT(r.hit_id) referrals
-		FROM $hits_table h
-		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
-		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
-		$having
-		ORDER BY $orderby $order
-		LIMIT $row_count OFFSET $offset",
-		$filter_params
-	);
+		$query = $wpdb->prepare(
+			"SELECT SQL_CALC_FOUND_ROWS " .
+			"h.*, " .
+			"a.name, " .
+			"su.uri src_uri, " .
+			"du.uri dest_uri, " .
+			"COUNT(distinct h.ip) visits, " .
+			"SUM(count) hits, " .
+			"COUNT(r.hit_id) referrals " .
+			"FROM $hits_table h " .
+			"LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id " .
+			"LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id " .
+			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
+			"LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id " .
+			"$filters " .
+			"GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id " .
+			"$having " .
+			"ORDER BY $orderby $order " .
+			"LIMIT $row_count OFFSET $offset",
+			$filter_params
+		);
 
-	$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT );
+
+		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
+		if ( $count > $row_count ) {
+			$paginate = true;
+		} else {
+			$paginate = false;
+		}
+		$pages = max( array( 1, ceil( $count / $row_count ) ) );
+		if ( $paged > $pages ) {
+			$paged = $pages;
+			$repeat = true;
+		}
+	} while ( $repeat );
 
 	$column_display_names = array(
 		'date'      => __( 'Date', 'affiliates' ) . '*',
