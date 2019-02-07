@@ -331,14 +331,11 @@ function affiliates_admin_affiliates() {
 	} else {
 		$affiliates_options->update_option('affiliates_per_page', $row_count );
 	}
-	$offset = isset( $_GET['offset'] ) ? intval( $_GET['offset'] ) : 0;
-	if ( $offset < 0 ) {
-		$offset = 0;
+	// current page
+	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 1;
+	if ( $paged < 1 ) {
+		$paged = 1;
 	}
-	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 0;
-	if ( $paged < 0 ) {
-		$paged = 0;
-	} 
 
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
@@ -421,23 +418,34 @@ function affiliates_admin_affiliates() {
 		$filters = '';
 	}
 
-	$count_query = $wpdb->prepare( "SELECT COUNT(*) FROM $affiliates_table LEFT JOIN $affiliates_users_table ON $affiliates_table.affiliate_id = $affiliates_users_table.affiliate_id LEFT JOIN $wpdb->users on $affiliates_users_table.user_id = $wpdb->users.ID $filters", $filter_params );
-	$count  = $wpdb->get_var( $count_query );
-	if ( $count > $row_count ) {
-		$paginate = true;
-	} else {
-		$paginate = false;
-	}
-	$pages = ceil ( $count / $row_count );
-	if ( $paged > $pages ) {
-		$paged = $pages;
-	}
-	if ( $paged != 0 ) {
+	do {
+		$repeat = false;
 		$offset = ( $paged - 1 ) * $row_count;
-	}
 
-	$query = $wpdb->prepare( "SELECT $affiliates_table.*, $wpdb->users.* FROM $affiliates_table LEFT JOIN $affiliates_users_table ON $affiliates_table.affiliate_id = $affiliates_users_table.affiliate_id LEFT JOIN $wpdb->users on $affiliates_users_table.user_id = $wpdb->users.ID $filters ORDER BY $orderby $order LIMIT $row_count OFFSET $offset", $filter_params );
-	$results = $wpdb->get_results( $query, OBJECT );
+		$query = $wpdb->prepare(
+			"SELECT SQL_CALC_FOUND_ROWS " .
+			"$affiliates_table.*, " .
+			"$wpdb->users.* " .
+			"FROM $affiliates_table " .
+			"LEFT JOIN $affiliates_users_table ON $affiliates_table.affiliate_id = $affiliates_users_table.affiliate_id " .
+			"LEFT JOIN $wpdb->users on $affiliates_users_table.user_id = $wpdb->users.ID $filters " .
+			"ORDER BY $orderby $order " .
+			"LIMIT $row_count OFFSET $offset",
+			$filter_params
+		);
+		$results = $wpdb->get_results( $query, OBJECT );
+		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
+		if ( $count > $row_count ) {
+			$paginate = true;
+		} else {
+			$paginate = false;
+		}
+		$pages = max( array( 1, ceil( $count / $row_count ) ) );
+		if ( $paged > $pages ) {
+			$paged = $pages;
+			$repeat = true;
+		}
+	} while ( $repeat );
 
 	$column_display_names = array(
 		'affiliate_id' => __( 'Id', 'affiliates' ),
