@@ -185,8 +185,6 @@ function affiliates_admin_hits() {
 		case 'referrals' :
 		case 'ratio' :
 			break;
-		case 'affiliate_id' :
-			$orderby = 'name';
 		default:
 			$orderby = 'date';
 	}
@@ -210,23 +208,20 @@ function affiliates_admin_hits() {
 	$filter_params = array( 1 );
 	// We now have the desired dates from the user's point of view, i.e. in her timezone.
 	// If supported, adjust the dates for the site's timezone:
-	if ( $from_date ) {
-		$from_datetime = DateHelper::u2s( $from_date );
+	$u2s_from_date = $from_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $from_date ) ) ) : null;
+	$u2s_thru_date = $thru_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $thru_date ) ) ) : null;
+	if ( $u2s_from_date && $u2s_thru_date ) {
+		$filters .= " AND date >= %s AND date <= %s ";
+		$filter_params[] = $u2s_from_date;
+		$filter_params[] = $u2s_thru_date;
+	} else if ( $u2s_from_date ) {
+		$filters .= " AND date >= %s ";
+		$filter_params[] = $u2s_from_date;
+	} else if ( $u2s_thru_date ) {
+		$filters .= " AND date <= %s ";
+		$filter_params[] = $u2s_thru_date;
 	}
-	if ( $thru_date ) {
-		$thru_datetime = DateHelper::u2s( $thru_date, 24*3600 );
-	}
-	if ( $from_date && $thru_date ) {
-		$filters .= " AND datetime >= %s AND datetime < %s ";
-		$filter_params[] = $from_datetime;
-		$filter_params[] = $thru_datetime;
-	} else if ( $from_date ) {
-		$filters .= " AND datetime >= %s ";
-		$filter_params[] = $from_datetime;
-	} else if ( $thru_date ) {
-		$filters .= " AND datetime < %s ";
-		$filter_params[] = $thru_datetime;
-	}
+
 	if ( $affiliate_id ) {
 		$filters .= " AND affiliate_id = %d ";
 		$filter_params[] = $affiliate_id;
@@ -249,19 +244,18 @@ function affiliates_admin_hits() {
 		// We have a separate page which shows all referrals.
 		$query = $wpdb->prepare(
 			"SELECT SQL_CALC_FOUND_ROWS " .
-			"*, " .
-			"count(distinct ip) visits, " .
-			"sum(count) hits, " .
-			"(select count(*) from $referrals_table where date(datetime) = h.date ". ( $affiliate_id ? " AND affiliate_id = " . intval( $affiliate_id ) . " " : "" )  .") referrals, " .
-			"((select count(*) from $referrals_table where date(datetime) = h.date ". ( $affiliate_id ? " AND affiliate_id = " . intval( $affiliate_id ) . " " : "" )  .")/count(distinct ip)) ratio " .
-			"FROM $hits_table h " .
-			"$filters " .
-			"GROUP BY date " .
+			"hits.date, " .
+			"hits.hits, " .
+			"hits.visits, " .
+			"IF ( referrals.count IS NOT NULL, referrals.count, 0 ) AS referrals, " .
+			"IF ( referrals.count IS NOT NULL AND hits.visits > 0, referrals.count / hits.visits, 0 ) AS ratio " .
+			"FROM " .
+			"( SELECT date, COUNT(DISTINCT ip) AS visits, SUM(count) AS hits FROM $hits_table $filters GROUP BY date ) AS hits " .
+			"LEFT JOIN ( SELECT COUNT(*) AS count, date(datetime) AS date FROM $referrals_table GROUP BY date(datetime) ) AS referrals ON hits.date = referrals.date " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
-
 		$results = $wpdb->get_results( $query, OBJECT );
 
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
