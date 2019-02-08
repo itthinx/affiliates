@@ -260,8 +260,8 @@ function affiliates_admin_hits_affiliate() {
 		$status_condition = " AND status IN ('" . implode( "','", $status ) . "') ";
 	}
 
-	$u2s_from_date = $from_date ? date( 'Y-m-d', strototime( DateHelper::u2s( $from_date ) ) ) : null;
-	$u2s_thru_date = $thru_date ? date( 'Y-m-d', strototime( DateHelper::u2s( $thru_date ) ) ) : null;
+	$u2s_from_date = $from_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $from_date ) ) ) : null;
+	$u2s_thru_date = $thru_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $thru_date ) ) ) : null;
 
 	$date_condition = "";
 	if ( $u2s_from_date && $u2s_thru_date ) {
