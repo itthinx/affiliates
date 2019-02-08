@@ -265,11 +265,11 @@ function affiliates_admin_hits_affiliate() {
 
 	$date_condition = "";
 	if ( $u2s_from_date && $u2s_thru_date ) {
-		$date_condition = " AND date >= '" . $u2s_from_date . "' AND date <= '" . $u2s_thru_date ."' ";
+		$date_condition = " AND date >= '$u2s_from_date' AND date <= '$u2s_thru_date' ";
 	} else if ( $u2s_from_date ) {
-		$date_condition = " AND date >= '" . $u2s_from_date . "' ";
+		$date_condition = " AND date >= '$u2s_from_date' ";
 	} else if ( $u2s_thru_date ) {
-		$date_condition = " AND date < '" . $u2s_thru_date . "' ";
+		$date_condition = " AND date <= '$u2s_thru_date' ";
 	}
 
 	$hits_subquery_where = '';
@@ -571,7 +571,7 @@ function affiliates_admin_hits_affiliate() {
 						$details_filters .= " AND date >= %s ";
 						$details_filter_params[] = $u2s_from_date;
 					} else if ( $u2s_thru_date ) {
-						$details_filters .= " AND datetime < %s ";
+						$details_filters .= " AND date <= %s ";
 						$details_filter_params[] = $u2s_thru_date;
 					}
 					$user_agents_table = _affiliates_get_tablename( 'user_agents' );
