@@ -485,7 +485,7 @@ function affiliates_admin_hits_affiliate() {
 
 			$result = $results[$i];
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . "</td>";
+			$output .= '<td class="affiliate-name">' . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . ' [' . intval($result->affiliate_id ) . ']' . '</td>';
 			$output .= "<td class='visits'>$result->visits</td>";
 			$output .= "<td class='hits'>$result->hits</td>";
 			$output .= "<td class='referrals'>$result->referrals</td>";
