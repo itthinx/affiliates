@@ -235,23 +235,20 @@ function affiliates_admin_hits_uri() {
 	$filter_params = array( 1 );
 	// We now have the desired dates from the user's point of view, i.e. in her timezone.
 	// If supported, adjust the dates for the site's timezone:
-	if ( $from_date ) {
-		$from_datetime = DateHelper::u2s( $from_date );
+	$u2s_from_date = $from_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $from_date ) ) ) : null;
+	$u2s_thru_date = $thru_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $thru_date ) ) ) : null;
+	if ( $u2s_from_date && $u2s_thru_date ) {
+		$filters .= " AND h.date >= %s AND h.date <= %s ";
+		$filter_params[] = $u2s_from_date;
+		$filter_params[] = $u2s_thru_date;
+	} else if ( $u2s_from_date ) {
+		$filters .= " AND h.date >= %s ";
+		$filter_params[] = $u2s_from_date;
+	} else if ( $u2s_thru_date ) {
+		$filters .= " AND h.date <= %s ";
+		$filter_params[] = $u2s_thru_date;
 	}
-	if ( $thru_date ) {
-		$thru_datetime = DateHelper::u2s( $thru_date, 24*3600 );
-	}
-	if ( $from_date && $thru_date ) {
-		$filters .= " AND h.datetime >= %s AND h.datetime <= %s ";
-		$filter_params[] = $from_datetime;
-		$filter_params[] = $thru_datetime;
-	} else if ( $from_date ) {
-		$filters .= " AND h.datetime >= %s ";
-		$filter_params[] = $from_datetime;
-	} else if ( $thru_date ) {
-		$filters .= " AND h.datetime < %s ";
-		$filter_params[] = $thru_datetime;
-	}
+
 	if ( $affiliate_id ) {
 		$filters .= " AND h.affiliate_id = %d ";
 		$filter_params[] = $affiliate_id;
