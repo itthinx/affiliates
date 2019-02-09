@@ -46,6 +46,7 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['affiliate_id'] ) ||
 		isset( $_POST['src_uri'] ) ||
 		isset( $_POST['dest_uri'] ) ||
+		isset( $_POST['user_agent'] ) ||
 		isset( $_POST['status'] ) ||
 		isset( $_POST['min_referrals'] )
 	) {
@@ -60,6 +61,7 @@ function affiliates_admin_hits_uri() {
 	$affiliate_id       = $affiliates_options->get_option( 'hits_uri_affiliate_id', null );
 	$src_uri            = $affiliates_options->get_option( 'hits_uri_src_uri', null );
 	$dest_uri           = $affiliates_options->get_option( 'hits_uri_dest_uri', null );
+	$user_agent         = $affiliates_options->get_option( 'hits_uri_user_agent', null );
 	$status             = $affiliates_options->get_option( 'hits_uri_status', null );
 	$min_referrals      = $affiliates_options->get_option( 'hits_uri_min_referrals', null );
 
@@ -69,6 +71,7 @@ function affiliates_admin_hits_uri() {
 		$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		$affiliates_options->delete_option( 'hits_uri_dest_uri' );
+		$affiliates_options->delete_option( 'hits_uri_user_agent' );
 		$affiliates_options->delete_option( 'hits_uri_status' );
 		$affiliates_options->delete_option( 'hits_uri_min_referrals' );
 		$from_date = null;
@@ -76,6 +79,7 @@ function affiliates_admin_hits_uri() {
 		$affiliate_id = null;
 		$src_uri = null;
 		$dest_uri = null;
+		$user_agent = null;
 		$status = null;
 		$min_referrals = null;
 	} else if ( isset( $_POST['submitted'] ) ) {
@@ -131,6 +135,16 @@ function affiliates_admin_hits_uri() {
 			$affiliates_options->delete_option( 'hits_uri_dest_uri' );
 		}
 
+		// user_agent
+		$_POST['user_agent'] = trim( $_POST['user_agent'] );
+		if ( !empty( $_POST['user_agent'] ) ) {
+			$user_agent = $_POST['user_agent'];
+			$affiliates_options->update_option( 'hits_uri_user_agent', $user_agent );
+		} else if ( isset( $_POST['user_agent'] ) )  { // empty
+			$user_agent = null;
+			$affiliates_options->delete_option( 'hits_uri_user_agent' );
+		}
+
 		// referrals status
 		if ( !empty( $_POST['status'] ) ) {
 			if ( is_array( $_POST['status'] ) ) {
@@ -181,6 +195,7 @@ function affiliates_admin_hits_uri() {
 	$referrals_table   = _affiliates_get_tablename( 'referrals' );
 	$hits_table        = _affiliates_get_tablename( 'hits' );
 	$uris_table        = _affiliates_get_tablename( 'uris' );
+	$user_agents_table = _affiliates_get_tablename( 'user_agents');
 
 	$output .= '<h1>';
 	$output .= __( 'Traffic', 'affiliates' );
@@ -254,15 +269,23 @@ function affiliates_admin_hits_uri() {
 		$filter_params[] = $affiliate_id;
 	}
 
+	// @todo split by AND / OR
 	if ( $src_uri ) {
 		$filters .= " AND su.uri LIKE '%%%s%%' ";
 		$filter_params[] = $wpdb->esc_like( $src_uri );
 	}
+	// @todo split by AND / OR
 	if ( $dest_uri ) {
 		$filters .= " AND du.uri LIKE '%%%s%%' ";
 		$filter_params[] = $wpdb->esc_like( $dest_uri );
 	}
+	// @todo split by AND / OR
+	if ( $user_agent ) {
+		$filters .= " AND ua.user_agent LIKE '%%%s%%' ";
+		$filter_params[] = $wpdb->esc_like( $user_agent );
+	}
 
+	// @todo enforce minimum 1 when order by referrals is requested
 	$having = '';
 	if ( $min_referrals ) {
 		$having = " HAVING COUNT(r.hit_id) >= " . intval( $min_referrals ). " ";
@@ -279,21 +302,30 @@ function affiliates_admin_hits_uri() {
 		$offset = ( $paged - 1 ) * $row_count;
 
 		$query = $wpdb->prepare(
-			"SELECT SQL_CALC_FOUND_ROWS " .
-			"h.*, " .
+			"SELECT " .
+			// "SQL_CALC_FOUND_ROWS" . // degrades the performance of this query substantially => using COUNT(*) instead
+			"h.date, " .
+			"h.datetime, " .
+			"h.hit_id, " .
+			"h.campaign_id, " .
+			"h.ip, " .
+			// "h.ipv6, " .
+			"h.affiliate_id, " .
 			"a.name, " .
+			"h.src_uri_id, " .
 			"su.uri src_uri, " .
+			"h.dest_uri_id, " .
 			"du.uri dest_uri, " .
-			"COUNT(distinct h.ip) visits, " .
-			"SUM(count) hits, " .
-			"COUNT(r.hit_id) referrals " .
+			"h.user_agent_id, " .
+			"ua.user_agent, " .
+			"referrals.count AS referrals " .
 			"FROM $hits_table h " .
 			"LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id " .
 			"LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id " .
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
-			"LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id " .
+			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
+			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
 			"$filters " .
-			"GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id " .
 			"$having " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
@@ -302,7 +334,17 @@ function affiliates_admin_hits_uri() {
 
 		$results = $wpdb->get_results( $query, OBJECT );
 
-		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
+		$count = intval( $wpdb->get_var( $wpdb->prepare(
+			"SELECT COUNT(*) FROM $hits_table h " .
+			"LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id " .
+			"LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id " .
+			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
+			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
+			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
+			"$filters " .
+			"$having",
+			$filter_params
+		) ) );
 		if ( $count > $row_count ) {
 			$paginate = true;
 		} else {
@@ -316,14 +358,18 @@ function affiliates_admin_hits_uri() {
 	} while ( $repeat );
 
 	$column_display_names = array(
-		'date'      => __( 'Date', 'affiliates' ) . '*',
-		'name'      => __( 'Affiliate', 'affiliates' ),
-		'visits'    => __( 'Visits', 'affiliates' ),
-		'hits'      => __( 'Hits', 'affiliates' ),
-		'referrals' => __( 'Referrals', 'affiliates' ),
-		'src_uri'   => __( 'Source URI', 'affiliates' ),
-		'dest_uri'  => __( 'Landing URI', 'affiliates' )
+		'date'       => __( 'Date', 'affiliates' ) . '*',
+		'name'       => __( 'Affiliate', 'affiliates' ),
+		'ip'         => __( 'IP', 'affiliates' ),
+		'referrals'  => __( 'Referrals', 'affiliates' ),
+		'src_uri'    => __( 'Source URI', 'affiliates' ),
+		'dest_uri'   => __( 'Landing URI', 'affiliates' ),
+		'user_agent' => __( 'User Agent', 'affiliates' )
 	);
+	$campaigns = class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' );
+	if ( $campaigns ) {
+		$column_display_names['campaign'] = __( 'Campaign', 'affiliates' );
+	}
 
 	$output .= '<div class="hits-uris-overview">';
 
@@ -401,6 +447,13 @@ function affiliates_admin_hits_uri() {
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
 					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>' .
+					'</label>' .
+				'</div>' .
+				'<div class="filter-section">' .
+					'<label class="user-agent-filter">' .
+					__( 'User Agent', 'affiliates' ) .
+					' ' .
+					'<input class="user-agent-filter" name="user_agent" type="text" value="' . esc_attr( stripslashes( $user_agent ) ) . '"/>' .
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
@@ -487,11 +540,22 @@ function affiliates_admin_hits_uri() {
 			$output .= "<td class='date'>$result->date</td>";
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
-			$output .= "<td class='visits'>$result->visits</td>";
-			$output .= "<td class='hits'>$result->hits</td>";
+			$output .= sprintf( '<td class="ip">%s</td>', esc_html( long2ip( sprintf( "%d", $result->ip ) ) ) );
+			if ( $campaigns ) {
+				if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
+					$output .= printf(
+						'<td class="campaign">%s [%d]</td>',
+						esc_html( $campaign->name ),
+						intval( $result->campaign_id )
+					);
+				} else {
+					$output .= '<td class="campaign">&mdash; ? &mdash;</td>';
+				}
+			}
 			$output .= "<td class='referrals'>$result->referrals</td>";
 			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( "<td class='user-agent'>%s</td>", esc_html( $result->user_agent ) );
 			$output .= '</tr>';
 		}
 	} else {
