@@ -111,7 +111,13 @@ class Affiliates_UI_Elements {
 				} else {
 					$selected = '';
 				}
-				$affiliates_select .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $affiliate['affiliate_id'] ), $selected, esc_html( $affiliate['name'] ) );
+				$affiliates_select .= sprintf(
+					'<option value="%s" %s>%s [%d]</option>',
+					esc_attr( $affiliate['affiliate_id'] ),
+					$selected,
+					esc_html( $affiliate['name'] ),
+					esc_html( $affiliate['affiliate_id'] )
+				);
 			}
 			$affiliates_select .= '</select>';
 			$affiliates_select .= '</label>';
