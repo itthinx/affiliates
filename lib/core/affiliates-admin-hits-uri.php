@@ -586,7 +586,7 @@ function affiliates_admin_hits_uri() {
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 			$output .= "<td class='date'>$result->date</td>";
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
-			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
+			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . ' [' . esc_html( $result->affiliate_id )  . ']' . "</td>";
 			$output .= sprintf( '<td class="ip">%s</td>', esc_html( long2ip( sprintf( "%d", $result->ip ) ) ) );
 			$output .= "<td class='referrals'>$result->referrals</td>";
 			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
