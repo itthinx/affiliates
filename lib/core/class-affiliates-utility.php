@@ -27,37 +27,37 @@ if ( !defined( 'ABSPATH' ) ) {
  * Provides utility methods.
  */
 class Affiliates_Utility {
-		
+
 	/**
 	 * @var string captcha field id
 	 */
 	private static $captcha_field_id = 'lmfao';
-	
-	static function get_captcha_field_id() {
+
+	public static function get_captcha_field_id() {
 		return self::$captcha_field_id;
 	}
-		
+
 	/**
 	 * Filters mail header injection, html, ... 
 	 * @param string $unfiltered_value
 	 */
-	static function filter( $unfiltered_value ) {
+	public static function filter( $unfiltered_value ) {
 		$mail_filtered_value = preg_replace('/(%0A|%0D|content-type:|to:|cc:|bcc:)/i', '', $unfiltered_value );
 		return stripslashes( wp_filter_nohtml_kses( Affiliates_Utility::filter_xss( trim( strip_tags( $mail_filtered_value ) ) ) ) );
 	}
-	
+
 	/**
 	 * Filter xss
 	 * 
 	 * @param string $string input
 	 * @return string filtered string
 	 */
-	static function filter_xss( $string ) {
+	public static function filter_xss( $string ) {
 		// Remove NUL characters (ignored by some browsers)
 		$string = str_replace(chr(0), '', $string);
 		// Remove Netscape 4 JS entities
 		$string = preg_replace('%&\s*\{[^}]*(\}\s*;?|$)%', '', $string);
-		
+
 		// Defuse all HTML entities
 		$string = str_replace('&', '&amp;', $string);
 		// Change back only well-formed entities in our whitelist
@@ -76,13 +76,13 @@ class Affiliates_Utility {
 		>                 # just a >
 		)%x', '', $string);
 	}
-		
+
 	/**
 	 * Returns captcha field markup.
 	 * 
 	 * @return string captcha field markup
 	 */
-	static function captcha_get( $value ) {
+	public static function captcha_get( $value ) {
 		$style = 'display:none;';
 		$field = '<input name="' . Affiliates_Utility::$captcha_field_id . '" id="' . Affiliates_Utility::$captcha_field_id . '" class="' . Affiliates_Utility::$captcha_field_id . ' field" style="' . $style . '" value="' . esc_attr( $value ) . '" type="text"/>';
 		$field = apply_filters( 'affiliates_captcha_get', $field, $value );
@@ -95,7 +95,7 @@ class Affiliates_Utility {
 	 * @param string $field_value field content
 	 * @return true if the field validates
 	 */
-	static function captcha_validates( $field_value = null ) {
+	public static function captcha_validates( $field_value = null ) {
 		$result = false;
 		if ( empty( $field_value ) ) {
 			$result = true;
@@ -103,14 +103,14 @@ class Affiliates_Utility {
 		$result = apply_filters( 'affiliates_captcha_validate', $result, $field_value );
 		return $result;
 	}
-	
+
 	/**
 	 * Retrieves the first post that contains $title.
 	 * @param string $title what to search in titles for
 	 * @param string $output Optional, default is Object. Either OBJECT, ARRAY_A, or ARRAY_N.
 	 * @param string $post_type Optional, default is null meaning any post type.
 	 */
-	static function get_post_by_title( $title, $output = OBJECT, $post_type = null ) {
+	public static function get_post_by_title( $title, $output = OBJECT, $post_type = null ) {
 		global $wpdb;
 		$post = null;
 		if ( $post_type == null ) {
@@ -132,13 +132,13 @@ class Affiliates_Utility {
 		}
 		return $post;
 	}
-	
+
 	/**
 	 * Verifies and returns formatted amount.
 	 * @param string $amount
 	 * @return string amount, false upon error or wrong format
 	 */
-	static function verify_referral_amount( $amount ) {
+	public static function verify_referral_amount( $amount ) {
 		$result = false;
 		if ( is_numeric( $amount ) ) {
 			$amount = sprintf( '%.' . ( affiliates_get_referral_amount_decimals() + 1 ) . 'F', $amount );
@@ -167,14 +167,14 @@ class Affiliates_Utility {
 	 * @param string $currency_id
 	 * @return string currency id or false on error
 	 */
-	static function verify_currency_id( $currency_id ) {
+	public static function verify_currency_id( $currency_id ) {
 		if ( !empty( $currency_id ) ) {
 			return substr( trim( strtoupper( $currency_id ) ), 0, AFFILIATES_REFERRAL_CURRENCY_ID_LENGTH );
 		} else {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Verifies states and transition.
 	 * 
@@ -182,7 +182,7 @@ class Affiliates_Utility {
 	 * @param string $new_status
 	 * @return string|boolean new status or false on failure to verify
 	 */
-	static function verify_referral_status_transition( $old_status, $new_status ) {
+	public static function verify_referral_status_transition( $old_status, $new_status ) {
 		$result = false;
 		switch ( $old_status ) {
 			case AFFILIATES_REFERRAL_STATUS_ACCEPTED :
@@ -208,7 +208,7 @@ class Affiliates_Utility {
 	 * @param string $status
 	 * @return string|boolean status or false on failure to verify
 	 */
-	static function verify_affiliate_status( $status ) {
+	public static function verify_affiliate_status( $status ) {
 		$result = false;
 		switch ( $status ) {
 			case AFFILIATES_AFFILIATE_STATUS_ACTIVE :

@@ -217,12 +217,16 @@ function affiliates_admin_hits_uri() {
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'date' :
-		case 'visits' :
-		case 'hits' :
-		case 'referrals' :
+		case 'name' :
+		case 'ip' :
 		case 'src_uri' :
 		case 'dest_uri' :
-		case 'name' :
+		case 'user_agent' :
+			break;
+		case 'referrals' :
+			if ( $min_referrals < 1 ) {
+				$min_referrals = 1;
+			}
 			break;
 		case 'affiliate_id' :
 			$orderby = 'name';
@@ -269,32 +273,76 @@ function affiliates_admin_hits_uri() {
 		$filter_params[] = $affiliate_id;
 	}
 
-	// @todo split by AND / OR
+	// Source URI
 	if ( $src_uri ) {
-		$filters .= " AND su.uri LIKE '%%%s%%' ";
-		$filter_params[] = $wpdb->esc_like( $src_uri );
-	}
-	// @todo split by AND / OR
-	if ( $dest_uri ) {
-		$filters .= " AND du.uri LIKE '%%%s%%' ";
-		$filter_params[] = $wpdb->esc_like( $dest_uri );
-	}
-	// @todo split by AND / OR
-	if ( $user_agent ) {
-		$filters .= " AND ua.user_agent LIKE '%%%s%%' ";
-		$filter_params[] = $wpdb->esc_like( $user_agent );
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $src_uri, null, PREG_SPLIT_DELIM_CAPTURE );
+		if ( is_array( $strings ) && count( $strings ) > 0 ) {
+			$filters .= ' AND ( ';
+			foreach ( $strings as $string ) {
+				switch ( $string ) {
+					case 'AND' :
+					case 'OR' :
+						$filters .= " $string ";
+						break;
+					default :
+						$filters .= " su.uri LIKE '%%%s%%' ";
+						$filter_params[] = $wpdb->esc_like( $string );
+				}
+			}
+			$filters .= ' ) ';
+		}
 	}
 
-	// @todo enforce minimum 1 when order by referrals is requested
-	$having = '';
+	// Desintation URI
+	if ( $dest_uri ) {
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $dest_uri, null, PREG_SPLIT_DELIM_CAPTURE );
+		if ( is_array( $strings ) && count( $strings ) > 0 ) {
+			$filters .= ' AND ( ';
+			foreach ( $strings as $string ) {
+				switch ( $string ) {
+					case 'AND' :
+					case 'OR' :
+						$filters .= " $string ";
+						break;
+					default :
+						$filters .= " du.uri LIKE '%%%s%%' ";
+						$filter_params[] = $wpdb->esc_like( $string );
+				}
+			}
+			$filters .= ' ) ';
+		}
+	}
+
+	// User Agent
+	if ( $user_agent ) {
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $user_agent, null, PREG_SPLIT_DELIM_CAPTURE );
+		if ( is_array( $strings ) && count( $strings ) > 0 ) {
+			$filters .= ' AND ( ';
+			foreach ( $strings as $string ) {
+				switch ( $string ) {
+					case 'AND' :
+					case 'OR' :
+						$filters .= " $string ";
+						break;
+					default :
+						$filters .= " ua.user_agent LIKE '%%%s%%' ";
+						$filter_params[] = $wpdb->esc_like( $string );
+				}
+			}
+			$filters .= ' ) ';
+		}
+	}
+
+	// minimum number of related referrals, if orderby is 'referrals' then a minimum of 1 is enforced
 	if ( $min_referrals ) {
-		$having = " HAVING COUNT(r.hit_id) >= " . intval( $min_referrals ). " ";
+		$filters .= " AND referrals.count >= %d ";
+		$filter_params[] = intval( $min_referrals );
 	}
 
 	$status_condition = '';
-	if ( is_array( $status ) && count( $status ) > 0 ) {
-		$status_condition = " AND ( r.status IS NULL OR r.status IN ('" . implode( "','", $status ) . "') ) ";
-		$filters .= $status_condition;
+	if ( is_array( $status ) && count( $status ) > 0 && count( $status ) < 4 ) { // 4 any referral status
+		$status_condition = " WHERE status IN ('" . implode( "','", $status ) . "') ";
+		//$filters .= $status_condition;
 	}
 
 	do {
@@ -324,9 +372,8 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id " .
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
-			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
+			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table $status_condition GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
 			"$filters " .
-			"$having " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
@@ -341,8 +388,7 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
-			"$filters " .
-			"$having",
+			"$filters ",
 			$filter_params
 		) ) );
 		if ( $count > $row_count ) {
@@ -414,6 +460,8 @@ function affiliates_admin_hits_uri() {
 		$status_checkboxes .= '</label>';
 	}
 
+	$use_and_or = sprintf( __( 'You can use %s and %s to search for multiple terms in combination.', 'affiliates' ), 'AND', 'OR' );
+
 	$output .=
 		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
@@ -437,20 +485,20 @@ function affiliates_admin_hits_uri() {
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
-					'<label class="src-uri-filter">' .
+					sprintf( '<label style="cursor:help" title="%s" class="src-uri-filter">', esc_html( $use_and_or ) ) .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
 					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( stripslashes( $src_uri ) ) . '"/>' .
 					'</label>' .
 					' ' .
-					'<label class="dest-uri-filter">' .
+					sprintf( '<label style="cursor:help" title="%s" class="dest-uri-filter">', esc_html( $use_and_or ) ) .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
 					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>' .
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
-					'<label class="user-agent-filter">' .
+					sprintf( '<label style="cursor:help" title="%s" class="user-agent-filter">', esc_html( $use_and_or ) ) .
 					__( 'User Agent', 'affiliates' ) .
 					' ' .
 					'<input class="user-agent-filter" name="user_agent" type="text" value="' . esc_attr( stripslashes( $user_agent ) ) . '"/>' .
