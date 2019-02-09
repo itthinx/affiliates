@@ -191,11 +191,14 @@ function affiliates_admin_hits_uri() {
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'uris_paged', $current_url );
 
+	$campaigns = class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' );
+
 	$affiliates_table  = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table   = _affiliates_get_tablename( 'referrals' );
 	$hits_table        = _affiliates_get_tablename( 'hits' );
 	$uris_table        = _affiliates_get_tablename( 'uris' );
 	$user_agents_table = _affiliates_get_tablename( 'user_agents');
+	$campaigns_table   = _affiliates_get_tablename( 'campaigns' );
 
 	$output .= '<h1>';
 	$output .= __( 'Traffic', 'affiliates' );
@@ -222,6 +225,7 @@ function affiliates_admin_hits_uri() {
 		case 'src_uri' :
 		case 'dest_uri' :
 		case 'user_agent' :
+		case 'campaign' :
 			break;
 		case 'referrals' :
 			if ( $min_referrals < 1 ) {
@@ -230,6 +234,9 @@ function affiliates_admin_hits_uri() {
 			break;
 		case 'affiliate_id' :
 			$orderby = 'name';
+			break;
+		case 'campaign_id' :
+			$orderby = 'campaign';
 			break;
 		default:
 			$orderby = 'date';
@@ -356,6 +363,7 @@ function affiliates_admin_hits_uri() {
 			"h.datetime, " .
 			"h.hit_id, " .
 			"h.campaign_id, " .
+			( $campaigns ? "c.name AS campaign, " : '' ) .
 			"h.ip, " .
 			// "h.ipv6, " .
 			"h.affiliate_id, " .
@@ -373,6 +381,7 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table $status_condition GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
 			"$filters " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
@@ -412,7 +421,6 @@ function affiliates_admin_hits_uri() {
 		'dest_uri'   => __( 'Landing URI', 'affiliates' ),
 		'user_agent' => __( 'User Agent', 'affiliates' )
 	);
-	$campaigns = class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' );
 	if ( $campaigns ) {
 		$column_display_names['campaign'] = __( 'Campaign', 'affiliates' );
 	}
