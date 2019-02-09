@@ -589,6 +589,10 @@ function affiliates_admin_hits_uri() {
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
 			$output .= sprintf( '<td class="ip">%s</td>', esc_html( long2ip( sprintf( "%d", $result->ip ) ) ) );
+			$output .= "<td class='referrals'>$result->referrals</td>";
+			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( "<td class='user-agent'>%s</td>", esc_html( $result->user_agent ) );
 			if ( $campaigns ) {
 				if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
 					$output .= printf(
@@ -600,10 +604,6 @@ function affiliates_admin_hits_uri() {
 					$output .= '<td class="campaign">&mdash; ? &mdash;</td>';
 				}
 			}
-			$output .= "<td class='referrals'>$result->referrals</td>";
-			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
-			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
-			$output .= sprintf( "<td class='user-agent'>%s</td>", esc_html( $result->user_agent ) );
 			$output .= '</tr>';
 		}
 	} else {
