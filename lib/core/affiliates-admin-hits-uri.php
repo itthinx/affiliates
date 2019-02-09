@@ -428,25 +428,15 @@ function affiliates_admin_hits_uri() {
 
 	$output .= '<div class="hits-uris-overview">';
 
-	$affiliates_select = '';
-	$affiliates = affiliates_get_affiliates( true );
-	if ( !empty( $affiliates ) ) {
-		$affiliates_select .= '<label class="affiliate-id-filter">';
-		$affiliates_select .= __( 'Affiliate', 'affiliates' );
-		$affiliates_select .= ' ';
-		$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
-		$affiliates_select .= '<option value="">--</option>';
-		foreach ( $affiliates as $affiliate ) {
-			if ( $affiliate_id == $affiliate['affiliate_id']) {
-				$selected = ' selected="selected" ';
-			} else {
-				$selected = '';
-			}
-			$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
-		}
-		$affiliates_select .= '</select>';
-		$affiliates_select .= '</label>';
-	}
+	$affiliates_select = Affiliates_UI_Elements::affiliates_select(
+		array(
+			'name'             => 'affiliate_id',
+			'class'            => 'affiliate-id-filter',
+			'label-class'      => 'affiliate-id-filter',
+			'affiliate_id'     => $affiliate_id,
+			'show_inoperative' => true
+		)
+	);
 
 	$status_descriptions = array(
 		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
