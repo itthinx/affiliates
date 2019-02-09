@@ -397,6 +397,7 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
 			"$filters ",
 			$filter_params
 		) ) );
@@ -602,14 +603,18 @@ function affiliates_admin_hits_uri() {
 			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
 			$output .= sprintf( "<td class='user-agent'>%s</td>", esc_html( $result->user_agent ) );
 			if ( $campaigns ) {
-				if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
-					$output .= printf(
-						'<td class="campaign">%s [%d]</td>',
-						esc_html( $campaign->name ),
-						intval( $result->campaign_id )
-					);
+				if ( !empty( $result->campaign_id ) ) {
+					if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
+						$output .= printf(
+							'<td class="campaign">%s [%d]</td>',
+							esc_html( $campaign->name ),
+							intval( $result->campaign_id )
+						);
+					} else {
+						$output .= '<td class="campaign">&mdash; ? &mdash;</td>';
+					}
 				} else {
-					$output .= '<td class="campaign">&mdash; ? &mdash;</td>';
+					$output .= '<td class="campaign"></td>';
 				}
 			}
 			$output .= '</tr>';
