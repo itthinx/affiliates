@@ -2808,7 +2808,7 @@ msgid   "This plugin integrates <a href=\"http://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"http://www.itthinx.com/shop/"
         "affiliates-pro/\">Affiliates Pro</a> and <a href=\"http://www."
         "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with Events Manager. This integration allows to record referraks to "
+        "with Events Manager. This integration allows to record referrals to "
         "grant affiliates commissions on referred bookings."
 msgstr  ""
 
