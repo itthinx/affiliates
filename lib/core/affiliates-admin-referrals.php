@@ -449,7 +449,9 @@ function affiliates_admin_referrals() {
 				'<div class="filter-section">' .
 				$affiliates_select .
 				Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
-				' ' .
+				'</div>' .
+
+				'<div class="filter-section">' .
 				$status_select .
 				' ' .
 				' <label class="search-filter" title="Search in data">' .

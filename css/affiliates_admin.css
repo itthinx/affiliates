@@ -268,7 +268,6 @@ div.details-hits {
 .from-date-filter,
 .thru-date-filter,
 .days-back-filter {
-	margin-right: 1em;
 }
 .thru-date-filter {
 }
@@ -287,9 +286,29 @@ input[name="clear_filters"] {
 }
 .filters label.description,
 .filters .filter-section {
-	padding-bottom: 1em;
+	margin: 4px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
-
+.filters .filter-section > * {
+	flex-shrink: 1;
+	padding: 4px;
+}
+.filters .filter-section > .affiliate-id-filter {
+	flex-grow: 1;
+}
+.filters .filter-section label input[type="text"],
+.filters .filter-section label input[type="date"],
+.filters .filter-section label input[type="number"],
+.filters .filter-section label select {
+	display: block;
+}
+.filters .filter-buttons {
+	border-top: 1px solid #f0f0f0;
+	margin-top: 8px;
+	padding-top: 8px;
+}
 .warning {
 	color: #933;
 }

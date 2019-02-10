@@ -145,18 +145,26 @@ function affiliates_admin() {
 		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
-				'<p>' .
-				'<label class="from-date-filter" for="from_date">' . __( 'From', 'affiliates' ) . '</label>' .
-				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-				'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
-				'<input class="datefield thru-date-filter" name="thru_date" type="text" value="' . esc_attr( $thru_date ) . '"/>'.
-				'<label class="days-back-filter" for="days_back">' . __( 'Days back', 'affiliates' ) . '</label>' .
-				'<input class="days-back-filter" name="days_back" type="text" value="' . esc_attr( $days_back ) . '"/>'.
-				wp_nonce_field( 'admin', AFFILIATES_ADMIN_OVERVIEW_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-				'<input type="hidden" value="submitted" name="submitted"/>' .
-				'</p>' .
+				'<div class="filter-section">' .
+					'<label class="from-date-filter" for="from_date">' .
+						__( 'From', 'affiliates' ) .
+						'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
+					'</label>' .
+					'<label class="thru-date-filter" for="thru_date">' .
+						__( 'Until', 'affiliates' ) .
+						'<input class="datefield thru-date-filter" name="thru_date" type="text" value="' . esc_attr( $thru_date ) . '"/>'.
+					'</label>' .
+					'<label class="days-back-filter" for="days_back">' .
+						__( 'Days back', 'affiliates' ) .
+						'<input class="days-back-filter" name="days_back" type="text" value="' . esc_attr( $days_back ) . '"/>'.
+					'</label>' .
+				'</div>' .
+				'<div class="filter-buttons">' .
+					wp_nonce_field( 'admin', AFFILIATES_ADMIN_OVERVIEW_NONCE, true, false ) .
+					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+					'<input type="hidden" value="submitted" name="submitted"/>' .
+				'</div>' .
 			'</form>' .
 		'</div>';
 

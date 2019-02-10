@@ -588,8 +588,7 @@ function affiliates_admin_hits_uri() {
 					' ' .
 					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>' .
 					'</label>' .
-				'</div>' .
-				'<div class="filter-section">' .
+					' ' .
 					sprintf( '<label style="cursor:help" title="%s" class="user-agent-filter">', esc_html( $use_and_or ) ) .
 					__( 'User Agent', 'affiliates' ) .
 					' ' .

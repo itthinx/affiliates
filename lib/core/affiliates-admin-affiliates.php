@@ -503,7 +503,8 @@ function affiliates_admin_affiliates() {
 				' ' .
 				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
 				'</label>' .
-				' ' .
+				'</div>' .
+				'<div class="filter-section">' .
 				'<label class="show-inoperative-filter">' .
 					'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
 					' ' .
