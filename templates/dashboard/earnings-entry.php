@@ -48,11 +48,11 @@ $columns = $section->get_columns();
 				echo esc_html( date_i18n( _x( 'F Y', 'earnings period year and month', 'affiliates' ), strtotime( $entry->year . '-' . $entry->month . '-01' ) ) ); // translators: date format; month and year for earnings display
 				break;
 			case 'earnings' :
-				$display_amount = affiliates_format_referral_amount( $entry->total, 'display' );
+				$display_amount = sprintf( '%.' . affiliates_get_referral_amount_decimals( 'display' ) . 'f', $entry->total );
 				echo esc_html( $entry->currency_id ) . ' ' . esc_html( $display_amount );
 				break;
 			case 'paid' :
-				$display_amount = affiliates_format_referral_amount( $entry->total_closed, 'display' );
+				$display_amount = sprintf( '%.' . affiliates_get_referral_amount_decimals( 'display' ) . 'f', $entry->total_closed );
 				echo esc_html( $entry->currency_id ) . ' ' . esc_html( $display_amount );
 				break;
 			default :
