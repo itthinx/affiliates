@@ -467,7 +467,7 @@ function affiliates_admin_affiliates() {
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
 				'<div class="filter-section">' .
-				'<label class="affiliate-id-filter">' .
+				'<label class="affiliate-id-filter shrink">' .
 					__( 'Id', 'affiliates' ) .
 					' ' .
 					'<input class="affiliate-id-filter" name="affiliate_id" type="text" value="' . esc_attr( $affiliate_id ) . '"/>' .
