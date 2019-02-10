@@ -807,6 +807,41 @@ function affiliates_init() {
 	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
 	}
+	add_action( 'after_plugin_row_' . plugin_basename( AFFILIATES_FILE ), 'affiliates_after_plugin_row', 10, 3 );
+}
+
+/**
+ * Prints a warning when data is deleted on deactivation.
+ *
+ * @param string $plugin_file
+ * @param array $plugin_data
+ * @param string $status
+ */
+function affiliates_after_plugin_row( $plugin_file, $plugin_data, $status ) {
+	if ( $plugin_file == plugin_basename( AFFILIATES_FILE ) ) {
+		$delete_data         = get_option( 'aff_delete_data', false );
+		$delete_network_data = get_option( 'aff_delete_network_data', false );
+		if (
+			( is_plugin_active( $plugin_file ) && $delete_data && current_user_can( 'install_plugins' ) ) ||
+			( is_plugin_active_for_network( $plugin_file ) && $delete_network_data  && current_user_can( 'manage_network_plugins' ) )
+		) {
+			echo '<tr class="active">';
+			echo '<td>&nbsp;</td>';
+			echo '<td colspan="2">';
+			echo '<div style="border: 2px solid #dc3232; padding: 1em">';
+			echo '<p>';
+			echo '<strong>';
+			echo esc_html( __( 'Warning!', 'affiliates' ) );
+			echo '</strong>';
+			echo '</p>';
+			echo '<p>';
+			echo esc_html( __( 'The plugin is configured to delete its data on deactivation.', 'affiliates' ) );
+			echo '</p>';
+			echo '</div>';
+			echo '</td>';
+			echo '</tr>';
+		}
+	}
 }
 
 add_filter( 'query_vars', 'affiliates_query_vars', 999 ); // filter acts late to avoid being messed with by others
