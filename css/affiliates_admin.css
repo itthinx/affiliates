@@ -305,6 +305,9 @@ input[name="clear_filters"] {
 .filters .filter-section label select {
 	display: block;
 }
+.filters .filter-section label img.icon {
+	vertical-align: middle;
+}
 .filters .filter-buttons {
 	border-top: 1px solid #f0f0f0;
 	margin-top: 8px;
