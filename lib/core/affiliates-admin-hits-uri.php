@@ -495,7 +495,10 @@ function affiliates_admin_hits_uri() {
 	);
 
 	if ( $campaigns ) {
-		$campaigns_select = '<select class="campaign-id-filter" name="campaign_id">';
+		$campaigns_select = '<label class="campaign-id-filter">';
+		$campaigns_select .= __( 'Campaign', 'affiliates' );
+		$campaigns_select .= ' ';
+		$campaigns_select .= '<select class="campaign-id-filter" name="campaign_id">';
 		$campaigns_select .= sprintf( '<option value="" %s>&mdash;</option>', $campaign_id ? '' : ' selected="selected" ' );
 		$cs = Affiliates_Campaign::get_campaigns( $affiliate_id );
 		foreach ( $cs as $c ) {
@@ -517,6 +520,7 @@ function affiliates_admin_hits_uri() {
 			);
 		}
 		$campaigns_select .= '</select>';
+		$campaigns_select .= '</label>';
 	}
 
 	$status_descriptions = array(
