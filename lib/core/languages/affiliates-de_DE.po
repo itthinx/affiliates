@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-10 20:52+0100\n"
-"PO-Revision-Date: 2019-02-10 20:56+0100\n"
+"PO-Revision-Date: 2019-02-10 20:59+0100\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -1134,7 +1134,7 @@ msgstr "Alle Partnerdaten bei Netzwerdeaktivierung löschen"
 
 #: lib/core/class-affiliates-settings-general.php:290
 msgid "Delete all plugin data on deactivation"
-msgstr "All Daten bei Deaktivierung löschen"
+msgstr "Alle Daten bei Deaktivierung löschen"
 
 #: lib/core/affiliates-admin-affiliates-edit.php:202
 #: lib/core/class-affiliates-totals.php:358
