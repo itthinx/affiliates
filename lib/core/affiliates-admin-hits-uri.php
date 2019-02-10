@@ -44,9 +44,11 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['thru_date'] ) ||
 		isset( $_POST['clear_filters'] ) ||
 		isset( $_POST['affiliate_id'] ) ||
+		isset( $_POST['campaign_id'] ) ||
 		isset( $_POST['src_uri'] ) ||
 		isset( $_POST['dest_uri'] ) ||
 		isset( $_POST['user_agent'] ) ||
+		isset( $_POST['ip'] ) ||
 		isset( $_POST['status'] ) ||
 		isset( $_POST['min_referrals'] )
 	) {
@@ -59,19 +61,25 @@ function affiliates_admin_hits_uri() {
 	$from_date          = $affiliates_options->get_option( 'hits_uri_from_date', null );
 	$thru_date          = $affiliates_options->get_option( 'hits_uri_thru_date', null );
 	$affiliate_id       = $affiliates_options->get_option( 'hits_uri_affiliate_id', null );
+	$campaign_id        = $affiliates_options->get_option( 'hits_uri_campaign_id', null );
 	$src_uri            = $affiliates_options->get_option( 'hits_uri_src_uri', null );
 	$dest_uri           = $affiliates_options->get_option( 'hits_uri_dest_uri', null );
 	$user_agent         = $affiliates_options->get_option( 'hits_uri_user_agent', null );
+	$ip                 = $affiliates_options->get_option( 'hits_uri_ip', null );
 	$status             = $affiliates_options->get_option( 'hits_uri_status', null );
 	$min_referrals      = $affiliates_options->get_option( 'hits_uri_min_referrals', null );
+
+	$campaigns = class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' );
 
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'hits_uri_from_date' );
 		$affiliates_options->delete_option( 'hits_uri_thru_date' );
 		$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
+		$affiliates_options->delete_option( 'hits_uri_campaign_id' );
 		$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		$affiliates_options->delete_option( 'hits_uri_dest_uri' );
 		$affiliates_options->delete_option( 'hits_uri_user_agent' );
+		$affiliates_options->delete_option( 'hits_uri_ip' );
 		$affiliates_options->delete_option( 'hits_uri_status' );
 		$affiliates_options->delete_option( 'hits_uri_min_referrals' );
 		$from_date = null;
@@ -80,6 +88,8 @@ function affiliates_admin_hits_uri() {
 		$src_uri = null;
 		$dest_uri = null;
 		$user_agent = null;
+		$ip = null;
+		$campaign_id = null;
 		$status = null;
 		$min_referrals = null;
 	} else if ( isset( $_POST['submitted'] ) ) {
@@ -116,6 +126,21 @@ function affiliates_admin_hits_uri() {
 			$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		}
 
+		// filter by campaign id -> set affiliate_id
+		if ( $campaigns ) {
+			if ( !empty( $_POST['campaign_id'] ) ) {
+				$campaign = new Affiliates_Campaign();
+				if ( $campaign_id = $campaign->read( intval( $_POST['campaign_id'] ) ) ) {
+					$affiliates_options->update_option( 'hits_uri_campaign_id', $campaign_id );
+					$affiliate_id = $campaign->affiliate_id;
+					$affiliates_options->update_option( 'hits_uri_affiliate_id', $affiliate_id );
+				}
+			} else if ( isset( $_POST['campaign_id'] ) ) { // empty && isset => '' => all
+				$campaign_id = null;
+				$affiliates_options->delete_option( 'hits_uri_campaign_id' );
+			}
+		}
+
 		// src_uri
 		$_POST['src_uri'] = trim( $_POST['src_uri'] );
 		if ( !empty( $_POST['src_uri'] ) ) {
@@ -143,6 +168,16 @@ function affiliates_admin_hits_uri() {
 		} else if ( isset( $_POST['user_agent'] ) )  { // empty
 			$user_agent = null;
 			$affiliates_options->delete_option( 'hits_uri_user_agent' );
+		}
+
+		// ip
+		$_POST['ip'] = trim( $_POST['ip'] );
+		if ( !empty( $_POST['ip'] ) ) {
+			$ip = $_POST['ip'];
+			$affiliates_options->update_option( 'hits_uri_ip', $ip );
+		} else if ( isset( $_POST['ip'] ) )  { // empty
+			$ip = null;
+			$affiliates_options->delete_option( 'hits_uri_ip' );
 		}
 
 		// referrals status
@@ -190,8 +225,6 @@ function affiliates_admin_hits_uri() {
 
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$current_url = remove_query_arg( 'uris_paged', $current_url );
-
-	$campaigns = class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' );
 
 	$affiliates_table  = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table   = _affiliates_get_tablename( 'referrals' );
@@ -277,7 +310,14 @@ function affiliates_admin_hits_uri() {
 
 	if ( $affiliate_id ) {
 		$filters .= " AND h.affiliate_id = %d ";
-		$filter_params[] = $affiliate_id;
+		$filter_params[] = intval( $affiliate_id );
+	}
+
+	if ( $campaigns ) {
+		if ( $campaign_id ) {
+			$filters .= " AND h.campaign_id = %d ";
+			$filter_params[] = intval( $campaign_id );
+		}
 	}
 
 	// Source URI
@@ -340,6 +380,22 @@ function affiliates_admin_hits_uri() {
 		}
 	}
 
+	// IP
+	if ( $ip ) {
+		if ( PHP_INT_SIZE >= 8 ) {
+			if ( $ip_int = ip2long( $ip ) ) {
+				$filters .= " AND h.ip = %d ";
+				$filter_params[] = $ip_int;
+			}
+		} else {
+			if ( $ip_int = ip2long( $ip ) ) {
+				$ip_int = sprintf( '%u', $ip_int );
+				$filters .= " AND h.ip = %d ";
+				$filter_params[] = $ip_int;
+			}
+		}
+	}
+
 	// minimum number of related referrals, if orderby is 'referrals' then a minimum of 1 is enforced
 	if ( $min_referrals ) {
 		$filters .= " AND referrals.count >= %d ";
@@ -348,8 +404,8 @@ function affiliates_admin_hits_uri() {
 
 	$status_condition = '';
 	if ( is_array( $status ) && count( $status ) > 0 && count( $status ) < 4 ) { // 4 any referral status
+		$status = array_map( array( $wpdb, 'esc_like' ), $status );
 		$status_condition = " WHERE status IN ('" . implode( "','", $status ) . "') ";
-		//$filters .= $status_condition;
 	}
 
 	do {
@@ -438,6 +494,31 @@ function affiliates_admin_hits_uri() {
 		)
 	);
 
+	if ( $campaigns ) {
+		$campaigns_select = '<select class="campaign-id-filter" name="campaign_id">';
+		$campaigns_select .= sprintf( '<option value="" %s>&mdash;</option>', $campaign_id ? '' : ' selected="selected" ' );
+		$cs = Affiliates_Campaign::get_campaigns( $affiliate_id );
+		foreach ( $cs as $c ) {
+			$c_name = $c->name;
+			if ( strlen( $c_name ) > 25 ) {
+				$c_name = substr_replace( $c_name, '&hellip;', 25 );
+			}
+			$opt = sprintf( '%s [%d]', $c_name, intval( $c->campaign_id ) );
+			if ( !$affiliate_id ) {
+				if ( $c_a = affiliates_get_affiliate( $c->affiliate_id ) ) {
+					$opt .= sprintf( ' &ndash; %s [%d]', $c_a['name'], intval( $c->affiliate_id ) );
+				}
+			}
+			$campaigns_select .= sprintf(
+				'<option value="%d" %s>%s</option>',
+				intval( $c->campaign_id ),
+				$campaign_id === $c->campaign_id ? ' selected="selected" ' : '',
+				esc_html( $opt )
+			);
+		}
+		$campaigns_select .= '</select>';
+	}
+
 	$status_descriptions = array(
 		AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
 		AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
@@ -470,6 +551,14 @@ function affiliates_admin_hits_uri() {
 					$affiliates_select .
 					Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
 				'</div>' .
+				(
+					$campaigns ?
+					'<div class="filter-section">' .
+						$campaigns_select .
+						Affiliates_UI_Elements::render_select( 'select.campaign-id-filter' ) .
+					'</div>'
+					: ''
+				) .
 				'<div class="filter-section">' .
 					'<label class="from-date-filter">' .
 					__( 'From', 'affiliates' ) .
@@ -501,6 +590,12 @@ function affiliates_admin_hits_uri() {
 					__( 'User Agent', 'affiliates' ) .
 					' ' .
 					'<input class="user-agent-filter" name="user_agent" type="text" value="' . esc_attr( stripslashes( $user_agent ) ) . '"/>' .
+					'</label>' .
+					' ' .
+					'<label class="ip-filter">' .
+					__( 'IP', 'affiliates' ) .
+					' ' .
+					'<input class="ip-filter" name="ip" type="text" value="' . esc_attr( stripslashes( $ip ) ) . '"/>' .
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
