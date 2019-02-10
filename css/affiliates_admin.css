@@ -295,7 +295,8 @@ input[name="clear_filters"] {
 	flex-shrink: 1;
 	padding: 4px;
 }
-.filters .filter-section > .affiliate-id-filter:not(.shrink) {
+.filters .filter-section > .affiliate-id-filter:not(.shrink),
+.filters .filter-section > .campaign-id-filter:not(.shrink) {
 	flex-grow: 1;
 }
 .filters .filter-section label input[type="text"],
