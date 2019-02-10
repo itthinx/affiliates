@@ -450,10 +450,8 @@ function affiliates_setup() {
 				count           INT DEFAULT 1,
 				type            VARCHAR(10) DEFAULT NULL,
 				PRIMARY KEY     (hit_id),
-				INDEX           aid_d_t_ip (affiliate_id,date,time,ip),
 				INDEX           hash (hash),
-				INDEX           aff_hits_ddt (date, datetime),
-				INDEX           aff_hits_dtd (datetime, date),
+				INDEX           idx_date (date),
 				INDEX           aff_hits_acm (affiliate_id, campaign_id),
 				INDEX           aff_hits_src_uri (src_uri_id),
 				INDEX           aff_hits_dest_uri (dest_uri_id),
@@ -609,6 +607,25 @@ function affiliates_update( $previous_version = null ) {
 		ADD INDEX hash (hash);";
 	}
 
+	// from 4.0.0 drop indexes : aff_hits_dtd, aff_hits_ddt, aid_d_t_ip
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'aff_hits_dtd'" );
+	if ( is_array( $index ) && count( $index ) > 0 ) {
+		$queries[] = "ALTER TABLE $hits_table DROP INDEX aff_hits_dtd;";
+	}
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'aff_hits_ddt'" );
+	if ( is_array( $index ) && count( $index ) > 0 ) {
+		$queries[] = "ALTER TABLE $hits_table DROP INDEX aff_hits_ddt;";
+	}
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'aid_d_t_ip'" );
+	if ( is_array( $index ) && count( $index ) > 0 ) {
+		$queries[] = "ALTER TABLE $hits_table DROP INDEX aid_d_t_ip;";
+	}
+	// from 4.0.0 add index : idx_date
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'idx_date'" );
+	if ( $index === null || is_array( $index ) && count( $index ) === 0 ) {
+		$queries[] = "ALTER TABLE $hits_table ADD INDEX idx_date (date);";
+	}
+
 	// URIs ... from 2.17.0
 	// add the uris table
 	$uris_table = _affiliates_get_tablename( 'uris' );
@@ -622,6 +639,7 @@ function affiliates_update( $previous_version = null ) {
 		INDEX       type (type)
 		) $charset_collate;";
 	}
+
 	// add uri columns and indexes to the hits table
 	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'src_uri_id'" );
 	if ( empty( $column ) ) {
