@@ -192,9 +192,9 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 			// otherwise add a 0 entry for the date.
 			foreach ( $amounts_by_currency as $currency_id => $amounts ) {
 				if ( isset( $amounts_by_currency[$currency_id][$date] ) ) {
-					$amounts_by_currency_series[$currency_id][] = array( $day, floatval( $amounts_by_currency[$currency_id][$date] ) );
+					$amounts_by_currency_series[$currency_id][] = array( $day, affiliates_format_referral_amount( floatval( $amounts_by_currency[$currency_id][$date] ), 'display' ) );
 				} else {
-					$amounts_by_currency_series[$currency_id][] = array( $day, 0.0 );
+					$amounts_by_currency_series[$currency_id][] = array( $day, affiliates_format_referral_amount( 0.0, 'display' ) );
 				}
 			}
 			// Add a tick per month at day 1
