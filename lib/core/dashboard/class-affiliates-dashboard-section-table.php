@@ -177,6 +177,10 @@ abstract class Affiliates_Dashboard_Section_Table extends Affiliates_Dashboard_S
 	 * @return array of entries
 	 */
 	public function get_entries() {
-		return $this->entries;
+		$result = array();
+		if ( $this->entries !== null && is_array( $this->entries ) ) {
+			$result = $this->entries;
+		}
+		return $result;
 	}
 }
