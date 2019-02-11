@@ -909,9 +909,12 @@ function affiliates_parse_request( &$wp ) {
 	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
 	if ( isset( $wp->query_vars[$pname] ) ) {
 		// affiliates-by-username uses this hook
-		$maybe_affiliate_id = apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id );
-		if ( ( $maybe_affiliate_id !== null ) && $maybe_affiliate_id !== trim( $wp->query_vars[$pname] ) ) {
-			$affiliate_id = $maybe_affiliate_id;
+		$maybe_affiliate_id = intval( apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id ) );
+		if ( $maybe_affiliate_id > 0 && $maybe_affiliate_id !== $affiliate_id ) {
+			$maybe_affiliate_id = affiliates_check_affiliate_id_encoded( $maybe_affiliate_id );
+			if ( $maybe_affiliate_id !== false ) {
+				$affiliate_id = $maybe_affiliate_id;
+			}
 		}
 	}
 
@@ -1615,7 +1618,7 @@ function affiliates_encode_affiliate_id( $affiliate_id ) {
  */
 function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
 
-	global $wpdb, $affiliates_options;
+	global $affiliates_options;
 
 	$id_encoding = get_option( 'aff_id_encoding', AFFILIATES_NO_ID_ENCODING );
 	switch( $id_encoding ) {
@@ -1634,7 +1637,6 @@ function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
  * @return int|boolean returns the affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id( $affiliate_id ) {
-
 	global $wpdb;
 	$result = FALSE;
 	$today = date( 'Y-m-d', time() );
@@ -1653,7 +1655,6 @@ function affiliates_check_affiliate_id( $affiliate_id ) {
  * @return int|boolean returns the (unencoded) affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
-
 	global $wpdb;
 	$result = FALSE;
 	$today = date( 'Y-m-d', time() );
@@ -1682,7 +1683,6 @@ function affiliates_get_direct_id() {
 	}
 	return $result;
 }
- 
 
 // only needed when in admin
 if ( is_admin() ) {
