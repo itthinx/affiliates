@@ -382,13 +382,37 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 == Changelog ==
 
-= 4.0.0 =
-* New Affiliates Dashboard.
-
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
+
+= 4.0.0 =
+* This is a major new release with exciting new features.
+  Following usual good practice, make sure to BACK UP your site and database before upgrading!
+* Introduces the new Affiliates Dashboard and new Dashboard Sections.
+* Added support for new customizable dashboard templates.
+* Added new dashboard and dashboard section blocks.
+* Added new dashboard and dashboard section shortcodes.
+* Added several performance and usability improvements.
+* Cleaned up code and made many internal improvements.
+* Updated and added missing code documentation.
+* Updated the translation template.
+* Updated the German translation.
+* Added options to the [affiliates_earnings] shortcode.
+* Updated the affiliate area generation to use the new dashboard.
+* Added additional currency codes and fixed an issue with the filter being called to early to affect the list.
+* Fixed untranslated button labels used in registration settings.
+* Fixed the dashboard widget to use appropriate decimals for amounts displayed.
+* Improved the usability and styling of filter sections in admin areas.
+* Improved and simplified the overview admin section to provide relevant stats within context.
+* Improved the performance on large datasets, improved queries and removed redundant queries.
+* Removed unnecessary indexes on the hits table.
+* Revised the traffic admin section to provide more detailed information on hits and enhanced its filter section.
+* Added a warning displayed in the Plugins section when the plugin is configured to delete its data.
+* Fixed an issue where a request for an invalid affiliate link would record a hit.
 
 == Upgrade Notice ==
 
-= 4.0.0 =
-* New Affiliates Dashboard.
-* Fully tested for compatibility with WordPress 5.0.
+Version 4.0.0 is a major new release with exciting new features!
+It introduces a new Affiliates Dashboard and Sections also available as blocks,
+new customizable dashboard templates and many more improvements.
+
+As usual and following good practice, please make sure to BACK UP your site and database before upgrading!
