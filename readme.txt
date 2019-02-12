@@ -8,35 +8,58 @@ Requires PHP: 5.6.0
 Stable tag: 4.0.0
 License: GPLv3
 
-The Affiliates system provides the most powerful tools to run a successful Affiliate Marketing Program.
+The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
 
 == Description ==
 
-The Affiliates system allows you to run a successful Affiliate Marketing Program. It comprises a set of the most powerful growth-oriented tools.
+The Affiliates system allows you to run a successful Affiliate Marketing Program.
+It comprises a set of the most **powerful growth-oriented tools**.
 
-> You will find extensive information and detailed instructions on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
+= Designed for Growth =
 
-Important features include automated affiliate registration, an unlimited affiliate management section and the ability to integrate Affiliates with virtually any platform, including e-commerce, memberships, forms, lead generation and tracking and many more.
+A fresh and intuitive dashboard helps your partners to spread the word about your site, products and services easily.
+Affiliates can share links to any page on the website, using simple tools that are built into its dashboard.
 
-Commissions on referred users are built in, free and premium integrations with today's most popular e-commerce and other systems are available.
+Designed to deliver an intuitive experience out of the box,
+it is ready for virtually any theme, even without customizations.
 
-The Affiliates plugin provides an affiliate system for sellers, shops, distributors, blogs, membership sites, microsites for product launches and many more, who want to quickstart their affiliate program and start growing fast.
+Yet you can refine the design and facilities provided for your affiliates even further,
+with its flexible template-based dashboard sections.
+
+> You will find extensive information and detailed instructions in the [Documentation](http://docs.itthinx.com/document/affiliates/).
+
+Important features include an intuitive affiliate dashboard, automated affiliate registration
+and unlimited affiliate management sections. Affiliates can integrate with virtually any platform,
+including e-commerce, memberships, forms, lead generation, lead tracking and many more.
+
+Commissions on referred users are built-in,
+free and premium integrations with today's most popular e-commerce and other systems are available.
+
+The Affiliates plugin provides an affiliate system for sellers,
+shops, distributors, blogs, membership sites, microsites for product launches and many more.
+It allows to quickstart your affiliate program and start growing fast.
 
 It also provides a solid framework for developers, who wish to build customized solutions based on a sound data model.
 
-With unlimited affiliate program management tools available on the back end and a set of shortcodes to provide Affiliates information on their performance on the front end, there is everything you need to start an affiliate program.
+With unlimited affiliate program management tools available on the back end,
+its flexible affiliate dashboard templates, blocks and shortcodes,
+you can provide your affiliates with a really intuitive experience.
+Partners get the tools and information about their earnings and performance on the front end.
+There is everything you need to start an affiliate and growth marketing program.
 
-To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with **affiliate links**, the _Affiliates_ plugin is the most powerful free solution.
+To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with
+**affiliate links**, the _Affiliates_ system is the most powerful free solution.
 
-Simply put, the affiliates plugin is used to manage affiliates, create referrals and track visits to your site through affiliate links.
-Referrals are stored and attributed to an affiliate, for example if clients place orders on your site and you need to credit your affiliates.
-You can show your affiliates how well they perform, by embedding simple shortcodes on a page.
+The system is used to manage affiliates, create referrals and track visits to your site through affiliate links.
+Referrals are stored and attributed to an affiliate, for example if clients place orders on your site
+and you need to credit your affiliates.
 
 ### Free Integrations and Extensions
 
 - [Affiliates Import](https://wordpress.org/plugins/affiliates-import) : Allows to import affiliate accounts in bulk from a text file. This is also useful to migrate to [Affiliates](https://wordpress.org/plugins/affiliates/), [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/).
 - [Affiliates WooCommerce Light](https://wordpress.org/plugins/affiliates-woocommerce-light) : Run your affiliate program with [WooCommerce](http://wordpress.org/plugins/woocommerce/), referrals are created automatically for your affiliates when they refer sales.
 - [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals.
+- [Affiliates Formidable](https://wordpress.org/plugins/affiliates-formidable/) : Affiliates can register through [Formidable Forms](https://wordpress.org/plugins/formidable/) forms and form submissions can grant commissions and record referrals.
 - [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions.
 - [Affiliates BuddyPress](https://wordpress.org/plugins/affiliates-buddypress) : Display affiliate content in the [BuddyPress](https://wordpress.org/plugins/buddypress/) user profile.
 - [Affiliates Captcha](https://wordpress.org/plugins/affiliates-captcha) : The captcha will appear on the affiliate registration form when the [Captcha](https://wordpress.org/plugins/captcha/) plugin is used.
@@ -69,7 +92,7 @@ Advertising
 Forms
 
 - [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms/) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
-- [Affiliates Formidable](https://www.itthinx.com/plugins/affiliates-formidable/) : This integration can be used to record and track form submissions and pay affiliate partners commissions on leads or successful purchases with [Formidable Forms](https://wordpress.org/plugins/formidable/).
+- [Affiliates Formidable](https://www.itthinx.com/plugins/affiliates-formidable/) : Affiliates can register through forms handled with [Formidable Forms](https://wordpress.org/plugins/formidable/), record and track form submissions to pay affiliate partners commissions on leads or successful purchases. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
 - [Affiliates Gravity Forms](https://www.itthinx.com/plugins/affiliates-gravityforms/) : This extension allows to record referrals for form submissions and to create affiliate accounts for new users based on [Gravity Forms](http://www.gravityforms.com).
 - [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) it unlocks advanced features.
 
