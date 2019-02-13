@@ -406,3 +406,4 @@ It introduces a new Affiliates Dashboard and Sections also available as blocks,
 new customizable dashboard templates and many more improvements.
 
 As usual and following good practice, please make sure to BACK UP your site and database before upgrading!
+It is also recommended to upgrade during low traffic hours to minimize the impact of changes to the database.
