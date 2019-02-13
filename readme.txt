@@ -396,6 +396,7 @@ The full changelog is available at [changelog.txt](https://github.com/itthinx/af
 * Added a warning displayed in the Plugins section when the plugin is configured to delete its data.
 * Fixed an issue where a request for an invalid affiliate link would record a hit.
 * Added the filter affiliates_record_robot_hits and allowing the constant AFFILIATES_RECORD_ROBOT_HITS to determine whether hits from robots should be recorded.
+* Added the debugging constants AFFILIATES_DEBUG and AFFILIATES_DEBUG_ROBOTS which can be defined as true in wp-config.php to enable specific debugging.
 
 == Upgrade Notice ==
 

@@ -214,3 +214,10 @@ define( 'AFFILIATES_DEST_URI', 'dest' );
 
 // User agents
 define( 'AFFILIATES_USER_AGENT_MAX_LENGTH', 255 );
+
+if ( !defined( 'AFFILIATES_DEBUG' ) ) {
+	define( 'AFFILIATES_DEBUG', false );
+}
+if ( !defined( 'AFFILIATES_DEBUG_ROBOTS' ) ) {
+	define( 'AFFILIATES_DEBUG_ROBOTS', false );
+}

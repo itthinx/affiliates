@@ -1206,6 +1206,9 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		foreach ( $robots as $name ) {
 			if ( strpos( strtolower( $user_agent ), strtolower( $name ) ) !== false ) {
 				$robot = 1;
+				if ( AFFILIATES_DEBUG_ROBOTS ) {
+					affiliates_log_info( sprintf( 'Skipping robot hit from [%s] %s', esc_html( $ip_address ), esc_html( $user_agent ) ) );
+				}
 				break;
 			}
 		}
