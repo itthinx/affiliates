@@ -422,14 +422,12 @@ function affiliates_setup() {
 
 	// IMPORTANT:
 	// datetime -- records the datetime with respect to the server's timezone
-	// date and time are are also with respect to the server's timezone
-	// date -- we do NOT use this to display information to the user
-	// time -- same applies to this here
-	// date and time (and currently only date really) are used for better
-	// performance on certain queries.
+	// date and datetime are are also with respect to the server's timezone
+	// date is used for better performance in queries, datetime to provide detail when viewed
 	// We DO use the datetime (adjusted to the user's timezone using
 	// DateHelper's s2u() function to display the date and time
 	// in accordance to the user's date and time.
+	// @todo ip/ipv6 (also for referrals table) : create new table and map hits.ip_id to ip.ip_id instead of storing those
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $hits_table . "'" ) != $hits_table ) {
 		$queries[] = "CREATE TABLE " . $hits_table . "(
@@ -438,10 +436,8 @@ function affiliates_setup() {
 				affiliate_id    BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 				campaign_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				date            DATE NOT NULL,
-				time            TIME NOT NULL,
 				datetime        DATETIME NOT NULL,
 				ip              INT(10) UNSIGNED NOT NULL DEFAULT 0,
-				ipv6            DECIMAL(39,0) UNSIGNED DEFAULT NULL,
 				src_uri_id      BIGINT(20) UNSIGNED DEFAULT NULL,
 				dest_uri_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				user_agent_id   BIGINT(20) UNSIGNED DEFAULT NULL,
@@ -603,7 +599,6 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN hash CHAR(64) DEFAULT NULL,
 		DROP PRIMARY KEY,
 		ADD PRIMARY KEY (hit_id),
-		ADD INDEX aid_d_t_ip (affiliate_id,date,time,ip),
 		ADD INDEX hash (hash);";
 	}
 
@@ -624,6 +619,16 @@ function affiliates_update( $previous_version = null ) {
 	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'idx_date'" );
 	if ( $index === null || is_array( $index ) && count( $index ) === 0 ) {
 		$queries[] = "ALTER TABLE $hits_table ADD INDEX idx_date (date);";
+	}
+	// from 4.0.0 drop the time column
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'time'" );
+	if ( !empty( $column ) ) {
+		$queries[] = "ALTER TABLE $hits_table DROP COLUMN time;";
+	}
+	// from 4.0.0 drop the ipv6 column
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'ipv6'" );
+	if ( !empty( $column ) ) {
+		$queries[] = "ALTER TABLE $hits_table DROP COLUMN ipv6;";
 	}
 
 	// URIs ... from 2.17.0
@@ -1232,10 +1237,8 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 				'affiliate_id'  => $affiliate_id,
 				'campaign_id'   => $campaign_id,
 				'date'          => $date,
-				'time'          => $time,
 				'datetime'      => $datetime,
 				'ip'            => $ip_address,
-				'ipv6'          => null,
 				'is_robot'      => $robot,
 				'user_id'       => $user_id,
 				'type'          => $type,
@@ -1737,7 +1740,7 @@ function affiliates_admin_menu() {
 	// main
 	$page = add_menu_page(
 		__( 'Affiliates Overview', 'affiliates' ),
-		'Affiliates', // @todo translate after core bug 18857 has been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id
+		'Affiliates', // do not translate (this was marked as todo after core bug 18857 had been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id)
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin',
 		'affiliates_admin',

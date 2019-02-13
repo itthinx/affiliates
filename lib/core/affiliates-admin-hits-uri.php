@@ -421,7 +421,6 @@ function affiliates_admin_hits_uri() {
 			"h.campaign_id, " .
 			( $campaigns ? "c.name AS campaign, " : '' ) .
 			"h.ip, " .
-			// "h.ipv6, " .
 			"h.affiliate_id, " .
 			"a.name, " .
 			"h.src_uri_id, " .
