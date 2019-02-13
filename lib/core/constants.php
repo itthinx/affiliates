@@ -78,7 +78,9 @@ define( 'AFFILIATES_TP', 'aff_' );
 /**
  * @var boolean Store robot hits
  */
-define( 'AFFILIATES_RECORD_ROBOT_HITS', false );
+if ( !defined( 'AFFILIATES_RECORD_ROBOT_HITS' ) ) {
+	define( 'AFFILIATES_RECORD_ROBOT_HITS', false );
+}
 
 /**
  * @var string expander showing expandable state

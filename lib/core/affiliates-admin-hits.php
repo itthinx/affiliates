@@ -401,12 +401,11 @@ function affiliates_admin_hits() {
 
 			$result = $results[$i];
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			$output .= "<td class='date'>$result->date</td>";
-//			$output .= '<td class="date">' . DateHelper::formatDate( DateHelper::s2u( $result->datetime ) ) . '</td>';
-			$output .= "<td class='visits'>$result->visits</td>";
-			$output .= "<td class='hits'>$result->hits</td>";
-			$output .= "<td class='referrals'>$result->referrals</td>";
-			$output .= "<td class='ratio'>$result->ratio</td>";
+			$output .= '<td class="date">'. esc_html( $result->date ) . '</td>';
+			$output .= '<td class="visits">' . esc_html( $result->visits ) . '</td>';
+			$output .= '<td class="hits">' . esc_html( $result->hits ) . '</td>';
+			$output .= '<td class="referrals">' . esc_html( $result->referrals ) . '</td>';
+			$output .= '<td class="ratio">' . esc_html( $result->ratio ) . '</td>';
 			$output .= '</tr>';
 
 			if ( $expanded || $expanded_referrals || $expanded_hits ) {
@@ -437,22 +436,19 @@ function affiliates_admin_hits() {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
 						$output .= '<div class="details-referrals">';
-						$output .= '<p class="description">' . __( 'Referrals', 'affiliates' ) . '</p>';
-						$output .= '
-							<table id="details-referrals-' . esc_attr( $result->date ) . '" class="details-referrals" cellspacing="0">
-							<thead>
-							<tr>
-							<th scope="col" class="datetime">' . __( 'Time', 'affiliates' ) . '</th>
-							<th scope="col" class="post-id">' . __( 'Post', 'affiliates' ) . '</th>
-							<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
-							</tr>
-							</thead>
-							<tbody>
-							';
+						$output .= '<p class="description">' . esc_html__( 'Referrals', 'affiliates' ) . '</p>';
+						$output .= '<table id="details-referrals-' . esc_attr( $result->date ) . '" class="details-referrals" cellspacing="0">';
+						$output .= '<thead>';
+						$output .= '<tr>';
+						$output .= '<th scope="col" class="datetime">' . esc_html__( 'Date', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="post-id">' . esc_html__( 'Post', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="affiliate-id">' . esc_html__( 'Affiliate', 'affiliates' ) . '</th>';
+						$output .= '</tr>';
+						$output .= '</thead>';
+						$output .= '<tbody>';
 						foreach ( $referrals as $referral ) {
 							$output .= '<tr class="details-referrals ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-//							$output .= "<td class='datetime'>$referral->datetime</td>";
-							$output .= '<td class="datetime">' . DateHelper::s2u( $referral->datetime ) . '</td>';
+							$output .= '<td class="datetime">' . esc_html( $referral->datetime ) . '</td>';
 							$link = get_permalink( $referral->post_id );
 							$title = get_the_title( $referral->post_id );
 							$output .= '<td class="post-id"><a href="' . esc_attr( $link ) . '" target="_blank">' . wp_filter_nohtml_kses( $title ) . '</a></td>';
@@ -497,25 +493,22 @@ function affiliates_admin_hits() {
 					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 					$output .= '<td colspan="5">';
 					$output .= '<div class="details-hits">';
-					$output .= '<p class="description">' . __( 'Hits', 'affiliates' ) . '</p>';
-					$output .= '
-						<table id="details-hits-' . esc_attr( $result->date ) . '" class="details-hits" cellspacing="0">
-						<thead>
-						<tr>
-						<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>
-						<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>
-						<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>
-						<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>
-						<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>
-						<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>
-						</tr>
-						</thead>
-						<tbody>
-						';
+					$output .= '<p class="description">' . esc_html__( 'Hits', 'affiliates' ) . '</p>';
+					$output .= '<table id="details-hits-' . esc_attr( $result->date ) . '" class="details-hits" cellspacing="0">';
+					$output .= '<thead>';
+					$output .= '<tr>';
+					$output .= '<th scope="col" class="datetime">' . esc_html__( 'Date', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="ip">' . esc_html__( 'IP', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="affiliate-id">' . esc_html__( 'Affiliate', 'affiliates' ) . '</th>';
+					$output .= '<th scrope="col" class="src-uri">' . esc_html__( 'Source URI', 'affiliates' ) . '</th>';
+					$output .= '<th scrope="col" class="src-uri">' . esc_html__( 'Landing URI', 'affiliates' ) . '</th>';
+					$output .= '<th scope="col" class="hit-user-agent">' . esc_html__( 'User Agent', 'affiliates' ) . '</th>';
+					$output .= '</tr>';
+					$output .= '</thead>';
+					$output .= '<tbody>';
 					foreach ( $hits as $hit ) {
-						$output .= '<tr class=" details ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-//						$output .= "<td class='time'>$hit->time</td>";
-						$output .= '<td class="time">' . DateHelper::s2u( $hit->datetime ) . '</td>';
+						$output .= '<tr class="details ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
+						$output .= '<td class="datetime">' . esc_html( $hit->datetime ) . '</td>';
 						$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 						$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
 						$output .= "<td class='src-uri'>" . esc_html( $hit->src_uri ) . "</td>";

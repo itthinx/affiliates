@@ -43,7 +43,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 				// robots
 				$robots = wp_filter_nohtml_kses( trim ( $_POST['robots'] ) );
-				$wpdb->query("DELETE FROM $robots_table;");
+				$wpdb->query( "DELETE FROM $robots_table" );
 				if ( !empty( $robots ) ) {
 					$robots = str_replace( ",", "\n", $robots );
 					$robots = str_replace( "\r", "", $robots );

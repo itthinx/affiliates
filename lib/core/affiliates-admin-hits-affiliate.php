@@ -525,7 +525,7 @@ function affiliates_admin_hits_affiliate() {
 						$output .= '<table id="details-referrals-' . esc_attr( $result->affiliate_id ) . '" class="details-referrals" cellspacing="0">';
 						$output .= '<thead>';
 						$output .= '<tr>';
-						$output .= '<th scope="col" class="datetime">' . __( 'Time', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="datetime">' . __( 'Date', 'affiliates' ) . '</th>';
 						$output .= '<th scope="col" class="post-id">' . __( 'Post', 'affiliates' ) . '</th>';
 						$output .= '</tr>';
 						$output .= '</thead>';
@@ -588,8 +588,7 @@ function affiliates_admin_hits_affiliate() {
 						$output .= '<table id="details-hits-' . esc_attr( $result->affiliate_id ) . '" class="details-hits" cellspacing="0">';
 						$output .= '<thead>';
 						$output .= '<tr>';
-						$output .= '<th scope="col" class="date">' . __( 'Date', 'affiliates' ) . '</th>';
-						$output .= '<th scope="col" class="time">' . __( 'Time', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="datetime">' . __( 'Date', 'affiliates' ) . '</th>';
 						$output .= '<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>';
 						$output .= '<th scope="col" class="count">' . __( 'Count', 'affiliates' ) . '</th>';
 						$output .= '<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>';
@@ -601,8 +600,7 @@ function affiliates_admin_hits_affiliate() {
 						$output .= '<tbody>';
 						foreach ( $hits as $hit ) {
 							$output .= '<tr class="details ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-							$output .= '<td class="date">' . DateHelper::formatDate( DateHelper::s2u( $hit->datetime ) ) . '</td>';
-							$output .= '<td class="time">' . DateHelper::formatTime( DateHelper::s2u( $hit->datetime ) ) . '</td>';
+							$output .= '<td class="datetime">' . DateHelper::s2u( $hit->datetime ) . '</td>';
 							$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
 							$output .= "<td class='count'>$hit->count</td>";
 							$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";

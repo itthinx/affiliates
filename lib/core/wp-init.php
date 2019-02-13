@@ -1119,9 +1119,6 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$result = null;
 
 	// add a hit
-	// @todo check/store IPv6 addresses
-	//$http_user_agent = $_SERVER['HTTP_USER_AGENT'];
-
 	$table    = _affiliates_get_tablename( 'hits' );
 	if ( $now == null ) {
 		$now = time();
@@ -1136,6 +1133,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$formats  = '(%s,%d,%s,%s,%s,%s';
 	$values   = array( $hash, $affiliate_id, $date, $time, $datetime, $type );
 
+	// @todo check/store IPv6 addresses
 	$ip_address = $_SERVER['REMOTE_ADDR'];
 	if ( PHP_INT_SIZE >= 8 ) {
 		if ( $ip_int = ip2long( $ip_address ) ) {
@@ -1156,17 +1154,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		$formats .= ',%d';
 		$values[] = $user_id;
 	}
-	$is_robot = 0;
-	if ( AFFILIATES_RECORD_ROBOT_HITS ) { // @todo review/fix logic
-		$robots_table    = _affiliates_get_tablename( 'robots' );
-		$robots_query    = $wpdb->prepare( "SELECT name FROM $robots_table WHERE %s LIKE concat('%%',name,'%%')", $http_user_agent );
-		$got_robots      = $wpdb->get_results( $robots_query );
-		if ( !empty( $got_robots ) ) {
-			$columns .= ',is_robot';
-			$formats .= ',%d';
-			$values[] = '1';
-		}
-	}
+
 	$campaign_id = null;
 	if ( class_exists( 'Affiliates_Campaign' ) && method_exists(  'Affiliates_Campaign', 'evaluate' ) ) {
 		if ( isset( $_REQUEST['cmid'] ) ) {
@@ -1201,32 +1189,62 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		$values[] = $user_agent_id;
 	}
 
+	$robot  = 0;
+	$robots = wp_cache_get( 'robots', 'affiliates' );
+	if ( $robots === false ) {
+		$robots = array();
+		$robots_table = _affiliates_get_tablename( 'robots' );
+		$names = $wpdb->get_results( "SELECT DISTINCT(name) FROM $robots_table" );
+		if ( $names !== null && is_array( $names ) ) {
+			foreach ( $names as $name ) {
+				$robots[] = $name->name;
+			}
+		}
+		wp_cache_set( 'robots', $robots, 'affiliates' );
+	};
+	if ( $robots !== null && is_array( $robots ) && count( $robots ) > 0 ) {
+		foreach ( $robots as $name ) {
+			if ( strpos( strtolower( $user_agent ), strtolower( $name ) ) !== false ) {
+				$robot = 1;
+				break;
+			}
+		}
+	}
+	if ( $robot > 0 ) {
+		$columns .= ',is_robot';
+		$formats .= ',%d';
+		$values[] = '1';
+	}
+
 	$columns .= ')';
 	$formats .= ')';
-	$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
-	if ( $wpdb->query( $query ) ) {
-		$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
-		$result = array(
-			'hit_id'        => $hit_id,
-			'hash'          => $hash,
-			'affiliate_id'  => $affiliate_id,
-			'campaign_id'   => $campaign_id,
-			'date'          => $date,
-			'time'          => $time,
-			'datetime'      => $datetime,
-			'ip'            => $ip_address,
-			'ipv6'          => null,
-			'is_robot'      => $is_robot,
-			'user_id'       => $user_id,
-			'type'          => $type,
-			'src_uri_id'    => $src_uri_id,
-			'dest_uri_id'   => $dest_uri_id,
-			'user_agent_id' => $user_agent_id
-		);
-		do_action(
-			'affiliates_hit',
-			$result
-		);
+
+	if ( $robot === 0 || apply_filters( 'affiliates_record_robot_hits', AFFILIATES_RECORD_ROBOT_HITS ) ) {
+		$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
+		if ( $wpdb->query( $query ) ) {
+			$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
+			$result = array(
+				'hit_id'        => $hit_id,
+				'hash'          => $hash,
+				'affiliate_id'  => $affiliate_id,
+				'campaign_id'   => $campaign_id,
+				'date'          => $date,
+				'time'          => $time,
+				'datetime'      => $datetime,
+				'ip'            => $ip_address,
+				'ipv6'          => null,
+				'is_robot'      => $robot,
+				'user_id'       => $user_id,
+				'type'          => $type,
+				'src_uri_id'    => $src_uri_id,
+				'dest_uri_id'   => $dest_uri_id,
+				'user_agent_id' => $user_agent_id
+			);
+			do_action(
+				'affiliates_hit',
+				$result
+			);
+		}
 	}
 	return $result;
 }

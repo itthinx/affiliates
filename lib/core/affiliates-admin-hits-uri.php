@@ -682,14 +682,14 @@ function affiliates_admin_hits_uri() {
 			$result = $results[$i];
 
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			$output .= "<td class='date'>$result->date</td>";
+			$output .= "<td class='date'>$result->datetime</td>";
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
-			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . ' [' . esc_html( $result->affiliate_id )  . ']' . "</td>";
+			$output .= sprintf( '<td class="affiliate-name">%s [%s]</td>', stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ), esc_html( $result->affiliate_id ) );
 			$output .= sprintf( '<td class="ip">%s</td>', esc_html( long2ip( sprintf( "%d", $result->ip ) ) ) );
-			$output .= "<td class='referrals'>$result->referrals</td>";
-			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
-			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
-			$output .= sprintf( "<td class='user-agent'>%s</td>", esc_html( $result->user_agent ) );
+			$output .= sprintf( '<td class="referrals">%s</td>', esc_html( $result->referrals ) );
+			$output .= sprintf( '<td class="src-uri">%s</td>', esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( '<td class="dest-uri">%s</td>', esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( '<td class="user-agent">%s</td>', esc_html( $result->user_agent ) );
 			if ( $campaigns ) {
 				if ( !empty( $result->campaign_id ) ) {
 					if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
