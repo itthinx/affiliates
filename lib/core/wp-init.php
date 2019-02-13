@@ -441,9 +441,9 @@ function affiliates_setup() {
 				src_uri_id      BIGINT(20) UNSIGNED DEFAULT NULL,
 				dest_uri_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				user_agent_id   BIGINT(20) UNSIGNED DEFAULT NULL,
-				is_robot        TINYINT(1) DEFAULT 0,
+				is_robot        TINYINT DEFAULT 0,
 				user_id         BIGINT(20) UNSIGNED DEFAULT NULL,
-				count           INT DEFAULT 1,
+				count           TINYINT DEFAULT 1,
 				type            VARCHAR(10) DEFAULT NULL,
 				PRIMARY KEY     (hit_id),
 				INDEX           hash (hash),
@@ -629,6 +629,11 @@ function affiliates_update( $previous_version = null ) {
 	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'ipv6'" );
 	if ( !empty( $column ) ) {
 		$queries[] = "ALTER TABLE $hits_table DROP COLUMN ipv6;";
+	}
+	// from 4.0.0 reduce size of the count column to TINYINT
+	$column = $wpdb->get_row( "DESCRIBE $hits_table count" );
+	if ( !empty( $column ) && isset( $column->Type ) && stripos( $column->Type, 'TINYINT' ) === false ) {
+		$queries[] = "ALTER TABLE $hits_table MODIFY count TINYINT(1) DEFAULT 1;";
 	}
 
 	// URIs ... from 2.17.0
@@ -1124,21 +1129,19 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$result = null;
 
 	// add a hit
-	$table    = _affiliates_get_tablename( 'hits' );
-	if ( $now == null ) {
+	$hits_table = _affiliates_get_tablename( 'hits' );
+	if ( $now === null ) {
 		$now = time();
 	}
 	$date     = date( 'Y-m-d' , $now );
-	$time     = date( 'H:i:s' , $now );
 	$datetime = date( 'Y-m-d H:i:s' , $now );
-	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $table" );
+	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $hits_table" );
 	$hash     = hash( 'sha256', '' . $n . $affiliate_id . $now );
 
-	$columns  = '(hash, affiliate_id, date, time, datetime, type';
-	$formats  = '(%s,%d,%s,%s,%s,%s';
-	$values   = array( $hash, $affiliate_id, $date, $time, $datetime, $type );
+	$columns  = '(hash, affiliate_id, date, datetime, type';
+	$formats  = '(%s,%d,%s,%s,%s';
+	$values   = array( $hash, $affiliate_id, $date, $datetime, $type );
 
-	// @todo check/store IPv6 addresses
 	$ip_address = $_SERVER['REMOTE_ADDR'];
 	if ( PHP_INT_SIZE >= 8 ) {
 		if ( $ip_int = ip2long( $ip_address ) ) {
@@ -1228,7 +1231,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$formats .= ')';
 
 	if ( $robot === 0 || apply_filters( 'affiliates_record_robot_hits', AFFILIATES_RECORD_ROBOT_HITS ) ) {
-		$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
+		$query = $wpdb->prepare( "INSERT INTO $hits_table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
 		if ( $wpdb->query( $query ) ) {
 			$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			$result = array(
