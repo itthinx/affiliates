@@ -738,8 +738,7 @@ function affiliates_update( $previous_version = null ) {
 	foreach ( $queries as $query ) {
 		// don't use dbDelta, it doesn't handle ALTER
 		if ( $wpdb->query( $query ) === false ) {
-			// fail but still try to go on
-			$result = false;
+			affiliates_log_error( $wpdb->last_error );
 		}
 	}
 	
