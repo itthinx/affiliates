@@ -182,7 +182,7 @@ function affiliates_admin() {
 	$affiliates_subquery = " affiliate_id IN (SELECT affiliate_id FROM $affiliates_table WHERE status = 'active') ";
 
 	// hits per day
-	$query = "SELECT date, sum(count) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
+	$query = "SELECT date, COUNT(*) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$hit_results = $wpdb->get_results( $wpdb->prepare( $query,
 		$from_date, $thru_date
 	) );

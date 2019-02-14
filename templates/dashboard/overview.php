@@ -66,7 +66,7 @@ $link_info  = wp_kses(
 		</div>
 		<div class="stats-item" style="flex-grow:1">
 			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
-			<?php if ( count ( $amounts ) > 0 ) :?>
+			<?php if ( count( $amounts ) > 0 ) :?>
 				<?php foreach ( $amounts as $currency_id => $amount ) : ?>
 					<div class="stats-item-value">
 						<span class="stats-item-currency"><?php echo esc_html( $currency_id ); ?></span> <span class="stats-item-amount"><?php echo esc_html( $amount ); ?></span>

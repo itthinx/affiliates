@@ -443,7 +443,6 @@ function affiliates_setup() {
 				user_agent_id   BIGINT(20) UNSIGNED DEFAULT NULL,
 				is_robot        TINYINT DEFAULT 0,
 				user_id         BIGINT(20) UNSIGNED DEFAULT NULL,
-				count           TINYINT DEFAULT 1,
 				type            VARCHAR(10) DEFAULT NULL,
 				PRIMARY KEY     (hit_id),
 				INDEX           hash (hash),
@@ -630,10 +629,10 @@ function affiliates_update( $previous_version = null ) {
 	if ( !empty( $column ) ) {
 		$queries[] = "ALTER TABLE $hits_table DROP COLUMN ipv6;";
 	}
-	// from 4.0.0 reduce size of the count column to TINYINT
-	$column = $wpdb->get_row( "DESCRIBE $hits_table count" );
-	if ( !empty( $column ) && isset( $column->Type ) && stripos( $column->Type, 'TINYINT' ) === false ) {
-		$queries[] = "ALTER TABLE $hits_table MODIFY count TINYINT(1) DEFAULT 1;";
+	// from 4.0.0 drop the count column
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'count'" );
+	if ( !empty( $column ) ) {
+		$queries[] = "ALTER TABLE $hits_table DROP COLUMN count;";
 	}
 
 	// URIs ... from 2.17.0
@@ -1230,7 +1229,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$formats .= ')';
 
 	if ( $robot === 0 || apply_filters( 'affiliates_record_robot_hits', AFFILIATES_RECORD_ROBOT_HITS ) ) {
-		$query = $wpdb->prepare( "INSERT INTO $hits_table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
+		$query = $wpdb->prepare( "INSERT INTO $hits_table $columns VALUES $formats", $values );
 		if ( $wpdb->query( $query ) ) {
 			$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			$result = array(
@@ -2320,12 +2319,11 @@ function affiliates_get_affiliate_hits( $affiliate_id, $from_date = null , $thru
 			$values[] = $thru_date;
 		}
 	}
-	$query = $wpdb->prepare("
-		SELECT sum(count) FROM $hits_table $where
-		",
+	$query = $wpdb->prepare( "SELECT COUNT(*) FROM $hits_table $where",
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );
+	error_log( 'hits = ' . var_export( $result, true)); // @todo remove
 	return $result;
 }
 
@@ -2403,10 +2401,9 @@ function affiliates_get_affiliate_visits( $affiliate_id, $from_date = null , $th
 			$values[] = $thru_date;
 		}
 	}
-	$query = $wpdb->prepare("
-		SELECT SUM(visits) FROM
-		(SELECT count(DISTINCT IP) visits FROM $hits_table $where GROUP BY DATE) tmp
-		",
+	$query = $wpdb->prepare(
+		"SELECT SUM(visits) FROM " .
+		"(SELECT COUNT(DISTINCT IP) visits FROM $hits_table $where GROUP BY DATE) tmp",
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );
@@ -2460,9 +2457,7 @@ function affiliates_get_affiliate_referrals( $affiliate_id, $from_date = null , 
 		$values[] = AFFILIATES_REFERRAL_STATUS_ACCEPTED;
 		$values[] = AFFILIATES_REFERRAL_STATUS_CLOSED;
 	}
-	$query = $wpdb->prepare("
-		SELECT count(*) FROM $referrals_table $where
-		",
+	$query = $wpdb->prepare( "SELECT COUNT(*) FROM $referrals_table $where",
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );

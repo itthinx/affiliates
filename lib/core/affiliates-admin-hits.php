@@ -250,7 +250,7 @@ function affiliates_admin_hits() {
 			"IF ( referrals.count IS NOT NULL, referrals.count, 0 ) AS referrals, " .
 			"IF ( referrals.count IS NOT NULL AND hits.visits > 0, referrals.count / hits.visits, 0 ) AS ratio " .
 			"FROM " .
-			"( SELECT date, COUNT(DISTINCT ip) AS visits, SUM(count) AS hits FROM $hits_table $filters GROUP BY date ) AS hits " .
+			"( SELECT date, COUNT(DISTINCT ip) AS visits, COUNT(*) AS hits FROM $hits_table $filters GROUP BY date ) AS hits " .
 			"LEFT JOIN ( SELECT COUNT(*) AS count, date(datetime) AS date FROM $referrals_table GROUP BY date(datetime) ) AS referrals ON hits.date = referrals.date " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
@@ -466,7 +466,7 @@ function affiliates_admin_hits() {
 				//
 				if ( $expanded_hits ) {
 					// get the detailed results for hits
-					$details_orderby = "date $order, time $order";
+					$details_orderby = "date $order";
 
 					$details_filters = " WHERE h.date = %s ";
 					$details_filter_params = array( $result->date );

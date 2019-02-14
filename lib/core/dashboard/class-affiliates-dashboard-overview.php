@@ -115,7 +115,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 		$amounts_by_currency_total = array();
 
 		// hits per day
-		$query = "SELECT date, sum(count) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND affiliate_id = %d GROUP BY date";
+		$query = "SELECT date, COUNT(*) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND affiliate_id = %d GROUP BY date";
 		$hit_results = $wpdb->get_results( $wpdb->prepare( $query, $from_date, $thru_date, intval( $affiliate_id ) ) );
 		$hits = array();
 		foreach ( $hit_results as $hit_result ) {

@@ -297,7 +297,7 @@ function affiliates_admin_hits_affiliate() {
 			"IF ( hits.visits > 0 AND referrals.count IS NOT NULL, referrals.count / hits.visits, 0 ) AS ratio " .
 			"FROM " .
 			"$affiliates_table a " .
-			"LEFT JOIN (SELECT affiliate_id, COUNT(DISTINCT ip) AS visits, SUM(count) AS hits FROM $hits_table $hits_subquery_where GROUP BY affiliate_id ) AS hits ON hits.affiliate_id = a.affiliate_id " .
+			"LEFT JOIN (SELECT affiliate_id, COUNT(DISTINCT ip) AS visits, COUNT(*) AS hits FROM $hits_table $hits_subquery_where GROUP BY affiliate_id ) AS hits ON hits.affiliate_id = a.affiliate_id " .
 			"LEFT JOIN (SELECT affiliate_id, COUNT(*) AS count FROM $referrals_table r $referrals_subquery_where GROUP BY affiliate_id ) AS referrals ON  referrals.affiliate_id = a.affiliate_id " .
 			$filters . " " .
 			"ORDER BY $orderby $order " .
@@ -550,7 +550,7 @@ function affiliates_admin_hits_affiliate() {
 				if ( $expanded_hits ) {
 					$maximum_hits = max( array( 0, intval( apply_filters( 'affiliates_admin_hits_affiliate_maximum_hits', 20 ) ) ) );
 					// get the detailed results for hits
-					$details_orderby = "date $order, time $order";
+					$details_orderby = "date $order";
 					$details_filters = " WHERE h.affiliate_id = %d ";
 					$details_filter_params = array( $result->affiliate_id );
 					if ( $u2s_from_date && $u2s_thru_date ) {
@@ -590,7 +590,6 @@ function affiliates_admin_hits_affiliate() {
 						$output .= '<tr>';
 						$output .= '<th scope="col" class="datetime">' . __( 'Date', 'affiliates' ) . '</th>';
 						$output .= '<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>';
-						$output .= '<th scope="col" class="count">' . __( 'Count', 'affiliates' ) . '</th>';
 						$output .= '<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>';
 						$output .= '<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>';
 						$output .= '<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>';
@@ -602,7 +601,6 @@ function affiliates_admin_hits_affiliate() {
 							$output .= '<tr class="details ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 							$output .= '<td class="datetime">' . DateHelper::s2u( $hit->datetime ) . '</td>';
 							$output .= "<td class='ip'>" . long2ip( $hit->ip ) . "</td>";
-							$output .= "<td class='count'>$hit->count</td>";
 							$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $hit->name ) ) . "</td>";
 							$output .= "<td class='src-uri'>" . esc_html( $hit->src_uri ) . "</td>";
 							$output .= "<td class='dest-uri'>" . esc_html( $hit->dest_uri ) . "</td>";
