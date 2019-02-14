@@ -576,6 +576,10 @@ function affiliates_update( $previous_version = null ) {
 	$result  = true;
 	$queries = array();
 
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return $result;
+	}
+
 	$charset_collate = '';
 	if ( ! empty( $wpdb->charset ) ) {
 		$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
@@ -737,10 +741,9 @@ function affiliates_update( $previous_version = null ) {
 	foreach ( $queries as $query ) {
 		// don't use dbDelta, it doesn't handle ALTER
 		if ( $wpdb->query( $query ) === false ) {
-			affiliates_log_error( $wpdb->last_error );
 		}
 	}
-	
+
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.1.5' ) < 0 ) {
 		affiliates_update_rewrite_rules();
 	}
