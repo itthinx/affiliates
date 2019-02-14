@@ -197,7 +197,7 @@ function affiliates_version_check() {
 		if ( affiliates_update( $previous_version ) ) {
 			update_option( 'affiliates_plugin_version', $affiliates_version );
 		} else {
-			$affiliates_admin_messages[] = '<div class="error">Updating the Affiliates core FAILED.</div>';
+			affiliates_log_error( 'There were errors during update (core) – this might only be a temporary issue, unless this message comes up permanently.' );
 		}
 	}
 }
@@ -576,7 +576,10 @@ function affiliates_update( $previous_version = null ) {
 	$result  = true;
 	$queries = array();
 
-	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	if (
+		defined( 'DOING_AJAX' ) && DOING_AJAX ||
+		defined( 'DOING_CRON' ) && DOING_CRON
+	) {
 		return $result;
 	}
 
@@ -741,6 +744,7 @@ function affiliates_update( $previous_version = null ) {
 	foreach ( $queries as $query ) {
 		// don't use dbDelta, it doesn't handle ALTER
 		if ( $wpdb->query( $query ) === false ) {
+			$result = false;
 		}
 	}
 
@@ -2326,7 +2330,6 @@ function affiliates_get_affiliate_hits( $affiliate_id, $from_date = null , $thru
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );
-	error_log( 'hits = ' . var_export( $result, true)); // @todo remove
 	return $result;
 }
 
