@@ -58,6 +58,7 @@ class Affiliates_Robot_Cleaner {
 		}
 
 		if ( check_ajax_referer( 'affiliates-robot-cleaner-ajax-nonce', 'affiliates_robot_cleaner_ajax_nonce' ) ) {
+			set_time_limit( 0 );
 			// remove all hits that are related to robots and don't have a referral related
 			$hits_table = _affiliates_get_tablename( 'hits' );
 			$referrals_table = _affiliates_get_tablename( 'referrals' );
@@ -65,7 +66,7 @@ class Affiliates_Robot_Cleaner {
 			$user_agents_table = _affiliates_get_tablename( 'user_agents' );
 			$query =
 				"DELETE FROM $hits_table WHERE hit_id IN " .
-// 				"SELECT SQL_CALC_FOUND_ROWS * FROM $hits_table WHERE hit_id IN " . // @todo remove
+				"( SELECT DISTINCT hits.hit_id FROM " .
 				"( " .
 				"SELECT h.hit_id " .
 				"FROM $hits_table h " .
@@ -80,13 +81,13 @@ class Affiliates_Robot_Cleaner {
 				"WHERE " .
 				"rua.user_agent_id IS NOT NULL " .
 				"AND r.count IS NULL OR r.count = 0 " .
+				") AS hits " .
 				")";
 			ob_start();
 			$rows = 0;
 			$result = $wpdb->query( $query );
 			if ( $result ) {
 				$rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
-// 				$rows = $wpdb->get_var( "SELECT FOUND_ROWS()" ); // @todo remove
 			}
 			$ob = ob_get_clean();
 			affiliates_log_warning( $ob );
@@ -242,7 +243,7 @@ class Affiliates_Robot_Cleaner {
 							) .
 							'</span>' .
 						'</form>';
-					echo '<div id="affiliates-robot-cleaner-result"></div>';
+					echo '<div id="affiliates-robot-cleaner-result" style="margin: 8px 0;"></div>';
 					echo '</p>';
 				} else {
 					echo '<p>' . esc_html__( 'No matching hits have been found.', 'affiliates' ) . '</p>';
