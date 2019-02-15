@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2019-02-10 20:52+0100\n"
+        "POT-Creation-Date: 2019-02-15 18:15+0100\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,8 +51,8 @@ msgstr  ""
 msgid   "(removed)"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:730
-#: lib/core/affiliates-admin-hits.php:551
+#: lib/core/affiliates-admin-hits-uri.php:729
+#: lib/core/affiliates-admin-hits.php:544
 #, php-format
 msgid   "* Date is given for the server's time zone : %s, which has an offset "
         "of %s hours with respect to GMT."
@@ -74,23 +74,23 @@ msgid_plural    "%s items"
 msgstr[0]       ""
 msgstr[1]       ""
 
-#: lib/core/wp-init.php:1890
+#: lib/core/wp-init.php:1943
 msgid   "<em>All time</em> includes data from any affiliates, including "
         "deleted affiliates."
 msgstr  ""
 
-#: lib/core/wp-init.php:1888
+#: lib/core/wp-init.php:1941
 msgid   "<em>From operative affiliates:</em> includes affiliates that are "
         "currently active. This excludes affiliates whose dates are not "
         "currently valid as well as those that have been deleted."
 msgstr  ""
 
-#: lib/core/wp-init.php:1889
+#: lib/core/wp-init.php:1942
 msgid   "<em>From operative and non-operative affiliates:</em> excludes "
         "deleted affiliates."
 msgstr  ""
 
-#: lib/core/wp-init.php:1893
+#: lib/core/wp-init.php:1946
 msgid   "<em>Hits</em> are HTTP requests for affiliate links."
 msgstr  ""
 
@@ -99,11 +99,11 @@ msgid   "<em>Pending</em> will require manual approval of new affiliates. "
         "<em>Active</em> will accept new affiliates automatically."
 msgstr  ""
 
-#: lib/core/wp-init.php:1895
+#: lib/core/wp-init.php:1948
 msgid   "<em>Referrals</em> are recording commissions and referral data."
 msgstr  ""
 
-#: lib/core/wp-init.php:1894
+#: lib/core/wp-init.php:1947
 msgid   "<em>Visits</em> are unique and daily requests for affiliate links."
 msgstr  ""
 
@@ -189,14 +189,14 @@ msgstr  ""
 msgid   "<strong>Welcome to %s</strong>"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:268
+#: lib/core/class-affiliates-settings-general.php:291
 msgid   "A minimum set of permissions will be preserved."
 msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:343
 #: lib/core/affiliates-admin-hits-affiliate.php:349
-#: lib/core/affiliates-admin-hits-uri.php:527
-#: lib/core/affiliates-admin-hits-uri.php:533
+#: lib/core/affiliates-admin-hits-uri.php:526
+#: lib/core/affiliates-admin-hits-uri.php:532
 #: lib/core/affiliates-admin-referral-edit.php:220
 #: lib/core/affiliates-admin-referral-remove.php:126
 #: lib/core/affiliates-admin-referrals.php:420
@@ -212,8 +212,8 @@ msgstr  ""
 msgid   "Accepted"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:118
-#: lib/core/class-affiliates-settings-general.php:173
+#: lib/core/class-affiliates-settings-general.php:141
+#: lib/core/class-affiliates-settings-general.php:196
 msgid   "Access affiliates"
 msgstr  ""
 
@@ -261,6 +261,8 @@ msgstr  ""
 #: lib/core/class-affiliates-admin-notifications.php:42
 #: lib/core/class-affiliates-admin-notifications.php:114
 #: lib/core/class-affiliates-admin-notifications.php:176
+#: lib/core/class-affiliates-robot-cleaner.php:104
+#: lib/core/class-affiliates-robot-cleaner.php:128
 #: lib/core/class-affiliates-settings-network.php:46
 #: lib/core/class-affiliates-settings.php:170
 #: lib/core/class-affiliates-totals.php:49
@@ -316,8 +318,8 @@ msgstr  ""
 msgid   "Add a new affiliate"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1836
-#: lib/core/wp-init.php:1837
+#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1889
+#: lib/core/wp-init.php:1890
 msgid   "Add-Ons"
 msgstr  ""
 
@@ -337,13 +339,13 @@ msgid   "Additional and advanced integrations accessible with Affiliates Pro "
         "and Gravity Forms integrations."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:119
-#: lib/core/class-affiliates-settings-general.php:174
+#: lib/core/class-affiliates-settings-general.php:142
+#: lib/core/class-affiliates-settings-general.php:197
 msgid   "Administer affiliates"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:120
-#: lib/core/class-affiliates-settings-general.php:175
+#: lib/core/class-affiliates-settings-general.php:143
+#: lib/core/class-affiliates-settings-general.php:198
 msgid   "Administer options"
 msgstr  ""
 
@@ -357,10 +359,10 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:452
 #: lib/core/affiliates-admin-hits-affiliate.php:323
-#: lib/core/affiliates-admin-hits-affiliate.php:595
-#: lib/core/affiliates-admin-hits-uri.php:474
-#: lib/core/affiliates-admin-hits.php:447
-#: lib/core/affiliates-admin-hits.php:507
+#: lib/core/affiliates-admin-hits-affiliate.php:593
+#: lib/core/affiliates-admin-hits-uri.php:473
+#: lib/core/affiliates-admin-hits.php:445
+#: lib/core/affiliates-admin-hits.php:502
 #: lib/core/affiliates-admin-referral-edit.php:164
 #: lib/core/affiliates-admin-referral-remove.php:95
 #: lib/core/affiliates-admin-referrals.php:397
@@ -374,11 +376,11 @@ msgstr  ""
 msgid   "Affiliate Area"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:158
+#: lib/core/class-affiliates-settings-general.php:181
 msgid   "Affiliate ID Encoding"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:248
+#: lib/core/class-affiliates-settings-general.php:271
 msgid   "Affiliate ID encoding"
 msgstr  ""
 
@@ -398,7 +400,7 @@ msgstr  ""
 msgid   "Affiliate Status"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:220
+#: lib/core/class-affiliates-settings-general.php:243
 msgid   "Affiliate URL parameter name"
 msgstr  ""
 
@@ -414,7 +416,7 @@ msgstr  ""
 msgid   "Affiliate campaign management and tracking."
 msgstr  ""
 
-#: lib/core/wp-init.php:1916
+#: lib/core/wp-init.php:1969
 msgid   "Affiliate link"
 msgstr  ""
 
@@ -438,13 +440,13 @@ msgstr  ""
 #: lib/core/dashboard/class-affiliates-dashboard-overview-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-profile-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-registration-block.php:54
-#: lib/core/wp-init.php:1856 lib/core/wp-init.php:1857
-#: lib/core/wp-init.php:1878
+#: lib/core/wp-init.php:1909 lib/core/wp-init.php:1910
+#: lib/core/wp-init.php:1931
 msgid   "Affiliates"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1741
-#: lib/core/wp-init.php:1742
+#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1794
+#: lib/core/wp-init.php:1795
 msgid   "Affiliates & Referrals"
 msgstr  ""
 
@@ -537,7 +539,7 @@ msgstr  ""
 msgid   "Affiliates Ninja Forms Integration"
 msgstr  ""
 
-#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1700
+#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1753
 msgid   "Affiliates Overview"
 msgstr  ""
 
@@ -545,7 +547,7 @@ msgstr  ""
 msgid   "Affiliates Pro"
 msgstr  ""
 
-#: lib/core/wp-init.php:1795
+#: lib/core/wp-init.php:1848
 msgid   "Affiliates Settings"
 msgstr  ""
 
@@ -624,8 +626,8 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:583
 #: lib/core/affiliates-admin-hits-affiliate.php:416
 #: lib/core/affiliates-admin-hits-affiliate.php:430
-#: lib/core/affiliates-admin-hits-uri.php:617
-#: lib/core/affiliates-admin-hits-uri.php:629
+#: lib/core/affiliates-admin-hits-uri.php:616
+#: lib/core/affiliates-admin-hits-uri.php:628
 #: lib/core/affiliates-admin-hits.php:341
 #: lib/core/affiliates-admin-hits.php:356
 #: lib/core/affiliates-admin-referrals.php:522
@@ -667,6 +669,7 @@ msgid   "Azerbaijan Manat"
 msgstr  ""
 
 #: lib/core/affiliates-admin-referral-edit.php:264
+#: lib/core/class-affiliates-settings-general.php:55
 msgid   "Back"
 msgstr  ""
 
@@ -756,7 +759,7 @@ msgstr  ""
 msgid   "By signing up, you indicate that you have read and agree to the %s."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:294
+#: lib/core/class-affiliates-settings-general.php:330
 msgid   "CAUTION: If this option is active while the plugin is deactivated, "
         "ALL affiliate and referral data will be DELETED. If you want to "
         "retrieve data about your affiliates and their referrals and are "
@@ -772,14 +775,14 @@ msgid   "CAUTION: If this option is active while the plugin is network "
         "on all sites of the network</strong>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:231
+#: lib/core/class-affiliates-settings-general.php:254
 msgid   "CAUTION: If you change this setting and have distributed affiliate "
         "links or permalinks, make sure that these are updated. Unless the "
         "incoming affiliate links reflect the current URL parameter name, no "
         "affiliate hits, visits or referrals will be recorded."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:256
+#: lib/core/class-affiliates-settings-general.php:279
 msgid   "CAUTION: If you change this setting and have distributed affiliate "
         "links or permalinks, make sure that these are updated. Unless the "
         "incoming affiliate links reflect the current encoding, no affiliate "
@@ -790,8 +793,8 @@ msgstr  ""
 msgid   "Cambodia Riel"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:482
-#: lib/core/affiliates-admin-hits-uri.php:499
+#: lib/core/affiliates-admin-hits-uri.php:481
+#: lib/core/affiliates-admin-hits-uri.php:498
 msgid   "Campaign"
 msgstr  ""
 
@@ -816,6 +819,14 @@ msgstr  ""
 msgid   "Cayman Islands Dollar"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:157
+msgid   "Check"
+msgstr  ""
+
+#: lib/core/class-affiliates-robot-cleaner.php:153
+msgid   "Check for hits from robots that can be removed &hellip;"
+msgstr  ""
+
 #: lib/core/class-affiliates.php:85
 msgid   "Chile Peso"
 msgstr  ""
@@ -826,7 +837,7 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:541
 #: lib/core/affiliates-admin-hits-affiliate.php:417
-#: lib/core/affiliates-admin-hits-uri.php:618
+#: lib/core/affiliates-admin-hits-uri.php:617
 #: lib/core/affiliates-admin-hits.php:342
 #: lib/core/affiliates-admin-referrals.php:523
 #: lib/core/affiliates-admin.php:165 lib/core/class-affiliates-totals.php:429
@@ -867,8 +878,8 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:344
 #: lib/core/affiliates-admin-hits-affiliate.php:350
-#: lib/core/affiliates-admin-hits-uri.php:528
-#: lib/core/affiliates-admin-hits-uri.php:534
+#: lib/core/affiliates-admin-hits-uri.php:527
+#: lib/core/affiliates-admin-hits-uri.php:533
 #: lib/core/affiliates-admin-referral-edit.php:221
 #: lib/core/affiliates-admin-referral-remove.php:127
 #: lib/core/affiliates-admin-referrals.php:421
@@ -931,12 +942,16 @@ msgstr  ""
 msgid   "Costa Rica Colon"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:115
+msgctxt "robot cleaner"
+msgid   "Could not delete any hits"
+msgstr  ""
+
 #: lib/core/class-affiliates-notice.php:113
 msgid   "Could you please spare a minute and give it a review over at "
         "WordPress.org?"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:594
 #: lib/core/affiliates-admin.php:494 lib/core/affiliates-admin.php:514
 msgid   "Count"
 msgstr  ""
@@ -974,6 +989,11 @@ msgstr  ""
 msgid   "Currency ID"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:137
+#, php-format
+msgid   "Current list of robots defined under %s:"
+msgstr  ""
+
 #: lib/core/class-affiliates-pagination.php:137
 msgid   "Current page"
 msgstr  ""
@@ -1005,9 +1025,12 @@ msgstr  ""
 msgid   "Data for the date range %s &ndash; %s (%s)"
 msgstr  ""
 
+#: lib/core/affiliates-admin-hits-affiliate.php:528
 #: lib/core/affiliates-admin-hits-affiliate.php:591
-#: lib/core/affiliates-admin-hits-uri.php:473
+#: lib/core/affiliates-admin-hits-uri.php:472
 #: lib/core/affiliates-admin-hits.php:275
+#: lib/core/affiliates-admin-hits.php:443
+#: lib/core/affiliates-admin-hits.php:500
 #: lib/core/affiliates-admin-referrals.php:395
 #: lib/core/class-affiliates-totals.php:827
 msgid   "Date"
@@ -1027,7 +1050,7 @@ msgstr  ""
 msgid   "Days back"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:285
+#: lib/core/class-affiliates-settings-general.php:321
 msgid   "Deactivation and data persistence"
 msgstr  ""
 
@@ -1035,11 +1058,15 @@ msgstr  ""
 msgid   "Default referral status"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:236
+msgid   "Delete"
+msgstr  ""
+
 #: lib/core/class-affiliates-settings-network.php:66
 msgid   "Delete all affiliate data on network deactivation"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:290
+#: lib/core/class-affiliates-settings-general.php:326
 msgid   "Delete all plugin data on deactivation"
 msgstr  ""
 
@@ -1062,7 +1089,7 @@ msgstr  ""
 msgid   "Descriptions"
 msgstr  ""
 
-#: lib/core/constants.php:109
+#: lib/core/constants.php:111
 msgctxt "pseudo-affiliate name"
 msgid   "Direct"
 msgstr  ""
@@ -1105,7 +1132,7 @@ msgstr  ""
 msgid   "Djibouti Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:262
+#: lib/core/class-affiliates-settings-general.php:285
 msgid   "Do not assign permissions to open access for affiliates here."
 msgstr  ""
 
@@ -1291,7 +1318,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:322
 #: lib/core/affiliates-admin-affiliates.php:467
 #: lib/core/affiliates-admin-hits-affiliate.php:365
-#: lib/core/affiliates-admin-hits-uri.php:551
+#: lib/core/affiliates-admin-hits-uri.php:550
 #: lib/core/affiliates-admin-hits.php:296
 #: lib/core/affiliates-admin-referrals.php:446
 #: lib/core/affiliates-admin.php:146 lib/core/class-affiliates-totals.php:407
@@ -1325,7 +1352,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:455
 #: lib/core/affiliates-admin-affiliates.php:496
 #: lib/core/affiliates-admin-hits-affiliate.php:375
-#: lib/core/affiliates-admin-hits-uri.php:568
+#: lib/core/affiliates-admin-hits-uri.php:567
 #: lib/core/affiliates-admin-hits.php:306
 #: lib/core/affiliates-admin-referrals.php:472
 #: lib/core/affiliates-admin.php:150 lib/core/class-affiliates-totals.php:418
@@ -1343,6 +1370,7 @@ msgstr  ""
 msgid   "Gambia Dalasi"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:141
 #: lib/core/class-affiliates-settings.php:59
 msgid   "General"
 msgstr  ""
@@ -1411,7 +1439,7 @@ msgstr  ""
 msgid   "Haiti Gourde"
 msgstr  ""
 
-#: lib/core/wp-init.php:1910
+#: lib/core/wp-init.php:1963
 msgid   "Here you can <strong>add</strong>, <strong>edit</strong> and "
         "<strong>remove</strong> affiliates."
 msgstr  ""
@@ -1428,13 +1456,19 @@ msgstr  ""
 #: lib/core/affiliates-admin-hits-affiliate.php:325
 #: lib/core/affiliates-admin-hits-affiliate.php:587
 #: lib/core/affiliates-admin-hits.php:277
-#: lib/core/affiliates-admin-hits.php:500 lib/core/affiliates-admin.php:306
+#: lib/core/affiliates-admin-hits.php:496 lib/core/affiliates-admin.php:306
 #: lib/core/affiliates-admin.php:528
+#: lib/core/class-affiliates-robot-cleaner.php:197
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:95
 msgid   "Hits"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:280
+#: lib/core/class-affiliates-robot-cleaner.php:114
+msgctxt "robot cleaner"
+msgid   "Hits deleted:"
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-general.php:303
 msgid   "Hits on affiliate links from these robots will be marked or not "
         "recorded. Put one entry on each line."
 msgstr  ""
@@ -1459,10 +1493,10 @@ msgstr  ""
 msgid   "I have already done that."
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:593
-#: lib/core/affiliates-admin-hits-uri.php:475
-#: lib/core/affiliates-admin-hits-uri.php:599
-#: lib/core/affiliates-admin-hits.php:506
+#: lib/core/affiliates-admin-hits-affiliate.php:592
+#: lib/core/affiliates-admin-hits-uri.php:474
+#: lib/core/affiliates-admin-hits-uri.php:598
+#: lib/core/affiliates-admin-hits.php:501
 msgid   "IP"
 msgstr  ""
 
@@ -1523,11 +1557,16 @@ msgid   "If you enter 0, referrals will only be valid until the visitor "
         "closes the browser (session)."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:270
+#: lib/core/class-affiliates-settings-general.php:293
 msgid   "If you lock yourself out, please ask an administrator to help."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:91
+#: lib/core/class-affiliates-robot-cleaner.php:225
+msgid   "If you want to delete these matching hits, click the button to "
+        "proceed."
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-general.php:114
 msgid   "If your affiliates are using affiliate links based on the previous "
         "Affiliate URL parameter name, they <strong>NEED</strong> to update "
         "their affiliate links."
@@ -1597,6 +1636,10 @@ msgstr  ""
 msgid   "Israel Shekel"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:229
+msgid   "It can take a while to clean up a large number of hits."
+msgstr  ""
+
 #: lib/core/class-affiliates-contact.php:304
 msgid   "It has two purposes:"
 msgstr  ""
@@ -1646,10 +1689,10 @@ msgstr  ""
 msgid   "Kyrgyzstan Som"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:597
-#: lib/core/affiliates-admin-hits-uri.php:478
-#: lib/core/affiliates-admin-hits-uri.php:587
-#: lib/core/affiliates-admin-hits.php:509
+#: lib/core/affiliates-admin-hits-affiliate.php:595
+#: lib/core/affiliates-admin-hits-uri.php:477
+#: lib/core/affiliates-admin-hits-uri.php:586
+#: lib/core/affiliates-admin-hits.php:504
 msgid   "Landing URI"
 msgstr  ""
 
@@ -1702,7 +1745,7 @@ msgstr  ""
 msgid   "Login"
 msgstr  ""
 
-#: lib/core/wp-init.php:1568
+#: lib/core/wp-init.php:1624
 msgid   "MD5"
 msgstr  ""
 
@@ -1739,8 +1782,8 @@ msgstr  ""
 msgid   "Maldives (Maldive Islands) Rufiyaa"
 msgstr  ""
 
-#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1715
-#: lib/core/wp-init.php:1716
+#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1768
+#: lib/core/wp-init.php:1769
 msgid   "Manage Affiliates"
 msgstr  ""
 
@@ -1764,11 +1807,11 @@ msgstr  ""
 msgid   "Mexico Peso"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:610
+#: lib/core/affiliates-admin-hits-uri.php:609
 msgid   "Minimum"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:612
+#: lib/core/affiliates-admin-hits-uri.php:611
 msgid   "Minimum number of referrals"
 msgstr  ""
 
@@ -1880,8 +1923,12 @@ msgstr  ""
 msgid   "Ninja Forms"
 msgstr  ""
 
-#: lib/core/wp-init.php:1567
+#: lib/core/wp-init.php:1623
 msgid   "No encoding"
+msgstr  ""
+
+#: lib/core/class-affiliates-robot-cleaner.php:249
+msgid   "No matching hits have been found."
 msgstr  ""
 
 #: lib/core/class-affiliates-admin-user-profile.php:127
@@ -1904,14 +1951,14 @@ msgstr  ""
 msgid   "Norway Krone"
 msgstr  ""
 
-#: lib/core/wp-init.php:1903
+#: lib/core/wp-init.php:1956
 msgid   "Note that <em>deleted</em> affiliates are not literally deleted but "
         "marked as such so that data that has been collected will still be "
         "accesible."
 msgstr  ""
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1821 lib/core/wp-init.php:1822
+#: lib/core/wp-init.php:1874 lib/core/wp-init.php:1875
 msgid   "Notifications"
 msgstr  ""
 
@@ -1927,12 +1974,16 @@ msgstr  ""
 msgid   "Omitted"
 msgstr  ""
 
-#: lib/core/wp-init.php:1926
+#: lib/core/wp-init.php:1979
 msgid   "Once a visitor has landed on your site through an affiliate link, "
         "referrals may be recorded and attributed to the affiliate."
 msgstr  ""
 
-#: lib/core/wp-init.php:1974
+#: lib/core/class-affiliates-robot-cleaner.php:227
+msgid   "Once you click the button, the hits will be deleted immediately."
+msgstr  ""
+
+#: lib/core/wp-init.php:2027
 msgid   "Online documentation"
 msgstr  ""
 
@@ -1997,8 +2048,8 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates-edit.php:201
 #: lib/core/affiliates-admin-hits-affiliate.php:345
 #: lib/core/affiliates-admin-hits-affiliate.php:351
-#: lib/core/affiliates-admin-hits-uri.php:529
-#: lib/core/affiliates-admin-hits-uri.php:535
+#: lib/core/affiliates-admin-hits-uri.php:528
+#: lib/core/affiliates-admin-hits-uri.php:534
 #: lib/core/affiliates-admin-referral-edit.php:222
 #: lib/core/affiliates-admin-referral-remove.php:128
 #: lib/core/affiliates-admin-referrals.php:422
@@ -2020,7 +2071,7 @@ msgstr  ""
 msgid   "Period"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:260
+#: lib/core/class-affiliates-settings-general.php:283
 msgid   "Permissions"
 msgstr  ""
 
@@ -2069,7 +2120,7 @@ msgstr  ""
 msgid   "Please fill out the field <em>%s</em>."
 msgstr  ""
 
-#: lib/core/wp-init.php:1996
+#: lib/core/wp-init.php:2049
 #, php-format
 msgid   "Please give it a <a style=\"text-decoration:none;\" href=\"%s"
         "\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating!"
@@ -2098,7 +2149,7 @@ msgid   "Poland Zloty"
 msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:529
-#: lib/core/affiliates-admin-hits.php:446
+#: lib/core/affiliates-admin-hits.php:444
 #: lib/core/affiliates-admin-referrals.php:396
 #: lib/core/class-affiliates-totals.php:828
 msgid   "Post"
@@ -2162,16 +2213,16 @@ msgstr  ""
 msgid   "Recommended plugins and extensions"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:240
+#: lib/core/class-affiliates-settings-general.php:263
 msgid   "Redirect"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:244
+#: lib/core/class-affiliates-settings-general.php:267
 msgid   "Redirect to destination without Affiliate URL parameter, after a hit "
         "on an affiliate link has been detected."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:235
+#: lib/core/class-affiliates-settings-general.php:258
 msgid   "Redirection"
 msgstr  ""
 
@@ -2184,7 +2235,7 @@ msgstr  ""
 msgid   "Reference Amount"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:605
+#: lib/core/affiliates-admin-hits-uri.php:604
 #: lib/core/affiliates-admin-user-registration.php:212
 #: lib/core/class-affiliates-totals.php:381
 msgid   "Referral Status"
@@ -2196,13 +2247,13 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:326
 #: lib/core/affiliates-admin-hits-affiliate.php:524
-#: lib/core/affiliates-admin-hits-uri.php:476
+#: lib/core/affiliates-admin-hits-uri.php:475
 #: lib/core/affiliates-admin-hits.php:278
-#: lib/core/affiliates-admin-hits.php:440
+#: lib/core/affiliates-admin-hits.php:439
 #: lib/core/affiliates-admin-referrals.php:267
 #: lib/core/affiliates-admin.php:487 lib/core/class-affiliates-settings.php:62
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:97
-#: lib/core/wp-init.php:1767 lib/core/wp-init.php:1768
+#: lib/core/wp-init.php:1820 lib/core/wp-init.php:1821
 msgid   "Referrals"
 msgstr  ""
 
@@ -2224,8 +2275,8 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-hits-affiliate.php:346
 #: lib/core/affiliates-admin-hits-affiliate.php:352
-#: lib/core/affiliates-admin-hits-uri.php:530
-#: lib/core/affiliates-admin-hits-uri.php:536
+#: lib/core/affiliates-admin-hits-uri.php:529
+#: lib/core/affiliates-admin-hits-uri.php:535
 #: lib/core/affiliates-admin-referral-edit.php:223
 #: lib/core/affiliates-admin-referral-remove.php:129
 #: lib/core/affiliates-admin-referrals.php:423
@@ -2283,7 +2334,7 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:551
 #: lib/core/affiliates-admin-hits-affiliate.php:427
-#: lib/core/affiliates-admin-hits-uri.php:626
+#: lib/core/affiliates-admin-hits-uri.php:625
 #: lib/core/affiliates-admin-hits.php:352
 #: lib/core/affiliates-admin-referrals.php:533
 #: lib/core/class-affiliates-totals.php:439
@@ -2299,11 +2350,16 @@ msgstr  ""
 msgid   "Review General Settings"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:274
+#: lib/core/class-affiliates-robot-cleaner.php:131
+#: lib/core/class-affiliates-settings-general.php:314
+msgid   "Robot Cleaner"
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-general.php:297
 msgid   "Robots"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:181
+#: lib/core/class-affiliates-settings-general.php:204
 msgid   "Role"
 msgstr  ""
 
@@ -2336,7 +2392,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-user-registration.php:238
 #: lib/core/class-affiliates-admin-notifications.php:159
 #: lib/core/class-affiliates-admin-notifications.php:217
-#: lib/core/class-affiliates-settings-general.php:301
+#: lib/core/class-affiliates-settings-general.php:337
 #: lib/core/class-affiliates-settings-network.php:79
 #: lib/core/class-affiliates-settings-referrals.php:185
 #: lib/core/class-affiliates-settings-registration.php:235
@@ -2381,7 +2437,7 @@ msgstr  ""
 msgid   "Set status to Pending"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1796
+#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1849
 msgid   "Settings"
 msgstr  ""
 
@@ -2427,10 +2483,10 @@ msgstr  ""
 msgid   "Something went wrong."
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:596
-#: lib/core/affiliates-admin-hits-uri.php:477
-#: lib/core/affiliates-admin-hits-uri.php:581
-#: lib/core/affiliates-admin-hits.php:508
+#: lib/core/affiliates-admin-hits-affiliate.php:594
+#: lib/core/affiliates-admin-hits-uri.php:476
+#: lib/core/affiliates-admin-hits-uri.php:580
+#: lib/core/affiliates-admin-hits.php:503
 msgid   "Source URI"
 msgstr  ""
 
@@ -2516,7 +2572,7 @@ msgstr  ""
 msgid   "Thailand Baht"
 msgstr  ""
 
-#: lib/core/wp-init.php:1993
+#: lib/core/wp-init.php:2046
 msgid   "Thank you for using the <a style=\"text-decoration:none;\" href="
         "\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank"
         "\">Affiliates</a> plugin by <a style=\"text-decoration:none;\" href="
@@ -2552,39 +2608,39 @@ msgid   "The <a href=\"http://docs.itthinx.com/\">Documentation</a> site also "
         "and Affiliates Enterprise plugin features."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:85
+#: lib/core/class-affiliates-settings-general.php:108
 #, php-format
 msgid   "The Affiliate URL parameter name <strong>has been changed</strong> "
         "from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:76
+#: lib/core/class-affiliates-settings-general.php:99
 msgid   "The Affiliate URL parameter name <strong>has not been changed</"
         "strong>, the suggested name <em>is forbidden</em>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:73
+#: lib/core/class-affiliates-settings-general.php:96
 msgid   "The Affiliate URL parameter name <strong>has not been changed</"
         "strong>, the suggested name <em>is not valid</em>. Only lower case "
         "letters and the underscore _ are allowed."
 msgstr  ""
 
-#: lib/core/wp-init.php:1898
+#: lib/core/wp-init.php:1951
 msgid   "The Affiliates plugin provides the <em>Affiliates Contact</em> "
         "widget that can be used to record lead referrals."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:225
+#: lib/core/class-affiliates-settings-general.php:248
 #, php-format
 msgid   "The current Affiliate URL parameter name is: <b>%s</b>"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:253
+#: lib/core/class-affiliates-settings-general.php:276
 #, php-format
 msgid   "The current encoding in effect is: <b>%s</b>"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:228
+#: lib/core/class-affiliates-settings-general.php:251
 #, php-format
 msgid   "The default Affiliate URL parameter name is <em>%s</em>."
 msgstr  ""
@@ -2613,6 +2669,10 @@ msgid   "The following fields are provided on the affiliate registration form "
         "rendered by the <code>[affiliates_registration]</code> shortcode."
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:193
+msgid   "The following matching hits have been found and can be cleaned up."
+msgstr  ""
+
 #: lib/core/class-affiliates-settings-pages.php:74
 msgid   "The generated page contains Affiliates shortcodes and can be used as "
         "an out-of-the-box affiliate area or as a framework for customized "
@@ -2630,7 +2690,7 @@ msgstr  ""
 msgid   "The passwords for the field <em>%s</em> do not match."
 msgstr  ""
 
-#: lib/core/wp-init.php:838
+#: lib/core/wp-init.php:874
 msgid   "The plugin is configured to delete its data on deactivation."
 msgstr  ""
 
@@ -2676,14 +2736,23 @@ msgid   "There are no earnings yet."
 msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:764
-#: lib/core/affiliates-admin-hits-affiliate.php:622
-#: lib/core/affiliates-admin-hits-uri.php:712
-#: lib/core/affiliates-admin-hits.php:534
+#: lib/core/affiliates-admin-hits-affiliate.php:618
+#: lib/core/affiliates-admin-hits-uri.php:711
+#: lib/core/affiliates-admin-hits.php:527
 #: lib/core/affiliates-admin-referrals.php:726
 #: lib/core/class-affiliates-totals.php:531
 #: lib/core/class-affiliates-totals.php:874
 #: templates/dashboard/earnings.php:166
 msgid   "There are no results."
+msgstr  ""
+
+#: lib/core/class-affiliates-robot-cleaner.php:164
+msgid   "There are no robots defined."
+msgstr  ""
+
+#: lib/core/class-affiliates-robot-cleaner.php:166
+msgid   "There must be at least one entry to proceed to clean up existing "
+        "hits from robots."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:337
@@ -2710,6 +2779,10 @@ msgstr  ""
 
 #: lib/core/class-affiliates-totals.php:735
 msgid   "This action can not be undone*."
+msgstr  ""
+
+#: lib/core/class-affiliates-robot-cleaner.php:231
+msgid   "This action cannot be undone."
 msgstr  ""
 
 #: lib/core/affiliates-admin-add-ons.php:237
@@ -2769,7 +2842,7 @@ msgid   "This light integration is suitable to be used with the <a href="
         "\"https://wordpress.org/plugins/affiliates/\">Affiliates</a> plugin."
 msgstr  ""
 
-#: lib/core/wp-init.php:1919
+#: lib/core/wp-init.php:1972
 msgid   "This link uses a parameter in the URL to record visits you receive "
         "through your affiliates."
 msgstr  ""
@@ -2890,11 +2963,11 @@ msgstr  ""
 msgid   "This referral does not exist."
 msgstr  ""
 
-#: lib/core/wp-init.php:1886
+#: lib/core/wp-init.php:1939
 msgid   "This screen offers an overview with basic statistical data."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:264
+#: lib/core/class-affiliates-settings-general.php:287
 msgid   "This section is only intended to grant administrative access on "
         "affiliate management functions to privileged roles."
 msgstr  ""
@@ -2908,13 +2981,6 @@ msgstr  ""
 msgid   "This should normally be enabled, so that new affiliates receive "
         "their username and password to be able to log in and access their "
         "account."
-msgstr  ""
-
-#: lib/core/affiliates-admin-hits-affiliate.php:528
-#: lib/core/affiliates-admin-hits-affiliate.php:592
-#: lib/core/affiliates-admin-hits.php:445
-#: lib/core/affiliates-admin-hits.php:505
-msgid   "Time"
 msgstr  ""
 
 #: lib/core/class-affiliates-contact.php:289
@@ -2933,7 +2999,7 @@ msgid   "To serve as an example on how to use the API provided by the "
         "Affiliates plugin"
 msgstr  ""
 
-#: lib/core/wp-init.php:1899
+#: lib/core/wp-init.php:1952
 #, php-format
 msgid   "To use it, place the widget in one of your <a href=\"%s\">widget "
         "areas</a>."
@@ -2943,17 +3009,18 @@ msgstr  ""
 msgid   "Tonga Pa'anga"
 msgstr  ""
 
+#: lib/core/class-affiliates-robot-cleaner.php:219
 #: lib/core/class-affiliates-totals.php:310
 msgid   "Total"
 msgstr  ""
 
-#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1781
-#: lib/core/wp-init.php:1782
+#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1834
+#: lib/core/wp-init.php:1835
 msgid   "Totals"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1754
-#: lib/core/wp-init.php:1755
+#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1807
+#: lib/core/wp-init.php:1808
 msgid   "Traffic"
 msgstr  ""
 
@@ -3001,7 +3068,7 @@ msgstr  ""
 msgid   "United States Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:94
+#: lib/core/class-affiliates-settings-general.php:117
 msgid   "Unless the incoming affiliate links reflect the current Affiliate "
         "URL parameter name, no affiliate hits, visits or referrals will be "
         "recorded."
@@ -3012,7 +3079,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:456
 #: lib/core/affiliates-admin-affiliates.php:502
 #: lib/core/affiliates-admin-hits-affiliate.php:381
-#: lib/core/affiliates-admin-hits-uri.php:574
+#: lib/core/affiliates-admin-hits-uri.php:573
 #: lib/core/affiliates-admin-hits.php:312
 #: lib/core/affiliates-admin-referrals.php:478
 #: lib/core/affiliates-admin.php:154 lib/core/class-affiliates-totals.php:422
@@ -3044,15 +3111,21 @@ msgid   "Use the <a href=\"%s\">Settings</a> section to review or adjust the "
         "system anytime."
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:598
-#: lib/core/affiliates-admin-hits-uri.php:479
-#: lib/core/affiliates-admin-hits-uri.php:593
-#: lib/core/affiliates-admin-hits.php:510
+#: lib/core/class-affiliates-settings-general.php:307
+#, php-format
+msgid   "Use the robot cleaner to remove existing hits from robots: %s"
+msgstr  ""
+
+#: lib/core/affiliates-admin-hits-affiliate.php:596
+#: lib/core/affiliates-admin-hits-uri.php:478
+#: lib/core/affiliates-admin-hits-uri.php:592
+#: lib/core/affiliates-admin-hits.php:505
+#: lib/core/class-affiliates-robot-cleaner.php:198
 msgid   "User Agent"
 msgstr  ""
 
 #: lib/core/affiliates-admin-user-registration.php:35
-#: lib/core/wp-init.php:1808 lib/core/wp-init.php:1809
+#: lib/core/wp-init.php:1861 lib/core/wp-init.php:1862
 msgid   "User Registration"
 msgstr  ""
 
@@ -3134,12 +3207,12 @@ msgstr  ""
 msgid   "Visits"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1728
-#: lib/core/wp-init.php:1729
+#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1781
+#: lib/core/wp-init.php:1782
 msgid   "Visits & Referrals"
 msgstr  ""
 
-#: lib/core/wp-init.php:834
+#: lib/core/wp-init.php:870
 msgid   "Warning!"
 msgstr  ""
 
@@ -3215,7 +3288,7 @@ msgid   "You can modify the default affiliate area and also create customized "
         "pages for your affiliates using shortcodes."
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:547
+#: lib/core/affiliates-admin-hits-uri.php:546
 #, php-format
 msgid   "You can use %s and %s to search for multiple terms in combination."
 msgstr  ""
@@ -3225,7 +3298,7 @@ msgid   "You can use the page generation option to create the default "
         "affiliate area for your affiliates."
 msgstr  ""
 
-#: lib/core/wp-init.php:1921
+#: lib/core/wp-init.php:1974
 #, php-format
 msgid   "You may also append the ?%s=... part to links to your posts."
 msgstr  ""
