@@ -197,6 +197,7 @@ class Affiliates_Robot_Cleaner {
 					echo '<th style="padding: 4px; border-bottom: 1px solid #999;">' . esc_html__( 'User Agent', 'affiliates' ) . '</th>';
 					echo '</tr>';
 					echo '</thead>';
+					echo '<tbody>';
 					$count = 0;
 					foreach ( $robot_hits as $robot_hit ) {
 						$count += $robot_hit->count;
@@ -217,7 +218,8 @@ class Affiliates_Robot_Cleaner {
 					echo esc_html__( 'Total', 'affiliates' );
 					echo '</td>';
 					echo '</tr>';
-					echo '<table>';
+					echo '</tbody>';
+					echo '</table>';
 					echo '<p>';
 					esc_html_e( 'If you want to delete all hits, click the button to proceed.', 'affiliates' );
 					echo ' ';
