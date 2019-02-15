@@ -222,9 +222,9 @@ class Affiliates_Robot_Cleaner {
 					echo '</tbody>';
 					echo '</table>';
 					echo '<p>';
-					esc_html_e( 'If you want to delete all hits, click the button to proceed.', 'affiliates' );
+					esc_html_e( 'If you want to delete these matching hits, click the button to proceed.', 'affiliates' );
 					echo ' ';
-					esc_html_e( 'Once you click the button, all related hits will be deleted.', 'affiliates' );
+					esc_html_e( 'Once you click the button, the hits will be deleted immediately.', 'affiliates' );
 					echo ' ';
 					esc_html_e( 'It can take a while to clean up a large number of hits.', 'affiliates' );
 					echo ' ';
