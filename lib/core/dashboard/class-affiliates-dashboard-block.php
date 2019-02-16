@@ -51,7 +51,7 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 			$categories,
 			array( array(
 				'slug'  => 'affiliates',
-				'title' => _x( 'Affiliates', 'block category', 'affiliates' ),
+				'title' => 'Affiliates', // don't translate
 				'icon'  => 'performance'
 			) )
 		);
