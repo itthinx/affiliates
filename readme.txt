@@ -399,6 +399,8 @@ The full changelog is available at [changelog.txt](https://github.com/itthinx/af
 * Added the debugging constants AFFILIATES_DEBUG and AFFILIATES_DEBUG_ROBOTS which can be defined as true in wp-config.php to enable specific debugging.
 * Added a tool for significant storage savings that cleans database entries from robot hits under Affiliates > Settings > General > Robots.
 * WordPress 5.1 compatibility checked.
+* Using log instead of admin message to alert about potential issues during updates.
+* Fixed referral amount decimals used for display of amounts in totals section and generated files.
 
 == Upgrade Notice ==
 
