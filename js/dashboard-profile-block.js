@@ -31,7 +31,7 @@ if ( typeof wp !== 'undefined' ) {
 			title       : affiliates_dashboard_profile_block.title,
 			description : affiliates_dashboard_profile_block.description,
 			icon        : 'id-alt',
-			category    : 'widgets',
+			category    : 'affiliates',
 			keywords    : [ affiliates_dashboard_profile_block.keyword_affiliates, affiliates_dashboard_profile_block.keyword_dashboard, affiliates_dashboard_profile_block.keyword_login ],
 			supports    : { html : false },
 			attributes  : {

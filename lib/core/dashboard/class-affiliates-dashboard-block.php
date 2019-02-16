@@ -33,8 +33,29 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'wp_init' ) );
+		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_assets' ) );
 		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_assets' ) );
+	}
+
+	/**
+	 * Registers our block category.
+	 *
+	 * @param array $categories Array of block categories.
+	 * @param WP_Post $post               Post being loaded.
+	 *
+	 * @return array
+	 */
+	public static function block_categories( $categories, $post ) {
+		$categories = array_merge(
+			$categories,
+			array( array(
+				'slug'  => 'affiliates',
+				'title' => _x( 'Affiliates', 'block category', 'affiliates' ),
+				'icon'  => 'performance'
+			) )
+		);
+		return $categories;
 	}
 
 	public static function enqueue_block_editor_assets() {
@@ -53,7 +74,8 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 				'description'        => _x( 'Displays the complete Affiliates Dashboard with its sections', 'block description', 'affiliates' ),
 				'keyword_affiliates' => __( 'Affiliates', 'affiliates' ),
 				'keyword_dashboard'  => __( 'Dashboard', 'affiliates' ),
-				'dashboard_notice'   => _x( 'Affiliates Dashboard', 'Notice shown when editing the Affiliates Dashboard Profile block as a non-affiliate.', 'affiliates' )
+				'dashboard_notice'   => _x( 'Affiliates Dashboard', 'Notice shown when editing the Affiliates Dashboard Profile block as a non-affiliate.', 'affiliates' ),
+				'affiliates_icon'    => AFFILIATES_PLUGIN_URL . '/images/affiliates-32.png'
 			)
 		);
 

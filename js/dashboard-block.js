@@ -20,6 +20,21 @@
 
 if ( typeof wp !== 'undefined' ) {
 
+	// Set the icon for the affiliates block category.
+	wp.blocks.updateCategory(
+		'affiliates',
+		{
+			icon : wp.element.createElement(
+				'img',
+				{
+					src    : affiliates_dashboard_block.affiliates_icon,
+					width  : 20,
+					height : 20
+				}
+			)
+		}
+	);
+
 	//
 	// The Affiliates Dashboard Profile block.
 	// This also uses the ServerSideRender to "preview" the block in the editor. If the viewer is not an affiliate,
@@ -31,7 +46,7 @@ if ( typeof wp !== 'undefined' ) {
 			title       : affiliates_dashboard_block.title,
 			description : affiliates_dashboard_block.description,
 			icon        : 'performance',
-			category    : 'widgets',
+			category    : 'affiliates',
 			keywords    : [ affiliates_dashboard_block.keyword_affiliates, affiliates_dashboard_block.keyword_dashboard ],
 			supports    : { html : false },
 			attributes  : {

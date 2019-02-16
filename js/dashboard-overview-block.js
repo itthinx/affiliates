@@ -31,7 +31,7 @@ if ( typeof wp !== 'undefined' ) {
 			title       : affiliates_dashboard_overview_block.title,
 			description : affiliates_dashboard_overview_block.description,
 			icon        : 'chart-line',
-			category    : 'widgets',
+			category    : 'affiliates',
 			keywords    : [ affiliates_dashboard_overview_block.keyword_affiliates, affiliates_dashboard_overview_block.keyword_dashboard, affiliates_dashboard_overview_block.keyword_login ],
 			supports    : { html : false },
 			attributes  : {

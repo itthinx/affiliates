@@ -31,7 +31,7 @@ if ( typeof wp !== 'undefined' ) {
 			title       : affiliates_dashboard_login_block.title,
 			description : affiliates_dashboard_login_block.description,
 			icon        : 'admin-users',
-			category    : 'widgets',
+			category    : 'affiliates',
 			keywords    : [ affiliates_dashboard_login_block.keyword_affiliates, affiliates_dashboard_login_block.keyword_dashboard, affiliates_dashboard_login_block.keyword_login ],
 			supports    : { html : false },
 			attributes  : {
