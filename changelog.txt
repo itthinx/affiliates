@@ -27,6 +27,7 @@
 * Added the filter affiliates_record_robot_hits and allowing the constant AFFILIATES_RECORD_ROBOT_HITS to determine whether hits from robots should be recorded.
 * Added the debugging constants AFFILIATES_DEBUG and AFFILIATES_DEBUG_ROBOTS which can be defined as true in wp-config.php to enable specific debugging.
 * Added a tool for significant storage savings that cleans database entries from robot hits under Affiliates > Settings > General > Robots.
+* WordPress 5.1 compatibility checked.
 
 = 3.1.0 =
 * WordPress 5.0 compatibility checked.
