@@ -154,4 +154,7 @@ flex-grow:1;
 	padding: 4px;
 	text-align: right;
 }
+.dashboard-section-overview .copy-to-clipboard-trigger {
+	cursor: pointer;
+}
 </style>
