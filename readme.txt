@@ -3,7 +3,7 @@ Contributors: itthinx, proaktion
 Donate link: https://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
 Requires at least: 4.0.0
-Tested up to: 5.0
+Tested up to: 5.1
 Requires PHP: 5.6.0
 Stable tag: 4.0.0
 License: GPLv3
@@ -397,7 +397,7 @@ The full changelog is available at [changelog.txt](https://github.com/itthinx/af
 * Fixed an issue where a request for an invalid affiliate link would record a hit.
 * Added the filter affiliates_record_robot_hits and allowing the constant AFFILIATES_RECORD_ROBOT_HITS to determine whether hits from robots should be recorded.
 * Added the debugging constants AFFILIATES_DEBUG and AFFILIATES_DEBUG_ROBOTS which can be defined as true in wp-config.php to enable specific debugging.
-* Added a robot hits cleaner available under Affiliates > Settings > General > Robots that allows to clean up the hits database entries based on current robots.
+* Added a tool for significant storage savings that cleans database entries from robot hits under Affiliates > Settings > General > Robots.
 
 == Upgrade Notice ==
 
