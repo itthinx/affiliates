@@ -359,8 +359,12 @@ class Affiliates_Registration {
 		// Registration form
 		if ( !$send ) {
 
-			if ( isset( $options['terms_post_id'] ) ) {
-				$terms_post = get_post( $options['terms_post_id'] );
+			$terms_post_id = get_option( 'aff_registration_terms_post_id', '' );
+			if ( !empty( $terms_post_id ) || isset( $options['terms_post_id'] ) ) {
+				if ( empty( $terms_post_id ) ) {
+					$terms_post_id = $options['terms_post_id'];
+				}
+				$terms_post = get_post( $terms_post_id );
 				if ( $terms_post ) {
 					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
 					$terms = sprintf(

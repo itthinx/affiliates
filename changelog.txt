@@ -30,6 +30,7 @@
 * WordPress 5.1 compatibility checked.
 * Using log instead of admin message to alert about potential issues during updates.
 * Fixed referral amount decimals used for display of amounts in totals section and generated files.
+* Added an option to set the affiliate terms page under Affiliates > Registration.
 
 = 3.1.0 =
 * WordPress 5.0 compatibility checked.

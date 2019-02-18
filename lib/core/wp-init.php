@@ -818,6 +818,7 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_pname' );
 		delete_option( 'aff_redirect' );
 		delete_option( 'aff_registration' );
+		delete_option( 'aff_registration_terms_post_id' );
 		delete_option( 'aff_registration_fields' );
 		delete_option( 'aff_setup_hide' );
 		delete_option( 'aff_status' );
