@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2019-02-15 18:15+0100\n"
+        "POT-Creation-Date: 2019-02-18 14:18+0100\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,10 @@ msgid   "%d day"
 msgid_plural    "%d days"
 msgstr[0]       ""
 msgstr[1]       ""
+
+#: lib/core/class-affiliates-settings-registration.php:185
+msgid   "&mdash; Select &mdash;"
+msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:636
 #: lib/core/class-affiliates-totals.php:505
@@ -74,36 +78,36 @@ msgid_plural    "%s items"
 msgstr[0]       ""
 msgstr[1]       ""
 
-#: lib/core/wp-init.php:1943
+#: lib/core/wp-init.php:1944
 msgid   "<em>All time</em> includes data from any affiliates, including "
         "deleted affiliates."
 msgstr  ""
 
-#: lib/core/wp-init.php:1941
+#: lib/core/wp-init.php:1942
 msgid   "<em>From operative affiliates:</em> includes affiliates that are "
         "currently active. This excludes affiliates whose dates are not "
         "currently valid as well as those that have been deleted."
 msgstr  ""
 
-#: lib/core/wp-init.php:1942
+#: lib/core/wp-init.php:1943
 msgid   "<em>From operative and non-operative affiliates:</em> excludes "
         "deleted affiliates."
 msgstr  ""
 
-#: lib/core/wp-init.php:1946
+#: lib/core/wp-init.php:1947
 msgid   "<em>Hits</em> are HTTP requests for affiliate links."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:167
+#: lib/core/class-affiliates-settings-registration.php:173
 msgid   "<em>Pending</em> will require manual approval of new affiliates. "
         "<em>Active</em> will accept new affiliates automatically."
 msgstr  ""
 
-#: lib/core/wp-init.php:1948
+#: lib/core/wp-init.php:1949
 msgid   "<em>Referrals</em> are recording commissions and referral data."
 msgstr  ""
 
-#: lib/core/wp-init.php:1947
+#: lib/core/wp-init.php:1948
 msgid   "<em>Visits</em> are unique and daily requests for affiliate links."
 msgstr  ""
 
@@ -142,38 +146,38 @@ msgstr  ""
 msgid   "<strong>ERROR</strong>"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:505
+#: lib/core/class-affiliates-registration.php:509
 #, php-format
 msgid   "<strong>ERROR</strong>: Couldn&#8217;t register you... please "
         "contact the <a href=\"mailto:%s\">webmaster</a> !"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:459
+#: lib/core/class-affiliates-registration.php:463
 msgid   "<strong>ERROR</strong>: Please enter a username."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:469
-#: lib/core/class-affiliates-registration.php:544
+#: lib/core/class-affiliates-registration.php:473
+#: lib/core/class-affiliates-registration.php:548
 msgid   "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:471
-#: lib/core/class-affiliates-registration.php:546
+#: lib/core/class-affiliates-registration.php:475
+#: lib/core/class-affiliates-registration.php:550
 msgid   "<strong>ERROR</strong>: The email address isn&#8217;t correct."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:474
-#: lib/core/class-affiliates-registration.php:550
+#: lib/core/class-affiliates-registration.php:478
+#: lib/core/class-affiliates-registration.php:554
 msgid   "<strong>ERROR</strong>: This email is already registered, please "
         "choose another one."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:464
+#: lib/core/class-affiliates-registration.php:468
 msgid   "<strong>ERROR</strong>: This username is already registered, please "
         "choose another one."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:461
+#: lib/core/class-affiliates-registration.php:465
 msgid   "<strong>ERROR</strong>: This username is invalid because it uses "
         "illegal characters. Please enter a valid username."
 msgstr  ""
@@ -298,7 +302,7 @@ msgid   "Accumulated total for rejected referrals."
 msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates-edit.php:200
-#: lib/core/class-affiliates-settings-registration.php:155
+#: lib/core/class-affiliates-settings-registration.php:162
 #: lib/core/class-affiliates-totals.php:356
 msgid   "Active"
 msgstr  ""
@@ -310,7 +314,7 @@ msgstr  ""
 msgid   "Add"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:227
+#: lib/core/class-affiliates-settings-registration.php:256
 msgid   "Add a field"
 msgstr  ""
 
@@ -318,8 +322,8 @@ msgstr  ""
 msgid   "Add a new affiliate"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1889
-#: lib/core/wp-init.php:1890
+#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1890
+#: lib/core/wp-init.php:1891
 msgid   "Add-Ons"
 msgstr  ""
 
@@ -388,11 +392,11 @@ msgstr  ""
 msgid   "Affiliate Information"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:139
+#: lib/core/class-affiliates-settings-registration.php:146
 msgid   "Affiliate Registration"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:171
+#: lib/core/class-affiliates-settings-registration.php:200
 msgid   "Affiliate Registration Form"
 msgstr  ""
 
@@ -416,7 +420,7 @@ msgstr  ""
 msgid   "Affiliate campaign management and tracking."
 msgstr  ""
 
-#: lib/core/wp-init.php:1969
+#: lib/core/wp-init.php:1970
 msgid   "Affiliate link"
 msgstr  ""
 
@@ -434,19 +438,19 @@ msgstr  ""
 
 #: lib/core/class-affiliates-admin-notifications.php:102
 #: lib/core/class-affiliates-settings-network.php:48
-#: lib/core/dashboard/class-affiliates-dashboard-block.php:54
+#: lib/core/dashboard/class-affiliates-dashboard-block.php:75
 #: lib/core/dashboard/class-affiliates-dashboard-earnings-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-login-block.php:56
 #: lib/core/dashboard/class-affiliates-dashboard-overview-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-profile-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-registration-block.php:54
-#: lib/core/wp-init.php:1909 lib/core/wp-init.php:1910
-#: lib/core/wp-init.php:1931
+#: lib/core/wp-init.php:1910 lib/core/wp-init.php:1911
+#: lib/core/wp-init.php:1932
 msgid   "Affiliates"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1794
-#: lib/core/wp-init.php:1795
+#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1795
+#: lib/core/wp-init.php:1796
 msgid   "Affiliates & Referrals"
 msgstr  ""
 
@@ -454,13 +458,13 @@ msgstr  ""
 msgid   "Affiliates Contact Form 7 Integration"
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-block.php:56
+#: lib/core/dashboard/class-affiliates-dashboard-block.php:77
 msgctxt "Notice shown when editing the Affiliates Dashboard Profile block as "
         "a non-affiliate."
 msgid   "Affiliates Dashboard"
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-block.php:52
+#: lib/core/dashboard/class-affiliates-dashboard-block.php:73
 msgctxt "block title"
 msgid   "Affiliates Dashboard"
 msgstr  ""
@@ -539,7 +543,7 @@ msgstr  ""
 msgid   "Affiliates Ninja Forms Integration"
 msgstr  ""
 
-#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1753
+#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1754
 msgid   "Affiliates Overview"
 msgstr  ""
 
@@ -547,7 +551,7 @@ msgstr  ""
 msgid   "Affiliates Pro"
 msgstr  ""
 
-#: lib/core/wp-init.php:1848
+#: lib/core/wp-init.php:1849
 msgid   "Affiliates Settings"
 msgstr  ""
 
@@ -575,7 +579,7 @@ msgstr  ""
 msgid   "Algeria Dinar"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:144
+#: lib/core/class-affiliates-settings-registration.php:151
 msgid   "Allow affiliate registration"
 msgstr  ""
 
@@ -754,7 +758,7 @@ msgid   "By enabling this option you agree to be solely responsible for any "
         "loss of data or any other consequences thereof."
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:367
+#: lib/core/class-affiliates-registration.php:371
 #, php-format
 msgid   "By signing up, you indicate that you have read and agree to the %s."
 msgstr  ""
@@ -1006,7 +1010,7 @@ msgstr  ""
 msgid   "Czech Republic Koruna"
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-block.php:55
+#: lib/core/dashboard/class-affiliates-dashboard-block.php:76
 #: lib/core/dashboard/class-affiliates-dashboard-earnings-block.php:55
 #: lib/core/dashboard/class-affiliates-dashboard-login-block.php:57
 #: lib/core/dashboard/class-affiliates-dashboard-overview-block.php:55
@@ -1123,7 +1127,7 @@ msgctxt "block description"
 msgid   "Displays the Registration form from the Affiliates Dashboard"
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-block.php:53
+#: lib/core/dashboard/class-affiliates-dashboard-block.php:74
 msgctxt "block description"
 msgid   "Displays the complete Affiliates Dashboard with its sections"
 msgstr  ""
@@ -1140,7 +1144,7 @@ msgstr  ""
 msgid   "Dominican Republic Peso"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:215
+#: lib/core/class-affiliates-settings-registration.php:244
 msgid   "Down"
 msgstr  ""
 
@@ -1148,7 +1152,7 @@ msgstr  ""
 msgid   "Duplicate referrals"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:785
+#: lib/core/class-affiliates-registration.php:789
 #, php-format
 msgid   "E-mail: %s"
 msgstr  ""
@@ -1232,7 +1236,7 @@ msgstr  ""
 msgid   "Enable the user registration integration"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:181
+#: lib/core/class-affiliates-settings-registration.php:210
 msgid   "Enabled"
 msgstr  ""
 
@@ -1303,11 +1307,11 @@ msgstr  ""
 msgid   "Falkland Islands (Malvinas) Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:187
+#: lib/core/class-affiliates-settings-registration.php:216
 msgid   "Field Label"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:184
+#: lib/core/class-affiliates-settings-registration.php:213
 msgid   "Field Name"
 msgstr  ""
 
@@ -1439,7 +1443,7 @@ msgstr  ""
 msgid   "Haiti Gourde"
 msgstr  ""
 
-#: lib/core/wp-init.php:1963
+#: lib/core/wp-init.php:1964
 msgid   "Here you can <strong>add</strong>, <strong>edit</strong> and "
         "<strong>remove</strong> affiliates."
 msgstr  ""
@@ -1514,6 +1518,11 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates-edit.php:154
 msgid   "If a valid <strong>Username</strong> is specified and no email is "
         "given, the user's email address will be used automatically."
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-registration.php:195
+msgid   "If chosen, a disclaimer and link to the page will be displayed with "
+        "the registration form."
 msgstr  ""
 
 #: lib/core/affiliates-admin-user-registration.php:156
@@ -1745,7 +1754,7 @@ msgstr  ""
 msgid   "Login"
 msgstr  ""
 
-#: lib/core/wp-init.php:1624
+#: lib/core/wp-init.php:1625
 msgid   "MD5"
 msgstr  ""
 
@@ -1782,8 +1791,8 @@ msgstr  ""
 msgid   "Maldives (Maldive Islands) Rufiyaa"
 msgstr  ""
 
-#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1768
-#: lib/core/wp-init.php:1769
+#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1769
+#: lib/core/wp-init.php:1770
 msgid   "Manage Affiliates"
 msgstr  ""
 
@@ -1885,7 +1894,7 @@ msgstr  ""
 msgid   "New Zealand Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:783
+#: lib/core/class-affiliates-registration.php:787
 #, php-format
 msgid   "New affiliate registration on your site %s:"
 msgstr  ""
@@ -1923,7 +1932,7 @@ msgstr  ""
 msgid   "Ninja Forms"
 msgstr  ""
 
-#: lib/core/wp-init.php:1623
+#: lib/core/wp-init.php:1624
 msgid   "No encoding"
 msgstr  ""
 
@@ -1951,14 +1960,14 @@ msgstr  ""
 msgid   "Norway Krone"
 msgstr  ""
 
-#: lib/core/wp-init.php:1956
+#: lib/core/wp-init.php:1957
 msgid   "Note that <em>deleted</em> affiliates are not literally deleted but "
         "marked as such so that data that has been collected will still be "
         "accesible."
 msgstr  ""
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1874 lib/core/wp-init.php:1875
+#: lib/core/wp-init.php:1875 lib/core/wp-init.php:1876
 msgid   "Notifications"
 msgstr  ""
 
@@ -1974,7 +1983,7 @@ msgstr  ""
 msgid   "Omitted"
 msgstr  ""
 
-#: lib/core/wp-init.php:1979
+#: lib/core/wp-init.php:1980
 msgid   "Once a visitor has landed on your site through an affiliate link, "
         "referrals may be recorded and attributed to the affiliate."
 msgstr  ""
@@ -1983,7 +1992,7 @@ msgstr  ""
 msgid   "Once you click the button, the hits will be deleted immediately."
 msgstr  ""
 
-#: lib/core/wp-init.php:2027
+#: lib/core/wp-init.php:2028
 msgid   "Online documentation"
 msgstr  ""
 
@@ -2023,7 +2032,7 @@ msgstr  ""
 msgid   "Password"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:818
+#: lib/core/class-affiliates-registration.php:822
 #, php-format
 msgid   "Password: %s"
 msgstr  ""
@@ -2058,7 +2067,7 @@ msgstr  ""
 #: lib/core/affiliates-admin.php:328 lib/core/affiliates-admin.php:474
 #: lib/core/affiliates-admin.php:480
 #: lib/core/class-affiliates-settings-referrals.php:82
-#: lib/core/class-affiliates-settings-registration.php:158
+#: lib/core/class-affiliates-settings-registration.php:165
 #: lib/core/class-affiliates-totals.php:357
 #: lib/core/class-affiliates-totals.php:376
 #: lib/core/class-affiliates-totals.php:791
@@ -2120,7 +2129,7 @@ msgstr  ""
 msgid   "Please fill out the field <em>%s</em>."
 msgstr  ""
 
-#: lib/core/wp-init.php:2049
+#: lib/core/wp-init.php:2050
 #, php-format
 msgid   "Please give it a <a style=\"text-decoration:none;\" href=\"%s"
         "\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating!"
@@ -2253,7 +2262,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-referrals.php:267
 #: lib/core/affiliates-admin.php:487 lib/core/class-affiliates-settings.php:62
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:97
-#: lib/core/wp-init.php:1820 lib/core/wp-init.php:1821
+#: lib/core/wp-init.php:1821 lib/core/wp-init.php:1822
 msgid   "Referrals"
 msgstr  ""
 
@@ -2298,7 +2307,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:676
 #: lib/core/affiliates-admin-referral-remove.php:149
 #: lib/core/affiliates-admin-referrals.php:639
-#: lib/core/class-affiliates-settings-registration.php:217
+#: lib/core/class-affiliates-settings-registration.php:246
 #: lib/core/class-affiliates-settings.php:75
 msgid   "Remove"
 msgstr  ""
@@ -2328,7 +2337,7 @@ msgstr  ""
 msgid   "Repeat %s"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:190
+#: lib/core/class-affiliates-settings-registration.php:219
 msgid   "Required"
 msgstr  ""
 
@@ -2395,7 +2404,7 @@ msgstr  ""
 #: lib/core/class-affiliates-settings-general.php:337
 #: lib/core/class-affiliates-settings-network.php:79
 #: lib/core/class-affiliates-settings-referrals.php:185
-#: lib/core/class-affiliates-settings-registration.php:235
+#: lib/core/class-affiliates-settings-registration.php:264
 #: lib/core/class-affiliates-shortcodes.php:1147
 msgid   "Save"
 msgstr  ""
@@ -2437,7 +2446,7 @@ msgstr  ""
 msgid   "Set status to Pending"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1849
+#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1850
 msgid   "Settings"
 msgstr  ""
 
@@ -2510,7 +2519,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-referrals.php:400
 #: lib/core/affiliates-admin-referrals.php:433
 #: lib/core/affiliates-admin.php:493 lib/core/affiliates-admin.php:513
-#: lib/core/class-affiliates-settings-registration.php:151
+#: lib/core/class-affiliates-settings-registration.php:158
 #: lib/core/class-affiliates-totals.php:832
 msgid   "Status"
 msgstr  ""
@@ -2555,11 +2564,16 @@ msgstr  ""
 msgid   "Tanzania Shilling"
 msgstr  ""
 
+#: lib/core/class-affiliates-settings-registration.php:179
+msgid   "Terms"
+msgstr  ""
+
 #: lib/core/class-affiliates-registration-widget.php:115
 msgid   "Terms Page or Post ID"
 msgstr  ""
 
 #: lib/core/class-affiliates-registration-widget.php:115
+#: lib/core/class-affiliates-settings-registration.php:193
 msgid   "Terms and conditions"
 msgstr  ""
 
@@ -2572,7 +2586,7 @@ msgstr  ""
 msgid   "Thailand Baht"
 msgstr  ""
 
-#: lib/core/wp-init.php:2046
+#: lib/core/wp-init.php:2047
 msgid   "Thank you for using the <a style=\"text-decoration:none;\" href="
         "\"http://www.itthinx.com/plugins/affiliates\" target=\"_blank"
         "\">Affiliates</a> plugin by <a style=\"text-decoration:none;\" href="
@@ -2625,7 +2639,7 @@ msgid   "The Affiliate URL parameter name <strong>has not been changed</"
         "letters and the underscore _ are allowed."
 msgstr  ""
 
-#: lib/core/wp-init.php:1951
+#: lib/core/wp-init.php:1952
 msgid   "The Affiliates plugin provides the <em>Affiliates Contact</em> "
         "widget that can be used to record lead referrals."
 msgstr  ""
@@ -2664,7 +2678,7 @@ msgstr  ""
 msgid   "The earnings period for the amounts earned."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:173
+#: lib/core/class-affiliates-settings-registration.php:202
 msgid   "The following fields are provided on the affiliate registration form "
         "rendered by the <code>[affiliates_registration]</code> shortcode."
 msgstr  ""
@@ -2690,7 +2704,7 @@ msgstr  ""
 msgid   "The passwords for the field <em>%s</em> do not match."
 msgstr  ""
 
-#: lib/core/wp-init.php:874
+#: lib/core/wp-init.php:875
 msgid   "The plugin is configured to delete its data on deactivation."
 msgstr  ""
 
@@ -2796,7 +2810,7 @@ msgid   "This contact form will request a referral and store the data that "
         "has been submitted."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:165
+#: lib/core/class-affiliates-settings-registration.php:171
 msgid   "This determines if new affiliate applications require manual "
         "approval or whether they are accepted automatically."
 msgstr  ""
@@ -2842,7 +2856,7 @@ msgid   "This light integration is suitable to be used with the <a href="
         "\"https://wordpress.org/plugins/affiliates/\">Affiliates</a> plugin."
 msgstr  ""
 
-#: lib/core/wp-init.php:1972
+#: lib/core/wp-init.php:1973
 msgid   "This link uses a parameter in the URL to record visits you receive "
         "through your affiliates."
 msgstr  ""
@@ -2963,7 +2977,7 @@ msgstr  ""
 msgid   "This referral does not exist."
 msgstr  ""
 
-#: lib/core/wp-init.php:1939
+#: lib/core/wp-init.php:1940
 msgid   "This screen offers an overview with basic statistical data."
 msgstr  ""
 
@@ -2999,7 +3013,7 @@ msgid   "To serve as an example on how to use the API provided by the "
         "Affiliates plugin"
 msgstr  ""
 
-#: lib/core/wp-init.php:1952
+#: lib/core/wp-init.php:1953
 #, php-format
 msgid   "To use it, place the widget in one of your <a href=\"%s\">widget "
         "areas</a>."
@@ -3014,13 +3028,13 @@ msgstr  ""
 msgid   "Total"
 msgstr  ""
 
-#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1834
-#: lib/core/wp-init.php:1835
+#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1835
+#: lib/core/wp-init.php:1836
 msgid   "Totals"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1807
-#: lib/core/wp-init.php:1808
+#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1808
+#: lib/core/wp-init.php:1809
 msgid   "Traffic"
 msgstr  ""
 
@@ -3093,7 +3107,7 @@ msgstr  ""
 msgid   "Until : %s"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-registration.php:214
+#: lib/core/class-affiliates-settings-registration.php:243
 msgid   "Up"
 msgstr  ""
 
@@ -3125,7 +3139,7 @@ msgid   "User Agent"
 msgstr  ""
 
 #: lib/core/affiliates-admin-user-registration.php:35
-#: lib/core/wp-init.php:1861 lib/core/wp-init.php:1862
+#: lib/core/wp-init.php:1862 lib/core/wp-init.php:1863
 msgid   "User Registration"
 msgstr  ""
 
@@ -3149,8 +3163,8 @@ msgstr  ""
 msgid   "Username : %s"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:784
-#: lib/core/class-affiliates-registration.php:817
+#: lib/core/class-affiliates-registration.php:788
+#: lib/core/class-affiliates-registration.php:821
 #, php-format
 msgid   "Username: %s"
 msgstr  ""
@@ -3207,12 +3221,12 @@ msgstr  ""
 msgid   "Visits"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1781
-#: lib/core/wp-init.php:1782
+#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1782
+#: lib/core/wp-init.php:1783
 msgid   "Visits & Referrals"
 msgstr  ""
 
-#: lib/core/wp-init.php:870
+#: lib/core/wp-init.php:871
 msgid   "Warning!"
 msgstr  ""
 
@@ -3298,7 +3312,7 @@ msgid   "You can use the page generation option to create the default "
         "affiliate area for your affiliates."
 msgstr  ""
 
-#: lib/core/wp-init.php:1974
+#: lib/core/wp-init.php:1975
 #, php-format
 msgid   "You may also append the ?%s=... part to links to your posts."
 msgstr  ""
@@ -3329,12 +3343,12 @@ msgstr  ""
 msgid   "[%s] Affiliate program"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:797
+#: lib/core/class-affiliates-registration.php:801
 #, php-format
 msgid   "[%s] New Affiliate Registration"
 msgstr  ""
 
-#: lib/core/class-affiliates-registration.php:830
+#: lib/core/class-affiliates-registration.php:834
 #, php-format
 msgid   "[%s] Your username and password"
 msgstr  ""
