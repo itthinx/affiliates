@@ -1337,20 +1337,26 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
  * @param string $type
  * @param string $reference
  * @param int $hit_id
+ * @param string $reference_amount
+ * @param int $time
  * @return int
  */
-function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null ) {
+function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null, $time = null ) {
 	global $wpdb;
 
 	if ( $affiliate_id ) {
 
 		$current_user = wp_get_current_user();
-		$now = date('Y-m-d H:i:s', time() );
+		$when = time();
+		if ( $time !== null ) {
+			$when = intval( $time );
+		}
+		$datetime = date( 'Y-m-d H:i:s', $when );
 		$table = _affiliates_get_tablename( 'referrals' );
 
 		$columns = "(affiliate_id, post_id, datetime, description";
 		$formats = "(%d, %d, %s, %s";
-		$values = array( $affiliate_id, $post_id, $now, $description );
+		$values = array( $affiliate_id, $post_id, $datetime, $description );
 
 		if ( !empty( $current_user ) ) {
 			$columns .= ",user_id ";
