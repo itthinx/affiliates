@@ -520,7 +520,7 @@ function affiliates_admin() {
 	}
 
 	echo '<h3>';
-	printf( esc_html__( 'Clicks', 'affiliates' ), esc_html( $currency_id ) );
+	esc_html_e( 'Clicks', 'affiliates' );
 	echo '</h3>';
 
 	echo '<div class="click-stats-container">';
