@@ -197,10 +197,13 @@ function affiliates_version_check() {
 	$previous_version = get_option( 'affiliates_plugin_version', null );
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 	if ( version_compare( $previous_version, $affiliates_version ) < 0 ) {
-		if ( affiliates_update( $previous_version ) ) {
+		$update_result = affiliates_update( $previous_version );
+		if ( $update_result === true ) {
 			update_option( 'affiliates_plugin_version', $affiliates_version );
 		} else {
-			affiliates_log_error( 'There were errors during update (core) – this might only be a temporary issue, unless this message comes up permanently.' );
+			if ( $update_result === false ) {
+				affiliates_log_error( 'There were errors during update (core) – this might only be a temporary issue, unless this message comes up permanently.' );
+			}
 		}
 	}
 }
@@ -565,12 +568,13 @@ function _affiliates_assure_capabilities() {
 
 /**
  * Update from a previous version or repair on activation (within 2.x).
- * 
+ *
  * This is called from affiliates_setup() on plugin activation and affiliates_version_check()
  * when a previous version is detected.
- * 
+ *
  * @param string $previous_version
- * @return boolean
+ *
+ * @return boolean or null if update procedure was skipped (DOING_AJAX or DOING_CRON)
  */
 function affiliates_update( $previous_version = null ) {
 
@@ -583,7 +587,7 @@ function affiliates_update( $previous_version = null ) {
 		defined( 'DOING_AJAX' ) && DOING_AJAX ||
 		defined( 'DOING_CRON' ) && DOING_CRON
 	) {
-		return $result;
+		return null;
 	}
 
 	$charset_collate = '';
