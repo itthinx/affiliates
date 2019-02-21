@@ -347,25 +347,21 @@ Use the `[affiliates_login_redirect]` shortcode.
 See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more details.
 
 1. Affiliates Dashboard Overview - Front end affiliate dashboard section showing graphical statistics on clicks and earnings and the affiliate link tool.
-2. Affiliates Dashboard Earnings - Shows affiliates their recent earnings on the front end in the dashboard section.
-3. Affiliates Dashboard Profile - The affiliate's profile is part of the dashboard.
-4. Affiliates Dashboard Login - The dashboard section allows affiliates to log in.
-5. Affiliates Dashboard Registration - The registration dashboard section allows new affiliates to sign up.
-6. Affiliates Dashboard Blocks - An overview of available dashboard blocks that can be placed conveniently to compose affiliate areas.
-7. Affiliates Overview - Shows summarized information based on current and historic data to the Affiliate Manager.
-8. Manage Affiliates - Affiliate Manager's administrative section on the back end, where the site's partners are maintained.
-9. Visits & Referrals - Per-day view for the Affiliate Manager, provides information about visits and referrals generated through affiliate links.
-10. Affiliates & Referrals - Per-affiliate view for the Affiliate Manager, provides information about visits and referrals generated through affiliate links.
-11. Traffic - The Affiliate Manager's view on traffic generated through affiliate links.
-12. Referrals I - The Affiliate Manager's overview on information about referrals.
-13. Referrals II - A more detailed view on information for the Affiliate Manager, based on data stored along with referrals.
-14. Totals - The accumulated totals per affiliate as presented to the Affiliate Manager, provides the information needed to process affiliate payments.
-15. Settings > General - Where general plugin options are maintained.
+2. Affiliates Dashboard Overview - Front end affiliate dashboard section viewing the commission graph.
+3. Affiliates Dashboard Overview - From the front end affiliate dashboard, a close look at the recent referrals graph.
+4. Affiliates Dashboard Earnings - Shows affiliates their monthly earnings on the front end in the dashboard section.
+5. Affiliates Dashboard Profile - The affiliate's profile is part of the dashboard.
+6. Affiliates Dashboard Login - The dashboard section allows affiliates to log in.
+7. Affiliates Dashboard Registration - The registration dashboard section allows new affiliates to sign up.
+8. Affiliates Dashboard Blocks - An overview of available dashboard blocks that can be placed conveniently to compose affiliate areas.
+9. Affiliates Overview - Shows summarized information based on current and historic data to the Affiliate Manager.
+10. Manage Affiliates - Affiliate Manager's administrative section on the back end, where the site's partners are maintained.
+11. Visits & Referrals - Per-day view for the Affiliate Manager, provides information about visits and referrals generated through affiliate links.
+12. Affiliates & Referrals - Per-affiliate view for the Affiliate Manager, provides information about visits and referrals generated through affiliate links.
+13. Traffic - The Affiliate Manager's view on traffic generated through affiliate links.
+14. Referrals - The Affiliate Manager's overview on information about referrals with filters and optional details.
+15. Totals - The accumulated totals per affiliate as presented to the Affiliate Manager, provides the information needed to process affiliate payments.
 16. Settings > Registration - Customizable affiliate registration.
-17. Notifications - Affiliate and Administrator notifications.
-18. Menu - The Affiliates menu.
-19. Dashboard Widget - Showing accumulated totals for referrals on the administrative dashboard.
-20. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users and customers.
 
 == Changelog ==
 
