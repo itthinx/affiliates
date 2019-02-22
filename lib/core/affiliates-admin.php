@@ -451,7 +451,7 @@ function affiliates_admin() {
 	$referrals = $wpdb->get_results(
 		$wpdb->prepare(
 			"SELECT COUNT(*) count, SUM(amount) amount, currency_id, status " .
-			"FROM wp_aff_referrals " .
+			"FROM $referrals_table " .
 			"WHERE datetime >= %s AND datetime <= %s" .
 			"GROUP BY currency_id, status",
 			$from_datetime,
