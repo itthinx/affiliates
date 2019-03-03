@@ -15,6 +15,8 @@ The Affiliates system provides the most powerful growth-oriented tools to run a 
 The Affiliates system allows you to run a successful Affiliate Marketing Program.
 It comprises a set of the most **powerful growth-oriented tools**.
 
+https://www.youtube.com/watch?v=0OPuMJeMAog
+
 = Designed for Growth =
 
 A fresh and intuitive dashboard helps your partners to spread the word about your site, products and services easily.
@@ -71,7 +73,7 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 ### Premium Integrations and Extensions included with Affiliates Pro and Affiliates Enterprise
 
 - [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) provides all features available in the free _Affiliates_ system, a more detailed Dashboard with additional Dashboard Sections, additional features like referral Rates (supports formula-based rates), Banner Management, advanced Notifications, additional Dashboard sections and Shortcodes, advanced commission Rates, affiliate export features, advanced Totals with mass payment files and exports, more integrations and advanced integration features.
-- [Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional Dashboard sections, blocks and shortcodes.
+- [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional Dashboard sections, blocks and shortcodes.
 
 [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) come with additional features, extensions and integrations. Among these are:
 
