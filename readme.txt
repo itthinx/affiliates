@@ -13,6 +13,7 @@ The Affiliates system provides the most powerful growth-oriented tools to run a 
 == Description ==
 
 The Affiliates system allows you to run a successful Affiliate Marketing Program.
+
 It comprises a set of the most **powerful growth-oriented tools**.
 
 https://www.youtube.com/watch?v=0OPuMJeMAog
