@@ -85,7 +85,7 @@ class Affiliates_Exclusion {
 	 * Invalidate affiliate's own coupons.
 	 * 
 	 * @param boolean $valid
-	 * @param WC_Coupons $coupon
+	 * @param WC_Coupon $coupon
 	 * @return boolean
 	 */
 	public static function woocommerce_coupon_is_valid( $valid, $coupon ) {

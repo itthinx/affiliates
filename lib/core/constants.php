@@ -78,7 +78,9 @@ define( 'AFFILIATES_TP', 'aff_' );
 /**
  * @var boolean Store robot hits
  */
-define( 'AFFILIATES_RECORD_ROBOT_HITS', false );
+if ( !defined( 'AFFILIATES_RECORD_ROBOT_HITS' ) ) {
+	define( 'AFFILIATES_RECORD_ROBOT_HITS', false );
+}
 
 /**
  * @var string expander showing expandable state
@@ -212,3 +214,10 @@ define( 'AFFILIATES_DEST_URI', 'dest' );
 
 // User agents
 define( 'AFFILIATES_USER_AGENT_MAX_LENGTH', 255 );
+
+if ( !defined( 'AFFILIATES_DEBUG' ) ) {
+	define( 'AFFILIATES_DEBUG', false );
+}
+if ( !defined( 'AFFILIATES_DEBUG_ROBOTS' ) ) {
+	define( 'AFFILIATES_DEBUG_ROBOTS', false );
+}

@@ -359,8 +359,12 @@ class Affiliates_Registration {
 		// Registration form
 		if ( !$send ) {
 
-			if ( isset( $options['terms_post_id'] ) ) {
-				$terms_post = get_post( $options['terms_post_id'] );
+			$terms_post_id = get_option( 'aff_registration_terms_post_id', '' );
+			if ( !empty( $terms_post_id ) || isset( $options['terms_post_id'] ) ) {
+				if ( empty( $terms_post_id ) ) {
+					$terms_post_id = $options['terms_post_id'];
+				}
+				$terms_post = get_post( $terms_post_id );
 				if ( $terms_post ) {
 					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
 					$terms = sprintf(
@@ -513,7 +517,7 @@ class Affiliates_Registration {
 
 		return $user_id;
 	}
-	
+
 	/**
 	 * Updates an affiliate user.
 	 *
@@ -597,7 +601,7 @@ class Affiliates_Registration {
 				// update affiliate entry
 				$affiliate_ids = affiliates_get_user_affiliate( $user_id );
 				if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
-					
+
 					$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 					$query = $wpdb->prepare(
 						"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
@@ -662,7 +666,7 @@ class Affiliates_Registration {
 	 * @param int $user_id user id
 	 * @param array $userdata affiliate data
 	 * @param string $status affiliate status
-	 * @return if successful new affiliate's id, otherwise false
+	 * @return int|boolean if successful new affiliate's id, otherwise false
 	 */
 	public static function store_affiliate( $user_id, $userdata, $status = null ) {
 		global $wpdb;

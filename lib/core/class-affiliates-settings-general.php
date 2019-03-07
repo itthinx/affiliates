@@ -35,6 +35,29 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		global $wp, $wpdb, $affiliates_options, $wp_roles;
 
+		if ( isset( $_REQUEST['subsection'] ) && $_REQUEST['subsection'] === 'robot-cleaner' ) {
+			Affiliates_Robot_Cleaner::admin();
+			echo '<p style="border-top: 1px solid #ccc; margin: 8px 0; padding: 8px 0;">';
+			if ( !isset( $_REQUEST['action'] ) ) {
+				$url = add_query_arg(
+					array( 'section' => 'general' ),
+					admin_url( 'admin.php?page=affiliates-admin-settings' )
+				);
+			} else {
+				$url = add_query_arg(
+					array( 'section' => 'general', 'subsection' => 'robot-cleaner' ),
+					admin_url( 'admin.php?page=affiliates-admin-settings' )
+				);
+			}
+			printf(
+				'<a class="button" href="%s">%s</a>',
+				esc_url( $url ),
+				esc_html__( 'Back', 'affiliates' )
+			);
+			echo '</p>';
+			return;
+		}
+
 		$robots_table = _affiliates_get_tablename( 'robots' );
 
 		if ( isset( $_POST['submit'] ) ) {
@@ -43,7 +66,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 				// robots
 				$robots = wp_filter_nohtml_kses( trim ( $_POST['robots'] ) );
-				$wpdb->query("DELETE FROM $robots_table;");
+				$wpdb->query( "DELETE FROM $robots_table" );
 				if ( !empty( $robots ) ) {
 					$robots = str_replace( ",", "\n", $robots );
 					$robots = str_replace( "\r", "", $robots );
@@ -279,6 +302,19 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			'<p>' .
 			__( 'Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line.', 'affiliates' ) .
 			'</p>';
+		echo '<p>' .
+			sprintf(
+				esc_html__( 'Use the robot cleaner to remove existing hits from robots: %s', 'affiliates' ),
+				sprintf(
+					'<a class="button" href="%s">%s</a>',
+					add_query_arg(
+						array( 'section' => 'general', 'subsection' => 'robot-cleaner' ),
+						admin_url( 'admin.php?page=affiliates-admin-settings' )
+					),
+					esc_html__( 'Robot Cleaner', 'affiliates' )
+				)
+			);
+		echo '</p>';
 
 		if ( !affiliates_is_sitewide_plugin() ) {
 			echo

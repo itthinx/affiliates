@@ -343,7 +343,7 @@ class Affiliates_Shortcodes {
 	 * @param string $until date/datetime
 	 */
 	private static function for_from_until( $for, &$from, &$until ) {
-		include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 		if ( $for === null ) {
 			if ( $from !== null ) {
 				$from = date( 'Y-m-d H:i:s', strtotime( DateHelper::u2s( $from ) ) );
@@ -386,7 +386,7 @@ class Affiliates_Shortcodes {
 	public static function affiliates_hits( $atts, $content = null ) {
 		global $wpdb;
 
-		include_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php');
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 
 		remove_shortcode( 'affiliates_hits' );
 		$content = do_shortcode( $content );
@@ -543,15 +543,59 @@ class Affiliates_Shortcodes {
 	 * 
 	 * Note that we don't do any s2u or u2s date adjustments here.
 	 * 
-	 * @param array $atts not used; this shortcode does not accept any arguments
+	 * @param array $atts options
+	 * - show_paid : true or false (default), if true, also shows paid earnings
+	 * - per_page  : results per page, 10 by default
+	 * - page : page to show by default
+	 * - order : desc (default) or asc
+	 * - orderby : date (default with no other options supported at current)
+	 *
 	 * @param string $content not used
 	 */
 	public static function affiliates_earnings( $atts, $content = null ) {
 		global $wpdb;
 		$output = '';
+
+		$atts = shortcode_atts( array( 'show_paid' => false, 'per_page' => 12, 'page' => 1, 'order' => 'desc', 'orderby' => 'date' ), $atts );
+
+		if ( isset( $_REQUEST['earnings-page'] ) ) {
+			$atts['page'] = intval( $_REQUEST['earnings-page'] );
+		}
+
+		if ( is_string( $atts['show_paid'] ) ) {
+			$atts['show_paid'] = strtolower( $atts['show_paid'] );
+		}
+		switch ( $atts['show_paid'] ) {
+			case true :
+			case 'true' :
+			case 'yes ':
+				$atts['show_paid'] = true;
+				break;
+			case false :
+			case 'false' :
+			case 'no' :
+				$atts['show_paid'] = false;
+				break;
+			default :
+				$atts['show_paid'] = false;
+		}
+		$atts['per_page'] = max( intval( $atts['per_page'] ), 1 );
+		$atts['page'] = max( intval( $atts['page'] ), 1 );
+		$atts['order'] = strtolower( $atts['order'] );
+		switch( $atts['order'] ) {
+			case 'asc' :
+			case 'desc' :
+				break;
+			default :
+				$atts['order'] = 'desc';
+		}
+		$atts['orderby'] = 'date';
+
 		$user_id = get_current_user_id();
 		if ( $user_id && affiliates_user_is_affiliate( $user_id ) ) {
 			if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
+
+				$cols = 2;
 
 				$output .= '<table class="affiliates-earnings">';
 				$output .= '<thead>';
@@ -562,20 +606,33 @@ class Affiliates_Shortcodes {
 				$output .= '<th>';
 				$output .= __( 'Earnings', 'affiliates' );
 				$output .= '</th>';
+				if ( $atts['show_paid'] ) {
+					$cols++;
+					$output .= '<th>';
+					$output .= __( 'Paid', 'affiliates' );
+					$output .= '</th>';
+				}
 				$output .= '</tr>';
 				$output .= '</thead>';
 				$output .= '<tbody>';
 
+				$rows = array();
 				$referrals_table = _affiliates_get_tablename( 'referrals' );
-				if ( $range = $wpdb->get_row( "SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ")") ) {
+				$range = $wpdb->get_row(
+					"SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ") "
+				);
+				if ( $range ) {
 					if ( !empty( $range->from_datetime ) ) { // Covers for NULL when no referrals recorded yet, too.
 						$t = strtotime( date( 'Y-m-01 00:00:00', strtotime( $range->from_datetime ) ) );
 						$eom = strtotime( date( 'Y-m-t 23:59:59', time() ) );
+
 						while ( $t < $eom ) {
 							$from = date( 'Y-m', $t ) . '-01 00:00:00';
 							$thru = date( 'Y-m-t', strtotime( $from ) );
 							$sums = array();
+							$sums_paid = array();
 							foreach( $affiliate_ids as $affiliate_id ) {
+								// accepted and closed
 								if ( $totals = self::get_total( $affiliate_id, $from, $thru ) ) {
 									if ( count( $totals ) > 0 ) {
 										foreach ( $totals as $currency_id => $total ) {
@@ -587,20 +644,80 @@ class Affiliates_Shortcodes {
 										}
 									}
 								}
+								// closed
+								if ( $totals_paid = self::get_total( $affiliate_id, $from, $thru, AFFILIATES_REFERRAL_STATUS_CLOSED ) ) {
+									if ( count( $totals_paid ) > 0 ) {
+										foreach ( $totals_paid as $currency_id => $total ) {
+											if ( function_exists( 'bcadd' ) ) {
+												$sums_paid[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
+											} else {
+												$sums_paid[$currency_id] = isset( $sums[$currency_id] ) ? $sums[$currency_id] + $total : $total;
+											}
+										}
+									}
+								}
 							}
+
+							$rows[$t] = array( 'from' => $from, 'sums' => $sums, 'sums_paid' => $sums_paid );
+
+							$t = strtotime( '+1 month', $t );
+						}
+					}
+				}
+
+				// sort rows
+				if ( $atts['order'] === 'desc' ) {
+					$rows = array_reverse( $rows );
+				}
+
+				$pages = count( $rows ) / $atts['per_page'];
+				$offset = $atts['per_page'] * ( $atts['page'] - 1 );
+
+				$rows = array_splice( $rows, $offset, $atts['per_page'] );
+
+				if ( count( $rows ) > 0 ) {
+					foreach ( $rows as $t => $row ) {
+
+						$from = $row['from'];
+						$sums = $row['sums'];
+						$sums_paid = $row['sums_paid'];
+
+						$output .= '<tr>';
+
+						// month & year
+						$output .= '<td>';
+						$output .= date_i18n( __( 'F Y', 'affiliates' ), strtotime( $from ) ); // translators: date format; month and year for earnings display
+						$output .= '</td>';
 	
-							$output .= '<tr>';
+						// earnings
+						$output .= '<td>';
+						if ( count( $sums ) > 1 ) {
+							$output .= '<ul>';
+							foreach ( $sums as $currency_id => $total ) {
+								$output .= '<li>';
+								$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
+								$output .= '&nbsp;';
+								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', affiliates_get_referral_amount_decimals( 'display' ) ) ), $total, $currency_id );
+								$output .= '</li>';
+							}
+							$output .= '</ul>';
+						} else if ( count( $sums ) > 0 ) {
+							foreach ( $sums as $currency_id => $total ) {
+								$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
+								$output .= '&nbsp;';
+								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', affiliates_get_referral_amount_decimals( 'display' ) ) ), $total, $currency_id );
+							}
+						} else {
+							$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', 'affiliates' ) );
+						}
+						$output .= '</td>';
 	
-							// month & year
+						// paid
+						if ( $atts['show_paid'] ) {
 							$output .= '<td>';
-							$output .= date_i18n( __( 'F Y', 'affiliates' ), strtotime( $from ) ); // translators: date format; month and year for earnings display
-							$output .= '</td>';
-	
-							// earnings
-							$output .= '<td>';
-							if ( count( $sums ) > 1 ) {
+							if ( count( $sums_paid ) > 1 ) {
 								$output .= '<ul>';
-								foreach ( $sums as $currency_id => $total ) {
+								foreach ( $sums_paid as $currency_id => $total ) {
 									$output .= '<li>';
 									$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
 									$output .= '&nbsp;';
@@ -608,29 +725,41 @@ class Affiliates_Shortcodes {
 									$output .= '</li>';
 								}
 								$output .= '</ul>';
-							} else if ( count( $sums ) > 0 ) {
-								$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
-								$output .= '&nbsp;';
-								$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', affiliates_get_referral_amount_decimals( 'display' ) ) ), $total, $currency_id );
+							} else if ( count( $sums_paid ) > 0 ) {
+								foreach ( $sums as $currency_id => $total ) {
+									$output .= apply_filters( 'affiliates_earnings_display_currency', $currency_id );
+									$output .= '&nbsp;';
+									$output .= apply_filters( 'affiliates_earnings_display_total', number_format_i18n( $total, apply_filters( 'affiliates_earnings_decimals', affiliates_get_referral_amount_decimals( 'display' ) ) ), $total, $currency_id );
+								}
 							} else {
 								$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', 'affiliates' ) );
 							}
 							$output .= '</td>';
-	
-							$output .= '</tr>';
-	
-							$t = strtotime( '+1 month', $t );
 						}
-					} else {
-						$output .= '<td colspan="2">';
-						$output .= apply_filters( 'affiliates_earnings_display_total_no_earnings', __( 'There are no earnings yet.', 'affiliates' ) );
-						$output .= '</td>';
+
+						$output .= '</tr>';
+
 					}
+				} else {
+					$output .= sprintf( '<td colspan="%d">', $cols );
+					$output .= apply_filters( 'affiliates_earnings_display_total_no_earnings', __( 'There are no earnings yet.', 'affiliates' ) );
+					$output .= '</td>';
 				}
 
 				$output .= '</tbody>';
 				$output .= '</table>';
 
+				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$url = remove_query_arg( 'earnings-page', $current_url );
+
+				if ( count( $rows ) > 0 ) {
+					if ( $atts['page'] > 1 ) {
+						$output .= sprintf( '<a style="margin: 4px;" class="button" href="%s">%s</a>', esc_url( add_query_arg( 'earnings-page', $atts['page'] - 1, $url ) ), esc_html_x( 'Previous', 'Label used to show previous page of affiliate earnings results', 'affiliates' ) );
+					}
+					if ( $atts['page'] < $pages ) {
+						$output .= sprintf( '<a style="margin: 4px;" class="button" href="%s">%s</a>', esc_url( add_query_arg( 'earnings-page', $atts['page'] + 1, $url ) ), esc_html_x( 'Next', 'Label used to show next page of affiliate earnings results', 'affiliates' ) );
+					}
+				}
 			}
 		}
 		return $output;
@@ -765,7 +894,7 @@ class Affiliates_Shortcodes {
 	 * Exclude the affiliates_url shortcode.
 	 * 
 	 * @param array $shortcodes
-	 * @return unknown
+	 * @return array
 	 */
 	public static function no_texturize_shortcodes( $shortcodes ) {
 		if ( !in_array( 'affiliates_url', $shortcodes ) ) {

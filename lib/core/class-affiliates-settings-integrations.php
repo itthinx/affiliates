@@ -37,9 +37,13 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'WooCommerce (light)', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates WooCommerce Integration Light', 'affiliates' ),
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-woocommerce-light/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> with WooCommerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates <a href="%s">Affiliates</a> with <a href="%s">WooCommerce</a>. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
+					'https://wordpress.org/plugins/affiliates/',
+					'https://woocommerce.com/?aff=7223&cid=1656523'
+				),
 				'plugin_file'  => 'affiliates-woocommerce-light/affiliates-woocommerce-light.php',
-				'notes'        => __( 'This light integration is suitable to be used with the <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+				'notes'        => __( 'This light integration is suitable to be used with the <a href="https://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
 				'repository'   => 'wordpress',
 				'access'       => 'free',
 				'targets'      => array( 'affiliates' ),
@@ -61,7 +65,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'Events Manager', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Events Manager Integration', 'affiliates' ),
 				'plugin_url'   => 'http://wordpress.org/plugins/affiliates-events-manager/',
-				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Events Manager. This integration allows to record referraks to grant affiliates commissions on referred bookings.', 'affiliates' ),
+				'description'  => __( 'This plugin integrates <a href="http://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Events Manager. This integration allows to record referrals to grant affiliates commissions on referred bookings.', 'affiliates' ),
 				'plugin_file'  => 'affiliates-events-manager/affiliates-events-manager.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
@@ -144,6 +148,18 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 		);
 		self::$integrations = apply_filters( 'affiliates_settings_integrations', self::$integrations );
 		self::$premium_integrations = array(
+			'affiliates-woocommerce' => array(
+				'title'        => __( 'WooCommerce', 'affiliates' ),
+				'description'  =>
+					sprintf(
+						__( 'This plugin integrates <a href="%s">Affiliates Pro</a> and <a href="%s">Affiliates Enterprise</a> with <a href="%s">WooCommerce</a>. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made. This integration also supports referrals on recurring payments related to subscriptions and coupons related to affiliates to grant referrals when customers use them to credit the corresponding affiliate.', 'affiliates' ),
+						'https://www.itthinx.com/shop/affiliates-pro/',
+						'http://www.itthinx.com/shop/affiliates-enterprise/',
+						'https://woocommerce.com/?aff=7223&cid=1656523'
+					),
+				'notes'        => __( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'class'        => 'ext',
+			),
 			'affiliates-addtoany' => array(
 				'title'        => __( 'AddToAny', 'affiliates' ),
 				'description'  => __( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="http://www.addtoany.com/">AddToAny</a> &hellip; <em>&ldquo;The Universal Sharing Platform&rdquo;</em>. The <a href="https://wordpress.org/plugins/add-to-any/">Share Buttons by AddToAny</a> are required.', 'affiliates' ),

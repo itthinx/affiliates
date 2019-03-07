@@ -41,7 +41,7 @@ jQuery(document).ready(function(){
 		'</td>' +
 		'<td>' +
 		'<input type="hidden" name="field-type['+i+']" value="text" />' +
-		'<button class="field-remove" type="button" value="'+i+'">Remove</button>' + // @todo l8n
+		'<button class="field-remove button" type="button" value="'+i+'">' + affiliates_field_choice_l12n.remove + '</button>' +
 		'</td>' +
 		'</tr>';
 		jQuery('#registration-fields > table > tbody').append(row);

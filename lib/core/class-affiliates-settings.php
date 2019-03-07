@@ -71,6 +71,9 @@ class Affiliates_Settings {
 	public static function admin_init() {
 		wp_register_style( 'affiliates-admin-settings', AFFILIATES_PLUGIN_URL . 'css/affiliates_admin_settings.css' );
 		wp_register_script( 'affiliates-field-choice', AFFILIATES_PLUGIN_URL . 'js/affiliates-field-choice.js', array( 'jquery' ), AFFILIATES_CORE_VERSION, true );
+		wp_localize_script( 'affiliates-field-choice', 'affiliates_field_choice_l12n', array(
+			'remove' => __( 'Remove', 'affiliates' )
+		) );
 
 		if ( current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
 			if ( isset( $_REQUEST['aff_setup_hide'] ) ) {

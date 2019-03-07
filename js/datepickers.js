@@ -17,12 +17,23 @@
  * @package affiliates
  * @since affiliates 1.0.0
  */
-
-jQuery(document).ready(function(){
-	jQuery('.datefield').not('.hasDatePicker').datepicker(
+( function( $ ) {
+$( document ).ready( function() {
+	// Add a datepicker on .datefield text input fields.
+	$( '.datefield[type="text"]' ).not( '.hasDatePicker' ).datepicker(
 		{
-			dateFormat:'yy-mm-dd',
-			firstDay: 1
+			dateFormat : 'yy-mm-dd',
+			firstDay   : 1
 		}
 	);
-});
+	// Add a datepicker on date fields where the browser does not support it.
+	if ( $( '[type="date"]' ).prop( 'type' ) != 'date' ) {
+		$( '.datefield[type="date"]' ).not( '.hasDatePicker' ).datepicker(
+			{
+				dateFormat : 'yy-mm-dd',
+				firstDay   : 1
+			}
+		);
+	}
+} );
+} )( jQuery );

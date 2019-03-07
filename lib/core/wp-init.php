@@ -37,23 +37,55 @@ if ( !isset( $affiliates_version ) ) {
 require_once AFFILIATES_CORE_LIB . '/class-affiliates.php';
 
 // options
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-options.php' );
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-options.php';
 if ( $affiliates_options == null ) {
 	$affiliates_options = new Affiliates_Options();
 }
 
 // utilities
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-utility.php' );
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-ui-elements.php' );
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-utility.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-ui-elements.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-log.php';
 
 // ajax
-include_once AFFILIATES_CORE_LIB . '/class-affiliates-ajax.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-ajax.php';
+
+// robot cleaner
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-robot-cleaner.php';
 
 // forms, shortcodes, widgets
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-contact.php' );
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration.php' );
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-registration-widget.php' );
-include_once( AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php' ); // don't make it conditional on is_admin(), get_total() is used in Manage Affiliates
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-contact.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-registration.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-registration-widget.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-shortcodes.php'; // don't make it conditional on is_admin(), get_total() is used in Manage Affiliates
+
+// templates and dashboard
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-templates.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/interface-affiliates-dashboard.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-factory.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section-factory.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/interface-affiliates-dashboard-section.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/interface-affiliates-dashboard-section-table.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-section-table.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-login.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-login-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-login-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-registration.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-registration-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-registration-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-overview.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-overview-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-overview-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnings.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnings-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-earnings-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-profile-shortcode.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-block.php';
+require_once AFFILIATES_CORE_LIB . '/dashboard/class-affiliates-dashboard-shortcode.php';
 
 // built-in user registration integration
 if (
@@ -64,7 +96,7 @@ if (
 }
 
 // affiliates excluded
-include_once AFFILIATES_CORE_LIB . '/class-affiliates-exclusion.php';
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-exclusion.php';
 
 // affiliates notifications
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-notifications.php';
@@ -165,10 +197,13 @@ function affiliates_version_check() {
 	$previous_version = get_option( 'affiliates_plugin_version', null );
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 	if ( version_compare( $previous_version, $affiliates_version ) < 0 ) {
-		if ( affiliates_update( $previous_version ) ) {
+		$update_result = affiliates_update( $previous_version );
+		if ( $update_result === true ) {
 			update_option( 'affiliates_plugin_version', $affiliates_version );
 		} else {
-			$affiliates_admin_messages[] = '<div class="error">Updating the Affiliates core FAILED.</div>';
+			if ( $update_result === false ) {
+				affiliates_log_error( 'There were errors during update (core) – this might only be a temporary issue, unless this message comes up permanently.' );
+			}
 		}
 	}
 }
@@ -393,14 +428,12 @@ function affiliates_setup() {
 
 	// IMPORTANT:
 	// datetime -- records the datetime with respect to the server's timezone
-	// date and time are are also with respect to the server's timezone
-	// date -- we do NOT use this to display information to the user
-	// time -- same applies to this here
-	// date and time (and currently only date really) are used for better
-	// performance on certain queries.
+	// date and datetime are are also with respect to the server's timezone
+	// date is used for better performance in queries, datetime to provide detail when viewed
 	// We DO use the datetime (adjusted to the user's timezone using
 	// DateHelper's s2u() function to display the date and time
 	// in accordance to the user's date and time.
+	// @todo ip/ipv6 (also for referrals table) : create new table and map hits.ip_id to ip.ip_id instead of storing those
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $hits_table . "'" ) != $hits_table ) {
 		$queries[] = "CREATE TABLE " . $hits_table . "(
@@ -409,22 +442,17 @@ function affiliates_setup() {
 				affiliate_id    BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
 				campaign_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				date            DATE NOT NULL,
-				time            TIME NOT NULL,
 				datetime        DATETIME NOT NULL,
 				ip              INT(10) UNSIGNED NOT NULL DEFAULT 0,
-				ipv6            DECIMAL(39,0) UNSIGNED DEFAULT NULL,
 				src_uri_id      BIGINT(20) UNSIGNED DEFAULT NULL,
 				dest_uri_id     BIGINT(20) UNSIGNED DEFAULT NULL,
 				user_agent_id   BIGINT(20) UNSIGNED DEFAULT NULL,
-				is_robot        TINYINT(1) DEFAULT 0,
+				is_robot        TINYINT DEFAULT 0,
 				user_id         BIGINT(20) UNSIGNED DEFAULT NULL,
-				count           INT DEFAULT 1,
 				type            VARCHAR(10) DEFAULT NULL,
 				PRIMARY KEY     (hit_id),
-				INDEX           aid_d_t_ip (affiliate_id,date,time,ip),
 				INDEX           hash (hash),
-				INDEX           aff_hits_ddt (date, datetime),
-				INDEX           aff_hits_dtd (datetime, date),
+				INDEX           idx_date (date),
 				INDEX           aff_hits_acm (affiliate_id, campaign_id),
 				INDEX           aff_hits_src_uri (src_uri_id),
 				INDEX           aff_hits_dest_uri (dest_uri_id),
@@ -471,7 +499,7 @@ function affiliates_setup() {
 			) $charset_collate;";
 	}
 	if ( !empty( $queries ) ) {
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		dbDelta( $queries );
 	}
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_table . "'" ) == $affiliates_table ) {
@@ -540,12 +568,13 @@ function _affiliates_assure_capabilities() {
 
 /**
  * Update from a previous version or repair on activation (within 2.x).
- * 
+ *
  * This is called from affiliates_setup() on plugin activation and affiliates_version_check()
  * when a previous version is detected.
- * 
+ *
  * @param string $previous_version
- * @return boolean
+ *
+ * @return boolean or null if update procedure was skipped (DOING_AJAX or DOING_CRON)
  */
 function affiliates_update( $previous_version = null ) {
 
@@ -553,6 +582,13 @@ function affiliates_update( $previous_version = null ) {
 
 	$result  = true;
 	$queries = array();
+
+	if (
+		defined( 'DOING_AJAX' ) && DOING_AJAX ||
+		defined( 'DOING_CRON' ) && DOING_CRON
+	) {
+		return null;
+	}
 
 	$charset_collate = '';
 	if ( ! empty( $wpdb->charset ) ) {
@@ -576,8 +612,41 @@ function affiliates_update( $previous_version = null ) {
 		ADD COLUMN hash CHAR(64) DEFAULT NULL,
 		DROP PRIMARY KEY,
 		ADD PRIMARY KEY (hit_id),
-		ADD INDEX aid_d_t_ip (affiliate_id,date,time,ip),
 		ADD INDEX hash (hash);";
+	}
+
+	// from 4.0.0 drop indexes : aff_hits_dtd, aff_hits_ddt, aid_d_t_ip
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'aff_hits_dtd'" );
+	if ( is_array( $index ) && count( $index ) > 0 ) {
+		$queries[] = "ALTER TABLE $hits_table DROP INDEX aff_hits_dtd;";
+	}
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'aff_hits_ddt'" );
+	if ( is_array( $index ) && count( $index ) > 0 ) {
+		$queries[] = "ALTER TABLE $hits_table DROP INDEX aff_hits_ddt;";
+	}
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'aid_d_t_ip'" );
+	if ( is_array( $index ) && count( $index ) > 0 ) {
+		$queries[] = "ALTER TABLE $hits_table DROP INDEX aid_d_t_ip;";
+	}
+	// from 4.0.0 add index : idx_date
+	$index = $wpdb->get_results( "SHOW INDEX FROM $hits_table WHERE Key_name = 'idx_date'" );
+	if ( $index === null || is_array( $index ) && count( $index ) === 0 ) {
+		$queries[] = "ALTER TABLE $hits_table ADD INDEX idx_date (date);";
+	}
+	// from 4.0.0 drop the time column
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'time'" );
+	if ( !empty( $column ) ) {
+		$queries[] = "ALTER TABLE $hits_table DROP COLUMN time;";
+	}
+	// from 4.0.0 drop the ipv6 column
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'ipv6'" );
+	if ( !empty( $column ) ) {
+		$queries[] = "ALTER TABLE $hits_table DROP COLUMN ipv6;";
+	}
+	// from 4.0.0 drop the count column
+	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'count'" );
+	if ( !empty( $column ) ) {
+		$queries[] = "ALTER TABLE $hits_table DROP COLUMN count;";
 	}
 
 	// URIs ... from 2.17.0
@@ -593,6 +662,7 @@ function affiliates_update( $previous_version = null ) {
 		INDEX       type (type)
 		) $charset_collate;";
 	}
+
 	// add uri columns and indexes to the hits table
 	$column = $wpdb->get_row( "SHOW COLUMNS FROM $hits_table LIKE 'src_uri_id'" );
 	if ( empty( $column ) ) {
@@ -681,11 +751,10 @@ function affiliates_update( $previous_version = null ) {
 	foreach ( $queries as $query ) {
 		// don't use dbDelta, it doesn't handle ALTER
 		if ( $wpdb->query( $query ) === false ) {
-			// fail but still try to go on
 			$result = false;
 		}
 	}
-	
+
 	if ( !empty( $previous_version ) && version_compare( $previous_version, '2.1.5' ) < 0 ) {
 		affiliates_update_rewrite_rules();
 	}
@@ -753,6 +822,7 @@ function affiliates_cleanup( $delete = false ) {
 		delete_option( 'aff_pname' );
 		delete_option( 'aff_redirect' );
 		delete_option( 'aff_registration' );
+		delete_option( 'aff_registration_terms_post_id' );
 		delete_option( 'aff_registration_fields' );
 		delete_option( 'aff_setup_hide' );
 		delete_option( 'aff_status' );
@@ -777,6 +847,41 @@ function affiliates_init() {
 	load_plugin_textdomain( 'affiliates', null, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
 	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
+	}
+	add_action( 'after_plugin_row_' . plugin_basename( AFFILIATES_FILE ), 'affiliates_after_plugin_row', 10, 3 );
+}
+
+/**
+ * Prints a warning when data is deleted on deactivation.
+ *
+ * @param string $plugin_file
+ * @param array $plugin_data
+ * @param string $status
+ */
+function affiliates_after_plugin_row( $plugin_file, $plugin_data, $status ) {
+	if ( $plugin_file == plugin_basename( AFFILIATES_FILE ) ) {
+		$delete_data         = get_option( 'aff_delete_data', false );
+		$delete_network_data = get_option( 'aff_delete_network_data', false );
+		if (
+			( is_plugin_active( $plugin_file ) && $delete_data && current_user_can( 'install_plugins' ) ) ||
+			( is_plugin_active_for_network( $plugin_file ) && $delete_network_data  && current_user_can( 'manage_network_plugins' ) )
+		) {
+			echo '<tr class="active">';
+			echo '<td>&nbsp;</td>';
+			echo '<td colspan="2">';
+			echo '<div style="border: 2px solid #dc3232; padding: 1em">';
+			echo '<p>';
+			echo '<strong>';
+			echo esc_html( __( 'Warning!', 'affiliates' ) );
+			echo '</strong>';
+			echo '</p>';
+			echo '<p>';
+			echo esc_html( __( 'The plugin is configured to delete its data on deactivation.', 'affiliates' ) );
+			echo '</p>';
+			echo '</div>';
+			echo '</td>';
+			echo '</tr>';
+		}
 	}
 }
 
@@ -827,9 +932,12 @@ function affiliates_parse_request( &$wp ) {
 	$affiliate_id = isset( $wp->query_vars[$pname] ) ? affiliates_check_affiliate_id_encoded( trim( $wp->query_vars[$pname] ) ) : null;
 	if ( isset( $wp->query_vars[$pname] ) ) {
 		// affiliates-by-username uses this hook
-		$maybe_affiliate_id = apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id );
-		if ( ( $maybe_affiliate_id !== null ) && $maybe_affiliate_id !== trim( $wp->query_vars[$pname] ) ) {
-			$affiliate_id = $maybe_affiliate_id;
+		$maybe_affiliate_id = intval( apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id ) );
+		if ( $maybe_affiliate_id > 0 && $maybe_affiliate_id !== $affiliate_id ) {
+			$maybe_affiliate_id = affiliates_check_affiliate_id_encoded( $maybe_affiliate_id );
+			if ( $maybe_affiliate_id !== false ) {
+				$affiliate_id = $maybe_affiliate_id;
+			}
 		}
 	}
 
@@ -1034,22 +1142,18 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	$result = null;
 
 	// add a hit
-	// @todo check/store IPv6 addresses
-	//$http_user_agent = $_SERVER['HTTP_USER_AGENT'];
-
-	$table    = _affiliates_get_tablename( 'hits' );
-	if ( $now == null ) {
+	$hits_table = _affiliates_get_tablename( 'hits' );
+	if ( $now === null ) {
 		$now = time();
 	}
 	$date     = date( 'Y-m-d' , $now );
-	$time     = date( 'H:i:s' , $now );
 	$datetime = date( 'Y-m-d H:i:s' , $now );
-	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $table" );
+	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $hits_table" );
 	$hash     = hash( 'sha256', '' . $n . $affiliate_id . $now );
 
-	$columns  = '(hash, affiliate_id, date, time, datetime, type';
-	$formats  = '(%s,%d,%s,%s,%s,%s';
-	$values   = array( $hash, $affiliate_id, $date, $time, $datetime, $type );
+	$columns  = '(hash, affiliate_id, date, datetime, type';
+	$formats  = '(%s,%d,%s,%s,%s';
+	$values   = array( $hash, $affiliate_id, $date, $datetime, $type );
 
 	$ip_address = $_SERVER['REMOTE_ADDR'];
 	if ( PHP_INT_SIZE >= 8 ) {
@@ -1071,17 +1175,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		$formats .= ',%d';
 		$values[] = $user_id;
 	}
-	$is_robot = 0;
-	if ( AFFILIATES_RECORD_ROBOT_HITS ) { // @todo review/fix logic
-		$robots_table    = _affiliates_get_tablename( 'robots' );
-		$robots_query    = $wpdb->prepare( "SELECT name FROM $robots_table WHERE %s LIKE concat('%%',name,'%%')", $http_user_agent );
-		$got_robots      = $wpdb->get_results( $robots_query );
-		if ( !empty( $got_robots ) ) {
-			$columns .= ',is_robot';
-			$formats .= ',%d';
-			$values[] = '1';
-		}
-	}
+
 	$campaign_id = null;
 	if ( class_exists( 'Affiliates_Campaign' ) && method_exists(  'Affiliates_Campaign', 'evaluate' ) ) {
 		if ( isset( $_REQUEST['cmid'] ) ) {
@@ -1116,32 +1210,63 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 		$values[] = $user_agent_id;
 	}
 
+	$robot  = 0;
+	$robots = wp_cache_get( 'robots', 'affiliates' );
+	if ( $robots === false ) {
+		$robots = array();
+		$robots_table = _affiliates_get_tablename( 'robots' );
+		$names = $wpdb->get_results( "SELECT DISTINCT(name) FROM $robots_table" );
+		if ( $names !== null && is_array( $names ) ) {
+			foreach ( $names as $name ) {
+				$robots[] = $name->name;
+			}
+		}
+		wp_cache_set( 'robots', $robots, 'affiliates' );
+	};
+	if ( $robots !== null && is_array( $robots ) && count( $robots ) > 0 ) {
+		foreach ( $robots as $name ) {
+			if ( strpos( strtolower( $user_agent ), strtolower( $name ) ) !== false ) {
+				$robot = 1;
+				if ( AFFILIATES_DEBUG_ROBOTS ) {
+					affiliates_log_info( sprintf( 'Skipping robot hit from [%s] %s', esc_html( $ip_address ), esc_html( $user_agent ) ) );
+				}
+				break;
+			}
+		}
+	}
+	if ( $robot > 0 ) {
+		$columns .= ',is_robot';
+		$formats .= ',%d';
+		$values[] = '1';
+	}
+
 	$columns .= ')';
 	$formats .= ')';
-	$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats ON DUPLICATE KEY UPDATE count = count + 1", $values );
-	if ( $wpdb->query( $query ) ) {
-		$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
-		$result = array(
-			'hit_id'        => $hit_id,
-			'hash'          => $hash,
-			'affiliate_id'  => $affiliate_id,
-			'campaign_id'   => $campaign_id,
-			'date'          => $date,
-			'time'          => $time,
-			'datetime'      => $datetime,
-			'ip'            => $ip_address,
-			'ipv6'          => null,
-			'is_robot'      => $is_robot,
-			'user_id'       => $user_id,
-			'type'          => $type,
-			'src_uri_id'    => $src_uri_id,
-			'dest_uri_id'   => $dest_uri_id,
-			'user_agent_id' => $user_agent_id
-		);
-		do_action(
-			'affiliates_hit',
-			$result
-		);
+
+	if ( $robot === 0 || apply_filters( 'affiliates_record_robot_hits', AFFILIATES_RECORD_ROBOT_HITS ) ) {
+		$query = $wpdb->prepare( "INSERT INTO $hits_table $columns VALUES $formats", $values );
+		if ( $wpdb->query( $query ) ) {
+			$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
+			$result = array(
+				'hit_id'        => $hit_id,
+				'hash'          => $hash,
+				'affiliate_id'  => $affiliate_id,
+				'campaign_id'   => $campaign_id,
+				'date'          => $date,
+				'datetime'      => $datetime,
+				'ip'            => $ip_address,
+				'is_robot'      => $robot,
+				'user_id'       => $user_id,
+				'type'          => $type,
+				'src_uri_id'    => $src_uri_id,
+				'dest_uri_id'   => $dest_uri_id,
+				'user_agent_id' => $user_agent_id
+			);
+			do_action(
+				'affiliates_hit',
+				$result
+			);
+		}
 	}
 	return $result;
 }
@@ -1194,7 +1319,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
  */
 function affiliates_suggest_referral( $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null ) {
 	global $wpdb, $affiliates_options;
-	require_once( 'class-affiliates-service.php' );
+	require_once 'class-affiliates-service.php';
 	$affiliate_id = Affiliates_Service::get_referrer_id();
 	if ( $affiliate_id ) {
 		$hit_id = Affiliates_Service::get_hit_id();
@@ -1216,20 +1341,26 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
  * @param string $type
  * @param string $reference
  * @param int $hit_id
+ * @param string $reference_amount
+ * @param int $time
  * @return int
  */
-function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null ) {
+function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null, $time = null ) {
 	global $wpdb;
 
 	if ( $affiliate_id ) {
 
 		$current_user = wp_get_current_user();
-		$now = date('Y-m-d H:i:s', time() );
+		$when = time();
+		if ( $time !== null ) {
+			$when = intval( $time );
+		}
+		$datetime = date( 'Y-m-d H:i:s', $when );
 		$table = _affiliates_get_tablename( 'referrals' );
 
 		$columns = "(affiliate_id, post_id, datetime, description";
 		$formats = "(%d, %d, %s, %s";
-		$values = array( $affiliate_id, $post_id, $now, $description );
+		$values = array( $affiliate_id, $post_id, $datetime, $description );
 
 		if ( !empty( $current_user ) ) {
 			$columns .= ",user_id ";
@@ -1533,7 +1664,7 @@ function affiliates_encode_affiliate_id( $affiliate_id ) {
  */
 function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
 
-	global $wpdb, $affiliates_options;
+	global $affiliates_options;
 
 	$id_encoding = get_option( 'aff_id_encoding', AFFILIATES_NO_ID_ENCODING );
 	switch( $id_encoding ) {
@@ -1552,7 +1683,6 @@ function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
  * @return int|boolean returns the affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id( $affiliate_id ) {
-
 	global $wpdb;
 	$result = FALSE;
 	$today = date( 'Y-m-d', time() );
@@ -1571,7 +1701,6 @@ function affiliates_check_affiliate_id( $affiliate_id ) {
  * @return int|boolean returns the (unencoded) affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
-
 	global $wpdb;
 	$result = FALSE;
 	$today = date( 'Y-m-d', time() );
@@ -1600,25 +1729,24 @@ function affiliates_get_direct_id() {
 	}
 	return $result;
 }
- 
 
 // only needed when in admin
 if ( is_admin() ) {
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
-	include_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
-		include_once AFFILIATES_CORE_LIB . '/class-affiliates-totals.php';
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-totals.php';
 	}
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-add-ons.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-uri.php';
-	include_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-add-ons.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-affiliate.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-hits-uri.php';
+	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-referrals.php';
 
-	include_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
-	include_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-user-profile.php';
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-dashboard-widget.php';
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-user-profile.php';
 	add_action( 'admin_menu', 'affiliates_admin_menu' );
 	add_action( 'network_admin_menu', 'affiliates_network_admin_menu' );
 }
@@ -1634,7 +1762,7 @@ function affiliates_admin_menu() {
 	// main
 	$page = add_menu_page(
 		__( 'Affiliates Overview', 'affiliates' ),
-		'Affiliates', // @todo translate after core bug 18857 has been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id
+		'Affiliates', // do not translate (this was marked as todo after core bug 18857 had been fixed http://core.trac.wordpress.org/ticket/18857 translation affects $screen->id)
 		AFFILIATES_ACCESS_AFFILIATES,
 		'affiliates-admin',
 		'affiliates_admin',
@@ -1786,7 +1914,7 @@ function affiliates_admin_menu() {
  * Adds network admin menu.
  */
 function affiliates_network_admin_menu() {
-	include_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-network.php';
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-network.php';
 	$pages = array();
 	$page = add_menu_page(
 		__( 'Affiliates', 'affiliates' ),
@@ -2212,9 +2340,7 @@ function affiliates_get_affiliate_hits( $affiliate_id, $from_date = null , $thru
 			$values[] = $thru_date;
 		}
 	}
-	$query = $wpdb->prepare("
-		SELECT sum(count) FROM $hits_table $where
-		",
+	$query = $wpdb->prepare( "SELECT COUNT(*) FROM $hits_table $where",
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );
@@ -2295,10 +2421,9 @@ function affiliates_get_affiliate_visits( $affiliate_id, $from_date = null , $th
 			$values[] = $thru_date;
 		}
 	}
-	$query = $wpdb->prepare("
-		SELECT SUM(visits) FROM
-		(SELECT count(DISTINCT IP) visits FROM $hits_table $where GROUP BY DATE) tmp
-		",
+	$query = $wpdb->prepare(
+		"SELECT SUM(visits) FROM " .
+		"(SELECT COUNT(DISTINCT IP) visits FROM $hits_table $where GROUP BY DATE) tmp",
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );
@@ -2352,9 +2477,7 @@ function affiliates_get_affiliate_referrals( $affiliate_id, $from_date = null , 
 		$values[] = AFFILIATES_REFERRAL_STATUS_ACCEPTED;
 		$values[] = AFFILIATES_REFERRAL_STATUS_CLOSED;
 	}
-	$query = $wpdb->prepare("
-		SELECT count(*) FROM $referrals_table $where
-		",
+	$query = $wpdb->prepare( "SELECT COUNT(*) FROM $referrals_table $where",
 		$values
 	);
 	$result = intval( $wpdb->get_var( $query) );

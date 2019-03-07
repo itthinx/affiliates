@@ -145,18 +145,26 @@ function affiliates_admin() {
 		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
-				'<p>' .
-				'<label class="from-date-filter" for="from_date">' . __( 'From', 'affiliates' ) . '</label>' .
-				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-				'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
-				'<input class="datefield thru-date-filter" name="thru_date" type="text" value="' . esc_attr( $thru_date ) . '"/>'.
-				'<label class="days-back-filter" for="days_back">' . __( 'Days back', 'affiliates' ) . '</label>' .
-				'<input class="days-back-filter" name="days_back" type="text" value="' . esc_attr( $days_back ) . '"/>'.
-				wp_nonce_field( 'admin', AFFILIATES_ADMIN_OVERVIEW_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-				'<input type="hidden" value="submitted" name="submitted"/>' .
-				'</p>' .
+				'<div class="filter-section">' .
+					'<label class="from-date-filter" for="from_date">' .
+						__( 'From', 'affiliates' ) .
+						'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
+					'</label>' .
+					'<label class="thru-date-filter" for="thru_date">' .
+						__( 'Until', 'affiliates' ) .
+						'<input class="datefield thru-date-filter" name="thru_date" type="text" value="' . esc_attr( $thru_date ) . '"/>'.
+					'</label>' .
+					'<label class="days-back-filter" for="days_back">' .
+						__( 'Days back', 'affiliates' ) .
+						'<input class="days-back-filter" name="days_back" type="text" value="' . esc_attr( $days_back ) . '"/>'.
+					'</label>' .
+				'</div>' .
+				'<div class="filter-buttons">' .
+					wp_nonce_field( 'admin', AFFILIATES_ADMIN_OVERVIEW_NONCE, true, false ) .
+					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+					'<input type="hidden" value="submitted" name="submitted"/>' .
+				'</div>' .
 			'</form>' .
 		'</div>';
 
@@ -174,7 +182,7 @@ function affiliates_admin() {
 	$affiliates_subquery = " affiliate_id IN (SELECT affiliate_id FROM $affiliates_table WHERE status = 'active') ";
 
 	// hits per day
-	$query = "SELECT date, sum(count) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
+	$query = "SELECT date, COUNT(*) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$hit_results = $wpdb->get_results( $wpdb->prepare( $query,
 		$from_date, $thru_date
 	) );
@@ -410,66 +418,130 @@ function affiliates_admin() {
 	echo '<br class="clear"/>';
 	echo $filters_form;
 	echo '</div>';
-	
+
 	echo '<h2>' . __( 'Statistics Summary', 'affiliates' ) . '</h2>';
-	for ( $i = 0; $i < 3; $i++ ) {
-		$add_class = "";
-		switch ( $i ) {
-			case 0:
-				$affiliates = affiliates_get_affiliates( true, true );
-				$title = __( 'From operative affiliates:', 'affiliates' );
-				$info = sprintf( _n( 'There is 1 operative affiliate', 'There are %d operative affiliates', count( $affiliates ), 'affiliates' ), count( $affiliates ) );
-				$add_class = "active valid";
-				break;
-			case 1:
-				$affiliates = affiliates_get_affiliates( true, false );
-				$title = __( 'From operative and non-operative affiliates:', 'affiliates' );
-				$info = sprintf( _n( 'There is 1 affiliate in this set', 'There are %d affiliates in this set', count( $affiliates ), 'affiliates' ), count( $affiliates ) );
-				$add_class = "active";
-				break;
-			case 2:
-				$affiliates = affiliates_get_affiliates( false, false );
-				$title = __( 'All time (includes data from deleted affiliates):', 'affiliates' );
-				$info = sprintf( _n( 'There is 1 affiliate in this set', 'There are %d affiliates in this set', count( $affiliates ), 'affiliates' ), count( $affiliates ) );
-				break;
+
+	$hits_table = _affiliates_get_tablename( 'hits' );
+	$hits = $wpdb->get_var(
+		$wpdb->prepare(
+			"SELECT COUNT(*) " .
+			"FROM $hits_table " .
+			"WHERE date >= %s AND date <= %s",
+			$from_date,
+			$thru_date
+		)
+	);
+	$visits = $wpdb->get_var(
+		$wpdb->prepare(
+			"SELECT SUM(visits) FROM " .
+				"( " .
+				"SELECT COUNT(DISTINCT ip) visits " .
+				"FROM $hits_table " .
+				"WHERE date >= %s AND date <= %s".
+				"GROUP BY date " .
+				") tmp",
+			$from_date,
+			$thru_date
+		)
+	);
+
+	$referrals_table = _affiliates_get_tablename( 'referrals' );
+	$from_datetime = date( 'Y-m-d 00:00:00', strtotime( $from_date ) );
+	$thru_datetime = date( 'Y-m-d 23:59:59', strtotime( $thru_date ) );
+	$referrals = $wpdb->get_results(
+		$wpdb->prepare(
+			"SELECT COUNT(*) count, SUM(amount) amount, currency_id, status " .
+			"FROM $referrals_table " .
+			"WHERE datetime >= %s AND datetime <= %s" .
+			"GROUP BY currency_id, status",
+			$from_datetime,
+			$thru_datetime
+		)
+	);
+
+	$referral_stats = array();
+	if ( is_array( $referrals ) ) {
+		foreach ( $referrals as $referral ) {
+			$referral_stats[$referral->currency_id][$referral->status] = array(
+				'amount' => $referral->amount,
+				'count'  => $referral->count
+			);
 		}
-		$hits               = 0;
-		$visits             = 0;
-		$referrals_accepted = 0;
-		$referrals_closed   = 0;
-		$referrals_pending  = 0;
-		$referrals_rejected = 0;
-		foreach ( $affiliates as $affiliate ) {
-			$affiliate_id = $affiliate['affiliate_id'];
-			$hits      += affiliates_get_affiliate_hits( $affiliate_id );
-			$visits    += affiliates_get_affiliate_visits( $affiliate_id );
-			$referrals_accepted += affiliates_get_affiliate_referrals( $affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_ACCEPTED );
-			$referrals_closed   += affiliates_get_affiliate_referrals( $affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_CLOSED );
-			$referrals_pending  += affiliates_get_affiliate_referrals( $affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_PENDING );
-			$referrals_rejected += affiliates_get_affiliate_referrals( $affiliate_id, null, null, AFFILIATES_REFERRAL_STATUS_REJECTED );
+	}
+
+	$accepted_icon = "<img class='icon' alt='" . __( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>";
+	$closed_icon = "<img class='icon' alt='" . __( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>";
+	$pending_icon = "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>";
+	$rejected_icon = "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>";
+
+	$statuses = array(
+		AFFILIATES_REFERRAL_STATUS_ACCEPTED => array( 'name' => __( 'Accepted', 'affiliates' ), 'icon' => $accepted_icon ),
+		AFFILIATES_REFERRAL_STATUS_CLOSED => array( 'name' => __( 'Closed', 'affiliates' ), 'icon' => $closed_icon ),
+		AFFILIATES_REFERRAL_STATUS_PENDING => array( 'name' => __( 'Pending', 'affiliates' ), 'icon' => $pending_icon ),
+		AFFILIATES_REFERRAL_STATUS_REJECTED => array( 'name' => __( 'Rejected', 'affiliates' ), 'icon' => $rejected_icon ),
+	);
+
+	echo '<div class="manage" style="margin-right:1em">';
+
+	echo '<h3>';
+	esc_html_e( 'Referrals', 'affiliates' );
+	echo '</h3>';
+
+	if ( count( $referral_stats ) > 0 ) {
+		foreach ( $referral_stats as $currency_id => $stats ) {
+			echo '<div class="referral-stats-container">';
+			echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+			echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
+			echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
+			foreach ( $statuses as $status_id => $status ) {
+				if ( isset( $stats[$status_id] ) ) {
+					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
+					printf(
+						'<div class="status">%s %s</div><div class="count">%d</div><div class="amount">%s %s</div>',
+						$status['icon'],
+						esc_html( $status['name'] ),
+						esc_html( $stats[$status_id]['count'] ),
+						esc_html( $currency_id ),
+						esc_html( $display_amount )
+					);
+				}
+			}
+			echo '</div>';
 		}
-		
-		$accepted_icon = "<img class='icon' alt='" . __( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>";
-		$closed_icon = "<img class='icon' alt='" . __( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>";
-		$pending_icon = "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>";
-		$rejected_icon = "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>";
-		
-		echo '<div class="manage" style="margin-right:1em">';
-		echo '<p>';
-		echo '<strong>' . $title . '</strong>&nbsp;' . $info;
-		echo '</p>';
-		echo '<ul>';
-		echo '<li>' . __( '<strong>Referrals:</strong>', 'affiliates' ) . '</li>';
-		echo '<li><ul>';
-		echo '<li>' . $accepted_icon . '&nbsp;' . sprintf( __( '%10d Accepted', 'affiliates' ), $referrals_accepted ) . '</li>';
-		echo '<li>' . $closed_icon . '&nbsp;' . sprintf( __( '%10d Closed', 'affiliates' ), $referrals_closed ) . '</li>';
-		echo '<li>' . $pending_icon . '&nbsp;' . sprintf( __( '%10d Pending', 'affiliates' ), $referrals_pending ) . '</li>';
-		echo '<li>' . $rejected_icon . '&nbsp;' . sprintf( __( '%10d Rejected', 'affiliates' ), $referrals_rejected ) . '</li>';
-		echo '</li></ul>';
-		echo '<li>' . sprintf( __( '%10d Hits', 'affiliates' ), $hits ) . '</li>';
-		echo '<li>' . sprintf( __( '%10d Visits', 'affiliates' ), $visits ) . '</li>';
-		echo '</ul>';
+	} else {
+		echo '<div class="referral-stats-container">';
+		echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+		echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
+		echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
+		echo '<div class="status">&mdash;</div>';
+		echo '<div class="count">&mdash;</div>';
+		echo '<div class="amount">&mdash;</div>';
 		echo '</div>';
 	}
+
+	echo '<h3>';
+	esc_html_e( 'Clicks', 'affiliates' );
+	echo '</h3>';
+
+	echo '<div class="click-stats-container">';
+	echo '<div class="hits count">' . intval( $hits ) . '</div>';
+	echo '<div class="hits label">' . esc_html__( 'Hits', 'affiliates' ) . '</div>';
+	echo '<div class="visits count">' . intval( $visits ) . '</div>';
+	echo '<div class="visits label">' . esc_html__( 'Visits', 'affiliates' ) . '</div>';
+	echo '</div>';
+
+	echo '<div class="time-span-container">';
+	echo esc_html(
+		sprintf(
+			__( 'Data for the date range %s &ndash; %s (%s)', 'affiliates' ),
+			date_i18n( 'Y-m-d', strtotime( $from_date ) ),
+			date_i18n( 'Y-m-d', strtotime( $thru_date ) ),
+			sprintf( _n( '%d day', '%d days', $days_back, 'affiliates' ), $days_back )
+		)
+	);
+	echo '</div>';
+
+	echo '</div>';
+
 	affiliates_footer();
 }

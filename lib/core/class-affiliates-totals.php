@@ -353,12 +353,13 @@ class Affiliates_Totals {
 		$output .= '</div>';
 
 		$affiliate_status_descriptions = array(
-				AFFILIATES_AFFILIATE_STATUS_ACTIVE => __( 'Active', 'affiliates' ),
-				AFFILIATES_AFFILIATE_STATUS_PENDING   => __( 'Pending', 'affiliates' ),
-				AFFILIATES_AFFILIATE_STATUS_DELETED => __( 'Deleted', 'affiliates' ),
+			AFFILIATES_AFFILIATE_STATUS_ACTIVE => __( 'Active', 'affiliates' ),
+			AFFILIATES_AFFILIATE_STATUS_PENDING   => __( 'Pending', 'affiliates' ),
+			AFFILIATES_AFFILIATE_STATUS_DELETED => __( 'Deleted', 'affiliates' ),
 		);
-		
-		$affiliate_status_select = '<label class="affiliate-status-filter" for="affiliate_status">' . __('Affiliate Status', 'affiliates' ) . '</label>';
+
+		$affiliate_status_select = '<label class="affiliate-status-filter" for="affiliate_status">';
+		$affiliate_status_select .= __('Affiliate Status', 'affiliates' );
 		$affiliate_status_select .= ' ';
 		$affiliate_status_select .= '<select class="affiliate-status-filter" name="affiliate_status">';
 		$affiliate_status_select .= '<option value="" ' . ( empty( $affiliate_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -367,6 +368,7 @@ class Affiliates_Totals {
 			$affiliate_status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 		}
 		$affiliate_status_select .= '</select>';
+		$affiliate_status_select .= '</label>';
 
 		$status_descriptions = array(
 			AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
@@ -375,7 +377,8 @@ class Affiliates_Totals {
 			AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 		);
 
-		$status_select = '<label class="referral-status-filter" for="referral_status">' . __('Referral Status', 'affiliates' ) . '</label>';
+		$status_select = '<label class="referral-status-filter" for="referral_status">';
+		$status_select .= __('Referral Status', 'affiliates' );
 		$status_select .= ' ';
 		$status_select .= '<select class="referral-status-filter" name="referral_status">';
 		$status_select .= '<option value="" ' . ( empty( $referral_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -384,9 +387,11 @@ class Affiliates_Totals {
 			$status_select .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 		}
 		$status_select .= '</select>';
+		$status_select .= '</label>';
 
 		$currencies = $wpdb->get_results( "SELECT DISTINCT(currency_id) FROM $referrals_table WHERE currency_id IS NOT NULL" );
-		$currency_select = '<label class="currency-id-filter" for="currency_id">' . __( 'Currency', 'affiliates' ) . '</label>';
+		$currency_select = '<label class="currency-id-filter" for="currency_id">';
+		$currency_select .= __( 'Currency', 'affiliates' );
 		$currency_select .= ' ';
 		$currency_select .= '<select class="currency-id-filter" name="currency_id">';
 		$currency_select .= '<option value="" ' . ( empty( $currency_id ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -395,29 +400,35 @@ class Affiliates_Totals {
 			$currency_select .= '<option ' . $selected . ' value="' . esc_attr( $currency->currency_id ) . '">' . $currency->currency_id . '</option>';
 		}
 		$currency_select .= '</select>';
+		$currency_select .= '</label>';
 
 		$output .=
 			'<div class="filters">' .
 				'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
 				'<form id="setfilters" action="" method="post">' .
-					'<p>' .
+					'<div class="filter-section">' .
 					$status_select .
 					' ' .
 					$currency_select .
-					'</p>' .
-					'<p>' .
-					'<label class="from-date-filter" for="from_date">' . __( 'From', 'affiliates' ) . '</label>' .
-					'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-					'<label class="thru-date-filter" for="thru_date">' . __( 'Until', 'affiliates' ) . '</label>' .
-					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
+					' ' .
 					$affiliate_status_select .
-					'</p>
-					<p>' .
-					wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false ) .
-					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-					'<input type="hidden" value="submitted" name="submitted"/>' .
-					'</p>' .
+					'</div>' .
+					'<div class="filter-section">' .
+						'<label class="from-date-filter" for="from_date">' .
+							__( 'From', 'affiliates' ) . 
+							'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
+						'</label>' .
+						'<label class="thru-date-filter" for="thru_date">' .
+							__( 'Until', 'affiliates' ) .
+							'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
+						'</label>' .
+					'</div>' .
+					'<div class="filter-buttons">' .
+						wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false ) .
+						'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
+						'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+						'<input type="hidden" value="submitted" name="submitted"/>' .
+					'</div>' .
 				'</form>' .
 			'</div>';
 

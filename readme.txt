@@ -1,42 +1,69 @@
 === Affiliates ===
 Contributors: itthinx, proaktion
-Donate link: http://www.itthinx.com/shop/
+Donate link: https://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
 Requires at least: 4.0.0
-Tested up to: 5.0
+Tested up to: 5.1
 Requires PHP: 5.6.0
-Stable tag: 3.1.0
+Stable tag: 4.0.0
 License: GPLv3
 
-The Affiliates system provides the most powerful tools to run a successful Affiliate Marketing Program.
+The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
 
 == Description ==
 
-The Affiliates system allows you to run a successful Affiliate Marketing Program. It comprises a set of the most powerful growth-oriented tools.
+The Affiliates system allows you to run a successful Affiliate Marketing Program.
 
-> You will find extensive information and detailed instructions on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
+It comprises a set of the most **powerful growth-oriented tools**.
 
-Important features include automated affiliate registration, an unlimited affiliate management section and the ability to integrate Affiliates with virtually any platform, including e-commerce, memberships, forms, lead generation and tracking and many more.
+https://www.youtube.com/watch?v=0OPuMJeMAog
 
-Commissions on referred users are built in, free and premium integrations with today's most popular e-commerce and other systems are available.
+= Designed for Growth =
 
-The Affiliates plugin provides an affiliate system for sellers, shops, distributors, blogs, membership sites, microsites for product launches and many more, who want to quickstart their affiliate program and start growing fast.
+A fresh and intuitive dashboard helps your partners to spread the word about your site, products and services easily.
+Affiliates can share links to any page on the website, using simple tools that are built into its dashboard.
+
+Designed to deliver an intuitive experience out of the box,
+it is ready for virtually any theme, even without customizations.
+
+Yet you can refine the design and facilities provided for your affiliates even further,
+with its flexible template-based dashboard sections.
+
+> You will find extensive information and detailed instructions in the [Documentation](http://docs.itthinx.com/document/affiliates/).
+
+Important features include an intuitive affiliate dashboard, automated affiliate registration
+and unlimited affiliate management sections. Affiliates can integrate with virtually any platform,
+including e-commerce, memberships, forms, lead generation, lead tracking and many more.
+
+Commissions on referred users are built-in,
+free and premium integrations with today's most popular e-commerce and other systems are available.
+
+The Affiliates plugin provides an affiliate system for sellers,
+shops, distributors, blogs, membership sites, microsites for product launches and many more.
+It allows to quickstart your affiliate program and start growing fast.
 
 It also provides a solid framework for developers, who wish to build customized solutions based on a sound data model.
 
-With unlimited affiliate program management tools available on the back end and a set of shortcodes to provide Affiliates information on their performance on the front end, there is everything you need to start an affiliate program.
+With unlimited affiliate program management tools available on the back end,
+its flexible affiliate dashboard templates, blocks and shortcodes,
+you can provide your affiliates with a really intuitive experience.
+Partners get the tools and information about their earnings and performance on the front end.
+There is everything you need to start an affiliate and growth marketing program.
 
-To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with **affiliate links**, the _Affiliates_ plugin is the most powerful free solution.
+To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with
+**affiliate links**, the _Affiliates_ system is the most powerful free solution.
 
-Simply put, the affiliates plugin is used to manage affiliates, create referrals and track visits to your site through affiliate links.
-Referrals are stored and attributed to an affiliate, for example if clients place orders on your site and you need to credit your affiliates.
-You can show your affiliates how well they perform, by embedding simple shortcodes on a page.
+The system is used to manage affiliates, create referrals and track visits to your site through affiliate links.
+Referrals are stored and attributed to an affiliate, for example if clients place orders on your site
+and you need to credit your affiliates.
 
 ### Free Integrations and Extensions
 
 - [Affiliates Import](https://wordpress.org/plugins/affiliates-import) : Allows to import affiliate accounts in bulk from a text file. This is also useful to migrate to [Affiliates](https://wordpress.org/plugins/affiliates/), [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/).
 - [Affiliates WooCommerce Light](https://wordpress.org/plugins/affiliates-woocommerce-light) : Run your affiliate program with [WooCommerce](http://wordpress.org/plugins/woocommerce/), referrals are created automatically for your affiliates when they refer sales.
+- [Affiliates Events Manager](https://wordpress.org/plugins/affiliates-events-manager/) : Grant commissions to affiliates for referred bookings with [Events Manager](https://wordpress.org/plugins/events-manager/), supports referrals based on coupons, records essential booking data for referred bookings.
 - [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals.
+- [Affiliates Formidable](https://wordpress.org/plugins/affiliates-formidable/) : Affiliates can register through [Formidable Forms](https://wordpress.org/plugins/formidable/) forms and form submissions can grant commissions and record referrals.
 - [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions.
 - [Affiliates BuddyPress](https://wordpress.org/plugins/affiliates-buddypress) : Display affiliate content in the [BuddyPress](https://wordpress.org/plugins/buddypress/) user profile.
 - [Affiliates Captcha](https://wordpress.org/plugins/affiliates-captcha) : The captcha will appear on the affiliate registration form when the [Captcha](https://wordpress.org/plugins/captcha/) plugin is used.
@@ -46,8 +73,8 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 
 ### Premium Integrations and Extensions included with Affiliates Pro and Affiliates Enterprise
 
-- [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) provides all features available in the free _Affiliates_ system and includes additional features like Banner Management, advanced Notifications, additional Shortcodes, advanced commission Rates, affiliate export features, advanced Totals with mass payment files and exports, more integrations and unlocks advanced integration features.
-- [Affiliates Enterprise](http://www.itthinx.com/plugins/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional shortcodes.
+- [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) provides all features available in the free _Affiliates_ system, a more detailed Dashboard with additional Dashboard Sections, additional features like referral Rates (supports formula-based rates), Banner Management, advanced Notifications, additional Dashboard sections and Shortcodes, advanced commission Rates, affiliate export features, advanced Totals with mass payment files and exports, more integrations and advanced integration features.
+- [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional Dashboard sections, blocks and shortcodes.
 
 [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) come with additional features, extensions and integrations. Among these are:
 
@@ -69,34 +96,34 @@ Advertising
 Forms
 
 - [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms/) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
-- [Affiliates Formidable](https://www.itthinx.com/plugins/affiliates-formidable/) : This integration can be used to record and track form submissions and pay affiliate partners commissions on leads or successful purchases with [Formidable Forms](https://wordpress.org/plugins/formidable/).
+- [Affiliates Formidable](https://www.itthinx.com/plugins/affiliates-formidable/) : Affiliates can register through forms handled with [Formidable Forms](https://wordpress.org/plugins/formidable/), record and track form submissions to pay affiliate partners commissions on leads or successful purchases. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
 - [Affiliates Gravity Forms](https://www.itthinx.com/plugins/affiliates-gravityforms/) : This extension allows to record referrals for form submissions and to create affiliate accounts for new users based on [Gravity Forms](http://www.gravityforms.com).
 - [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) it unlocks advanced features.
 
 ### Premium Extensions available separately
 
-- [Affiliates Coupons](http://www.itthinx.com/shop/affiliates-coupons/) to create WooCommerce coupons for affiliates automatically and in bulk.
-- [Affiliates Users](http://www.itthinx.com/shop/affiliates-users/) to automatically create affiliate accounts for new users
-- [Affiliates by Username](http://www.itthinx.com/shop/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
+- [Affiliates Coupons](https://www.itthinx.com/shop/affiliates-coupons/) to create WooCommerce coupons for affiliates automatically and in bulk.
+- [Affiliates Users](https://www.itthinx.com/shop/affiliates-users/) to automatically create affiliate accounts for new users
+- [Affiliates by Username](https://www.itthinx.com/shop/affiliates-by-username/) which allows affiliate links to indicate usernames in addition to the affiliate IDs
 - [Affiliates Permanent](https://www.itthinx.com/shop/affiliates-permanent/) : This extension is useful if you want to grant your affiliates commissions on all purchases made by customers they refer.
-- [Affiliates Products](http://www.itthinx.com/shop/affiliates-products/) which handles WooCommerce product commissions for product partners and affiliates on product sales
+- [Affiliates Products](https://www.itthinx.com/shop/affiliates-products/) which handles WooCommerce product commissions for product partners and affiliates on product sales
 
 ### Features
+
+* Affiliates Dashboard
+
+    Fully integrates affiliate login, registration, statistictal overview, affiliate links and profile in a setup-free
+    dashboard. Available as block and shortcode and highly customizable using templates. Individual dashboard sections
+    are also available as blocks and shortcodes and can be customized using templates.
 
 * Real-time reporting
 
     Referrals and affiliate link statistics are recorded and available instantly, as transactions are processed.
-    Integration with virtually any E-Commerce platform
-
-    Information for affiliates on the front end: show affiliates information about their referrals including totals by currency and referral status.
+    Integration with virtually any E-Commerce platform.
 
 * Traffic Statistics
 
-    View traffic statistics per day, affiliate, source and landing page including clicks, visits and related referrals per affiliate.
-
-* Affiliates provides an API which makes it compatible to use with virtually any E-Commerce and Membership system.
-
-    Affiliates Pro Integration packs are available for several platforms. More integrations are added constantly on request.
+    Records browseable traffic statistics with source and landing page, user agent and related referrals per affiliate.
 
 * Unlimited Affiliates
 
@@ -109,6 +136,10 @@ Forms
 * Affiliate approval and notifications
 
     Affiliates can be approved manually or automatically and notifications are sent that inform them and the administrator of their status.
+
+* API
+
+    Affiliates provides an API which makes it easily integratable with virtually any E-Commerce and Membership system.
 
 * Feedback is welcome
 
@@ -184,10 +215,10 @@ The information provided in this section is by no means exhaustive. Please make 
 
 = Is there an option to create an Affiliate Area? =
 
-You can let the tool generate an Affiliate Area for you. This will create a new page with predefined content and shortcodes. You can later customize the page and add additional pages as needed.
+You can let the tool generate an Affiliate Area for you. This will create a new page that contains the Affiliates Dashboard. You can later customize the page and add additional pages as needed.
 Go to *Affiliates > Settings > Pages* and press the *Generate* button.
-You will find a new page titled _Affiliate Area_ on your site which includes a login form, affiliate registration form, information about an affiliate's performance and the affiliate's link as well as a link to log out at the end of the page.
-You can edit this page and adjust it according to your preferences. 
+You will find a new page titled _Affiliate Area_ on your site which includes the Affiliated Dashboard, providing several Dashboard Sections that streamline the process from partners signing up to providing them their affiliate links and earnings information.
+You can edit this page and adjust it according to your preferences. The dashboard and its sections can be further customized using templates.
 
 = How can I show affiliates their affiliate link? =
 
@@ -211,52 +242,9 @@ Remember to use HTML entities for `<` and `>` as shown above.
 
 = How can I show affiliates information about their performance? =
 
+Information about an affiliate's performance is provided via the Affiliates Dashboard and other facilities.
+
 Detailed information on this is available on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
-
-Note: You can create a page and embed a shortcode manually, or you can have the plugin create an Affiliate Area for you.
-
-The number of hits on an affiliate's link can be shown with the `[affiliates_hits]` shortcode.
-
-The number of visits on an affiliate's link can be shown with the `[affiliates_visits]` shortcode.
-
-Your affiliates will want to know how much they will and have earned and how many referrals they have made.
-
-Use the `[affiliates_referrals]` shortcode to show how many referrals an affiliate has made and how much the affiliate has earned.
-
-The `[affiliates_referrals]` shortcode will show the total number of referrals that have been accepted or closed for the affiliate.
-
-To show the number of referrals for an affiliate by status, embed it like this:
-
-Examples:
-
-`Accepted referrals: [affiliates_referrals status="accepted"]
-Closed referrals: [affiliates_referrals status="closed"]
-Pending referrals: [affiliates_referrals status="pending"]
-Rejected referrals: [affiliates_referrals status="rejected"]`
-
-If you add the `show="total"` attribute to that shortcode, it will make a list of earnings by currency:
-
-Examples:
-
-Total amount for paid and unpaid referrals:
-
-`[affiliates_referrals show="total"]`
-
-Total for unpaid referrals:
-
-`[affiliates_referrals show="total" status="accepted"]`
-
-Total for paid referrals:
-
-`[affiliates_referrals show="total" status="closed"]`
-
-Total for referrals pending approval:
-
-`[affiliates_referrals show="total" status="pending"]`
-
-Total for rejected referrals:
-
-`[affiliates_referrals show="total" status="rejected"]`
 
 = Is it possible to show content for affiliates or non-affiliates only? =
 
@@ -304,15 +292,18 @@ for new user sign-ups.
 
 = Can we record referrals automatically when, for example, an order is placed? =
 
-Yes.
+Yes. See the documentation on [Affiliates](http://docs.itthinx.com/document/affiliates/) for details on supported integrations.
 
-The API provides the means to suggest referrals and record them.
+See the documentation on [Affiliates Pro](http://docs.itthinx.com/document/affiliates-pro/) and [Affiliates Enterprise](http://docs.itthinx.com/document/affiliates-enterprise/)
+for additional supported premium integrations and advanced integration features.
 
 = I am an affiliate of ACME and they provided me with an affiliate link. Is this plugin for me? =
 
 No it isn't.
 
 This plugin is for sites that need to manage *their* affiliates.
+
+Please have a look at the [Affiliate](https://wordpress.org/plugins/affiliate) plugin for this purpose instead.
 
 = Can I automatically store additional referral and transaction data? =
 
@@ -358,67 +349,64 @@ Use the `[affiliates_login_redirect]` shortcode.
 
 See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more details.
 
-1. Overview - shows summarized information based on current and historic data
-2. Manage Affiliates - where affiliates links for your site's partners are maintained
-3. Visits & Referrals - per-day view of information about visits and referrals generated through affiliate links
-4. Affiliates & Referrals - per-affiliate view of information about visits and referrals generated through affiliate links
-5. Traffic - showing daily affiliate traffic
-6. Referrals I - per-referrals view of information about referrals
-7. Referrals II - showing detailed information stored along with referrals obtained through the Affiliates Contact widget
-8. Totals - accumulated totals per affiliate and mark referrals as paid for time periods
-9. Settings > General - where general plugin options are maintained
-10. Settings > Registration - customizable affiliate registration
-11. Notifications - Affiliate and Administrator notifications
-12. Menu - the Affiliates menu
-13. Dashboard Widget - showing accumulated totals for referrals on the administrative dashboard
-14. Contact Widget - Usable example widget for lead generation and referrals with applied commission rate
-15. Contact Widget - Visitor's view (theme Twenty Eleven)
-16. Registration Widget - Lets visitors sign up to your affiliate program, fully automated. Also available as a shortcode to embed on pages.
-17. Registration Form - Visitor's view of a customized registration form.
-18. Registration Widget - View of a visitor's successful form submission to join the site's affiliate program.
-19. Affiliate Area I - This is showing the part of the generated Affiliate Area where an affiliate sees the affiliate URL and link when logged in.
-20. Affiliate Area II - This shows performance data on commissions and monthly earnings for an affiliate who is logged in.
-21. User Registration - Settings of the built-in User Registration integration, granting affiliates commissions on referred new users and customers.
+1. Affiliates Dashboard Overview - Front end affiliate dashboard section showing graphical statistics on clicks and earnings and the affiliate link tool.
+2. Affiliates Dashboard Overview - Front end affiliate dashboard section viewing the commission graph.
+3. Affiliates Dashboard Overview - From the front end affiliate dashboard, a close look at the recent referrals graph.
+4. Affiliates Dashboard Earnings - Shows affiliates their monthly earnings on the front end in the dashboard section.
+5. Affiliates Dashboard Profile - The affiliate's profile is part of the dashboard.
+6. Affiliates Dashboard Login - The dashboard section allows affiliates to log in.
+7. Affiliates Dashboard Registration - The registration dashboard section allows new affiliates to sign up.
+8. Affiliates Dashboard Blocks - An overview of available dashboard blocks that can be placed conveniently to compose affiliate areas.
+9. Affiliates Overview - Shows summarized information based on current and historic data to the Affiliate Manager.
+10. Manage Affiliates - Affiliate Manager's administrative section on the back end, where the site's partners are maintained.
+11. Visits & Referrals - Per-day view for the Affiliate Manager, provides information about visits and referrals generated through affiliate links.
+12. Affiliates & Referrals - Per-affiliate view for the Affiliate Manager, provides information about visits and referrals generated through affiliate links.
+13. Traffic - The Affiliate Manager's view on traffic generated through affiliate links.
+14. Referrals - The Affiliate Manager's overview on information about referrals with filters and optional details.
+15. Totals - The accumulated totals per affiliate as presented to the Affiliate Manager, provides the information needed to process affiliate payments.
+16. Settings > Registration - Customizable affiliate registration.
 
 == Changelog ==
 
-= 3.1.0 =
-* WordPress 5.0 compatibility checked.
-* Setting COOKIEPATH and SITECOOKIEPATH when needed to solve issues with subfolder installs.
-* Fixed some internal documentation and added missing type info.
-
-= 3.0.1 =
-* WordPress 4.9.4 compatibility checked.
-* Minimum PHP version required is now 5.6.0.
-
-= 3.0.0 =
-* This is a major new release of the plugin, please make sure to back up your site and database
-  before your upgrade and make sure to review the changelog to be aware of the implications of
-  upgrading to this version.
-* Enhances the data model to allow for fine-grained referrals.
-* Fixed PHP Notice due to undefined variable $charset_collate.
-* Fixed use of deprecated properties with WC 3.x
-* Added formatting options to the affiliate selectize renderer.
-* Updated the review notice appearance.
-* Fixed several PHP notices produces due to wrong number of parameters passed to prepare() on the Affiliates Overview admin screen.
-* Wordpress 4.9 compatible.
-* Removed deprecated and unmaintained entries from the Integrations section in the Settings.
-* Added new entries to the Integrations section for Events Manager, Formidable Forms, Ninja Forms.
-* Updated the Add-Ons section with Affiliates Import and other free add-ons.
-* Fixed the WooCommerce customer registration integration option is independent from the the user registration integration option.
-
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
+
+= 4.0.0 =
+* This is a major new release with exciting new features.
+  Following usual good practice, make sure to BACK UP your site and database before upgrading!
+* Introduces the new Affiliates Dashboard and new Dashboard Sections.
+* Added support for new customizable dashboard templates.
+* Added new dashboard and dashboard section blocks.
+* Added new dashboard and dashboard section shortcodes.
+* Added several performance and usability improvements.
+* Cleaned up code and made many internal improvements.
+* Updated and added missing code documentation.
+* Updated the translation template.
+* Updated the German translation.
+* Added options to the [affiliates_earnings] shortcode.
+* Updated the affiliate area generation to use the new dashboard.
+* Added additional currency codes and fixed an issue with the filter being called to early to affect the list.
+* Fixed untranslated button labels used in registration settings.
+* Fixed the dashboard widget to use appropriate decimals for amounts displayed.
+* Improved the usability and styling of filter sections in admin areas.
+* Improved and simplified the overview admin section to provide relevant stats within context.
+* Improved the performance on large datasets, improved queries and removed redundant queries.
+* Removed unnecessary indexes on the hits table.
+* Revised the traffic admin section to provide more detailed information on hits and enhanced its filter section.
+* Added a warning displayed in the Plugins section when the plugin is configured to delete its data.
+* Fixed an issue where a request for an invalid affiliate link would record a hit.
+* Added the filter affiliates_record_robot_hits and allowing the constant AFFILIATES_RECORD_ROBOT_HITS to determine whether hits from robots should be recorded.
+* Added the debugging constants AFFILIATES_DEBUG and AFFILIATES_DEBUG_ROBOTS which can be defined as true in wp-config.php to enable specific debugging.
+* Added a tool for significant storage savings that cleans database entries from robot hits under Affiliates > Settings > General > Robots.
+* WordPress 5.1 compatibility checked.
+* Using log instead of admin message to alert about potential issues during updates.
+* Fixed referral amount decimals used for display of amounts in totals section and generated files.
 
 == Upgrade Notice ==
 
-= 3.1.0 =
-* Tested for compatibility with WordPress 5.0 and solves an issue with cookies on subfolder installs.
+= 4.0.0 =
+Version 4.0.0 is a major new release with exciting new features!
+It introduces a new Affiliates Dashboard and Sections also available as blocks,
+new customizable dashboard templates and many more improvements.
 
-= 3.0.1 =
-* For updates from version 3.0.0 this is a minor upgrade, where the WordPress 4.9.4 compatibility
-  has been checked and the minimum PHP version required has been increased to 5.6.0.
-
-= 3.0.0 =
-* This is a major new release of the plugin, please make sure to back up your site and database
-  before your upgrade and make sure to review the changelog to be aware of the implications of
-  upgrading to this version.
+As usual and following good practice, please make sure to BACK UP your site and database before upgrading!
+It is also recommended to upgrade during low traffic hours to minimize the impact of changes to the database.

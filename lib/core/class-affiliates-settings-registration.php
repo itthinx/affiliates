@@ -88,6 +88,12 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				}
 				add_option( 'aff_status', $status, '', 'no' );
 
+				delete_option( 'aff_registration_terms_post_id' );
+				$terms_post_id = !empty( $_POST['terms_post_id'] ) ? intval( $_POST['terms_post_id'] ) : '';
+				if ( $terms_post_id && ( get_post( $terms_post_id ) !== null ) ) {
+					add_option( 'aff_registration_terms_post_id', $terms_post_id );
+				}
+
 				if ( !get_option( 'aff_registration_fields' ) ) {
 					add_option( 'aff_registration_fields', self::$default_fields, '', 'no' );
 				}
@@ -130,8 +136,9 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			}
 		}
 
-		$registration = get_option( 'aff_registration', get_option( 'users_can_register', false ) );
+		$registration     = get_option( 'aff_registration', get_option( 'users_can_register', false ) );
 		$affiliate_status = get_option( 'aff_status', 'active' );
+		$terms_post_id    = get_option( 'aff_registration_terms_post_id', '' );
 
 		echo
 			'<form action="" name="options" method="post">' .
@@ -158,13 +165,35 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			__( 'Pending', 'affiliates' ) .
 			'</option>' .
 			'</select>' .
-			'</label>' .
-			'</p>';
-
-		echo '<p>';
+			'</label>';
+		echo '<br/>';
+		echo '<span class="description">';
 		echo __( 'This determines if new affiliate applications require manual approval or whether they are accepted automatically.', 'affiliates' );
 		echo ' ';
 		echo __( '<em>Pending</em> will require manual approval of new affiliates. <em>Active</em> will accept new affiliates automatically.', 'affiliates' );
+		echo '</span>';
+		echo '</p>';
+
+		echo '<p>';
+		echo '<label for="terms_post_id">';
+		esc_html_e( 'Terms', 'affiliates' );
+		echo ' ';
+		wp_dropdown_pages(
+			array(
+				'name'              => 'terms_post_id',
+				'echo'              => true,
+				'show_option_none'  => __( '&mdash; Select &mdash;' ),
+				'option_none_value' => '',
+				'selected'          => $terms_post_id
+			)
+		);
+		echo '</label>';
+		echo '<br/>';
+		echo '<span class="description">';
+		esc_html_e( 'Terms and conditions', 'affiliates' );
+		echo ' &mdash; ';
+		esc_html_e( 'If chosen, a disclaimer and link to the page will be displayed with the registration form.', 'affiliates' );
+		echo '</span>';
 		echo '</p>';
 
 		// registration fields

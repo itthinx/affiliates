@@ -44,8 +44,11 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['thru_date'] ) ||
 		isset( $_POST['clear_filters'] ) ||
 		isset( $_POST['affiliate_id'] ) ||
+		isset( $_POST['campaign_id'] ) ||
 		isset( $_POST['src_uri'] ) ||
 		isset( $_POST['dest_uri'] ) ||
+		isset( $_POST['user_agent'] ) ||
+		isset( $_POST['ip'] ) ||
 		isset( $_POST['status'] ) ||
 		isset( $_POST['min_referrals'] )
 	) {
@@ -58,17 +61,25 @@ function affiliates_admin_hits_uri() {
 	$from_date          = $affiliates_options->get_option( 'hits_uri_from_date', null );
 	$thru_date          = $affiliates_options->get_option( 'hits_uri_thru_date', null );
 	$affiliate_id       = $affiliates_options->get_option( 'hits_uri_affiliate_id', null );
+	$campaign_id        = $affiliates_options->get_option( 'hits_uri_campaign_id', null );
 	$src_uri            = $affiliates_options->get_option( 'hits_uri_src_uri', null );
 	$dest_uri           = $affiliates_options->get_option( 'hits_uri_dest_uri', null );
+	$user_agent         = $affiliates_options->get_option( 'hits_uri_user_agent', null );
+	$ip                 = $affiliates_options->get_option( 'hits_uri_ip', null );
 	$status             = $affiliates_options->get_option( 'hits_uri_status', null );
 	$min_referrals      = $affiliates_options->get_option( 'hits_uri_min_referrals', null );
+
+	$campaigns = class_exists( 'Affiliates_Campaign' ) && method_exists( 'Affiliates_Campaign', 'is_affiliate_campaign' );
 
 	if ( isset( $_POST['clear_filters'] ) ) {
 		$affiliates_options->delete_option( 'hits_uri_from_date' );
 		$affiliates_options->delete_option( 'hits_uri_thru_date' );
 		$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
+		$affiliates_options->delete_option( 'hits_uri_campaign_id' );
 		$affiliates_options->delete_option( 'hits_uri_src_uri' );
 		$affiliates_options->delete_option( 'hits_uri_dest_uri' );
+		$affiliates_options->delete_option( 'hits_uri_user_agent' );
+		$affiliates_options->delete_option( 'hits_uri_ip' );
 		$affiliates_options->delete_option( 'hits_uri_status' );
 		$affiliates_options->delete_option( 'hits_uri_min_referrals' );
 		$from_date = null;
@@ -76,6 +87,9 @@ function affiliates_admin_hits_uri() {
 		$affiliate_id = null;
 		$src_uri = null;
 		$dest_uri = null;
+		$user_agent = null;
+		$ip = null;
+		$campaign_id = null;
 		$status = null;
 		$min_referrals = null;
 	} else if ( isset( $_POST['submitted'] ) ) {
@@ -112,6 +126,21 @@ function affiliates_admin_hits_uri() {
 			$affiliates_options->delete_option( 'hits_uri_affiliate_id' );
 		}
 
+		// filter by campaign id -> set affiliate_id
+		if ( $campaigns ) {
+			if ( !empty( $_POST['campaign_id'] ) ) {
+				$campaign = new Affiliates_Campaign();
+				if ( $campaign_id = $campaign->read( intval( $_POST['campaign_id'] ) ) ) {
+					$affiliates_options->update_option( 'hits_uri_campaign_id', $campaign_id );
+					$affiliate_id = $campaign->affiliate_id;
+					$affiliates_options->update_option( 'hits_uri_affiliate_id', $affiliate_id );
+				}
+			} else if ( isset( $_POST['campaign_id'] ) ) { // empty && isset => '' => all
+				$campaign_id = null;
+				$affiliates_options->delete_option( 'hits_uri_campaign_id' );
+			}
+		}
+
 		// src_uri
 		$_POST['src_uri'] = trim( $_POST['src_uri'] );
 		if ( !empty( $_POST['src_uri'] ) ) {
@@ -129,6 +158,26 @@ function affiliates_admin_hits_uri() {
 		} else if ( isset( $_POST['dest_uri'] ) )  { // empty
 			$dest_uri = null;
 			$affiliates_options->delete_option( 'hits_uri_dest_uri' );
+		}
+
+		// user_agent
+		$_POST['user_agent'] = trim( $_POST['user_agent'] );
+		if ( !empty( $_POST['user_agent'] ) ) {
+			$user_agent = $_POST['user_agent'];
+			$affiliates_options->update_option( 'hits_uri_user_agent', $user_agent );
+		} else if ( isset( $_POST['user_agent'] ) )  { // empty
+			$user_agent = null;
+			$affiliates_options->delete_option( 'hits_uri_user_agent' );
+		}
+
+		// ip
+		$_POST['ip'] = trim( $_POST['ip'] );
+		if ( !empty( $_POST['ip'] ) ) {
+			$ip = $_POST['ip'];
+			$affiliates_options->update_option( 'hits_uri_ip', $ip );
+		} else if ( isset( $_POST['ip'] ) )  { // empty
+			$ip = null;
+			$affiliates_options->delete_option( 'hits_uri_ip' );
 		}
 
 		// referrals status
@@ -181,6 +230,8 @@ function affiliates_admin_hits_uri() {
 	$referrals_table   = _affiliates_get_tablename( 'referrals' );
 	$hits_table        = _affiliates_get_tablename( 'hits' );
 	$uris_table        = _affiliates_get_tablename( 'uris' );
+	$user_agents_table = _affiliates_get_tablename( 'user_agents');
+	$campaigns_table   = _affiliates_get_tablename( 'campaigns' );
 
 	$output .= '<h1>';
 	$output .= __( 'Traffic', 'affiliates' );
@@ -193,27 +244,32 @@ function affiliates_admin_hits_uri() {
 	} else {
 		$affiliates_options->update_option('affiliates_hits_uri_per_page', $row_count );
 	}
-	$offset = isset( $_GET['offset'] ) ? intval( $_GET['offset'] ) : 0;
-	if ( $offset < 0 ) {
-		$offset = 0;
-	}
-	$paged = isset( $_REQUEST['uris_paged'] ) ? intval( $_REQUEST['uris_paged'] ) : 0;
-	if ( $paged < 0 ) {
-		$paged = 0;
+	// current page
+	$paged = isset( $_REQUEST['uris_paged'] ) ? intval( $_REQUEST['uris_paged'] ) : 1;
+	if ( $paged < 1 ) {
+		$paged = 1;
 	}
 
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
 		case 'date' :
-		case 'visits' :
-		case 'hits' :
-		case 'referrals' :
+		case 'name' :
+		case 'ip' :
 		case 'src_uri' :
 		case 'dest_uri' :
-		case 'name' :
+		case 'user_agent' :
+		case 'campaign' :
+			break;
+		case 'referrals' :
+			if ( $min_referrals < 1 ) {
+				$min_referrals = 1;
+			}
 			break;
 		case 'affiliate_id' :
 			$orderby = 'name';
+			break;
+		case 'campaign_id' :
+			$orderby = 'campaign';
 			break;
 		default:
 			$orderby = 'date';
@@ -238,133 +294,232 @@ function affiliates_admin_hits_uri() {
 	$filter_params = array( 1 );
 	// We now have the desired dates from the user's point of view, i.e. in her timezone.
 	// If supported, adjust the dates for the site's timezone:
-	if ( $from_date ) {
-		$from_datetime = DateHelper::u2s( $from_date );
+	$u2s_from_date = $from_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $from_date ) ) ) : null;
+	$u2s_thru_date = $thru_date ? date( 'Y-m-d', strtotime( DateHelper::u2s( $thru_date ) ) ) : null;
+	if ( $u2s_from_date && $u2s_thru_date ) {
+		$filters .= " AND h.date >= %s AND h.date <= %s ";
+		$filter_params[] = $u2s_from_date;
+		$filter_params[] = $u2s_thru_date;
+	} else if ( $u2s_from_date ) {
+		$filters .= " AND h.date >= %s ";
+		$filter_params[] = $u2s_from_date;
+	} else if ( $u2s_thru_date ) {
+		$filters .= " AND h.date <= %s ";
+		$filter_params[] = $u2s_thru_date;
 	}
-	if ( $thru_date ) {
-		$thru_datetime = DateHelper::u2s( $thru_date, 24*3600 );
-	}
-	if ( $from_date && $thru_date ) {
-		$filters .= " AND h.datetime >= %s AND h.datetime <= %s ";
-		$filter_params[] = $from_datetime;
-		$filter_params[] = $thru_datetime;
-	} else if ( $from_date ) {
-		$filters .= " AND h.datetime >= %s ";
-		$filter_params[] = $from_datetime;
-	} else if ( $thru_date ) {
-		$filters .= " AND h.datetime < %s ";
-		$filter_params[] = $thru_datetime;
-	}
+
 	if ( $affiliate_id ) {
 		$filters .= " AND h.affiliate_id = %d ";
-		$filter_params[] = $affiliate_id;
+		$filter_params[] = intval( $affiliate_id );
 	}
 
+	if ( $campaigns ) {
+		if ( $campaign_id ) {
+			$filters .= " AND h.campaign_id = %d ";
+			$filter_params[] = intval( $campaign_id );
+		}
+	}
+
+	// Source URI
 	if ( $src_uri ) {
-		$filters .= " AND su.uri LIKE '%%%s%%' ";
-		$filter_params[] = $wpdb->esc_like( $src_uri );
-	}
-	if ( $dest_uri ) {
-		$filters .= " AND du.uri LIKE '%%%s%%' ";
-		$filter_params[] = $wpdb->esc_like( $dest_uri );
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $src_uri, null, PREG_SPLIT_DELIM_CAPTURE );
+		if ( is_array( $strings ) && count( $strings ) > 0 ) {
+			$filters .= ' AND ( ';
+			foreach ( $strings as $string ) {
+				switch ( $string ) {
+					case 'AND' :
+					case 'OR' :
+						$filters .= " $string ";
+						break;
+					default :
+						$filters .= " su.uri LIKE '%%%s%%' ";
+						$filter_params[] = $wpdb->esc_like( $string );
+				}
+			}
+			$filters .= ' ) ';
+		}
 	}
 
-	$having = '';
+	// Desintation URI
+	if ( $dest_uri ) {
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $dest_uri, null, PREG_SPLIT_DELIM_CAPTURE );
+		if ( is_array( $strings ) && count( $strings ) > 0 ) {
+			$filters .= ' AND ( ';
+			foreach ( $strings as $string ) {
+				switch ( $string ) {
+					case 'AND' :
+					case 'OR' :
+						$filters .= " $string ";
+						break;
+					default :
+						$filters .= " du.uri LIKE '%%%s%%' ";
+						$filter_params[] = $wpdb->esc_like( $string );
+				}
+			}
+			$filters .= ' ) ';
+		}
+	}
+
+	// User Agent
+	if ( $user_agent ) {
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $user_agent, null, PREG_SPLIT_DELIM_CAPTURE );
+		if ( is_array( $strings ) && count( $strings ) > 0 ) {
+			$filters .= ' AND ( ';
+			foreach ( $strings as $string ) {
+				switch ( $string ) {
+					case 'AND' :
+					case 'OR' :
+						$filters .= " $string ";
+						break;
+					default :
+						$filters .= " ua.user_agent LIKE '%%%s%%' ";
+						$filter_params[] = $wpdb->esc_like( $string );
+				}
+			}
+			$filters .= ' ) ';
+		}
+	}
+
+	// IP
+	if ( $ip ) {
+		if ( PHP_INT_SIZE >= 8 ) {
+			if ( $ip_int = ip2long( $ip ) ) {
+				$filters .= " AND h.ip = %d ";
+				$filter_params[] = $ip_int;
+			}
+		} else {
+			if ( $ip_int = ip2long( $ip ) ) {
+				$ip_int = sprintf( '%u', $ip_int );
+				$filters .= " AND h.ip = %d ";
+				$filter_params[] = $ip_int;
+			}
+		}
+	}
+
+	// minimum number of related referrals, if orderby is 'referrals' then a minimum of 1 is enforced
 	if ( $min_referrals ) {
-		$having = " HAVING COUNT(r.hit_id) >= " . intval( $min_referrals ). " ";
+		$filters .= " AND referrals.count >= %d ";
+		$filter_params[] = intval( $min_referrals );
 	}
 
 	$status_condition = '';
-	if ( is_array( $status ) && count( $status ) > 0 ) {
-		$status_condition = " AND ( r.status IS NULL OR r.status IN ('" . implode( "','", $status ) . "') ) ";
-		$filters .= $status_condition;
+	if ( is_array( $status ) && count( $status ) > 0 && count( $status ) < 4 ) { // 4 any referral status
+		$status = array_map( array( $wpdb, 'esc_like' ), $status );
+		$status_condition = " WHERE status IN ('" . implode( "','", $status ) . "') ";
 	}
 
-	// how many are there ?
-	$count_query = $wpdb->prepare(
-		"SELECT
-		h.affiliate_id,
-		COUNT(r.hit_id) referrals
-		FROM $hits_table h
-		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
-		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
-		$having",
-		$filter_params
-	);
-
-	$wpdb->query( $count_query );
-	$count = $wpdb->num_rows;
-
-	if ( $count > $row_count ) {
-		$paginate = true;
-	} else {
-		$paginate = false;
-	}
-	$pages = ceil ( $count / $row_count );
-	if ( $paged > $pages ) {
-		$paged = $pages;
-	}
-	if ( $paged != 0 ) {
+	do {
+		$repeat = false;
 		$offset = ( $paged - 1 ) * $row_count;
-	}
 
-	$query = $wpdb->prepare(
-		"SELECT
-		h.*,
-		a.name,
-		su.uri src_uri,
-		du.uri dest_uri,
-		COUNT(distinct h.ip) visits,
-		SUM(count) hits,
-		COUNT(r.hit_id) referrals
-		FROM $hits_table h
-		LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id
-		LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id
-		LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id
-		LEFT JOIN $referrals_table r ON r.hit_id = h.hit_id
-		$filters
-		GROUP BY h.affiliate_id, h.date, su.uri_id, du.uri_id
-		$having
-		ORDER BY $orderby $order
-		LIMIT $row_count OFFSET $offset",
-		$filter_params
-	);
+		$query = $wpdb->prepare(
+			"SELECT " .
+			// "SQL_CALC_FOUND_ROWS" . // degrades the performance of this query substantially => using COUNT(*) instead
+			"h.date, " .
+			"h.datetime, " .
+			"h.hit_id, " .
+			"h.campaign_id, " .
+			( $campaigns ? "c.name AS campaign, " : '' ) .
+			"h.ip, " .
+			"h.affiliate_id, " .
+			"a.name, " .
+			"h.src_uri_id, " .
+			"su.uri src_uri, " .
+			"h.dest_uri_id, " .
+			"du.uri dest_uri, " .
+			"h.user_agent_id, " .
+			"ua.user_agent, " .
+			"referrals.count AS referrals " .
+			"FROM $hits_table h " .
+			"LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id " .
+			"LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id " .
+			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
+			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
+			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table $status_condition GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
+			"$filters " .
+			"ORDER BY $orderby $order " .
+			"LIMIT $row_count OFFSET $offset",
+			$filter_params
+		);
 
-	$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT );
+
+		$count = intval( $wpdb->get_var( $wpdb->prepare(
+			"SELECT COUNT(*) FROM $hits_table h " .
+			"LEFT JOIN $affiliates_table a ON h.affiliate_id = a.affiliate_id " .
+			"LEFT JOIN $uris_table su ON h.src_uri_id = su.uri_id " .
+			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
+			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
+			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
+			"$filters ",
+			$filter_params
+		) ) );
+		if ( $count > $row_count ) {
+			$paginate = true;
+		} else {
+			$paginate = false;
+		}
+		$pages = max( array( 1, ceil( $count / $row_count ) ) );
+		if ( $paged > $pages ) {
+			$paged = $pages;
+			$repeat = true;
+		}
+	} while ( $repeat );
 
 	$column_display_names = array(
-		'date'      => __( 'Date', 'affiliates' ) . '*',
-		'name'      => __( 'Affiliate', 'affiliates' ),
-		'visits'    => __( 'Visits', 'affiliates' ),
-		'hits'      => __( 'Hits', 'affiliates' ),
-		'referrals' => __( 'Referrals', 'affiliates' ),
-		'src_uri'   => __( 'Source URI', 'affiliates' ),
-		'dest_uri'  => __( 'Landing URI', 'affiliates' )
+		'date'       => __( 'Date', 'affiliates' ) . '*',
+		'name'       => __( 'Affiliate', 'affiliates' ),
+		'ip'         => __( 'IP', 'affiliates' ),
+		'referrals'  => __( 'Referrals', 'affiliates' ),
+		'src_uri'    => __( 'Source URI', 'affiliates' ),
+		'dest_uri'   => __( 'Landing URI', 'affiliates' ),
+		'user_agent' => __( 'User Agent', 'affiliates' )
 	);
+	if ( $campaigns ) {
+		$column_display_names['campaign'] = __( 'Campaign', 'affiliates' );
+	}
 
 	$output .= '<div class="hits-uris-overview">';
 
-	$affiliates_select = '';
-	$affiliates = affiliates_get_affiliates( true );
-	if ( !empty( $affiliates ) ) {
-		$affiliates_select .= '<label class="affiliate-id-filter">';
-		$affiliates_select .= __( 'Affiliate', 'affiliates' );
-		$affiliates_select .= ' ';
-		$affiliates_select .= '<select class="affiliate-id-filter" name="affiliate_id">';
-		$affiliates_select .= '<option value="">--</option>';
-		foreach ( $affiliates as $affiliate ) {
-			if ( $affiliate_id == $affiliate['affiliate_id']) {
-				$selected = ' selected="selected" ';
-			} else {
-				$selected = '';
+	$affiliates_select = Affiliates_UI_Elements::affiliates_select(
+		array(
+			'name'             => 'affiliate_id',
+			'class'            => 'affiliate-id-filter',
+			'label-class'      => 'affiliate-id-filter',
+			'affiliate_id'     => $affiliate_id,
+			'show_inoperative' => true
+		)
+	);
+
+	if ( $campaigns ) {
+		$campaigns_select = '<label class="campaign-id-filter">';
+		$campaigns_select .= __( 'Campaign', 'affiliates' );
+		$campaigns_select .= ' ';
+		$campaigns_select .= '<select class="campaign-id-filter" name="campaign_id">';
+		$campaigns_select .= sprintf( '<option value="" %s>&mdash;</option>', $campaign_id ? '' : ' selected="selected" ' );
+		$cs = Affiliates_Campaign::get_campaigns( $affiliate_id );
+		foreach ( $cs as $c ) {
+			$c_name = $c->name;
+			if ( strlen( $c_name ) > 25 ) {
+				$c_name = substr_replace( $c_name, '&hellip;', 25 );
 			}
-			$affiliates_select .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
+			$opt = sprintf( '%s [%d]', $c_name, intval( $c->campaign_id ) );
+			if ( !$affiliate_id ) {
+				if ( $c_a = affiliates_get_affiliate( $c->affiliate_id ) ) {
+					$opt .= sprintf( ' &ndash; %s [%d]', $c_a['name'], intval( $c->affiliate_id ) );
+				}
+			}
+			$campaigns_select .= sprintf(
+				'<option value="%d" %s>%s</option>',
+				intval( $c->campaign_id ),
+				$campaign_id === $c->campaign_id ? ' selected="selected" ' : '',
+				esc_html( $opt )
+			);
 		}
-		$affiliates_select .= '</select>';
-		$affiliates_select .= '</label>';
+		$campaigns_select .= '</select>';
+		$campaigns_select .= '</label>';
 	}
 
 	$status_descriptions = array(
@@ -388,6 +543,8 @@ function affiliates_admin_hits_uri() {
 		$status_checkboxes .= '</label>';
 	}
 
+	$use_and_or = sprintf( __( 'You can use %s and %s to search for multiple terms in combination.', 'affiliates' ), 'AND', 'OR' );
+
 	$output .=
 		'<div class="filters">' .
 			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
@@ -397,6 +554,14 @@ function affiliates_admin_hits_uri() {
 					$affiliates_select .
 					Affiliates_UI_Elements::render_select( 'select.affiliate-id-filter' ) .
 				'</div>' .
+				(
+					$campaigns ?
+					'<div class="filter-section">' .
+						$campaigns_select .
+						Affiliates_UI_Elements::render_select( 'select.campaign-id-filter' ) .
+					'</div>'
+					: ''
+				) .
 				'<div class="filter-section">' .
 					'<label class="from-date-filter">' .
 					__( 'From', 'affiliates' ) .
@@ -411,16 +576,28 @@ function affiliates_admin_hits_uri() {
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
-					'<label class="src-uri-filter">' .
+					sprintf( '<label style="cursor:help" title="%s" class="src-uri-filter">', esc_html( $use_and_or ) ) .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
 					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( stripslashes( $src_uri ) ) . '"/>' .
 					'</label>' .
 					' ' .
-					'<label class="dest-uri-filter">' .
+					sprintf( '<label style="cursor:help" title="%s" class="dest-uri-filter">', esc_html( $use_and_or ) ) .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
 					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>' .
+					'</label>' .
+					' ' .
+					sprintf( '<label style="cursor:help" title="%s" class="user-agent-filter">', esc_html( $use_and_or ) ) .
+					__( 'User Agent', 'affiliates' ) .
+					' ' .
+					'<input class="user-agent-filter" name="user_agent" type="text" value="' . esc_attr( stripslashes( $user_agent ) ) . '"/>' .
+					'</label>' .
+					' ' .
+					'<label class="ip-filter">' .
+					__( 'IP', 'affiliates' ) .
+					' ' .
+					'<input class="ip-filter" name="ip" type="text" value="' . esc_attr( stripslashes( $ip ) ) . '"/>' .
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
@@ -504,14 +681,29 @@ function affiliates_admin_hits_uri() {
 			$result = $results[$i];
 
 			$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
-			$output .= "<td class='date'>$result->date</td>";
+			$output .= "<td class='date'>$result->datetime</td>";
 			$affiliate = affiliates_get_affiliate( $result->affiliate_id );
-			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ) . "</td>";
-			$output .= "<td class='visits'>$result->visits</td>";
-			$output .= "<td class='hits'>$result->hits</td>";
-			$output .= "<td class='referrals'>$result->referrals</td>";
-			$output .= sprintf( "<td class='src-uri'>%s</td>", esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
-			$output .= sprintf( "<td class='dest-uri'>%s</td>", esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( '<td class="affiliate-name">%s [%s]</td>', stripslashes( wp_filter_nohtml_kses( $affiliate['name'] ) ), esc_html( $result->affiliate_id ) );
+			$output .= sprintf( '<td class="ip">%s</td>', esc_html( long2ip( sprintf( "%d", $result->ip ) ) ) );
+			$output .= sprintf( '<td class="referrals">%s</td>', esc_html( $result->referrals ) );
+			$output .= sprintf( '<td class="src-uri">%s</td>', esc_html( $result->src_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( '<td class="dest-uri">%s</td>', esc_html( $result->dest_uri ) ); // stored with esc_url_raw(), shown with esc_html()
+			$output .= sprintf( '<td class="user-agent">%s</td>', esc_html( $result->user_agent ) );
+			if ( $campaigns ) {
+				if ( !empty( $result->campaign_id ) ) {
+					if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
+						$output .= sprintf(
+							'<td class="campaign">%s [%d]</td>',
+							esc_html( $campaign->name ),
+							intval( $result->campaign_id )
+						);
+					} else {
+						$output .= '<td class="campaign">&mdash; ? &mdash;</td>';
+					}
+				} else {
+					$output .= '<td class="campaign"></td>';
+				}
+			}
 			$output .= '</tr>';
 		}
 	} else {
