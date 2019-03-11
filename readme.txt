@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ad
 Requires at least: 4.0.0
 Tested up to: 5.1
 Requires PHP: 5.6.0
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -370,6 +370,9 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
+= 4.0.1 =
+* Added improvements for responsiveness on small screen sizes.
+
 = 4.0.0 =
 * This is a major new release with exciting new features.
   Following usual good practice, make sure to BACK UP your site and database before upgrading!
@@ -403,8 +406,7 @@ The full changelog is available at [changelog.txt](https://github.com/itthinx/af
 
 == Upgrade Notice ==
 
-= 4.0.0 =
-Version 4.0.0 is a major new release with exciting new features!
+Version 4 is a major new release with exciting new features!
 It introduces a new Affiliates Dashboard and Sections also available as blocks,
 new customizable dashboard templates and many more improvements.
 
