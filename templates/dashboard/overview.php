@@ -54,17 +54,17 @@ $link_info  = wp_kses(
 );
 ?>
 <h2><?php esc_html_e( 'Overview', 'affiliates' ); ?></h2>
-<div class="dashboard-section dashboard-section-overview" style="display:grid">
-	<div class="stats-container" style="display:flex">
-		<div class="stats-item" style="flex-grow:1">
+<div class="dashboard-section dashboard-section-overview">
+	<div class="stats-container">
+		<div class="stats-item">
 			<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
 			<div class="stats-item-value"><?php echo esc_html( $visits ); ?></div>
 		</div>
-		<div class="stats-item" style="flex-grow:1">
+		<div class="stats-item">
 			<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
 			<div class="stats-item-value"><?php echo esc_html( $referrals ); ?></div>
 		</div>
-		<div class="stats-item" style="flex-grow:1">
+		<div class="stats-item">
 			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
 			<?php if ( count( $amounts ) > 0 ) :?>
 				<?php foreach ( $amounts as $currency_id => $amount ) : ?>
@@ -79,7 +79,7 @@ $link_info  = wp_kses(
 			<?php endif; ?>
 		</div>
 	</div>
-	<div id="affiliates-dashboard-overview-graph" class="graph" style="width:100%; height: 400px;"></div>
+	<div id="affiliates-dashboard-overview-graph" class="graph"></div>
 	<div id="affiliates-dashboard-overview-legend" class="legend"></div>
 	<br/>
 	<h3><?php esc_html_e( 'Links', 'affiliates' ); ?></h3>
@@ -101,8 +101,13 @@ $link_info  = wp_kses(
 </div><?php // .dashboard-section-overview ?>
 
 <style type="text/css">
+.dashboard-section-overview {
+	display: grid;
+}
 .dashboard-section-overview .stats-container {
 	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
 }
 .dashboard-section-overview .stats-item {
 	background-color: #f2f2f2;
@@ -111,6 +116,7 @@ $link_info  = wp_kses(
 	padding: 4px;
 	text-align: center;
 	font-size: 16px;
+	flex-grow: 1;
 }
 .dashboard-section-overview .stats-item .stats-item-heading {
 	font-weight: bold;
@@ -122,16 +128,19 @@ $link_info  = wp_kses(
 	background-color: #fafafa;
 	border-radius: 4px;
 	margin: 4px;
+	width: 100%;
+	height: 400px;
 }
 .dashboard-section-overview .legend {
 	display: flex;
+	flex-wrap: wrap;
 	text-align: center;
 	background-color: #f2f2f2;
 	border-radius: 4px;
 	margin: 4px;
 }
 .dashboard-section-overview .legend-item {
-flex-grow:1;
+	flex-grow:1;
 }
 .dashboard-section-overview .legend-item.active {
 	background-color: #e0e0e0;
