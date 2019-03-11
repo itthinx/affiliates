@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.0.1 =
+* Added improvements for responsiveness on small screen sizes.
+
 = 4.0.0 =
 * This is a major new release with exciting new features.
   Following usual good practice, make sure to BACK UP your site and database before upgrading!
