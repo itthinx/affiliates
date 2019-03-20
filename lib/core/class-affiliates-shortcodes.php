@@ -951,6 +951,8 @@ class Affiliates_Shortcodes {
 	 */
 	public static function affiliates_fields( $atts, $content = null ) {
 
+		global $wpdb;
+
 		$output = '';
 
 		if ( is_user_logged_in() ) {
@@ -1108,15 +1110,32 @@ class Affiliates_Shortcodes {
 									break;
 								default :
 									$value = get_user_meta( $user_id, $name , true );
+									if ( empty( $value ) && class_exists( 'Affiliates_Attributes' ) ) {
+										if ( $name === 'paypal_email' || $name === 'payment_email' ) {
+											if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
+												if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
+													$affiliates_attributes_table = _affiliates_get_tablename( 'affiliates_attributes' );
+													$payment_email = $wpdb->get_var(
+														"SELECT attr_value FROM $affiliates_attributes_table WHERE affiliate_id = %d AND attr_key = 'paypal_email'",
+														$affiliate_id
+													);
+													if ( !empty( $payment_email ) ) {
+														update_user_meta( $user_id, $name, $payment_email );
+														$value = get_user_meta( $user_id, $name, true );
+													}
+												}
+											}
+										}
+									}
 							}
 							$output .= sprintf(
-									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
-									esc_attr( $type ),
-									'regular-text ' . esc_attr( $name ) . ( $type != 'password' && $field['required'] ? ' required ' : '' ),
-									esc_attr( $name ),
-									esc_attr( stripslashes( $value ) ),
-									( $type != 'password' && $field['required'] ) ? ' required="required" ' : '',
-									$extra
+								'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
+								esc_attr( $type ),
+								'regular-text ' . esc_attr( $name ) . ( $type != 'password' && $field['required'] ? ' required ' : '' ),
+								esc_attr( $name ),
+								esc_attr( stripslashes( $value ) ),
+								( $type != 'password' && $field['required'] ) ? ' required="required" ' : '',
+								$extra
 							);
 							$output .= '</label>';
 							$output .= '</div>';
@@ -1127,13 +1146,13 @@ class Affiliates_Shortcodes {
 								$output .= '<label>';
 								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
 								$output .= sprintf(
-										'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
-										esc_attr( $type ),
-										'regular-text ' . esc_attr( $name ),
-										esc_attr( $name . '2' ),
-										esc_attr( $value ),
-										'',
-										$extra
+									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
+									esc_attr( $type ),
+									'regular-text ' . esc_attr( $name ),
+									esc_attr( $name . '2' ),
+									esc_attr( $value ),
+									'',
+									$extra
 								);
 								$output .= '</label>';
 								$output .= '</div>';
