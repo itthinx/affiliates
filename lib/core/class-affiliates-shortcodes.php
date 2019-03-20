@@ -1115,10 +1115,10 @@ class Affiliates_Shortcodes {
 											if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
 												if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
 													$affiliates_attributes_table = _affiliates_get_tablename( 'affiliates_attributes' );
-													$payment_email = $wpdb->get_var(
+													$payment_email = $wpdb->get_var( $wpdb->prepare(
 														"SELECT attr_value FROM $affiliates_attributes_table WHERE affiliate_id = %d AND attr_key = 'paypal_email'",
 														$affiliate_id
-													);
+													) );
 													if ( !empty( $payment_email ) ) {
 														update_user_meta( $user_id, $name, $payment_email );
 														$value = get_user_meta( $user_id, $name, true );
