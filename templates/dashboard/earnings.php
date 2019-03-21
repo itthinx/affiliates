@@ -97,11 +97,13 @@ if ( !defined( 'ABSPATH' ) ) {
 		overflow: hidden;
 	}
 	.dashboard-section-earnings .filters .filter-buttons {
+		grid-column: 1/5;
 		display: flex;
+		flex-wrap: wrap;
 		margin: 4px;
 	}
 	.dashboard-section-earnings .filters .filter-buttons input {
-		flex: 1;
+		flex-shrink: 1;
 		margin: 4px;
 	}
 	</style>
