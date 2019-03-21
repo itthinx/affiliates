@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Affiliates v2.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-18 14:18+0100\n"
-"PO-Revision-Date: 2019-03-21 15:36+0800\n"
+"POT-Creation-Date: 2019-03-21 17:41+0100\n"
+"PO-Revision-Date: 2019-03-21 18:43+0100\n"
 "Last-Translator: Hendra Trisnayadi @itthinx\n"
 "Language-Team: \n"
 "Language: id_ID\n"
@@ -23,14 +23,14 @@ msgstr ""
 #: lib/core/class-affiliates-dashboard-widget.php:123
 #, php-format
 msgid "%1$s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 # @ default
 #: lib/core/class-affiliates-pagination.php:144
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
-msgstr ""
+msgstr "%1$s dari %2$s"
 
 # @ affiliates
 #: lib/core/affiliates-admin.php:297
@@ -93,7 +93,7 @@ msgstr[0] "1 barang"
 msgstr[1] "%s items"
 
 # @ affiliates
-#: lib/core/wp-init.php:1944
+#: lib/core/wp-init.php:1954
 msgid ""
 "<em>All time</em> includes data from any affiliates, including deleted "
 "affiliates."
@@ -102,7 +102,7 @@ msgstr ""
 "affiliasi yang sudah dihapus."
 
 # @ affiliates
-#: lib/core/wp-init.php:1942
+#: lib/core/wp-init.php:1952
 msgid ""
 "<em>From operative affiliates:</em> includes affiliates that are currently "
 "active. This excludes affiliates whose dates are not currently valid as well "
@@ -113,7 +113,7 @@ msgstr ""
 "mereka yang telah dihapus."
 
 # @ affiliates
-#: lib/core/wp-init.php:1943
+#: lib/core/wp-init.php:1953
 msgid ""
 "<em>From operative and non-operative affiliates:</em> excludes deleted "
 "affiliates."
@@ -122,7 +122,7 @@ msgstr ""
 "sudah dihapus."
 
 # @ affiliates
-#: lib/core/wp-init.php:1947
+#: lib/core/wp-init.php:1957
 msgid "<em>Hits</em> are HTTP requests for affiliate links."
 msgstr "<em>Hit</em> adalah HTTP requests untuk link afiliasi."
 
@@ -134,12 +134,12 @@ msgstr ""
 "<em> Tertunda </em> akan membutuhkan persetujuan manual dari afiliasi baru. "
 "<em> Aktif </em> akan menerima afiliasi baru secara otomatis."
 
-#: lib/core/wp-init.php:1949
+#: lib/core/wp-init.php:1959
 msgid "<em>Referrals</em> are recording commissions and referral data."
 msgstr "<em> Referensi </em> menyimpan komisi dan data referensi."
 
 # @ affiliates
-#: lib/core/wp-init.php:1948
+#: lib/core/wp-init.php:1958
 msgid "<em>Visits</em> are unique and daily requests for affiliate links."
 msgstr "<em>Kunjungan</em> adalah request unik dan harian untuk link afiliasi."
 
@@ -176,8 +176,8 @@ msgstr ""
 "afiliasi tanpa perlu ditinjau lebih lanjut."
 
 #: lib/core/class-affiliates-registration.php:235
-#: lib/core/class-affiliates-shortcodes.php:1021
-#: lib/core/class-affiliates-shortcodes.php:1037
+#: lib/core/class-affiliates-shortcodes.php:1023
+#: lib/core/class-affiliates-shortcodes.php:1039
 msgid "<strong>ERROR</strong>"
 msgstr "<strong>KESALAHAN</strong>"
 
@@ -383,8 +383,8 @@ msgstr "Tambahkan bidang"
 msgid "Add a new affiliate"
 msgstr "Tambah afiliasi baru"
 
-#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1890
-#: lib/core/wp-init.php:1891
+#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1900
+#: lib/core/wp-init.php:1901
 msgid "Add-Ons"
 msgstr "Add-Ons"
 
@@ -495,7 +495,7 @@ msgid "Affiliate campaign management and tracking."
 msgstr "Pengelolaan dan pelacakan kampanye afiliasi."
 
 # @ affiliates
-#: lib/core/wp-init.php:1970
+#: lib/core/wp-init.php:1980
 msgid "Affiliate link"
 msgstr "Link afiliasi"
 
@@ -520,14 +520,14 @@ msgstr "Affiliasi diupdate."
 #: lib/core/dashboard/class-affiliates-dashboard-overview-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-profile-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-registration-block.php:54
-#: lib/core/wp-init.php:1910 lib/core/wp-init.php:1911
-#: lib/core/wp-init.php:1932
+#: lib/core/wp-init.php:1920 lib/core/wp-init.php:1921
+#: lib/core/wp-init.php:1942
 msgid "Affiliates"
 msgstr "Afiliasi"
 
 # @ affiliates
-#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1795
-#: lib/core/wp-init.php:1796
+#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1805
+#: lib/core/wp-init.php:1806
 msgid "Affiliates & Referrals"
 msgstr "Afiliasi & Referal"
 
@@ -630,7 +630,7 @@ msgid "Affiliates Ninja Forms Integration"
 msgstr "Affiliasi integrasi dengan Ninja Forms"
 
 # @ affiliates
-#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1754
+#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1764
 msgid "Affiliates Overview"
 msgstr "Sekilas Afiliasi"
 
@@ -638,7 +638,7 @@ msgstr "Sekilas Afiliasi"
 msgid "Affiliates Pro"
 msgstr "Affiliates Pro"
 
-#: lib/core/wp-init.php:1849
+#: lib/core/wp-init.php:1859
 msgid "Affiliates Settings"
 msgstr "Pengaturan affiliasi"
 
@@ -1617,7 +1617,7 @@ msgid "Haiti Gourde"
 msgstr ""
 
 # @ affiliates
-#: lib/core/wp-init.php:1964
+#: lib/core/wp-init.php:1974
 msgid ""
 "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</"
 "strong> affiliates."
@@ -1985,7 +1985,7 @@ msgid "Login"
 msgstr "Masuk"
 
 # @ affiliates
-#: lib/core/wp-init.php:1625
+#: lib/core/wp-init.php:1635
 msgid "MD5"
 msgstr "MD5"
 
@@ -2027,8 +2027,8 @@ msgid "Maldives (Maldive Islands) Rufiyaa"
 msgstr ""
 
 # @ affiliates
-#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1769
-#: lib/core/wp-init.php:1770
+#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1779
+#: lib/core/wp-init.php:1780
 msgid "Manage Affiliates"
 msgstr "Kelola Afiliasi"
 
@@ -2185,7 +2185,7 @@ msgid "Ninja Forms"
 msgstr ""
 
 # @ affiliates
-#: lib/core/wp-init.php:1624
+#: lib/core/wp-init.php:1634
 msgid "No encoding"
 msgstr "Tanpa encoding"
 
@@ -2215,7 +2215,7 @@ msgid "Norway Krone"
 msgstr ""
 
 # @ affiliates
-#: lib/core/wp-init.php:1957
+#: lib/core/wp-init.php:1967
 msgid ""
 "Note that <em>deleted</em> affiliates are not literally deleted but marked "
 "as such so that data that has been collected will still be accesible."
@@ -2225,7 +2225,7 @@ msgstr ""
 "dikumpulkan masih bisa di akses."
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1875 lib/core/wp-init.php:1876
+#: lib/core/wp-init.php:1885 lib/core/wp-init.php:1886
 msgid "Notifications"
 msgstr ""
 
@@ -2242,7 +2242,7 @@ msgid "Omitted"
 msgstr ""
 
 # @ affiliates
-#: lib/core/wp-init.php:1980
+#: lib/core/wp-init.php:1990
 msgid ""
 "Once a visitor has landed on your site through an affiliate link, referrals "
 "may be recorded and attributed to the affiliate."
@@ -2254,7 +2254,7 @@ msgstr ""
 msgid "Once you click the button, the hits will be deleted immediately."
 msgstr "Setelah Anda mengklik tombol, klik akan segera dihapus."
 
-#: lib/core/wp-init.php:2028
+#: lib/core/wp-init.php:2038
 msgid "Online documentation"
 msgstr "Dokumentasi online"
 
@@ -2405,12 +2405,12 @@ msgstr ""
 "disertakan."
 
 #: lib/core/class-affiliates-registration.php:237
-#: lib/core/class-affiliates-shortcodes.php:1023
+#: lib/core/class-affiliates-shortcodes.php:1025
 #, php-format
 msgid "Please fill out the field <em>%s</em>."
 msgstr "Silakan isi bidang <em>% s </em>."
 
-#: lib/core/wp-init.php:2050
+#: lib/core/wp-init.php:2060
 #, php-format
 msgid ""
 "Please give it a <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
@@ -2566,7 +2566,7 @@ msgstr "Batas waktu rujukan"
 #: lib/core/affiliates-admin-referrals.php:267
 #: lib/core/affiliates-admin.php:487 lib/core/class-affiliates-settings.php:62
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:97
-#: lib/core/wp-init.php:1821 lib/core/wp-init.php:1822
+#: lib/core/wp-init.php:1831 lib/core/wp-init.php:1832
 msgid "Referrals"
 msgstr "Rujukan"
 
@@ -2640,7 +2640,7 @@ msgstr "Hapus afiliasi"
 msgid "Remove this referral? This action can not be undone."
 msgstr "Hapus rujukan ini? tindakan ini tidak dapat dikembalikan."
 
-#: lib/core/class-affiliates-shortcodes.php:1128
+#: lib/core/class-affiliates-shortcodes.php:1147
 #, php-format
 msgid "Repeat %s"
 msgstr "Ulang %s"
@@ -2717,11 +2717,11 @@ msgstr ""
 #: lib/core/class-affiliates-settings-network.php:79
 #: lib/core/class-affiliates-settings-referrals.php:185
 #: lib/core/class-affiliates-settings-registration.php:264
-#: lib/core/class-affiliates-shortcodes.php:1147
+#: lib/core/class-affiliates-shortcodes.php:1166
 msgid "Save"
 msgstr "Simpan"
 
-#: lib/core/class-affiliates-shortcodes.php:1065
+#: lib/core/class-affiliates-shortcodes.php:1067
 msgid "Saved"
 msgstr "Tersimpan"
 
@@ -2760,7 +2760,7 @@ msgstr ""
 msgid "Set status to Pending"
 msgstr ""
 
-#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1850
+#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1860
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -2910,7 +2910,7 @@ msgstr "Halaman syarat: <em>%s</em>"
 msgid "Thailand Baht"
 msgstr ""
 
-#: lib/core/wp-init.php:2047
+#: lib/core/wp-init.php:2057
 msgid ""
 "Thank you for using the <a style=\"text-decoration:none;\" href=\"http://www."
 "itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by "
@@ -2988,7 +2988,7 @@ msgstr ""
 "tanda underscore ( _ )"
 
 # @ affiliates
-#: lib/core/wp-init.php:1952
+#: lib/core/wp-init.php:1962
 msgid ""
 "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that "
 "can be used to record lead referrals."
@@ -3038,12 +3038,8 @@ msgid "The earnings period for the amounts earned."
 msgstr "Periode penghasilan untuk jumlah yang diperoleh."
 
 #: lib/core/class-affiliates-settings-registration.php:202
-msgid ""
-"The following fields are provided on the affiliate registration form "
-"rendered by the <code>[affiliates_registration]</code> shortcode."
-msgstr ""
-"Bidang-bidang berikut disediakan pada formulir pendaftaran afiliasi yang "
-"diberikan oleh shortcode <code> [afiliasiates_registration] </code>."
+msgid "The following fields are provided on the affiliate registration form."
+msgstr "Bidang-bidang berikut disediakan pada formulir pendaftaran afiliasi."
 
 #: lib/core/class-affiliates-robot-cleaner.php:193
 msgid "The following matching hits have been found and can be cleaned up."
@@ -3068,12 +3064,12 @@ msgstr ""
 "berafiliasi dengan komisi berdasarkan pembelian yang dirujuk atau tindakan "
 "khusus platform."
 
-#: lib/core/class-affiliates-shortcodes.php:1039
+#: lib/core/class-affiliates-shortcodes.php:1041
 #, php-format
 msgid "The passwords for the field <em>%s</em> do not match."
 msgstr "Kata sandi untuk bidang <em>% s </em> tidak cocok."
 
-#: lib/core/wp-init.php:875
+#: lib/core/wp-init.php:879
 msgid "The plugin is configured to delete its data on deactivation."
 msgstr "Plugin ini dikonfigurasi untuk menghapus data pada penonaktifan."
 
@@ -3278,7 +3274,7 @@ msgstr ""
 "Dokumentasi lengkap dapat diperoleh di <a href=\"http://www.itthinx.com/"
 "plugins/affiliates\" target=\"_blank\">halaman Affiliates plugin </a>."
 
-#: lib/core/wp-init.php:1973
+#: lib/core/wp-init.php:1983
 msgid ""
 "This link uses a parameter in the URL to record visits you receive through "
 "your affiliates."
@@ -3472,7 +3468,7 @@ msgid "This referral does not exist."
 msgstr "Referensi ini tidak tersedia."
 
 # @ affiliates
-#: lib/core/wp-init.php:1940
+#: lib/core/wp-init.php:1950
 msgid "This screen offers an overview with basic statistical data."
 msgstr "Layar ini menampilkan tinjauan sekilas dengan data statistik dasar."
 
@@ -3526,7 +3522,7 @@ msgstr ""
 "Sebagai contoh cara menggunakan API yang disediakan oleh plugin Afiliasi ini"
 
 # @ affiliates
-#: lib/core/wp-init.php:1953
+#: lib/core/wp-init.php:1963
 #, php-format
 msgid ""
 "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
@@ -3543,13 +3539,13 @@ msgstr ""
 msgid "Total"
 msgstr "Total"
 
-#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1835
-#: lib/core/wp-init.php:1836
+#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1845
+#: lib/core/wp-init.php:1846
 msgid "Totals"
 msgstr "Lalu lintas"
 
-#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1808
-#: lib/core/wp-init.php:1809
+#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1818
+#: lib/core/wp-init.php:1819
 msgid "Traffic"
 msgstr ""
 
@@ -3662,8 +3658,8 @@ msgstr "Gunakan pembersih robot untuk menghapus hit yang ada dari robot:% s"
 msgid "User Agent"
 msgstr "Agen Pengguna"
 
-#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1862
-#: lib/core/wp-init.php:1863
+#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1872
+#: lib/core/wp-init.php:1873
 msgid "User Registration"
 msgstr "Registrasi Pengguna"
 
@@ -3768,12 +3764,12 @@ msgid "Visits"
 msgstr "Kunjungan"
 
 # @ affiliates
-#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1782
-#: lib/core/wp-init.php:1783
+#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1792
+#: lib/core/wp-init.php:1793
 msgid "Visits & Referrals"
 msgstr "Kunjungan & Referal"
 
-#: lib/core/wp-init.php:871
+#: lib/core/wp-init.php:875
 msgid "Warning!"
 msgstr "Peringatan!"
 
@@ -3895,7 +3891,7 @@ msgstr ""
 "default untuk afiliasi Anda."
 
 # @ affiliates
-#: lib/core/wp-init.php:1975
+#: lib/core/wp-init.php:1985
 #, php-format
 msgid "You may also append the ?%s=... part to links to your posts."
 msgstr "Anda juga bisa menambahkan ?%s=... pada link artikel Anda."
