@@ -1,5 +1,14 @@
 == Affiliates - Changelog ==
 
+= 4.0.2 =
+* Updated the Indonesian translation.
+* Updated the German translation.
+* Updated the Spanish translation.
+* Added improvements for responsiveness.
+* Updated description in the registration admin section.
+* Added a missing call to prepare().
+* Improved handling of field/attribute usage related to payment emails.
+
 = 4.0.1 =
 * Added improvements for responsiveness on small screen sizes.
 

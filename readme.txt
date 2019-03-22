@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ad
 Requires at least: 4.0.0
 Tested up to: 5.1
 Requires PHP: 5.6.0
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -369,6 +369,15 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 == Changelog ==
 
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
+
+= 4.0.2 =
+* Updated the Indonesian translation.
+* Updated the German translation.
+* Updated the Spanish translation.
+* Added improvements for responsiveness.
+* Updated description in the registration admin section.
+* Added a missing call to prepare().
+* Improved handling of field/attribute usage related to payment emails.
 
 = 4.0.1 =
 * Added improvements for responsiveness on small screen sizes.
