@@ -378,6 +378,7 @@ The full changelog is available at [changelog.txt](https://github.com/itthinx/af
 * Updated description in the registration admin section.
 * Added a missing call to prepare().
 * Improved handling of field/attribute usage related to payment emails.
+* Fixed an issue with validating encoded affiliate id after affiliates_parse_request_affiliate_id filter applied.
 
 = 4.0.1 =
 * Added improvements for responsiveness on small screen sizes.
