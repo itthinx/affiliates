@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin-add-ons.php
- * 
+ *
  * Copyright (c) 2010 - 2014 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since 2.7.0
@@ -23,16 +23,19 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Renders the section.
+ */
 function affiliates_admin_add_ons() {
 
 	echo '<div class="affiliates-admin-add-ons add-ons">';
 
 	echo '<h1>';
-	echo __( 'Affiliates Extensions and Add-Ons', 'affiliates' );
+	echo esc_html__( 'Affiliates Extensions and Add-Ons', 'affiliates' );
 	echo '</h1>';
 
 	echo '<p>';
-	echo __( 'Get additional features and access to premium support!', 'affiliates' );
+	echo esc_html__( 'Get additional features and access to premium support!', 'affiliates' );
 	echo '</p>';
 
 	echo '<p>';
@@ -43,7 +46,7 @@ function affiliates_admin_add_ons() {
 	echo '</p>';
 
 	echo '<h2>';
-	echo __( 'Recommended plugins and extensions', 'affiliates' );
+	echo esc_html__( 'Recommended plugins and extensions', 'affiliates' );
 	echo '</h2>';
 
 	$entries = array(
@@ -132,11 +135,11 @@ function affiliates_admin_add_ons() {
 			'index'   => 20
 		),
 	);
-	usort( $entries, 'affiliates_admin_add_ons_sort' );
+	uasort( $entries, 'affiliates_admin_add_ons_sort' );
 
 	echo '<ul class="add-ons">';
 	foreach( $entries as $key => $entry ) {
-		echo '<li class="add-on">';
+		echo sprintf( '<li class="add-on %s">', esc_attr( $key ) );
 		echo sprintf( '<a href="%s">', $entry['url'] );
 		echo '<h3>';
 		echo sprintf( '<img src="%s"/>', $entry['image'] );
@@ -153,15 +156,10 @@ function affiliates_admin_add_ons() {
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 
 	echo '<h2>';
-	echo __( 'Affiliates Pro', 'affiliates' );
+	echo esc_html__( 'Affiliates Pro', 'affiliates' );
 	echo '</h2>';
 
-	echo sprintf( '<img class="screenshot" alt="Affiliates Pro Menu" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Affiliates Pro Menu-small.png' );
-	echo sprintf( '<img class="screenshot" alt="Banners" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Banners-small.png' );
-	echo sprintf( '<img class="screenshot" alt="Notifications" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Notifications - Affiliate Registration-small.png' );
-	echo sprintf( '<img class="screenshot" alt="Totals" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Totals-small.png' );
-
-	echo '<ul>';
+	echo '<ul class="feature-listing">';
 
 	echo '<li>';
 	echo __( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
@@ -216,16 +214,10 @@ function affiliates_admin_add_ons() {
 	if ( ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) || ( AFFILIATES_PLUGIN_NAME == 'affiliates-pro' ) ) {
 
 	echo '<h2>';
-	echo __( 'Affiliates Enterprise', 'affiliates' );
+	echo esc_html__( 'Affiliates Enterprise', 'affiliates' );
 	echo '</h2>';
 
-	echo sprintf( '<img class="screenshot enterprise" alt="Multiple Tiers" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Multi-tiered Referrals-small.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Banners" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Specific Level Rates-small.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Notifications" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Tiers-small.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Campaigns" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/campaigns.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Campaigns Administration" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/campaigns-admin.png' );
-
-	echo '<ul>';
+	echo '<ul class="feature-listing">';
 
 	echo '<li>';
 	echo __( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
@@ -250,7 +242,7 @@ function affiliates_admin_add_ons() {
 	}
 
 	echo '<h2>';
-	echo __( 'Add-Ons', 'affiliates' );
+	echo esc_html__( 'Add-Ons', 'affiliates' );
 	echo '</h2>';
 
 	echo '<p>';
@@ -262,6 +254,14 @@ function affiliates_admin_add_ons() {
 	affiliates_footer();
 }
 
+/**
+ * Custom sorting function.
+ *
+ * @param array $e1
+ * @param array $e2
+ *
+ * @return int
+ */
 function affiliates_admin_add_ons_sort( $e1, $e2 ) {
 	$i1 = isset( $e1['index'] ) ? $e1['index'] : 0;
 	$i2 = isset( $e2['index'] ) ? $e2['index'] : 0;

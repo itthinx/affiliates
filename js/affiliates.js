@@ -17,57 +17,58 @@
  * @package affiliates
  * @since affiliates 1.0.0
  */
-jQuery(document).ready(function(){
+
+jQuery( document ).ready( function() {
 
 	/* design */
-	jQuery(".affiliate").corner("5px");
-	jQuery(".filters").corner("5px");
-	jQuery(".manage").corner("5px");
+	jQuery( ".affiliate" ).corner( "5px" );
+	jQuery( ".filters" ).corner( "5px" );
+	jQuery( ".manage" ).corner( "5px" );
 
 	/* effects & handling */
 	var clickToggler = function() {
-		var description = jQuery(this).parent().children(".view");
-		var expander = jQuery(this).parent().children(".expander");
-		if ( description.is(":hidden") ) {
-			description.slideDown("fast");
+		var description = jQuery( this ).parent().children( ".view" );
+		var expander = jQuery( this ).parent().children( ".expander" );
+		if ( description.is( ":hidden" ) ) {
+			description.slideDown( "fast" );
 			expander.contents().remove();
-			expander.append("[-] ");
+			expander.append( "[-] " );
 		} else {
-			description.slideUp("fast");
+			description.slideUp( "fast" );
 			expander.contents().remove();
-			expander.append("[+] ");
+			expander.append( "[+] " );
 		}
 	};
 
-	jQuery('.view-toggle .expander').each( function() {
-		jQuery(this).click(clickToggler);
-	});
-	jQuery('.view-toggle .view-toggle-label').each( function() {
-		jQuery(this).click(clickToggler);
-	});
+	jQuery( '.view-toggle .expander' ).each( function() {
+		jQuery( this ).click( clickToggler );
+	} );
+	jQuery( '.view-toggle .view-toggle-label' ).each( function() {
+		jQuery( this ).click( clickToggler );
+	} );
 
 	/* filter highlighting */
-	jQuery('.filters input[type="text"], .filters input[type="checkbox"], .filters input[type="radio"], .filters textarea, .filters select').each( function() {
-		if ( jQuery(this).val() !== '' ) {
+	jQuery( '.filters input[type="text"], .filters input[type="checkbox"], .filters input[type="radio"], .filters textarea, .filters select' ).each( function() {
+		if ( jQuery( this ).val() !== '' ) {
 			this.className += ' active-filter';
 		}
-	});
+	} );
 
 	/* filters toggle */
-	jQuery('#filters-toggle').click(function(){
-		var ajaxing = jQuery('#filters-toggle').data('ajaxing');
-		if (!(typeof ajaxing === 'undefined' || !ajaxing)) {
+	jQuery( '#filters-toggle' ).click( function() {
+		var ajaxing = jQuery( '#filters-toggle' ).data( 'ajaxing' );
+		if ( !( typeof ajaxing === 'undefined' || !ajaxing ) ) {
 			return;
 		}
-		jQuery('#filters-toggle').data('ajaxing',true);
-		jQuery('#filters-container').toggle();
-		var visible = jQuery('#filters-container').is(':visible');
-		if (visible) {
-			jQuery(this).addClass('on');
-			jQuery(this).removeClass('off');
+		jQuery( '#filters-toggle' ).data( 'ajaxing', true );
+		jQuery( '#filters-container' ).toggle();
+		var visible = jQuery( '#filters-container' ).is( ':visible' );
+		if ( visible ) {
+			jQuery( this ).addClass( 'on' );
+			jQuery( this ).removeClass( 'off' );
 		} else {
-			jQuery(this).addClass('off');
-			jQuery(this).removeClass('on');
+			jQuery( this ).addClass( 'off' );
+			jQuery( this ).removeClass( 'on' );
 		}
 		if (
 			( typeof ajaxurl !== 'undefined' ) &&
@@ -77,15 +78,15 @@ jQuery(document).ready(function(){
 				action : 'affiliates_set_option',
 				affiliates_ajax_nonce : affiliates_ajax_nonce,
 				key : 'show_filters',
-				value : JSON.stringify(visible)
+				value : JSON.stringify( visible )
 			};
-			jQuery.ajax({
+			jQuery.ajax( {
 				type   : 'POST',
 				async  : false,
 				url    : ajaxurl,
 				data   : data
-			});
+			} );
 		}
-		jQuery('#filters-toggle').data('ajaxing',false);
-	});
-});
+		jQuery( '#filters-toggle' ).data( 'ajaxing', false );
+	} );
+} );
