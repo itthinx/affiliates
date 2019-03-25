@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ad
 Requires at least: 4.0.0
 Tested up to: 5.1
 Requires PHP: 5.6.0
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -23,39 +23,25 @@ https://www.youtube.com/watch?v=0OPuMJeMAog
 A fresh and intuitive dashboard helps your partners to spread the word about your site, products and services easily.
 Affiliates can share links to any page on the website, using simple tools that are built into its dashboard.
 
-Designed to deliver an intuitive experience out of the box,
-it is ready for virtually any theme, even without customizations.
+Designed to deliver an intuitive experience out of the box, it is ready for virtually any theme, even without customizations.
 
-Yet you can refine the design and facilities provided for your affiliates even further,
-with its flexible template-based dashboard sections.
+Yet you can refine the design and facilities provided for your affiliates even further, with its flexible template-based dashboard sections.
 
 > You will find extensive information and detailed instructions in the [Documentation](http://docs.itthinx.com/document/affiliates/).
 
-Important features include an intuitive affiliate dashboard, automated affiliate registration
-and unlimited affiliate management sections. Affiliates can integrate with virtually any platform,
-including e-commerce, memberships, forms, lead generation, lead tracking and many more.
+Important features include an intuitive affiliate dashboard, automated affiliate registration and unlimited affiliate management sections. Affiliates can integrate with virtually any platform, including e-commerce, memberships, forms, lead generation, lead tracking and many more.
 
-Commissions on referred users are built-in,
-free and premium integrations with today's most popular e-commerce and other systems are available.
+Commissions on referred users are built-in, free and premium integrations with today's most popular e-commerce and other systems are available.
 
-The Affiliates plugin provides an affiliate system for sellers,
-shops, distributors, blogs, membership sites, microsites for product launches and many more.
-It allows to quickstart your affiliate program and start growing fast.
+The Affiliates plugin provides an affiliate system for sellers, shops, distributors, blogs, membership sites, microsites for product launches and many more. It allows to quickstart your affiliate program and start growing fast.
 
 It also provides a solid framework for developers, who wish to build customized solutions based on a sound data model.
 
-With unlimited affiliate program management tools available on the back end,
-its flexible affiliate dashboard templates, blocks and shortcodes,
-you can provide your affiliates with a really intuitive experience.
-Partners get the tools and information about their earnings and performance on the front end.
-There is everything you need to start an affiliate and growth marketing program.
+With unlimited affiliate program management tools available on the back end, its flexible affiliate dashboard templates, blocks and shortcodes, you can provide your affiliates with a really intuitive experience. Partners get the tools and information about their earnings and performance on the front end. There is everything you need to start an affiliate and growth marketing program.
 
-To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with
-**affiliate links**, the _Affiliates_ system is the most powerful free solution.
+To manage an **Affiliate Marketing** or **Partner Referral Program** and **track visits to your site** with **affiliate links**, the _Affiliates_ system is the most powerful free solution.
 
-The system is used to manage affiliates, create referrals and track visits to your site through affiliate links.
-Referrals are stored and attributed to an affiliate, for example if clients place orders on your site
-and you need to credit your affiliates.
+The system is used to manage affiliates, create referrals and track visits to your site through affiliate links. Referrals are stored and attributed to an affiliate, for example if clients place orders on your site and you need to credit your affiliates.
 
 ### Free Integrations and Extensions
 
@@ -112,14 +98,11 @@ Forms
 
 * Affiliates Dashboard
 
-    Fully integrates affiliate login, registration, statistictal overview, affiliate links and profile in a setup-free
-    dashboard. Available as block and shortcode and highly customizable using templates. Individual dashboard sections
-    are also available as blocks and shortcodes and can be customized using templates.
+    Fully integrates affiliate login, registration, statistictal overview, affiliate links and profile in a setup-free dashboard. Available as block and shortcode and highly customizable using templates. Individual dashboard sections are also available as blocks and shortcodes and can be customized using templates.
 
 * Real-time reporting
 
-    Referrals and affiliate link statistics are recorded and available instantly, as transactions are processed.
-    Integration with virtually any E-Commerce platform.
+    Referrals and affiliate link statistics are recorded and available instantly, as transactions are processed. Integration with virtually any E-Commerce platform.
 
 * Traffic Statistics
 
@@ -141,6 +124,10 @@ Forms
 
     Affiliates provides an API which makes it easily integratable with virtually any E-Commerce and Membership system.
 
+* Quick & Easy Installation
+
+    Upload/install and activate the plugin from your WordPress Dashboard.
+
 * Feedback is welcome
 
     Do you have feature requests or want to provide feedback? Please get in touch, the Affiliates plugins evolve with your needs.
@@ -154,10 +141,6 @@ Forms
     Your support of our work helps to make all versions even more awesome.
 
     Thank you!
-
-* Quick & Easy Installation
-
-    Upload/install and activate the plugin from your WordPress Dashboard.
 
 ### Documentation
 
@@ -369,6 +352,9 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 == Changelog ==
 
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
+
+= 4.0.3 =
+* Partial code and documentation revision and improvements
 
 = 4.0.2 =
 * Updated the Indonesian translation.
