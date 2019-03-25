@@ -354,7 +354,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
 = 4.0.3 =
-* Partial code and documentation revision and improvements
+* Code and documentation revision and improvements.
 
 = 4.0.2 =
 * Updated the Indonesian translation.

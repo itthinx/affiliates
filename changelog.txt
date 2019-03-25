@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.0.3 =
+* Code and documentation revision and improvements.
+
 = 4.0.2 =
 * Updated the Indonesian translation.
 * Updated the German translation.
