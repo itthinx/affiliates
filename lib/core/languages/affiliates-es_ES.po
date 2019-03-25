@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Español - España (es_ES)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-21 17:41+0100\n"
-"PO-Revision-Date: 2019-03-21 18:37+0100\n"
+"PO-Revision-Date: 2019-03-25 20:42+0100\n"
 "Last-Translator: itthinx.com; David Perez <david@closemarketing.es>\n"
 "Language-Team: itthinx.com; Closemarketing <david@closemarketing.es>\n"
 "Language: es_ES\n"
@@ -1598,7 +1598,7 @@ msgstr "No sé cómo borrar lo que no existe."
 
 #: lib/core/class-affiliates-notice.php:125
 msgid "I have already done that."
-msgstr ""
+msgstr "Ya lo he hecho."
 
 #: lib/core/affiliates-admin-hits-affiliate.php:592
 #: lib/core/affiliates-admin-hits-uri.php:474
