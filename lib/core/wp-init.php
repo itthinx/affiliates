@@ -934,7 +934,7 @@ function affiliates_parse_request( &$wp ) {
 		// affiliates-by-username uses this hook
 		$maybe_affiliate_id = intval( apply_filters( 'affiliates_parse_request_affiliate_id', $wp->query_vars[$pname], $affiliate_id ) );
 		if ( $maybe_affiliate_id > 0 && $maybe_affiliate_id !== $affiliate_id ) {
-			$maybe_affiliate_id = affiliates_check_affiliate_id_encoded( $maybe_affiliate_id );
+			$maybe_affiliate_id = affiliates_check_affiliate_id( $maybe_affiliate_id );
 			if ( $maybe_affiliate_id !== false ) {
 				$affiliate_id = $maybe_affiliate_id;
 			}

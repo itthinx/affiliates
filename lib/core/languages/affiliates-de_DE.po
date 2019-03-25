@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-18 14:18+0100\n"
-"PO-Revision-Date: 2019-02-18 14:28+0100\n"
+"POT-Creation-Date: 2019-03-21 17:41+0100\n"
+"PO-Revision-Date: 2019-03-21 17:43+0100\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -89,7 +89,7 @@ msgid_plural "%s items"
 msgstr[0] "%s Posten"
 msgstr[1] "%s Posten"
 
-#: lib/core/wp-init.php:1944
+#: lib/core/wp-init.php:1954
 msgid ""
 "<em>All time</em> includes data from any affiliates, including deleted "
 "affiliates."
@@ -97,7 +97,7 @@ msgstr ""
 "<em>Gesamte Zeit</em> umfasst Daten aller Partner, einschließlich gelöschten "
 "Partnern."
 
-#: lib/core/wp-init.php:1942
+#: lib/core/wp-init.php:1952
 msgid ""
 "<em>From operative affiliates:</em> includes affiliates that are currently "
 "active. This excludes affiliates whose dates are not currently valid as well "
@@ -107,7 +107,7 @@ msgstr ""
 "Dies schließt Partner aus deren Daten aktuell nicht gültig sind oder solche "
 "die gelöscht wurden."
 
-#: lib/core/wp-init.php:1943
+#: lib/core/wp-init.php:1953
 msgid ""
 "<em>From operative and non-operative affiliates:</em> excludes deleted "
 "affiliates."
@@ -115,7 +115,7 @@ msgstr ""
 "<em>Von operativen und nicht operativen Partnern:</em> dies schließt "
 "gelöschte Partner aus."
 
-#: lib/core/wp-init.php:1947
+#: lib/core/wp-init.php:1957
 msgid "<em>Hits</em> are HTTP requests for affiliate links."
 msgstr "<em>Treffer</em> sind HTTP Anfragen auf Partnerlinks."
 
@@ -127,12 +127,12 @@ msgstr ""
 "Mit <em>Ausstehend</em> werden neue Partner manuell zugelassen. <em>Aktiv</"
 "em> lässt neue Partner automatisch zu."
 
-#: lib/core/wp-init.php:1949
+#: lib/core/wp-init.php:1959
 msgid "<em>Referrals</em> are recording commissions and referral data."
 msgstr ""
 "<em>Transaktionen</em> zeichnen Kommissionen und Transaktionsdaten auf."
 
-#: lib/core/wp-init.php:1948
+#: lib/core/wp-init.php:1958
 msgid "<em>Visits</em> are unique and daily requests for affiliate links."
 msgstr "<em>Besuche</em> zeichnen tägliche Anfragen für Partnerlinks auf."
 
@@ -169,8 +169,8 @@ msgstr ""
 "gewähren sollen, ohne Notwendigkeit zur weiteren Überprüfung."
 
 #: lib/core/class-affiliates-registration.php:235
-#: lib/core/class-affiliates-shortcodes.php:1021
-#: lib/core/class-affiliates-shortcodes.php:1037
+#: lib/core/class-affiliates-shortcodes.php:1023
+#: lib/core/class-affiliates-shortcodes.php:1039
 msgid "<strong>ERROR</strong>"
 msgstr "<strong>FEHLER</strong>"
 
@@ -365,8 +365,8 @@ msgstr "Feld erstellen"
 msgid "Add a new affiliate"
 msgstr "Partner erstellen"
 
-#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1890
-#: lib/core/wp-init.php:1891
+#: lib/core/affiliates-admin-add-ons.php:253 lib/core/wp-init.php:1900
+#: lib/core/wp-init.php:1901
 msgid "Add-Ons"
 msgstr "Add-Ons"
 
@@ -469,7 +469,7 @@ msgstr "Partnerattribute für individuelle Kommissionsraten, Gutscheine, ..."
 msgid "Affiliate campaign management and tracking."
 msgstr "Partnerkampagnen und Tracking."
 
-#: lib/core/wp-init.php:1970
+#: lib/core/wp-init.php:1980
 msgid "Affiliate link"
 msgstr "Partnerlink"
 
@@ -493,13 +493,13 @@ msgstr "Partner aktualisiert."
 #: lib/core/dashboard/class-affiliates-dashboard-overview-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-profile-block.php:54
 #: lib/core/dashboard/class-affiliates-dashboard-registration-block.php:54
-#: lib/core/wp-init.php:1910 lib/core/wp-init.php:1911
-#: lib/core/wp-init.php:1932
+#: lib/core/wp-init.php:1920 lib/core/wp-init.php:1921
+#: lib/core/wp-init.php:1942
 msgid "Affiliates"
 msgstr "Partner"
 
-#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1795
-#: lib/core/wp-init.php:1796
+#: lib/core/affiliates-admin-hits-affiliate.php:188 lib/core/wp-init.php:1805
+#: lib/core/wp-init.php:1806
 msgid "Affiliates & Referrals"
 msgstr "Partner & Transaktionen"
 
@@ -597,7 +597,7 @@ msgstr "Affiliates Formidable Forms Integration"
 msgid "Affiliates Ninja Forms Integration"
 msgstr "Affiliates Ninja Forms Integration"
 
-#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1754
+#: lib/core/affiliates-admin.php:37 lib/core/wp-init.php:1764
 msgid "Affiliates Overview"
 msgstr "Partnerübersicht"
 
@@ -605,7 +605,7 @@ msgstr "Partnerübersicht"
 msgid "Affiliates Pro"
 msgstr "Affiliates Pro"
 
-#: lib/core/wp-init.php:1849
+#: lib/core/wp-init.php:1859
 msgid "Affiliates Settings"
 msgstr "Affiliates Einstellungen"
 
@@ -1545,7 +1545,7 @@ msgstr ""
 msgid "Haiti Gourde"
 msgstr ""
 
-#: lib/core/wp-init.php:1964
+#: lib/core/wp-init.php:1974
 msgid ""
 "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</"
 "strong> affiliates."
@@ -1898,7 +1898,7 @@ msgstr "Abmelden"
 msgid "Login"
 msgstr "Anmeldung"
 
-#: lib/core/wp-init.php:1625
+#: lib/core/wp-init.php:1635
 msgid "MD5"
 msgstr "MD5"
 
@@ -1935,8 +1935,8 @@ msgstr ""
 msgid "Maldives (Maldive Islands) Rufiyaa"
 msgstr ""
 
-#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1769
-#: lib/core/wp-init.php:1770
+#: lib/core/affiliates-admin-affiliates.php:311 lib/core/wp-init.php:1779
+#: lib/core/wp-init.php:1780
 msgid "Manage Affiliates"
 msgstr "Partner Verwalten"
 
@@ -2087,7 +2087,7 @@ msgstr ""
 msgid "Ninja Forms"
 msgstr "Ninja Forms"
 
-#: lib/core/wp-init.php:1624
+#: lib/core/wp-init.php:1634
 msgid "No encoding"
 msgstr "Keine Kodierung"
 
@@ -2115,7 +2115,7 @@ msgstr "Nichts"
 msgid "Norway Krone"
 msgstr ""
 
-#: lib/core/wp-init.php:1957
+#: lib/core/wp-init.php:1967
 msgid ""
 "Note that <em>deleted</em> affiliates are not literally deleted but marked "
 "as such so that data that has been collected will still be accesible."
@@ -2124,7 +2124,7 @@ msgstr ""
 "beibehalten."
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1875 lib/core/wp-init.php:1876
+#: lib/core/wp-init.php:1885 lib/core/wp-init.php:1886
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
@@ -2140,7 +2140,7 @@ msgstr ""
 msgid "Omitted"
 msgstr "Ausgelassen"
 
-#: lib/core/wp-init.php:1980
+#: lib/core/wp-init.php:1990
 msgid ""
 "Once a visitor has landed on your site through an affiliate link, referrals "
 "may be recorded and attributed to the affiliate."
@@ -2152,7 +2152,7 @@ msgstr ""
 msgid "Once you click the button, the hits will be deleted immediately."
 msgstr "Sobald sie den Button klicken werden die Treffer sofort gelöscht."
 
-#: lib/core/wp-init.php:2028
+#: lib/core/wp-init.php:2038
 msgid "Online documentation"
 msgstr "Online-Dokumentation"
 
@@ -2301,12 +2301,12 @@ msgstr ""
 "Integrationen zu bekommen."
 
 #: lib/core/class-affiliates-registration.php:237
-#: lib/core/class-affiliates-shortcodes.php:1023
+#: lib/core/class-affiliates-shortcodes.php:1025
 #, php-format
 msgid "Please fill out the field <em>%s</em>."
 msgstr "Bitte geben Sie etwas an für das Feld <em>%s</em>."
 
-#: lib/core/wp-init.php:2050
+#: lib/core/wp-init.php:2060
 #, php-format
 msgid ""
 "Please give it a <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
@@ -2457,7 +2457,7 @@ msgstr "Empfehlungs-Zeitbegrenzung"
 #: lib/core/affiliates-admin-referrals.php:267
 #: lib/core/affiliates-admin.php:487 lib/core/class-affiliates-settings.php:62
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:97
-#: lib/core/wp-init.php:1821 lib/core/wp-init.php:1822
+#: lib/core/wp-init.php:1831 lib/core/wp-init.php:1832
 msgid "Referrals"
 msgstr "Transaktionen"
 
@@ -2527,7 +2527,7 @@ msgstr "Partner löschen"
 msgid "Remove this referral? This action can not be undone."
 msgstr "Diese Transaktion löschen? Dies kann nicht rückgängig gemacht werden."
 
-#: lib/core/class-affiliates-shortcodes.php:1128
+#: lib/core/class-affiliates-shortcodes.php:1147
 #, php-format
 msgid "Repeat %s"
 msgstr "Wiederhole %s"
@@ -2600,11 +2600,11 @@ msgstr ""
 #: lib/core/class-affiliates-settings-network.php:79
 #: lib/core/class-affiliates-settings-referrals.php:185
 #: lib/core/class-affiliates-settings-registration.php:264
-#: lib/core/class-affiliates-shortcodes.php:1147
+#: lib/core/class-affiliates-shortcodes.php:1166
 msgid "Save"
 msgstr "Speichern"
 
-#: lib/core/class-affiliates-shortcodes.php:1065
+#: lib/core/class-affiliates-shortcodes.php:1067
 msgid "Saved"
 msgstr "Gespeichert"
 
@@ -2643,7 +2643,7 @@ msgstr "Status auf Aktiv setzen"
 msgid "Set status to Pending"
 msgstr "Status auf Ausstehend setzen"
 
-#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1850
+#: lib/core/class-affiliates-settings.php:187 lib/core/wp-init.php:1860
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -2786,7 +2786,7 @@ msgstr "Seite mit den Bedingungen: <em>%s</em>"
 msgid "Thailand Baht"
 msgstr ""
 
-#: lib/core/wp-init.php:2047
+#: lib/core/wp-init.php:2057
 msgid ""
 "Thank you for using the <a style=\"text-decoration:none;\" href=\"http://www."
 "itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> plugin by "
@@ -2857,7 +2857,7 @@ msgstr ""
 "vorgeschlagene Name ist <em>nicht gültig</em>. Nur kleine Buchstaben und der "
 "Unterstrich _ darf darin vorkommen."
 
-#: lib/core/wp-init.php:1952
+#: lib/core/wp-init.php:1962
 msgid ""
 "The Affiliates plugin provides the <em>Affiliates Contact</em> widget that "
 "can be used to record lead referrals."
@@ -2903,12 +2903,10 @@ msgid "The earnings period for the amounts earned."
 msgstr "Der Zeitraum für die erworbenen Einkünfte."
 
 #: lib/core/class-affiliates-settings-registration.php:202
-msgid ""
-"The following fields are provided on the affiliate registration form "
-"rendered by the <code>[affiliates_registration]</code> shortcode."
+msgid "The following fields are provided on the affiliate registration form."
 msgstr ""
-"Die folgenden Felder werden auf dem Formular dass der "
-"<code>[affiliates_registration]</code> Shortcode anzeigt verwendet."
+"Die folgenden Felder werden auf dem Registrierungsformular für Partner "
+"angezeigt."
 
 #: lib/core/class-affiliates-robot-cleaner.php:193
 msgid "The following matching hits have been found and can be cleaned up."
@@ -2932,12 +2930,12 @@ msgstr ""
 "sprechen den Partnern die jeweiligen Kommissionen für empfohlene "
 "Kundeneinkäufe oder für Plattform-spezifische Aktionen zu."
 
-#: lib/core/class-affiliates-shortcodes.php:1039
+#: lib/core/class-affiliates-shortcodes.php:1041
 #, php-format
 msgid "The passwords for the field <em>%s</em> do not match."
 msgstr "Die Passwörter für das Feld <em>%s</em> stimmen nicht überein."
 
-#: lib/core/wp-init.php:875
+#: lib/core/wp-init.php:879
 msgid "The plugin is configured to delete its data on deactivation."
 msgstr ""
 "Das Plugin ist so konfiguriert, dass seine Daten bei der Deaktivierung "
@@ -3137,7 +3135,7 @@ msgstr ""
 "Diese light Integration eignet sich zur Verwendung mit dem <a href=\"http://"
 "wordpress.org/plugins/affiliates/\">Affiliates</a> Plugin."
 
-#: lib/core/wp-init.php:1973
+#: lib/core/wp-init.php:1983
 msgid ""
 "This link uses a parameter in the URL to record visits you receive through "
 "your affiliates."
@@ -3323,7 +3321,7 @@ msgstr ""
 msgid "This referral does not exist."
 msgstr "Diese Transaktion existiert nicht."
 
-#: lib/core/wp-init.php:1940
+#: lib/core/wp-init.php:1950
 msgid "This screen offers an overview with basic statistical data."
 msgstr ""
 "Diese Ansicht bietet eine Übersicht mit grundlegenden statistischen Daten."
@@ -3374,7 +3372,7 @@ msgid ""
 msgstr ""
 "Um als Beispiel zu dienen wie man die API des Affiliates Plugins verwendet"
 
-#: lib/core/wp-init.php:1953
+#: lib/core/wp-init.php:1963
 #, php-format
 msgid ""
 "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
@@ -3391,13 +3389,13 @@ msgstr ""
 msgid "Total"
 msgstr "Summe"
 
-#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1835
-#: lib/core/wp-init.php:1836
+#: lib/core/class-affiliates-totals.php:167 lib/core/wp-init.php:1845
+#: lib/core/wp-init.php:1846
 msgid "Totals"
 msgstr "Summen"
 
-#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1808
-#: lib/core/wp-init.php:1809
+#: lib/core/affiliates-admin-hits-uri.php:237 lib/core/wp-init.php:1818
+#: lib/core/wp-init.php:1819
 msgid "Traffic"
 msgstr "Verkehr"
 
@@ -3508,8 +3506,8 @@ msgstr ""
 msgid "User Agent"
 msgstr "User-Agent"
 
-#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1862
-#: lib/core/wp-init.php:1863
+#: lib/core/affiliates-admin-user-registration.php:35 lib/core/wp-init.php:1872
+#: lib/core/wp-init.php:1873
 msgid "User Registration"
 msgstr "Nutzerregistrierung"
 
@@ -3610,12 +3608,12 @@ msgstr "Besucher"
 msgid "Visits"
 msgstr "Besuche"
 
-#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1782
-#: lib/core/wp-init.php:1783
+#: lib/core/affiliates-admin-hits.php:164 lib/core/wp-init.php:1792
+#: lib/core/wp-init.php:1793
 msgid "Visits & Referrals"
 msgstr "Besuche & Transaktionen"
 
-#: lib/core/wp-init.php:871
+#: lib/core/wp-init.php:875
 msgid "Warning!"
 msgstr "Warnung!"
 
@@ -3734,7 +3732,7 @@ msgstr ""
 "Sie können die Seitengenerierung verwenden um einen Partnerbereich für ihre "
 "Partner zu erstellen."
 
-#: lib/core/wp-init.php:1975
+#: lib/core/wp-init.php:1985
 #, php-format
 msgid "You may also append the ?%s=... part to links to your posts."
 msgstr "Sie können auch den Teil ?%s=... zu Links hinzufügen."

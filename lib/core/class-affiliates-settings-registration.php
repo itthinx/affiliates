@@ -143,34 +143,34 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo
 			'<form action="" name="options" method="post">' .
 			'<div>' .
-			'<h3>' . __( 'Affiliate Registration', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Affiliate Registration', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="registration" type="checkbox" ' . ( $registration ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
-			__( 'Allow affiliate registration', 'affiliates' ) .
+			esc_html__( 'Allow affiliate registration', 'affiliates' ) .
 			'</label>' .
 			'</p>';
 
 		echo
 			'<p>' .
 			'<label>' .
-			__( 'Status', 'affiliates' ) .
+			esc_html__( 'Status', 'affiliates' ) .
 			' ' .
 			'<select name="affiliate_status">' .
 			sprintf( '<option value="active" %s>', $affiliate_status == 'active' ? ' selected="selected" ' : '' ) .
-			__( 'Active', 'affiliates' ) .
+			esc_html__( 'Active', 'affiliates' ) .
 			'</option>' .
 			sprintf( '<option value="pending" %s>', $affiliate_status == 'pending' ? ' selected="selected" ' : '' ) .
-			__( 'Pending', 'affiliates' ) .
+			esc_html__( 'Pending', 'affiliates' ) .
 			'</option>' .
 			'</select>' .
 			'</label>';
 		echo '<br/>';
 		echo '<span class="description">';
-		echo __( 'This determines if new affiliate applications require manual approval or whether they are accepted automatically.', 'affiliates' );
+		esc_html_e( 'This determines if new affiliate applications require manual approval or whether they are accepted automatically.', 'affiliates' );
 		echo ' ';
-		echo __( '<em>Pending</em> will require manual approval of new affiliates. <em>Active</em> will accept new affiliates automatically.', 'affiliates' );
+		echo wp_kses( __( '<em>Pending</em> will require manual approval of new affiliates. <em>Active</em> will accept new affiliates automatically.', 'affiliates' ), array( 'em' => array() ) );
 		echo '</span>';
 		echo '</p>';
 
@@ -199,7 +199,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		// registration fields
 		echo '<h3>' . __( 'Affiliate Registration Form', 'affiliates' ) . '</h3>';
 		echo '<p class="description">';
-		echo __( 'The following fields are provided on the affiliate registration form rendered by the <code>[affiliates_registration]</code> shortcode.', 'affiliates' );
+		esc_html_e( 'The following fields are provided on the affiliate registration form.', 'affiliates' );
 		echo '</p>';
 		$registration_fields = get_option( 'aff_registration_fields', self::$default_fields );
 		echo '<div id="registration-fields">';
@@ -207,16 +207,16 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '<thead>';
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Enabled', 'affiliates' );
+		esc_html_e( 'Enabled', 'affiliates' );
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Field Name', 'affiliates' );
+		esc_html_e( 'Field Name', 'affiliates' );
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Field Label', 'affiliates' );
+		esc_html_e( 'Field Label', 'affiliates' );
 		echo '</th>';
 		echo '<th>';
-		echo __( 'Required', 'affiliates' );
+		esc_html_e( 'Required', 'affiliates' );
 		echo '</th>';
 		echo '<tr>';
 		echo '<th>';
