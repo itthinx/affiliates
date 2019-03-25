@@ -355,6 +355,8 @@ The full changelog is available at [changelog.txt](https://github.com/itthinx/af
 
 = 4.0.3 =
 * Code and documentation revision and improvements.
+* Updated Spanish translation.
+* Simplified Add-ons section.
 
 = 4.0.2 =
 * Updated the Indonesian translation.
