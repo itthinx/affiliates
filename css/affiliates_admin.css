@@ -1,18 +1,18 @@
 /**
  * affiliates_admin.css
- * 
+ *
  * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
@@ -198,11 +198,11 @@ div.details-hits {
 	width: 15%;
 }
 .referrals-overview table.referrals th.post_title {
-  width: 30%;
+	width: 30%;
 }
 
 .referrals-overview table.referrals th.name {
-  width: 10%;
+	width: 10%;
 }
 
 .referrals-overview table.referral-data td.referral-data-title {
@@ -210,7 +210,7 @@ div.details-hits {
 }
 
 .referrals-overview table.referral-data td.referral-data-value {
-  width: 85%;
+	width: 85%;
 }
 
 .referrals-overview tr.details-referrals {
@@ -218,10 +218,10 @@ div.details-hits {
 }
 
 .referrals-overview td.post_title {
-  font-weight: bold;
+	font-weight: bold;
 }
 .referrals-overview td.referral-data-title {
-	font-size: 0.8em; 
+	font-size: 0.8em;
 	padding-left: 1em;
 	text-align: right;
 	border: none;
@@ -255,7 +255,6 @@ div.details-hits {
 .expanded-filter,
 .show-inoperative-filter,
 .show-deleted-filter {
-	/*padding-left: 1em;*/
 	padding-right: 5px;
 }
 
