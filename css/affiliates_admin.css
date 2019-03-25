@@ -488,6 +488,16 @@ li.add-ons:hover {
 	-o-transition: width 0.3s ease-out;
 	width: 272px;
 }
+.affiliates-admin-add-ons ul.add-ons li.add-on {
+	box-shadow: 3px 3px 4px #999;
+}
+.affiliates-admin-add-ons ul.add-ons li.add-on.affiliates-pro,
+.affiliates-admin-add-ons ul.add-ons li.add-on.affiliates-enterprise {
+	box-shadow: 3px 3px 4px #666;
+}
+.affiliates-admin-add-ons ul.feature-listing {
+	list-style: disc inside;
+}
 .referral-stats-container {
 	display: grid;
 	grid-columns: 50% 25% 25%;

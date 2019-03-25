@@ -135,11 +135,11 @@ function affiliates_admin_add_ons() {
 			'index'   => 20
 		),
 	);
-	usort( $entries, 'affiliates_admin_add_ons_sort' );
+	uasort( $entries, 'affiliates_admin_add_ons_sort' );
 
 	echo '<ul class="add-ons">';
 	foreach( $entries as $key => $entry ) {
-		echo '<li class="add-on">';
+		echo sprintf( '<li class="add-on %s">', esc_attr( $key ) );
 		echo sprintf( '<a href="%s">', $entry['url'] );
 		echo '<h3>';
 		echo sprintf( '<img src="%s"/>', $entry['image'] );
@@ -159,12 +159,7 @@ function affiliates_admin_add_ons() {
 	echo esc_html__( 'Affiliates Pro', 'affiliates' );
 	echo '</h2>';
 
-	echo sprintf( '<img class="screenshot" alt="Affiliates Pro Menu" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Affiliates Pro Menu-small.png' );
-	echo sprintf( '<img class="screenshot" alt="Banners" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Banners-small.png' );
-	echo sprintf( '<img class="screenshot" alt="Notifications" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Notifications - Affiliate Registration-small.png' );
-	echo sprintf( '<img class="screenshot" alt="Totals" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Totals-small.png' );
-
-	echo '<ul>';
+	echo '<ul class="feature-listing">';
 
 	echo '<li>';
 	echo __( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
@@ -222,13 +217,7 @@ function affiliates_admin_add_ons() {
 	echo esc_html__( 'Affiliates Enterprise', 'affiliates' );
 	echo '</h2>';
 
-	echo sprintf( '<img class="screenshot enterprise" alt="Multiple Tiers" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Multi-tiered Referrals-small.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Banners" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Specific Level Rates-small.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Notifications" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/Tiers-small.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Campaigns" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/campaigns.png' );
-	echo sprintf( '<img class="screenshot enterprise" alt="Campaigns Administration" src="%s"/>', AFFILIATES_PLUGIN_URL . 'images/add-ons/campaigns-admin.png' );
-
-	echo '<ul>';
+	echo '<ul class="feature-listing">';
 
 	echo '<li>';
 	echo __( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
