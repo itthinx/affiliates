@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin-affiliates-edit.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.1.0
@@ -32,13 +32,13 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	global $wpdb;
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$affiliate = affiliates_get_affiliate( intval( $affiliate_id ) );
 
 	if ( empty( $affiliate ) ) {
-		wp_die( __( 'No such affiliate.', 'affiliates' ) );
+		wp_die( esc_html__( 'No such affiliate.', 'affiliates' ) );
 	}
 
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
@@ -61,11 +61,11 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 			require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
 			$registration_fields = Affiliates_Settings_Registration::get_fields();
 			// remove fields not stored as user meta
-			foreach( Affiliates_Registration::get_skip_meta_fields() as $key ) {
+			foreach ( Affiliates_Registration::get_skip_meta_fields() as $key ) {
 				unset( $registration_fields[$key] );
 			}
 			// render user meta
-			foreach( $registration_fields as $name => $field ) {
+			foreach ( $registration_fields as $name => $field ) {
 				if ( $field['enabled'] ) {
 					$affiliate_user_fields .= '<div class="field">';
 					$affiliate_user_fields .= '<label>';
@@ -99,7 +99,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	$notice = '';
 	if ( isset( $_POST['errors'] ) && is_array( $_POST['errors'] ) ) {
 		$notice_msg = array();
-		foreach( $_POST['errors'] as $error ) {
+		foreach ( $_POST['errors'] as $error ) {
 			switch ( $error ) {
 				case AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY :
 					$notice_msg[] = __( 'Name can not be empty.', 'affiliates' );
@@ -121,7 +121,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="manage-affiliates">' .
 		'<div>' .
 			'<h1>' .
-				__( 'Edit an affiliate', 'affiliates' ) .
+				esc_html__( 'Edit an affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
 
@@ -134,7 +134,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label first required">' .
 		'<span class="label">' .
-		__( 'Name', 'affiliates' ) .
+		esc_html__( 'Name', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="name-field" name="name-field" class="namefield" type="text" value="' . esc_attr( stripslashes( $name ) ) . '"/>' .
@@ -144,7 +144,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Email', 'affiliates' ) .
+		esc_html__( 'Email', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="email-field" name="email-field" class="emailfield" type="text" value="' . esc_attr( $email ) . '"/>' .
@@ -158,7 +158,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Username', 'affiliates' ) .
+		esc_html__( 'Username', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="user-field" name="user-field" class="userfield" type="text" autocomplete="off" value="' . esc_attr( stripslashes( $user_login ) ) . '"/>' .
@@ -172,7 +172,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'From', 'affiliates' ) .
+		esc_html__( 'From', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="from-date-field" name="from-date-field" class="datefield" type="text" value="' . esc_attr( $from_date ) . '"/>' .
@@ -182,7 +182,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Until', 'affiliates' ) .
+		esc_html__( 'Until', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="thru-date-field" name="thru-date-field" class="datefield" type="text" value="' . esc_attr( $thru_date ) . '"/>' .
@@ -193,7 +193,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Status', 'affiliates' ) .
+		esc_html__( 'Status', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<select id="status" name="status" class="datafield">' .
@@ -223,10 +223,11 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 /**
  * Handle edit form submission.
+ *
  * @return int error_value:
- * 		AFFILIATES_ADMIN_AFFILIATES_NO_ERROR  -- No errors
- * 		AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY
- * 		AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME
+ *         AFFILIATES_ADMIN_AFFILIATES_NO_ERROR  -- No errors
+ *         AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY
+ *         AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME
  */
 function affiliates_admin_affiliates_edit_submit() {
 
@@ -234,11 +235,11 @@ function affiliates_admin_affiliates_edit_submit() {
 	$result = array();
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE],  'affiliates-edit' ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -254,7 +255,7 @@ function affiliates_admin_affiliates_edit_submit() {
 	}
 
 	if ( empty( $affiliate ) ) {
-		wp_die( __( 'No such affiliate.', 'affiliates' ) );
+		wp_die( esc_html__( 'No such affiliate.', 'affiliates' ) );
 	}
 
 	// field validation
@@ -330,7 +331,7 @@ function affiliates_admin_affiliates_edit_submit() {
 		$sets = array();
 		$values = array();
 		$j = 0;
-		foreach( $data as $key => $value ) {
+		foreach ( $data as $key => $value ) {
 			$sets[] = $key . ' = ' . $formats[$j];
 			if ( $value ) { // (*)
 				$values[] = $value;
@@ -380,6 +381,7 @@ function affiliates_admin_affiliates_edit_submit() {
 
 /**
  * Handle change bulk status to active
+ *
  * @return array of updated affiliates' ids
  */
 function affiliates_admin_affiliates_bulk_status_active_submit() {
@@ -429,6 +431,7 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 
 /**
  * Handle change bulk status to pending
+ *
  * @return array of updated affiliates' ids
  */
 function affiliates_admin_affiliates_bulk_status_pending_submit() {

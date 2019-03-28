@@ -20,7 +20,7 @@
 
 jQuery( document ).ready( function() {
 
-	var aff_reg_field_count = jQuery('#registration-fields > table > tbody tr' ).length;
+	var aff_reg_field_count = jQuery( '#registration-fields > table > tbody tr' ).length;
 
 	jQuery( "#registration-fields" ).on( 'click', 'button.field-add', function( event ) {
 		event.stopPropagation();
@@ -28,23 +28,23 @@ jQuery( document ).ready( function() {
 		row =
 		'<tr>' +
 		'<td>' +
-		'<input type="checkbox" name="field-enabled['+i+']" checked="checked" />' +
+		'<input type="checkbox" name="field-enabled[' + i + ']" checked="checked" />' +
 		'</td>' +
 		'<td>' +
-		'<input type="text" name="field-name['+i+']" value="" />' +
+		'<input type="text" name="field-name[' + i + ']" value="" />' +
 		'</td>' +
 		'<td>' +
-		'<input type="text" name="field-label['+i+']" value="" />' +
+		'<input type="text" name="field-label[' + i + ']" value="" />' +
 		'</td>' +
 		'<td>' +
-		'<input type="checkbox" name="field-required['+i+']" />' +
+		'<input type="checkbox" name="field-required[' + i + ']" />' +
 		'</td>' +
 		'<td>' +
-		'<input type="hidden" name="field-type['+i+']" value="text" />' +
-		'<button class="field-remove button" type="button" value="'+i+'">' + affiliates_field_choice_l12n.remove + '</button>' +
+		'<input type="hidden" name="field-type[' + i + ']" value="text" />' +
+		'<button class="field-remove button" type="button" value="' + i + '">' + affiliates_field_choice_l12n.remove + '</button>' +
 		'</td>' +
 		'</tr>';
-		jQuery('#registration-fields > table > tbody').append(row);
+		jQuery( '#registration-fields > table > tbody' ).append( row );
 	});
 
 	jQuery( "#registration-fields" ).on( 'click', 'button.field-remove', function( event ) {
@@ -57,7 +57,7 @@ jQuery( document ).ready( function() {
 		var row = jQuery( this ).parents( "tr:first" );
 		if ( jQuery( this ).is( ".field-up" ) ) {
 			var prev = row.prev();
-			row.insertBefore(prev);
+			row.insertBefore( prev );
 			row.find( 'input' ).each( function() {
 				var name = jQuery( this ).attr( 'name' );
 				var newName = name.replace( /\d+/, function( match, offset, string ) {
@@ -77,8 +77,8 @@ jQuery( document ).ready( function() {
 			row.insertAfter( next );
 			row.find( 'input' ).each( function() {
 				var name = jQuery( this ).attr( 'name' );
-				var newName = name.replace(/\d+/, function( match, offset, string ) {
-					return parseInt( match )+1;
+				var newName = name.replace( /\d+/, function( match, offset, string ) {
+					return parseInt( match ) + 1;
 				});
 				jQuery( this ).attr( 'name', newName );
 			} );

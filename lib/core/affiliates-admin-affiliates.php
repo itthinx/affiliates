@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin-affiliates.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
@@ -36,10 +36,10 @@ define( 'AFFILIATES_ADMIN_AFFILIATES_NO_ERROR', 001 );
 define( 'AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY', 002 );
 define( 'AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME', 003 );
 
-require_once( AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php' );
-require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-add.php' );
-require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-edit.php' );
-require_once( AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-remove.php' );
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
+require_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-add.php';
+require_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-edit.php';
+require_once AFFILIATES_CORE_LIB . '/affiliates-admin-affiliates-remove.php';
 
 /**
  * Affiliate table and action handling.
@@ -54,16 +54,16 @@ function affiliates_admin_affiliates() {
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	// @deprecated
-// 	if ( !$wp_rewrite->using_permalinks() ) {
-// 		$output .= '<p class="warning">' .
-// 			'* ' .
-// 			sprintf( __( 'Your site is not using pretty <a href="%s">permalinks</a>. You will only be able to use URL parameter based <span class="affiliate-link">affiliate links</span> but not pretty <span class="affiliate-permalink">affiliate permalinks</span>, unless you change your permalink settings.', 'affiliates' ), esc_url( get_admin_url( null, 'options-permalink.php') ) ) .
-// 			'</p>';
-// 	}
+	// if ( !$wp_rewrite->using_permalinks() ) {
+	// 		$output .= '<p class="warning">' .
+	// 			'* ' .
+	// 			sprintf( __( 'Your site is not using pretty <a href="%s">permalinks</a>. You will only be able to use URL parameter based <span class="affiliate-link">affiliate links</span> but not pretty <span class="affiliate-permalink">affiliate permalinks</span>, unless you change your permalink settings.', 'affiliates' ), esc_url( get_admin_url( null, 'options-permalink.php') ) ) .
+	// 			'</p>';
+	// 	}
 
 	$notice = '';
 
@@ -73,14 +73,14 @@ function affiliates_admin_affiliates() {
 	if ( isset( $_POST['action'] ) ) {
 		$notice_msg = '';
 		//  handle action submit - do it
-		switch( $_POST['action'] ) {
+		switch ( $_POST['action'] ) {
 			case 'add' :
 				$result = affiliates_admin_affiliates_add_submit();
 				if ( !empty( $result['errors'] ) ) {
 					$_POST['errors'] = $result['errors'];
 					return affiliates_admin_affiliates_add();
 				}
-				$notice_msg = __( 'Affiliate added.', 'affiliates' );
+				$notice_msg = esc_html__( 'Affiliate added.', 'affiliates' );
 				break;
 			case 'edit' :
 				$result = affiliates_admin_affiliates_edit_submit();
@@ -88,11 +88,11 @@ function affiliates_admin_affiliates() {
 					$_POST['errors'] = $result['errors'];
 					return affiliates_admin_affiliates_edit( $_POST['affiliate-id-field'] );
 				}
-				$notice_msg = __( 'Affiliate updated.', 'affiliates' );
+				$notice_msg = esc_html__( 'Affiliate updated.', 'affiliates' );
 				break;
 			case 'remove' :
 				affiliates_admin_affiliates_remove_submit();
-				$notice_msg = __( 'Affiliate removed.', 'affiliates' );
+				$notice_msg = esc_html__( 'Affiliate removed.', 'affiliates' );
 				break;
 			// bulk actions on affiliates: remove affiliates
 			case 'affiliate-action' :
@@ -123,7 +123,7 @@ function affiliates_admin_affiliates() {
 						}
 					}
 				}
-				$notice_msg = __( 'Bulk action executed', 'affiliates' );
+				$notice_msg = esc_html__( 'Bulk action executed', 'affiliates' );
 				break;
 		}
 		$notice .= '<div class="updated">';
@@ -131,7 +131,7 @@ function affiliates_admin_affiliates() {
 		$notice .= '</div>';
 	} else if ( isset ( $_GET['action'] ) ) {
 		// handle action request - show form
-		switch( $_GET['action'] ) {
+		switch ( $_GET['action'] ) {
 			case 'add' :
 				return affiliates_admin_affiliates_add();
 				break;
@@ -153,7 +153,7 @@ function affiliates_admin_affiliates() {
 	//
 	if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE], 'admin' ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -287,13 +287,13 @@ function affiliates_admin_affiliates() {
 
 	if ( isset( $_POST['row_count'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1], 'admin' ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
 		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2], 'admin' ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -308,7 +308,7 @@ function affiliates_admin_affiliates() {
 	$output .=
 		'<div class="manage-affiliates">' .
 		'<h1>' .
-		__( 'Manage Affiliates', 'affiliates' ) .
+		esc_html__( 'Manage Affiliates', 'affiliates' ) .
 		'</h1>';
 
 	$output .= $notice;
@@ -316,17 +316,17 @@ function affiliates_admin_affiliates() {
 	$show_filters = $affiliates_options->get_option( 'show_filters', true );
 
 	$output .= '<div class="manage">';
-	$output .= "<a title='" . __( 'Click to add a new affiliate', 'affiliates' ) . "' class='button add' href='" . esc_url( $current_url ) . "&action=add'><img class='icon' alt='" . __( 'Add', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/add.png'/><span class='label'>" . __( 'New Affiliate', 'affiliates') . "</span></a>";
+	$output .= "<a title='" . esc_html__( 'Click to add a new affiliate', 'affiliates' ) . "' class='button add' href='" . esc_url( $current_url ) . "&action=add'><img class='icon' alt='" . esc_html__( 'Add', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/add.png'/><span class='label'>" . esc_html__( 'New Affiliate', 'affiliates') . "</span></a>";
 	$output .= '<div style="float:right">';
 	$output .= sprintf( '<div class="button toggle-button %s" id="filters-toggle">', ( $show_filters ? 'on' : 'off' ) );
-	$output .= __( 'Filters', 'affiliates' );
+	$output .= esc_html__( 'Filters', 'affiliates' );
 	$output .= '</div>'; // #filters-toggle
 	$output .= '</div>'; // floating right
 	$output .= '</div>'; // .manage
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
 
-	if ($row_count <= 0) {
+	if ( $row_count <= 0 ) {
 		$row_count = $affiliates_options->get_option( 'affiliates_per_page', AFFILIATES_AFFILIATES_PER_PAGE );
 	} else {
 		$affiliates_options->update_option('affiliates_per_page', $row_count );
@@ -347,7 +347,7 @@ function affiliates_admin_affiliates() {
 		case 'user_login' :
 		case 'status' :
 			break;
-		default:
+		default :
 			$orderby = 'name';
 	}
 
@@ -361,7 +361,7 @@ function affiliates_admin_affiliates() {
 		case 'DESC' :
 			$switch_order = 'ASC';
 			break;
-		default:
+		default :
 			$order = 'ASC';
 			$switch_order = 'DESC';
 	}
@@ -495,13 +495,13 @@ function affiliates_admin_affiliates() {
 				'<label class="from-date-filter">' .
 				__( 'From', 'affiliates' ) .
 				' ' .
-				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
+				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="thru-date-filter">' .
 				__( 'Until', 'affiliates' ) .
 				' ' .
-				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
+				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>' .
 				'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
@@ -548,8 +548,8 @@ function affiliates_admin_affiliates() {
 		<div class="page-options right">
 			<form id="setrowcount" action="" method="post">
 				<div>
-					<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
-					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
+					<label for="row_count">' . __( 'Results per page', 'affiliates' ) . '</label>' .
+					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) . '" />
 					' . wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_NONCE_1, true, false ) . '
 					<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
 				</div>
@@ -558,8 +558,8 @@ function affiliates_admin_affiliates() {
 		';
 
 	if ( $paginate ) {
-		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
-		$pagination = new Affiliates_Pagination($count, null, $row_count);
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php';
+		$pagination = new Affiliates_Pagination( $count, null, $row_count );
 		$output .= '<form id="posts-filter" method="post" action="">';
 		$output .= '<div>';
 		$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_NONCE_2, true, false );
@@ -611,10 +611,9 @@ function affiliates_admin_affiliates() {
 	}
 	$num_columns++; // ID
 
-	$output .= '</tr>
-		</thead>
-		<tbody>
-		';
+	$output .= '</tr>';
+	$output .= '</thead>';
+	$output .= '<tbody>';
 
 	if ( count( $results ) > 0 ) {
 		for ( $i = 0; $i < count( $results ); $i++ ) {
@@ -625,7 +624,7 @@ function affiliates_admin_affiliates() {
 			$class_status = '';
 			if ( $is_deleted = ( strcmp( $result->status, 'deleted' ) == 0 ) ) {
 				$class_status = ' deleted ';
-				$name_suffix .= " " . __( '(removed)', 'affiliates' );
+				$name_suffix .= " " . esc_html__( '(removed)', 'affiliates' );
 			} else if ( strcmp( $result->status, 'pending' ) == 0 ) {
 				$class_status .= ' pending ';
 			}
@@ -633,7 +632,7 @@ function affiliates_admin_affiliates() {
 			$class_inoperative = '';
 			if ( $is_inoperative = ! ( ( $result->from_date <= $today ) && ( $result->thru_date == null || $result->thru_date >= $today ) ) ) {
 				$class_inoperative = ' inoperative ';
-				$name_suffix .= " " . __( '(inoperative)', 'affiliates' );
+				$name_suffix .= " " . esc_html__( '(inoperative)', 'affiliates' );
 			}
 
 			$output .= '<tr class="' . $class_status . $class_inoperative . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
@@ -652,7 +651,7 @@ function affiliates_admin_affiliates() {
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . "</td>";
 			$output .= "<td class='affiliate-email'>" . $result->email;
 			if ( isset( $result->email ) && isset( $result->user_email ) && strcmp( $result->email, $result->user_email ) !== 0 ) {
-				$output .= '<span title="' . sprintf( __( 'There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s', 'affiliates' ), $result->user_email ) . '" class="warning"> [&nbsp;!&nbsp]</span>';
+				$output .= '<span title="' . sprintf( esc_html__( 'There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s', 'affiliates' ), $result->user_email ) . '" class="warning"> [&nbsp;!&nbsp]</span>';
 			}
 			$output .= "</td>";
 			$output .= "<td class='affiliate-user-login'>";
@@ -687,15 +686,15 @@ function affiliates_admin_affiliates() {
 				': ' .
 				'<span class="affiliate-link-param">' . '?' . $pname . '=' . $encoded_id . '</span>';
 				// @deprecated
-// 				'<br/>' .
-// 				__( 'Pretty', 'affiliates' ) .
-// 				': ' .
-// 				'<span class="affiliate-permalink">' . get_bloginfo('url') . '/' . $pname . '/' . $encoded_id . '</span>' .
-// 				( $wp_rewrite->using_permalinks() ? '' :
-// 					' ' .
-// 					sprintf( '<span class="warning" title="%s" style="cursor:help;padding:0 2px;">*</span>', __( 'Pretty URLs only work with appropriate permalink settings, this is not a requirement and most affiliate links will be using the URL parameter anyhow when linking to different pages on the site.', 'affiliates' ) ) .
-// 					'</span>'
-// 				)
+				// '<br/>' .
+				// __( 'Pretty', 'affiliates' ) .
+				// ': ' .
+				// '<span class="affiliate-permalink">' . get_bloginfo('url') . '/' . $pname . '/' . $encoded_id . '</span>' .
+				// ( $wp_rewrite->using_permalinks() ? '' :
+				// ' ' .
+				// sprintf( '<span class="warning" title="%s" style="cursor:help;padding:0 2px;">*</span>', __( 'Pretty URLs only work with appropriate permalink settings, this is not a requirement and most affiliate links will be using the URL parameter anyhow when linking to different pages on the site.', 'affiliates' ) ) .
+				// '</span>'
+				// )
 			$output .= "</td>";
 			$output .= '</tr>';
 
@@ -736,14 +735,14 @@ function affiliates_admin_affiliates() {
 				$output .= '</tr>';
 				$output .= '<tbody>';
 				$output .= '<tr>';
-				foreach( $totals as $status => $total ) {
+				foreach ( $totals as $status => $total ) {
 					if ( $total ) {
 						$output .= '<td>';
 						$output .= '<ul>';
-						foreach( $total as $currency => $amount ) {
+						foreach ( $total as $currency => $amount ) {
 							$output .= '<li>';
 							$output .= sprintf(
-								__( '%1$s %2$s', 'affiliates' ), // translators: first is a three-letter currency code, second is a monetary amount
+								esc_html__( '%1$s %2$s', 'affiliates' ), // translators: first is a three-letter currency code, second is a monetary amount
 								esc_html( $currency ),
 								esc_html( affiliates_format_referral_amount( $amount, 'display' ) )
 							);
@@ -769,8 +768,8 @@ function affiliates_admin_affiliates() {
 	$output .= '</form>'; // #affiliates-action
 
 	if ( $paginate ) {
-		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
-		$pagination = new Affiliates_Pagination($count, null, $row_count);
+		require_once AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php';
+		$pagination = new Affiliates_Pagination( $count, null, $row_count );
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
 		$output .= '</div>';

@@ -162,45 +162,45 @@ function affiliates_admin_add_ons() {
 	echo '<ul class="feature-listing">';
 
 	echo '<li>';
-	echo __( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
+	echo esc_html__( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
 	echo ' ';
-	echo __( 'Please consult the Shop pages for an updated list of included integrations.', 'affiliates' );
+	echo esc_html__( 'Please consult the Shop pages for an updated list of included integrations.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Affiliate attributes for individual commission rates, coupons, ...', 'affiliates' );
+	echo esc_html__( 'Affiliate attributes for individual commission rates, coupons, ...', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Fixed, percentage or formula based commissions', 'affiliates' );
+	echo esc_html__( 'Fixed, percentage or formula based commissions', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Extended totals report with additional filters', 'affiliates' );
+	echo esc_html__( 'Extended totals report with additional filters', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Export Totals and Mass Payment File generation', 'affiliates' );
+	echo esc_html__( 'Export Totals and Mass Payment File generation', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Advanced shortcodes including banners and graphs', 'affiliates' );
+	echo esc_html__( 'Advanced shortcodes including banners and graphs', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Banner management', 'affiliates' );
+	echo esc_html__( 'Banner management', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Customizable affiliate registration email', 'affiliates' );
+	echo esc_html__( 'Customizable affiliate registration email', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Notifications including customizable messages', 'affiliates' );
+	echo esc_html__( 'Notifications including customizable messages', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Affiliate link generator form', 'affiliates' );
+	echo esc_html__( 'Affiliate link generator form', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
@@ -220,21 +220,21 @@ function affiliates_admin_add_ons() {
 	echo '<ul class="feature-listing">';
 
 	echo '<li>';
-	echo __( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
+	echo esc_html__( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Affiliate campaign management and tracking.', 'affiliates' );
+	echo esc_html__( 'Affiliate campaign management and tracking.', 'affiliates' );
 	echo ' ';
-	echo __( 'This allows affiliates to distinguish between income they generate by placing affiliate links on Facebook, from that generated through Twitter and other sources.', 'affiliates' );
+	echo esc_html__( 'This allows affiliates to distinguish between income they generate by placing affiliate links on Facebook, from that generated through Twitter and other sources.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Multi-tier capability with unlimited levels and rates.', 'affiliates' );
+	echo esc_html__( 'Multi-tier capability with unlimited levels and rates.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
-	echo __( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', 'affiliates' );
+	echo esc_html__( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', 'affiliates' );
 	echo '</li>';
 
 	echo '</ul>';
@@ -257,8 +257,8 @@ function affiliates_admin_add_ons() {
 /**
  * Custom sorting function.
  *
- * @param array $e1
- * @param array $e2
+ * @param array $e1 first element
+ * @param array $e2 second element
  *
  * @return int
  */

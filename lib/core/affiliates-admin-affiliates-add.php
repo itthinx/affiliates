@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin-affiliates-add.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.1.0
@@ -29,7 +29,7 @@ if ( !defined( 'ABSPATH' ) ) {
 function affiliates_admin_affiliates_add() {
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -46,16 +46,16 @@ function affiliates_admin_affiliates_add() {
 	$notice = '';
 	if ( isset( $_POST['errors'] ) && is_array( $_POST['errors'] ) ) {
 		$notice_msg = array();
-		foreach( $_POST['errors'] as $error ) {
+		foreach ( $_POST['errors'] as $error ) {
 			switch ( $error ) {
 				case AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY :
-					$notice_msg[] = __( 'Name can not be empty.', 'affiliates' );
+					$notice_msg[] = esc_html__( 'Name can not be empty.', 'affiliates' );
 					break;
 				case AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME :
-					$notice_msg[] = __( 'The username does not exist.', 'affiliates' );
+					$notice_msg[] = esc_html__( 'The username does not exist.', 'affiliates' );
 					break;
-				default:
-					$notice_msg[] = __( 'Something went wrong.', 'affiliates' );
+				default :
+					$notice_msg[] = esc_html__( 'Something went wrong.', 'affiliates' );
 					break;
 			}
 		}
@@ -68,7 +68,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="manage-affiliates">' .
 		'<div>' .
 			'<h1>' .
-				__( 'Add a new affiliate', 'affiliates' ) .
+				esc_html__( 'Add a new affiliate', 'affiliates' ) .
 			'</h1>' .
 		'</div>' .
 
@@ -80,7 +80,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label first required">' .
 		'<span class="label">' .
-		__( 'Name', 'affiliates' ) .
+		esc_html__( 'Name', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="name-field" name="name-field" class="namefield" type="text" value="' . esc_attr( stripslashes( $name ) ) . '"/>' .
@@ -90,7 +90,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Email', 'affiliates' ) .
+		esc_html__( 'Email', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="email-field" name="email-field" class="emailfield" type="text" value="' . esc_attr( $email ) . '"/>' .
@@ -103,7 +103,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Username', 'affiliates' ) .
+		esc_html__( 'Username', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="user-field" name="user-field" class="userfield" type="text" value="' . esc_attr( stripslashes( $user_login ) ) . '"/>' .
@@ -113,7 +113,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'From', 'affiliates' ) .
+		esc_html__( 'From', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="from-date-field" name="from-date-field" class="datefield" type="text" value="' . esc_attr( $from_date ) . '"/>' .
@@ -123,7 +123,7 @@ function affiliates_admin_affiliates_add() {
 		'<div class="field">' .
 		'<label class="field-label">' .
 		'<span class="label">' .
-		__( 'Until', 'affiliates' ) .
+		esc_html__( 'Until', 'affiliates' ) .
 		'</span>' .
 		' ' .
 		'<input id="thru-date-field" name="thru-date-field" class="datefield" type="text" value="' . esc_attr( $thru_date ) . '"/>' .
@@ -132,10 +132,10 @@ function affiliates_admin_affiliates_add() {
 
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-add', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" value="' . __( 'Add', 'affiliates' ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . esc_html__( 'Add', 'affiliates' ) . '"/>' .
 		'<input type="hidden" value="add" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', 'affiliates' ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . esc_html__( 'Cancel', 'affiliates' ) . '</a>' .
 		'</div>' .
 
 		'</div>' . // .affiliate.new
@@ -149,12 +149,12 @@ function affiliates_admin_affiliates_add() {
 
 /**
  * Handle add affiliate form submission.
- * 
+ *
  * Possible error values:
  * - AFFILIATES_ADMIN_AFFILIATES_NO_ERROR
  * - AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY
  * - AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME
- * 
+ *
  * @return array with errors
  */
 function affiliates_admin_affiliates_add_submit() {
@@ -163,11 +163,11 @@ function affiliates_admin_affiliates_add_submit() {
 	$result = array();
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-add' ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -237,12 +237,12 @@ function affiliates_admin_affiliates_add_submit() {
 
 		$data_ = array();
 		$formats_ = array();
-		foreach( $data as $key => $value ) { // (*)
+		foreach ( $data as $key => $value ) { // (*)
 			if ( $value ) {
 				$data_[$key] = $value;
 			}
 		}
-		foreach( $formats as $format ) { // (*)
+		foreach ( $formats as $format ) { // (*)
 			if ( $format != "NULL" ) {
 				$formats_[] = $format;
 			}

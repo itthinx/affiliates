@@ -124,7 +124,7 @@ var affiliates_dashboard_overview_graph = {};
 			}
 			$( '#legend-item-' + dataset ).on( 'hover click touchstart', function( event ) {
 				$( '.legend-item' ).removeClass( 'active' );
-				$.plot( $( "#" + container_id ), datasets[$(this).data('dataset')], options );
+				$.plot( $( "#" + container_id ), datasets[$( this ).data( 'dataset' )], options );
 				$( this ).addClass( 'active' );
 			} );
 		}
@@ -141,7 +141,7 @@ var affiliates_dashboard_overview_graph = {};
 					affiliates_dashboard_overview_graph.tooltip(
 						item.pageX,
 						item.pageY,
-						item.series.label + " : " + y +  '<br/>' + statsDates[x] 
+						item.series.label + " : " + y +  '<br/>' + statsDates[x]
 					);
 				}
 			} else {
