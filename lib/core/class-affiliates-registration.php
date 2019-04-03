@@ -379,7 +379,7 @@ class Affiliates_Registration {
 			$output .= '<form id="affiliates-registration-form" method="post">';
 			$output .= '<div>';
 
-			$output .= apply_filters( 'affiliates_registration_before_fields', '' );
+			$output .= apply_filters( 'affiliates_registration_before_fields', __( '<p>If you are not an affiliate, you can join the affiliate program here:</p>', 'affiliates' ) );
 			$output .= self::render_fields( $registration_fields );
 			$output .= apply_filters( 'affiliates_registration_after_fields', '' );
 

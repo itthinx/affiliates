@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 4.0.5 =
+* Fixed URLs in Overview and Banners sections for cases where WP is installed in a sub-folder.
+* Moved registration prompt string from registration template inside the registration form.
+
 = 4.0.4 =
 * Minor security improvements related to escaping output.
 * Fixed various PHP code validation issues.
