@@ -354,7 +354,7 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
 = 4.0.5 =
-* Moved registration prompt string from registration template inside the registration form.
+* Added conditional check for registration message in registration template.
 
 = 4.0.4 =
 * Minor security improvements related to escaping output.

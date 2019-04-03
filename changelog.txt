@@ -1,7 +1,7 @@
 == Affiliates - Changelog ==
 
 = 4.0.5 =
-* Moved registration prompt string from registration template inside the registration form.
+* Added conditional check for registration message in registration template.
 
 = 4.0.4 =
 * Minor security improvements related to escaping output.
