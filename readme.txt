@@ -354,7 +354,6 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
 = 4.0.5 =
-* Fixed URLs in Overview and Banners sections for cases where WP is installed in a sub-folder.
 * Moved registration prompt string from registration template inside the registration form.
 
 = 4.0.4 =
