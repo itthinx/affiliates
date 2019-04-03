@@ -39,9 +39,11 @@ if ( !defined( 'ABSPATH' ) ) {
 <?php if ( !affiliates_user_is_affiliate() ) : ?>
 	<h2><?php esc_html_e( 'Registration', 'affiliates' ); ?></h2>
 	<div class="dashboard-section dashboard-section-registration">
+	<?php if ( empty( $_POST['affiliates-registration-submit'] ) ) : ?>
 		<p>
 			<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
 		</p>
+	<?php endif; ?>
 		<?php echo Affiliates_Registration::render_form(); ?>
 	</div><?php // .dashboard-section-registration ?>
 <?php endif; ?>

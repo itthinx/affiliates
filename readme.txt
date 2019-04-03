@@ -353,6 +353,9 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
 
+= 4.0.5 =
+* Added conditional check for registration message in registration template.
+
 = 4.0.4 =
 * Minor security improvements related to escaping output.
 * Fixed various PHP code validation issues.
