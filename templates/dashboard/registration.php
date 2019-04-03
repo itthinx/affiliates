@@ -39,7 +39,7 @@ if ( !defined( 'ABSPATH' ) ) {
 <?php if ( !affiliates_user_is_affiliate() ) : ?>
 	<h2><?php esc_html_e( 'Registration', 'affiliates' ); ?></h2>
 	<div class="dashboard-section dashboard-section-registration">
-	<?php if ( empty( $_POST['affiliates-registration-submit'] ) ) : ?>
+	<?php if ( empty( $_POST['affiliates-registration-submit'] ) && !affiliates_user_is_affiliate_status( null, 'pending' ) ) : ?>
 		<p>
 			<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
 		</p>
