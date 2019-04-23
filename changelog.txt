@@ -12,6 +12,7 @@
 * Several code format improvements and replaced use of alias functions.
 * Fixed wrong page ID recorded for user registration referrals on checkout.
 * Fixed rendering issues in selects for names with slashes in the Traffic section.
+* Added a results count in the traffic section when there is no pagination.
 
 = 4.0.4 =
 * Minor security improvements related to escaping output.

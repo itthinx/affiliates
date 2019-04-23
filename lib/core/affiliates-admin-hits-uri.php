@@ -725,6 +725,12 @@ function affiliates_admin_hits_uri() {
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
 		$output .= '</div>';
+	} else {
+		if ( $count > 0 ) {
+			$output .= '<div class="tablenav bottom">';
+			$output .= '<span class="displaying-num">' . sprintf( _n( '1 item', '%s items', $count ), number_format_i18n( $count ) ) . '</span>';
+			$output .= '</div>';
+		}
 	}
 
 	$server_dtz = DateHelper::getServerDateTimeZone();
