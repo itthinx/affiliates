@@ -505,10 +505,10 @@ function affiliates_admin_hits_uri() {
 			if ( strlen( $c_name ) > 25 ) {
 				$c_name = substr_replace( $c_name, '&hellip;', 25 );
 			}
-			$opt = sprintf( '%s [%d]', $c_name, intval( $c->campaign_id ) );
+			$opt = sprintf( '%s [%d]', stripslashes( $c_name ), intval( $c->campaign_id ) );
 			if ( !$affiliate_id ) {
 				if ( $c_a = affiliates_get_affiliate( $c->affiliate_id ) ) {
-					$opt .= sprintf( ' &ndash; %s [%d]', $c_a['name'], intval( $c->affiliate_id ) );
+					$opt .= sprintf( ' &ndash; %s [%d]', stripslashes( $c_a['name'] ), intval( $c->affiliate_id ) );
 				}
 			}
 			$campaigns_select .= sprintf(
