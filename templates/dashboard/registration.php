@@ -44,7 +44,7 @@ if ( !defined( 'ABSPATH' ) ) {
 			<?php esc_html_e( 'If you are not an affiliate, you can join the affiliate program here:', 'affiliates' ); ?>
 		</p>
 	<?php endif; ?>
-		<?php echo Affiliates_Registration::render_form(); ?>
+		<?php echo Affiliates_Registration::render_form( array( 'show_login' => $section->get_show_login(), 'login_url' => $section->get_login_url() ) ); ?>
 	</div><?php // .dashboard-section-registration ?>
 <?php endif; ?>
 <style type="text/css">

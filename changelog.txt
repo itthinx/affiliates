@@ -5,6 +5,9 @@
 * Replaced uses of get_bloginfo( 'url' ) with home_url().
 * Cleaned up unused code.
 * Revised the affiliates_bloginfo() function and added optional filters.
+* Updated the dashboard registration section to avoid showing a redundant login link when the section is shown alongside the login section.
+* Added the options show_login and login_url to the dashboard registration section handler, used and customizable in the registration.php template.
+* Added additional escaping on some translated strings.
 
 = 4.0.4 =
 * Minor security improvements related to escaping output.

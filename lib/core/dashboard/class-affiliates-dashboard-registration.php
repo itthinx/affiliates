@@ -36,6 +36,20 @@ class Affiliates_Dashboard_Registration extends Affiliates_Dashboard_Section {
 	protected static $section_order = 200;
 
 	/**
+	 * Whether to show the login link after registration.
+	 *
+	 * @var boolean
+	 */
+	private $show_login = true;
+
+	/**
+	 * Can be used to provide an alternative login URL. This is shown after registration if $show_login is true.
+	 *
+	 * @var string login URL
+	 */
+	private $login_url = null;
+
+	/**
 	 * Initialization - nothing done here at current.
 	 */
 	public static function init() {
@@ -53,6 +67,19 @@ class Affiliates_Dashboard_Registration extends Affiliates_Dashboard_Section {
 		$this->template = 'dashboard/registration.php';
 		$this->require_user_id = false;
 		parent::__construct( $params );
+		if ( isset( $params['show_login'] ) ) {
+			$show_login = $params['show_login'];
+			switch ( $show_login ) {
+				case true :
+				case 'true' :
+				case 'yes' :
+					$show_login = true;
+					break;
+				default :
+					$show_login = false;
+			}
+			$this->show_login = $show_login;
+		}
 	}
 
 	public static function get_name() {
@@ -63,6 +90,12 @@ class Affiliates_Dashboard_Registration extends Affiliates_Dashboard_Section {
 		return 'registration';
 	}
 
+	public function get_show_login() {
+		return $this->show_login;
+	}
 
+	public function get_login_url() {
+		return $this->login_url;
+	}
 }
 Affiliates_Dashboard_Registration::init();
