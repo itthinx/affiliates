@@ -135,6 +135,9 @@ function affiliates_admin_hits_uri() {
 					$affiliates_options->update_option( 'hits_uri_campaign_id', $campaign_id );
 					$affiliate_id = $campaign->affiliate_id;
 					$affiliates_options->update_option( 'hits_uri_affiliate_id', $affiliate_id );
+				} else {
+					$campaign_id = null;
+					$affiliates_options->delete_option( 'hits_uri_campaign_id' );
 				}
 			} else if ( isset( $_POST['campaign_id'] ) ) { // empty && isset => '' => all
 				$campaign_id = null;
