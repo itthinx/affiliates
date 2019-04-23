@@ -115,7 +115,7 @@ class Affiliates_UI_Elements {
 					'<option value="%s" %s>%s [%d]</option>',
 					esc_attr( $affiliate['affiliate_id'] ),
 					$selected,
-					esc_html( $affiliate['name'] ),
+					esc_html( stripslashes( $affiliate['name'] ) ),
 					esc_html( $affiliate['affiliate_id'] )
 				);
 			}

@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ad
 Requires at least: 4.0.0
 Tested up to: 5.1
 Requires PHP: 5.6.0
-Stable tag: 4.0.4
+Stable tag: 4.0.5
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -352,6 +352,19 @@ See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more d
 == Changelog ==
 
 The full changelog is available at [changelog.txt](https://github.com/itthinx/affiliates/blob/master/changelog.txt).
+
+= 4.0.5 =
+* Added conditional check for registration message in registration template.
+* Replaced uses of get_bloginfo( 'url' ) with home_url().
+* Cleaned up unused code.
+* Revised the affiliates_bloginfo() function and added optional filters.
+* Updated the dashboard registration section to avoid showing a redundant login link when the section is shown alongside the login section.
+* Added the options show_login and login_url to the dashboard registration section handler, used and customizable in the registration.php template.
+* Added additional escaping on some translated strings.
+* Improved the overview dashboard section, user is taken to the home after logout.
+* Several code format improvements and replaced use of alias functions.
+* Fixed wrong page ID recorded for user registration referrals on checkout.
+* Fixed rendering issues in selects for names with slashes in the Traffic section.
 
 = 4.0.4 =
 * Minor security improvements related to escaping output.

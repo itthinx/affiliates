@@ -428,8 +428,8 @@ E-mail: [user_email]<br/>',
 	 * Builds an array of tokens and values based on the parameters provided.
 	 *
 	 * These tokens are added automatically:
-	 * - site_title
-	 * - site_url
+	 * - site_title obtained via get_bloginfo( 'blogname' )
+	 * - site_url obtained via home_url()
 	 *
 	 * token-string tuples are extracted from $params and included automatically.
 	 *
@@ -451,7 +451,7 @@ E-mail: [user_email]<br/>',
 			}
 		}
 		$tokens['site_title'] = wp_specialchars_decode( get_bloginfo( 'blogname' ), ENT_QUOTES );
-		$tokens['site_url']   = get_bloginfo( 'url' );
+		$tokens['site_url']   = home_url();
 		if ( isset( $params['user_id'] ) ) {
 			$user_id = intval( $params['user_id'] );
 			if ( ( $user = get_user_by( 'id', $user_id ) ) ) {

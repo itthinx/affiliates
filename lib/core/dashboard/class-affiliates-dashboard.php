@@ -206,7 +206,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 				),
 				Affiliates_Dashboard_Registration::get_key() => array(
 					'class' => 'Affiliates_Dashboard_Registration',
-					'parameters' => array()
+					'parameters' => array( 'show_login' => false )
 				)
 			);
 		} else {

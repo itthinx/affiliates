@@ -130,10 +130,14 @@ function affiliates_admin_hits_uri() {
 		if ( $campaigns ) {
 			if ( !empty( $_POST['campaign_id'] ) ) {
 				$campaign = new Affiliates_Campaign();
-				if ( $campaign_id = $campaign->read( intval( $_POST['campaign_id'] ) ) ) {
+				if ( $campaign->read( intval( $_POST['campaign_id'] ) ) ) {
+					$campaign_id = $campaign->campaign_id;
 					$affiliates_options->update_option( 'hits_uri_campaign_id', $campaign_id );
 					$affiliate_id = $campaign->affiliate_id;
 					$affiliates_options->update_option( 'hits_uri_affiliate_id', $affiliate_id );
+				} else {
+					$campaign_id = null;
+					$affiliates_options->delete_option( 'hits_uri_campaign_id' );
 				}
 			} else if ( isset( $_POST['campaign_id'] ) ) { // empty && isset => '' => all
 				$campaign_id = null;
@@ -505,10 +509,10 @@ function affiliates_admin_hits_uri() {
 			if ( strlen( $c_name ) > 25 ) {
 				$c_name = substr_replace( $c_name, '&hellip;', 25 );
 			}
-			$opt = sprintf( '%s [%d]', $c_name, intval( $c->campaign_id ) );
+			$opt = sprintf( '%s [%d]', stripslashes( $c_name ), intval( $c->campaign_id ) );
 			if ( !$affiliate_id ) {
 				if ( $c_a = affiliates_get_affiliate( $c->affiliate_id ) ) {
-					$opt .= sprintf( ' &ndash; %s [%d]', $c_a['name'], intval( $c->affiliate_id ) );
+					$opt .= sprintf( ' &ndash; %s [%d]', stripslashes( $c_a['name'] ), intval( $c->affiliate_id ) );
 				}
 			}
 			$campaigns_select .= sprintf(
@@ -721,6 +725,12 @@ function affiliates_admin_hits_uri() {
 		$output .= '<div class="tablenav bottom">';
 		$output .= $pagination->pagination( 'bottom' );
 		$output .= '</div>';
+	} else {
+		if ( $count > 0 ) {
+			$output .= '<div class="tablenav bottom">';
+			$output .= '<span class="displaying-num">' . sprintf( _n( '1 item', '%s items', $count ), number_format_i18n( $count ) ) . '</span>';
+			$output .= '</div>';
+		}
 	}
 
 	$server_dtz = DateHelper::getServerDateTimeZone();

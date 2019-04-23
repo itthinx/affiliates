@@ -84,8 +84,15 @@ class Affiliates_User_Registration {
 		if ( $user = get_user_by( 'id', $user_id ) ) {
 
 			$post_id = null;
-			if ( $post = get_post() ) {
-				$post_id = $post->ID;
+			// Notes on registrations made on WooCommerce checkout:
+			// Using global $post; and $post->ID just provides the ID of the first product in the shop.
+			// The same applies for $post = get_post(); and $post->ID.
+			// And also for $permalink = get_permalink(); and $post_id = url_to_postid( $permalink ) );
+			// The folllowing obtains the shop's ID on checkout and corresponding page IDs for normal other cases.
+			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$post_id = url_to_postid( $current_url );
+			if ( $post_id === 0 ) {
+				$post_id = null;
 			}
 
 			switch ( $type ) {

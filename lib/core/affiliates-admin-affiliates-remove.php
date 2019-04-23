@@ -159,7 +159,7 @@ function affiliates_admin_affiliates_bulk_remove() {
 		}
 	}
 
-	if ( sizeof( $affiliates ) == 0 ) {
+	if ( count( $affiliates ) === 0 ) {
 		wp_die( esc_html__( 'There are no affiliates.', 'affiliates' ) );
 	}
 
@@ -170,13 +170,13 @@ function affiliates_admin_affiliates_bulk_remove() {
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
 
 	$output =
-	'<div class="manage-affiliates">' .
-	'<div>' .
-	'<h1>' .
-	esc_html__( 'Remove affiliates', 'affiliates' ) .
-	'</h1>' .
-	'</div>' .
-	'<form id="remove-affiliate" action="' . esc_url( $current_url ) . '" method="post">';
+		'<div class="manage-affiliates">' .
+		'<div>' .
+		'<h1>' .
+		esc_html__( 'Remove affiliates', 'affiliates' ) .
+		'</h1>' .
+		'</div>' .
+		'<form id="remove-affiliate" action="' . esc_url( $current_url ) . '" method="post">';
 
 	$output .= '<p>';
 	$output .= esc_html__( 'Please confirm removal of the following affiliates. This action cannot be undone.', 'affiliates' );
@@ -185,7 +185,7 @@ function affiliates_admin_affiliates_bulk_remove() {
 	$output .= '<div class="affiliate remove">';
 
 	foreach ( $affiliates as $affiliate ) {
-		$output .= 	'<input id="affiliate_ids" name="affiliate_ids[]" type="hidden" value="' . esc_attr( intval( $affiliate['affiliate_id'] ) ) . '"/>';
+		$output .= '<input id="affiliate_ids" name="affiliate_ids[]" type="hidden" value="' . esc_attr( intval( $affiliate['affiliate_id'] ) ) . '"/>';
 
 		$affiliate_user_edit = '';
 		$affiliate_user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM $affiliates_users_table WHERE affiliate_id = %d", intval( $affiliate['affiliate_id'] ) ) );
@@ -197,12 +197,12 @@ function affiliates_admin_affiliates_bulk_remove() {
 		}
 
 		$output .= '<ul>' .
-		'<li>' . sprintf( esc_html__( 'Name : %s', 'affiliates' ), wp_filter_kses( $affiliate['name'] ) ) . '</li>' .
-		'<li>' . sprintf( esc_html__( 'Email : %s', 'affiliates' ), wp_filter_kses( $affiliate['email'] ) ) . '</li>' .
-		'<li>' . sprintf( esc_html__( 'Username : %s', 'affiliates' ), wp_filter_kses( $affiliate_user_edit ) ) . '</li>' .
-		'<li>' . sprintf( esc_html__( 'From : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
-		'<li>' . sprintf( esc_html__( 'Until : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
-		'</ul> ';
+			'<li>' . sprintf( esc_html__( 'Name : %s', 'affiliates' ), wp_filter_kses( $affiliate['name'] ) ) . '</li>' .
+			'<li>' . sprintf( esc_html__( 'Email : %s', 'affiliates' ), wp_filter_kses( $affiliate['email'] ) ) . '</li>' .
+			'<li>' . sprintf( esc_html__( 'Username : %s', 'affiliates' ), wp_filter_kses( $affiliate_user_edit ) ) . '</li>' .
+			'<li>' . sprintf( esc_html__( 'From : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
+			'<li>' . sprintf( esc_html__( 'Until : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
+			'</ul> ';
 		$output .= '<hr>';
 	}
 
@@ -211,13 +211,13 @@ function affiliates_admin_affiliates_bulk_remove() {
 	$output .= '<input type="hidden" name="confirm" value="1"/>';
 
 	$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE, true, false ) .
-	'<input class="button button-primary" type="submit" name="bulk" value="' . esc_html__( 'Remove', 'affiliates' ) . '"/>' .
-	' ' .
-	'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . esc_html__( 'Cancel', 'affiliates' ) . '</a>' .
-	'</div>' .
-	'</div>' . // .affiliate.remove
-	'</form>' .
-	'</div>'; // .manage-affiliates
+		'<input class="button button-primary" type="submit" name="bulk" value="' . esc_html__( 'Remove', 'affiliates' ) . '"/>' .
+		' ' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . esc_html__( 'Cancel', 'affiliates' ) . '</a>' .
+		'</div>' .
+		'</div>' . // .affiliate.remove
+		'</form>' .
+		'</div>'; // .manage-affiliates
 
 	echo $output;
 

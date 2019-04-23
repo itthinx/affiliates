@@ -49,7 +49,7 @@ if ( isset( $totals['amounts_by_currency'] ) ) {
 $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
 $encoded_id = affiliates_encode_affiliate_id( $section->get_affiliate_id() );
 $link_info  = wp_kses(
-	sprintf( __( 'You can also add <code>?%s=%s</code> to any link on %s to track referrals from your account.', 'affiliates' ), $pname, $encoded_id, esc_url( site_url() ) ),
+	sprintf( __( 'You can also add <code>?%s=%s</code> to any link on %s to track referrals from your account.', 'affiliates' ), $pname, $encoded_id, esc_url( home_url() ) ),
 	array( 'code' => array(), 'a' => array( 'href' => array() ) )
 );
 ?>
@@ -96,7 +96,7 @@ $link_info  = wp_kses(
 		</p>
 	</div>
 	<div class="affiliates-dashboard-logout">
-		<a href="<?php echo esc_url( wp_logout_url() ) ?>"><?php esc_html_e( 'Log out', 'affiliates' ); ?></a>
+		<a href="<?php echo esc_url( wp_logout_url( home_url() ) ) ?>"><?php esc_html_e( 'Log out', 'affiliates' ); ?></a>
 	</div>
 </div><?php // .dashboard-section-overview ?>
 

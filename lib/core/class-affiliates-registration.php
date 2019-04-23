@@ -288,25 +288,42 @@ class Affiliates_Registration {
 					$redirect     = isset( $options['redirect'] ) && ( $options['redirect'] === true || $options['redirect'] == 'true' );
 					$redirect_url =
 						empty( $_REQUEST['redirect_to'] ) ?
-						apply_filters( 'affiliates_registration_login_redirect_url', get_site_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) :
+						apply_filters( 'affiliates_registration_login_redirect_url', get_home_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) :
 						$_REQUEST['redirect_to'];
 
 					if ( $redirect && !$is_widget && !headers_sent() ) {
 						wp_safe_redirect( $redirect_url );
 						exit();
 					} else {
-						$output .= apply_filters( 'affiliates_thanks_sign_up_text', '<p>' . __( 'Thanks for signing up!', 'affiliates' ) . '</p>' );
+						$output .= apply_filters( 'affiliates_thanks_sign_up_text', '<p>' . esc_html__( 'Thanks for signing up!', 'affiliates' ) . '</p>' );
 						if ( !$is_logged_in ) {
-							$output .= apply_filters( 'affiliates_check_confirmation_text', '<p>' . __( 'Please check your email for the confirmation link.', 'affiliates' ) . '</p>' );
+							$output .= apply_filters( 'affiliates_check_confirmation_text', '<p>' . esc_html__( 'Please check your email for the confirmation link.', 'affiliates' ) . '</p>' );
 							if ( $redirect && !$is_widget ) {
 								$output .= '<script type="text/javascript">window.location="' . esc_url( $redirect_url ) . '";</script>';
 							} else {
-								$output .= '<p>';
-								$output .= sprintf(
-									__( 'Log in <a href="%s">here</a>.', 'affiliates' ),
-									esc_url( apply_filters( 'affiliates_registration_login_redirect_url', get_site_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' ) ) )
-								);
-								$output .= '</p>';
+								$show_login = isset( $options['show_login'] ) ? $options['show_login'] : false;
+								switch ( $show_login ) {
+									case true :
+									case 'true' :
+									case 'yes' :
+										$show_login = true;
+										break;
+									default :
+										$show_login = false;
+								}
+								if ( $show_login ) {
+									$login_url = !empty( $options['login_url'] ) ? $options['login_url'] : get_home_url( get_current_blog_id(), 'wp-login.php?checkemail=confirm' );
+									$login_url = apply_filters( 'affiliates_registration_login_redirect_url', $login_url );
+									$output .= '<p>';
+									$output .= wp_kses(
+										sprintf(
+											__( 'Log in <a href="%s">here</a>.', 'affiliates' ),
+											esc_url( $login_url )
+										),
+										array( 'a' => array( 'href' => array() ) )
+									);
+									$output .= '</p>';
+								}
 							}
 						} else {
 							if ( isset( $options['registered_profile_link_url'] ) ) {
@@ -315,7 +332,7 @@ class Affiliates_Registration {
 								if ( isset( $options['registered_profile_link_text'] ) ) {
 									$output .= wp_filter_kses( $options['registered_profile_link_text'] );
 								} else {
-									$output .= __( 'Access your profile', 'affiliates' );
+									$output .= esc_html__( 'Access your profile', 'affiliates' );
 								}
 								$output .= '</a>';
 								$output .= '</p>';
