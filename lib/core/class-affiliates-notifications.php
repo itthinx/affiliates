@@ -428,8 +428,8 @@ E-mail: [user_email]<br/>',
 	 * Builds an array of tokens and values based on the parameters provided.
 	 *
 	 * These tokens are added automatically:
-	 * - site_title
-	 * - site_url
+	 * - site_title obtained via get_bloginfo( 'blogname' )
+	 * - site_url obtained via home_url()
 	 *
 	 * token-string tuples are extracted from $params and included automatically.
 	 *
