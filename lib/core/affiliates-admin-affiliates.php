@@ -680,21 +680,11 @@ function affiliates_admin_affiliates() {
 			$output .=
 				__( 'Link', 'affiliates' ) .
 				': ' .
-				'<span class="affiliate-link">' . affiliates_get_affiliate_url( get_bloginfo('url'), $result->affiliate_id ) . '</span>' .
+				'<span class="affiliate-link">' . affiliates_get_affiliate_url( home_url(), $result->affiliate_id ) . '</span>' .
 				'<br/>' .
 				__( 'URL Parameter', 'affiliates' ) .
 				': ' .
 				'<span class="affiliate-link-param">' . '?' . $pname . '=' . $encoded_id . '</span>';
-				// @deprecated
-				// '<br/>' .
-				// __( 'Pretty', 'affiliates' ) .
-				// ': ' .
-				// '<span class="affiliate-permalink">' . get_bloginfo('url') . '/' . $pname . '/' . $encoded_id . '</span>' .
-				// ( $wp_rewrite->using_permalinks() ? '' :
-				// ' ' .
-				// sprintf( '<span class="warning" title="%s" style="cursor:help;padding:0 2px;">*</span>', __( 'Pretty URLs only work with appropriate permalink settings, this is not a requirement and most affiliate links will be using the URL parameter anyhow when linking to different pages on the site.', 'affiliates' ) ) .
-				// '</span>'
-				// )
 			$output .= "</td>";
 			$output .= '</tr>';
 

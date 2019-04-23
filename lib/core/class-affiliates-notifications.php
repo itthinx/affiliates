@@ -451,7 +451,7 @@ E-mail: [user_email]<br/>',
 			}
 		}
 		$tokens['site_title'] = wp_specialchars_decode( get_bloginfo( 'blogname' ), ENT_QUOTES );
-		$tokens['site_url']   = get_bloginfo( 'url' );
+		$tokens['site_url']   = home_url();
 		if ( isset( $params['user_id'] ) ) {
 			$user_id = intval( $params['user_id'] );
 			if ( ( $user = get_user_by( 'id', $user_id ) ) ) {

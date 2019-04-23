@@ -844,7 +844,7 @@ class Affiliates_Shortcodes {
 
 		switch( $url ) {
 			case '' :
-				$url = get_bloginfo( 'url' );
+				$url = home_url();
 				break;
 			case 'current' :
 				$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
@@ -1180,25 +1180,36 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Bloginfo shortcode - renders the blog info.
-	 * 
-	 * key - Site info to retrieve. Default empty (site name).
-	 * filter - How to filter what is retrieved.
-	 * 
+	 *
 	 * @param array $atts attributes
+	 *                    key    : Site info to retrieve. Default empty (site name).
+	 *                    filter : How to filter what is retrieved, accepts 'esc_html' (used by default), 'esc_attr' or 'esc_url'
 	 * @param string $content not used
 	 */
 	public static function affiliates_bloginfo( $atts, $content = null ) {
 
-		$output = '';
 		$options = shortcode_atts(
 			array(
-				'key' => ''
+				'key'    => '',
+				'filter' => 'esc_html'
 			),
 			$atts
 		);
-		extract( $options );
+		$key    = $options['key'];
+		$filter = $options['filter'];
 
-		return esc_html( get_bloginfo( $key ) );
+		$result = get_bloginfo( $key );
+		switch ( $filter ) {
+			case 'esc_attr' :
+				$result = esc_attr( $result );
+				break;
+			case 'esc_url' :
+				$result = esc_url( $result );
+				break;
+			default :
+				$result = esc_html( $result );
+		}
+		return $result;
 	}
 
 	/**
