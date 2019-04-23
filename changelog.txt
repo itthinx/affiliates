@@ -8,6 +8,7 @@
 * Updated the dashboard registration section to avoid showing a redundant login link when the section is shown alongside the login section.
 * Added the options show_login and login_url to the dashboard registration section handler, used and customizable in the registration.php template.
 * Added additional escaping on some translated strings.
+* Improved the overview dashboard section, user is taken to the home after logout.
 
 = 4.0.4 =
 * Minor security improvements related to escaping output.

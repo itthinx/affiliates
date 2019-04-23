@@ -96,7 +96,7 @@ $link_info  = wp_kses(
 		</p>
 	</div>
 	<div class="affiliates-dashboard-logout">
-		<a href="<?php echo esc_url( wp_logout_url() ) ?>"><?php esc_html_e( 'Log out', 'affiliates' ); ?></a>
+		<a href="<?php echo esc_url( wp_logout_url( home_url() ) ) ?>"><?php esc_html_e( 'Log out', 'affiliates' ); ?></a>
 	</div>
 </div><?php // .dashboard-section-overview ?>
 
