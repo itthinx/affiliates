@@ -159,7 +159,7 @@ function affiliates_admin_affiliates_bulk_remove() {
 		}
 	}
 
-	if ( count( $affiliates ) == 0 ) {
+	if ( count( $affiliates ) === 0 ) {
 		wp_die( esc_html__( 'There are no affiliates.', 'affiliates' ) );
 	}
 
