@@ -130,7 +130,8 @@ function affiliates_admin_hits_uri() {
 		if ( $campaigns ) {
 			if ( !empty( $_POST['campaign_id'] ) ) {
 				$campaign = new Affiliates_Campaign();
-				if ( $campaign_id = $campaign->read( intval( $_POST['campaign_id'] ) ) ) {
+				if ( $campaign->read( intval( $_POST['campaign_id'] ) ) ) {
+					$campaign_id = $campaign->campaign_id;
 					$affiliates_options->update_option( 'hits_uri_campaign_id', $campaign_id );
 					$affiliate_id = $campaign->affiliate_id;
 					$affiliates_options->update_option( 'hits_uri_affiliate_id', $affiliate_id );
