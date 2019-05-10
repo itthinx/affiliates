@@ -231,6 +231,12 @@ function affiliates_admin_hits_affiliate() {
 
 	$filters = " WHERE 1=%d ";
 	$filter_params = array( 1 );
+
+	if ( $affiliate_id ) {
+		$filters .= " AND a.affiliate_id = %d ";
+		$filter_params[] = intval( $affiliate_id );
+	}
+
 	// We now have the desired dates from the user's point of view, i.e. in her timezone.
 	// If supported, adjust the dates for the site's timezone:
 	if ( $from_date ) {
