@@ -230,8 +230,8 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		// Draw the graph ...
 		echo '<script type="text/javascript">';
+		echo 'document.addEventListener( "DOMContentLoaded", function() {';
 		echo 'if ( typeof jQuery !== "undefined" ) {';
-		echo 'jQuery( document ).ready( function() {';
 		echo 'if ( typeof affiliates_dashboard_overview_graph !== "undefined" ) {';
 		printf(
 			'affiliates_dashboard_overview_graph.render( "%s", "%s", %s, %s, %s, %s, %s, %s, %s );',
@@ -245,9 +245,9 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 			$ticks_json,
 			$dates_json
 		);
-		echo '}';
-		echo '} );';
-		echo '}';
+		echo '}'; // affiliates_dashboard_overview_graph
+		echo '}'; // jQuery
+		echo '} );'; // document....
 		echo '</script>';
 
 		parent::render();

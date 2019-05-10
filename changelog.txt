@@ -3,6 +3,7 @@
 = 4.1.0 =
 * WordPress 5.2 compatible.
 * Fixed a PHP Notice related to an uninitialized variable $valid_affiliate.
+* Fixed an issue with WordPress 5.2 where the Dashboard overview graph wouldn't be loaded.
 
 = 4.0.5 =
 * Added conditional check for registration message in registration template.
