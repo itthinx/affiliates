@@ -137,10 +137,10 @@ class Affiliates_UI_Elements {
 		$output = '';
 		if ( $script ) {
 			$output .= '<script type="text/javascript">';
-			$output .= 'if (typeof jQuery !== "undefined"){';
 			if ( $on_document_ready ) {
-				$output .= 'jQuery("document").ready(function(){';
+				$output .= 'document.addEventListener( "DOMContentLoaded", function() {';
 			}
+			$output .= 'if (typeof jQuery !== "undefined"){';
 			switch( self::$select ) {
 				case 'selectize' :
 					$output .= sprintf(
@@ -150,10 +150,10 @@ class Affiliates_UI_Elements {
 							);
 					break;
 			}
+			$output .= '}'; // typeof jQuery
 			if ( $on_document_ready ) {
 				$output .= '});';
 			}
-			$output .= '}'; // typeof jQuery
 			$output .= '</script>';
 		}
 		return $output;

@@ -754,6 +754,7 @@ class Affiliates_Registration {
 				intval( $user_id ) ) ) ) {
 			$affiliate_id = $affiliate_user->affiliate_id;
 
+			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
 				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",

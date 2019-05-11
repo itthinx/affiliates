@@ -1,5 +1,12 @@
 == Affiliates - Changelog ==
 
+= 4.1.0 =
+* WordPress 5.2 compatible.
+* Fixed a PHP Notice related to an uninitialized variable $valid_affiliate.
+* Fixed an issue where rendering the Dashboard overview graph is triggered too early (jQuery not yet available).
+* Guarded against a potential issue related to jQuery checks before loading our UI elements.
+* Fixed filtering by affiliate on the Affiliates & Referrals admin screen had no effect.
+
 = 4.0.5 =
 * Added conditional check for registration message in registration template.
 * Replaced uses of get_bloginfo( 'url' ) with home_url().
