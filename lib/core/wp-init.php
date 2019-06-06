@@ -943,7 +943,7 @@ function affiliates_parse_request( &$wp ) {
 		// @since 4.2.0
 		$maybe_affiliate_id = apply_filters(
 			'affiliates_parse_request_assess_affiliate_id',
-			$affiliate_id,
+			$maybe_affiliate_id,
 			$wp->query_vars[$pname],
 			$pname
 		);
