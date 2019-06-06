@@ -1,5 +1,11 @@
 == Affiliates - Changelog ==
 
+= 4.2.0 =
+* Improved the affiliate request evaluation procedure.
+* Added the affiliates_parse_request_assess_affiliate_id filter.
+* Deprecates the affiliates_parse_request_affiliate_id filter.
+* Tested with the latest stable (5.2.x) and alpha (5.3.x) versions of WordPress.
+
 = 4.1.0 =
 * WordPress 5.2 compatible.
 * Fixed a PHP Notice related to an uninitialized variable $valid_affiliate.
