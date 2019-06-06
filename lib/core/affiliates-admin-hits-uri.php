@@ -698,7 +698,7 @@ function affiliates_admin_hits_uri() {
 					if ( $campaign = Affiliates_Campaign::get_affiliate_campaign( $result->affiliate_id, $result->campaign_id ) ) {
 						$output .= sprintf(
 							'<td class="campaign">%s [%d]</td>',
-							esc_html( $campaign->name ),
+							esc_html( stripslashes( $campaign->name ) ),
 							intval( $result->campaign_id )
 						);
 					} else {
