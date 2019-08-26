@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-21 17:41+0100\n"
-"PO-Revision-Date: 2019-08-26 20:43+0200\n"
+"PO-Revision-Date: 2019-08-26 20:51+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
 "Language: de_DE\n"
@@ -1715,8 +1715,8 @@ msgid ""
 "URL parameter name, they <strong>NEED</strong> to update their affiliate "
 "links."
 msgstr ""
-"Sollten ihre Partner Links die auf dem vorigen Parameter basieren verwenden, "
-"dann <strong>müssen</strong> diese ihre Links aktualisieren."
+"Sollten deine Partner Links die auf dem vorigen Parameter basieren "
+"verwenden, dann <strong>müssen</strong> diese ihre Links aktualisieren."
 
 #: lib/core/affiliates-admin-affiliates.php:517
 msgid "Include active affiliates"
@@ -2037,7 +2037,7 @@ msgstr ""
 #: lib/core/class-affiliates-registration.php:787
 #, php-format
 msgid "New affiliate registration on your site %s:"
-msgstr "Neue Partnerregistrierung auf ihrer Seite %s:"
+msgstr "Neue Partnerregistrierung auf deiner Seite %s:"
 
 #: lib/core/class-affiliates-notifications.php:201
 msgid ""
@@ -2046,7 +2046,7 @@ msgid ""
 "Username: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>"
 msgstr ""
-"Neue Partnerregistrierung auf ihrer Seite [site_title]:<br/>\n"
+"Neue Partnerregistrierung auf deiner Seite [site_title]:<br/>\n"
 "<br/>\n"
 "Benutzername: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>"
@@ -2059,7 +2059,7 @@ msgid ""
 "E-mail: [user_email]<br/>\n"
 "This affiliate is pending approval.<br/>"
 msgstr ""
-"Neue Partnerregistrierung auf ihrer Seite [site_title]:<br/>\n"
+"Neue Partnerregistrierung auf deiner Seite [site_title]:<br/>\n"
 "<br/>\n"
 "Benutzername: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>\n"
@@ -2141,7 +2141,7 @@ msgid ""
 "Once a visitor has landed on your site through an affiliate link, referrals "
 "may be recorded and attributed to the affiliate."
 msgstr ""
-"Wenn ein Besucher über ein Partnerlink auf ihre Seite kommt, dann können "
+"Wenn ein Besucher über ein Partnerlink auf deine Seite kommt, dann können "
 "Transaktionen aufgezeichnet werden die dem Partner zugewiesen werden."
 
 #: lib/core/class-affiliates-robot-cleaner.php:227
@@ -2793,7 +2793,7 @@ msgstr ""
 
 #: lib/core/class-affiliates-registration.php:298
 msgid "Thanks for signing up!"
-msgstr "Vielen Dank für Ihre Anmeldung!"
+msgstr "Vielen Dank für deine Anmeldung!"
 
 #: lib/core/class-affiliates-contact.php:188
 msgid "Thanks!"
@@ -2912,7 +2912,7 @@ msgid ""
 "and pages."
 msgstr ""
 "Die generierte Seite beinhaltet Shortcodes des Affiliates Systems und kann "
-"als Standard oder Vorlage für Ihren Partnerbereich dienen."
+"als Standard oder Vorlage für deinen Partnerbereich dienen."
 
 #: lib/core/class-affiliates-settings-integrations.php:231
 msgid ""
@@ -3109,7 +3109,7 @@ msgid ""
 "This is intended as a guidance and you can safely hide this message when "
 "finished."
 msgstr ""
-"Dies ist lediglich zu ihrer Hilfe gedacht und kann nach Einrichtung "
+"Dies ist lediglich zu deiner Hilfe gedacht und kann nach Einrichtung "
 "verborgen werden."
 
 #: lib/core/class-affiliates-settings-referrals.php:108
@@ -3118,7 +3118,7 @@ msgid ""
 "affiliate link, for which a suggested referral will be valid."
 msgstr ""
 "Dies ist die Anzahl der Tage für die Transaktionen gültig sind, nachdem ein "
-"Besucher ihre Seite über ein Partnerlink besucht hat."
+"Besucher deine Seite über ein Partnerlink besucht hat."
 
 #: lib/core/class-affiliates-settings-integrations.php:46
 msgid ""
@@ -3141,7 +3141,7 @@ msgid ""
 "This option allows an affiliate to earn a commission on a transaction that "
 "involves the affiliate as a customer or lead."
 msgstr ""
-"Diese Option ermöglicht es ihren Partnern eine Kommission für Transaktionen "
+"Diese Option ermöglicht es deinen Partnern eine Kommission für Transaktionen "
 "zu erhalten, bei denen der Partner als Kunde oder Lead agiert."
 
 #: lib/core/class-affiliates-settings-network.php:73
@@ -3734,12 +3734,12 @@ msgid ""
 "You only need to install integrations with plugins that are actually used on "
 "the site."
 msgstr ""
-"Sie benötigen jeweils nur Integrationen mit Plugins die auch auf ihrer Seite "
+"Man benötigt jeweils nur Integrationen mit Plugins die auch auf der Seite "
 "benutzt werden."
 
 #: templates/dashboard/overview.php:87
 msgid "Your affiliate URL:"
-msgstr "Ihre Partner-URL:"
+msgstr "Deine Partner-URL:"
 
 #: lib/core/class-affiliates-registration.php:130
 msgid "Your affiliate application is pending approval."
