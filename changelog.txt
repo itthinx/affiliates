@@ -1,5 +1,11 @@
 == Affiliates - Changelog ==
 
+= 4.3.0 =
+* Added the formal German (Sie) translation.
+* Updated the informal German (Du) translation.
+* Added formal and informal translations for German (Austria).
+* Added formal and informal translations for German (Switzerland).
+
 = 4.2.0 =
 * Improved the affiliate request evaluation procedure.
 * Added the affiliates_parse_request_assess_affiliate_id filter.
