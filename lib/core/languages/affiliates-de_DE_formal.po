@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-21 17:41+0100\n"
-"PO-Revision-Date: 2019-08-26 20:51+0200\n"
+"PO-Revision-Date: 2019-08-27 19:46+0200\n"
 "Last-Translator: itthinx.com <EMAIL@ADDRESS>\n"
 "Language-Team: itthinx.com <LL@li.org>\n"
-"Language: de_DE\n"
+"Language: de_DE@formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_;_e;_x;_ngettext\n"
@@ -204,7 +204,7 @@ msgid ""
 "another one."
 msgstr ""
 "<strong>FEHLER</strong>: Diese Email-Adresse ist bereits registriert, bitte "
-"gib eine andere an."
+"geben Sie eine andere an."
 
 #: lib/core/class-affiliates-registration.php:468
 msgid ""
@@ -212,7 +212,7 @@ msgid ""
 "another one."
 msgstr ""
 "<strong>FEHLER</strong>: Dieser Benutzername ist bereits registriert, bitte "
-"gib einen anderen an."
+"geben Sie einen anderen an."
 
 #: lib/core/class-affiliates-registration.php:465
 msgid ""
@@ -220,7 +220,7 @@ msgid ""
 "characters. Please enter a valid username."
 msgstr ""
 "<strong>FEHLER</strong>: Dieser Benutzername ist ungültig weil er unerlaubte "
-"Zeichen beinhaltet. Bitte gib einen gültigen Benutzernamen an."
+"Zeichen beinhaltet. Bitte geben Sie einen gültigen Benutzernamen an."
 
 #: lib/core/affiliates-admin-user-registration.php:232
 msgid ""
@@ -819,14 +819,15 @@ msgid ""
 "By enabling this option you agree to be solely responsible for any loss of "
 "data or any other consequences thereof."
 msgstr ""
-"Wird diese Option aktiviert, bist du damit einverstanden dass du allein für "
-"etwaigen Datenverlust und weitere Konsequenzen verantwortlich bist."
+"Wird diese Option aktiviert, sind Sie damit einverstanden dass Sie allein "
+"für etwaigen Datenverlust und weitere Konsequenzen verantwortlich sind."
 
 #: lib/core/class-affiliates-registration.php:371
 #, php-format
 msgid "By signing up, you indicate that you have read and agree to the %s."
 msgstr ""
-"Deine Registrierung setzt voraus dass du die %s gelesen hast und akzeptierst."
+"Ihre Registrierung setzt voraus dass Sie die %s gelesen haben und "
+"akzeptieren."
 
 #: lib/core/class-affiliates-settings-general.php:330
 msgid ""
@@ -838,11 +839,11 @@ msgid ""
 "or any other consequences thereof."
 msgstr ""
 "ACHTUNG: Wenn diese Option aktiv ist, während das Plugin deaktiviert wird, "
-"werden ALLE Partner und deren Transaktionen GELÖSCHT. Wenn du Daten über "
-"Partner und ihre Transaktionen behalten aber das Plugin deaktivieren willst, "
-"stelle sicher, deine Daten zu sichern oder diese Option nicht zu aktivieren. "
-"Solltest du diese Option aktivieren, erklärst du dich für den Verlust von "
-"Daten und anderen Konsequenzen daraus allein verantwortlich."
+"werden ALLE Partner und deren Transaktionen GELÖSCHT. Wenn Sie Daten über "
+"Ihre Partner und ihre Transaktionen behalten aber das Plugin deaktivieren "
+"wollen, stellen Sie sicher, Ihre Daten zu sichern oder diese Option nicht zu "
+"aktivieren. Sollten Sie diese Option aktivieren, erklären Sie sich für den "
+"Verlust von Daten und anderen Konsequenzen daraus allein verantwortlich."
 
 #: lib/core/class-affiliates-settings-network.php:72
 msgid ""
@@ -861,9 +862,9 @@ msgid ""
 "links reflect the current URL parameter name, no affiliate hits, visits or "
 "referrals will be recorded."
 msgstr ""
-"ACHTUNG: Wenn du diese Einstellung änderst müssen bestehende Partnerlinks "
-"die auf deine Seite zeigen aktualisiert werden. Werden nach Änderung die "
-"Partnerlinks die auf deine Seite zeigen nicht aktualisiert, dann werden auch "
+"ACHTUNG: Wenn Sie diese Einstellung ändern müssen bestehende Partnerlinks "
+"die auf ihre Seite zeigen aktualisiert werden. Werden nach Änderung die "
+"Partnerlinks die auf ihre Seite zeigen nicht aktualisiert, dann werden auch "
 "keine Treffer, Besuche oder Transaktionen aufgezeichnet."
 
 #: lib/core/class-affiliates-settings-general.php:279
@@ -873,9 +874,9 @@ msgid ""
 "links reflect the current encoding, no affiliate hits, visits or referrals "
 "will be recorded."
 msgstr ""
-"ACHTUNG: Wenn du diese Einstellung änderst müssen bestehende Partnerlinks "
-"die auf deine Seite zeigen aktualisiert werden. Werden nach Änderung der "
-"Kodierung die Partnerlinks die auf deine Seite zeigen nicht aktualisiert, "
+"ACHTUNG: Wenn Sie diese Einstellung ändern müssen bestehende Partnerlinks "
+"die auf ihre Seite zeigen aktualisiert werden. Werden nach Änderung der "
+"Kodierung die Partnerlinks die auf ihre Seite zeigen nicht aktualisiert, "
 "dann werden auch keine Treffer, Besuche oder Transaktionen aufgezeichnet."
 
 #: lib/core/class-affiliates.php:130
@@ -1045,7 +1046,7 @@ msgstr "Konnte keine Treffer löschen"
 msgid ""
 "Could you please spare a minute and give it a review over at WordPress.org?"
 msgstr ""
-"Könntest du dir bitte kurz Zeit nehmen und eine Rezension bei WordPress.org "
+"Könnten Sie sich bitte kurz Zeit nehmen und eine Rezension bei WordPress.org "
 "abgeben?"
 
 #: lib/core/affiliates-admin.php:494 lib/core/affiliates-admin.php:514
@@ -1230,7 +1231,8 @@ msgstr ""
 
 #: lib/core/class-affiliates-settings-general.php:285
 msgid "Do not assign permissions to open access for affiliates here."
-msgstr "Weise hier keine Berechtigungen zu um Zugang für Partner zu eröffnen."
+msgstr ""
+"Weisen Sie hier keine Berechtigungen zu um Zugang für Partner zu eröffnen."
 
 #: lib/core/class-affiliates.php:95
 msgid "Dominican Republic Peso"
@@ -1324,8 +1326,8 @@ msgid ""
 "Enable the built-in integration if the options provided under <a href=\"%s"
 "\">User Registration</a> are sufficient."
 msgstr ""
-"Schalte die eingebaute Integration ein wenn die Optionen unter <a href=\"%s"
-"\">Nutzeranmeldung</a> ausreichen."
+"Schalten Sie die eingebaute Integration ein wenn die Optionen unter <a href="
+"\"%s\">Nutzeranmeldung</a> ausreichen."
 
 #: lib/core/affiliates-admin-user-registration.php:121
 msgid "Enable the user registration integration"
@@ -1492,7 +1494,8 @@ msgstr ""
 
 #: lib/core/affiliates-admin-add-ons.php:35
 msgid "Get additional features and access to premium support!"
-msgstr "Erhalte Zugang zu zusätzlichen Leistungsmerkmalen und Premium Support!"
+msgstr ""
+"Erhalten Sie Zugang zu zusätzlichen Leistungsmerkmalen und Premium Support!"
 
 #: lib/core/class-affiliates.php:106
 msgid "Ghana Cedi"
@@ -1546,14 +1549,14 @@ msgstr ""
 msgid ""
 "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</"
 "strong> affiliates."
-msgstr "Hier kannst du Partner hinzufügen, bearbeiten und löschen."
+msgstr "Hier können Sie Partner hinzufügen, bearbeiten und löschen."
 
 #: lib/core/affiliates-admin-user-registration.php:39
 msgid ""
 "Here you can enable the built-in User Registration integration which allows "
 "to grant commissions to affiliates when they refer new users."
 msgstr ""
-"Hier kann man die eingebaute Integration mit der Nutzerregistrierung "
+"Hier können Sie die eingebaute Integration mit der Nutzerregistrierung "
 "aktivieren. Diese ermöglicht es Partnern Kommissionen zuzuweisen, wenn diese "
 "neue Nutzer auf die Seite führen."
 
@@ -1668,8 +1671,8 @@ msgstr ""
 #: lib/core/class-affiliates-totals.php:678
 msgid "If these referrals can be closed, click the confirmation button below."
 msgstr ""
-"Wenn diese Transaktionen geschlossen werden können, dann klicke unten zur "
-"Bestätigung."
+"Wenn diese Transaktionen geschlossen werden können, dann klicken Sie unten "
+"zur Bestätigung."
 
 #: lib/core/class-affiliates-settings-referrals.php:163
 msgid "If this option is enabled, affiliates are allowed to refer themselves."
@@ -1687,7 +1690,8 @@ msgstr ""
 
 #: templates/dashboard/registration.php:43
 msgid "If you are not an affiliate, you can join the affiliate program here:"
-msgstr "Wenn du noch kein Partner bist, kannst du dem Programm hier beitreten:"
+msgstr ""
+"Wenn Sie noch kein Partner sind, können Sie dem Programm hier beitreten:"
 
 #: lib/core/class-affiliates-settings-referrals.php:111
 msgid ""
@@ -1700,13 +1704,13 @@ msgstr ""
 #: lib/core/class-affiliates-settings-general.php:293
 msgid "If you lock yourself out, please ask an administrator to help."
 msgstr ""
-"Solltest du dich selbst ausschließen, ziehe bitte einen Administrator zur "
-"Hilfe hinzu."
+"Sollten Sie sich selbst ausschließen, ziehen Sie bitte einen Administrator "
+"zur Hilfe hinzu."
 
 #: lib/core/class-affiliates-robot-cleaner.php:225
 msgid "If you want to delete these matching hits, click the button to proceed."
 msgstr ""
-"Wenn du diese Treffer löschen möchtest, klicke auf den Button um "
+"Wenn Sie diese Treffer löschen möchten, klicken Sie auf den Button um "
 "fortzufahren."
 
 #: lib/core/class-affiliates-settings-general.php:114
@@ -1715,8 +1719,8 @@ msgid ""
 "URL parameter name, they <strong>NEED</strong> to update their affiliate "
 "links."
 msgstr ""
-"Sollten deine Partner Links die auf dem vorigen Parameter basieren "
-"verwenden, dann <strong>müssen</strong> diese ihre Links aktualisieren."
+"Sollten ihre Partner Links die auf dem vorigen Parameter basieren verwenden, "
+"dann <strong>müssen</strong> diese ihre Links aktualisieren."
 
 #: lib/core/affiliates-admin-affiliates.php:517
 msgid "Include active affiliates"
@@ -1796,7 +1800,7 @@ msgstr "Es hat zwei Absichten:"
 
 #: lib/core/class-affiliates-settings-pages.php:92
 msgid "It seems that you do not have any pages set up for your affiliates yet."
-msgstr "Es scheint du hast noch keine Seiten für deine Partner."
+msgstr "Es scheint Sie haben noch keine Seiten für ihre Partner."
 
 #: lib/core/class-affiliates.php:125
 msgid "Jamaica Dollar"
@@ -1912,7 +1916,7 @@ msgstr ""
 
 #: lib/core/class-affiliates-settings-network.php:74
 msgid "Make sure to back up your data or do not enable this option."
-msgstr "Bitte sichere deine Daten oder aktiviere diese Option nicht."
+msgstr "Bitte sichern Sie ihre Daten oder aktivieren Sie diese Option nicht."
 
 #: lib/core/class-affiliates-settings-integrations.php:167
 #: lib/core/class-affiliates-settings-integrations.php:176
@@ -1938,7 +1942,7 @@ msgstr "Partner Verwalten"
 
 #: lib/core/class-affiliates-notice.php:111
 msgid "Many thanks for using <strong>Affiliates</strong>!"
-msgstr "Vielen Dank dafür dass du <strong>Affiliates</strong> verwendest!"
+msgstr "Vielen Dank dafür dass Sie <strong>Affiliates</strong> verwenden!"
 
 #: lib/core/class-affiliates.php:150
 msgid "Mauritania Ouguiya"
@@ -2037,7 +2041,7 @@ msgstr ""
 #: lib/core/class-affiliates-registration.php:787
 #, php-format
 msgid "New affiliate registration on your site %s:"
-msgstr "Neue Partnerregistrierung auf deiner Seite %s:"
+msgstr "Neue Partnerregistrierung auf ihrer Seite %s:"
 
 #: lib/core/class-affiliates-notifications.php:201
 msgid ""
@@ -2046,7 +2050,7 @@ msgid ""
 "Username: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>"
 msgstr ""
-"Neue Partnerregistrierung auf deiner Seite [site_title]:<br/>\n"
+"Neue Partnerregistrierung auf ihrer Seite [site_title]:<br/>\n"
 "<br/>\n"
 "Benutzername: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>"
@@ -2059,7 +2063,7 @@ msgid ""
 "E-mail: [user_email]<br/>\n"
 "This affiliate is pending approval.<br/>"
 msgstr ""
-"Neue Partnerregistrierung auf deiner Seite [site_title]:<br/>\n"
+"Neue Partnerregistrierung auf ihrer Seite [site_title]:<br/>\n"
 "<br/>\n"
 "Benutzername: [user_login]<br/>\n"
 "E-mail: [user_email]<br/>\n"
@@ -2141,12 +2145,12 @@ msgid ""
 "Once a visitor has landed on your site through an affiliate link, referrals "
 "may be recorded and attributed to the affiliate."
 msgstr ""
-"Wenn ein Besucher über ein Partnerlink auf deine Seite kommt, dann können "
+"Wenn ein Besucher über ein Partnerlink auf ihre Seite kommt, dann können "
 "Transaktionen aufgezeichnet werden die dem Partner zugewiesen werden."
 
 #: lib/core/class-affiliates-robot-cleaner.php:227
 msgid "Once you click the button, the hits will be deleted immediately."
-msgstr "Sobald du den Button klickst werden die Treffer sofort gelöscht."
+msgstr "Sobald sie den Button klicken werden die Treffer sofort gelöscht."
 
 #: lib/core/wp-init.php:2038
 msgid "Online documentation"
@@ -2201,7 +2205,7 @@ msgid ""
 "affiliates-pro/\">Affiliates Pro</a> and <a href=\"http://www.itthinx.com/"
 "shop/affiliates-enterprise/\">Affiliates Enterprise</a>."
 msgstr ""
-"Bezahle Partnerprovisionen basierend auf Klicks oder Besuchen von "
+"Bezahlen Sie Partnerprovisionen basierend auf Klicks oder Besuchen von "
 "Partnerlinks. Dieses Plugin bietet die Möglichkeit, Provisionen basierend "
 "auf Clicks, Besuchen und täglichen Besuchen mit <a href=\"http://www.itthinx."
 "com/shop/affiliates-pro/\">Affiliates Pro</a> und <a href=\"http://www."
@@ -2269,37 +2273,38 @@ msgstr ""
 msgid ""
 "Please also refer to the <a href=\"%s\">Add-Ons</a> for additional "
 "extensions."
-msgstr "Erweiterungen findet man unter den <a href=\"%s\">Add-Ons</a>."
+msgstr "Erweiterungen finden Sie unter den <a href=\"%s\">Add-Ons</a>."
 
 #: lib/core/affiliates-admin-add-ons.php:40
 #, php-format
 msgid "Please also refer to the available <a href=\"%s\">Integrations</a>."
-msgstr "Bitte beachte auch die verfügbaren <a href=\"%s\">Integrationen</a>."
+msgstr ""
+"Bitte beachten Sie auch die verfügbaren <a href=\"%s\">Integrationen</a>."
 
 #: lib/core/class-affiliates-registration.php:300
 msgid "Please check your email for the confirmation link."
-msgstr "Bitte überprüfe deine E-Mail für den Bestätigungslink."
+msgstr "Bitte überprüfen Sie ihre E-Mail für den Bestätigungslink."
 
 #: lib/core/affiliates-admin-affiliates-remove.php:182
 msgid ""
 "Please confirm removal of the following affiliates. This action cannot be "
 "undone."
 msgstr ""
-"Bitte bestätige dass die folgenden Partner gelöscht werden. Diese Aktion "
-"kann nicht rückgängig gemacht werden."
+"Bitte bestätigen Sie dass die folgenden Partner gelöscht werden. Diese "
+"Aktion kann nicht rückgängig gemacht werden."
 
 #: lib/core/affiliates-admin-add-ons.php:169
 msgid ""
 "Please consult the Shop pages for an updated list of included integrations."
 msgstr ""
-"Besuche bitte den Shop um einen aktuellen Einblick auf bestehende "
+"Besuchen Sie bitte den Shop um einen aktuellen Einblick auf bestehende "
 "Integrationen zu bekommen."
 
 #: lib/core/class-affiliates-registration.php:237
 #: lib/core/class-affiliates-shortcodes.php:1025
 #, php-format
 msgid "Please fill out the field <em>%s</em>."
-msgstr "Bitte geben etwas an für das Feld <em>%s</em>."
+msgstr "Bitte geben Sie etwas an für das Feld <em>%s</em>."
 
 #: lib/core/wp-init.php:2060
 #, php-format
@@ -2307,12 +2312,12 @@ msgid ""
 "Please give it a <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
 "&#9733;&#9733;&#9733;&#9733;</a> rating!"
 msgstr ""
-"Bitte gib eine <a style=\"text-decoration:none;\" href=\"%s\">&#9733;&#9733;"
-"&#9733;&#9733;&#9733;</a> Bewertung ab!"
+"Bitte geben Sie eine <a style=\"text-decoration:none;\" href=\"%s\">&#9733;"
+"&#9733;&#9733;&#9733;&#9733;</a> Bewertung ab!"
 
 #: templates/dashboard/login.php:42
 msgid "Please log in to access the affiliate area."
-msgstr "Bitte melde dich zum Zugriff auf den Partnerbereich an."
+msgstr "Bitte melden Sie sich zum Zugriff auf den Partnerbereich an."
 
 #: lib/core/class-affiliates-settings-pages.php:123
 msgid ""
@@ -2326,13 +2331,14 @@ msgstr ""
 msgid ""
 "Please review the following suggested steps to set up the affiliate system."
 msgstr ""
-"Bitte beachte die folgenden empfohlenen Schritte zur Instandsetzung des "
+"Bitte beachten Sie die folgenden empfohlenen Schritte zur Instandsetzung des "
 "Partnersystems."
 
 #: lib/core/class-affiliates-totals.php:668
 msgid "Please review the list of referrals that will be <em>closed</em>."
 msgstr ""
-"Bitte überprüfe die Liste der Transaktionen die <em>geschlossen</em> werden."
+"Bitte überprüfen Sie die Liste der Transaktionen die <em>geschlossen</em> "
+"werden."
 
 #: lib/core/class-affiliates.php:169
 msgid "Poland Zloty"
@@ -2352,7 +2358,8 @@ msgstr "Premium-Integrationen"
 #: lib/core/class-affiliates-settings-pages.php:64
 msgid "Press the button to generate a default affiliate area."
 msgstr ""
-"Klicke den Knopf um einen Partnerbereich im Standardformat zu generieren."
+"Klicken Sie den Knopf um einen Partnerbereich im Standardformat zu "
+"generieren."
 
 #: lib/core/affiliates-admin-referral-remove.php:162
 msgid "Pretty pointless ..."
@@ -2376,7 +2383,7 @@ msgstr ""
 
 #: lib/core/class-affiliates-settings-network.php:69
 msgid "READ AND UNDERSTAND the following before activating this option:"
-msgstr "LIES UND VERSTEHE folgendes bevor du diese Option aktivierst:"
+msgstr "LESEN UND VERSTEHEN Sie folgendes bevor Sie diese Option aktivieren:"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:327
 #: lib/core/affiliates-admin-hits.php:279
@@ -2786,14 +2793,14 @@ msgid ""
 "<a style=\"text-decoration:none;\" href=\"http://www.itthinx.com\" target="
 "\"_blank\">itthinx</a>."
 msgstr ""
-"Danke dass du <a style=\"text-decoration:none;\" href=\"http://www.itthinx."
+"Danke dass Sie <a style=\"text-decoration:none;\" href=\"http://www.itthinx."
 "com/plugins/affiliates\" target=\"_blank\">Affiliates</a> von <a style="
 "\"text-decoration:none;\" href=\"http://www.itthinx.com\" target=\"_blank"
-"\">itthinx</a> benutzt."
+"\">itthinx</a> benutzen."
 
 #: lib/core/class-affiliates-registration.php:298
 msgid "Thanks for signing up!"
-msgstr "Vielen Dank für deine Anmeldung!"
+msgstr "Vielen Dank für Ihre Anmeldung!"
 
 #: lib/core/class-affiliates-contact.php:188
 msgid "Thanks!"
@@ -2912,7 +2919,7 @@ msgid ""
 "and pages."
 msgstr ""
 "Die generierte Seite beinhaltet Shortcodes des Affiliates Systems und kann "
-"als Standard oder Vorlage für deinen Partnerbereich dienen."
+"als Standard oder Vorlage für Ihren Partnerbereich dienen."
 
 #: lib/core/class-affiliates-settings-integrations.php:231
 msgid ""
@@ -3100,7 +3107,7 @@ msgstr ""
 "Diese Integration eignet sich zur Verwendung mit <a href=\"http://www."
 "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> oder <a href=\"http://"
 "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a>. "
-"Bitte beachte, dass diese Integration nicht für E-Commerce-Systeme "
+"Bitte beachten Sie, dass diese Integration nicht für E-Commerce-Systeme "
 "vorgesehen ist, die ihr eigenes PayPal Payments Standard Gateway "
 "bereitstellen."
 
@@ -3109,7 +3116,7 @@ msgid ""
 "This is intended as a guidance and you can safely hide this message when "
 "finished."
 msgstr ""
-"Dies ist lediglich zu deiner Hilfe gedacht und kann nach Einrichtung "
+"Dies ist lediglich zu ihrer Hilfe gedacht und kann nach Einrichtung "
 "verborgen werden."
 
 #: lib/core/class-affiliates-settings-referrals.php:108
@@ -3118,7 +3125,7 @@ msgid ""
 "affiliate link, for which a suggested referral will be valid."
 msgstr ""
 "Dies ist die Anzahl der Tage für die Transaktionen gültig sind, nachdem ein "
-"Besucher deine Seite über ein Partnerlink besucht hat."
+"Besucher ihre Seite über ein Partnerlink besucht hat."
 
 #: lib/core/class-affiliates-settings-integrations.php:46
 msgid ""
@@ -3133,15 +3140,15 @@ msgid ""
 "This link uses a parameter in the URL to record visits you receive through "
 "your affiliates."
 msgstr ""
-"Dieser Link verwendet einen Parameter in der URL, um Besuche die du über "
-"Partner erhältst aufzuzeichnen."
+"Dieser Link verwendet einen Parameter in der URL, um Besuche die Sie über "
+"Partner erhalten aufzuzeichnen."
 
 #: lib/core/class-affiliates-settings-referrals.php:165
 msgid ""
 "This option allows an affiliate to earn a commission on a transaction that "
 "involves the affiliate as a customer or lead."
 msgstr ""
-"Diese Option ermöglicht es deinen Partnern eine Kommission für Transaktionen "
+"Diese Option ermöglicht es ihren Partnern eine Kommission für Transaktionen "
 "zu erhalten, bei denen der Partner als Kunde oder Lead agiert."
 
 #: lib/core/class-affiliates-settings-network.php:73
@@ -3370,8 +3377,8 @@ msgstr ""
 msgid ""
 "To use it, place the widget in one of your <a href=\"%s\">widget areas</a>."
 msgstr ""
-"Um es zu verwenden, ziehe das Widget auf einen <a href=\"%s\">Widgetbereich</"
-"a>."
+"Um es zu verwenden, ziehen Sie das Widget auf einen <a href=\"%s"
+"\">Widgetbereich</a>."
 
 #: lib/core/class-affiliates.php:195
 msgid "Tonga Pa'anga"
@@ -3481,14 +3488,15 @@ msgid ""
 "Use the <a href=\"%s\">Settings</a> section to review or adjust the system "
 "anytime."
 msgstr ""
-"Verwende die <a href=\"%s\">Einstellungen</a> um das System jederzeit "
+"Verwenden Sie die <a href=\"%s\">Einstellungen</a> um das System jederzeit "
 "anzupassen."
 
 #: lib/core/class-affiliates-settings-general.php:307
 #, php-format
 msgid "Use the robot cleaner to remove existing hits from robots: %s"
 msgstr ""
-"Verwende den Robot-Reiniger um vorhandene Treffer von Robots zu löschen: %s"
+"Verwenden Sie den Robot-Reiniger um vorhandene Treffer von Robots zu "
+"löschen: %s"
 
 #: lib/core/affiliates-admin-hits-affiliate.php:596
 #: lib/core/affiliates-admin-hits-uri.php:478
@@ -3541,7 +3549,7 @@ msgstr ""
 "Passwort: [password]<br/>\n"
 "[site_login_url]<br/>\n"
 "<br/>\n"
-"Danke dass du dem Partnerprogramm beigetreten bist.<br/>"
+"Danke dass Sie dem Partnerprogramm beigetreten sind.<br/>"
 
 #: lib/core/class-affiliates-notifications.php:150
 msgid ""
@@ -3565,7 +3573,7 @@ msgid ""
 msgstr ""
 "Normalerweise sollten nur Transaktionen die <em>akzeptiert</em> und bezahlt "
 "sind <em>geschlossen</em> werden. Sollten unerwünschte oder zu viele "
-"Transaktionen angezeigt werden, kann man diese durch entsprechende "
+"Transaktionen angezeigt werden, können Sie diese durch entsprechende "
 "Filtereinstellungen einschränken."
 
 #: lib/core/class-affiliates.php:205
@@ -3650,7 +3658,7 @@ msgid ""
 "Write part of the title or the post ID. If left empty, no terms disclaimer "
 "will be shown."
 msgstr ""
-"Schreibe einen Teil des Titels oder den ID des Artikels. Wird es "
+"Schreiben Sie einen Teil des Titels oder den ID des Artikels. Wird es "
 "freigelassen, dann wird kein Hinweis auf Konditionen angezeigt."
 
 #: lib/core/class-affiliates.php:215
@@ -3663,7 +3671,7 @@ msgstr "Ja, los geht's!"
 
 #: lib/core/class-affiliates-registration.php:142
 msgid "You are already registered as an affiliate."
-msgstr "Du bist bereits als Partner registriert."
+msgstr "Sie sind bereits als Partner registriert."
 
 #: templates/dashboard/overview.php:52
 #, php-format
@@ -3671,8 +3679,8 @@ msgid ""
 "You can also add <code>?%s=%s</code> to any link on %s to track referrals "
 "from your account."
 msgstr ""
-"Du kannst <code>?%s=%s</code> jedem Link auf %s hinzufügen um Transaktionen "
-"auf dein Partnerkonto zurückzuführen."
+"Sie können <code>?%s=%s</code> jedem Link auf %s hinzufügen um Transaktionen "
+"auf Ihr Partnerkonto zurückzuführen."
 
 #: lib/core/class-affiliates-notice.php:130
 #, php-format
@@ -3681,8 +3689,8 @@ msgid ""
 "or visit <a href=\"%s\" target=\"_blank\">itthinx.com</a> to check out other "
 "free and premium plugins we provide."
 msgstr ""
-"Du kannst <a href=\"%s\" target=\"_blank\">@itthinx</a> auch auf Twitter "
-"folgen und <a href=\"%s\" target=\"_blank\">itthinx.com</a> besuchen um dich "
+"Sie können <a href=\"%s\" target=\"_blank\">@itthinx</a> auch auf Twitter "
+"folgen und <a href=\"%s\" target=\"_blank\">itthinx.com</a> besuchen um sich "
 "über andere kostenlose und Premium-Plugins die wir anbieten zu informieren."
 
 #: lib/core/class-affiliates-settings-integrations.php:239
@@ -3691,29 +3699,29 @@ msgid ""
 "You can install available integrations in the <a href=\"%s\">Plugins</a> "
 "section."
 msgstr ""
-"Du kannst Integrationen im <a href=\"%s\">Plugins</a> Bereich installieren."
+"Sie können Integrationen im <a href=\"%s\">Plugins</a> Bereich installieren."
 
 #: lib/core/class-affiliates-settings-integrations.php:235
 msgid ""
 "You can manage available integrations here, this includes the installation "
 "and activation of integrations with e-commerce and other systems."
 msgstr ""
-"Du kannst Integrationen hier verwalten, dies beinhaltet die Installation und "
-"Aktivierung von Integrationen mit e-Commerce und anderen Systemen."
+"Sie können Integrationen hier verwalten, dies beinhaltet die Installation "
+"und Aktivierung von Integrationen mit e-Commerce und anderen Systemen."
 
 #: lib/core/class-affiliates-settings-pages.php:120
 msgid ""
 "You can modify the default affiliate area and also create customized pages "
 "for your affiliates using shortcodes."
 msgstr ""
-"Du kannst den standardmäßigen Partnerbereich verändern und Shortcodes dazu "
-"verwenden um angepasste Seiten für deine Partner zu erstellen."
+"Sie können den standardmäßigen Partnerbereich verändern und Shortcodes dazu "
+"verwenden um angepasste Seiten für ihre Partner zu erstellen."
 
 #: lib/core/affiliates-admin-hits-uri.php:546
 #, php-format
 msgid "You can use %s and %s to search for multiple terms in combination."
 msgstr ""
-"Du kannst %s und %s verwenden um nach mehreren kombinierten Begriffen zu "
+"Sie können %s und %s verwenden um nach mehreren kombinierten Begriffen zu "
 "suchen."
 
 #: lib/core/class-affiliates-settings-pages.php:95
@@ -3721,25 +3729,25 @@ msgid ""
 "You can use the page generation option to create the default affiliate area "
 "for your affiliates."
 msgstr ""
-"Du kannst die Seitengenerierung verwenden um einen Partnerbereich für deine "
+"Sie können die Seitengenerierung verwenden um einen Partnerbereich für ihre "
 "Partner zu erstellen."
 
 #: lib/core/wp-init.php:1985
 #, php-format
 msgid "You may also append the ?%s=... part to links to your posts."
-msgstr "Du kannst auch den Teil ?%s=... zu Links hinzufügen."
+msgstr "Sie können auch den Teil ?%s=... zu Links hinzufügen."
 
 #: lib/core/class-affiliates-settings-integrations.php:243
 msgid ""
 "You only need to install integrations with plugins that are actually used on "
 "the site."
 msgstr ""
-"Man benötigt jeweils nur Integrationen mit Plugins die auch auf der Seite "
+"Sie benötigen jeweils nur Integrationen mit Plugins die auch auf ihrer Seite "
 "benutzt werden."
 
 #: templates/dashboard/overview.php:87
 msgid "Your affiliate URL:"
-msgstr "Deine Partner-URL:"
+msgstr "Ihre Partner-URL:"
 
 #: lib/core/class-affiliates-registration.php:130
 msgid "Your affiliate application is pending approval."
