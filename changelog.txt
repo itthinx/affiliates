@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.4.0 =
+* WordPress 5.3 compatible.
+
 = 4.3.0 =
 * Added the formal German (Sie) translation.
 * Updated the informal German (Du) translation.
