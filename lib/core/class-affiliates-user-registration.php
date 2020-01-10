@@ -146,9 +146,9 @@ class Affiliates_User_Registration {
 
 			if ( class_exists( 'Affiliates_Referral_Controller' ) ) {
 				$rc = new Affiliates_Referral_Controller();
-				$params = $rc->evaluate_referrer();
-				if ( is_array( $params ) ) {
-					$affiliate_id = $params['affiliate_id'];
+				$affiliate_ids = $rc->evaluate_referrer();
+				if ( is_array( $affiliate_ids ) ) {
+					$affiliate_id = $affiliate_ids['affiliate_id'];
 					$group_ids = null;
 					if ( class_exists( 'Groups_User' ) ) {
 						if ( $affiliate_user_id = affiliates_get_affiliate_user( $affiliate_id ) ) {
@@ -172,6 +172,8 @@ class Affiliates_User_Registration {
 								break;
 						}
 					}
+					$params = array();
+					$params['affiliate_id']     = $affiliate_id;
 					$params['post_id']          = $post_id;
 					$params['description']      = $description;
 					$params['data']             = $data;
