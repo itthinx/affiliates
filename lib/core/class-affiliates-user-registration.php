@@ -146,9 +146,12 @@ class Affiliates_User_Registration {
 
 			if ( class_exists( 'Affiliates_Referral_Controller' ) ) {
 				$rc = new Affiliates_Referral_Controller();
-				$affiliate_ids = $rc->evaluate_referrer();
-				if ( is_array( $affiliate_ids ) ) {
-					$affiliate_id = $affiliate_ids['affiliate_id'];
+				$referrer = $rc->evaluate_referrer();
+				if ( is_array( $referrer ) ) {
+					$affiliate_id = $referrer['affiliate_id'];
+					if ( isset( $referrer['hit_id'] ) ) {
+						$hit_id = $referrer['hit_id'];
+					}
 					$group_ids = null;
 					if ( class_exists( 'Groups_User' ) ) {
 						if ( $affiliate_user_id = affiliates_get_affiliate_user( $affiliate_id ) ) {
@@ -185,6 +188,7 @@ class Affiliates_User_Registration {
 					$params['referral_items']   = array();
 					$params['reference']        = $post_id;
 					$params['reference_amount'] = $base_amount;
+					$params['hit_id']           = $hit_id;
 					$rc->add_referral( $params );
 				}
 			} else {
