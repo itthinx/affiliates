@@ -193,7 +193,8 @@ class Affiliates_User_Registration {
 									array(
 										'affiliate_id' => $affiliate_id,
 										'integration'  => 'user-registration',
-										'post_id'      => $post_id
+										'post_id'      => $post_id,
+										'user_id'      => $user_id
 									)
 								);
 								$computer = new Affiliates_Formula_Computer( $tokenizer, $variables );
@@ -211,10 +212,10 @@ class Affiliates_User_Registration {
 							'rate_id'     => $rate_id,
 							'amount'      => $amount,
 							'currency_id' => $currency,
-							'type'        => $type,
-							'reference'   => $post_id,
+							'type'        => 'user',
+							'reference'   => $user_id,
 							'line_amount' => $amount,
-							'object_id'   => $post_id
+							'object_id'   => $user_id
 						) );
 						$referral_items[] = $referral_item;
 					}
@@ -225,7 +226,7 @@ class Affiliates_User_Registration {
 					$params['status']           = $user_registration_referral_status;
 					$params['type']             = self::REFERRAL_TYPE;
 					$params['referral_items']   = $referral_items;
-					$params['reference']        = $post_id;
+					$params['reference']        = $user_id;
 					$params['reference_amount'] = $base_amount;
 					$rc->add_referral( $params );
 				}
