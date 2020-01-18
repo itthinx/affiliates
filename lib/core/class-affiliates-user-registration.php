@@ -179,33 +179,35 @@ class Affiliates_User_Registration {
 								}
 								break;
 							case AFFILIATES_PRO_RATES_TYPE_FORMULA :
-								$tokenizer = new Affiliates_Formula_Tokenizer( $rate->get_meta( 'formula' ) );
-								$quantity = 1;
-								$variables = apply_filters(
-									'affiliates_formula_computer_variables',
-									array(
-										's' => $amount,
-										't' => $amount,
-										'p' => $amount / $quantity,
-										'q' => $quantity
-									),
-									$rate,
-									array(
-										'affiliate_id' => $affiliate_id,
-										'integration'  => 'user-registration',
-										'post_id'      => $post_id,
-										'user_id'      => $user_id
-									)
-								);
-								$computer = new Affiliates_Formula_Computer( $tokenizer, $variables );
-								$amount = $computer->compute();
-								if ( $computer->has_errors() ) {
-									affiliates_log_error( $computer->get_errors_pretty( 'text' ) );
+								if ( $base_amount !== null ) {
+									$tokenizer = new Affiliates_Formula_Tokenizer( $rate->get_meta( 'formula' ) );
+									$quantity = 1;
+									$variables = apply_filters(
+										'affiliates_formula_computer_variables',
+										array(
+											's' => $base_amount,
+											't' => $base_amount,
+											'p' => $base_amount / $quantity,
+											'q' => $quantity
+										),
+										$rate,
+										array(
+											'affiliate_id' => $affiliate_id,
+											'integration'  => 'user-registration',
+											'post_id'      => $post_id,
+											'user_id'      => $user_id
+										)
+									);
+									$computer = new Affiliates_Formula_Computer( $tokenizer, $variables );
+									$amount = $computer->compute();
+									if ( $computer->has_errors() ) {
+										affiliates_log_error( $computer->get_errors_pretty( 'text' ) );
+									}
+									if ( $amount === null || $amount < 0 ) {
+										$amount = 0.0;
+									}
+									$amount = bcadd( '0', $amount, affiliates_get_referral_amount_decimals() );
 								}
-								if ( $amount === null || $amount < 0 ) {
-									$amount = 0.0;
-								}
-								$amount = bcadd( '0', $amount, affiliates_get_referral_amount_decimals() );
 								break;
 						}
 						$referral_item = new Affiliates_Referral_Item( array(
