@@ -144,9 +144,94 @@ class Affiliates_User_Registration {
 				)
 			);
 
-			if ( class_exists( 'Affiliates_Referral_WordPress' ) ) {
-				$r = new Affiliates_Referral_WordPress();
-				$affiliate_id = $r->evaluate( $post_id, $description, $data, $base_amount, $amount, $currency, $user_registration_referral_status, self::REFERRAL_TYPE );
+			if ( class_exists( 'Affiliates_Referral_Controller' ) ) {
+				$rc = new Affiliates_Referral_Controller();
+				$params = $rc->evaluate_referrer();
+				if ( $params !== null && is_array( $params ) && isset( $params['affiliate_id'] ) ) {
+					$affiliate_id = $params['affiliate_id'];
+
+					$group_ids = null;
+					if ( class_exists( 'Groups_User' ) ) {
+						if ( $affiliate_user_id = affiliates_get_affiliate_user( $affiliate_id ) ) {
+							$groups_user = new Groups_User( $affiliate_user_id );
+							$group_ids = $groups_user->group_ids_deep;
+							if ( !is_array( $group_ids ) || ( count( $group_ids ) === 0 ) ) {
+								$group_ids = null;
+							}
+						}
+					}
+
+					$referral_items = array();
+					if ( $rate = $rc->seek_rate(
+						array(
+							'affiliate_id' => $affiliate_id,
+							'group_ids'    => $group_ids,
+							'integration'  => 'user-registration'
+					) ) ) {
+						$rate_id = $rate->rate_id;
+						switch ( $rate->type ) {
+							case AFFILIATES_PRO_RATES_TYPE_AMOUNT :
+								$amount = bcadd( '0', $rate->value, affiliates_get_referral_amount_decimals() );
+								break;
+							case AFFILIATES_PRO_RATES_TYPE_RATE :
+								if ( $base_amount !== null ) {
+									$amount = bcmul( $base_amount, $rate->value, affiliates_get_referral_amount_decimals() );
+								}
+								break;
+							case AFFILIATES_PRO_RATES_TYPE_FORMULA :
+								if ( $base_amount !== null ) {
+									$tokenizer = new Affiliates_Formula_Tokenizer( $rate->get_meta( 'formula' ) );
+									$quantity = 1;
+									$variables = apply_filters(
+										'affiliates_formula_computer_variables',
+										array(
+											's' => $base_amount,
+											't' => $base_amount,
+											'p' => $base_amount / $quantity,
+											'q' => $quantity
+										),
+										$rate,
+										array(
+											'affiliate_id' => $affiliate_id,
+											'integration'  => 'user-registration',
+											'post_id'      => $post_id,
+											'user_id'      => $user_id
+										)
+									);
+									$computer = new Affiliates_Formula_Computer( $tokenizer, $variables );
+									$amount = $computer->compute();
+									if ( $computer->has_errors() ) {
+										affiliates_log_error( $computer->get_errors_pretty( 'text' ) );
+									}
+									if ( $amount === null || $amount < 0 ) {
+										$amount = 0.0;
+									}
+									$amount = bcadd( '0', $amount, affiliates_get_referral_amount_decimals() );
+								}
+								break;
+						}
+						$referral_item = new Affiliates_Referral_Item( array(
+							'rate_id'     => $rate_id,
+							'amount'      => $amount,
+							'currency_id' => $currency,
+							'type'        => 'user',
+							'reference'   => $user_id,
+							'line_amount' => $amount,
+							'object_id'   => $user_id
+						) );
+						$referral_items[] = $referral_item;
+					}
+					$params['post_id']          = $post_id;
+					$params['description']      = $description;
+					$params['data']             = $data;
+					$params['currency_id']      = $currency;
+					$params['status']           = $user_registration_referral_status;
+					$params['type']             = self::REFERRAL_TYPE;
+					$params['referral_items']   = $referral_items;
+					$params['reference']        = $user_id;
+					$params['reference_amount'] = $base_amount;
+					$rc->add_referral( $params );
+				}
 			} else {
 				$affiliate_id = affiliates_suggest_referral( $post_id, $description, $data, $amount, $currency, $user_registration_referral_status, self::REFERRAL_TYPE );
 			}
