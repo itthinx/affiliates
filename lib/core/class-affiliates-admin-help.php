@@ -76,7 +76,9 @@ class Affiliates_Admin_Help {
 					$show_affiliates_help = true;
 					break;
 				default:
-					$show_affiliates_help = strpos( $screen_id, 'affiliates_page_affiliates' ) !== false;
+					$show_affiliates_help =
+						strpos( $screen_id, 'affiliates_page_affiliates' ) !== false ||
+						apply_filters( 'affiliates_admin_help_show_screen', false, $screen_id );
 			}
 
 			$help .= self::affiliates_help_tab_footer( false );
