@@ -48,6 +48,9 @@ if ( !defined( 'AFFILIATES_CORE_VERSION' ) ) {
 	if ( !defined( 'AFFILIATES_CORE_URL' ) ) {
 		define( 'AFFILIATES_CORE_URL', WP_PLUGIN_URL . '/affiliates' );
 	}
+	if ( !defined( 'AFFILIATES_WPML' ) ) {
+		define( 'AFFILIATES_WPML', true );
+	}
 	require_once AFFILIATES_CORE_LIB . '/constants.php';
 	require_once AFFILIATES_CORE_LIB . '/wp-init.php';
 }

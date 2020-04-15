@@ -92,6 +92,38 @@ class Affiliates_Registration {
 
 		// delete affiliate when user is deleted
 		add_action( 'deleted_user', array( __CLASS__, 'deleted_user' ) );
+
+		add_action( 'init', array( __CLASS__, 'wp_init' ) );
+	}
+
+	/**
+	 * Registers registration field labels with WPML.
+	 *
+	 * @link https://wpml.org/documentation/support/translation-for-texts-by-other-plugins-and-themes/
+	 */
+	public static function wp_init() {
+		if ( defined( 'AFFILIATES_WPML' ) && AFFILIATES_WPML ) {
+			require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
+			require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings-registration.php';
+			$registration_fields = Affiliates_Settings_Registration::get_fields();
+			if ( is_array( $registration_fields ) ) {
+				foreach( $registration_fields as $name => $field ) {
+					// context, name, value
+					do_action( 'wpml_register_single_string', 'affiliates', self::get_wpml_string_name( $name ), $field['label'] );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Returns the string's registered name for use with WPML string translation.
+	 *
+	 * @param string $name
+	 *
+	 * @return string registered name
+	 */
+	private static function get_wpml_string_name( $name ) {
+		return sprintf( 'Field Label: %s', esc_attr( $name ) );
 	}
 
 	/**
@@ -439,7 +471,15 @@ class Affiliates_Registration {
 			if ( $field['enabled'] ) {
 				$output .= '<div class="field">';
 				$output .= '<label>';
-				$output .= stripslashes( $field['label'] );
+				$label = $field['label'];
+				// Translate registration field labels with WPML String Translation?
+				// https://wpml.org/documentation/support/translation-for-texts-by-other-plugins-and-themes/
+				// https://wpml.org/wpml-hook/wpml_translate_single_string/
+				if ( defined( 'AFFILIATES_WPML' ) && AFFILIATES_WPML ) {
+					// original value, domain, name, language code (optional and not used here)
+					$label = apply_filters( 'wpml_translate_single_string', $field['label'], 'affiliates', self::get_wpml_string_name( $name ) );
+				}
+				$output .= stripslashes( $label );
 				$output .= ' ';
 				$type = isset( $field['type'] ) ? $field['type'] : 'text';
 				$readonly = is_user_logged_in() && ( ( $name == 'user_login' ) || ( $name == 'user_email' ) ) ? ' readonly="readonly" ' : '';
