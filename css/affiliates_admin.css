@@ -544,3 +544,7 @@ li.add-ons:hover {
 	text-align: left;
 	margin: 0 0.62em;
 }
+
+body.wp-admin div.campaigns div.buttons {
+	padding-top: 1em;
+}

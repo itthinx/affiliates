@@ -38,6 +38,8 @@ function affiliates_admin_add_ons() {
 	echo esc_html__( 'Get additional features and access to premium support!', 'affiliates' );
 	echo '</p>';
 
+	affiliates_donate();
+
 	echo '<p>';
 	printf(
 		__( 'Please also refer to the available <a href="%s">Integrations</a>.', 'affiliates' ),
