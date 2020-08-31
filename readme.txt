@@ -21,6 +21,7 @@ https://www.youtube.com/watch?v=0OPuMJeMAog
 = Designed for Growth =
 
 A fresh and intuitive dashboard helps your partners to spread the word about your site, products and services easily.
+
 Affiliates can share links to any page on the website, using simple tools that are built into its dashboard.
 
 Designed to deliver an intuitive experience out of the box, it is ready for virtually any theme, even without customizations.
@@ -46,7 +47,7 @@ The system is used to manage affiliates, create referrals and track visits to yo
 ### Free Integrations and Extensions
 
 - [Affiliates Import](https://wordpress.org/plugins/affiliates-import) : Allows to import affiliate accounts in bulk from a text file. This is also useful to migrate to [Affiliates](https://wordpress.org/plugins/affiliates/), [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/).
-- [Affiliates WooCommerce Light](https://wordpress.org/plugins/affiliates-woocommerce-light) : Run your affiliate program with [WooCommerce](http://wordpress.org/plugins/woocommerce/), referrals are created automatically for your affiliates when they refer sales.
+- [Affiliates WooCommerce Light](https://wordpress.org/plugins/affiliates-woocommerce-light) : Run your affiliate program with [WooCommerce](https://wordpress.org/plugins/woocommerce/), referrals are created automatically for your affiliates when they refer sales.
 - [Affiliates Events Manager](https://wordpress.org/plugins/affiliates-events-manager/) : Grant commissions to affiliates for referred bookings with [Events Manager](https://wordpress.org/plugins/events-manager/), supports referrals based on coupons, records essential booking data for referred bookings.
 - [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals.
 - [Affiliates Formidable](https://wordpress.org/plugins/affiliates-formidable/) : Affiliates can register through [Formidable Forms](https://wordpress.org/plugins/formidable/) forms and form submissions can grant commissions and record referrals.
@@ -60,20 +61,20 @@ Additional resources can be found on [GitHub](https://github.com/itthinx).
 ### Premium Integrations and Extensions included with Affiliates Pro and Affiliates Enterprise
 
 - [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) provides all features available in the free _Affiliates_ system, a more detailed Dashboard with additional Dashboard Sections, additional features like referral Rates (supports formula-based rates), Banner Management, advanced Notifications, additional Dashboard sections and Shortcodes, advanced commission Rates, affiliate export features, advanced Totals with mass payment files and exports, more integrations and advanced integration features.
-- [Affiliates Enterprise](http://www.itthinx.com/shop/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional Dashboard sections, blocks and shortcodes.
+- [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise) provides all features and integrations available in _Affiliates Pro_ and also supports mulitple tiers, campaigns and pixel tracking with image and iframe tracking pixels among other features as well as additional Dashboard sections, blocks and shortcodes.
 
 [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) and [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) come with additional features, extensions and integrations. Among these are:
 
 E-Commerce and Events
 
 - [Affiliates WooCommerce](https://www.itthinx.com/plugins/affiliates-woocommerce/) : Our advanced integration for [WooCommerce](https://wordpress.org/plugins/woocommerce/) includes automated status synchronization, recurring referrals and product rates.
-- [Affiliates Events Manager](http://www.itthinx.com/plugins/affiliates-events-manager/) The integration records referrals and essential booking data for referred bookings. It allows to grant commissions on bookings with [Events Manager](https://wordpress.org/plugins/events-manager/).
-- [Affiliates PayPal](http://www.itthinx.com/plugins/affiliates-pro-paypal/) : Integrates with PayPal and allows to grant commissions on purchases made with Payment Buttons.
+- [Affiliates Events Manager](https://www.itthinx.com/plugins/affiliates-events-manager/) The integration records referrals and essential booking data for referred bookings. It allows to grant commissions on bookings with [Events Manager](https://wordpress.org/plugins/events-manager/).
+- [Affiliates PayPal](https://www.itthinx.com/plugins/affiliates-pro-paypal/) : Integrates with PayPal and allows to grant commissions on purchases made with Payment Buttons.
 
 Social Sharing Platforms ... make it even easier for affiliates to share their links
 
-- [Affiliates AddThis](http://www.itthinx.com/plugins/affiliates-addthis) : This integration with [AddThis](http://www.addthis.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
-- [Affiliates AddToAny](http://www.itthinx.com/plugins/affiliates-addtoany) : This integration with [AddToAny](http://www.addtoany.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
+- [Affiliates AddThis](https://www.itthinx.com/plugins/affiliates-addthis) : This integration with [AddThis](http://www.addthis.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
+- [Affiliates AddToAny](https://www.itthinx.com/plugins/affiliates-addtoany) : This integration with [AddToAny](http://www.addtoany.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
 
 Advertising
 
