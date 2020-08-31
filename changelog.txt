@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.7.0 =
+* WordPress 5.5 compatible.
+
 = 4.6.0 =
 * WordPress 5.4 compatible.
 * Fixed a notice related to the deprecated contextual_help action.
