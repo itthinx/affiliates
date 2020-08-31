@@ -20,11 +20,6 @@
 
 jQuery( document ).ready( function() {
 
-	/* design */
-	jQuery( ".affiliate" ).corner( "5px" );
-	jQuery( ".filters" ).corner( "5px" );
-	jQuery( ".manage" ).corner( "5px" );
-
 	/* effects & handling */
 	var clickToggler = function() {
 		var description = jQuery( this ).parent().children( ".view" );
