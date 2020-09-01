@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 4.7.0 =
+* WordPress 5.5 compatible.
+* Removed use of the jQuery corner plugin (cosmetics do not belong in scripts and also fixes $.browser undefined issue).
+
 = 4.6.0 =
 * WordPress 5.4 compatible.
 * Fixed a notice related to the deprecated contextual_help action.
