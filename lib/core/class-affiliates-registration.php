@@ -122,7 +122,7 @@ class Affiliates_Registration {
 	 *
 	 * @return string registered name
 	 */
-	private static function get_wpml_string_name( $name ) {
+	public static function get_wpml_string_name( $name ) {
 		return sprintf( 'Field Label: %s', esc_attr( $name ) );
 	}
 

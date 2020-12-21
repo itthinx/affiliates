@@ -2,6 +2,7 @@
 
 = 4.8.0 =
 * WordPress 5.6 compatible.
+* Fixed profile fields were not showing translations with WPML except on registration form.
 
 = 4.7.0 =
 * WordPress 5.5 compatible.

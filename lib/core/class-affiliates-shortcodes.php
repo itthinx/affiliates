@@ -1088,10 +1088,15 @@ class Affiliates_Shortcodes {
 					foreach( $registration_fields as $name => $field ) {
 
 						if ( $field['enabled'] ) {
+							$label = $field['label'];
+							if ( defined( 'AFFILIATES_WPML' ) && AFFILIATES_WPML ) {
+								// original value, domain, name, language code (optional and not used here)
+								$label = apply_filters( 'wpml_translate_single_string', $field['label'], 'affiliates', Affiliates_Registration::get_wpml_string_name( $name ) );
+							}
 							$n++;
 							$output .= '<div class="field">';
 							$output .= '<label>';
-							$output .= esc_html( stripslashes( $field['label'] ) ); // @todo i18n
+							$output .= esc_html( stripslashes( $label ) );
 							$type = isset( $field['type'] ) ? $field['type'] : 'text';
 							$extra = $atts['edit'] != 'yes' ? ' readonly="readonly" ' : '';
 							switch( $name ) {
@@ -1144,7 +1149,7 @@ class Affiliates_Shortcodes {
 								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
-								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $field['label'] ) ) ); // @todo i18n
+								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $label ) ) );
 								$output .= sprintf(
 									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',
 									esc_attr( $type ),
