@@ -232,6 +232,25 @@ E-mail: [user_email]<br/>',
 
 		add_action( 'admin_init', array( self::$instance, 'admin_init' ) );
 
+		if ( defined( 'AFFILIATES_WPML' ) && AFFILIATES_WPML ) {
+			$keys = array(
+				self::DEFAULT_REGISTRATION_PENDING_SUBJECT,
+				self::DEFAULT_REGISTRATION_PENDING_MESSAGE,
+				self::DEFAULT_REGISTRATION_ACTIVE_SUBJECT,
+				self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE,
+				self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT,
+				self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE,
+				self::DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT,
+				self::DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE,
+				self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT,
+				self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE
+			);
+			foreach ( $keys as $key ) {
+				$text = self::get_default( $key );
+				do_action( 'wpml_register_single_string', 'affiliates', $key, $text );
+			}
+		}
+
 	}
 
 	/**
@@ -260,6 +279,22 @@ E-mail: [user_email]<br/>',
 	}
 
 	/**
+	 * Get translated string for key (WPML).
+	 *
+	 * @param string $key
+	 * @param string $string
+	 *
+	 * @return string translation
+	 */
+	public static function get_translation( $key, $string ) {
+		if ( defined( 'AFFILIATES_WPML' ) && AFFILIATES_WPML ) {
+			// original value, domain, name, language code (optional and not used here)
+			$string = apply_filters( 'wpml_translate_single_string', $string, 'affiliates', $key );
+		}
+		return $string;
+	}
+
+	/**
 	 * Changes the admin registration email subject.
 	 *
 	 * @param string $subject
@@ -272,10 +307,12 @@ E-mail: [user_email]<br/>',
 		switch ( $status ) {
 			case 'pending' :
 				$registration_subject = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT );
+				$registration_subject = self::get_translation( self::DEFAULT_ADMIN_REGISTRATION_PENDING_SUBJECT, $registration_subject );
 				break;
 			case 'active':
 			default:
 				$registration_subject = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT );
+				$registration_subject = self::get_translation( self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_SUBJECT, $registration_subject );
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -296,10 +333,12 @@ E-mail: [user_email]<br/>',
 		switch ( $status ) {
 			case 'pending' :
 				$registration_message = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE );
+				$registration_message = self::get_translation( self::DEFAULT_ADMIN_REGISTRATION_PENDING_MESSAGE, $registration_message );
 				break;
 			case 'active':
 			default:
 				$registration_message = self::get_default( self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE );
+				$registration_message = self::get_translation( self::DEFAULT_ADMIN_REGISTRATION_ACTIVE_MESSAGE, $registration_message );
 				break;
 		}
 		$tokens               = self::get_registration_tokens( $params );
@@ -332,10 +371,12 @@ E-mail: [user_email]<br/>',
 		switch ( $status ) {
 			case 'pending' :
 				$registration_subject = self::get_default( self::DEFAULT_REGISTRATION_PENDING_SUBJECT );
+				$registration_subject = self::get_translation( self::DEFAULT_REGISTRATION_PENDING_SUBJECT, $registration_subject );
 				break;
 			case 'active':
 			default:
 				$registration_subject = self::get_default( self::DEFAULT_REGISTRATION_ACTIVE_SUBJECT );
+				$registration_subject = self::get_translation( self::DEFAULT_REGISTRATION_ACTIVE_SUBJECT, $registration_subject );
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -356,10 +397,12 @@ E-mail: [user_email]<br/>',
 		switch ( $status ) {
 			case 'pending' :
 				$registration_message = self::get_default( self::DEFAULT_REGISTRATION_PENDING_MESSAGE );
+				$registration_message = self::get_translation( self::DEFAULT_REGISTRATION_PENDING_MESSAGE, $registration_message );
 				break;
 			case 'active':
 			default:
 				$registration_message = self::get_default( self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE );
+				$registration_message = self::get_translation( self::DEFAULT_REGISTRATION_ACTIVE_MESSAGE, $registration_message );
 				break;
 		}
 		$tokens = self::get_registration_tokens( $params );
@@ -390,6 +433,7 @@ E-mail: [user_email]<br/>',
 
 		$notifications = get_option( 'affiliates_notifications', array() );
 		$status_subject = self::get_default( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT );
+		$status_subject = self::get_translation( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_SUBJECT, $status_subject );
 
 		$tokens = self::get_registration_tokens( $params );
 		$subject = self::substitute_tokens( stripslashes( $status_subject ), $tokens );
@@ -406,6 +450,7 @@ E-mail: [user_email]<br/>',
 	public static function  affiliates_updated_affiliate_status_message( $message, $params, $old_status, $new_status ) {
 		$notifications = get_option( 'affiliates_notifications', array() );
 		$status_message = self::get_default( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE );
+		$status_message = self::get_translation( self::DEFAULT_AFFILIATE_PENDING_TO_ACTIVE_MESSAGE, $status_message );
 
 		$tokens = self::get_registration_tokens( $params );
 		$message = self::substitute_tokens( stripslashes( $status_message ), $tokens );
