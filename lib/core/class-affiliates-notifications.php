@@ -299,14 +299,23 @@ E-mail: [user_email]<br/>',
 	/**
 	 * Return's the admin's locale.
 	 *
+	 * @param string $email optional alternative user's email
+	 *
 	 * @return string
 	 */
-	public static function get_admin_locale() {
+	public static function get_admin_locale( $email = null) {
 		$locale = get_locale();
 		$admin_email = get_option( 'admin_email' );
 		if ( $admin_user = get_user_by( 'email', $admin_email ) ) {
 			if ( function_exists( 'get_user_locale' ) ) {
 				$locale = get_user_locale( $admin_user->ID );
+			}
+		}
+		if ( $email !== null ) {
+			if ( $user = get_user_by( 'email', $email ) ) {
+				if ( function_exists( 'get_user_locale' ) ) {
+					$locale = get_user_locale( $user->ID );
+				}
 			}
 		}
 		return $locale;
