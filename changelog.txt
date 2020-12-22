@@ -1,6 +1,7 @@
 == Affiliates - Changelog ==
 
 = 4.8.0 =
+* Requires at least WordPress 5.0.
 * WordPress 5.6 compatible.
 * Fixed profile fields were not showing translations with WPML except on registration form.
 * Added notification messages to WPML translatable strings.
