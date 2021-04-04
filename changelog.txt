@@ -2,6 +2,7 @@
 
 = 4.9.0 =
 * WordPress 5.7 compatible.
+* Fixed PHP 8.x deprecated required parameters after optional parameters.
 
 = 4.8.0 =
 * Requires at least WordPress 5.0.
