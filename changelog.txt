@@ -4,6 +4,7 @@
 * WordPress 5.7 compatible.
 * Fixed PHP 8.x deprecated required parameters after optional parameters.
 * Updated pagination navigation elements on several screens to show as buttons for easier use.
+* Updated the affiliate selection field to include Ids when creating or editing referrals.
 
 = 4.8.0 =
 * Requires at least WordPress 5.0.

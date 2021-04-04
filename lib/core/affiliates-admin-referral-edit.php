@@ -164,14 +164,21 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= '<span class="title">' . __( 'Affiliate', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$affiliates = affiliates_get_affiliates( true, true );
-	$output .= '<select name="affiliate_id" class="affiliates-uie" >';
+	$output .= sprintf( '<select name="affiliate_id" class="affiliates-uie" placeholder="%s">', esc_attr( '&mdash;' ) );
+	$output .= '<option value=""></option>';
 	foreach ( $affiliates as $affiliate ) {
 		if ( $affiliate_id == $affiliate['affiliate_id']) {
 			$selected = ' selected="selected" ';
 		} else {
 			$selected = '';
 		}
-		$output .= '<option ' . $selected . ' value="' . esc_attr( $affiliate['affiliate_id'] ) . '">' . esc_attr( stripslashes( $affiliate['name'] ) ) . '</option>';
+		$output .= sprintf(
+				'<option value="%s" %s>%s [%d]</option>',
+				esc_attr( $affiliate['affiliate_id'] ),
+				$selected,
+				esc_html( stripslashes( $affiliate['name'] ) ),
+				esc_html( $affiliate['affiliate_id'] )
+			);
 	}
 	$output .= '</select>';
 	$output .= '</label>';
