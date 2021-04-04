@@ -27,8 +27,8 @@ if ( !defined( 'ABSPATH' ) ) {
  * Pagination unscrupulously borrowed from WP_List_Table.
  */
 class Affiliates_Pagination {
-	
-	
+
+
 	/**
 	 * Constructor
 	 * @param int $total_items how many items there are to display
@@ -46,7 +46,7 @@ class Affiliates_Pagination {
 			)
 		);
 	}
-	
+
 	/**
 	 * Get the current page number
 	 * @return int the current page number
@@ -57,14 +57,14 @@ class Affiliates_Pagination {
 			if ( preg_match( "/(\/page\/)(\d+)/", $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], $matches ) ) {
 				$pagenum = absint( $matches[2] );
 			}
-		}		
+		}
 
 		if( isset( $this->_pagination_args['total_pages'] ) && $pagenum > $this->_pagination_args['total_pages'] ) {
 			$pagenum = $this->_pagination_args['total_pages'];
 		}
 		return max( 1, $pagenum );
 	}
-	
+
 	/**
 	 * An internal method that sets all the necessary pagination arguments
 	 *
@@ -91,7 +91,7 @@ class Affiliates_Pagination {
 	 * @param boolean $echo displays if true, otherwise returns
 	 */
 	function pagination( $which, $echo = false ) {
-	
+
 		if ( empty( $this->_pagination_args ) )
 			return;
 
@@ -107,7 +107,7 @@ class Affiliates_Pagination {
 
 		// needs to remove rewritten added page
 		$current_url = preg_replace( "/\/page\/\d+/", "", $current_url );
-		
+
 		$page_links = array();
 
 		$disable_first = $disable_last = '';
@@ -117,14 +117,14 @@ class Affiliates_Pagination {
 			$disable_last = ' disabled';
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
-			'first-page' . $disable_first,
+			'first-page button ' . $disable_first,
 			esc_attr__( 'Go to the first page' ),
 			esc_url( remove_query_arg( $this->_pagination_args['paged_var'], $current_url ) ),
 			'&laquo;'
 		);
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
-			'prev-page' . $disable_first,
+			'prev-page button ' . $disable_first,
 			esc_attr__( 'Go to the previous page' ),
 			esc_url( add_query_arg( $this->_pagination_args['paged_var'], max( 1, $current-1 ), $current_url ) ),
 			'&lsaquo;'
@@ -144,14 +144,14 @@ class Affiliates_Pagination {
 		$page_links[] = '<span class="paging-input">' . sprintf( _x( '%1$s of %2$s', 'paging', 'affiliates' ), $html_current_page, $html_total_pages ) . '</span>';
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
-			'next-page' . $disable_last,
+			'next-page button ' . $disable_last,
 			esc_attr__( 'Go to the next page' ),
 			esc_url( add_query_arg( $this->_pagination_args['paged_var'], min( $total_pages, $current+1 ), $current_url ) ),
 			'&rsaquo;'
 		);
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
-			'last-page' . $disable_last,
+			'last-page button ' . $disable_last,
 			esc_attr__( 'Go to the last page' ),
 			esc_url( add_query_arg( $this->_pagination_args['paged_var'], $total_pages, $current_url ) ),
 			'&raquo;'

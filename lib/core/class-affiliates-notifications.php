@@ -492,10 +492,12 @@ E-mail: [user_email]<br/>',
 	 *
 	 * @param string $headers
 	 * @param array $params
+	 * @param string $old_status
+	 * @param string $new_status
 	 *
 	 * @return string
 	 */
-	public static function affiliates_updated_affiliate_status_headers( $headers = '', $params = array(), $old_status, $new_status ) {
+	public static function affiliates_updated_affiliate_status_headers( $headers = '', $params = array(), $old_status = '', $new_status = '' ) {
 		$headers .= 'Content-type: text/html; charset="' . get_option( 'blog_charset' ) . '"' . "\r\n";
 		return $headers;
 	}
