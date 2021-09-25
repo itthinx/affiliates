@@ -166,6 +166,18 @@ class Affiliates_Registration {
 		}
 
 		//
+		// Deleted affiliate
+		//
+		if ( affiliates_user_is_affiliate_status( null, 'deleted' ) ) {
+			$output .= '<div class="affiliates-registration registered pending">';
+			$output .= '<p>';
+			$output .= __( 'Your affiliate account is closed.', 'affiliates' );
+			$output .= '</p>';
+			$output .= '</div>';
+			return $output;
+		}
+
+		//
 		// Existing affiliate
 		//
 		if ( $is_affiliate = affiliates_user_is_affiliate() ) {
