@@ -80,13 +80,6 @@ function affiliates_admin_add_ons() {
 			'url'     => 'https://wordpress.org/plugins/affiliates-buddypress/',
 			'index'   => 20
 		),
-		'affiliates-captcha' => array(
-			'title'   => 'Affiliates Captcha <span style="color:#f00">FREE</span>',
-			'content' => 'Activate this extension and the Captcha will appear on the affiliate registration form when the Captcha plugin is activated.',
-			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/affiliates-captcha.png',
-			'url'     => 'https://wordpress.org/plugins/affiliates-captcha/',
-			'index'   => 20
-		),
 		'affiliates-recaptcha' => array(
 			'title'   => 'Affiliates reCAPTCHA <span style="color:#f00">FREE</span>',
 			'content' => 'This extension integrates with Google\'s reCAPTCHA service for the affiliate registration form.',

@@ -6,6 +6,7 @@
 * Added the affiliates_new_affiliate_registration_params filter.
 * Added the affiliates_new_affiliate_user_registration_params filter.
 * Fixed use of deprecated block_categories filter with WordPress 5.8+ using the block_categories_all filter instead.
+* Removed a dropped integration entry from add-ons.
 
 = 4.9.0 =
 * WordPress 5.7 compatible.
