@@ -8,6 +8,7 @@
 * Fixed use of deprecated block_categories filter with WordPress 5.8+ using the block_categories_all filter instead.
 * Removed a dropped integration entry from add-ons.
 * Affiliate registration form now shows account is closed for deleted affiliates.
+* Referrals admin section now also includes deleted accounts when inoperative option is used.
 
 = 4.9.0 =
 * WordPress 5.7 compatible.

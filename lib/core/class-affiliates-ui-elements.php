@@ -94,8 +94,12 @@ class Affiliates_UI_Elements {
 		if ( isset( $args['show_inoperative'] ) ) {
 			$show_inoperative = (bool) $args['show_inoperative'];
 		}
+		$show_deleted = false;
+		if ( isset( $args['show_deleted'] ) ) {
+			$show_deleted = (bool) $args['show_deleted'];
+		}
 
-		$affiliates = affiliates_get_affiliates( true, !$show_inoperative );
+		$affiliates = affiliates_get_affiliates( !$show_deleted, !$show_inoperative );
 		$affiliates_select = '';
 		if ( !empty( $affiliates ) ) {
 			$affiliates_select .= sprintf( '<label class="%s">', esc_attr( $args['label-class'] ) );
