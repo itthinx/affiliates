@@ -854,6 +854,8 @@ class Affiliates_Registration {
 				'site_login_url' => wp_login_url(),
 				'blogname'       => $blogname
 			);
+			// @since 4.10.0 allow to filter params
+			$params = apply_filters( 'affiliates_new_affiliate_registration_params', $params );
 			@wp_mail(
 				apply_filters( 'affiliates_admin_email', get_option( 'admin_email' ) ),
 				apply_filters( 'affiliates_new_affiliate_registration_subject', sprintf( __( '[%s] New Affiliate Registration', 'affiliates' ), $blogname ), $params ),
@@ -887,6 +889,8 @@ class Affiliates_Registration {
 					'site_login_url' => wp_login_url(),
 					'blogname'       => $blogname
 				);
+				// @since 4.10.0 allow to filter params
+				$params = apply_filters( 'affiliates_new_affiliate_user_registration_params', $params );
 				@wp_mail(
 					$user->user_email,
 					apply_filters( 'affiliates_new_affiliate_user_registration_subject', sprintf( __( '[%s] Your username and password', 'affiliates' ), $blogname ), $params ),
