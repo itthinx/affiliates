@@ -98,7 +98,7 @@ class Affiliates_Exclusion {
 		// Only perform checks if the coupon is valid at this stage.
 		if ( $valid && !empty( $coupon ) && !empty( $id ) && !empty( $code ) ) {
 			if ( method_exists( 'Affiliates_Attributes_WordPress', 'get_affiliate_for_coupon' ) ) {
-				self::remove_filters();
+				self::remove_filters( true );
 				if ( $affiliate_id = Affiliates_Attributes_WordPress::get_affiliate_for_coupon( $code ) ) {
 					if ( $user_id = get_current_user_id() ) {
 						if ( $affiliate_ids = affiliates_get_user_affiliate( $user_id ) ) {
@@ -179,11 +179,21 @@ class Affiliates_Exclusion {
 	/**
 	 * These filters must be removed so we can get the affiliate id without
 	 * their methods interfering when using get_affiliate_for_coupon().
+	 *
+	 * @param boolean $force remove filters even on override (relevant with AP); @since 4.10.0
 	 */
-	private static function remove_filters() {
-		self::$ap_priority = has_filter( 'affiliates_coupon_affiliate_id', array( 'Affiliates_Permanent', 'affiliates_coupon_affiliate_id' ) );
-		if ( self::$ap_priority !== false ) {
-			remove_filter( 'affiliates_coupon_affiliate_id', array( 'Affiliates_Permanent', 'affiliates_coupon_affiliate_id' ), self::$ap_priority, 2 );
+	private static function remove_filters( $force = false ) {
+		// @since 4.10.0
+		$override_coupons = false;
+		if ( class_exists( 'Affiliates_Permanent' ) && method_exists( 'Affiliates_Permanent', 'override_coupons' ) ) {
+			// requires AP 1.7.0
+			$override_coupons = Affiliates_Permanent::override_coupons();
+		}
+		if ( !$override_coupons ) {
+			self::$ap_priority = has_filter( 'affiliates_coupon_affiliate_id', array( 'Affiliates_Permanent', 'affiliates_coupon_affiliate_id' ) );
+			if ( self::$ap_priority !== false ) {
+				remove_filter( 'affiliates_coupon_affiliate_id', array( 'Affiliates_Permanent', 'affiliates_coupon_affiliate_id' ), self::$ap_priority, 2 );
+			}
 		}
 		remove_filter( 'affiliates_coupon_affiliate_id', array( __CLASS__, 'coupon' ), 999 );
 	}
