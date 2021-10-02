@@ -230,7 +230,7 @@ function affiliates_admin_hits() {
 	// @since 4.10.0 correct referrals count requires filters to be taken into account
 	$referrals_subquery_where = '';
 	$referrals_subquery_conditions = array();
-	$referrals_subquery_params[] = array();
+	$referrals_subquery_params = array();
 	if ( $affiliate_id ) {
 		$referrals_subquery_conditions[] = "affiliate_id = %d";
 		$referrals_subquery_params[] = $affiliate_id;
