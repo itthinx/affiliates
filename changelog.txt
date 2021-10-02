@@ -10,6 +10,7 @@
 * Affiliate registration form now shows account is closed for deleted affiliates.
 * Referrals admin section now also includes deleted accounts when inoperative option is used.
 * Modified internal filter handling to allow support for coupon overrides.
+* Fixed wrong referrals count shown under Visits & Referrals when filters set.
 
 = 4.9.0 =
 * WordPress 5.7 compatible.
