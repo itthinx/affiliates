@@ -1496,8 +1496,8 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
  * duplicates, no referral will be considered as a duplicate. If the option
  * does not allow duplicates, a duplicate is identified as such based on the
  * amount of attribute available: affiliate_id, amount, currency_id, type,
- * referemce and data.
- * 
+ * reference and data.
+ *
  * @param array $atts referral attributes: affiliate_id (required) and others
  */
 function affiliates_is_duplicate_referral( $atts ) {
