@@ -227,6 +227,30 @@ function affiliates_admin_hits() {
 		$filter_params[] = $affiliate_id;
 	}
 
+	// @since 4.10.0 correct referrals count requires filters to be taken into account
+	$referrals_subquery_where = '';
+	$referrals_subquery_conditions = array();
+	$referrals_subquery_params[] = array();
+	if ( $affiliate_id ) {
+		$referrals_subquery_conditions[] = "affiliate_id = %d";
+		$referrals_subquery_params[] = $affiliate_id;
+	}
+	if ( $u2s_from_date && $u2s_thru_date ) {
+		$referrals_subquery_conditions[] = " datetime >= %s AND datetime <= %s ";
+		$referrals_subquery_params[] = $u2s_from_date . ' 00:00:00';
+		$referrals_subquery_params[] = $u2s_thru_date . ' 23:59:59';
+	} else if ( $u2s_from_date ) {
+		$referrals_subquery_conditions[] = " datetime >= %s ";
+		$referrals_subquery_params[] = $u2s_from_date . ' 00:00:00';
+	} else if ( $u2s_thru_date ) {
+		$referrals_subquery_conditions[] = " datetime <= %s ";
+		$referrals_subquery_params[] = $u2s_thru_date . ' 23:59:59';
+	}
+	if ( count( $referrals_subquery_conditions ) > 0 ) {
+		$referrals_subquery_where = ' WHERE ' . implode( ' AND ', $referrals_subquery_conditions );
+		$referrals_subquery_where = $wpdb->prepare( $referrals_subquery_where, $referrals_subquery_params );
+	}
+
 	do {
 		$repeat = false;
 		$offset = ( $paged - 1 ) * $row_count;
@@ -251,7 +275,7 @@ function affiliates_admin_hits() {
 			"IF ( referrals.count IS NOT NULL AND hits.visits > 0, referrals.count / hits.visits, 0 ) AS ratio " .
 			"FROM " .
 			"( SELECT date, COUNT(DISTINCT ip) AS visits, COUNT(*) AS hits FROM $hits_table $filters GROUP BY date ) AS hits " .
-			"LEFT JOIN ( SELECT COUNT(*) AS count, date(datetime) AS date FROM $referrals_table GROUP BY date(datetime) ) AS referrals ON hits.date = referrals.date " .
+			"LEFT JOIN ( SELECT COUNT(*) AS count, date(datetime) AS date FROM $referrals_table $referrals_subquery_where GROUP BY date(datetime) ) AS referrals ON hits.date = referrals.date " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
