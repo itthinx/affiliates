@@ -189,7 +189,7 @@ class Affiliates_Exclusion {
 			// requires AP 1.7.0
 			$override_coupons = Affiliates_Permanent::override_coupons();
 		}
-		if ( !$override_coupons ) {
+		if ( !$override_coupons || $force ) {
 			self::$ap_priority = has_filter( 'affiliates_coupon_affiliate_id', array( 'Affiliates_Permanent', 'affiliates_coupon_affiliate_id' ) );
 			if ( self::$ap_priority !== false ) {
 				remove_filter( 'affiliates_coupon_affiliate_id', array( 'Affiliates_Permanent', 'affiliates_coupon_affiliate_id' ), self::$ap_priority, 2 );
