@@ -33,9 +33,35 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'wp_init' ) );
-		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
+		// @since 4.10.0 WP 5.8.0 deprecates the block_categories filter in favor of the block_categories_all filter; this function exists as of 5.8.0
+		if ( function_exists( 'get_default_block_categories' ) ) {
+			add_filter( 'block_categories_all', array( __CLASS__, 'block_categories_all' ), 10, 2 );
+		} else {
+			add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
+		}
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_assets' ) );
 		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_assets' ) );
+	}
+
+	/**
+	 * Registers the Affiliates block category.
+	 *
+	 * @param array $block_categories
+	 * @param WP_Block_Editor_Context $block_editor_context
+	 *
+	 * @return array
+	 */
+	public static function block_categories_all( $block_categories, $block_editor_context ) {
+		$block_categories = array_merge(
+			$block_categories,
+			array(
+				array(
+					'slug' => 'affiliates',
+					'title' => 'Affiliates' // don't translate
+				)
+			)
+		);
+		return $block_categories;
 	}
 
 	/**
@@ -43,6 +69,8 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 	 *
 	 * @param array $categories Array of block categories.
 	 * @param WP_Post $post               Post being loaded.
+	 *
+	 * @deprecated as of 4.10.0
 	 *
 	 * @return array
 	 */

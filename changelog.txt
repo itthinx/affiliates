@@ -1,5 +1,17 @@
 == Affiliates - Changelog ==
 
+= 4.10.0 =
+* WordPress 5.8 compatible.
+* Added the affiliates_updated_affiliate_status_params filter.
+* Added the affiliates_new_affiliate_registration_params filter.
+* Added the affiliates_new_affiliate_user_registration_params filter.
+* Fixed use of deprecated block_categories filter with WordPress 5.8+ using the block_categories_all filter instead.
+* Removed a dropped integration entry from add-ons.
+* Affiliate registration form now shows account is closed for deleted affiliates.
+* Referrals admin section now also includes deleted accounts when inoperative option is used.
+* Modified internal filter handling to allow support for coupon overrides.
+* Fixed wrong referrals count shown under Visits & Referrals when filters set.
+
 = 4.9.0 =
 * WordPress 5.7 compatible.
 * Fixed PHP 8.x deprecated required parameters after optional parameters.

@@ -608,6 +608,8 @@ E-mail: [user_email]<br/>',
 						'site_login_url' => wp_login_url(),
 						'blogname'       => $blogname
 					);
+					// @since 4.10.0 allow to filter params
+					$params = apply_filters( 'affiliates_updated_affiliate_status_params', $params );
 					@wp_mail(
 						$user->user_email,
 						apply_filters( 'affiliates_updated_affiliate_status_subject', sprintf( __( '[%s] Affiliate program', 'affiliates' ), $blogname ), $params, $old_status, $new_status ),

@@ -196,7 +196,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			'affiliates-paypal' => array(
 				'title'        => __( 'PayPal', 'affiliates' ),
 				'description'  =>
-					__( '<strong>Discontinued, we recommend to use our WooCommerce integration instead.</strong>', 'affiliates' ) .
+					'<strong>' .
+					__( 'Discontinued, we recommend to use our WooCommerce integration instead.', 'affiliates' ) .
+					'</strong>' .
 					' ' .
 					__( 'This plugin integrates <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with PayPal Payments Standard. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made.', 'affiliates' ),
 				'notes'        => __( 'This integration is suitable to be used with <a href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>. Note that this integration is not intended to be used for e-commerce systems that provide their own PayPal Payments Standard gateway.', 'affiliates' ),

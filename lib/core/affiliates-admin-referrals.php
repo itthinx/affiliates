@@ -412,7 +412,8 @@ function affiliates_admin_referrals() {
 			'class'            => 'affiliate-id-filter',
 			'label-class'      => 'affiliate-id-filter',
 			'affiliate_id'     => $affiliate_id,
-			'show_inoperative' => $show_inoperative
+			'show_inoperative' => $show_inoperative,
+			'show_deleted'     => $show_inoperative // @since 4.10.0 include deleted accounts
 		)
 	);
 

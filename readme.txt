@@ -3,9 +3,9 @@ Contributors: itthinx, proaktion
 Donate link: https://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
 Requires at least: 5.0.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.6.0
-Stable tag: 4.9.0
+Stable tag: 4.10.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -53,7 +53,6 @@ The system is used to manage affiliates, create referrals and track visits to yo
 - [Affiliates Formidable](https://wordpress.org/plugins/affiliates-formidable/) : Affiliates can register through [Formidable Forms](https://wordpress.org/plugins/formidable/) forms and form submissions can grant commissions and record referrals.
 - [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions.
 - [Affiliates BuddyPress](https://wordpress.org/plugins/affiliates-buddypress) : Display affiliate content in the [BuddyPress](https://wordpress.org/plugins/buddypress/) user profile.
-- [Affiliates Captcha](https://wordpress.org/plugins/affiliates-captcha) : The captcha will appear on the affiliate registration form when the [Captcha](https://wordpress.org/plugins/captcha/) plugin is used.
 - [Affiliates reCAPTCHA](https://wordpress.org/plugins/affiliates-recaptcha) : This integrates [reCAPTCHA](https://www.google.com/recaptcha/) with the affiliate registration form.
 
 Additional resources can be found on [GitHub](https://github.com/itthinx).
