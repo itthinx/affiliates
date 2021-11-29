@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 4.11.0 =
+* WordPress 5.9 compatible.
+* Requires at least WordPress 5.5.
+
 = 4.10.0 =
 * WordPress 5.8 compatible.
 * Added the affiliates_updated_affiliate_status_params filter.
