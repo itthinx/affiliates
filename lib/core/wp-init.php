@@ -1780,7 +1780,7 @@ function affiliates_admin_menu() {
 		'affiliates-admin',
 		'affiliates_admin',
 		AFFILIATES_PLUGIN_URL . '/images/affiliates.png',
-		'58.187'
+		58
 	);
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );

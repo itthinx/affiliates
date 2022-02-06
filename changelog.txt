@@ -3,6 +3,7 @@
 = 4.12.0 =
 * WordPress 6.0 compatible.
 * Requires at least WordPress 5.6.
+* Fixed a PHP Notice with WordPress 6 and updated our add_menu_page to use an integer for the plugin's menu position.
 
 = 4.11.0 =
 * WordPress 5.9 compatible.
