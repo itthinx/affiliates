@@ -183,7 +183,7 @@ Ukranian by Michael Yunat from [GetVoIP](http://getvoip.com)
 
 More detailed instructions are available on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
 
-1. Upload or extract the `affiliates` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.  
+1. Upload or extract the `affiliates` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.
 2. Enable the plugin from the *Plugins* menu in WordPress.
 3. A new *Affiliates* menu will appear in WordPress, this is where you manage your affiliates and keep track of visits and referrals.
 4. Go to _Affiliates > Settings > Pages_ and click the *Generate* button. This will add a new page to your site with a default Affiliate Area that you can then edit if needed.
