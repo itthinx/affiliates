@@ -225,7 +225,6 @@ function affiliates_activate( $network_wide = false ) {
 		$blog_ids = affiliates_get_blogs();
 		foreach ( $blog_ids as $blog_id ) {
 			switch_to_blog( $blog_id );
-			wp_cache_reset();
 			affiliates_setup();
 			restore_current_blog();
 		}
@@ -242,7 +241,6 @@ function affiliates_wpmu_new_blog( $blog_id, $user_id ) {
 	if ( is_multisite() ) {
 		if ( affiliates_is_sitewide_plugin() ) {
 			switch_to_blog( $blog_id );
-			wp_cache_reset();
 			affiliates_setup();
 			restore_current_blog();
 		}
@@ -259,7 +257,6 @@ function affiliates_delete_blog( $blog_id, $drop = false ) {
 	if ( is_multisite() ) {
 		if ( affiliates_is_sitewide_plugin() ) {
 			switch_to_blog( $blog_id );
-			wp_cache_reset();
 			affiliates_cleanup( $drop );
 			restore_current_blog();
 		}
@@ -771,7 +768,6 @@ function affiliates_deactivate( $network_wide = false ) {
 			$blog_ids = affiliates_get_blogs();
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
-				wp_cache_reset();
 				affiliates_cleanup( true );
 				restore_current_blog();
 			}
@@ -1780,7 +1776,7 @@ function affiliates_admin_menu() {
 		'affiliates-admin',
 		'affiliates_admin',
 		AFFILIATES_PLUGIN_URL . '/images/affiliates.png',
-		'58.187'
+		58
 	);
 	$pages[] = $page;
 	add_action( 'admin_print_styles-' . $page, 'affiliates_admin_print_styles' );
