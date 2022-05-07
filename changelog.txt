@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.13.0 =
+* WordPress 6.0 compatible.
+
 = 4.12.0 =
 * WordPress 6.0 compatible.
 * Requires at least WordPress 5.6.
