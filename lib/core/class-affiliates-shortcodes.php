@@ -870,7 +870,7 @@ class Affiliates_Shortcodes {
 				"SELECT $affiliates_users_table.affiliate_id FROM $affiliates_users_table LEFT JOIN $affiliates_table ON $affiliates_users_table.affiliate_id = $affiliates_table.affiliate_id WHERE $affiliates_users_table.user_id = %d AND $affiliates_table.status = 'active'",
 				intval( $user_id )
 			))) {
-				$content = trim( $content );
+				$content = $content !== null ? trim( $content ) : '';
 				if ( strlen( $content ) > 0 ) {
 					// wp_texturize() has already been applied to $content and
 					// it indiscriminately replaces ampersands with the HTML

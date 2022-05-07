@@ -2,6 +2,9 @@
 
 = 4.13.0 =
 * WordPress 6.0 compatible.
+* PHP 8.1 compatibility fixed deprecated passing null to stripslashes().
+* PHP 8.1 compatibility fixed deprecated passing null to strcmp().
+* PHP 8.1 compatibility fixed deprecated passing null to trim().
 
 = 4.12.0 =
 * WordPress 6.0 compatible.

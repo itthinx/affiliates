@@ -583,25 +583,25 @@ function affiliates_admin_hits_uri() {
 					sprintf( '<label style="cursor:help" title="%s" class="src-uri-filter">', esc_html( $use_and_or ) ) .
 					__( 'Source URI', 'affiliates' ) .
 					' ' .
-					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( stripslashes( $src_uri ) ) . '"/>' .
+					'<input class="src-uri-filter" name="src_uri" type="text" value="' . esc_attr( $src_uri !== null ? stripslashes( $src_uri ) : '' ) . '"/>' .
 					'</label>' .
 					' ' .
 					sprintf( '<label style="cursor:help" title="%s" class="dest-uri-filter">', esc_html( $use_and_or ) ) .
 					__( 'Landing URI', 'affiliates' ) .
 					' ' .
-					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( stripslashes( $dest_uri ) ) . '"/>' .
+					'<input class="dest-uri-filter" name="dest_uri" type="text" value="' . esc_attr( $dest_uri !== null ? stripslashes( $dest_uri ) : '' ) . '"/>' .
 					'</label>' .
 					' ' .
 					sprintf( '<label style="cursor:help" title="%s" class="user-agent-filter">', esc_html( $use_and_or ) ) .
 					__( 'User Agent', 'affiliates' ) .
 					' ' .
-					'<input class="user-agent-filter" name="user_agent" type="text" value="' . esc_attr( stripslashes( $user_agent ) ) . '"/>' .
+					'<input class="user-agent-filter" name="user_agent" type="text" value="' . esc_attr( $user_agent !== null ? stripslashes( $user_agent ) : '' ) . '"/>' .
 					'</label>' .
 					' ' .
 					'<label class="ip-filter">' .
 					__( 'IP', 'affiliates' ) .
 					' ' .
-					'<input class="ip-filter" name="ip" type="text" value="' . esc_attr( stripslashes( $ip ) ) . '"/>' .
+					'<input class="ip-filter" name="ip" type="text" value="' . esc_attr( $ip !== null ? stripslashes( $ip ) : '' ) . '"/>' .
 					'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
