@@ -494,7 +494,7 @@ class Affiliates_Totals {
 
 				$name_suffix = '';
 				$class_deleted = '';
-				if ( $is_deleted = ( strcmp( $result->status, 'deleted' ) == 0 ) ) {
+				if ( $is_deleted = ( $result->status !== null && strcmp( $result->status, 'deleted' ) == 0 ) ) {
 					$class_deleted = ' deleted ';
 					$name_suffix .= ' ' . __( '(removed)', 'affiliates' );
 				}
