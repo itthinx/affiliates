@@ -2,6 +2,7 @@
 
 = 4.14.0 =
 * WordPress 6.0 compatible.
+* PHP 8.1 compatibility fixed an instance of deprecated passing null to bcadd().
 
 = 4.13.0 =
 * WordPress 6.0 compatible.
