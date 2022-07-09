@@ -580,6 +580,9 @@ E-mail: [user_email]<br/>',
 		foreach ( $tokens as $key => $value ) {
 			if ( key_exists( $key, $tokens ) ) {
 				$substitute = $tokens[$key];
+				if ( $substitute === null ) {
+					$substitute = '';
+				}
 				$s = str_replace( "[" . $key . "]", $substitute, $s );
 			}
 		}
