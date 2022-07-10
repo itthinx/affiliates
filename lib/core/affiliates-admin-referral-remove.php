@@ -46,7 +46,10 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 	$output .= '</h1>';
 
 	if ( isset( $_POST['submit'] ) ) {
-		if ( !wp_verify_nonce( $_POST['referral-nonce'], 'remove' ) ) {
+		if (
+			!isset( $_POST['referral-nonce'] ) ||
+			!wp_verify_nonce( $_POST['referral-nonce'], 'remove' )
+		) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		} else {			
 			if ( !empty( $_POST['referral_id'] ) ) {

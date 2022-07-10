@@ -105,7 +105,10 @@ function affiliates_admin_affiliates_remove_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-remove' ) ) {
+	if (
+		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE] ) ||
+		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-remove' )
+	) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
@@ -239,7 +242,10 @@ function affiliates_admin_affiliates_bulk_remove_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+	if (
+		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE] ) ||
+		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' )
+	) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 

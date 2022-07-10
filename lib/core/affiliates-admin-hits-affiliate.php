@@ -52,7 +52,10 @@ function affiliates_admin_hits_affiliate() {
 		isset( $_POST['expanded_referrals'] ) ||
 		isset( $_POST['show_inoperative'] )
 	) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE], 'admin' )
+		) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
@@ -164,13 +167,19 @@ function affiliates_admin_hits_affiliate() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_1], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_1] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_1], 'admin' )
+		) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_2], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_2] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_2], 'admin' )
+		) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}

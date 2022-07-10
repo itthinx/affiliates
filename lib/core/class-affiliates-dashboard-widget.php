@@ -57,7 +57,10 @@ class Affiliates_Dashboard_Widget {
 
 		$days_back = $affiliates_options->get_option( 'dashboard_days_back', self::DEFAULT_DAYS_BACK );
 		if ( isset( $_POST['affiliates-dashboard-widget-submitted'] ) ) {
-			if ( wp_verify_nonce( $_POST[self::NONCE], 'admin' ) ) {
+			if (
+				isset( $_POST[self::NONCE] ) &&
+				wp_verify_nonce( $_POST[self::NONCE], 'admin' )
+			) {
 				if ( !empty( $_POST['days_back'] ) ) {
 					$days_back = abs( intval( $_POST['days_back'] ) );
 					if ( $days_back < self::MIN_DAYS_BACK ) {

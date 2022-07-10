@@ -76,7 +76,10 @@ class Affiliates_Totals {
 		$currency_id          = $affiliates_options->get_option( 'totals_currency_id', null );
 
 		if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
-			if ( !wp_verify_nonce( $_POST[self::NONCE], self::SET_FILTERS ) ) {
+			if (
+				!isset( $_POST[self::NONCE] ) ||
+				!wp_verify_nonce( $_POST[self::NONCE], self::SET_FILTERS )
+			) {
 				wp_die( __( 'Access denied.', 'affiliates' ) );
 			}
 		}
@@ -142,13 +145,19 @@ class Affiliates_Totals {
 		}
 
 		if ( isset( $_POST['row_count'] ) ) {
-			if ( !wp_verify_nonce( $_POST[self::NONCE_1], self::SET_RPP ) ) {
+			if (
+				!isset( $_POST[self::NONCE_1] ) ||
+				!wp_verify_nonce( $_POST[self::NONCE_1], self::SET_RPP )
+			) {
 				wp_die( __( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
 		if ( isset( $_POST['paged'] ) ) {
-			if ( !wp_verify_nonce( $_POST[self::NONCE_2], self::SET_PAGE ) ) {
+			if (
+				!isset( $_POST[self::NONCE_2] ) ||
+				!wp_verify_nonce( $_POST[self::NONCE_2], self::SET_PAGE )
+			) {
 				wp_die( __( 'Access denied.', 'affiliates' ) );
 			}
 		}

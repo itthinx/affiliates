@@ -2496,6 +2496,9 @@ function affiliates_get_referral_amount_decimals( $context = null ) {
  * @return string
  */
 function affiliates_format_referral_amount( $amount, $context = '' ) {
+	if ( $amount === null ) {
+		$amount = 0;
+	}
 	if ( function_exists( 'bcadd' ) ) {
 		return bcadd( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
 	} else {

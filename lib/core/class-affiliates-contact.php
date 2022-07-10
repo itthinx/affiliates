@@ -114,7 +114,10 @@ class Affiliates_Contact extends WP_Widget {
 
 		if ( !empty( $_POST[$submit_name] ) ) {
 
-			if ( !wp_verify_nonce( $_POST[$nonce], $nonce_action ) ) {
+			if (
+				!isset( $_POST[$nonce] ) ||
+				!wp_verify_nonce( $_POST[$nonce], $nonce_action )
+			) {
 				$error = true; // fail but don't give clues
 			}
 

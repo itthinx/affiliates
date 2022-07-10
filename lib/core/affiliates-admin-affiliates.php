@@ -96,7 +96,10 @@ function affiliates_admin_affiliates() {
 				break;
 			// bulk actions on affiliates: remove affiliates
 			case 'affiliate-action' :
-				if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' ) ) {
+				if (
+					isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE] ) &&
+					wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' )
+				) {
 					$affiliate_ids = isset( $_POST['affiliate_ids'] ) ? $_POST['affiliate_ids'] : null;
 					$bulk_action = null;
 					if ( isset( $_POST['bulk'] ) ) {
@@ -126,9 +129,11 @@ function affiliates_admin_affiliates() {
 				$notice_msg = esc_html__( 'Bulk action executed', 'affiliates' );
 				break;
 		}
-		$notice .= '<div class="updated">';
-		$notice .= $notice_msg;
-		$notice .= '</div>';
+		if ( strlen( $notice ) > 0 ) {
+			$notice .= '<div class="updated">';
+			$notice .= $notice_msg;
+			$notice .= '</div>';
+		}
 	} else if ( isset ( $_GET['action'] ) ) {
 		// handle action request - show form
 		switch ( $_GET['action'] ) {
@@ -152,7 +157,10 @@ function affiliates_admin_affiliates() {
 	// affiliate table
 	//
 	if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE], 'admin' )
+		) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
@@ -286,13 +294,19 @@ function affiliates_admin_affiliates() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1], 'admin' )
+		) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2], 'admin' )
+		) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}

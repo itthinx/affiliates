@@ -42,7 +42,10 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		// handle page generation form submission
 		//
 		if ( isset( $_POST['generate'] ) ) {
-			if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_GEN_NONCE], 'admin' ) ) {
+			if (
+				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_GEN_NONCE] ) &&
+				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_GEN_NONCE], 'admin' )
+			) {
 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-generator.php';
 				$post_ids = Affiliates_Generator::setup_pages();
 				foreach ( $post_ids as $post_id ) {
