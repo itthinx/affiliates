@@ -35,7 +35,10 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 
 		if ( isset( $_POST['submit'] ) ) {
 
-			if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' ) ) {
+			if (
+				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) &&
+				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' )
+			) {
 
 				// timeout
 				$timeout = intval ( $_POST['timeout'] );

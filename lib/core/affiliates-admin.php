@@ -48,7 +48,10 @@ function affiliates_admin() {
 		isset( $_POST['days_back'] ) ||
 		isset( $_POST['clear_filters'] )
 	) {
-		if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_OVERVIEW_NONCE], 'admin' ) ) {
+		if (
+			!isset( $_POST[AFFILIATES_ADMIN_OVERVIEW_NONCE] ) ||
+			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_OVERVIEW_NONCE], 'admin' )
+		) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
 		}
 	}

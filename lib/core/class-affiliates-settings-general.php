@@ -62,7 +62,10 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		if ( isset( $_POST['submit'] ) ) {
 
-			if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' ) ) {
+			if (
+				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) &&
+				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' )
+			) {
 
 				// robots
 				$robots = wp_filter_nohtml_kses( trim ( $_POST['robots'] ) );

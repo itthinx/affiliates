@@ -48,7 +48,10 @@ class Affiliates_Settings_Network {
 			echo '<h1>' . __( 'Affiliates', 'affiliates' ) . '</h1>';
 			if ( affiliates_is_sitewide_plugin() ) {
 				if ( isset( $_POST['submit'] ) ) {
-					if ( wp_verify_nonce( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE], 'admin' ) ) {
+					if (
+						isset( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE] ) &&
+						wp_verify_nonce( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE], 'admin' )
+					) {
 						if ( !empty( $_POST['delete-network-data'] ) ) {
 							update_option( 'aff_delete_network_data', true );
 						} else {

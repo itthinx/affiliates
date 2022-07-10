@@ -72,7 +72,10 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 	public static function section() {
 
 		if ( isset( $_POST['submit'] ) ) {
-			if ( wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' ) ) {
+			if (
+				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) &&
+				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' )
+			) {
 
 				delete_option( 'aff_registration' );
 				add_option( 'aff_registration', !empty( $_POST['registration'] ), '', 'no' );

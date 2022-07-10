@@ -166,7 +166,10 @@ function affiliates_admin_affiliates_add_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if ( !wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-add' ) ) {
+	if (
+		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE] ) ||
+		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-add' )
+	) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 

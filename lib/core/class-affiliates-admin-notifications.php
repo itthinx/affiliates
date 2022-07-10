@@ -120,10 +120,11 @@ class Affiliates_Admin_Notifications {
 		}
 
 		if ( isset( $_POST['submit'] ) ) {
-			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
-
+			if (
+				isset( $_POST[self::NONCE] ) &&
+				wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS )
+			) {
 				$notifications[Affiliates_Notifications::REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::REGISTRATION_ENABLED] );
-
 				update_option( 'affiliates_notifications', $notifications );
 			}
 		}
@@ -177,12 +178,13 @@ class Affiliates_Admin_Notifications {
 		}
 
 		if ( isset( $_POST['submit'] ) ) {
-			if ( wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
-
+			if (
+				isset( $_POST[self::NONCE] ) &&
+				wp_verify_nonce( $_POST[self::NONCE], self::NOTIFICATIONS )
+			) {
 				// admin registration enabled
 				delete_option( 'aff_notify_admin' );
 				add_option( 'aff_notify_admin', !empty( $_POST[Affiliates_Notifications::REGISTRATION_NOTIFY_ADMIN] ), '', 'no' );
-
 			}
 		}
 

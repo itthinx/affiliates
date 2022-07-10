@@ -5,6 +5,7 @@
 * Tested with WordPress 6.1-alpha.
 * PHP 8.1 compatibility fixed an instance of deprecated passing null to bcadd().
 * PHP 8.1 compatibility guarded an instance of str_replace() against deprecated passing null to parameter #2.
+* Reviewed nonce handling for missing nonces in requests.
 
 = 4.13.0 =
 * WordPress 6.0 compatible.
