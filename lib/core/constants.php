@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-options.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
@@ -98,7 +98,7 @@ define( 'AFFILIATES_EXPANDER_RETRACT', '[-] ' );
 define( 'AFFILIATES_REGEX_PATTERN', 'affiliates/([^/]+)/?$' );
 
 /**
- * @var string the direct type is used to determine a default pseudo-affiliate, i.e. the site owner 
+ * @var string the direct type is used to determine a default pseudo-affiliate, i.e. the site owner
  */
 define( 'AFFILIATES_DIRECT_TYPE', 'direct' );
 

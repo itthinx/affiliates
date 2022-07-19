@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-registration.php
- * 
+ *
  * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.1.0
@@ -25,18 +25,18 @@ if ( !defined( 'ABSPATH' ) ) {
 
 /**
  * Affiliate registration form.
- * 
+ *
  * Deleting users vs. removing affiliates :
- * 
+ *
  * - If a user is deleted, the affiliate is marked as deleted and the
  *   association is released.
  * - Marking an affiliate as deleted (pressing Remove) marks the affiliate
  *   as deleted but does not delete the user, the association is maintained.
- * 
+ *
  * @todo WPML field translations, also on form output
- * 
+ *
  * @link http://wpml.org/documentation/support/translation-for-texts-by-other-plugins-and-themes/
- * 
+ *
  * icl_register_string('Contact Form 7', 'Input field label', 'Profession');
  * icl_unregister_string ( string $context, string $name );
  * icl_translate ( string $context, string $name, string $value );
@@ -45,7 +45,7 @@ class Affiliates_Registration {
 
 	/**
 	 * Accepted form parameters.
-	 * 
+	 *
 	 * @var array
 	 */
 	private static $defaults = array(
@@ -60,7 +60,7 @@ class Affiliates_Registration {
 
 	/**
 	 * Not stored as user meta.
-	 * 
+	 *
 	 * @var array
 	 */
 	private static $skip_meta_fields = array(
@@ -73,7 +73,7 @@ class Affiliates_Registration {
 
 	/**
 	 * Returns the keys not stored as user meta.
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function get_skip_meta_fields() {
@@ -139,9 +139,9 @@ class Affiliates_Registration {
 
 	/**
 	 * Registration form.
-	 * 
+	 *
 	 * @see Affiliates_Registration::$defaults for accepted parameters
-	 * 
+	 *
 	 * @param array $options form options
 	 * @return string rendered registration form
 	 */
@@ -472,7 +472,7 @@ class Affiliates_Registration {
 
 	/**
 	 * Renders the registration form fields.
-	 * 
+	 *
 	 * @return string
 	 */
 	public static function render_fields( $registration_fields = null ) {
@@ -700,7 +700,7 @@ class Affiliates_Registration {
 
 	/**
 	 * Create an affiliate user.
-	 * 
+	 *
 	 * @param array $userdata
 	 * @return int|WP_Error user ID or error
 	 */
@@ -734,7 +734,7 @@ class Affiliates_Registration {
 	/**
 	 * Creates an affiliate entry and relates it to a user.
 	 * Notifies site admin of affiliate registration.
-	 * 
+	 *
 	 * @param int $user_id user id
 	 * @param array $userdata affiliate data
 	 * @param string $status affiliate status
@@ -830,7 +830,7 @@ class Affiliates_Registration {
 				);
 				do_action( 'affiliates_deleted_affiliate', intval( $affiliate_id ) );
 				// the user is removed from the users table, it wouldn't make sense to maintain
-				// a dangling reference to a non-existent user so release the association as well 
+				// a dangling reference to a non-existent user so release the association as well
 				$wpdb->query(
 					$query = $wpdb->prepare(
 						"DELETE FROM $affiliates_users_table WHERE affiliate_id = %d AND user_id = %d",
@@ -884,7 +884,7 @@ class Affiliates_Registration {
 
 	/**
 	 * Notify of new user creation for an affiliate.
-	 * 
+	 *
 	 * @param int $user_id User ID.
 	 * @param string $plaintext_pass Optional. The user's plaintext password. Default empty.
 	 */

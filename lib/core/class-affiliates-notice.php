@@ -30,21 +30,21 @@ class Affiliates_Notice {
 
 	/**
 	 * Time mark.
-	 * 
+	 *
 	 * @var string
 	 */
 	const INIT_TIME = 'affiliates-init-time';
 
 	/**
 	 * Used to store user meta and hide the notice asking to review.
-	 * 
+	 *
 	 * @var string
 	 */
 	const HIDE_REVIEW_NOTICE = 'affiliates-hide-review-notice';
 
 	/**
 	 * The number of seconds in seven days, since init date to show the notice.
-	 * 
+	 *
 	 * @var int
 	 */
 	const SHOW_LAPSE = 604800;
@@ -133,7 +133,7 @@ class Affiliates_Notice {
 			);
 			$output .= '</p>';
 			$output .= '</div>';
-	
+
 			echo $output;
 		}
 	}

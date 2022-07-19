@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-notifications.php
- * 
+ *
  * Copyright (c) 2010 - 2020 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since 2.16.0
@@ -135,7 +135,7 @@ class Affiliates_Notifications {
 	/**
 	 * Returns the default message subject or message body template identified by $which.
 	 * These are the defaults used to construct notifications.
-	 * 
+	 *
 	 * @param string $which self::DEFAULT_REGISTRATION_PENDING_SUBJECT, self::DEFAULT_REGISTRATION_PENDING_MESSAGE, ...
 	 * @return string message template (may contain tokens)
 	 */

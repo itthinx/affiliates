@@ -65,7 +65,7 @@ class Affiliates_Service {
 
 	/**
 	 * Obtain the referrer's campaign's id.
-	 * 
+	 *
 	 * @param string $service
 	 * @return int campaign id or false if none applies
 	 */
@@ -95,7 +95,7 @@ class Affiliates_Service {
 
 	/**
 	 * Returns the affiliate and campaign ids if present.
-	 * 
+	 *
 	 * @param string $service
 	 * @return array or null
 	 */
@@ -140,7 +140,7 @@ class Affiliates_Service {
 
 	/**
 	 * Returns the hit ID based on hash if present and valid, otherwise null.
-	 * 
+	 *
 	 * @param string $service
 	 * @return int hit ID or null
 	 */

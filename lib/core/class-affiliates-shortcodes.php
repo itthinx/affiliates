@@ -115,9 +115,9 @@ class Affiliates_Shortcodes {
 	/**
 	 * Renders the referrer's username and other user details.
 	 * Pages using this shortcode should NOT be cached.
-	 * 
+	 *
 	 * Supported values for the display attribute are: user_login, user_nicename, user_email, user_url and display_name.
-	 * 
+	 *
 	 * @param array $atts
 	 * @param string $content not used
 	 * @return string
@@ -173,7 +173,7 @@ class Affiliates_Shortcodes {
 	 * - name, id, email taken from the affiliate entry
 	 * - user_id, user_login, user_nicename, user_email, user_url and display_name from the user
 	 * - the field name of any enabled affiliate registration field
-	 * 
+	 *
 	 * If the display attribute is omitted, the user_login of the referrer is displayed.
 	 *
 	 * @param array $atts
@@ -288,7 +288,7 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Render content if visitor was referred. Pages using this shortcode should NOT be cached.
-	 * 
+	 *
 	 * @param array $atts
 	 * @param string $content
 	 * @return string $content is rendered if referred
@@ -324,7 +324,7 @@ class Affiliates_Shortcodes {
 		$output = '';
 		require_once( 'class-affiliates-service.php' );
 		$affiliate_id = Affiliates_Service::get_referrer_id();
-		
+
 		// it can not be an affiliate and direct doesn't count
 		if ( ( !$affiliate_id ) || ( $affiliate_id === affiliates_get_direct_id() ) ) {
 			$output .= $content;
@@ -337,7 +337,7 @@ class Affiliates_Shortcodes {
 	 * for option which will adjust the from date to that of the current
 	 * day, the start of the week or the month, leaving the until date
 	 * set to null.
-	 * 
+	 *
 	 * @param string $for "day", "week" or "month"
 	 * @param string $from date/datetime
 	 * @param string $until date/datetime
@@ -379,7 +379,7 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Hits shortcode - renders the number of hits.
-	 * 
+	 *
 	 * @param array $atts attributes
 	 * @param string $content not used
 	 */
@@ -540,9 +540,9 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Shows monthly earnings.
-	 * 
+	 *
 	 * Note that we don't do any s2u or u2s date adjustments here.
-	 * 
+	 *
 	 * @param array $atts options
 	 * - show_paid : true or false (default), if true, also shows paid earnings
 	 * - per_page  : results per page, 10 by default
@@ -688,7 +688,7 @@ class Affiliates_Shortcodes {
 						$output .= '<td>';
 						$output .= date_i18n( __( 'F Y', 'affiliates' ), strtotime( $from ) ); // translators: date format; month and year for earnings display
 						$output .= '</td>';
-	
+
 						// earnings
 						$output .= '<td>';
 						if ( count( $sums ) > 1 ) {
@@ -711,7 +711,7 @@ class Affiliates_Shortcodes {
 							$output .= apply_filters( 'affiliates_earnings_display_total_none', __( 'None', 'affiliates' ) );
 						}
 						$output .= '</td>';
-	
+
 						// paid
 						if ( $atts['show_paid'] ) {
 							$output .= '<td>';
@@ -768,7 +768,7 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Retrieve totals for an affiliate.
-	 * 
+	 *
 	 * @param int $affiliate_id
 	 * @param string $from_date
 	 * @param string $thru_date
@@ -892,7 +892,7 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Exclude the affiliates_url shortcode.
-	 * 
+	 *
 	 * @param array $shortcodes
 	 * @return array
 	 */
@@ -905,7 +905,7 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Renders a login form that can redirect to a url or the current page.
-	 * 
+	 *
 	 * @param array $atts
 	 * @param string $content
 	 * @return string rendered form
@@ -924,7 +924,7 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Renders a link to log out.
-	 * 
+	 *
 	 * @param array $atts
 	 * @param string $content not used
 	 * @return string rendered logout link or empty if not logged in
@@ -939,12 +939,12 @@ class Affiliates_Shortcodes {
 
 	/**
 	 * Affiliate field info.
-	 * 
+	 *
 	 * user_id - print for ... requires AFFILIATES_ADMIN...
 	 * name - field name or names, empty includes all by default
 	 * edit - yes or no
 	 * load_styles - yes or no
-	 * 
+	 *
 	 * @param array $atts
 	 * @param string $content
 	 * @return string
@@ -1242,7 +1242,7 @@ class Affiliates_Shortcodes {
 				$output = get_user_meta( $user_id, $key, true );
 			}
 		}
-	
+
 		return esc_html( $output );
 	}
 }

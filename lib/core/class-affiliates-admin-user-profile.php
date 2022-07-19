@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-admin-user-profile.php
- * 
+ *
  * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 2.8.0
@@ -57,7 +57,7 @@ class Affiliates_Admin_User_Profile {
 
 	/**
 	 * Own profile.
-	 * 
+	 *
 	 * @param WP_User $user
 	 */
 	public static function show_user_profile( $user ) {
@@ -66,7 +66,7 @@ class Affiliates_Admin_User_Profile {
 
 	/**
 	 * Editing a user profile.
-	 * 
+	 *
 	 * @param WP_User $user
 	 */
 	public static function edit_user_profile( $user ) {
@@ -132,7 +132,7 @@ class Affiliates_Admin_User_Profile {
 
 	/**
 	 * Updates user meta when a user's own profile is saved.
-	 * 
+	 *
 	 * @param int $user_id
 	 */
 	public static function personal_options_update( $user_id ) {
@@ -141,7 +141,7 @@ class Affiliates_Admin_User_Profile {
 
 	/**
 	 * Updates the user meta.
-	 * 
+	 *
 	 * @param int $user_id
 	 */
 	public static function edit_user_profile_update( $user_id ) {
@@ -179,7 +179,7 @@ class Affiliates_Admin_User_Profile {
 
 	/**
 	 * Updates the affiliate entry.
-	 * 
+	 *
 	 * @param int $user_id
 	 * @param array $old_userdata
 	 */

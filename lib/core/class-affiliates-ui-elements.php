@@ -72,7 +72,7 @@ class Affiliates_UI_Elements {
 	/**
 	 * Renders a selection input element for affiliates.
 	 * The rendered input element's name is affiliate_id.
-	 * 
+	 *
 	 * @param array $args indexes : affiliate_id for the selected affiliate, show_inoperative to include inoperative affiliates
 	 * @return string HTML
 	 */

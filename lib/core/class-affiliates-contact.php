@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-contact.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
@@ -25,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 /**
  * This contact form is an example of how referrals are stored.
- * 
+ *
  * @link http://codex.wordpress.org/Widgets_API#Developing_Widgets
  */
 class Affiliates_Contact extends WP_Widget {
@@ -52,7 +52,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Widget output
-	 * 
+	 *
 	 * @see WP_Widget::widget()
 	 */
 	function widget( $args, $instance ) {
@@ -84,7 +84,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Renders the contact form.
-	 * Remember NOT to use any form input elements named 'name', 'year', ... 
+	 * Remember NOT to use any form input elements named 'name', 'year', ...
 	 * @static
 	 */
 	public static function render_form( $widget_id = '', $amount = null, $currency_id = null ) {
@@ -193,7 +193,7 @@ class Affiliates_Contact extends WP_Widget {
 	}
 
 	/**
-	 * Filters mail header injection, html, ... 
+	 * Filters mail header injection, html, ...
 	 * @param string $unfiltered_value
 	 */
 	public static function filter( $unfiltered_value ) {
@@ -203,7 +203,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Filter xss
-	 * 
+	 *
 	 * @param string $string input
 	 * @return string filtered string
 	 */
@@ -234,7 +234,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Returns captcha field markup.
-	 * 
+	 *
 	 * @return string captcha field markup
 	 */
 	public static function captcha_get( $value ) {
@@ -245,7 +245,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Validates a captcha field.
-	 * 
+	 *
 	 * @param string $field_value field content
 	 * @return true if the field validates
 	 */
@@ -259,7 +259,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Save widget options
-	 * 
+	 *
 	 * @see WP_Widget::update()
 	 */
 	function update( $new_instance, $old_instance ) {
@@ -280,7 +280,7 @@ class Affiliates_Contact extends WP_Widget {
 
 	/**
 	 * Output admin widget options form
-	 * 
+	 *
 	 * @see WP_Widget::form()
 	 */
 	function form( $instance ) {
@@ -289,7 +289,7 @@ class Affiliates_Contact extends WP_Widget {
 		$currency_id = isset( $instance['currency_id'] ) ? esc_attr( $instance['currency_id'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'affiliates' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<p>
@@ -297,7 +297,7 @@ class Affiliates_Contact extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'amount' ); ?>" name="<?php echo $this->get_field_name( 'amount' ); ?>" type="text" value="<?php echo $amount; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php _e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php _e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'currency_id' ); ?>" name="<?php echo $this->get_field_name( 'currency_id' ); ?>" type="text" value="<?php echo $currency_id; ?>" />
 		</p>
 		<p>

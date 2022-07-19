@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin-hits-affiliate.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
@@ -209,7 +209,7 @@ function affiliates_admin_hits_affiliate() {
 	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 1;
 	if ( $paged < 1 ) {
 		$paged = 1;
-	} 
+	}
 
 	$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
 	switch ( $orderby ) {
@@ -255,7 +255,7 @@ function affiliates_admin_hits_affiliate() {
 		$thru_datetime = DateHelper::u2s( $thru_date, 24*3600 );
 	}
 	if ( !$show_inoperative ) {
-		$filters .= " AND status = '" . AFFILIATES_AFFILIATE_STATUS_ACTIVE . "' "; 
+		$filters .= " AND status = '" . AFFILIATES_AFFILIATE_STATUS_ACTIVE . "' ";
 	}
 
 	// Get the summarized results, these are grouped by date.
@@ -368,7 +368,7 @@ function affiliates_admin_hits_affiliate() {
 	);
 	$status_checkboxes = '';
 	foreach ( $status_descriptions as $key => $label ) {
-		$checked = empty( $status ) || is_array( $status ) && in_array( $key, $status ) ? ' checked="checked" ' : ''; 
+		$checked = empty( $status ) || is_array( $status ) && in_array( $key, $status ) ? ' checked="checked" ' : '';
 		$status_checkboxes .= '<label style="padding-right:1em;">';
 		$status_checkboxes .= sprintf( '<input type="checkbox" name="status[]" value="%s" %s />',  esc_attr( $key ), $checked );
 		$status_checkboxes .= $status_icons[$key] . ' ' . $label;
@@ -595,7 +595,7 @@ function affiliates_admin_hits_affiliate() {
 					);
 					$hits = $wpdb->get_results( $details_query, OBJECT );
 					$hits_count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
-					if ( count( $hits ) > 0 ) { 
+					if ( count( $hits ) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
 						$output .= '<div class="details-hits">';

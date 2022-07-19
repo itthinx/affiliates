@@ -1,19 +1,19 @@
 <?php
 /**
  * wp-init.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.1.2
@@ -249,7 +249,7 @@ function affiliates_wpmu_new_blog( $blog_id, $user_id ) {
 
 /**
  * Clean up for a given blog.
- * 
+ *
  * @param int $blog_id
  * @param boolean $drop
  */
@@ -286,7 +286,7 @@ function affiliates_is_sitewide_plugin() {
 
 /**
  * Retrieve current blogs' ids.
- * @return array blog ids 
+ * @return array blog ids
  */
 function affiliates_get_blogs() {
 	global $wpdb;
@@ -779,7 +779,7 @@ function affiliates_deactivate( $network_wide = false ) {
 
 /**
  * Cleans up tables, data, capabilities if the option is set.
- * 
+ *
  * @param boolean $delete force deletion
  */
 function affiliates_cleanup( $delete = false ) {
@@ -907,7 +907,7 @@ function affiliates_update_rewrite_rules() {
 }
 
 add_action( 'parse_request', 'affiliates_parse_request' );
-	
+
 /**
  * Looks in the query variables and sets a cookie with the affiliate id.
  * Hook into parse_request.
@@ -1339,7 +1339,7 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
 
 /**
  * Store a referral.
- * 
+ *
  * @param int $affiliate_id
  * @param int  $post_id
  * @param string $description
@@ -1469,7 +1469,7 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 								'post_id' => $post_id,
 								'description' => $description,
 								'data' => $data,
-								'amount' => $amount, 
+								'amount' => $amount,
 								'currency_id' => $currency_id,
 								'status' => $status,
 								'type' => $type,
@@ -2035,7 +2035,7 @@ function affiliates_get_affiliate_user( $affiliate_id ) {
 
 /**
  * Return the affiliate ids related to a user.
- * 
+ *
  * @param int $user_id
  * @param string $status the affiliate's status, default is 'active'
  * @return array of int affiliate ids or null on failure
@@ -2094,7 +2094,7 @@ function affiliates_user_is_affiliate( $user_id = null ) {
 
 /**
  * Returns true if the user is an affiliate with the given status.
- * 
+ *
  * @param int|object $user (optional) specify a user or use current if none given
  * @param string $status 'active' (default), 'pending', 'deleted'
  */
@@ -2134,7 +2134,7 @@ function affiliates_user_is_affiliate_status( $user_id = null, $status = 'active
 
 /**
  * Returns the current status of the affiliate.
- * 
+ *
  * @param int $affiliate_id
  * @return string affiliate status or null
  */
@@ -2391,7 +2391,7 @@ function _affiliates_get_tablename( $name ) {
 
 /**
  * Attribute filter for overrides.
- * 
+ *
  * @param mixed $value
  * @param int $affiliate_id
  * @param string $key
@@ -2409,10 +2409,10 @@ function affiliates_attribute_filter( $value, $affiliate_id, $key ) {
 
 /**
  * Compose a URL based on its components.
- * 
+ *
  * $components can provide values indexed by the keys scheme, host, port,
  * user, pass, path, query and fragment as produced by parse_url().
- * 
+ *
  * @param array $components
  * @return string URL
  */
@@ -2431,7 +2431,7 @@ function affiliates_compose_url( $components ) {
 
 /**
  * Returns the URL converted to an affiliate URL for the given affiliate.
- * 
+ *
  * @param string $url
  * @param int $affiliate_id
  */
@@ -2469,11 +2469,11 @@ function affiliates_get_affiliate_url( $url, $affiliate_id ) {
 
 /**
  * Returns the precision for referral amount decimals.
- * 
+ *
  * Uses the constants :
  * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS for empty or default context ''
  * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY for context 'display'
- * 
+ *
  * @param string $context provided and passed in the filter, default '', allows also 'display'
  * @return int decimals for referral amounts
  */
@@ -2490,7 +2490,7 @@ function affiliates_get_referral_amount_decimals( $context = null ) {
 
 /**
  * Returns the referral amount formatted.
- * 
+ *
  * @param number $amount
  * @param string $context see affiliates_get_referral_amount_decimals()
  * @return string

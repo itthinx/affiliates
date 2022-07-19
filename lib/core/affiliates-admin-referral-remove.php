@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin-referral-remove.php
- * 
+ *
  * Copyright (c) 2010-2013 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 2.2.0
@@ -51,7 +51,7 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 			!wp_verify_nonce( $_POST['referral-nonce'], 'remove' )
 		) {
 			wp_die( __( 'Access denied.', 'affiliates' ) );
-		} else {			
+		} else {
 			if ( !empty( $_POST['referral_id'] ) ) {
 				// remove the referral
 				$referrals_table = _affiliates_get_tablename( 'referrals' );
@@ -67,7 +67,7 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					$output .= sprintf( '<a href="%s">%s</a>', $cancel_url, __( 'Return', 'affiliates' ) );
 					$output .= '</div>';
 					$output .= '<br/>';
-					
+
 				} else {
 					$output .= '<div class="error">' . __( 'I do not know how to delete what does not exist.', 'affiliates' ) . '</div>';
 				}
@@ -89,42 +89,42 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 
 					$output .= '<form id="referral" action="' . esc_url( $current_url ) . '" method="post">';
 					$output .= '<div>';
-					
+
 					$output .= sprintf( '<input type="hidden" name="referral_id" value="%d" />', intval( $referral_id ) );
-					
+
 					$output .= '<input type="hidden" name="action" value="edit" />';
-					
+
 					$output .= '<p>';
 					$output .= '<span class="title">' . __( 'Affiliate', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$affiliate = affiliates_get_affiliate( $affiliate_id );
 					$output .= stripslashes( $affiliate['name'] );
 					$output .= '</p>';
-					
+
 					$output .= '<p>';
 					$output .= '<span class="title">' . __( 'Date & Time', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $datetime;
 					$output .= '</p>';
-					
+
 					$output .= '<p>';
 					$output .= '<span class="title">' . __( 'Description', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $description;
 					$output .= '</p>';
-					
+
 					$output .= '<p>';
 					$output .= '<span class="title">' . __( 'Amount', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $amount;
 					$output .= '</p>';
-					
+
 					$output .= '<p>';
 					$output .= '<span class="title">' . __( 'Currency ID', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $currency_id;
 					$output .= '</p>';
-					
+
 					$status_descriptions = array(
 						AFFILIATES_REFERRAL_STATUS_ACCEPTED => __( 'Accepted', 'affiliates' ),
 						AFFILIATES_REFERRAL_STATUS_CLOSED   => __( 'Closed', 'affiliates' ),
@@ -136,23 +136,23 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					$output .= ' ';
 					$output .= $status_descriptions[$status];
 					$output .= '</p>';
-					
+
 					$output .= '<p>';
 					$output .= '<span class="title">' . __( 'Reference', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $reference;
 					$output .= '</p>';
-					
+
 					$output .= wp_nonce_field( 'remove', 'referral-nonce', true, false );
-					
+
 					$output .= '<p class="description">';
 					$output .= __( 'Remove this referral? This action can not be undone.', 'affiliates' );
 					$output .= '</p>';
-					
+
 					$output .= sprintf( '<input class="button button-primary" type="submit" name="submit" value="%s"/>', __( 'Remove', 'affiliates' ) );
 					$output .= ' ';
 					$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, __( 'Cancel', 'affiliates' ) );
-					
+
 					$output .= '</div>';
 					$output .= '</form>';
 				} else {

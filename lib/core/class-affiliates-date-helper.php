@@ -1,62 +1,62 @@
 <?php
 /**
  * class-affiliates-date-helper.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
- * 
+ *
  * Affiliates date helper.
- * 
+ *
  * 1. Assumptions and preconditions.
- * 
+ *
  * 1.1. Timezones and frames of reference.
- * 
+ *
  * There are two frames of reference:
  * UTZ ~ Time from a user's point of view, determined by the user's timezone.
  * STZ ~ Time with respect to the server's timezone.
- * 
+ *
  * 1.2. UTZ
- * 
+ *
  * We assume that a time within UTZ is the time with respect to the timezone set
  * with WordPress's timezone_string, i.e. the timezone obtained querying
  * get_option('timezone_string').
- * 
+ *
  * Note that we will not try to automagically find out the user's timezone
  * on the fly. First of all, it will fail with a reasonable probability, and
  * second we assume that the user will be perfectly aware of what her or his
  * real timezone is.
- * 
+ *
  * 1.3. STZ
- * 
+ *
  * We assume that a time within STZ is the time with respect to the timezone
  * that the server uses to record time. This timezone is the one obtained
  * through date_default_timezone_get().
- * 
+ *
  * 2. Services
- * 
+ *
  * 2.1. Conversion
- * 
+ *
  * We will provide functions that simplify conversion between times expressed
  * with respect to UTZ and STZ.
- * 
+ *
  * The functions for that are:
- * 
+ *
  * u2s() which will convert a time from the user's timezone to a time in the
  * server's timezone.
- * 
+ *
  * s2u() which does the opposite.
  */
 
@@ -86,7 +86,7 @@ class DateHelper {
 
 	/**
 	 * Convert a datetime within the STZ to a datetime within the UTZ frame of reference.
-	 * 
+	 *
 	 * @param string $datetime datetime with respect to STZ, i.e. stored at the server
 	 * @param int $offset the offset in seconds is added to the datetime
 	 * @return datetime with respect to UTZ, i.e. seen by the user
@@ -97,7 +97,7 @@ class DateHelper {
 
 	/**
 	 * Convert a datetime within the UTZ to a datetime within the STZ frame of reference.
-	 * 
+	 *
 	 * @param string $datetime datetime with respect to UTZ, i.e. seen by the user
 	 * @param int $offset the offset in seconds is added to the datetime
 	 * @return string datetime with respect to STZ, i.e. stored at the server
@@ -108,7 +108,7 @@ class DateHelper {
 
 	/**
 	 * Does the actual conversion either way.
-	 * 
+	 *
 	 * @param string $datetime datetime to convert
 	 * @param string $f function to use, either u2s or s2u
 	 * @param int $offset the offset in seconds is added to the datetime
@@ -158,7 +158,7 @@ class DateHelper {
 
 	/**
 	 * Returns a datetime formatted as a date without time component.
-	 * 
+	 *
 	 * @param string $datetime the datetime to format as a date
 	 * @return string formatted date
 	 */
@@ -168,7 +168,7 @@ class DateHelper {
 
 	/**
 	 * Returns a datetime formatted as a time without date component.
-	 * 
+	 *
 	 * @param string $datetime the datetime to format as a time
 	 * @return string formatted time
 	 */
@@ -178,7 +178,7 @@ class DateHelper {
 
 	/**
 	 * Returns a formatted datetime with a date and a time component.
-	 * 
+	 *
 	 * @param string $datetime the datetime to format
 	 * @return string formatted datetime
 	 */
