@@ -137,6 +137,7 @@ class Affiliates_Notifications {
 	 * These are the defaults used to construct notifications.
 	 *
 	 * @param string $which self::DEFAULT_REGISTRATION_PENDING_SUBJECT, self::DEFAULT_REGISTRATION_PENDING_MESSAGE, ...
+	 *
 	 * @return string message template (may contain tokens)
 	 */
 	public static function get_default( $which ) {
@@ -519,6 +520,7 @@ E-mail: [user_email]<br/>',
 	 * in the affiliate user registration email subject and message.
 	 *
 	 * @param array $params
+	 *
 	 * @return array
 	 */
 	private static function get_registration_tokens( $params ) {
@@ -574,6 +576,7 @@ E-mail: [user_email]<br/>',
 	 *
 	 * @param string $s
 	 * @param array $tokens
+	 *
 	 * @return string
 	 */
 	private static function substitute_tokens( $s, $tokens ) {

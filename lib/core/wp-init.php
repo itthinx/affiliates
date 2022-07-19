@@ -1040,8 +1040,10 @@ function affiliates_pixel_request() {
 
 /**
  * Record an uris entry if this doesn't exist.
+ *
  * @param string $type AFFILIATES_SRC_URI | AFFILIATES_DEST_URI
  * @param string $uri url string
+ *
  * @return int|null uri_id added or existed. Null if there is a problem
  */
 function affiliates_maybe_record_uri( $type = null, $uri = null ) {
@@ -1109,6 +1111,7 @@ function affiliates_maybe_record_uri( $type = null, $uri = null ) {
 
 /**
  * Records a new user agent or retrieves the existing entry's id and returns it.
+ *
  * @param string $user_agent
  */
 function affiliates_maybe_record_user_agent_id( $user_agent ) {
@@ -1142,6 +1145,7 @@ function affiliates_maybe_record_user_agent_id( $user_agent ) {
  * @param int $affiliate_id the affiliate's id
  * @param int $now UNIX timestamp to use, if null the current time is used
  * @param string $type the type of hit to record
+ *
  * @return array ID of the inserted hit
  */
 function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
@@ -1323,7 +1327,8 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
  * @param string $description the referral description
  * @param string|array $data additional information that should be stored along with the referral
  * @param string $amount referral amount - if used, a $currency_id must be given
- * @þaram string $currency_id three letter currency code - if used, an $amount must be given
+ * @param string $currency_id three letter currency code - if used, an $amount must be given
+ *
  * @return int affiliate id if a valid referral is recorded, otherwise false
  */
 function affiliates_suggest_referral( $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null ) {
@@ -1352,6 +1357,7 @@ function affiliates_suggest_referral( $post_id, $description = '', $data = null,
  * @param int $hit_id
  * @param string $reference_amount
  * @param int $time
+ *
  * @return int
  */
 function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $data = null, $amount = null, $currency_id = null, $status = null, $type = null, $reference = null, $hit_id = null, $reference_amount = null, $time = null ) {
@@ -1495,6 +1501,8 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
  * reference and data.
  *
  * @param array $atts referral attributes: affiliate_id (required) and others
+ *
+ * @return boolean
  */
 function affiliates_is_duplicate_referral( $atts ) {
 
@@ -1548,7 +1556,9 @@ function affiliates_is_duplicate_referral( $atts ) {
 
 /**
  * Update the referral.
+ *
  * @param array $attributes to update, supports: affiliate_id, post_id, datetime, description, amount, currency_id, status, reference
+ *
  * @return array with keys, values and old_values or null if nothing was updated
  */
 function affiliates_update_referral( $referral_id, $attributes ) {
@@ -1636,6 +1646,7 @@ function affiliates_update_referral( $referral_id, $attributes ) {
 
 /**
  * Returns an array of possible id encodings.
+ *
  * @return array of possible id encodings, keys: encoding identifier, values: encoding name
  */
 function affiliates_get_id_encodings() {
@@ -1648,7 +1659,9 @@ function affiliates_get_id_encodings() {
 /**
  * Returns an encoded affiliate id.
  * If AFFILIATES_NO_ID_ENCODING is in effect, the $affiliate_id is returned as-is.
+ *
  * @param string|int $affiliate_id the affiliate id to encode
+ *
  * @return string|int encoded affiliate id
  */
 function affiliates_encode_affiliate_id( $affiliate_id ) {
@@ -1668,7 +1681,9 @@ function affiliates_encode_affiliate_id( $affiliate_id ) {
 
 /**
  * Checks if an affiliate id is from a currently valid affiliate.
+ *
  * @param string $affiliate_id the affiliate id
+ *
  * @return int|boolean returns the affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
@@ -1688,7 +1703,9 @@ function affiliates_check_affiliate_id_encoded( $affiliate_id ) {
 
 /**
  * Checks if an affiliate id is from a currently valid affiliate.
+ *
  * @param string $affiliate_id the affiliate id
+ *
  * @return int|boolean returns the affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id( $affiliate_id ) {
@@ -1706,7 +1723,9 @@ function affiliates_check_affiliate_id( $affiliate_id ) {
 
 /**
  * Checks if an md5-encoded affiliate id is from a currently valid affiliate.
+ *
  * @param string $affiliate_id_md5 the md5-encoded affiliate id
+ *
  * @return int|boolean returns the (unencoded) affiliate id if valid, otherwise FALSE
  */
 function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
@@ -1724,6 +1743,7 @@ function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
 
 /**
  * Returns the first id of an affiliate of type AFFILIATES_DIRECT_TYPE.
+ *
  * @return int|boolean returns the affiliate id (if there is at least one of type AFFILIATES_DIRECT_TYPE), otherwise FALSE
  */
 function affiliates_get_direct_id() {
@@ -1943,7 +1963,9 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-help.php';
 
 /**
  * Returns or renders the footer.
+ *
  * @param boolean $render
+ *
  * @return string or nothing
  */
 function affiliates_footer( $render = true ) {
@@ -1971,7 +1993,10 @@ function affiliates_footer( $render = true ) {
 /**
  * Render or return a donation button.
  * Thanks for supporting me!
+ *
  * @param boolean $render
+ *
+ * @return string|null
  */
 function affiliates_donate( $render = true, $small = false ) {
 	$output = '<style type="text/css">';
@@ -2007,6 +2032,7 @@ function affiliates_donate( $render = true, $small = false ) {
  * $email = $affiliate['email'];
  *
  * @param int|string $affiliate_id the affiliate's id
+ *
  * @return array affiliate details or null
  */
 function affiliates_get_affiliate( $affiliate_id ) {
@@ -2021,7 +2047,9 @@ function affiliates_get_affiliate( $affiliate_id ) {
 
 /**
  * Return the user id related to an affiliate.
+ *
  * @param int $affiliate_id
+ *
  * @return int user_id
  */
 function affiliates_get_affiliate_user( $affiliate_id ) {
@@ -2038,6 +2066,7 @@ function affiliates_get_affiliate_user( $affiliate_id ) {
  *
  * @param int $user_id
  * @param string $status the affiliate's status, default is 'active'
+ *
  * @return array of int affiliate ids or null on failure
  */
 function affiliates_get_user_affiliate( $user_id, $status = 'active' ) {
@@ -2068,7 +2097,10 @@ function affiliates_get_user_affiliate( $user_id, $status = 'active' ) {
 
 /**
  * Returns true if the user is an affiliate.
+ *
  * @param int|object $user (optional) specify a user or use current if none given
+ *
+ * @return boolean
  */
 function affiliates_user_is_affiliate( $user_id = null ) {
 	global $wpdb;
@@ -2097,6 +2129,8 @@ function affiliates_user_is_affiliate( $user_id = null ) {
  *
  * @param int|object $user (optional) specify a user or use current if none given
  * @param string $status 'active' (default), 'pending', 'deleted'
+ *
+ * @return boolean
  */
 function affiliates_user_is_affiliate_status( $user_id = null, $status = 'active' ) {
 	global $wpdb;
@@ -2136,6 +2170,7 @@ function affiliates_user_is_affiliate_status( $user_id = null, $status = 'active
  * Returns the current status of the affiliate.
  *
  * @param int $affiliate_id
+ *
  * @return string affiliate status or null
  */
 function affiliates_get_affiliate_status( $affiliate_id ) {
@@ -2151,7 +2186,9 @@ function affiliates_get_affiliate_status( $affiliate_id ) {
 
 /**
  * Returns an array of affiliates.
+ *
  * @param boolean $active returns only active affiliates (not deleted via the admin UI)
+ *
  * @return array of affiliates
  */
 function affiliates_get_affiliates( $active = true, $valid = true ) {
@@ -2186,6 +2223,7 @@ function affiliates_get_affiliates( $active = true, $valid = true ) {
  * @param string $from_date optional from date
  * @param string $thru_date optional thru date
  * @param boolean $precise take time into account ($from_date and $thru_date include time)
+ *
  * @return int number of hits
  */
 function affiliates_get_affiliate_hits( $affiliate_id, $from_date = null , $thru_date = null, $precise = false ) {
@@ -2250,6 +2288,7 @@ function affiliates_get_affiliate_hits( $affiliate_id, $from_date = null , $thru
  * @param string $from_date optional from date
  * @param string $thru_date optional thru date
  * @param boolean $precise take time into account ($from_date and $thru_date include time)
+ *
  * @return int number of visits
  */
 function affiliates_get_affiliate_visits( $affiliate_id, $from_date = null , $thru_date = null, $precise = false ) {
@@ -2258,23 +2297,23 @@ function affiliates_get_affiliate_visits( $affiliate_id, $from_date = null , $th
 	$result = 0;
 	$where = " WHERE affiliate_id = %d";
 	$values = array( $affiliate_id );
-// 	if ( $from_date ) {
-// 		$from_date = date( 'Y-m-d', strtotime( $from_date ) );
-// 	}
-// 	if ( $thru_date ) {
-// 		$thru_date = date( 'Y-m-d', strtotime( $thru_date ) + 24*3600 );
-// 	}
-// 	if ( $from_date && $thru_date ) {
-// 		$where .= " AND date >= %s AND date < %s ";
-// 		$values[] = $from_date;
-// 		$values[] = $thru_date;
-// 	} else if ( $from_date ) {
-// 		$where .= " AND date >= %s ";
-// 		$values[] = $from_date;
-// 	} else if ( $thru_date ) {
-// 		$where .= " AND date < %s ";
-// 		$values[] = $thru_date;
-// 	}
+	// if ( $from_date ) {
+	// 	$from_date = date( 'Y-m-d', strtotime( $from_date ) );
+	// }
+	// if ( $thru_date ) {
+	// 	$thru_date = date( 'Y-m-d', strtotime( $thru_date ) + 24*3600 );
+	// }
+	// if ( $from_date && $thru_date ) {
+	// 	$where .= " AND date >= %s AND date < %s ";
+	// 	$values[] = $from_date;
+	// 	$values[] = $thru_date;
+	// } else if ( $from_date ) {
+	// 	$where .= " AND date >= %s ";
+	// 	$values[] = $from_date;
+	// } else if ( $thru_date ) {
+	// 	$where .= " AND date < %s ";
+	// 	$values[] = $thru_date;
+	// }
 	if ( $from_date ) {
 		if ( $precise ) {
 			$from_datetime = date( 'Y-m-d H:i:s', strtotime( $from_date ) );
@@ -2331,6 +2370,7 @@ function affiliates_get_affiliate_visits( $affiliate_id, $from_date = null , $th
  * @param int $affiliate_id the affiliate's id
  * @param string $from_date optional from date
  * @param string $thru_date optional thru date
+ *
  * @return int number of hits
  */
 function affiliates_get_affiliate_referrals( $affiliate_id, $from_date = null , $thru_date = null, $status = null, $precise = false ) {
@@ -2381,7 +2421,9 @@ function affiliates_get_affiliate_referrals( $affiliate_id, $from_date = null , 
 
 /**
  * Returns the prefixed DB table name.
+ *
  * @param string $name the name of the DB table
+ *
  * @return string prefixed DB table name
  */
 function _affiliates_get_tablename( $name ) {
@@ -2395,6 +2437,7 @@ function _affiliates_get_tablename( $name ) {
  * @param mixed $value
  * @param int $affiliate_id
  * @param string $key
+ *
  * @return mixed
  */
 function affiliates_attribute_filter( $value, $affiliate_id, $key ) {
@@ -2414,6 +2457,7 @@ function affiliates_attribute_filter( $value, $affiliate_id, $key ) {
  * user, pass, path, query and fragment as produced by parse_url().
  *
  * @param array $components
+ *
  * @return string URL
  */
 function affiliates_compose_url( $components ) {
@@ -2434,6 +2478,8 @@ function affiliates_compose_url( $components ) {
  *
  * @param string $url
  * @param int $affiliate_id
+ *
+ * @return string
  */
 function affiliates_get_affiliate_url( $url, $affiliate_id ) {
 	$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
@@ -2475,6 +2521,7 @@ function affiliates_get_affiliate_url( $url, $affiliate_id ) {
  * - AFFILIATES_REFERRAL_AMOUNT_DECIMALS_DISPLAY for context 'display'
  *
  * @param string $context provided and passed in the filter, default '', allows also 'display'
+ *
  * @return int decimals for referral amounts
  */
 function affiliates_get_referral_amount_decimals( $context = null ) {
@@ -2493,6 +2540,7 @@ function affiliates_get_referral_amount_decimals( $context = null ) {
  *
  * @param number $amount
  * @param string $context see affiliates_get_referral_amount_decimals()
+ *
  * @return string
  */
 function affiliates_format_referral_amount( $amount, $context = '' ) {

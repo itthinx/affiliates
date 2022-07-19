@@ -205,6 +205,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * Filter xss
 	 *
 	 * @param string $string input
+	 *
 	 * @return string filtered string
 	 */
 	public static function filter_xss( $string ) {
@@ -247,6 +248,7 @@ class Affiliates_Contact extends WP_Widget {
 	 * Validates a captcha field.
 	 *
 	 * @param string $field_value field content
+	 *
 	 * @return true if the field validates
 	 */
 	public static function captcha_validates( $field_value = null ) {

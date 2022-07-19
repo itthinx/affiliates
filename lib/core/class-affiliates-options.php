@@ -33,6 +33,7 @@ class Affiliates_Options {
 	 *
 	 * @param string $option the option id
 	 * @param mixed $default default value to retrieve if option is not set
+	 *
 	 * @return mixed option value, $default if set or null
 	 */
 	function get_option( $option, $default = null ) {

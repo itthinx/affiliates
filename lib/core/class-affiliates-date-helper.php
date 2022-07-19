@@ -89,6 +89,7 @@ class DateHelper {
 	 *
 	 * @param string $datetime datetime with respect to STZ, i.e. stored at the server
 	 * @param int $offset the offset in seconds is added to the datetime
+	 *
 	 * @return datetime with respect to UTZ, i.e. seen by the user
 	 */
 	static function s2u( $sdatetime, $offset = 0 ) {
@@ -100,6 +101,7 @@ class DateHelper {
 	 *
 	 * @param string $datetime datetime with respect to UTZ, i.e. seen by the user
 	 * @param int $offset the offset in seconds is added to the datetime
+	 *
 	 * @return string datetime with respect to STZ, i.e. stored at the server
 	 */
 	static function u2s( $udatetime, $offset = 0 ) {
@@ -112,6 +114,7 @@ class DateHelper {
 	 * @param string $datetime datetime to convert
 	 * @param string $f function to use, either u2s or s2u
 	 * @param int $offset the offset in seconds is added to the datetime
+	 *
 	 * @return string converted datetime
 	 */
 	private static function _t2t( $datetime, $f, $offset = 0 ) {
@@ -160,6 +163,7 @@ class DateHelper {
 	 * Returns a datetime formatted as a date without time component.
 	 *
 	 * @param string $datetime the datetime to format as a date
+	 *
 	 * @return string formatted date
 	 */
 	static function formatDate( $datetime ) {
@@ -170,6 +174,7 @@ class DateHelper {
 	 * Returns a datetime formatted as a time without date component.
 	 *
 	 * @param string $datetime the datetime to format as a time
+	 *
 	 * @return string formatted time
 	 */
 	static function formatTime( $datetime ) {
@@ -180,6 +185,7 @@ class DateHelper {
 	 * Returns a formatted datetime with a date and a time component.
 	 *
 	 * @param string $datetime the datetime to format
+	 *
 	 * @return string formatted datetime
 	 */
 	static function formatDatetime( $datetime ) {

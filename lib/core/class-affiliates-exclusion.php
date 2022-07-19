@@ -38,6 +38,7 @@ class Affiliates_Exclusion {
 	 * Service hook.
 	 * @param int $affiliate_id
 	 * @param string $service
+	 *
 	 * @return int affiliate id or null
 	 */
 	public static function service( $affiliate_id, $service = null ) {
@@ -48,6 +49,7 @@ class Affiliates_Exclusion {
 	 * Coupon hook.
 	 * @param int $affiliate_id
 	 * @param string $coupon
+	 *
 	 * @return int affiliate id or null
 	 */
 	public static function coupon( $affiliate_id, $coupon ) {
@@ -57,6 +59,7 @@ class Affiliates_Exclusion {
 	/**
 	 * Returns null if the user of the affiliate is the same as the current user.
 	 * @param int $affiliate_id
+	 *
 	 * @return int affiliate id or null
 	 */
 	public static function validate( $affiliate_id ) {
@@ -86,6 +89,7 @@ class Affiliates_Exclusion {
 	 *
 	 * @param boolean $valid
 	 * @param WC_Coupon $coupon
+	 *
 	 * @return boolean
 	 */
 	public static function woocommerce_coupon_is_valid( $valid, $coupon ) {

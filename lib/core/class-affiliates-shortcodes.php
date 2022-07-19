@@ -120,6 +120,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content not used
+	 *
 	 * @return string
 	 */
 	public static function referrer_user( $atts, $content = null ) {
@@ -178,6 +179,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content not used
+	 *
 	 * @return string
 	 */
 	public static function referrer( $atts, $content = null ) {
@@ -291,6 +293,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content
+	 *
 	 * @return string $content is rendered if referred
 	 */
 	public static function affiliates_is_referred( $atts, $content = null ) {
@@ -315,6 +318,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content
+	 *
 	 * @return string $content is rendered if not referred
 	 */
 	public static function affiliates_is_not_referred( $atts, $content = null ) {
@@ -773,6 +777,7 @@ class Affiliates_Shortcodes {
 	 * @param string $from_date
 	 * @param string $thru_date
 	 * @param string $status
+	 *
 	 * @return array of totals indexed by currency_id or false on error
 	 */
 	public static function get_total( $affiliate_id, $from_date = null , $thru_date = null, $status = null ) {
@@ -894,6 +899,7 @@ class Affiliates_Shortcodes {
 	 * Exclude the affiliates_url shortcode.
 	 *
 	 * @param array $shortcodes
+	 *
 	 * @return array
 	 */
 	public static function no_texturize_shortcodes( $shortcodes ) {
@@ -908,6 +914,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content
+	 *
 	 * @return string rendered form
 	 */
 	public static function affiliates_login_redirect( $atts, $content = null ) {
@@ -927,6 +934,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content not used
+	 *
 	 * @return string rendered logout link or empty if not logged in
 	 */
 	public static function affiliates_logout( $atts, $content = null ) {
@@ -947,6 +955,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts
 	 * @param string $content
+	 *
 	 * @return string
 	 */
 	public static function affiliates_fields( $atts, $content = null ) {

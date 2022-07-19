@@ -143,6 +143,7 @@ class Affiliates_Registration {
 	 * @see Affiliates_Registration::$defaults for accepted parameters
 	 *
 	 * @param array $options form options
+	 *
 	 * @return string rendered registration form
 	 */
 	public static function render_form( $options = array() ) {
@@ -518,6 +519,7 @@ class Affiliates_Registration {
 	 * Register a new affiliate user.
 	 *
 	 * @param array $userdata
+	 *
 	 * @return int|WP_Error Either user's ID or error on failure.
 	 */
 	public static function register_affiliate( $userdata ) {
@@ -595,6 +597,7 @@ class Affiliates_Registration {
 	 *
 	 * @access private
 	 * @param array $userdata
+	 *
 	 * @return int|WP_Error Either user's ID or error on failure.
 	 */
 	public static function update_affiliate_user( $user_id, $userdata ) {
@@ -688,11 +691,11 @@ class Affiliates_Registration {
 				// @todo headers already sent notices with WC when password is changed ... for example
 				// wp_woocommerce_session_... cookie cannot be set - headers already sent by .../wp-content/themes/twentytwelve/header.php on line 13 in .../wp-content/plugins/woocommerce/includes/wc-core-functions.php on line 469
 				// below doesn't solve this and we don't want to force logout/login on password change anyway
-// 				if ( $new_password ) {
-// 					$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-// 					wp_redirect( wp_login_url( $current_url ) );
-// 					exit;
-// 				}
+				// if ( $new_password ) {
+				// 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				// 	wp_redirect( wp_login_url( $current_url ) );
+				// 	exit;
+				// }
 			}
 		}
 		return $user_id;
@@ -702,6 +705,7 @@ class Affiliates_Registration {
 	 * Create an affiliate user.
 	 *
 	 * @param array $userdata
+	 *
 	 * @return int|WP_Error user ID or error
 	 */
 	public static function create_affiliate( $userdata ) {
@@ -738,6 +742,7 @@ class Affiliates_Registration {
 	 * @param int $user_id user id
 	 * @param array $userdata affiliate data
 	 * @param string $status affiliate status
+	 *
 	 * @return int|boolean if successful new affiliate's id, otherwise false
 	 */
 	public static function store_affiliate( $user_id, $userdata, $status = null ) {
