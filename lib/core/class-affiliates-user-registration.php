@@ -171,11 +171,11 @@ class Affiliates_User_Registration {
 						$rate_id = $rate->rate_id;
 						switch ( $rate->type ) {
 							case AFFILIATES_PRO_RATES_TYPE_AMOUNT :
-								$amount = bcadd( '0', $rate->value, affiliates_get_referral_amount_decimals() );
+								$amount = Affiliates_Math::add( '0', $rate->value, affiliates_get_referral_amount_decimals() );
 								break;
 							case AFFILIATES_PRO_RATES_TYPE_RATE :
 								if ( $base_amount !== null ) {
-									$amount = bcmul( $base_amount, $rate->value, affiliates_get_referral_amount_decimals() );
+									$amount = Affiliates_Math::mul( $base_amount, $rate->value, affiliates_get_referral_amount_decimals() );
 								}
 								break;
 							case AFFILIATES_PRO_RATES_TYPE_FORMULA :
@@ -206,7 +206,7 @@ class Affiliates_User_Registration {
 									if ( $amount === null || $amount < 0 ) {
 										$amount = 0.0;
 									}
-									$amount = bcadd( '0', $amount, affiliates_get_referral_amount_decimals() );
+									$amount = Affiliates_Math::add( '0', $amount, affiliates_get_referral_amount_decimals() );
 								}
 								break;
 						}

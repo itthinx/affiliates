@@ -640,11 +640,7 @@ class Affiliates_Shortcodes {
 								if ( $totals = self::get_total( $affiliate_id, $from, $thru ) ) {
 									if ( count( $totals ) > 0 ) {
 										foreach ( $totals as $currency_id => $total ) {
-											if ( function_exists( 'bcadd' ) ) {
-												$sums[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
-											} else {
-												$sums[$currency_id] = isset( $sums[$currency_id] ) ? $sums[$currency_id] + $total : $total;
-											}
+											$sums[$currency_id] = isset( $sums[$currency_id] ) ? Affiliates_Math::add( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
 										}
 									}
 								}
@@ -652,11 +648,7 @@ class Affiliates_Shortcodes {
 								if ( $totals_paid = self::get_total( $affiliate_id, $from, $thru, AFFILIATES_REFERRAL_STATUS_CLOSED ) ) {
 									if ( count( $totals_paid ) > 0 ) {
 										foreach ( $totals_paid as $currency_id => $total ) {
-											if ( function_exists( 'bcadd' ) ) {
-												$sums_paid[$currency_id] = isset( $sums[$currency_id] ) ? bcadd( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
-											} else {
-												$sums_paid[$currency_id] = isset( $sums[$currency_id] ) ? $sums[$currency_id] + $total : $total;
-											}
+											$sums_paid[$currency_id] = isset( $sums[$currency_id] ) ? Affiliates_Math::add( $sums[$currency_id], $total, affiliates_get_referral_amount_decimals() ) : $total;
 										}
 									}
 								}

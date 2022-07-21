@@ -25,8 +25,20 @@ if ( !defined( 'ABSPATH' ) ) {
 
 /**
  * Math class.
+ *
+ * @since 4.15.0
  */
 class Affiliates_Math {
+
+	/**
+	 * @var int
+	 */
+	private static $scale = null;
+
+	/**
+	 * @var boolean
+	 */
+	private static $bcmath = true;
 
 	/**
 	 * Null parameters are swapped to 0.
@@ -34,13 +46,40 @@ class Affiliates_Math {
 	 * @param mixed $left_operand
 	 * @param mixed $right_operand
 	 */
-	private function process_parameters( &$left_operand = null, &$right_operand = null ) {
+	private static function process_parameters( &$left_operand = null, &$right_operand = null ) {
 		if ( $left_operand === null ) {
 			$left_operand = 0;
 		}
 		if ( $right_operand === null ) {
 			$right_operand = 0;
 		}
+	}
+
+	/**
+	 * Apply scale to value.
+	 *
+	 * @param number $value
+	 * @param int $scale
+	 *
+	 * @return number|string
+	 */
+	private static function apply_scale( $value, $scale = null ) {
+		$result = $value;
+		if ( $scale !== null ) {
+			$result = sprintf( '%.' . $scale . 'F', $value );
+		} else if ( self::$scale !== null  ) {
+			$result = sprintf( '%.' . self::$scale . 'F', $value );
+		}
+		return $result;
+	}
+
+	/**
+	 * BCMath enable/disable (use for tests).
+	 *
+	 * @param boolean $enable
+	 */
+	public static function bcmath( $enable = true ) {
+		self::$bcmath = boolval( $enable );
 	}
 
 	/**
@@ -54,10 +93,11 @@ class Affiliates_Math {
 	 */
 	public static function add( $left_operand, $right_operand, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bcadd' ) ) {
+		if ( self::$bcmath && function_exists( 'bcadd' ) ) {
 			$result = bcadd( $left_operand, $right_operand, $scale );
 		} else {
 			$result = floatval( $left_operand ) + floatval( $right_operand );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -73,10 +113,11 @@ class Affiliates_Math {
 	 */
 	public static function comp( $left_operand, $right_operand, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bccomp' ) ) {
+		if ( self::$bcmath && function_exists( 'bccomp' ) ) {
 			$result = bccomp( $left_operand, $right_operand, $scale );
 		} else {
 			$result = floatval( $left_operand ) - floatval( $right_operand );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -92,10 +133,11 @@ class Affiliates_Math {
 	 */
 	public static function div( $left_operand, $right_operand, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bcdiv' ) ) {
+		if ( self::$bcmath && function_exists( 'bcdiv' ) ) {
 			$result = bcdiv( $left_operand, $right_operand, $scale );
 		} else {
 			$result = floatval( $left_operand ) / floatval( $right_operand );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -111,10 +153,11 @@ class Affiliates_Math {
 	 */
 	public static function mod( $left_operand, $modulus, $scale = null ) {
 		self::process_parameters( $left_operand, $modulus );
-		if ( function_exists( 'bcmod' ) ) {
+		if ( self::$bcmath && function_exists( 'bcmod' ) ) {
 			$result = bcmod( $left_operand, $modulus );
 		} else {
 			$result = intval( $left_operand ) % intval( $modulus );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -130,10 +173,11 @@ class Affiliates_Math {
 	 */
 	public static function mul( $left_operand, $right_operand, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bcmul' ) ) {
+		if ( self::$bcmath && function_exists( 'bcmul' ) ) {
 			$result = bcmul( $left_operand, $right_operand, $scale );
 		} else {
 			$result = floatval( $left_operand ) * floatval( $right_operand );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -149,10 +193,11 @@ class Affiliates_Math {
 	 */
 	public static function pow( $left_operand, $right_operand, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bcpow' ) ) {
+		if ( self::$bcmath && function_exists( 'bcpow' ) ) {
 			$result = bcpow( $left_operand, $right_operand, $scale );
 		} else {
 			$result = pow( floatval( $left_operand ), floatval( $right_operand ) );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -169,10 +214,11 @@ class Affiliates_Math {
 	 */
 	public static function powmod( $left_operand , $right_operand , $modulus, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bcpowmod' ) ) {
+		if ( self::$bcmath && function_exists( 'bcpowmod' ) ) {
 			$result = bcpowmod( $left_operand, $right_operand, $modulus, $scale );
 		} else {
 			$result = pow( floatval( $left_operand ), floatval( $right_operand ) ) % intval( $modulus );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -183,8 +229,10 @@ class Affiliates_Math {
 	 * @param int $scale
 	 */
 	public static function scale( $scale ) {
-		if ( function_exists( 'bcscale' ) ) {
+		if ( self::$bcmath && function_exists( 'bcscale' ) ) {
 			bcscale( $scale );
+		} else {
+			self::$scale = $scale;
 		}
 	}
 
@@ -200,10 +248,11 @@ class Affiliates_Math {
 		if ( $operand === null ) {
 			$operand = 0;
 		}
-		if ( function_exists( 'bcsqrt' ) ) {
+		if ( self::$bcmath && function_exists( 'bcsqrt' ) ) {
 			$result = bcsqrt( $operand, $scale );
 		} else {
 			$result = sqrt( floatval( $operand ) );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}
@@ -219,10 +268,11 @@ class Affiliates_Math {
 	 */
 	public static function sub( $left_operand, $right_operand, $scale = null ) {
 		self::process_parameters( $left_operand, $right_operand );
-		if ( function_exists( 'bcsub' ) ) {
+		if ( self::$bcmath && function_exists( 'bcsub' ) ) {
 			$result = bcsub( $left_operand, $right_operand, $scale );
 		} else {
 			$result = floatval( $left_operand ) - floatval( $right_operand );
+			$result = self::apply_scale( $result, $scale );
 		}
 		return $result;
 	}

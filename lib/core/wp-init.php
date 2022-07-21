@@ -36,6 +36,9 @@ if ( !isset( $affiliates_version ) ) {
 // base class
 require_once AFFILIATES_CORE_LIB . '/class-affiliates.php';
 
+// math class
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-math.php';
+
 // options
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-options.php';
 if ( $affiliates_options == null ) {
@@ -2547,10 +2550,5 @@ function affiliates_format_referral_amount( $amount, $context = '' ) {
 	if ( $amount === null ) {
 		$amount = 0;
 	}
-	if ( function_exists( 'bcadd' ) ) {
-		return bcadd( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
-	} else {
-		$scale = intval( affiliates_get_referral_amount_decimals( $context ) );
-		return sprintf( '%.' . $scale . 'F', $amount );
-	}
+	return Affiliates_Math::add( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
 }

@@ -6,6 +6,7 @@
 * Fixed missing code doc bits.
 * Fixed code doc format issues.
 * Fixed potential PHP 8.x compatibility issues when using null-parameter-sensitive math functions.
+* Fixed affiliates dashboard overview recent earnings to use appropriate decimals for display.
 
 = 4.14.0 =
 * WordPress 6.0 compatible.
