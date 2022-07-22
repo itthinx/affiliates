@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-user-registration.php
- * 
+ *
  * Copyright (c) 2010 - 2014 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since 2.7.0
@@ -49,7 +49,7 @@ class Affiliates_User_Registration {
 
 	/**
 	 * Hooks on customer creation to record a referral when a new customer is created.
-	 * 
+	 *
 	 * @param int $customer_id
 	 * @param array $new_customer_data
 	 * @param boolean $password_generated
@@ -60,7 +60,7 @@ class Affiliates_User_Registration {
 
 	/**
 	 * Record a referral when a new user has been referred by an affiliate.
-	 * 
+	 *
 	 * @param int $user_id
 	 * @param array $params registration parameters
 	 */
@@ -171,11 +171,11 @@ class Affiliates_User_Registration {
 						$rate_id = $rate->rate_id;
 						switch ( $rate->type ) {
 							case AFFILIATES_PRO_RATES_TYPE_AMOUNT :
-								$amount = bcadd( '0', $rate->value, affiliates_get_referral_amount_decimals() );
+								$amount = Affiliates_Math::add( '0', $rate->value, affiliates_get_referral_amount_decimals() );
 								break;
 							case AFFILIATES_PRO_RATES_TYPE_RATE :
 								if ( $base_amount !== null ) {
-									$amount = bcmul( $base_amount, $rate->value, affiliates_get_referral_amount_decimals() );
+									$amount = Affiliates_Math::mul( $base_amount, $rate->value, affiliates_get_referral_amount_decimals() );
 								}
 								break;
 							case AFFILIATES_PRO_RATES_TYPE_FORMULA :
@@ -206,7 +206,7 @@ class Affiliates_User_Registration {
 									if ( $amount === null || $amount < 0 ) {
 										$amount = 0.0;
 									}
-									$amount = bcadd( '0', $amount, affiliates_get_referral_amount_decimals() );
+									$amount = Affiliates_Math::add( '0', $amount, affiliates_get_referral_amount_decimals() );
 								}
 								break;
 						}

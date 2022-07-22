@@ -323,7 +323,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 			"SUM(IF(status='" . esc_sql( AFFILIATES_REFERRAL_STATUS_REJECTED ) . "',amount,0)) total_rejected, " .
 			"currency_id " .
 			"FROM $referrals_table r " .
-			"$filters " . 
+			"$filters " .
 			"GROUP BY YEAR(datetime), MONTH(datetime), currency_id ";
 
 		$query_suffix = "ORDER BY YEAR(datetime) %s, MONTH(datetime) %s LIMIT %d OFFSET %d";

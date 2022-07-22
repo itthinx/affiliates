@@ -72,8 +72,9 @@ class Affiliates_UI_Elements {
 	/**
 	 * Renders a selection input element for affiliates.
 	 * The rendered input element's name is affiliate_id.
-	 * 
+	 *
 	 * @param array $args indexes : affiliate_id for the selected affiliate, show_inoperative to include inoperative affiliates
+	 *
 	 * @return string HTML
 	 */
 	public static function affiliates_select( $args = array() ) {
@@ -135,6 +136,7 @@ class Affiliates_UI_Elements {
 	 * @param boolean $script render the script, default: true
 	 * @param boolean $on_document_ready whether to trigger on document ready, default: true
 	 * @param boolean $create allow to create items, default: false (only with selectize)
+	 *
 	 * @return string HTML
 	 */
 	public static function render_select( $selector = 'select.affiliates-uie', $script = true, $on_document_ready = true, $create = false ) {

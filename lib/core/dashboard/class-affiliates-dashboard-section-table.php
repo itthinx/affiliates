@@ -45,7 +45,7 @@ abstract class Affiliates_Dashboard_Section_Table extends Affiliates_Dashboard_S
 	 * @var int how many entries there are in total (including and beyond those shown on the current page)
 	 */
 	protected $count = 0;
-	
+
 	/**
 	 * @var int number of entries to show per page
 	 */

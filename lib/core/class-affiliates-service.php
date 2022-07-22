@@ -31,6 +31,7 @@ class Affiliates_Service {
 	/**
 	 * Obtain the referring affiliate's id.
 	 * @param string $service by name
+	 *
 	 * @return int affiliate id or false if none applies
 	 */
 	public static function get_referrer_id( $service = null ) {
@@ -65,8 +66,9 @@ class Affiliates_Service {
 
 	/**
 	 * Obtain the referrer's campaign's id.
-	 * 
+	 *
 	 * @param string $service
+	 *
 	 * @return int campaign id or false if none applies
 	 */
 	public static function get_campaign_id( $service = null ) {
@@ -95,8 +97,9 @@ class Affiliates_Service {
 
 	/**
 	 * Returns the affiliate and campaign ids if present.
-	 * 
+	 *
 	 * @param string $service
+	 *
 	 * @return array or null
 	 */
 	public static function get_ids( $service = null ) {
@@ -140,8 +143,9 @@ class Affiliates_Service {
 
 	/**
 	 * Returns the hit ID based on hash if present and valid, otherwise null.
-	 * 
+	 *
 	 * @param string $service
+	 *
 	 * @return int hit ID or null
 	 */
 	public static function get_hit_id( $service = null ) {

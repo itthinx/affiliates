@@ -30,7 +30,7 @@ class Affiliates_Generator {
 
 	/**
 	 * Creates the default affiliate area page (or pages).
-	 * 
+	 *
 	 * @return int post ID(s)
 	 */
 	public static function setup_pages() {

@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-totals.php
- * 
+ *
  * Copyright (c) 2010 - 2014 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since 2.7.0
@@ -275,7 +275,7 @@ class Affiliates_Totals {
 			LEFT JOIN $affiliates_table a ON r.affiliate_id = a.affiliate_id
 			LEFT JOIN $affiliates_users_table au ON a.affiliate_id = au.affiliate_id
 			LEFT JOIN $wpdb->users u on au.user_id = u.ID
-			$filters 
+			$filters
 			GROUP BY r.affiliate_id, r.currency_id
 			$having
 			) tmp
@@ -424,7 +424,7 @@ class Affiliates_Totals {
 					'</div>' .
 					'<div class="filter-section">' .
 						'<label class="from-date-filter" for="from_date">' .
-							__( 'From', 'affiliates' ) . 
+							__( 'From', 'affiliates' ) .
 							'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
 						'</label>' .
 						'<label class="thru-date-filter" for="thru_date">' .

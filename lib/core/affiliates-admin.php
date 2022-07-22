@@ -1,19 +1,19 @@
 <?php
 /**
  * affiliates-admin.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.0.0
@@ -193,7 +193,7 @@ function affiliates_admin() {
 	foreach( $hit_results as $hit_result ) {
 		$hits[$hit_result->date] = $hit_result->hits;
 	}
-	
+
 	// visits per day
 	$query = "SELECT count(DISTINCT IP) visits, date FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$visit_results = $wpdb->get_results( $wpdb->prepare( $query,
@@ -203,7 +203,7 @@ function affiliates_admin() {
 	foreach( $visit_results as $visit_result ) {
 		$visits[$visit_result->date] = $visit_result->visits;
 	}
-	
+
 	// referrals per day
 	$query = "SELECT count(referral_id) referrals, date(datetime) date FROM $referrals_table WHERE status = %s AND date(datetime) >= %s AND date(datetime) <= %s AND " . $affiliates_subquery . " GROUP BY date";
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
@@ -213,7 +213,7 @@ function affiliates_admin() {
 	foreach( $results as $result ) {
 		$accepted[$result->date] = $result->referrals;
 	}
-	
+
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
 		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date
 	));
@@ -221,7 +221,7 @@ function affiliates_admin() {
 	foreach( $results as $result ) {
 		$closed[$result->date] = $result->referrals;
 	}
-	
+
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
 		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date
 	));
@@ -229,7 +229,7 @@ function affiliates_admin() {
 	foreach( $results as $result ) {
 		$pending[$result->date] = $result->referrals;
 	}
-	
+
 	$results = $wpdb->get_results( $wpdb->prepare( $query,
 		AFFILIATES_REFERRAL_STATUS_REJECTED, $from_date, $thru_date
 	));
@@ -406,7 +406,7 @@ function affiliates_admin() {
 							statsTooltip(
 								item.pageX,
 								item.pageY,
-								item.series.label + " : " + y +  '<br/>' + statsDates[x] 
+								item.series.label + " : " + y +  '<br/>' + statsDates[x]
 							);
 						}
 					} else {

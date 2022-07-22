@@ -3,17 +3,17 @@
  * class-affiliates-exclusion.php
  *
  * Copyright (c) 2010 - 2015 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 2.8.0
@@ -38,6 +38,7 @@ class Affiliates_Exclusion {
 	 * Service hook.
 	 * @param int $affiliate_id
 	 * @param string $service
+	 *
 	 * @return int affiliate id or null
 	 */
 	public static function service( $affiliate_id, $service = null ) {
@@ -48,6 +49,7 @@ class Affiliates_Exclusion {
 	 * Coupon hook.
 	 * @param int $affiliate_id
 	 * @param string $coupon
+	 *
 	 * @return int affiliate id or null
 	 */
 	public static function coupon( $affiliate_id, $coupon ) {
@@ -57,6 +59,7 @@ class Affiliates_Exclusion {
 	/**
 	 * Returns null if the user of the affiliate is the same as the current user.
 	 * @param int $affiliate_id
+	 *
 	 * @return int affiliate id or null
 	 */
 	public static function validate( $affiliate_id ) {
@@ -83,9 +86,10 @@ class Affiliates_Exclusion {
 
 	/**
 	 * Invalidate affiliate's own coupons.
-	 * 
+	 *
 	 * @param boolean $valid
 	 * @param WC_Coupon $coupon
+	 *
 	 * @return boolean
 	 */
 	public static function woocommerce_coupon_is_valid( $valid, $coupon ) {

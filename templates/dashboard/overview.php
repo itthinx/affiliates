@@ -44,6 +44,7 @@ $amounts   = array();
 if ( isset( $totals['amounts_by_currency'] ) ) {
 	foreach ( $totals['amounts_by_currency'] as $currency_id => $amount ) {
 		$amounts[$currency_id] = round( $amount, affiliates_get_referral_amount_decimals( 'display' ), PHP_ROUND_HALF_UP );
+		$amounts[$currency_id] = Affiliates_Math::add( '0', $amounts[$currency_id], affiliates_get_referral_amount_decimals( 'display' ) );
 	}
 }
 $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );

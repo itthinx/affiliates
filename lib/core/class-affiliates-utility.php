@@ -1,19 +1,19 @@
 <?php
 /**
  * class-affiliates-utility.php
- * 
+ *
  * Copyright (c) 2010, 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package affiliates
  * @since affiliates 1.1.0
@@ -38,7 +38,7 @@ class Affiliates_Utility {
 	}
 
 	/**
-	 * Filters mail header injection, html, ... 
+	 * Filters mail header injection, html, ...
 	 * @param string $unfiltered_value
 	 */
 	public static function filter( $unfiltered_value ) {
@@ -48,8 +48,9 @@ class Affiliates_Utility {
 
 	/**
 	 * Filter xss
-	 * 
+	 *
 	 * @param string $string input
+	 *
 	 * @return string filtered string
 	 */
 	public static function filter_xss( $string ) {
@@ -79,7 +80,7 @@ class Affiliates_Utility {
 
 	/**
 	 * Returns captcha field markup.
-	 * 
+	 *
 	 * @return string captcha field markup
 	 */
 	public static function captcha_get( $value ) {
@@ -91,8 +92,9 @@ class Affiliates_Utility {
 
 	/**
 	 * Validates a captcha field.
-	 * 
+	 *
 	 * @param string $field_value field content
+	 *
 	 * @return true if the field validates
 	 */
 	public static function captcha_validates( $field_value = null ) {
@@ -106,6 +108,7 @@ class Affiliates_Utility {
 
 	/**
 	 * Retrieves the first post that contains $title.
+	 *
 	 * @param string $title what to search in titles for
 	 * @param string $output Optional, default is Object. Either OBJECT, ARRAY_A, or ARRAY_N.
 	 * @param string $post_type Optional, default is null meaning any post type.
@@ -135,7 +138,9 @@ class Affiliates_Utility {
 
 	/**
 	 * Verifies and returns formatted amount.
+	 *
 	 * @param string $amount
+	 *
 	 * @return string amount, false upon error or wrong format
 	 */
 	public static function verify_referral_amount( $amount ) {
@@ -164,7 +169,9 @@ class Affiliates_Utility {
 
 	/**
 	 * Verify and return currency id.
+	 *
 	 * @param string $currency_id
+	 *
 	 * @return string currency id or false on error
 	 */
 	public static function verify_currency_id( $currency_id ) {
@@ -177,9 +184,10 @@ class Affiliates_Utility {
 
 	/**
 	 * Verifies states and transition.
-	 * 
+	 *
 	 * @param string $old_status
 	 * @param string $new_status
+	 *
 	 * @return string|boolean new status or false on failure to verify
 	 */
 	public static function verify_referral_status_transition( $old_status, $new_status ) {
@@ -195,7 +203,7 @@ class Affiliates_Utility {
 					case AFFILIATES_REFERRAL_STATUS_PENDING :
 					case AFFILIATES_REFERRAL_STATUS_REJECTED :
 						$result = $new_status;
-						break; 
+						break;
 				}
 				break;
 		}
@@ -206,6 +214,7 @@ class Affiliates_Utility {
 	 * Verifies affiliate states.
 	 *
 	 * @param string $status
+	 *
 	 * @return string|boolean status or false on failure to verify
 	 */
 	public static function verify_affiliate_status( $status ) {
