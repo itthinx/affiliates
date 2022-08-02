@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 4.16.0 =
+* WordPress 6.0 compatible.
+
 = 4.15.0 =
 * WordPress 6.0 compatible.
 * Code cleanup, fixed trailing whitespace.
