@@ -118,13 +118,13 @@ class Affiliates_Utility {
 		$post = null;
 		if ( $post_type == null ) {
 			$query = $wpdb->prepare(
-				"SELECT ID FROM $wpdb->posts WHERE post_title LIKE '%%%s%%'",
-				$title
+				"SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s",
+				'%' . $wpdb->esc_like( $title ) . '%'
 			);
 		} else {
 			$query = $wpdb->prepare(
-				"SELECT ID FROM $wpdb->posts WHERE post_title LIKE '%%%s%%' AND post_type= %s",
-				$title,
+				"SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s AND post_type= %s",
+				'%' . $wpdb->esc_like( $title ) . '%',
 				$post_type
 			);
 		}
