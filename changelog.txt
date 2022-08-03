@@ -3,6 +3,8 @@
 = 4.16.0 =
 * WordPress 6.0 compatible.
 * WordPress 6.1 compatibility, fixed LIKE queries causing database errors.
+* PHP 8.x compatibility, avoided several instances of deprecation warnings due to inconsistent function signature across PHP versions on third parameter of preg_split expecting int instead of null.
+* Removed mention of deprecated Affiliates PayPal integration in readme.txt.
 
 = 4.15.0 =
 * WordPress 6.0 compatible.

@@ -68,7 +68,6 @@ E-Commerce and Events
 
 - [Affiliates WooCommerce](https://www.itthinx.com/plugins/affiliates-woocommerce/) : Our advanced integration for [WooCommerce](https://wordpress.org/plugins/woocommerce/) includes automated status synchronization, recurring referrals and product rates.
 - [Affiliates Events Manager](https://www.itthinx.com/plugins/affiliates-events-manager/) The integration records referrals and essential booking data for referred bookings. It allows to grant commissions on bookings with [Events Manager](https://wordpress.org/plugins/events-manager/).
-- [Affiliates PayPal](https://www.itthinx.com/plugins/affiliates-pro-paypal/) : Integrates with PayPal and allows to grant commissions on purchases made with Payment Buttons.
 
 Social Sharing Platforms ... make it even easier for affiliates to share their links
 
