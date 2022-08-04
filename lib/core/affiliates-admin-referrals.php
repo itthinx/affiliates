@@ -362,12 +362,12 @@ function affiliates_admin_referrals() {
 	}
 	if ( $search ) {
 		if ( $search_description ) {
-			$filters .= " AND ( r.data LIKE '%%%s%%' OR r.description LIKE '%%%s%%' ) ";
-			$filter_params[] = $search;
-			$filter_params[] = $search;
+			$filters .= " AND ( r.data LIKE %s OR r.description LIKE %s ) ";
+			$filter_params[] = '%' . $wpdb->esc_like( $search ) . '%';
+			$filter_params[] = '%' . $wpdb->esc_like( $search ) . '%';
 		} else {
-			$filters .= " AND r.data LIKE '%%%s%%' ";
-			$filter_params[] = $search;
+			$filters .= " AND r.data LIKE %s ";
+			$filter_params[] = '%' . $wpdb->esc_like( $search ) . '%';
 		}
 	}
 

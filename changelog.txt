@@ -1,5 +1,13 @@
 == Affiliates - Changelog ==
 
+= 4.16.0 =
+* WordPress 6.0 compatible.
+* WordPress 6.1 compatible (last tested with 6.1-alpha-53814).
+* WordPress 6.1 compatibility, fixed multiple instances of LIKE queries causing database errors.
+* PHP 8.x compatibility, avoided several instances of deprecation warnings due to inconsistent function signature across PHP versions on third parameter of preg_split expecting int instead of null.
+* Removed mention of deprecated Affiliates PayPal integration in readme.txt.
+* Fixed various issues with the registration widget: a PHP warning caused by a missing array key, a superfluous parameter in the form rendering call and a database error when searching for the terms page by title with PHP 8.x.
+
 = 4.15.0 =
 * WordPress 6.0 compatible.
 * Code cleanup, fixed trailing whitespace.

@@ -335,7 +335,7 @@ function affiliates_admin_hits_uri() {
 
 	// Source URI
 	if ( $src_uri ) {
-		$strings = preg_split( '/\s+(AND|OR)\s+/', $src_uri, null, PREG_SPLIT_DELIM_CAPTURE );
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $src_uri, -1, PREG_SPLIT_DELIM_CAPTURE );
 		if ( is_array( $strings ) && count( $strings ) > 0 ) {
 			$filters .= ' AND ( ';
 			foreach ( $strings as $string ) {
@@ -345,8 +345,8 @@ function affiliates_admin_hits_uri() {
 						$filters .= " $string ";
 						break;
 					default :
-						$filters .= " su.uri LIKE '%%%s%%' ";
-						$filter_params[] = $wpdb->esc_like( $string );
+						$filters .= " su.uri LIKE %s ";
+						$filter_params[] = '%' . $wpdb->esc_like( $string ) . '%';
 				}
 			}
 			$filters .= ' ) ';
@@ -355,7 +355,7 @@ function affiliates_admin_hits_uri() {
 
 	// Desintation URI
 	if ( $dest_uri ) {
-		$strings = preg_split( '/\s+(AND|OR)\s+/', $dest_uri, null, PREG_SPLIT_DELIM_CAPTURE );
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $dest_uri, -1, PREG_SPLIT_DELIM_CAPTURE );
 		if ( is_array( $strings ) && count( $strings ) > 0 ) {
 			$filters .= ' AND ( ';
 			foreach ( $strings as $string ) {
@@ -365,8 +365,8 @@ function affiliates_admin_hits_uri() {
 						$filters .= " $string ";
 						break;
 					default :
-						$filters .= " du.uri LIKE '%%%s%%' ";
-						$filter_params[] = $wpdb->esc_like( $string );
+						$filters .= " du.uri LIKE %s ";
+						$filter_params[] = '%' . $wpdb->esc_like( $string ) . '%';
 				}
 			}
 			$filters .= ' ) ';
@@ -375,7 +375,7 @@ function affiliates_admin_hits_uri() {
 
 	// User Agent
 	if ( $user_agent ) {
-		$strings = preg_split( '/\s+(AND|OR)\s+/', $user_agent, null, PREG_SPLIT_DELIM_CAPTURE );
+		$strings = preg_split( '/\s+(AND|OR)\s+/', $user_agent, -1, PREG_SPLIT_DELIM_CAPTURE );
 		if ( is_array( $strings ) && count( $strings ) > 0 ) {
 			$filters .= ' AND ( ';
 			foreach ( $strings as $string ) {
@@ -385,8 +385,8 @@ function affiliates_admin_hits_uri() {
 						$filters .= " $string ";
 						break;
 					default :
-						$filters .= " ua.user_agent LIKE '%%%s%%' ";
-						$filter_params[] = $wpdb->esc_like( $string );
+						$filters .= " ua.user_agent LIKE %s ";
+						$filter_params[] = '%' . $wpdb->esc_like( $string ) . '%';
 				}
 			}
 			$filters .= ' ) ';

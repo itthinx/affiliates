@@ -387,16 +387,16 @@ function affiliates_admin_affiliates() {
 		$filter_params[] = $affiliate_id;
 	}
 	if ( $affiliate_name ) {
-		$filters[] = " $affiliates_table.name LIKE '%%%s%%' ";
-		$filter_params[] = $affiliate_name;
+		$filters[] = " $affiliates_table.name LIKE %s ";
+		$filter_params[] = '%' . $wpdb->esc_like( $affiliate_name ) . '%';
 	}
 	if ( $affiliate_email ) {
-		$filters[] = " $affiliates_table.email LIKE '%%%s%%' ";
-		$filter_params[] = $affiliate_email;
+		$filters[] = " $affiliates_table.email LIKE %s ";
+		$filter_params[] = '%' . $wpdb->esc_like( $affiliate_email ) . '%';
 	}
 	if ( $affiliate_user_login ) {
-		$filters[] = " $wpdb->users.user_login LIKE '%%%s%%' ";
-		$filter_params[] = $affiliate_user_login;
+		$filters[] = " $wpdb->users.user_login LIKE %s ";
+		$filter_params[] = '%' . $wpdb->esc_like( $affiliate_user_login ) . '%';
 	}
 	$statuses = array( '' ); // need at least one entry for the IN clause
 	if ( $show_active ) {

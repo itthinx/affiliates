@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ad
 Requires at least: 5.6.0
 Tested up to: 6.0
 Requires PHP: 5.6.0
-Stable tag: 4.15.0
+Stable tag: 4.16.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -68,7 +68,6 @@ E-Commerce and Events
 
 - [Affiliates WooCommerce](https://www.itthinx.com/plugins/affiliates-woocommerce/) : Our advanced integration for [WooCommerce](https://wordpress.org/plugins/woocommerce/) includes automated status synchronization, recurring referrals and product rates.
 - [Affiliates Events Manager](https://www.itthinx.com/plugins/affiliates-events-manager/) The integration records referrals and essential booking data for referred bookings. It allows to grant commissions on bookings with [Events Manager](https://wordpress.org/plugins/events-manager/).
-- [Affiliates PayPal](https://www.itthinx.com/plugins/affiliates-pro-paypal/) : Integrates with PayPal and allows to grant commissions on purchases made with Payment Buttons.
 
 Social Sharing Platforms ... make it even easier for affiliates to share their links
 

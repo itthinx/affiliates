@@ -50,7 +50,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 
 		extract( $args );
 		$title = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
-		$widget_id = $args['widget_id'];
+		$widget_id = !empty( $args['widget_id'] ) ? $args['widget_id'] : '';
 		echo $before_widget;
 		if ( !empty( $title ) ) {
 			echo $before_title . $title . $after_title;
@@ -63,7 +63,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		if ( isset( $instance['terms_post_id'] ) ) {
 			$options['terms_post_id'] = $instance['terms_post_id'];
 		}
-		echo Affiliates_Registration::render_form( $options, $widget_id );
+		echo Affiliates_Registration::render_form( $options );
 		echo $after_widget;
 	}
 
