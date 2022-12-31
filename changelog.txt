@@ -3,6 +3,7 @@
 = 4.17.0 =
 * WordPress 6.1 compatible.
 * Requires at least WordPress 5.8.
+* Avoids emptying the affiliate name when the related user's name data is empty on profile update.
 
 = 4.16.0 =
 * WordPress 6.0 compatible.
