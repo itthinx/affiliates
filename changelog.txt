@@ -1,5 +1,11 @@
 == Affiliates - Changelog ==
 
+= 4.17.0 =
+* WordPress 6.1 compatible.
+* Requires at least WordPress 5.8.
+* Avoids emptying the affiliate name when the related user's name data is empty on profile update.
+* Showing affiliate ID along with name in Referrals section.
+
 = 4.16.0 =
 * WordPress 6.0 compatible.
 * WordPress 6.1 compatible (last tested with 6.1-alpha-53814).

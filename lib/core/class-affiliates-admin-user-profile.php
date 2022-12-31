@@ -192,10 +192,17 @@ class Affiliates_Admin_User_Profile {
 		if ( !empty( $affiliate_ids ) ) {
 			if ( $affiliate_id = array_shift( $affiliate_ids ) ) {
 				if ( $user = get_userdata( $user_id ) ) {
+					// @since 4.17.0 don't smash the affiliate name if the user's name data is empty
+					$affiliate = affiliates_get_affiliate( $affiliate_id );
+					$affiliate_name = !empty( $affiliate['name'] ) ? $affiliate['name'] : '';
+					$new_affiliate_name = trim( $user->first_name . ' ' . $user->last_name );
+					if ( strlen( $new_affiliate_name ) === 0 ) {
+						$new_affiliate_name = $affiliate_name;
+					}
 					$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 					$query = $wpdb->prepare(
 							"UPDATE $affiliates_table SET name = %s, email = %s WHERE affiliate_id = %d",
-							$user->first_name . ' ' . $user->last_name,
+							$new_affiliate_name,
 							$user->user_email,
 							intval( $affiliate_id )
 					);
@@ -206,7 +213,5 @@ class Affiliates_Admin_User_Profile {
 			}
 		}
 	}
-
-
 }
 Affiliates_Admin_User_Profile::init();
