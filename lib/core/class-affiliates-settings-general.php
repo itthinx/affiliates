@@ -238,6 +238,8 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		$delete_data = get_option( 'aff_delete_data', false );
 
+		do_action( 'affiliates_settings_general_before_form' );
+
 		echo
 			'<form action="" name="options" method="post">' .
 			'<div>';
@@ -342,6 +344,8 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			'</div>' .
 			'</form>';
 
-			affiliates_footer();
+		do_action( 'affiliates_settings_general_after_form' );
+
+		affiliates_footer();
 	}
 }

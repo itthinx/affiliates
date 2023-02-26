@@ -203,10 +203,11 @@ class Affiliates_Settings {
 		echo $section_links;
 		echo '</div>';
 
-		echo
-			'<h2>' .
-			$section_title .
-			'</h2>';
+		echo '<h2>';
+		echo $section_title;
+		echo '</h2>';
+
+		do_action( 'affiliates_settings_before_section', $section );
 
 		switch( $section ) {
 			case 'integrations' :
@@ -233,6 +234,7 @@ class Affiliates_Settings {
 				do_action( 'affiliates_settings_section', $section );
 		}
 
+		do_action( 'affiliates_settings_after_section', $section );
 	}
 
 	/**
