@@ -147,6 +147,8 @@ class Affiliates_Settings {
 			)
 		);
 
+		do_action( 'affiliates_welcome_before_buttons' );
+
 		// render the buttons
 		echo '<p class="submit">';
 		echo implode( ' ', $buttons );
@@ -160,6 +162,9 @@ class Affiliates_Settings {
 			__( 'Hide this', 'affiliates' )
 		);
 		echo '</p>';
+
+		do_action( 'affiliates_welcome_after_buttons' );
+
 		echo '</div>';
 	}
 

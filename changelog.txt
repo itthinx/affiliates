@@ -10,6 +10,8 @@
 * Adds the affiliates_settings_after_section action.
 * Adds the affiliates_settings_general_before_form action.
 * Adds the affiliates_settings_general_after_form action.
+* Adds the affiliates_welcome_before_buttons action.
+* Adds the affiliates_welcome_after_buttons action.
 
 = 4.17.0 =
 * WordPress 6.1 compatible.
