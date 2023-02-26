@@ -95,6 +95,12 @@ class Affiliates_Admin {
 			);
 		}
 
+		$links['shop'] = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( 'https://www.itthinx.com/shop/' ),
+			esc_html__( 'Shop', 'affiliates' )
+		);
+
 		if ( $deactivate !== null ) {
 			$links['deactivate'] = $deactivate;
 		}
