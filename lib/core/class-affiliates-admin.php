@@ -36,6 +36,7 @@ class Affiliates_Admin {
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_filter( 'plugin_action_links_'. plugin_basename( AFFILIATES_FILE ), array( __CLASS__, 'plugin_action_links' ) );
+		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 4 );
 	}
 
 	/**
@@ -74,11 +75,28 @@ class Affiliates_Admin {
 			);
 		}
 
-		$links['documentation'] = sprintf(
-			'<a href="%s">%s</a>',
-			esc_url( 'https://docs.itthinx.com/document/affiliates/' ),
-			esc_html__( 'Documentation', 'affiliates' )
-		);
+		switch (  AFFILIATES_PLUGIN_NAME ) {
+			case 'affiliates-pro':
+				$links['documentation'] = sprintf(
+					'<a href="%s">%s</a>',
+					esc_url( 'https://docs.itthinx.com/document/affiliates-pro/' ),
+					esc_html__( 'Documentation', 'affiliates' )
+				);
+				break;
+			case 'affiliates-enterprise':
+				$links['documentation'] = sprintf(
+					'<a href="%s">%s</a>',
+					esc_url( 'https://docs.itthinx.com/document/affiliates-enterprise/' ),
+					esc_html__( 'Documentation', 'affiliates' )
+				);
+				break;
+			default:
+				$links['documentation'] = sprintf(
+					'<a href="%s">%s</a>',
+					esc_url( 'https://docs.itthinx.com/document/affiliates/' ),
+					esc_html__( 'Documentation', 'affiliates' )
+				);
+		}
 
 		if ( get_option( 'aff_setup_hide', false ) ) {
 			$links['welcome'] = sprintf(
@@ -108,5 +126,31 @@ class Affiliates_Admin {
 		return $links;
 	}
 
+	/**
+	 * Adds plugin metas.
+	 *
+	 * @param string[] $plugin_meta
+	 * @param string $plugin_file
+	 * @param array $plugin_data
+	 * @param string $status
+	 *
+	 * @return string[]
+	 */
+	public static function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
+		if ( $plugin_file === plugin_basename( AFFILIATES_FILE ) ) {
+			switch (  AFFILIATES_PLUGIN_NAME ) {
+				case 'affiliates-pro':
+					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>';
+					break;
+				case 'affiliates-enterprise':
+					break;
+				default:
+					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>';
+					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>';
+			}
+			$plugin_meta[] = '<a style="color: #d65d4f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/">Shop</a>';
+		}
+		return $plugin_meta;
+	}
 }
 Affiliates_Admin::init();
