@@ -1764,6 +1764,7 @@ function affiliates_get_direct_id() {
 
 // only needed when in admin
 if ( is_admin() ) {
+	require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin.php';
 	require_once AFFILIATES_CORE_LIB . '/affiliates-admin.php';
 	require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
 	require_once AFFILIATES_CORE_LIB . '/affiliates-admin-user-registration.php';

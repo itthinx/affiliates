@@ -2,10 +2,10 @@
 Contributors: itthinx, proaktion
 Donate link: https://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
-Requires at least: 5.8
-Tested up to: 6.1
+Requires at least: 5.9
+Tested up to: 6.2
 Requires PHP: 5.6.0
-Stable tag: 4.17.0
+Stable tag: 4.18.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.

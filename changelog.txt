@@ -1,5 +1,18 @@
 == Affiliates - Changelog ==
 
+= 4.18.0 =
+* WordPress 6.2 compatible.
+* Requires at least WordPress 5.9.
+* Adds a plugin link to the settings.
+* Adds a plugin link to the documentation.
+* Adds a plugin link to reveal the welcome note when it is hidden.
+* Adds the affiliates_settings_before_section action.
+* Adds the affiliates_settings_after_section action.
+* Adds the affiliates_settings_general_before_form action.
+* Adds the affiliates_settings_general_after_form action.
+* Adds the affiliates_welcome_before_buttons action.
+* Adds the affiliates_welcome_after_buttons action.
+
 = 4.17.0 =
 * WordPress 6.1 compatible.
 * Requires at least WordPress 5.8.

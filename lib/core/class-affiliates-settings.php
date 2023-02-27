@@ -147,6 +147,8 @@ class Affiliates_Settings {
 			)
 		);
 
+		do_action( 'affiliates_welcome_before_buttons' );
+
 		// render the buttons
 		echo '<p class="submit">';
 		echo implode( ' ', $buttons );
@@ -160,6 +162,9 @@ class Affiliates_Settings {
 			__( 'Hide this', 'affiliates' )
 		);
 		echo '</p>';
+
+		do_action( 'affiliates_welcome_after_buttons' );
+
 		echo '</div>';
 	}
 
@@ -203,10 +208,11 @@ class Affiliates_Settings {
 		echo $section_links;
 		echo '</div>';
 
-		echo
-			'<h2>' .
-			$section_title .
-			'</h2>';
+		echo '<h2>';
+		echo $section_title;
+		echo '</h2>';
+
+		do_action( 'affiliates_settings_before_section', $section );
 
 		switch( $section ) {
 			case 'integrations' :
@@ -233,6 +239,7 @@ class Affiliates_Settings {
 				do_action( 'affiliates_settings_section', $section );
 		}
 
+		do_action( 'affiliates_settings_after_section', $section );
 	}
 
 	/**
