@@ -70,7 +70,7 @@ class Affiliates_Admin {
 		if ( current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
 			$links['settings'] = sprintf(
 				'<a href="%s">%s</a>',
-				esc_url( get_admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+				esc_url( get_admin_url( null, 'admin.php?page=affiliates-admin-settings' ) ),
 				esc_html__( 'Settings', 'affiliates' )
 			);
 		}
