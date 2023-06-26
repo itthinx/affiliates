@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ad
 Requires at least: 5.9
 Tested up to: 6.2
 Requires PHP: 5.6.0
-Stable tag: 4.18.0
+Stable tag: 4.19.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
