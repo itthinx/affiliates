@@ -2540,6 +2540,54 @@ function affiliates_get_referral_amount_decimals( $context = null ) {
 }
 
 /**
+ * Provide the related post URL for the referral.
+ *
+ * @since 4.19.0
+ *
+ * @param array|object $referral
+ *
+ * @return string
+ */
+function affiliates_get_referral_post_permalink( $referral ) {
+	$url = '';
+	$post_id = null;
+	if ( is_array( $referral ) && array_key_exists( 'post_id', $referral ) ) {
+		$post_id = $referral['post_id'];
+	} else if ( is_object( $referral ) && property_exists( $referral, 'post_id' ) ) {
+		$post_id = $referral->post_id;
+	}
+	if ( $post_id !== null ) {
+		$url = get_permalink( $post_id );
+	}
+	$url = apply_filters( 'affiliates_referral_post_permalink', $url, $referral );
+	return $url;
+}
+
+/**
+ * Provide the related post title for the referral.
+ *
+ * @since 4.19.0
+ *
+ * @param array|object $referral
+ *
+ * @return string
+ */
+function affiliates_get_referral_post_title( $referral ) {
+	$title = '';
+	$post_id = null;
+	if ( is_array( $referral ) && array_key_exists( 'post_id', $referral ) ) {
+		$post_id = $referral['post_id'];
+	} else if ( is_object( $referral ) && property_exists( $referral, 'post_id' ) ) {
+		$post_id = $referral->post_id;
+	}
+	if ( $post_id !== null ) {
+		$title = get_the_title( $post_id );
+	}
+	$title = apply_filters( 'affiliates_referral_post_title', $title, $referral );
+	return $title;
+}
+
+/**
  * Returns the referral amount formatted.
  *
  * @param number $amount
