@@ -28,7 +28,7 @@ Designed to deliver an intuitive experience out of the box, it is ready for virt
 
 Yet you can refine the design and facilities provided for your affiliates even further, with its flexible template-based dashboard sections.
 
-> You will find extensive information and detailed instructions in the [Documentation](http://docs.itthinx.com/document/affiliates/).
+> You will find extensive information and detailed instructions in the [Documentation](https://docs.itthinx.com/document/affiliates/).
 
 Important features include an intuitive affiliate dashboard, automated affiliate registration and unlimited affiliate management sections. Affiliates can integrate with virtually any platform, including e-commerce, memberships, forms, lead generation, lead tracking and many more.
 
@@ -71,8 +71,8 @@ E-Commerce and Events
 
 Social Sharing Platforms ... make it even easier for affiliates to share their links
 
-- [Affiliates AddThis](https://www.itthinx.com/plugins/affiliates-addthis) : This integration with [AddThis](http://www.addthis.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
-- [Affiliates AddToAny](https://www.itthinx.com/plugins/affiliates-addtoany) : This integration with [AddToAny](http://www.addtoany.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
+- [Affiliates AddThis](https://www.itthinx.com/plugins/affiliates-addthis) : This integration with [AddThis](https://www.addthis.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
+- [Affiliates AddToAny](https://www.itthinx.com/plugins/affiliates-addtoany) : This integration with [AddToAny](https://www.addtoany.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
 
 Advertising
 
@@ -82,7 +82,7 @@ Forms
 
 - [Affiliates Ninja Forms](https://wordpress.org/plugins/affiliates-ninja-forms/) : Affiliates can register through [Ninja Forms](https://wordpress.org/plugins/ninja-forms/) forms and form submissions can grant commissions and record referrals. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
 - [Affiliates Formidable](https://www.itthinx.com/plugins/affiliates-formidable/) : Affiliates can register through forms handled with [Formidable Forms](https://wordpress.org/plugins/formidable/), record and track form submissions to pay affiliate partners commissions on leads or successful purchases. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/), this integration opens up additional features and integrates seemlessly with our premium versions.
-- [Affiliates Gravity Forms](https://www.itthinx.com/plugins/affiliates-gravityforms/) : This extension allows to record referrals for form submissions and to create affiliate accounts for new users based on [Gravity Forms](http://www.gravityforms.com).
+- [Affiliates Gravity Forms](https://www.itthinx.com/plugins/affiliates-gravityforms/) : This extension allows to record referrals for form submissions and to create affiliate accounts for new users based on [Gravity Forms](https://www.gravityforms.com).
 - [Affiliates Contact Form 7](https://wordpress.org/plugins/affiliates-contact-form-7) : Lead tracking and store data from submitted [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) forms. Tracks form submissions to the referring affiliate and allows to record referrals and commissions. Used with [Affiliates Pro](https://www.itthinx.com/shop/affiliates-pro/) or [Affiliates Enterprise](https://www.itthinx.com/shop/affiliates-enterprise/) it unlocks advanced features.
 
 ### Premium Extensions available separately
@@ -143,7 +143,7 @@ Forms
 
 ### Documentation
 
-You will find extensive information and detailed instructions on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
+You will find extensive information and detailed instructions on the [Documentation](https://docs.itthinx.com/document/affiliates/) pages.
 
 ### Social
 
@@ -180,7 +180,7 @@ Ukranian by Michael Yunat from [GetVoIP](http://getvoip.com)
 
 == Installation ==
 
-More detailed instructions are available on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
+More detailed instructions are available on the [Documentation](https://docs.itthinx.com/document/affiliates/) pages.
 
 1. Upload or extract the `affiliates` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.
 2. Enable the plugin from the *Plugins* menu in WordPress.
@@ -189,7 +189,7 @@ More detailed instructions are available on the [Documentation](http://docs.itth
 5. Now you can let your affiliates sign up directly from the Affiliate Area or start adding affiliates manually and provide them with affiliate links to your site.
 6. Go to _Affiliates > Settings > Integrations_ and review the available integrations.
 
-Please make sure to review the [Documentation](http://docs.itthinx.com/document/affiliates/).
+Please make sure to review the [Documentation](https://docs.itthinx.com/document/affiliates/).
 
 == Frequently Asked Questions ==
 
@@ -226,7 +226,7 @@ Remember to use HTML entities for `<` and `>` as shown above.
 
 Information about an affiliate's performance is provided via the Affiliates Dashboard and other facilities.
 
-Detailed information on this is available on the [Documentation](http://docs.itthinx.com/document/affiliates/) pages.
+Detailed information on this is available on the [Documentation](https://docs.itthinx.com/document/affiliates/) pages.
 
 = Is it possible to show content for affiliates or non-affiliates only? =
 
@@ -274,9 +274,9 @@ for new user sign-ups.
 
 = Can we record referrals automatically when, for example, an order is placed? =
 
-Yes. See the documentation on [Affiliates](http://docs.itthinx.com/document/affiliates/) for details on supported integrations.
+Yes. See the documentation on [Affiliates](https://docs.itthinx.com/document/affiliates/) for details on supported integrations.
 
-See the documentation on [Affiliates Pro](http://docs.itthinx.com/document/affiliates-pro/) and [Affiliates Enterprise](http://docs.itthinx.com/document/affiliates-enterprise/)
+See the documentation on [Affiliates Pro](https://docs.itthinx.com/document/affiliates-pro/) and [Affiliates Enterprise](https://docs.itthinx.com/document/affiliates-enterprise/)
 for additional supported premium integrations and advanced integration features.
 
 = I am an affiliate of ACME and they provided me with an affiliate link. Is this plugin for me? =
@@ -329,7 +329,7 @@ Use the `[affiliates_login_redirect]` shortcode.
 
 == Screenshots ==
 
-See the [Documentation](http://docs.itthinx.com/document/affiliates/) for more details.
+See the [Documentation](https://docs.itthinx.com/document/affiliates/) for more details.
 
 1. Affiliates Dashboard Overview - Front end affiliate dashboard section showing graphical statistics on clicks and earnings and the affiliate link tool.
 2. Affiliates Dashboard Overview - Front end affiliate dashboard section viewing the commission graph.

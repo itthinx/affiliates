@@ -121,7 +121,7 @@ class Affiliates_Admin_Help {
 			'<div class="affiliates-documentation">' .
 			sprintf(
 				'<a href="%s">%s</a>',
-				esc_attr( 'http://docs.itthinx.com/document/affiliates/' ),
+				esc_attr( 'https://docs.itthinx.com/document/affiliates/' ),
 				esc_html( __( 'Online documentation', 'affiliates' ) )
 			) .
 			'</div>';

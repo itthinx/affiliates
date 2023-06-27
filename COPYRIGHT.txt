@@ -27,11 +27,11 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
- Visit http://www.itthinx.com/ for help, general info and fun.
+ Visit https://www.itthinx.com/ for help, general info and fun.
 
- Plugin page: http://www.itthinx.com/plugins/affiliates
+ Plugin page: https://www.itthinx.com/plugins/affiliates
 
  Official and trusted premium versions are available here only:
 
- Affiliates Pro : http://www.itthinx.com/shop/affiliates-pro
- Affiliates Enterprise : http://www.itthinx.com/shop/affiliates-enterprise
+ Affiliates Pro : https://www.itthinx.com/shop/affiliates-pro
+ Affiliates Enterprise : https://www.itthinx.com/shop/affiliates-enterprise
