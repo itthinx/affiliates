@@ -193,7 +193,7 @@ Please make sure to review the [Documentation](https://docs.itthinx.com/document
 
 == Frequently Asked Questions ==
 
-The information provided in this section is by no means exhaustive. Please make sure to refer to the [Documentation](http://docs.itthinx.com/document/affiliates/) as your preferred source of information.
+The information provided in this section is by no means exhaustive. Please make sure to refer to the [Documentation](https://docs.itthinx.com/document/affiliates/) as your preferred source of information.
 
 = Is there an option to create an Affiliate Area? =
 
