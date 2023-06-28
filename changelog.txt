@@ -1,5 +1,21 @@
 == Affiliates - Changelog ==
 
+= 4.19.0 =
+* WordPress 6.2 compatible.
+* Requires at least WordPress 6.0.
+* Requires at least PHP 7.2.
+* Added the affiliates_get_referral_post_permalink API function.
+* Added the affiliates_referral_post_permalink filter.
+* Added the affiliates_get_referral_post_title API function.
+* Added the affiliates_referral_post_title filter.
+* Revised the referral post rendering in the Visits & Referrals admin screen.
+* Revised the referral post rendering in the Affiliates & Referrals admin screen.
+* Revised the referral post rendering in the Referrals admin screen.
+* Revised URLs to use https.
+* Updated the translation template.
+* Added several missing translations.
+* Fixed or removed several incorrect translations.
+
 = 4.18.0 =
 * WordPress 6.2 compatible.
 * Requires at least WordPress 5.9.

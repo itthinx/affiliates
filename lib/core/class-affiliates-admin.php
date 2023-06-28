@@ -140,15 +140,15 @@ class Affiliates_Admin {
 		if ( $plugin_file === plugin_basename( AFFILIATES_FILE ) ) {
 			switch (  AFFILIATES_PLUGIN_NAME ) {
 				case 'affiliates-pro':
-					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>';
+					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>';
 					break;
 				case 'affiliates-enterprise':
 					break;
 				default:
-					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>';
-					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>';
+					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>';
+					$plugin_meta[] = '<a style="color: #5da64f; font-weight: bold; padding: 1px;" href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>';
 			}
-			$plugin_meta[] = '<a style="color: #d65d4f; font-weight: bold; padding: 1px;" href="http://www.itthinx.com/shop/">Shop</a>';
+			$plugin_meta[] = '<a style="color: #d65d4f; font-weight: bold; padding: 1px;" href="https://www.itthinx.com/shop/">Shop</a>';
 		}
 		return $plugin_meta;
 	}

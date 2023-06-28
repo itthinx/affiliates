@@ -115,7 +115,7 @@ class Affiliates_Notice {
 			$output .= '<p>';
 			$output .= sprintf(
 				'<a class="button button-primary" href="%s" target="_blank">%s</a>',
-				esc_url( 'http://wordpress.org/support/view/plugin-reviews/affiliates?filter=5#postform' ),
+				esc_url( 'https://wordpress.org/support/view/plugin-reviews/affiliates?filter=5#postform' ),
 				__( 'Yes, here we go!', 'affiliates' )
 			);
 			$output .= ' ';
@@ -129,7 +129,7 @@ class Affiliates_Notice {
 			$output .= sprintf(
 				__( 'You can also follow <a href="%s" target="_blank">@itthinx</a> on Twitter or visit <a href="%s" target="_blank">itthinx.com</a> to check out other free and premium plugins we provide.', 'affiliates' ),
 				esc_url( 'https://twitter.com/itthinx' ),
-				esc_url( 'http://www.itthinx.com' )
+				esc_url( 'https://www.itthinx.com' )
 			);
 			$output .= '</p>';
 			$output .= '</div>';

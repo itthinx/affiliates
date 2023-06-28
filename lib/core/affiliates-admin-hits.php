@@ -465,7 +465,7 @@ function affiliates_admin_hits() {
 						$referrals_filter_params
 					);
 					$referrals = $wpdb->get_results( $referrals_query, OBJECT );
-					if ( count($referrals) > 0 ) {
+					if ( count( $referrals) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
 						$output .= '<div class="details-referrals">';
@@ -482,9 +482,19 @@ function affiliates_admin_hits() {
 						foreach ( $referrals as $referral ) {
 							$output .= '<tr class="details-referrals ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 							$output .= '<td class="datetime">' . esc_html( $referral->datetime ) . '</td>';
-							$link = get_permalink( $referral->post_id );
-							$title = get_the_title( $referral->post_id );
-							$output .= '<td class="post-id"><a href="' . esc_attr( $link ) . '" target="_blank">' . wp_filter_nohtml_kses( $title ) . '</a></td>';
+							$link = affiliates_get_referral_post_permalink( $referral );
+							$title = affiliates_get_referral_post_title( $referral );
+							$output .= '<td class="post-id">';
+							if ( !empty( $link ) ) {
+								$output .= sprintf(
+									'<a href="%s" target="_blank">%s</a>',
+									esc_url( $link ),
+									stripslashes( wp_filter_nohtml_kses( $title ) )
+								);
+							} else {
+								$output .= stripslashes( wp_filter_nohtml_kses( $title ) );
+							}
+							$output .= '</td>';
 							$output .= "<td class='affiliate-id'>" . stripslashes( wp_filter_nohtml_kses( $referral->name ) ) . "</td>";
 							$output .= '</tr>';
 						}

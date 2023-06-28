@@ -597,9 +597,19 @@ function affiliates_admin_referrals() {
 
 			$output .= '<tr class="details-referrals ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 			$output .= '<td class="datetime">' . DateHelper::s2u( $result->datetime ) . '</td>';
-			$link = get_permalink( $result->post_id );
-			$title = get_the_title( $result->post_id );
-			$output .= '<td class="post_title"><a href="' . esc_attr( $link ) . '" target="_blank">' . wp_filter_nohtml_kses( $title ) . '</a></td>';
+			$link = affiliates_get_referral_post_permalink( $result );
+			$title = affiliates_get_referral_post_title( $result );
+			$output .= '<td class="post_title">';
+			if ( !empty( $link ) ) {
+				$output .= sprintf(
+					'<a href="%s" target="_blank">%s</a>',
+					esc_url( $link ),
+					stripslashes( wp_filter_nohtml_kses( $title ) )
+				);
+			} else {
+				$output .= stripslashes( wp_filter_nohtml_kses( $title ) );
+			}
+			$output .= '</td>';
 			$output .= sprintf(
 				"<td class='name'>%s [%d]</td>",
 				stripslashes( wp_filter_nohtml_kses( $result->name ) ),
