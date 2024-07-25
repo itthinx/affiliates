@@ -4,6 +4,7 @@
 * WordPress 6.6 compatible.
 * Requires at least WordPress 6.2.
 * Requires at least PHP 7.4.
+* Fixed deprecated notice passing null to do_shortcode() in several instances.
 
 = 4.19.0 =
 * WordPress 6.2 compatible.
