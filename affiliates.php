@@ -2,7 +2,7 @@
 /**
  * affiliates.php
  *
- * Copyright (c) 2010-2023 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2010-2024 "kento" Karim Rahimpur www.itthinx.com
  *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
@@ -22,6 +22,8 @@
  * Plugin URI: https://www.itthinx.com/plugins/affiliates
  * Description: The Affiliates plugin provides the right tools to maintain a partner referral program.
  * Version: 4.20.0
+ * Requires at least: 6.2
+ * Requires PHP: 7.4
  * Author: itthinx
  * Author URI: https://www.itthinx.com
  * Donate-Link: https://www.itthinx.com/shop
