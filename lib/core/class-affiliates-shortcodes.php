@@ -255,14 +255,16 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts attributes (none used)
 	 * @param string $content this is rendered for affiliates
+	 *
+	 * @return string
 	 */
-	public static function affiliates_is_affiliate( $atts, $content = null ) {
+	public static function affiliates_is_affiliate( $atts, $content = '' ) {
 
 		remove_shortcode( 'affiliates_is_affiliate' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_is_affiliate', array( __CLASS__, 'affiliates_is_affiliate' ) );
 
-		$output = "";
+		$output = '';
 		if ( affiliates_user_is_affiliate( get_current_user_id() ) ) {
 			$output .= $content;
 		}
@@ -274,14 +276,16 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts attributes
 	 * @param string $content this is rendered for non-affiliates
+	 *
+	 * @return string
 	 */
-	public static function affiliates_is_not_affiliate( $atts, $content = null ) {
+	public static function affiliates_is_not_affiliate( $atts, $content = '' ) {
 
 		remove_shortcode( 'affiliates_is_not_affiliate' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_is_not_affiliate', array( __CLASS__, 'affiliates_is_not_affiliate' ) );
 
-		$output = "";
+		$output = '';
 		if ( !affiliates_user_is_affiliate( get_current_user_id() ) ) {
 			$output .= $content;
 		}
@@ -296,7 +300,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @return string $content is rendered if referred
 	 */
-	public static function affiliates_is_referred( $atts, $content = null ) {
+	public static function affiliates_is_referred( $atts, $content = '' ) {
 		remove_shortcode( 'affiliates_is_referred' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_is_referred', array( __CLASS__, 'affiliates_is_referred' ) );
@@ -321,7 +325,7 @@ class Affiliates_Shortcodes {
 	 *
 	 * @return string $content is rendered if not referred
 	 */
-	public static function affiliates_is_not_referred( $atts, $content = null ) {
+	public static function affiliates_is_not_referred( $atts, $content = '' ) {
 		remove_shortcode( 'affiliates_is_not_referred' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_is_not_referred', array( __CLASS__, 'affiliates_is_not_referred' ) );
@@ -386,8 +390,10 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts attributes
 	 * @param string $content not used
+	 *
+	 * @return string
 	 */
-	public static function affiliates_hits( $atts, $content = null ) {
+	public static function affiliates_hits( $atts, $content = '' ) {
 		global $wpdb;
 
 		require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
@@ -427,8 +433,10 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts attributes
 	 * @param string $content not used
+	 *
+	 * @return string
 	 */
-	public static function affiliates_visits( $atts, $content = null ) {
+	public static function affiliates_visits( $atts, $content = '' ) {
 
 		global $wpdb;
 
@@ -436,7 +444,7 @@ class Affiliates_Shortcodes {
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_visits', array( __CLASS__, 'affiliates_visits' ) );
 
-		$output = "";
+		$output = '';
 		$options = shortcode_atts(
 			array(
 				'from'  => null,
@@ -466,15 +474,17 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts attributes
 	 * @param string $content not used
+	 *
+	 * @return string
 	 */
-	public static function affiliates_referrals( $atts, $content = null ) {
+	public static function affiliates_referrals( $atts, $content = '' ) {
 		global $wpdb;
 
 		remove_shortcode( 'affiliates_referrals' );
 		$content = do_shortcode( $content );
 		add_shortcode( 'affiliates_referrals', array( __CLASS__, 'affiliates_referrals' ) );
 
-		$output = "";
+		$output = '';
 		$options = shortcode_atts(
 			array(
 				'status'   => null,
@@ -827,8 +837,10 @@ class Affiliates_Shortcodes {
 	 *
 	 * @param array $atts attributes
 	 * @param string $content (is not used)
+	 *
+	 * @return string
 	 */
-	public static function affiliates_url( $atts, $content = null ) {
+	public static function affiliates_url( $atts, $content = '' ) {
 		global $wpdb, $wp;
 
 		$options = shortcode_atts(
