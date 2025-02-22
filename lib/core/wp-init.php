@@ -1164,7 +1164,8 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	}
 	$date     = date( 'Y-m-d' , $now );
 	$datetime = date( 'Y-m-d H:i:s' , $now );
-	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $hits_table" );
+	// @since 5.0.0 instead of using "SELECT COUNT(*) FROM $hits_table" which is slow with InnoDB and large tables
+	$n        = $wpdb->get_var( "SELECT MAX(hit_id) FROM $hits_table" );
 	$hash     = hash( 'sha256', '' . $n . $affiliate_id . $now );
 
 	$columns  = '(hash, affiliate_id, date, datetime, type';
