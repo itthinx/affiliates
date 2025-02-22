@@ -195,7 +195,7 @@ add_action( 'delete_blog', 'affiliates_delete_blog', 10, 2 );
 add_action( 'init', 'affiliates_version_check' );
 function affiliates_version_check() {
 	global $affiliates_version, $affiliates_admin_messages;
-	$previous_version = get_option( 'affiliates_plugin_version', null );
+	$previous_version = get_option( 'affiliates_plugin_version', '' );
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 	if ( version_compare( $previous_version, $affiliates_version ) < 0 ) {
 		$update_result = affiliates_update( $previous_version );
