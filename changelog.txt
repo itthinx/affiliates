@@ -6,6 +6,7 @@
 * Fixes a PHP Warning caused by a malformed comparison when producing totals.
 * Fixes performance issues with large InnoDB hits tables when recording hits.
 * Fixes a PHP Deprecated notice passing null to version_compare().
+* Fixes several instances of PHP Deprecated notices related to the creation of dynamic properties.
 
 = 4.20.0 =
 * WordPress 6.6 compatible.

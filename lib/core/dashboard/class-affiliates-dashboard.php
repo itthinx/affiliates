@@ -39,6 +39,11 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	private $sections = null;
 
 	/**
+	 * @var array
+	 */
+	private $section_objects = array();
+
+	/**
 	 * @var string URL parameter used to identify the current section
 	 */
 	const SECTION_URL_PARAMETER = 'affiliates-dashboard-section';
