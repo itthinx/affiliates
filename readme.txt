@@ -2,7 +2,7 @@
 Contributors: itthinx, proaktion
 Donate link: https://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
-Requires at least: 6.2
+Requires at least: 6.5
 Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 5.0.0
