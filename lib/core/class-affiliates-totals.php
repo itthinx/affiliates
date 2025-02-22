@@ -692,7 +692,7 @@ class Affiliates_Totals {
 					$output .= self::render_results( $results );
 					$output .= '</div>'; // .referrals-overview
 
-					if ( count( $results > 0 ) ) {
+					if ( count( $results ) > 0 ) {
 						$mp_params = "";
 						if ( !empty( $from_date ) ) {
 							$mp_params .= "&from_date=" . urlencode( $from_date );
