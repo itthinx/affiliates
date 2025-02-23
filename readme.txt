@@ -167,6 +167,7 @@ If you want to add a translation, please review [Affiliates Translations](https:
 
 Many thanks to those who have contributed translations:
 
+Dutch by Kathleen den Dekker from [The Dog Company](https://thedogcompany.nl/),
 French by Johan Walter from [Massage Factory](http://www.massagefactory.eu),
 Hebrew by Yair from [temoni.org](http://www.temoni.org/),
 Italian by Alessandro Bergamin from [VoglioClienti.it](http://www.voglioclienti.it/) and Roberto Castaldo from [InArte](http://www.inarte.it),
