@@ -46,6 +46,16 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	);
 
 	/**
+	 * @var array
+	 */
+	protected $status = array();
+
+	/**
+	 * @var array
+	 */
+	protected $column_display_names = array();
+
+	/**
 	 * {@inheritDoc}
 	 * @see I_Affiliates_Dashboard_Section::get_section_order()
 	 */

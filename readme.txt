@@ -1,11 +1,11 @@
 === Affiliates ===
 Contributors: itthinx, proaktion
 Donate link: https://www.itthinx.com/shop/
-Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing, ads, AddToAny, AddThis, advertising, affiliate plugin, affiliate tool, contact form, contact form 7, downloads, e-commerce, Ecwid, Events Manager, Jigoshop, lead, link, marketing, money, partner, Pay per Click, PayPal, PPC, referral links, referrer, sales, shopping cart, track, transaction, WooCommerce
-Requires at least: 6.2
-Tested up to: 6.6
+Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing
+Requires at least: 6.5
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 4.20.0
+Stable tag: 5.0.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -167,6 +167,7 @@ If you want to add a translation, please review [Affiliates Translations](https:
 
 Many thanks to those who have contributed translations:
 
+Dutch by Kathleen den Dekker from [The Dog Company](https://thedogcompany.nl/),
 French by Johan Walter from [Massage Factory](http://www.massagefactory.eu),
 Hebrew by Yair from [temoni.org](http://www.temoni.org/),
 Italian by Alessandro Bergamin from [VoglioClienti.it](http://www.voglioclienti.it/) and Roberto Castaldo from [InArte](http://www.inarte.it),

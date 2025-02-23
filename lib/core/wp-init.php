@@ -195,7 +195,7 @@ add_action( 'delete_blog', 'affiliates_delete_blog', 10, 2 );
 add_action( 'init', 'affiliates_version_check' );
 function affiliates_version_check() {
 	global $affiliates_version, $affiliates_admin_messages;
-	$previous_version = get_option( 'affiliates_plugin_version', null );
+	$previous_version = get_option( 'affiliates_plugin_version', '' );
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 	if ( version_compare( $previous_version, $affiliates_version ) < 0 ) {
 		$update_result = affiliates_update( $previous_version );
@@ -1164,7 +1164,8 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 	}
 	$date     = date( 'Y-m-d' , $now );
 	$datetime = date( 'Y-m-d H:i:s' , $now );
-	$n        = $wpdb->get_var( "SELECT COUNT(*) FROM $hits_table" );
+	// @since 5.0.0 instead of using "SELECT COUNT(*) FROM $hits_table" which is slow with InnoDB and large tables
+	$n        = $wpdb->get_var( "SELECT MAX(hit_id) FROM $hits_table" );
 	$hash     = hash( 'sha256', '' . $n . $affiliate_id . $now );
 
 	$columns  = '(hash, affiliate_id, date, datetime, type';
