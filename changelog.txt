@@ -5,6 +5,7 @@
 * Fixed declaration of dynamic properties of the Affiliates_Pagination class.
 * Fixed translation used too early while processing constants.
 * Fixed translations used too early while determining currencies.
+* Updated recommendations.
 
 = 5.0.0 =
 * WordPress 6.7 compatible.

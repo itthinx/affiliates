@@ -47,8 +47,103 @@ function affiliates_admin_add_ons() {
 	);
 	echo '</p>';
 
+	echo '<h2 class="add-ons-sub-title">';
+	echo __( 'Recommended Tools', 'affiliates' );
+	echo '</h2>';
+
+	$entries = array(
+		'woocommerce-product-search' => array(
+			'title'    => 'WooCommerce Product Search',
+			'content'  => esc_html__( 'The essential extension for every WooCommerce store! The perfect Search Engine for your store helps your customers to find and buy the right products quickly.', 'woocommerce-coupon-shortcodes' ),
+			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/woocommerce-product-search.png',
+			'url'      => 'https://woocommerce.com/products/woocommerce-product-search/',
+			'featured' => true,
+			'index'    => 10
+		),
+		'groups-woocommerce' => array(
+			'title'    => 'Group Memberships for WooCommerce',
+			'content'  => esc_html__( 'Sell Memberships with Groups and WooCommerce! Groups WooCommerce grants memberships based on products. It automatically assigns a customer to one or more groups based on the products ordered.', 'woocommerce-coupon-shortcodes' ),
+			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-woocommerce.png',
+			'url'      => 'https://woocommerce.com/products/groups-woocommerce/',
+			'featured' => true,
+			'index'    => 20
+		),
+		'restrict-payment-methods' => array(
+			'title'    => 'Restrict Payment Methods for WooCommerce',
+			'content'  => esc_html__( 'Limit the use of Payment Methods by Group Memberships, Roles, Countries, and Order Amounts. ', 'woocommerce-coupon-shortcodes' ),
+			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/restrict-payment-methods.png',
+			'url'      => 'https://woocommerce.com/products/restrict-payment-methods/',
+			'featured' => true,
+			'index'    => 30
+		),
+		'woocommerce-group-coupons' => array(
+			'title'    => 'Group Coupons for WooCommerce',
+			'content'  => esc_html__( 'Offer exclusive, automatic and targeted coupon discounts for your customers! Use group memberships and roles to control the validity of coupons.', 'woocommerce-coupon-shortcodes' ),
+			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/woocommerce-group-coupons.png',
+			'url'      => 'https://woocommerce.com/products/group-coupons/',
+			'featured' => false,
+			'index'    => 40
+		),
+		'woocommerce-sales-analysis' => array(
+			'title'    => 'Sales Analysis for WooCommerce',
+			'content'  => esc_html__( 'Sales Analysis oriented at Marketing & Management. Get in-depth views on fundamental Business Intelligence, focused on Sales and net Revenue Trends, International Sales Reports, Product Market and Customer Trends.', 'woocommerce-coupon-shortcodes' ),
+			'url'      => 'https://woocommerce.com/products/sales-analysis-for-woocommerce/',
+			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/woocommerce-sales-analysis.png',
+			'featured' => false,
+			'index'    => 50
+		),
+		'volume-discount-coupons' => array(
+			'title'    => 'Volume Discount Coupons for WooCommerce',
+			'content'  => esc_html__( 'Provides automatic discounts and coupons based on the quantities of products in the cart.', 'woocommerce-coupon-shortcodes' ),
+			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/volume-discount-coupons.png',
+			'url'      => 'https://woocommerce.com/products/volume-discount-coupons/',
+			'featured' => false,
+			'index'    => 60
+		),
+		'groups' => array(
+			'title'   => 'Groups',
+			'content' => 'Groups is designed as an efficient, powerful and flexible solution for group-oriented memberships and content access control. Use it to control who can view documents and more.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups.png',
+			'url'     => 'https://wordpress.org/plugins/groups/',
+			'index'   => 100
+		),
+		'groups-drip-content' => array(
+			'title'   => 'Groups Drip Content',
+			'content' => 'This extension for WordPress is used to release content on a schedule. It can be used with the popular Groups membership solution or without it. Content dripping can be based on user account creation, group memberships and specific dates and times.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-drip-content.png',
+			'url'     => 'https://www.itthinx.com/shop/groups-drip-content/',
+			'index'   => 100
+		),
+		'groups-restrict-categories' => array(
+			'title'   => 'Groups Restrict Categories',
+			'content' => 'An extension based on Groups, provides access restrictions for categories and tags, custom post types and taxonomies. Very useful to restrict whole sets of documents based on their document categories or tags.',
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-restrict-categories.png',
+			'url'     => 'https://www.itthinx.com/shop/groups-restrict-categories/',
+			'index'   => 100
+		)
+	);
+	usort( $entries, 'affiliates_admin_add_ons_sort' );
+
+	echo '<ul class="add-ons">';
+	foreach( $entries as $key => $entry ) {
+		echo '<li class="add-on">';
+		echo sprintf( '<a href="%s" target="_blank">', $entry['url'] );
+		echo '<h3 class="add-ons-sub-sub-title">';
+		echo sprintf( '<img src="%s"/>', $entry['image'] );
+		echo '<span class="title">';
+		echo $entry['title'];
+		echo '</span>';
+		echo '</h3>';
+		echo '<p>';
+		echo $entry['content'];
+		echo '</p>';
+		echo '</a>';
+		echo '</li>'; // .add-on
+	}
+	echo '</ul>'; // .add-ons
+
 	echo '<h2>';
-	echo esc_html__( 'Recommended plugins and extensions', 'affiliates' );
+	echo esc_html__( 'Recommended Extensions', 'affiliates' );
 	echo '</h2>';
 
 	$entries = array(
