@@ -28,9 +28,19 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Pagination {
 
+	/**
+	 * @var array
+	 */
+	private $_pagination_args = array();
+
+	/**
+	 * @var string
+	 */
+	private $_pagination = '';
 
 	/**
 	 * Constructor
+	 *
 	 * @param int $total_items how many items there are to display
 	 * @param int $total_pages how many pages there are, normally leave set to null
 	 * @param int $per_page how many results to show on each page
@@ -49,6 +59,7 @@ class Affiliates_Pagination {
 
 	/**
 	 * Get the current page number
+	 *
 	 * @return int the current page number
 	 */
 	function get_pagenum() {
@@ -69,6 +80,7 @@ class Affiliates_Pagination {
 	 * An internal method that sets all the necessary pagination arguments
 	 *
 	 * @param array $args An associative array with information about the pagination
+	 *
 	 * @access protected
 	 */
 	function set_pagination_args( $args ) {
@@ -87,6 +99,7 @@ class Affiliates_Pagination {
 
 	/**
 	 * Returns or displays the pagination.
+	 *
 	 * @param string $which  where it's displayed
 	 * @param boolean $echo displays if true, otherwise returns
 	 */
