@@ -107,9 +107,6 @@ define( 'AFFILIATES_DIRECT_TYPE', 'direct' );
  */
 define( 'AFFILIATES_DIRECT_NAME', 'Direct' );
 
-// translators: the name of the pseudo-affiliate
-_x( 'Direct', 'pseudo-affiliate name', 'affiliates' );
-
 /**
  * @var int ids are not encoded
  */

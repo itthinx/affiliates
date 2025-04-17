@@ -846,6 +846,9 @@ function affiliates_init() {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
 	}
 	add_action( 'after_plugin_row_' . plugin_basename( AFFILIATES_FILE ), 'affiliates_after_plugin_row', 10, 3 );
+
+	// translators: the name of the pseudo-affiliate
+	_x( 'Direct', 'pseudo-affiliate name', 'affiliates' );
 }
 
 /**

@@ -50,9 +50,30 @@ class Affiliates {
 	public static $currencies = null;
 
 	/**
-	 * Assignments.
+	 * Initialize.
 	 */
 	public static function init() {
+		add_action( 'init', array( __CLASS__, 'wp_init' ) );
+	}
+
+	/**
+	 * Runs the affiliates_currencies and affiliates_supported_currencies filters.
+	 * Hooked on init so that others can catch those filters.
+	 */
+	public static function wp_init() {
+		self::set_currencies();
+		self::$currencies = apply_filters( 'affiliates_currencies', self::$currencies );
+		self::$supported_currencies = apply_filters(
+			'affiliates_supported_currencies', array_keys( self::$currencies )
+		);
+	}
+
+	/**
+	 * Determine currencies.
+	 *
+	 * @since 5.1.0
+	 */
+	private static function set_currencies() {
 		self::$currencies = array(
 			'AED' => __( 'United Arab Emirates Dirham', 'affiliates' ),
 			'AFN' => __( 'Afghanistan Afghani', 'affiliates' ),
@@ -217,21 +238,7 @@ class Affiliates {
 			'ZMW' => __( 'Zambia Kwacha', 'affiliates' ),
 			'ZWD' => __( 'Zimbabwe Dollar', 'affiliates' )
 		);
-
 		self::$supported_currencies = array_keys( self::$currencies );
-
-		add_action( 'init', array( __CLASS__, 'wp_init' ) );
-	}
-
-	/**
-	 * Runs the affiliates_currencies and affiliates_supported_currencies filters.
-	 * Hooked on init so that others can catch those filters.
-	 */
-	public static function wp_init() {
-		self::$currencies = apply_filters( 'affiliates_currencies', self::$currencies );
-		self::$supported_currencies = apply_filters(
-			'affiliates_supported_currencies', array_keys( self::$currencies )
-		);
 	}
 }
 Affiliates::init();
