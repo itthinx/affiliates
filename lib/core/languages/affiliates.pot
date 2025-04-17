@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2023-06-27 11:08+0200\n"
+        "POT-Creation-Date: 2025-04-17 15:48+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr  "Project-Id-Version: PACKAGE VERSION\n"
 msgid   "%1$s %2$s"
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:144
+#: lib/core/class-affiliates-pagination.php:157
 #, php-format
 msgctxt "paging"
 msgid   "%1$s of %2$s"
@@ -71,7 +71,7 @@ msgid   "*To undo, each referral would have to be set to the desired status "
         "individually."
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:100
+#: lib/core/class-affiliates-pagination.php:113
 #: lib/core/affiliates-admin-hits-uri.php:740
 #, php-format
 msgid   "1 item"
@@ -114,8 +114,8 @@ msgid   "<strong>Accepted</strong> if these referrals should grant payable "
 msgstr  ""
 
 #: lib/core/class-affiliates-registration.php:283
-#: lib/core/class-affiliates-shortcodes.php:1024
-#: lib/core/class-affiliates-shortcodes.php:1040
+#: lib/core/class-affiliates-shortcodes.php:1036
+#: lib/core/class-affiliates-shortcodes.php:1052
 msgid   "<strong>ERROR</strong>"
 msgstr  ""
 
@@ -294,8 +294,8 @@ msgstr  ""
 msgid   "Add a new affiliate"
 msgstr  ""
 
-#: lib/core/wp-init.php:1933 lib/core/wp-init.php:1934
-#: lib/core/affiliates-admin-add-ons.php:240
+#: lib/core/wp-init.php:1937 lib/core/wp-init.php:1938
+#: lib/core/affiliates-admin-add-ons.php:335
 msgid   "Add-Ons"
 msgstr  ""
 
@@ -307,7 +307,7 @@ msgstr  ""
 msgid   "AddToAny"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:160
+#: lib/core/affiliates-admin-add-ons.php:255
 msgid   "Additional and advanced integrations accessible with Affiliates Pro "
         "and Affiliates Enterprise include social sharing integrations with "
         "AddToAny and AddThis, support for affiliate commissions based on Pay "
@@ -329,7 +329,7 @@ msgstr  ""
 msgid   "Administrator"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:182
+#: lib/core/affiliates-admin-add-ons.php:277
 msgid   "Advanced shortcodes including banners and graphs"
 msgstr  ""
 
@@ -384,15 +384,15 @@ msgstr  ""
 msgid   "Affiliate added."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:166
+#: lib/core/affiliates-admin-add-ons.php:261
 msgid   "Affiliate attributes for individual commission rates, coupons, ..."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:222
+#: lib/core/affiliates-admin-add-ons.php:317
 msgid   "Affiliate campaign management and tracking."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:198
+#: lib/core/affiliates-admin-add-ons.php:293
 msgid   "Affiliate link generator form"
 msgstr  ""
 
@@ -413,12 +413,12 @@ msgstr  ""
 #: lib/core/dashboard/class-affiliates-dashboard-login-block.php:56
 #: lib/core/dashboard/class-affiliates-dashboard-block.php:103
 #: lib/core/class-affiliates-admin-notifications.php:102
-#: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1953
-#: lib/core/wp-init.php:1954
+#: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1957
+#: lib/core/wp-init.php:1958
 msgid   "Affiliates"
 msgstr  ""
 
-#: lib/core/wp-init.php:1838 lib/core/wp-init.php:1839
+#: lib/core/wp-init.php:1842 lib/core/wp-init.php:1843
 #: lib/core/affiliates-admin-hits-affiliate.php:197
 msgid   "Affiliates & Referrals"
 msgstr  ""
@@ -492,7 +492,7 @@ msgctxt "block title"
 msgid   "Affiliates Dashboard Registration"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:212
+#: lib/core/affiliates-admin-add-ons.php:307
 msgid   "Affiliates Enterprise"
 msgstr  ""
 
@@ -512,15 +512,15 @@ msgstr  ""
 msgid   "Affiliates Ninja Forms Integration"
 msgstr  ""
 
-#: lib/core/wp-init.php:1797 lib/core/affiliates-admin.php:37
+#: lib/core/wp-init.php:1801 lib/core/affiliates-admin.php:37
 msgid   "Affiliates Overview"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:154
+#: lib/core/affiliates-admin-add-ons.php:249
 msgid   "Affiliates Pro"
 msgstr  ""
 
-#: lib/core/wp-init.php:1892
+#: lib/core/wp-init.php:1896
 msgid   "Affiliates Settings"
 msgstr  ""
 
@@ -536,15 +536,15 @@ msgstr  ""
 msgid   "Affiliates network data"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:58
+#: lib/core/class-affiliates.php:79
 msgid   "Afghanistan Afghani"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:59
+#: lib/core/class-affiliates.php:80
 msgid   "Albania Lek"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:96
+#: lib/core/class-affiliates.php:117
 msgid   "Algeria Dinar"
 msgstr  ""
 
@@ -590,7 +590,14 @@ msgstr  ""
 msgid   "Amount (use . for decimals):"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:62
+#: lib/core/affiliates-admin-add-ons.php:119
+msgid   "An extension based on Groups, provides access restrictions for "
+        "categories and tags, custom post types and taxonomies. Very useful "
+        "to restrict whole sets of documents based on their document "
+        "categories or tags."
+msgstr  ""
+
+#: lib/core/class-affiliates.php:83
 msgid   "Angola Kwanza"
 msgstr  ""
 
@@ -611,19 +618,19 @@ msgstr  ""
 msgid   "Apply"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:63
+#: lib/core/class-affiliates.php:84
 msgid   "Argentina Peso"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:60
+#: lib/core/class-affiliates.php:81
 msgid   "Armenia Dram"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:65
+#: lib/core/class-affiliates.php:86
 msgid   "Aruba Guilder"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:64
+#: lib/core/class-affiliates.php:85
 msgid   "Australia Dollar"
 msgstr  ""
 
@@ -637,7 +644,7 @@ msgid   "Auto-referrals are identified as such, when a transaction is "
         "when it involves the use of a coupon assigned to the affiliate."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:66
+#: lib/core/class-affiliates.php:87
 msgid   "Azerbaijan Manat"
 msgstr  ""
 
@@ -646,23 +653,23 @@ msgstr  ""
 msgid   "Back"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:77
+#: lib/core/class-affiliates.php:98
 msgid   "Bahamas Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:71
+#: lib/core/class-affiliates.php:92
 msgid   "Bahrain Dinar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:69
+#: lib/core/class-affiliates.php:90
 msgid   "Bangladesh Taka"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:186
+#: lib/core/affiliates-admin-add-ons.php:281
 msgid   "Banner management"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:68
+#: lib/core/class-affiliates.php:89
 msgid   "Barbados Dollar"
 msgstr  ""
 
@@ -670,43 +677,43 @@ msgstr  ""
 msgid   "Base Amount"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:80
+#: lib/core/class-affiliates.php:101
 msgid   "Belarus Ruble"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:81
+#: lib/core/class-affiliates.php:102
 msgid   "Belize Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:73
+#: lib/core/class-affiliates.php:94
 msgid   "Bermuda Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:78
+#: lib/core/class-affiliates.php:99
 msgid   "Bhutan Ngultrum"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:75
+#: lib/core/class-affiliates.php:96
 msgid   "Bolivia Boliviano"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:67
+#: lib/core/class-affiliates.php:88
 msgid   "Bosnia and Herzegovina Convertible Marka"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:79
+#: lib/core/class-affiliates.php:100
 msgid   "Botswana Pula"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:76
+#: lib/core/class-affiliates.php:97
 msgid   "Brazil Real"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:74
+#: lib/core/class-affiliates.php:95
 msgid   "Brunei Darussalam Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:70
+#: lib/core/class-affiliates.php:91
 msgid   "Bulgaria Lev"
 msgstr  ""
 
@@ -718,7 +725,7 @@ msgstr  ""
 msgid   "Bulk action executed"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:72
+#: lib/core/class-affiliates.php:93
 msgid   "Burundi Franc"
 msgstr  ""
 
@@ -762,7 +769,7 @@ msgid   "CAUTION: If you change this setting and have distributed affiliate "
         "hits, visits or referrals will be recorded."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:130
+#: lib/core/class-affiliates.php:151
 msgid   "Cambodia Riel"
 msgstr  ""
 
@@ -771,7 +778,7 @@ msgstr  ""
 msgid   "Campaign"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:82
+#: lib/core/class-affiliates.php:103
 msgid   "Canada Dollar"
 msgstr  ""
 
@@ -784,11 +791,11 @@ msgstr  ""
 msgid   "Cancel"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:91
+#: lib/core/class-affiliates.php:112
 msgid   "Cape Verde Escudo"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:135
+#: lib/core/class-affiliates.php:156
 msgid   "Cayman Islands Dollar"
 msgstr  ""
 
@@ -800,11 +807,11 @@ msgstr  ""
 msgid   "Check for hits from robots that can be removed &hellip;"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:85
+#: lib/core/class-affiliates.php:106
 msgid   "Chile Peso"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:86
+#: lib/core/class-affiliates.php:107
 msgid   "China Yuan Renminbi"
 msgstr  ""
 
@@ -871,27 +878,27 @@ msgstr  ""
 msgid   "Closing referrals"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:87
+#: lib/core/class-affiliates.php:108
 msgid   "Colombia Peso"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:213
+#: lib/core/class-affiliates.php:234
 msgid   "Communauté Financière Africaine (BCEAO) Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:210
+#: lib/core/class-affiliates.php:231
 msgid   "Communauté Financière Africaine (BEAC) CFA Franc BEAC"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:131
+#: lib/core/class-affiliates.php:152
 msgid   "Comorian Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:214
+#: lib/core/class-affiliates.php:235
 msgid   "Comptoirs Français du Pacifique (CFP) Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:83
+#: lib/core/class-affiliates.php:104
 msgid   "Congo/Kinshasa Franc"
 msgstr  ""
 
@@ -910,7 +917,7 @@ msgstr  ""
 msgid   "Copy to Clipboard"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:88
+#: lib/core/class-affiliates.php:109
 msgid   "Costa Rica Colon"
 msgstr  ""
 
@@ -932,15 +939,15 @@ msgstr  ""
 msgid   "Create an Affiliate Area"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:114
+#: lib/core/class-affiliates.php:135
 msgid   "Croatia Kuna"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:89
+#: lib/core/class-affiliates.php:110
 msgid   "Cuba Convertible Peso"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:90
+#: lib/core/class-affiliates.php:111
 msgid   "Cuba Peso"
 msgstr  ""
 
@@ -966,15 +973,15 @@ msgstr  ""
 msgid   "Current list of robots defined under %s:"
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:137
+#: lib/core/class-affiliates-pagination.php:150
 msgid   "Current page"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:190
+#: lib/core/affiliates-admin-add-ons.php:285
 msgid   "Customizable affiliate registration email"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:92
+#: lib/core/class-affiliates.php:113
 msgid   "Czech Republic Koruna"
 msgstr  ""
 
@@ -1047,7 +1054,7 @@ msgstr  ""
 msgid   "Deleted"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:94
+#: lib/core/class-affiliates.php:115
 msgid   "Denmark Krone"
 msgstr  ""
 
@@ -1061,7 +1068,7 @@ msgstr  ""
 msgid   "Descriptions"
 msgstr  ""
 
-#: lib/core/constants.php:111
+#: lib/core/wp-init.php:851
 msgctxt "pseudo-affiliate name"
 msgid   "Direct"
 msgstr  ""
@@ -1105,7 +1112,7 @@ msgctxt "block description"
 msgid   "Displays the complete Affiliates Dashboard with its sections"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:93
+#: lib/core/class-affiliates.php:114
 msgid   "Djibouti Franc"
 msgstr  ""
 
@@ -1119,7 +1126,7 @@ msgstr  ""
 msgid   "Documentation"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:95
+#: lib/core/class-affiliates.php:116
 msgid   "Dominican Republic Peso"
 msgstr  ""
 
@@ -1136,15 +1143,15 @@ msgstr  ""
 msgid   "E-mail: %s"
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:611
+#: lib/core/class-affiliates-shortcodes.php:621
 #: lib/core/dashboard/class-affiliates-dashboard-earnings-block.php:56
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:117
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:192
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:127
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:202
 #: templates/dashboard/earnings.php:39
 msgid   "Earnings"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:211
+#: lib/core/class-affiliates.php:232
 msgid   "East Caribbean Dollar"
 msgstr  ""
 
@@ -1168,11 +1175,11 @@ msgstr  ""
 msgid   "Edit an affiliate"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:97
+#: lib/core/class-affiliates.php:118
 msgid   "Egypt Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:188
+#: lib/core/class-affiliates.php:209
 msgid   "El Salvador Colon"
 msgstr  ""
 
@@ -1219,15 +1226,15 @@ msgstr  ""
 msgid   "Enabled"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:98
+#: lib/core/class-affiliates.php:119
 msgid   "Eritrea Nakfa"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:99
+#: lib/core/class-affiliates.php:120
 msgid   "Ethiopia Birr"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:100
+#: lib/core/class-affiliates.php:121
 msgid   "Euro Member Countries"
 msgstr  ""
 
@@ -1261,15 +1268,15 @@ msgstr  ""
 msgid   "Expand referrals"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:178
+#: lib/core/affiliates-admin-add-ons.php:273
 msgid   "Export Totals and Mass Payment File generation"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:174
+#: lib/core/affiliates-admin-add-ons.php:269
 msgid   "Extended totals report with additional filters"
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:685
+#: lib/core/class-affiliates-shortcodes.php:695
 msgid   "F Y"
 msgstr  ""
 
@@ -1282,7 +1289,7 @@ msgstr  ""
 msgid   "Failed"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:102
+#: lib/core/class-affiliates.php:123
 msgid   "Falkland Islands (Malvinas) Pound"
 msgstr  ""
 
@@ -1294,7 +1301,7 @@ msgstr  ""
 msgid   "Field Name"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:101
+#: lib/core/class-affiliates.php:122
 msgid   "Fiji Dollar"
 msgstr  ""
 
@@ -1312,7 +1319,7 @@ msgstr  ""
 msgid   "First Name"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:170
+#: lib/core/affiliates-admin-add-ons.php:265
 msgid   "Fixed, percentage or formula based commissions"
 msgstr  ""
 
@@ -1324,10 +1331,10 @@ msgstr  ""
 msgid   "Formidable Forms"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:244
-msgid   "Free and premium extensions are listed on the <a href=\"https://www."
-        "itthinx.com/plugins-overview/\">Overview</a> page and in the <a href="
-        "\"https://www.itthinx.com/shop/\">Shop</a>."
+#: lib/core/affiliates-admin-add-ons.php:339
+msgid   "Free and premium extensions are listed on the <a href=\"https://"
+        "www.itthinx.com/plugins-overview/\">Overview</a> page and in the <a "
+        "href=\"https://www.itthinx.com/shop/\">Shop</a>."
 msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:469
@@ -1350,7 +1357,7 @@ msgstr  ""
 msgid   "From : %s"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:108
+#: lib/core/class-affiliates.php:129
 msgid   "Gambia Dalasi"
 msgstr  ""
 
@@ -1367,7 +1374,7 @@ msgstr  ""
 msgid   "Generator"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:104
+#: lib/core/class-affiliates.php:125
 msgid   "Georgia Lari"
 msgstr  ""
 
@@ -1375,27 +1382,27 @@ msgstr  ""
 msgid   "Get additional features and access to premium support!"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:106
+#: lib/core/class-affiliates.php:127
 msgid   "Ghana Cedi"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:107
+#: lib/core/class-affiliates.php:128
 msgid   "Gibraltar Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:121
+#: lib/core/class-affiliates-pagination.php:134
 msgid   "Go to the first page"
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:155
+#: lib/core/class-affiliates-pagination.php:168
 msgid   "Go to the last page"
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:148
+#: lib/core/class-affiliates-pagination.php:161
 msgid   "Go to the next page"
 msgstr  ""
 
-#: lib/core/class-affiliates-pagination.php:128
+#: lib/core/class-affiliates-pagination.php:141
 msgid   "Go to the previous page"
 msgstr  ""
 
@@ -1403,23 +1410,29 @@ msgstr  ""
 msgid   "Gravity Forms"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:110
+#: lib/core/affiliates-admin-add-ons.php:105
+msgid   "Groups is designed as an efficient, powerful and flexible solution "
+        "for group-oriented memberships and content access control. Use it to "
+        "control who can view documents and more."
+msgstr  ""
+
+#: lib/core/class-affiliates.php:131
 msgid   "Guatemala Quetzal"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:105
+#: lib/core/class-affiliates.php:126
 msgid   "Guernsey Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:109
+#: lib/core/class-affiliates.php:130
 msgid   "Guinea Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:111
+#: lib/core/class-affiliates.php:132
 msgid   "Guyana Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:115
+#: lib/core/class-affiliates.php:136
 msgid   "Haiti Gourde"
 msgstr  ""
 
@@ -1452,15 +1465,15 @@ msgid   "Hits on affiliate links from these robots will be marked or not "
         "recorded. Put one entry on each line."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:113
+#: lib/core/class-affiliates.php:134
 msgid   "Honduras Lempira"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:112
+#: lib/core/class-affiliates.php:133
 msgid   "Hong Kong Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:116
+#: lib/core/class-affiliates.php:137
 msgid   "Hungary Forint"
 msgstr  ""
 
@@ -1479,7 +1492,7 @@ msgstr  ""
 msgid   "IP"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:123
+#: lib/core/class-affiliates.php:144
 msgid   "Iceland Krona"
 msgstr  ""
 
@@ -1575,15 +1588,15 @@ msgstr  ""
 msgid   "Include removed affiliates"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:218
+#: lib/core/affiliates-admin-add-ons.php:313
 msgid   "Includes all additional features available in Affiliates Pro."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:120
+#: lib/core/class-affiliates.php:141
 msgid   "India Rupee"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:117
+#: lib/core/class-affiliates.php:138
 msgid   "Indonesia Rupiah"
 msgstr  ""
 
@@ -1600,23 +1613,23 @@ msgid   "Integrations link the affiliate system to e-commerce plugins and "
         "other platforms."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:212
+#: lib/core/class-affiliates.php:233
 msgid   "International Monetary Fund (IMF) Special Drawing Rights"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:122
+#: lib/core/class-affiliates.php:143
 msgid   "Iran Rial"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:121
+#: lib/core/class-affiliates.php:142
 msgid   "Iraq Dinar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:119
+#: lib/core/class-affiliates.php:140
 msgid   "Isle of Man Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:118
+#: lib/core/class-affiliates.php:139
 msgid   "Israel Shekel"
 msgstr  ""
 
@@ -1633,43 +1646,43 @@ msgid   "It seems that you do not have any pages set up for your affiliates "
         "yet."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:125
+#: lib/core/class-affiliates.php:146
 msgid   "Jamaica Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:127
+#: lib/core/class-affiliates.php:148
 msgid   "Japan Yen"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:124
+#: lib/core/class-affiliates.php:145
 msgid   "Jersey Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:126
+#: lib/core/class-affiliates.php:147
 msgid   "Jordan Dinar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:136
+#: lib/core/class-affiliates.php:157
 msgid   "Kazakhstan Tenge"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:128
+#: lib/core/class-affiliates.php:149
 msgid   "Kenya Shilling"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:132
+#: lib/core/class-affiliates.php:153
 msgid   "Korea (North) Won"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:133
+#: lib/core/class-affiliates.php:154
 msgid   "Korea (South) Won"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:134
+#: lib/core/class-affiliates.php:155
 msgid   "Kuwait Dinar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:129
+#: lib/core/class-affiliates.php:150
 msgid   "Kyrgyzstan Som"
 msgstr  ""
 
@@ -1680,7 +1693,7 @@ msgstr  ""
 msgid   "Landing URI"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:137
+#: lib/core/class-affiliates.php:158
 msgid   "Laos Kip"
 msgstr  ""
 
@@ -1688,20 +1701,25 @@ msgstr  ""
 msgid   "Last Name"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:138
+#: lib/core/class-affiliates.php:159
 msgid   "Lebanon Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:141
+#: lib/core/class-affiliates.php:162
 msgid   "Lesotho Loti"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:140
+#: lib/core/class-affiliates.php:161
 msgid   "Liberia Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:142
+#: lib/core/class-affiliates.php:163
 msgid   "Libya Dinar"
+msgstr  ""
+
+#: lib/core/affiliates-admin-add-ons.php:73
+msgid   "Limit the use of Payment Methods by Group Memberships, Roles, "
+        "Countries, and Order Amounts. "
 msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:695
@@ -1718,7 +1736,7 @@ msgstr  ""
 msgid   "Log in <a href=\"%s\">here</a>."
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:934
+#: lib/core/class-affiliates-shortcodes.php:946
 #: templates/dashboard/overview.php:100
 msgid   "Log out"
 msgstr  ""
@@ -1729,19 +1747,19 @@ msgstr  ""
 msgid   "Login"
 msgstr  ""
 
-#: lib/core/wp-init.php:1658
+#: lib/core/wp-init.php:1662
 msgid   "MD5"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:149
+#: lib/core/class-affiliates.php:170
 msgid   "Macau Pataca"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:146
+#: lib/core/class-affiliates.php:167
 msgid   "Macedonia Denar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:145
+#: lib/core/class-affiliates.php:166
 msgid   "Madagascar Ariary"
 msgstr  ""
 
@@ -1754,20 +1772,20 @@ msgstr  ""
 msgid   "Makes it even easier to share using affiliate links automatically."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:153
+#: lib/core/class-affiliates.php:174
 msgid   "Malawi Kwacha"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:155
+#: lib/core/class-affiliates.php:176
 msgid   "Malaysia Ringgit"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:152
+#: lib/core/class-affiliates.php:173
 msgid   "Maldives (Maldive Islands) Rufiyaa"
 msgstr  ""
 
-#: lib/core/affiliates-admin-affiliates.php:325 lib/core/wp-init.php:1812
-#: lib/core/wp-init.php:1813
+#: lib/core/affiliates-admin-affiliates.php:325 lib/core/wp-init.php:1816
+#: lib/core/wp-init.php:1817
 msgid   "Manage Affiliates"
 msgstr  ""
 
@@ -1775,11 +1793,11 @@ msgstr  ""
 msgid   "Many thanks for using <strong>Affiliates</strong>!"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:150
+#: lib/core/class-affiliates.php:171
 msgid   "Mauritania Ouguiya"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:151
+#: lib/core/class-affiliates.php:172
 msgid   "Mauritius Rupee"
 msgstr  ""
 
@@ -1787,7 +1805,7 @@ msgstr  ""
 msgid   "Message"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:154
+#: lib/core/class-affiliates.php:175
 msgid   "Mexico Peso"
 msgstr  ""
 
@@ -1799,31 +1817,31 @@ msgstr  ""
 msgid   "Minimum number of referrals"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:144
+#: lib/core/class-affiliates.php:165
 msgid   "Moldova Leu"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:148
+#: lib/core/class-affiliates.php:169
 msgid   "Mongolia Tughrik"
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:608
+#: lib/core/class-affiliates-shortcodes.php:618
 msgid   "Month"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:143
+#: lib/core/class-affiliates.php:164
 msgid   "Morocco Dirham"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:156
+#: lib/core/class-affiliates.php:177
 msgid   "Mozambique Metical"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:228
+#: lib/core/affiliates-admin-add-ons.php:323
 msgid   "Multi-tier capability with unlimited levels and rates."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:147
+#: lib/core/class-affiliates.php:168
 msgid   "Myanmar (Burma) Kyat"
 msgstr  ""
 
@@ -1845,15 +1863,15 @@ msgstr  ""
 msgid   "Name can not be empty."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:157
+#: lib/core/class-affiliates.php:178
 msgid   "Namibia Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:161
+#: lib/core/class-affiliates.php:182
 msgid   "Nepal Rupee"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:61
+#: lib/core/class-affiliates.php:82
 msgid   "Netherlands Antilles Guilder"
 msgstr  ""
 
@@ -1865,7 +1883,7 @@ msgstr  ""
 msgid   "New Referral"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:162
+#: lib/core/class-affiliates.php:183
 msgid   "New Zealand Dollar"
 msgstr  ""
 
@@ -1889,17 +1907,17 @@ msgid   "New affiliate registration on your site [site_title]:<br/>\n"
         "This affiliate is pending approval.<br/>"
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:756
+#: lib/core/class-affiliates-shortcodes.php:766
 #: templates/dashboard/earnings.php:182
 msgctxt "Label used to show next page of affiliate earnings results"
 msgid   "Next"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:159
+#: lib/core/class-affiliates.php:180
 msgid   "Nicaragua Cordoba"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:158
+#: lib/core/class-affiliates.php:179
 msgid   "Nigeria Naira"
 msgstr  ""
 
@@ -1907,7 +1925,7 @@ msgstr  ""
 msgid   "Ninja Forms"
 msgstr  ""
 
-#: lib/core/wp-init.php:1657
+#: lib/core/wp-init.php:1661
 msgid   "No encoding"
 msgstr  ""
 
@@ -1925,26 +1943,32 @@ msgstr  ""
 msgid   "No such affiliate."
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:707
-#: lib/core/class-affiliates-shortcodes.php:731
+#: lib/core/class-affiliates-shortcodes.php:717
+#: lib/core/class-affiliates-shortcodes.php:741
 #: lib/core/class-affiliates-dashboard-widget.php:131
 msgid   "None"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:160
+#: lib/core/class-affiliates.php:181
 msgid   "Norway Krone"
 msgstr  ""
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1918 lib/core/wp-init.php:1919
+#: lib/core/wp-init.php:1922 lib/core/wp-init.php:1923
 msgid   "Notifications"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:194
+#: lib/core/affiliates-admin-add-ons.php:289
 msgid   "Notifications including customizable messages"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:163
+#: lib/core/affiliates-admin-add-ons.php:81
+msgid   "Offer exclusive, automatic and targeted coupon discounts for your "
+        "customers! Use group memberships and roles to control the validity "
+        "of coupons."
+msgstr  ""
+
+#: lib/core/class-affiliates.php:184
 msgid   "Oman Rial"
 msgstr  ""
 
@@ -1971,24 +1995,24 @@ msgstr  ""
 msgid   "Pages"
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:616
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:196
+#: lib/core/class-affiliates-shortcodes.php:626
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:206
 msgid   "Paid"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:168
+#: lib/core/class-affiliates.php:189
 msgid   "Pakistan Rupee"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:164
+#: lib/core/class-affiliates.php:185
 msgid   "Panama Balboa"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:166
+#: lib/core/class-affiliates.php:187
 msgid   "Papua New Guinea Kina"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:170
+#: lib/core/class-affiliates.php:191
 msgid   "Paraguay Guarani"
 msgstr  ""
 
@@ -2004,10 +2028,10 @@ msgstr  ""
 #: lib/core/class-affiliates-settings-integrations.php:135
 msgid   "Pay affiliate commissions based on clicks or visits to affiliate "
         "links. This plugin adds the possibility to grant commissions based "
-        "on Pay per Click, Pay per Visit and Pay per Daily Visit with <a href="
-        "\"https://www.itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> "
-        "and <a href=\"https://www.itthinx.com/shop/affiliates-enterprise/"
-        "\">Affiliates Enterprise</a>."
+        "on Pay per Click, Pay per Visit and Pay per Daily Visit with <a "
+        "href=\"https://www.itthinx.com/shop/affiliates-pro/\">Affiliates "
+        "Pro</a> and <a href=\"https://www.itthinx.com/shop/affiliates-"
+        "enterprise/\">Affiliates Enterprise</a>."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:134
@@ -2040,7 +2064,7 @@ msgstr  ""
 msgid   "Pending"
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:188
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:198
 msgid   "Period"
 msgstr  ""
 
@@ -2048,15 +2072,15 @@ msgstr  ""
 msgid   "Permissions"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:165
+#: lib/core/class-affiliates.php:186
 msgid   "Peru Sol"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:167
+#: lib/core/class-affiliates.php:188
 msgid   "Philippines Peso"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:232
+#: lib/core/affiliates-admin-add-ons.php:327
 msgid   "Pixel Tracking makes it even easier for Affiliates to refer "
         "customers, as they do not even need to click an affiliate link. "
         "Supported methods are image and iframe tracking pixels."
@@ -2082,18 +2106,18 @@ msgid   "Please confirm removal of the following affiliates. This action "
         "cannot be undone."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:162
+#: lib/core/affiliates-admin-add-ons.php:257
 msgid   "Please consult the Shop pages for an updated list of included "
         "integrations."
 msgstr  ""
 
 #: lib/core/class-affiliates-registration.php:285
-#: lib/core/class-affiliates-shortcodes.php:1026
+#: lib/core/class-affiliates-shortcodes.php:1038
 #, php-format
 msgid   "Please fill out the field <em>%s</em>."
 msgstr  ""
 
-#: lib/core/wp-init.php:1987
+#: lib/core/wp-init.php:1991
 #, php-format
 msgid   "Please give it a %s rating!"
 msgstr  ""
@@ -2116,7 +2140,7 @@ msgstr  ""
 msgid   "Please review the list of referrals that will be <em>closed</em>."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:169
+#: lib/core/class-affiliates.php:190
 msgid   "Poland Zloty"
 msgstr  ""
 
@@ -2139,7 +2163,7 @@ msgstr  ""
 msgid   "Pretty pointless ..."
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:753
+#: lib/core/class-affiliates-shortcodes.php:763
 #: templates/dashboard/earnings.php:179
 msgctxt "Label used to show previous page of affiliate earnings results"
 msgid   "Previous"
@@ -2151,7 +2175,12 @@ msgstr  ""
 msgid   "Profile"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:171
+#: lib/core/affiliates-admin-add-ons.php:97
+msgid   "Provides automatic discounts and coupons based on the quantities of "
+        "products in the cart."
+msgstr  ""
+
+#: lib/core/class-affiliates.php:192
 msgid   "Qatar Riyal"
 msgstr  ""
 
@@ -2176,13 +2205,17 @@ msgstr  ""
 msgid   "Recent Visits"
 msgstr  ""
 
-#: lib/core/affiliates-admin-user-registration.php:223
-msgid   "Recommended choices for the referral status are <em>Accepted</em> "
-        "and <em>Pending</em>."
+#: lib/core/affiliates-admin-add-ons.php:146
+msgid   "Recommended Extensions"
 msgstr  ""
 
 #: lib/core/affiliates-admin-add-ons.php:51
-msgid   "Recommended plugins and extensions"
+msgid   "Recommended Tools"
+msgstr  ""
+
+#: lib/core/affiliates-admin-user-registration.php:223
+msgid   "Recommended choices for the referral status are <em>Accepted</em> "
+        "and <em>Pending</em>."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-general.php:268
@@ -2221,8 +2254,8 @@ msgstr  ""
 #: lib/core/affiliates-admin-hits.php:472
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:97
 #: lib/core/affiliates-admin-hits-uri.php:488
-#: lib/core/affiliates-admin-referrals.php:276 lib/core/wp-init.php:1864
-#: lib/core/wp-init.php:1865 lib/core/class-affiliates-settings.php:62
+#: lib/core/affiliates-admin-referrals.php:276 lib/core/wp-init.php:1868
+#: lib/core/wp-init.php:1869 lib/core/class-affiliates-settings.php:62
 #: lib/core/affiliates-admin.php:490
 #: lib/core/affiliates-admin-hits-affiliate.php:341
 #: lib/core/affiliates-admin-hits-affiliate.php:539
@@ -2294,7 +2327,7 @@ msgstr  ""
 msgid   "Remove this referral? This action can not be undone."
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:1153
+#: lib/core/class-affiliates-shortcodes.php:1165
 #, php-format
 msgid   "Repeat %s"
 msgstr  ""
@@ -2334,33 +2367,40 @@ msgstr  ""
 msgid   "Role"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:172
+#: lib/core/class-affiliates.php:193
 msgid   "Romania Leu"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:174
+#: lib/core/class-affiliates.php:195
 msgid   "Russia Ruble"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:175
+#: lib/core/class-affiliates.php:196
 msgid   "Rwanda Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:182
+#: lib/core/class-affiliates.php:203
 msgid   "Saint Helena Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:209
+#: lib/core/affiliates-admin-add-ons.php:89
+msgid   "Sales Analysis oriented at Marketing & Management. Get in-depth "
+        "views on fundamental Business Intelligence, focused on Sales and net "
+        "Revenue Trends, International Sales Reports, Product Market and "
+        "Customer Trends."
+msgstr  ""
+
+#: lib/core/class-affiliates.php:230
 msgid   "Samoa Tala"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:176
+#: lib/core/class-affiliates.php:197
 msgid   "Saudi Arabia Riyal"
 msgstr  ""
 
 #: lib/core/affiliates-admin-referral-edit.php:272
 #: lib/core/class-affiliates-settings-registration.php:267
-#: lib/core/class-affiliates-shortcodes.php:1172
+#: lib/core/class-affiliates-shortcodes.php:1184
 #: lib/core/class-affiliates-settings-general.php:342
 #: lib/core/class-affiliates-admin-notifications.php:160
 #: lib/core/class-affiliates-admin-notifications.php:219
@@ -2371,7 +2411,7 @@ msgstr  ""
 msgid   "Save"
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:1068
+#: lib/core/class-affiliates-shortcodes.php:1080
 msgid   "Saved"
 msgstr  ""
 
@@ -2379,8 +2419,14 @@ msgstr  ""
 msgid   "Search"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:185
+#: lib/core/class-affiliates.php:206
 msgid   "Seborga Luigino"
+msgstr  ""
+
+#: lib/core/affiliates-admin-add-ons.php:65
+msgid   "Sell Memberships with Groups and WooCommerce! Groups WooCommerce "
+        "grants memberships based on products. It automatically assigns a "
+        "customer to one or more groups based on the products ordered."
 msgstr  ""
 
 #: lib/core/class-affiliates-contact.php:186
@@ -2396,7 +2442,7 @@ msgid   "Send the administrator an email when a new affiliate user account is "
         "created."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:173
+#: lib/core/class-affiliates.php:194
 msgid   "Serbia Dinar"
 msgstr  ""
 
@@ -2408,7 +2454,7 @@ msgstr  ""
 msgid   "Set status to Pending"
 msgstr  ""
 
-#: lib/core/class-affiliates-admin.php:74 lib/core/wp-init.php:1893
+#: lib/core/class-affiliates-admin.php:74 lib/core/wp-init.php:1897
 #: lib/core/class-affiliates-settings.php:195
 msgid   "Settings"
 msgstr  ""
@@ -2417,7 +2463,7 @@ msgstr  ""
 msgid   "Settings saved."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:178
+#: lib/core/class-affiliates.php:199
 msgid   "Seychelles Rupee"
 msgstr  ""
 
@@ -2438,7 +2484,7 @@ msgid   "Shows accumulated referral totals for all time when left empty, or "
         "for the last number of days set."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:183
+#: lib/core/class-affiliates.php:204
 msgid   "Sierra Leone Leone"
 msgstr  ""
 
@@ -2446,15 +2492,15 @@ msgstr  ""
 msgid   "Sign Up"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:181
+#: lib/core/class-affiliates.php:202
 msgid   "Singapore Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:177
+#: lib/core/class-affiliates.php:198
 msgid   "Solomon Islands Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:184
+#: lib/core/class-affiliates.php:205
 msgid   "Somalia Shilling"
 msgstr  ""
 
@@ -2470,11 +2516,11 @@ msgstr  ""
 msgid   "Source URI"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:216
+#: lib/core/class-affiliates.php:237
 msgid   "South Africa Rand"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:139
+#: lib/core/class-affiliates.php:160
 msgid   "Sri Lanka Rupee"
 msgstr  ""
 
@@ -2499,39 +2545,39 @@ msgstr  ""
 msgid   "Store direct referrals"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:179
+#: lib/core/class-affiliates.php:200
 msgid   "Sudan Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:186
+#: lib/core/class-affiliates.php:207
 msgid   "Suriname Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:180
+#: lib/core/class-affiliates.php:201
 msgid   "Sweden Krona"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:84
+#: lib/core/class-affiliates.php:105
 msgid   "Switzerland Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:189
+#: lib/core/class-affiliates.php:210
 msgid   "Syria Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:187
+#: lib/core/class-affiliates.php:208
 msgid   "São Tomé and Príncipe Dobra"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:199
+#: lib/core/class-affiliates.php:220
 msgid   "Taiwan New Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:192
+#: lib/core/class-affiliates.php:213
 msgid   "Tajikistan Somoni"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:200
+#: lib/core/class-affiliates.php:221
 msgid   "Tanzania Shilling"
 msgstr  ""
 
@@ -2553,11 +2599,11 @@ msgstr  ""
 msgid   "Terms page: <em>%s</em>"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:191
+#: lib/core/class-affiliates.php:212
 msgid   "Thailand Baht"
 msgstr  ""
 
-#: lib/core/wp-init.php:1980
+#: lib/core/wp-init.php:1984
 #, php-format
 msgid   "Thank you for using the %1$s plugin by %2$s."
 msgstr  ""
@@ -2585,7 +2631,7 @@ msgstr  ""
 msgid   "The <a href=\"%s\">%s</a> plugin is not installed."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:202
+#: lib/core/affiliates-admin-add-ons.php:297
 msgid   "The <a href=\"https://docs.itthinx.com/\">Documentation</a> site "
         "also provides up-to-date information on the Affiliates, Affiliates "
         "Pro and Affiliates Enterprise plugin features."
@@ -2635,16 +2681,22 @@ msgid   "The default value is %d. In this case, if a visitor comes to your "
         "%d days after she or he clicked that affiliate link."
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:193
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:203
 msgid   "The earnings for the period covered."
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:197
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:207
 msgid   "The earnings paid for the period covered."
 msgstr  ""
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:189
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:199
 msgid   "The earnings period for the amounts earned."
+msgstr  ""
+
+#: lib/core/affiliates-admin-add-ons.php:57
+msgid   "The essential extension for every WooCommerce store! The perfect "
+        "Search Engine for your store helps your customers to find and buy "
+        "the right products quickly."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-registration.php:205
@@ -2667,12 +2719,12 @@ msgid   "The integrations are required to record referrals, as these award "
         "specific actions."
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:1042
+#: lib/core/class-affiliates-shortcodes.php:1054
 #, php-format
 msgid   "The passwords for the field <em>%s</em> do not match."
 msgstr  ""
 
-#: lib/core/wp-init.php:876
+#: lib/core/wp-init.php:879
 msgid   "The plugin is configured to delete its data on deactivation."
 msgstr  ""
 
@@ -2713,7 +2765,7 @@ msgstr  ""
 msgid   "There are no affiliates."
 msgstr  ""
 
-#: lib/core/class-affiliates-shortcodes.php:741
+#: lib/core/class-affiliates-shortcodes.php:751
 msgid   "There are no earnings yet."
 msgstr  ""
 
@@ -2767,7 +2819,7 @@ msgstr  ""
 msgid   "This action cannot be undone."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:224
+#: lib/core/affiliates-admin-add-ons.php:319
 msgid   "This allows affiliates to distinguish between income they generate "
         "by placing affiliate links on Facebook, from that generated through "
         "Twitter and other sources."
@@ -2789,24 +2841,31 @@ msgid   "This extension allows to record referrals for form submissions and "
         "Registation Add-On) for new users based on Gravity Forms."
 msgstr  ""
 
+#: lib/core/affiliates-admin-add-ons.php:112
+msgid   "This extension for WordPress is used to release content on a "
+        "schedule. It can be used with the popular Groups membership solution "
+        "or without it. Content dripping can be based on user account "
+        "creation, group memberships and specific dates and times."
+msgstr  ""
+
 #: lib/core/class-affiliates-settings-integrations.php:112
 #: lib/core/class-affiliates-settings-integrations.php:121
 #: lib/core/class-affiliates-settings-integrations.php:130
 #: lib/core/class-affiliates-settings-integrations.php:136
 #: lib/core/class-affiliates-settings-integrations.php:145
-msgid   "This integration is suitable to be used with <a href=\"https://www."
-        "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> or <a href="
-        "\"https://www.itthinx.com/shop/affiliates-enterprise/\">Affiliates "
-        "Enterprise</a>."
+msgid   "This integration is suitable to be used with <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> or <a "
+        "href=\"https://www.itthinx.com/shop/affiliates-enterprise/"
+        "\">Affiliates Enterprise</a>."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:156
-msgid   "This integration is suitable to be used with <a href=\"https://www."
-        "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> or <a href="
-        "\"https://www.itthinx.com/shop/affiliates-enterprise/\">Affiliates "
-        "Enterprise</a>. Note that this integration is not intended to be "
-        "used for e-commerce systems that provide their own PayPal Payments "
-        "Standard gateway."
+msgid   "This integration is suitable to be used with <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> or <a "
+        "href=\"https://www.itthinx.com/shop/affiliates-enterprise/"
+        "\">Affiliates Enterprise</a>. Note that this integration is not "
+        "intended to be used for e-commerce systems that provide their own "
+        "PayPal Payments Standard gateway."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings.php:116
@@ -2820,8 +2879,9 @@ msgid   "This is the number of days since a visitor accessed your site via an "
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:46
-msgid   "This light integration is suitable to be used with the <a href="
-        "\"https://wordpress.org/plugins/affiliates/\">Affiliates</a> plugin."
+msgid   "This light integration is suitable to be used with the <a "
+        "href=\"https://wordpress.org/plugins/affiliates/\">Affiliates</a> "
+        "plugin."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-referrals.php:168
@@ -2842,67 +2902,68 @@ msgstr[1]       ""
 
 #: lib/core/class-affiliates-settings-integrations.php:107
 #, php-format
-msgid   "This plugin integrates <a href=\"%s\">Affiliates Pro</a> and <a href="
-        "\"%s\">Affiliates Enterprise</a> with <a href=\"%s\">WooCommerce</"
-        "a>. With this advanced integration plugin, referrals are created and "
-        "synchronized automatically for your affiliates when sales are made. "
-        "This integration also supports referrals on recurring payments "
-        "related to subscriptions and coupons related to affiliates to grant "
-        "referrals when customers use them to credit the corresponding "
-        "affiliate."
+msgid   "This plugin integrates <a href=\"%s\">Affiliates Pro</a> and <a "
+        "href=\"%s\">Affiliates Enterprise</a> with <a "
+        "href=\"%s\">WooCommerce</a>. With this advanced integration plugin, "
+        "referrals are created and synchronized automatically for your "
+        "affiliates when sales are made. This integration also supports "
+        "referrals on recurring payments related to subscriptions and coupons "
+        "related to affiliates to grant referrals when customers use them to "
+        "credit the corresponding affiliate."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:41
 #, php-format
-msgid   "This plugin integrates <a href=\"%s\">Affiliates</a> with <a href="
-        "\"%s\">WooCommerce</a>. With this integration plugin, referrals are "
-        "created automatically for your affiliates when sales are made."
+msgid   "This plugin integrates <a href=\"%s\">Affiliates</a> with <a "
+        "href=\"%s\">WooCommerce</a>. With this integration plugin, referrals "
+        "are created automatically for your affiliates when sales are made."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:56
 msgid   "This plugin integrates <a href=\"https://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with Contact Form 7. This integration stores data from submitted "
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with Contact Form 7. This integration stores data from submitted "
         "forms and tracks form submissions to the referring affiliate."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:68
 msgid   "This plugin integrates <a href=\"https://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with Events Manager. This integration allows to record referrals to "
-        "grant affiliates commissions on referred bookings."
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with Events Manager. This integration allows to record referrals "
+        "to grant affiliates commissions on referred bookings."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:80
 msgid   "This plugin integrates <a href=\"https://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with Formidable Forms. Affiliates can sign up through forms handled "
-        "with Formidable Forms. Form submissions that are referred through "
-        "affiliates, can grant commissions to affiliates and record referral "
-        "details."
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with Formidable Forms. Affiliates can sign up through forms "
+        "handled with Formidable Forms. Form submissions that are referred "
+        "through affiliates, can grant commissions to affiliates and record "
+        "referral details."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:92
 msgid   "This plugin integrates <a href=\"https://wordpress.org/plugins/"
         "affiliates/\">Affiliates</a>, <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with Ninja Forms. Affiliates can sign up through forms handled with "
-        "Ninja Forms. Form submissions that are referred through affiliates, "
-        "can grant commissions to affiliates and record referral details."
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with Ninja Forms. Affiliates can sign up through forms handled "
+        "with Ninja Forms. Form submissions that are referred through "
+        "affiliates, can grant commissions to affiliates and record referral "
+        "details."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:126
 msgid   "This plugin integrates <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with <a href=\"https://www.addthis.com/\">AddThis</a> &hellip; "
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with <a href=\"https://www.addthis.com/\">AddThis</a> &hellip; "
         "<em>&ldquo;Website tools that drive more shares, follows and "
         "conversions&rdquo;</em>. The <a href=\"https://wordpress.org/plugins/"
         "addthis/\">Smart Website Tools</a> by AddThis are required."
@@ -2910,27 +2971,27 @@ msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:117
 msgid   "This plugin integrates <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with <a href=\"https://www.addtoany.com/\">AddToAny</a> &hellip; "
-        "<em>&ldquo;The Universal Sharing Platform&rdquo;</em>. The <a href="
-        "\"https://wordpress.org/plugins/add-to-any/\">Share Buttons by "
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with <a href=\"https://www.addtoany.com/\">AddToAny</a> &hellip; "
+        "<em>&ldquo;The Universal Sharing Platform&rdquo;</em>. The <a "
+        "href=\"https://wordpress.org/plugins/add-to-any/\">Share Buttons by "
         "AddToAny</a> are required."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:141
 msgid   "This plugin integrates <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with <a href=\"https://www.e-junkie.com/ecom/gb.php?"
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with <a href=\"https://www.e-junkie.com/ecom/gb.php?"
         "cl=54585&c=ib&aff=290919\">Gravity Forms</a>."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:155
 msgid   "This plugin integrates <a href=\"https://www.itthinx.com/shop/"
-        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://www."
-        "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a> "
-        "with PayPal Payments Standard. With this advanced integration "
+        "affiliates-pro/\">Affiliates Pro</a> and <a href=\"https://"
+        "www.itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</"
+        "a> with PayPal Payments Standard. With this advanced integration "
         "plugin, referrals are created and synchronized automatically for "
         "your affiliates when sales are made."
 msgstr  ""
@@ -2972,7 +3033,7 @@ msgid   "To serve as an example on how to use the API provided by the "
         "Affiliates plugin"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:195
+#: lib/core/class-affiliates.php:216
 msgid   "Tonga Pa'anga"
 msgstr  ""
 
@@ -2981,33 +3042,33 @@ msgstr  ""
 msgid   "Total"
 msgstr  ""
 
-#: lib/core/class-affiliates-totals.php:176 lib/core/wp-init.php:1878
-#: lib/core/wp-init.php:1879
+#: lib/core/class-affiliates-totals.php:176 lib/core/wp-init.php:1882
+#: lib/core/wp-init.php:1883
 msgid   "Totals"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:250 lib/core/wp-init.php:1851
-#: lib/core/wp-init.php:1852
+#: lib/core/affiliates-admin-hits-uri.php:250 lib/core/wp-init.php:1855
+#: lib/core/wp-init.php:1856
 msgid   "Traffic"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:197
+#: lib/core/class-affiliates.php:218
 msgid   "Trinidad and Tobago Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:194
+#: lib/core/class-affiliates.php:215
 msgid   "Tunisia Dinar"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:196
+#: lib/core/class-affiliates.php:217
 msgid   "Turkey Lira"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:193
+#: lib/core/class-affiliates.php:214
 msgid   "Turkmenistan Manat"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:198
+#: lib/core/class-affiliates.php:219
 msgid   "Tuvalu Dollar"
 msgstr  ""
 
@@ -3015,23 +3076,23 @@ msgstr  ""
 msgid   "URL Parameter"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:202
+#: lib/core/class-affiliates.php:223
 msgid   "Uganda Shilling"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:201
+#: lib/core/class-affiliates.php:222
 msgid   "Ukraine Hryvnia"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:57
+#: lib/core/class-affiliates.php:78
 msgid   "United Arab Emirates Dirham"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:103
+#: lib/core/class-affiliates.php:124
 msgid   "United Kingdom Pound"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:203
+#: lib/core/class-affiliates.php:224
 msgid   "United States Dollar"
 msgstr  ""
 
@@ -3069,7 +3130,7 @@ msgstr  ""
 msgid   "Updated"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:204
+#: lib/core/class-affiliates.php:225
 msgid   "Uruguay Peso"
 msgstr  ""
 
@@ -3092,7 +3153,7 @@ msgstr  ""
 msgid   "User Agent"
 msgstr  ""
 
-#: lib/core/wp-init.php:1905 lib/core/wp-init.php:1906
+#: lib/core/wp-init.php:1909 lib/core/wp-init.php:1910
 #: lib/core/affiliates-admin-user-registration.php:35
 msgid   "User Registration"
 msgstr  ""
@@ -3145,15 +3206,15 @@ msgid   "Usually only referrals that are <em>accepted</em> and have been paid "
         "referrals shown, restrict your filter settings."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:205
+#: lib/core/class-affiliates.php:226
 msgid   "Uzbekistan Som"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:208
+#: lib/core/class-affiliates.php:229
 msgid   "Vanuatu Vatu"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:206
+#: lib/core/class-affiliates.php:227
 msgid   "Venezuela Bolívar"
 msgstr  ""
 
@@ -3161,7 +3222,7 @@ msgstr  ""
 msgid   "Verification is supported for coupons managed through WooCommerce."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:207
+#: lib/core/class-affiliates.php:228
 msgid   "Viet Nam Dong"
 msgstr  ""
 
@@ -3175,12 +3236,12 @@ msgstr  ""
 msgid   "Visits"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits.php:173 lib/core/wp-init.php:1825
-#: lib/core/wp-init.php:1826
+#: lib/core/affiliates-admin-hits.php:173 lib/core/wp-init.php:1829
+#: lib/core/wp-init.php:1830
 msgid   "Visits & Referrals"
 msgstr  ""
 
-#: lib/core/wp-init.php:872
+#: lib/core/wp-init.php:875
 msgid   "Warning!"
 msgstr  ""
 
@@ -3223,7 +3284,7 @@ msgid   "Write part of the title or the post ID. If left empty, no terms "
         "disclaimer will be shown."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:215
+#: lib/core/class-affiliates.php:236
 msgid   "Yemen Rial"
 msgstr  ""
 
@@ -3250,8 +3311,8 @@ msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:196
 #, php-format
-msgid   "You can install available integrations in the <a href=\"%s"
-        "\">Plugins</a> section."
+msgid   "You can install available integrations in the <a "
+        "href=\"%s\">Plugins</a> section."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:192
@@ -3292,11 +3353,11 @@ msgstr  ""
 msgid   "Your affiliate application is pending approval."
 msgstr  ""
 
-#: lib/core/class-affiliates.php:217
+#: lib/core/class-affiliates.php:238
 msgid   "Zambia Kwacha"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:218
+#: lib/core/class-affiliates.php:239
 msgid   "Zimbabwe Dollar"
 msgstr  ""
 
@@ -3329,6 +3390,6 @@ msgstr  ""
 msgid   "[[site_title]] Your username and password"
 msgstr  ""
 
-#: lib/core/class-affiliates.php:190
+#: lib/core/class-affiliates.php:211
 msgid   "eSwatini Lilangeni"
 msgstr  ""
