@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-04-17 15:48+0200\n"
+        "POT-Creation-Date: 2025-08-30 15:34+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgstr  ""
 msgid   "<strong>Welcome to %s</strong>"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:296
+#: lib/core/class-affiliates-settings-general.php:297
 msgid   "A minimum set of permissions will be preserved."
 msgstr  ""
 
@@ -188,8 +188,8 @@ msgstr  ""
 msgid   "Accepted"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:144
-#: lib/core/class-affiliates-settings-general.php:199
+#: lib/core/class-affiliates-settings-general.php:145
+#: lib/core/class-affiliates-settings-general.php:200
 msgid   "Access affiliates"
 msgstr  ""
 
@@ -295,7 +295,7 @@ msgid   "Add a new affiliate"
 msgstr  ""
 
 #: lib/core/wp-init.php:1937 lib/core/wp-init.php:1938
-#: lib/core/affiliates-admin-add-ons.php:335
+#: lib/core/affiliates-admin-add-ons.php:349
 msgid   "Add-Ons"
 msgstr  ""
 
@@ -307,21 +307,13 @@ msgstr  ""
 msgid   "AddToAny"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:255
-msgid   "Additional and advanced integrations accessible with Affiliates Pro "
-        "and Affiliates Enterprise include social sharing integrations with "
-        "AddToAny and AddThis, support for affiliate commissions based on Pay "
-        "Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro "
-        "and Gravity Forms integrations."
-msgstr  ""
-
-#: lib/core/class-affiliates-settings-general.php:145
-#: lib/core/class-affiliates-settings-general.php:200
+#: lib/core/class-affiliates-settings-general.php:146
+#: lib/core/class-affiliates-settings-general.php:201
 msgid   "Administer affiliates"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:146
-#: lib/core/class-affiliates-settings-general.php:201
+#: lib/core/class-affiliates-settings-general.php:147
+#: lib/core/class-affiliates-settings-general.php:202
 msgid   "Administer options"
 msgstr  ""
 
@@ -329,7 +321,12 @@ msgstr  ""
 msgid   "Administrator"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:277
+#: lib/core/affiliates-admin-add-ons.php:269
+msgid   "Advanced and additional integrations are provided with Affiliates "
+        "Pro and Affiliates Enterprise."
+msgstr  ""
+
+#: lib/core/affiliates-admin-add-ons.php:291
 msgid   "Advanced shortcodes including banners and graphs"
 msgstr  ""
 
@@ -352,11 +349,11 @@ msgstr  ""
 msgid   "Affiliate Area"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:184
+#: lib/core/class-affiliates-settings-general.php:185
 msgid   "Affiliate ID Encoding"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:276
+#: lib/core/class-affiliates-settings-general.php:277
 msgid   "Affiliate ID encoding"
 msgstr  ""
 
@@ -376,7 +373,7 @@ msgstr  ""
 msgid   "Affiliate Status"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:248
+#: lib/core/class-affiliates-settings-general.php:249
 msgid   "Affiliate URL parameter name"
 msgstr  ""
 
@@ -384,15 +381,15 @@ msgstr  ""
 msgid   "Affiliate added."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:261
+#: lib/core/affiliates-admin-add-ons.php:275
 msgid   "Affiliate attributes for individual commission rates, coupons, ..."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:317
+#: lib/core/affiliates-admin-add-ons.php:331
 msgid   "Affiliate campaign management and tracking."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:293
+#: lib/core/affiliates-admin-add-ons.php:307
 msgid   "Affiliate link generator form"
 msgstr  ""
 
@@ -492,7 +489,7 @@ msgctxt "block title"
 msgid   "Affiliates Dashboard Registration"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:307
+#: lib/core/affiliates-admin-add-ons.php:321
 msgid   "Affiliates Enterprise"
 msgstr  ""
 
@@ -516,7 +513,7 @@ msgstr  ""
 msgid   "Affiliates Overview"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:249
+#: lib/core/affiliates-admin-add-ons.php:263
 msgid   "Affiliates Pro"
 msgstr  ""
 
@@ -590,7 +587,7 @@ msgstr  ""
 msgid   "Amount (use . for decimals):"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:119
+#: lib/core/affiliates-admin-add-ons.php:133
 msgid   "An extension based on Groups, provides access restrictions for "
         "categories and tags, custom post types and taxonomies. Very useful "
         "to restrict whole sets of documents based on their document "
@@ -665,7 +662,7 @@ msgstr  ""
 msgid   "Bangladesh Taka"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:281
+#: lib/core/affiliates-admin-add-ons.php:295
 msgid   "Banner management"
 msgstr  ""
 
@@ -739,7 +736,7 @@ msgstr  ""
 msgid   "By signing up, you indicate that you have read and agree to the %s."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:335
+#: lib/core/class-affiliates-settings-general.php:336
 msgid   "CAUTION: If this option is active while the plugin is deactivated, "
         "ALL affiliate and referral data will be DELETED. If you want to "
         "retrieve data about your affiliates and their referrals and are "
@@ -755,14 +752,14 @@ msgid   "CAUTION: If this option is active while the plugin is network "
         "on all sites of the network</strong>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:259
+#: lib/core/class-affiliates-settings-general.php:260
 msgid   "CAUTION: If you change this setting and have distributed affiliate "
         "links or permalinks, make sure that these are updated. Unless the "
         "incoming affiliate links reflect the current URL parameter name, no "
         "affiliate hits, visits or referrals will be recorded."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:284
+#: lib/core/class-affiliates-settings-general.php:285
 msgid   "CAUTION: If you change this setting and have distributed affiliate "
         "links or permalinks, make sure that these are updated. Unless the "
         "incoming affiliate links reflect the current encoding, no affiliate "
@@ -799,7 +796,7 @@ msgstr  ""
 msgid   "Cayman Islands Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:157
+#: lib/core/class-affiliates-robot-cleaner.php:156
 msgid   "Check"
 msgstr  ""
 
@@ -977,7 +974,7 @@ msgstr  ""
 msgid   "Current page"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:285
+#: lib/core/affiliates-admin-add-ons.php:299
 msgid   "Customizable affiliate registration email"
 msgstr  ""
 
@@ -1029,7 +1026,7 @@ msgstr  ""
 msgid   "Days back"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:326
+#: lib/core/class-affiliates-settings-general.php:327
 msgid   "Deactivation and data persistence"
 msgstr  ""
 
@@ -1037,7 +1034,7 @@ msgstr  ""
 msgid   "Default referral status"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:236
+#: lib/core/class-affiliates-robot-cleaner.php:234
 msgid   "Delete"
 msgstr  ""
 
@@ -1045,7 +1042,7 @@ msgstr  ""
 msgid   "Delete all affiliate data on network deactivation"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:331
+#: lib/core/class-affiliates-settings-general.php:332
 msgid   "Delete all plugin data on deactivation"
 msgstr  ""
 
@@ -1116,7 +1113,7 @@ msgstr  ""
 msgid   "Djibouti Franc"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:290
+#: lib/core/class-affiliates-settings-general.php:291
 msgid   "Do not assign permissions to open access for affiliates here."
 msgstr  ""
 
@@ -1268,11 +1265,11 @@ msgstr  ""
 msgid   "Expand referrals"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:273
+#: lib/core/affiliates-admin-add-ons.php:287
 msgid   "Export Totals and Mass Payment File generation"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:269
+#: lib/core/affiliates-admin-add-ons.php:283
 msgid   "Extended totals report with additional filters"
 msgstr  ""
 
@@ -1319,7 +1316,7 @@ msgstr  ""
 msgid   "First Name"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:265
+#: lib/core/affiliates-admin-add-ons.php:279
 msgid   "Fixed, percentage or formula based commissions"
 msgstr  ""
 
@@ -1331,7 +1328,7 @@ msgstr  ""
 msgid   "Formidable Forms"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:339
+#: lib/core/affiliates-admin-add-ons.php:353
 msgid   "Free and premium extensions are listed on the <a href=\"https://"
         "www.itthinx.com/plugins-overview/\">Overview</a> page and in the <a "
         "href=\"https://www.itthinx.com/shop/\">Shop</a>."
@@ -1445,7 +1442,7 @@ msgstr  ""
 msgid   "Hide this"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:197
+#: lib/core/class-affiliates-robot-cleaner.php:196
 #: lib/core/affiliates-admin-hits.php:310
 #: lib/core/affiliates-admin-hits.php:539
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:95
@@ -1460,7 +1457,7 @@ msgctxt "robot cleaner"
 msgid   "Hits deleted:"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:308
+#: lib/core/class-affiliates-settings-general.php:309
 msgid   "Hits on affiliate links from these robots will be marked or not "
         "recorded. Put one entry on each line."
 msgstr  ""
@@ -1554,16 +1551,16 @@ msgid   "If you enter 0, referrals will only be valid until the visitor "
         "closes the browser (session)."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:298
+#: lib/core/class-affiliates-settings-general.php:299
 msgid   "If you lock yourself out, please ask an administrator to help."
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:225
+#: lib/core/class-affiliates-robot-cleaner.php:224
 msgid   "If you want to delete these matching hits, click the button to "
         "proceed."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:117
+#: lib/core/class-affiliates-settings-general.php:118
 msgid   "If your affiliates are using affiliate links based on the previous "
         "Affiliate URL parameter name, they <strong>NEED</strong> to update "
         "their affiliate links."
@@ -1588,7 +1585,7 @@ msgstr  ""
 msgid   "Include removed affiliates"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:313
+#: lib/core/affiliates-admin-add-ons.php:327
 msgid   "Includes all additional features available in Affiliates Pro."
 msgstr  ""
 
@@ -1633,7 +1630,7 @@ msgstr  ""
 msgid   "Israel Shekel"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:229
+#: lib/core/class-affiliates-robot-cleaner.php:228
 msgid   "It can take a while to clean up a large number of hits."
 msgstr  ""
 
@@ -1837,7 +1834,7 @@ msgstr  ""
 msgid   "Mozambique Metical"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:323
+#: lib/core/affiliates-admin-add-ons.php:337
 msgid   "Multi-tier capability with unlimited levels and rates."
 msgstr  ""
 
@@ -1907,6 +1904,12 @@ msgid   "New affiliate registration on your site [site_title]:<br/>\n"
         "This affiliate is pending approval.<br/>"
 msgstr  ""
 
+#: lib/core/affiliates-admin-add-ons.php:126
+msgid   "Newsletter Campaigns for Subscribers and Groups. Groups Newsletters "
+        "helps you to communicate efficiently, providing targeted information "
+        "to groups of recipients through automated campaigns."
+msgstr  ""
+
 #: lib/core/class-affiliates-shortcodes.php:766
 #: templates/dashboard/earnings.php:182
 msgctxt "Label used to show next page of affiliate earnings results"
@@ -1929,7 +1932,7 @@ msgstr  ""
 msgid   "No encoding"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:249
+#: lib/core/class-affiliates-robot-cleaner.php:247
 msgid   "No matching hits have been found."
 msgstr  ""
 
@@ -1958,7 +1961,7 @@ msgstr  ""
 msgid   "Notifications"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:289
+#: lib/core/affiliates-admin-add-ons.php:303
 msgid   "Notifications including customizable messages"
 msgstr  ""
 
@@ -1976,7 +1979,7 @@ msgstr  ""
 msgid   "Omitted"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:227
+#: lib/core/class-affiliates-robot-cleaner.php:226
 msgid   "Once you click the button, the hits will be deleted immediately."
 msgstr  ""
 
@@ -2068,7 +2071,7 @@ msgstr  ""
 msgid   "Period"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:288
+#: lib/core/class-affiliates-settings-general.php:289
 msgid   "Permissions"
 msgstr  ""
 
@@ -2080,7 +2083,7 @@ msgstr  ""
 msgid   "Philippines Peso"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:327
+#: lib/core/affiliates-admin-add-ons.php:341
 msgid   "Pixel Tracking makes it even easier for Affiliates to refer "
         "customers, as they do not even need to click an affiliate link. "
         "Supported methods are image and iframe tracking pixels."
@@ -2106,11 +2109,6 @@ msgid   "Please confirm removal of the following affiliates. This action "
         "cannot be undone."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:257
-msgid   "Please consult the Shop pages for an updated list of included "
-        "integrations."
-msgstr  ""
-
 #: lib/core/class-affiliates-registration.php:285
 #: lib/core/class-affiliates-shortcodes.php:1038
 #, php-format
@@ -2129,6 +2127,10 @@ msgstr  ""
 #: lib/core/class-affiliates-settings-pages.php:126
 msgid   "Please refer to the <a href=\"https://docs.itthinx.com/document/"
         "affiliates/\">Documentation</a> for more details."
+msgstr  ""
+
+#: lib/core/affiliates-admin-add-ons.php:271
+msgid   "Please refer to the Shop pages for included integrations."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings.php:114
@@ -2175,6 +2177,11 @@ msgstr  ""
 msgid   "Profile"
 msgstr  ""
 
+#: lib/core/affiliates-admin-add-ons.php:119
+msgid   "Provide exclusive access to files for members. The ideal companion "
+        "to provide exclusive access to resources for group members."
+msgstr  ""
+
 #: lib/core/affiliates-admin-add-ons.php:97
 msgid   "Provides automatic discounts and coupons based on the quantities of "
         "products in the cart."
@@ -2205,7 +2212,7 @@ msgstr  ""
 msgid   "Recent Visits"
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:146
+#: lib/core/affiliates-admin-add-ons.php:160
 msgid   "Recommended Extensions"
 msgstr  ""
 
@@ -2218,16 +2225,16 @@ msgid   "Recommended choices for the referral status are <em>Accepted</em> "
         "and <em>Pending</em>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:268
+#: lib/core/class-affiliates-settings-general.php:269
 msgid   "Redirect"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:272
+#: lib/core/class-affiliates-settings-general.php:273
 msgid   "Redirect to destination without Affiliate URL parameter, after a hit "
         "on an affiliate link has been detected."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:263
+#: lib/core/class-affiliates-settings-general.php:264
 msgid   "Redirection"
 msgstr  ""
 
@@ -2355,15 +2362,15 @@ msgid   "Review General Settings"
 msgstr  ""
 
 #: lib/core/class-affiliates-robot-cleaner.php:131
-#: lib/core/class-affiliates-settings-general.php:319
+#: lib/core/class-affiliates-settings-general.php:320
 msgid   "Robot Cleaner"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:302
+#: lib/core/class-affiliates-settings-general.php:303
 msgid   "Robots"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:207
+#: lib/core/class-affiliates-settings-general.php:208
 msgid   "Role"
 msgstr  ""
 
@@ -2401,7 +2408,7 @@ msgstr  ""
 #: lib/core/affiliates-admin-referral-edit.php:272
 #: lib/core/class-affiliates-settings-registration.php:267
 #: lib/core/class-affiliates-shortcodes.php:1184
-#: lib/core/class-affiliates-settings-general.php:342
+#: lib/core/class-affiliates-settings-general.php:343
 #: lib/core/class-affiliates-admin-notifications.php:160
 #: lib/core/class-affiliates-admin-notifications.php:219
 #: lib/core/affiliates-admin-affiliates-edit.php:210
@@ -2631,24 +2638,24 @@ msgstr  ""
 msgid   "The <a href=\"%s\">%s</a> plugin is not installed."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:297
+#: lib/core/affiliates-admin-add-ons.php:311
 msgid   "The <a href=\"https://docs.itthinx.com/\">Documentation</a> site "
         "also provides up-to-date information on the Affiliates, Affiliates "
         "Pro and Affiliates Enterprise plugin features."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:111
+#: lib/core/class-affiliates-settings-general.php:112
 #, php-format
 msgid   "The Affiliate URL parameter name <strong>has been changed</strong> "
         "from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:102
+#: lib/core/class-affiliates-settings-general.php:103
 msgid   "The Affiliate URL parameter name <strong>has not been changed</"
         "strong>, the suggested name <em>is forbidden</em>."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:99
+#: lib/core/class-affiliates-settings-general.php:100
 msgid   "The Affiliate URL parameter name <strong>has not been changed</"
         "strong>, the suggested name <em>is not valid</em>. Only lower case "
         "letters and the underscore _ are allowed."
@@ -2659,17 +2666,17 @@ msgid   "The complete documentation is available on the Documentation pages "
         "&hellip;"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:253
+#: lib/core/class-affiliates-settings-general.php:254
 #, php-format
 msgid   "The current Affiliate URL parameter name is: <b>%s</b>"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:281
+#: lib/core/class-affiliates-settings-general.php:282
 #, php-format
 msgid   "The current encoding in effect is: <b>%s</b>"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:256
+#: lib/core/class-affiliates-settings-general.php:257
 #, php-format
 msgid   "The default Affiliate URL parameter name is <em>%s</em>."
 msgstr  ""
@@ -2703,7 +2710,7 @@ msgstr  ""
 msgid   "The following fields are provided on the affiliate registration form."
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:193
+#: lib/core/class-affiliates-robot-cleaner.php:192
 msgid   "The following matching hits have been found and can be cleaned up."
 msgstr  ""
 
@@ -2780,11 +2787,11 @@ msgstr  ""
 msgid   "There are no results."
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:164
+#: lib/core/class-affiliates-robot-cleaner.php:163
 msgid   "There are no robots defined."
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:166
+#: lib/core/class-affiliates-robot-cleaner.php:165
 msgid   "There must be at least one entry to proceed to clean up existing "
         "hits from robots."
 msgstr  ""
@@ -2815,11 +2822,11 @@ msgstr  ""
 msgid   "This action can not be undone*."
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:231
+#: lib/core/class-affiliates-robot-cleaner.php:230
 msgid   "This action cannot be undone."
 msgstr  ""
 
-#: lib/core/affiliates-admin-add-ons.php:319
+#: lib/core/affiliates-admin-add-ons.php:333
 msgid   "This allows affiliates to distinguish between income they generate "
         "by placing affiliate links on Facebook, from that generated through "
         "Twitter and other sources."
@@ -3001,7 +3008,7 @@ msgstr  ""
 msgid   "This referral does not exist."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:292
+#: lib/core/class-affiliates-settings-general.php:293
 msgid   "This section is only intended to grant administrative access on "
         "affiliate management functions to privileged roles."
 msgstr  ""
@@ -3037,7 +3044,7 @@ msgstr  ""
 msgid   "Tonga Pa'anga"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:219
+#: lib/core/class-affiliates-robot-cleaner.php:218
 #: lib/core/class-affiliates-totals.php:319
 msgid   "Total"
 msgstr  ""
@@ -3096,7 +3103,7 @@ msgstr  ""
 msgid   "United States Dollar"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:120
+#: lib/core/class-affiliates-settings-general.php:121
 msgid   "Unless the incoming affiliate links reflect the current Affiliate "
         "URL parameter name, no affiliate hits, visits or referrals will be "
         "recorded."
@@ -3140,12 +3147,12 @@ msgid   "Use the <a href=\"%s\">Settings</a> section to review or adjust the "
         "system anytime."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-general.php:312
+#: lib/core/class-affiliates-settings-general.php:313
 #, php-format
 msgid   "Use the robot cleaner to remove existing hits from robots: %s"
 msgstr  ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:198
+#: lib/core/class-affiliates-robot-cleaner.php:197
 #: lib/core/affiliates-admin-hits.php:548
 #: lib/core/affiliates-admin-hits-uri.php:491
 #: lib/core/affiliates-admin-hits-uri.php:605

@@ -266,9 +266,9 @@ function affiliates_admin_add_ons() {
 	echo '<ul class="feature-listing">';
 
 	echo '<li>';
-	echo esc_html__( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
+	echo esc_html__( 'Advanced and additional integrations are provided with Affiliates Pro and Affiliates Enterprise.', 'affiliates' );
 	echo ' ';
-	echo esc_html__( 'Please consult the Shop pages for an updated list of included integrations.', 'affiliates' );
+	echo esc_html__( 'Please refer to the Shop pages for included integrations.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';
