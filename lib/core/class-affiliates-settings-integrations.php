@@ -121,15 +121,6 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 					__( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
 				'class'        => 'ext'
 			),
-			'affiliates-addthis' => array(
-				'title'        => __( 'AddThis', 'affiliates' ),
-				'description'  => __( 'This plugin integrates <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="https://www.addthis.com/">AddThis</a> &hellip; <em>&ldquo;Website tools that drive more shares, follows and conversions&rdquo;</em>. The <a href="https://wordpress.org/plugins/addthis/">Smart Website Tools</a> by AddThis are required.', 'affiliates' ),
-				'notes'        =>
-					__( 'Makes it even easier to share using affiliate links automatically.', 'affiliates' ) .
-					' ' .
-					__( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
-				'class'        => 'ext'
-			),
 			'affiliates-ppc' => array(
 				'title'        => __( 'Pay per Click', 'affiliates' ),
 				'description'  => __( 'Pay affiliate commissions based on clicks or visits to affiliate links. This plugin adds the possibility to grant commissions based on Pay per Click, Pay per Visit and Pay per Daily Visit with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
@@ -143,17 +134,6 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 					__( 'This extension allows to record referrals for form submissions and to create affiliate accounts (requires the Gravity Forms User Registation Add-On) for new users based on Gravity Forms.', 'affiliates' ) .
 					' ' .
 					__( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
-				'class'        => 'ext'
-			),
-			'affiliates-paypal' => array(
-				'title'        => __( 'PayPal', 'affiliates' ),
-				'description'  =>
-					'<strong>' .
-					__( 'Discontinued, we recommend to use our WooCommerce integration instead.', 'affiliates' ) .
-					'</strong>' .
-					' ' .
-					__( 'This plugin integrates <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with PayPal Payments Standard. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made.', 'affiliates' ),
-				'notes'        => __( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>. Note that this integration is not intended to be used for e-commerce systems that provide their own PayPal Payments Standard gateway.', 'affiliates' ),
 				'class'        => 'ext'
 			)
 		);
