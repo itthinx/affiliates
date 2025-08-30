@@ -10,6 +10,7 @@
 * Updated the translation template.
 * Removed deprecated/dropped integrations.
 * Updated the German translations.
+* Updated the Spanish translation.
 
 = 5.1.0 =
 * WordPress 6.8 compatible.
