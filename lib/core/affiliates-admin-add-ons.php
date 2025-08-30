@@ -70,7 +70,7 @@ function affiliates_admin_add_ons() {
 		),
 		'restrict-payment-methods' => array(
 			'title'    => 'Restrict Payment Methods for WooCommerce',
-			'content'  => esc_html__( 'Limit the use of Payment Methods by Group Memberships, Roles, Countries, and Order Amounts. ', 'affiliates' ),
+			'content'  => esc_html__( 'Limit the use of Payment Methods by Group Memberships, Roles, Countries, and Order Amounts.', 'affiliates' ),
 			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/restrict-payment-methods.png',
 			'url'      => 'https://woocommerce.com/products/restrict-payment-methods/',
 			'featured' => true,

@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-30 15:40+0200\n"
+        "POT-Creation-Date: 2025-08-30 16:19+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1707,7 +1707,7 @@ msgstr  ""
 
 #: lib/core/affiliates-admin-add-ons.php:73
 msgid   "Limit the use of Payment Methods by Group Memberships, Roles, "
-        "Countries, and Order Amounts. "
+        "Countries, and Order Amounts."
 msgstr  ""
 
 #: lib/core/affiliates-admin-affiliates.php:695

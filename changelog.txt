@@ -9,6 +9,7 @@
 * Updated information and revised styling of the add-ons section.
 * Updated the translation template.
 * Removed deprecated/dropped integrations.
+* Updated the German translations.
 
 = 5.1.0 =
 * WordPress 6.8 compatible.
