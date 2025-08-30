@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 5.2.0 =
+* WordPress 6.8 compatible.
+
 = 5.1.0 =
 * WordPress 6.8 compatible.
 * Fixed declaration of dynamic properties of the Affiliates_Pagination class.
