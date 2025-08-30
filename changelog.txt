@@ -1,5 +1,27 @@
 == Affiliates - Changelog ==
 
+= 5.2.0 =
+* WordPress 6.8 compatible.
+* Revised Robot Cleaner UI elements.
+* Fixed Robot Cleaner not showing throbber when doing work.
+* Fixed Robots allowed duplicate entries.
+* Added more robust API function to use unlimited time for requests (now used for robot cleaning requests).
+* Updated information and revised styling of the add-ons section.
+* Updated the translation template.
+* Removed deprecated/dropped integrations.
+* Updated the German translations.
+* Updated the Spanish translation.
+* Updated the French translation.
+* Updated the Hebrew translation.
+* Updated the Italian translation.
+* Updated the Indonesian translation.
+* Updated the Dutch translation.
+* Updated the Polish translation.
+* Updated the Portuguese translation.
+* Updated the Slovak translation.
+* Updated the Ukrainian translation.
+* Updated the Lithuanian translation.
+
 = 5.1.0 =
 * WordPress 6.8 compatible.
 * Fixed declaration of dynamic properties of the Affiliates_Pagination class.

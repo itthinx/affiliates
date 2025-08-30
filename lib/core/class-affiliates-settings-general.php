@@ -74,9 +74,10 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					$robots = str_replace( ",", "\n", $robots );
 					$robots = str_replace( "\r", "", $robots );
 					$robots = explode( "\n", $robots );
+					$robots = array_unique( $robots );
 					foreach ( $robots as $robot ) {
 						$robot = trim( $robot );
-						if (!empty($robot)) {
+						if ( !empty( $robot ) ) {
 							$query = $wpdb->prepare( "INSERT INTO $robots_table (name) VALUES (%s);", $robot );
 							$wpdb->query( $query );
 						}

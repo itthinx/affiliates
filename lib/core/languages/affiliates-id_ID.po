@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Affiliates v2.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-27 11:08+0200\n"
-"PO-Revision-Date: 2023-06-27 13:50+0200\n"
+"POT-Creation-Date: 2025-08-30 16:19+0200\n"
+"PO-Revision-Date: 2025-08-30 16:41+0200\n"
 "Last-Translator: itthinx.com <support@itthinx.com>\n"
 "Language-Team: itthinx.com <support@itthinx.com>\n"
 "Language: id_ID\n"
@@ -16,7 +16,7 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: lib/core/affiliates-admin-affiliates.php:749
@@ -26,7 +26,7 @@ msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
 # @ default
-#: lib/core/class-affiliates-pagination.php:144
+#: lib/core/class-affiliates-pagination.php:157
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
@@ -85,7 +85,7 @@ msgstr ""
 "secara masing-masing."
 
 # @ default
-#: lib/core/class-affiliates-pagination.php:100
+#: lib/core/class-affiliates-pagination.php:113
 #: lib/core/affiliates-admin-hits-uri.php:740
 #, php-format
 msgid "1 item"
@@ -134,8 +134,8 @@ msgstr ""
 "afiliasi tanpa perlu ditinjau lebih lanjut."
 
 #: lib/core/class-affiliates-registration.php:283
-#: lib/core/class-affiliates-shortcodes.php:1024
-#: lib/core/class-affiliates-shortcodes.php:1040
+#: lib/core/class-affiliates-shortcodes.php:1036
+#: lib/core/class-affiliates-shortcodes.php:1052
 msgid "<strong>ERROR</strong>"
 msgstr "<strong>KESALAHAN</strong>"
 
@@ -206,7 +206,7 @@ msgid "<strong>Welcome to %s</strong>"
 msgstr "<strong>Selamat datang %s</strong>"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:296
+#: lib/core/class-affiliates-settings-general.php:297
 msgid "A minimum set of permissions will be preserved."
 msgstr "Hak akses minimum akan tetap dilindungi."
 
@@ -230,8 +230,8 @@ msgid "Accepted"
 msgstr "Diterima"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:144
-#: lib/core/class-affiliates-settings-general.php:199
+#: lib/core/class-affiliates-settings-general.php:145
+#: lib/core/class-affiliates-settings-general.php:200
 msgid "Access affiliates"
 msgstr "Akses afiliasi"
 
@@ -340,42 +340,24 @@ msgstr "Tambahkan bidang"
 msgid "Add a new affiliate"
 msgstr "Tambah afiliasi baru"
 
-#: lib/core/wp-init.php:1933 lib/core/wp-init.php:1934
-#: lib/core/affiliates-admin-add-ons.php:240
+#: lib/core/wp-init.php:1937 lib/core/wp-init.php:1938
+#: lib/core/affiliates-admin-add-ons.php:349
 msgid "Add-Ons"
 msgstr "Add-Ons"
-
-#: lib/core/class-affiliates-settings-integrations.php:125
-msgid "AddThis"
-msgstr ""
 
 #: lib/core/class-affiliates-settings-integrations.php:116
 msgid "AddToAny"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:160
-msgid ""
-"Additional and advanced integrations accessible with Affiliates Pro and "
-"Affiliates Enterprise include social sharing integrations with AddToAny and "
-"AddThis, support for affiliate commissions based on Pay Per Click (PPC), "
-"Events Manager, Formidable Forms, Formidable Pro and Gravity Forms "
-"integrations."
-msgstr ""
-"Integrasi tambahan dan lanjutan yang dapat diakses dengan Affiliates Pro dan "
-"Affiliates Enterprise mencakup integrasi berbagi sosial dengan AddToAny dan "
-"AddThis, dukungan untuk komisi afiliasi berdasarkan Pay Per Click (PPC), "
-"Events Manager, Formidable Forms, Formidable Pro and integrasi Gravity "
-"Forms ."
-
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:145
-#: lib/core/class-affiliates-settings-general.php:200
+#: lib/core/class-affiliates-settings-general.php:146
+#: lib/core/class-affiliates-settings-general.php:201
 msgid "Administer affiliates"
 msgstr "Kelola afiliasi"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:146
-#: lib/core/class-affiliates-settings-general.php:201
+#: lib/core/class-affiliates-settings-general.php:147
+#: lib/core/class-affiliates-settings-general.php:202
 msgid "Administer options"
 msgstr "Kelola opsi"
 
@@ -383,7 +365,19 @@ msgstr "Kelola opsi"
 msgid "Administrator"
 msgstr "Admin"
 
-#: lib/core/affiliates-admin-add-ons.php:182
+#: lib/core/affiliates-admin-add-ons.php:269
+#, fuzzy
+#| msgid ""
+#| "These integrations are available with <a href=\"%s\">Affiliates Pro</a> "
+#| "and <a href=\"%s\">Affiliates Enterprise</a>."
+msgid ""
+"Advanced and additional integrations are provided with Affiliates Pro and "
+"Affiliates Enterprise."
+msgstr ""
+"Integrasi itu tersedia dengan <a href=“%s”>Affiliates Pro</a> dan <a "
+"href=“%s”>Affiliates Enterprise</a>."
+
+#: lib/core/affiliates-admin-add-ons.php:291
 msgid "Advanced shortcodes including banners and graphs"
 msgstr "Shortcode lanjutan termasuk spanduk dan grafik"
 
@@ -409,12 +403,12 @@ msgid "Affiliate Area"
 msgstr "Area Afiliasi"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:184
+#: lib/core/class-affiliates-settings-general.php:185
 msgid "Affiliate ID Encoding"
 msgstr "Encoding ID Afiliasi"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:276
+#: lib/core/class-affiliates-settings-general.php:277
 msgid "Affiliate ID encoding"
 msgstr "Encoding ID afiliasi"
 
@@ -435,7 +429,7 @@ msgid "Affiliate Status"
 msgstr "Status affiliasi"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:248
+#: lib/core/class-affiliates-settings-general.php:249
 msgid "Affiliate URL parameter name"
 msgstr "Nama parameter URL afiliasi"
 
@@ -443,15 +437,15 @@ msgstr "Nama parameter URL afiliasi"
 msgid "Affiliate added."
 msgstr "Affiliasi ditambahkan."
 
-#: lib/core/affiliates-admin-add-ons.php:166
+#: lib/core/affiliates-admin-add-ons.php:275
 msgid "Affiliate attributes for individual commission rates, coupons, ..."
 msgstr "Atribut afiliasi untuk tarif komisi individu, kupon, …"
 
-#: lib/core/affiliates-admin-add-ons.php:222
+#: lib/core/affiliates-admin-add-ons.php:331
 msgid "Affiliate campaign management and tracking."
 msgstr "Pengelolaan dan pelacakan kampanye afiliasi."
 
-#: lib/core/affiliates-admin-add-ons.php:198
+#: lib/core/affiliates-admin-add-ons.php:307
 msgid "Affiliate link generator form"
 msgstr "Formulir penghasil tautan afiliasi"
 
@@ -473,13 +467,13 @@ msgstr "Affiliasi diupdate."
 #: lib/core/dashboard/class-affiliates-dashboard-login-block.php:56
 #: lib/core/dashboard/class-affiliates-dashboard-block.php:103
 #: lib/core/class-affiliates-admin-notifications.php:102
-#: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1953
-#: lib/core/wp-init.php:1954
+#: lib/core/class-affiliates-settings-network.php:48 lib/core/wp-init.php:1957
+#: lib/core/wp-init.php:1958
 msgid "Affiliates"
 msgstr "Afiliasi"
 
 # @ affiliates
-#: lib/core/wp-init.php:1838 lib/core/wp-init.php:1839
+#: lib/core/wp-init.php:1842 lib/core/wp-init.php:1843
 #: lib/core/affiliates-admin-hits-affiliate.php:197
 msgid "Affiliates & Referrals"
 msgstr "Afiliasi & Referal"
@@ -562,7 +556,7 @@ msgctxt "block title"
 msgid "Affiliates Dashboard Registration"
 msgstr "Dasbor pendaftaran affiliasi"
 
-#: lib/core/affiliates-admin-add-ons.php:212
+#: lib/core/affiliates-admin-add-ons.php:321
 msgid "Affiliates Enterprise"
 msgstr "Affiliates Enterprise"
 
@@ -583,15 +577,15 @@ msgid "Affiliates Ninja Forms Integration"
 msgstr "Affiliasi integrasi dengan Ninja Forms"
 
 # @ affiliates
-#: lib/core/wp-init.php:1797 lib/core/affiliates-admin.php:37
+#: lib/core/wp-init.php:1801 lib/core/affiliates-admin.php:37
 msgid "Affiliates Overview"
 msgstr "Sekilas Afiliasi"
 
-#: lib/core/affiliates-admin-add-ons.php:154
+#: lib/core/affiliates-admin-add-ons.php:263
 msgid "Affiliates Pro"
 msgstr "Affiliates Pro"
 
-#: lib/core/wp-init.php:1892
+#: lib/core/wp-init.php:1896
 msgid "Affiliates Settings"
 msgstr "Pengaturan affiliasi"
 
@@ -609,15 +603,15 @@ msgstr "Submisi form kontak Afiliasi"
 msgid "Affiliates network data"
 msgstr "Data jaringan afiliasi"
 
-#: lib/core/class-affiliates.php:58
+#: lib/core/class-affiliates.php:79
 msgid "Afghanistan Afghani"
 msgstr ""
 
-#: lib/core/class-affiliates.php:59
+#: lib/core/class-affiliates.php:80
 msgid "Albania Lek"
 msgstr ""
 
-#: lib/core/class-affiliates.php:96
+#: lib/core/class-affiliates.php:117
 msgid "Algeria Dinar"
 msgstr ""
 
@@ -669,7 +663,14 @@ msgstr "Jumlah"
 msgid "Amount (use . for decimals):"
 msgstr "Jumlah (digunakan. Untuk desimal):"
 
-#: lib/core/class-affiliates.php:62
+#: lib/core/affiliates-admin-add-ons.php:133
+msgid ""
+"An extension based on Groups, provides access restrictions for categories "
+"and tags, custom post types and taxonomies. Very useful to restrict whole "
+"sets of documents based on their document categories or tags."
+msgstr ""
+
+#: lib/core/class-affiliates.php:83
 msgid "Angola Kwanza"
 msgstr ""
 
@@ -691,19 +692,19 @@ msgstr ""
 msgid "Apply"
 msgstr "Terapkan"
 
-#: lib/core/class-affiliates.php:63
+#: lib/core/class-affiliates.php:84
 msgid "Argentina Peso"
 msgstr ""
 
-#: lib/core/class-affiliates.php:60
+#: lib/core/class-affiliates.php:81
 msgid "Armenia Dram"
 msgstr ""
 
-#: lib/core/class-affiliates.php:65
+#: lib/core/class-affiliates.php:86
 msgid "Aruba Guilder"
 msgstr ""
 
-#: lib/core/class-affiliates.php:64
+#: lib/core/class-affiliates.php:85
 msgid "Australia Dollar"
 msgstr ""
 
@@ -721,7 +722,7 @@ msgstr ""
 "untuk pengguna yang sama atau email pengguna seperti afiliasi, atau "
 "melibatkan penggunaan kupon yang ditetapkan untuk afiliasi."
 
-#: lib/core/class-affiliates.php:66
+#: lib/core/class-affiliates.php:87
 msgid "Azerbaijan Manat"
 msgstr ""
 
@@ -730,23 +731,23 @@ msgstr ""
 msgid "Back"
 msgstr "Kembali"
 
-#: lib/core/class-affiliates.php:77
+#: lib/core/class-affiliates.php:98
 msgid "Bahamas Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:71
+#: lib/core/class-affiliates.php:92
 msgid "Bahrain Dinar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:69
+#: lib/core/class-affiliates.php:90
 msgid "Bangladesh Taka"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:186
+#: lib/core/affiliates-admin-add-ons.php:295
 msgid "Banner management"
 msgstr "Managemen spanduk"
 
-#: lib/core/class-affiliates.php:68
+#: lib/core/class-affiliates.php:89
 msgid "Barbados Dollar"
 msgstr ""
 
@@ -754,43 +755,43 @@ msgstr ""
 msgid "Base Amount"
 msgstr "Jumlah dasar"
 
-#: lib/core/class-affiliates.php:80
+#: lib/core/class-affiliates.php:101
 msgid "Belarus Ruble"
 msgstr ""
 
-#: lib/core/class-affiliates.php:81
+#: lib/core/class-affiliates.php:102
 msgid "Belize Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:73
+#: lib/core/class-affiliates.php:94
 msgid "Bermuda Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:78
+#: lib/core/class-affiliates.php:99
 msgid "Bhutan Ngultrum"
 msgstr ""
 
-#: lib/core/class-affiliates.php:75
+#: lib/core/class-affiliates.php:96
 msgid "Bolivia Boliviano"
 msgstr ""
 
-#: lib/core/class-affiliates.php:67
+#: lib/core/class-affiliates.php:88
 msgid "Bosnia and Herzegovina Convertible Marka"
 msgstr ""
 
-#: lib/core/class-affiliates.php:79
+#: lib/core/class-affiliates.php:100
 msgid "Botswana Pula"
 msgstr ""
 
-#: lib/core/class-affiliates.php:76
+#: lib/core/class-affiliates.php:97
 msgid "Brazil Real"
 msgstr ""
 
-#: lib/core/class-affiliates.php:74
+#: lib/core/class-affiliates.php:95
 msgid "Brunei Darussalam Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:70
+#: lib/core/class-affiliates.php:91
 msgid "Bulgaria Lev"
 msgstr ""
 
@@ -802,7 +803,7 @@ msgstr "Tindakan masal"
 msgid "Bulk action executed"
 msgstr "Tindakan massal dieksekusi"
 
-#: lib/core/class-affiliates.php:72
+#: lib/core/class-affiliates.php:93
 msgid "Burundi Franc"
 msgstr ""
 
@@ -822,7 +823,7 @@ msgid "By signing up, you indicate that you have read and agree to the %s."
 msgstr "Dengan mendaftarkan diri berarti Anda telah membaca dan menyetujui %s."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:335
+#: lib/core/class-affiliates-settings-general.php:336
 msgid ""
 "CAUTION: If this option is active while the plugin is deactivated, ALL "
 "affiliate and referral data will be DELETED. If you want to retrieve data "
@@ -850,7 +851,7 @@ msgstr ""
 "jaringan tersebut</strong>."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:259
+#: lib/core/class-affiliates-settings-general.php:260
 msgid ""
 "CAUTION: If you change this setting and have distributed affiliate links or "
 "permalinks, make sure that these are updated. Unless the incoming affiliate "
@@ -863,7 +864,7 @@ msgstr ""
 "melalui link afiliasi yang tidak sesuai dengan pengaturan ini akan diabaikan."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:284
+#: lib/core/class-affiliates-settings-general.php:285
 msgid ""
 "CAUTION: If you change this setting and have distributed affiliate links or "
 "permalinks, make sure that these are updated. Unless the incoming affiliate "
@@ -876,7 +877,7 @@ msgstr ""
 "melalui link afiliasi yang tidak sesuai dengan pengaturan encoding ini akan "
 "diabaikan."
 
-#: lib/core/class-affiliates.php:130
+#: lib/core/class-affiliates.php:151
 msgid "Cambodia Riel"
 msgstr ""
 
@@ -885,7 +886,7 @@ msgstr ""
 msgid "Campaign"
 msgstr "Kampanye"
 
-#: lib/core/class-affiliates.php:82
+#: lib/core/class-affiliates.php:103
 msgid "Canada Dollar"
 msgstr ""
 
@@ -899,15 +900,15 @@ msgstr ""
 msgid "Cancel"
 msgstr "Batal"
 
-#: lib/core/class-affiliates.php:91
+#: lib/core/class-affiliates.php:112
 msgid "Cape Verde Escudo"
 msgstr ""
 
-#: lib/core/class-affiliates.php:135
+#: lib/core/class-affiliates.php:156
 msgid "Cayman Islands Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:157
+#: lib/core/class-affiliates-robot-cleaner.php:156
 msgid "Check"
 msgstr "Cek"
 
@@ -915,11 +916,11 @@ msgstr "Cek"
 msgid "Check for hits from robots that can be removed &hellip;"
 msgstr "Periksa klik dari robot yang dapat dihapus & hellip;"
 
-#: lib/core/class-affiliates.php:85
+#: lib/core/class-affiliates.php:106
 msgid "Chile Peso"
 msgstr ""
 
-#: lib/core/class-affiliates.php:86
+#: lib/core/class-affiliates.php:107
 msgid "China Yuan Renminbi"
 msgstr ""
 
@@ -989,27 +990,27 @@ msgstr "Selesai"
 msgid "Closing referrals"
 msgstr "Referensi penutup"
 
-#: lib/core/class-affiliates.php:87
+#: lib/core/class-affiliates.php:108
 msgid "Colombia Peso"
 msgstr ""
 
-#: lib/core/class-affiliates.php:213
+#: lib/core/class-affiliates.php:234
 msgid "Communauté Financière Africaine (BCEAO) Franc"
 msgstr ""
 
-#: lib/core/class-affiliates.php:210
+#: lib/core/class-affiliates.php:231
 msgid "Communauté Financière Africaine (BEAC) CFA Franc BEAC"
 msgstr ""
 
-#: lib/core/class-affiliates.php:131
+#: lib/core/class-affiliates.php:152
 msgid "Comorian Franc"
 msgstr ""
 
-#: lib/core/class-affiliates.php:214
+#: lib/core/class-affiliates.php:235
 msgid "Comptoirs Français du Pacifique (CFP) Franc"
 msgstr ""
 
-#: lib/core/class-affiliates.php:83
+#: lib/core/class-affiliates.php:104
 msgid "Congo/Kinshasa Franc"
 msgstr ""
 
@@ -1029,7 +1030,7 @@ msgstr ""
 msgid "Copy to Clipboard"
 msgstr "Menyalin ke clipboard"
 
-#: lib/core/class-affiliates.php:88
+#: lib/core/class-affiliates.php:109
 msgid "Costa Rica Colon"
 msgstr ""
 
@@ -1054,15 +1055,15 @@ msgstr "Jumlah"
 msgid "Create an Affiliate Area"
 msgstr "Buat akun affiliasi"
 
-#: lib/core/class-affiliates.php:114
+#: lib/core/class-affiliates.php:135
 msgid "Croatia Kuna"
 msgstr ""
 
-#: lib/core/class-affiliates.php:89
+#: lib/core/class-affiliates.php:110
 msgid "Cuba Convertible Peso"
 msgstr ""
 
-#: lib/core/class-affiliates.php:90
+#: lib/core/class-affiliates.php:111
 msgid "Cuba Peso"
 msgstr ""
 
@@ -1091,15 +1092,15 @@ msgid "Current list of robots defined under %s:"
 msgstr ""
 
 # @ affiliates
-#: lib/core/class-affiliates-pagination.php:137
+#: lib/core/class-affiliates-pagination.php:150
 msgid "Current page"
 msgstr "Halaman sekarang"
 
-#: lib/core/affiliates-admin-add-ons.php:190
+#: lib/core/affiliates-admin-add-ons.php:299
 msgid "Customizable affiliate registration email"
 msgstr "Kostumisasi email registrasi affiliasi"
 
-#: lib/core/class-affiliates.php:92
+#: lib/core/class-affiliates.php:113
 msgid "Czech Republic Koruna"
 msgstr ""
 
@@ -1152,7 +1153,7 @@ msgid "Days back"
 msgstr "Hari sebelumnya"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:326
+#: lib/core/class-affiliates-settings-general.php:327
 msgid "Deactivation and data persistence"
 msgstr "Deaktivasi dan simpanan data"
 
@@ -1161,7 +1162,7 @@ msgstr "Deaktivasi dan simpanan data"
 msgid "Default referral status"
 msgstr "Status referal default"
 
-#: lib/core/class-affiliates-robot-cleaner.php:236
+#: lib/core/class-affiliates-robot-cleaner.php:234
 msgid "Delete"
 msgstr "Hapus"
 
@@ -1171,7 +1172,7 @@ msgid "Delete all affiliate data on network deactivation"
 msgstr "Hapus semua data afiliasi pada saat deaktivasi jaringan"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:331
+#: lib/core/class-affiliates-settings-general.php:332
 msgid "Delete all plugin data on deactivation"
 msgstr "Saat deaktivasi plugin ini, hapus semua data terkait"
 
@@ -1180,7 +1181,7 @@ msgstr "Saat deaktivasi plugin ini, hapus semua data terkait"
 msgid "Deleted"
 msgstr "Dihapus"
 
-#: lib/core/class-affiliates.php:94
+#: lib/core/class-affiliates.php:115
 msgid "Denmark Krone"
 msgstr ""
 
@@ -1196,7 +1197,7 @@ msgid "Descriptions"
 msgstr ""
 
 # @ affiliates
-#: lib/core/constants.php:111
+#: lib/core/wp-init.php:851
 msgctxt "pseudo-affiliate name"
 msgid "Direct"
 msgstr "Direct"
@@ -1205,10 +1206,6 @@ msgstr "Direct"
 #: lib/core/class-affiliates-settings-referrals.php:125
 msgid "Direct referrals"
 msgstr "Referal Direct"
-
-#: lib/core/class-affiliates-settings-integrations.php:152
-msgid "Discontinued, we recommend to use our WooCommerce integration instead."
-msgstr ""
 
 #: lib/core/dashboard/class-affiliates-dashboard-earnings-block.php:53
 msgctxt "block description"
@@ -1240,11 +1237,11 @@ msgctxt "block description"
 msgid "Displays the complete Affiliates Dashboard with its sections"
 msgstr "Menampilkan Dasbor Afiliasi lengkap dengan bagian-bagiannya"
 
-#: lib/core/class-affiliates.php:93
+#: lib/core/class-affiliates.php:114
 msgid "Djibouti Franc"
 msgstr ""
 
-#: lib/core/class-affiliates-settings-general.php:290
+#: lib/core/class-affiliates-settings-general.php:291
 msgid "Do not assign permissions to open access for affiliates here."
 msgstr "Jangan berikan izin untuk membuka akses untuk afiliasi di sini."
 
@@ -1254,7 +1251,7 @@ msgstr "Jangan berikan izin untuk membuka akses untuk afiliasi di sini."
 msgid "Documentation"
 msgstr "Dokumentasi"
 
-#: lib/core/class-affiliates.php:95
+#: lib/core/class-affiliates.php:116
 msgid "Dominican Republic Peso"
 msgstr ""
 
@@ -1272,15 +1269,15 @@ msgstr "Duplikasi rujukan"
 msgid "E-mail: %s"
 msgstr ""
 
-#: lib/core/class-affiliates-shortcodes.php:611
+#: lib/core/class-affiliates-shortcodes.php:621
 #: lib/core/dashboard/class-affiliates-dashboard-earnings-block.php:56
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:117
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:192
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:127
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:202
 #: templates/dashboard/earnings.php:39
 msgid "Earnings"
 msgstr "Pemasukan"
 
-#: lib/core/class-affiliates.php:211
+#: lib/core/class-affiliates.php:232
 msgid "East Caribbean Dollar"
 msgstr ""
 
@@ -1307,11 +1304,11 @@ msgstr "Suntung rujukan"
 msgid "Edit an affiliate"
 msgstr "Sunting afiliasi"
 
-#: lib/core/class-affiliates.php:97
+#: lib/core/class-affiliates.php:118
 msgid "Egypt Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:188
+#: lib/core/class-affiliates.php:209
 msgid "El Salvador Colon"
 msgstr ""
 
@@ -1346,11 +1343,11 @@ msgstr "Aktifkan registrasi email"
 msgid "Enable the WooCommerce customer registration integration"
 msgstr "Aktifkan integrasi Wocoommerce pendaftaran pelanggan"
 
-#: lib/core/class-affiliates-settings-integrations.php:206
+#: lib/core/class-affiliates-settings-integrations.php:186
 #, php-format
 msgid ""
-"Enable the built-in integration if the options provided under <a href=\"%s"
-"\">User Registration</a> are sufficient."
+"Enable the built-in integration if the options provided under <a "
+"href=\"%s\">User Registration</a> are sufficient."
 msgstr ""
 "Aktifkan integrasi internal jika opsi yang disediakan di bawah <a href=“%s”> "
 "Registrasi Pengguna </a> sudah cukup."
@@ -1363,15 +1360,15 @@ msgstr "Aktifkan integrasi pendaftaran pelanggan"
 msgid "Enabled"
 msgstr "Diaktifkan"
 
-#: lib/core/class-affiliates.php:98
+#: lib/core/class-affiliates.php:119
 msgid "Eritrea Nakfa"
 msgstr ""
 
-#: lib/core/class-affiliates.php:99
+#: lib/core/class-affiliates.php:120
 msgid "Ethiopia Birr"
 msgstr ""
 
-#: lib/core/class-affiliates.php:100
+#: lib/core/class-affiliates.php:121
 msgid "Euro Member Countries"
 msgstr ""
 
@@ -1411,15 +1408,15 @@ msgstr "Ekspansikan item"
 msgid "Expand referrals"
 msgstr "Ekspansikan referal"
 
-#: lib/core/affiliates-admin-add-ons.php:178
+#: lib/core/affiliates-admin-add-ons.php:287
 msgid "Export Totals and Mass Payment File generation"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:174
+#: lib/core/affiliates-admin-add-ons.php:283
 msgid "Extended totals report with additional filters"
 msgstr ""
 
-#: lib/core/class-affiliates-shortcodes.php:685
+#: lib/core/class-affiliates-shortcodes.php:695
 msgid "F Y"
 msgstr ""
 
@@ -1432,7 +1429,7 @@ msgstr ""
 msgid "Failed"
 msgstr ""
 
-#: lib/core/class-affiliates.php:102
+#: lib/core/class-affiliates.php:123
 msgid "Falkland Islands (Malvinas) Pound"
 msgstr ""
 
@@ -1444,7 +1441,7 @@ msgstr "Label bidang"
 msgid "Field Name"
 msgstr "Label nama"
 
-#: lib/core/class-affiliates.php:101
+#: lib/core/class-affiliates.php:122
 msgid "Fiji Dollar"
 msgstr ""
 
@@ -1464,7 +1461,7 @@ msgstr "Filter"
 msgid "First Name"
 msgstr "Nama Depan"
 
-#: lib/core/affiliates-admin-add-ons.php:170
+#: lib/core/affiliates-admin-add-ons.php:279
 msgid "Fixed, percentage or formula based commissions"
 msgstr ""
 
@@ -1476,7 +1473,7 @@ msgstr ""
 msgid "Formidable Forms"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:244
+#: lib/core/affiliates-admin-add-ons.php:353
 msgid ""
 "Free and premium extensions are listed on the <a href=\"https://www.itthinx."
 "com/plugins-overview/\">Overview</a> page and in the <a href=\"https://www."
@@ -1505,7 +1502,7 @@ msgstr "Dari"
 msgid "From : %s"
 msgstr "Dari : %s"
 
-#: lib/core/class-affiliates.php:108
+#: lib/core/class-affiliates.php:129
 msgid "Gambia Dalasi"
 msgstr ""
 
@@ -1523,7 +1520,7 @@ msgstr "Buat"
 msgid "Generator"
 msgstr ""
 
-#: lib/core/class-affiliates.php:104
+#: lib/core/class-affiliates.php:125
 msgid "Georgia Lari"
 msgstr ""
 
@@ -1531,51 +1528,58 @@ msgstr ""
 msgid "Get additional features and access to premium support!"
 msgstr "Dapatkan fitur tambahan dan akses ke dukungan premium!"
 
-#: lib/core/class-affiliates.php:106
+#: lib/core/class-affiliates.php:127
 msgid "Ghana Cedi"
 msgstr ""
 
-#: lib/core/class-affiliates.php:107
+#: lib/core/class-affiliates.php:128
 msgid "Gibraltar Pound"
 msgstr ""
 
-#: lib/core/class-affiliates-pagination.php:121
+#: lib/core/class-affiliates-pagination.php:134
 msgid "Go to the first page"
 msgstr "Ke halamann pertama"
 
-#: lib/core/class-affiliates-pagination.php:155
+#: lib/core/class-affiliates-pagination.php:168
 msgid "Go to the last page"
 msgstr "Ke halaman terakhir"
 
-#: lib/core/class-affiliates-pagination.php:148
+#: lib/core/class-affiliates-pagination.php:161
 msgid "Go to the next page"
 msgstr "Ke halaman selanjutnya"
 
-#: lib/core/class-affiliates-pagination.php:128
+#: lib/core/class-affiliates-pagination.php:141
 msgid "Go to the previous page"
 msgstr "Ke halaman sebelumnya"
 
-#: lib/core/class-affiliates-settings-integrations.php:140
+#: lib/core/class-affiliates-settings-integrations.php:131
 msgid "Gravity Forms"
 msgstr ""
 
-#: lib/core/class-affiliates.php:110
+#: lib/core/affiliates-admin-add-ons.php:105
+msgid ""
+"Groups is designed as an efficient, powerful and flexible solution for group-"
+"oriented memberships and content access control. Use it to control who can "
+"view documents and more."
+msgstr ""
+
+#: lib/core/class-affiliates.php:131
 msgid "Guatemala Quetzal"
 msgstr ""
 
-#: lib/core/class-affiliates.php:105
+#: lib/core/class-affiliates.php:126
 msgid "Guernsey Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:109
+#: lib/core/class-affiliates.php:130
 msgid "Guinea Franc"
 msgstr ""
 
-#: lib/core/class-affiliates.php:111
+#: lib/core/class-affiliates.php:132
 msgid "Guyana Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:115
+#: lib/core/class-affiliates.php:136
 msgid "Haiti Gourde"
 msgstr ""
 
@@ -1593,7 +1597,7 @@ msgid "Hide this"
 msgstr "Sembunyikan ini"
 
 # @ affiliates
-#: lib/core/class-affiliates-robot-cleaner.php:197
+#: lib/core/class-affiliates-robot-cleaner.php:196
 #: lib/core/affiliates-admin-hits.php:310
 #: lib/core/affiliates-admin-hits.php:539
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:95
@@ -1609,7 +1613,7 @@ msgid "Hits deleted:"
 msgstr "Hit terhapus:"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:308
+#: lib/core/class-affiliates-settings-general.php:309
 msgid ""
 "Hits on affiliate links from these robots will be marked or not recorded. "
 "Put one entry on each line."
@@ -1617,15 +1621,15 @@ msgstr ""
 "Hit pada link afiliasi dari robot-robot dalam daftar berikut tidak akan "
 "dicatat. Masukkan satu entri per baris."
 
-#: lib/core/class-affiliates.php:113
+#: lib/core/class-affiliates.php:134
 msgid "Honduras Lempira"
 msgstr ""
 
-#: lib/core/class-affiliates.php:112
+#: lib/core/class-affiliates.php:133
 msgid "Hong Kong Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:116
+#: lib/core/class-affiliates.php:137
 msgid "Hungary Forint"
 msgstr ""
 
@@ -1645,7 +1649,7 @@ msgstr "Saya telah menyelesaikan itu."
 msgid "IP"
 msgstr "IP"
 
-#: lib/core/class-affiliates.php:123
+#: lib/core/class-affiliates.php:144
 msgid "Iceland Krona"
 msgstr ""
 
@@ -1735,17 +1739,17 @@ msgstr ""
 "pengunjung menutup browser (session)"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:298
+#: lib/core/class-affiliates-settings-general.php:299
 msgid "If you lock yourself out, please ask an administrator to help."
 msgstr "Jika hak akses Anda terblokir, mintalah bantuan pada administrator."
 
-#: lib/core/class-affiliates-robot-cleaner.php:225
+#: lib/core/class-affiliates-robot-cleaner.php:224
 msgid "If you want to delete these matching hits, click the button to proceed."
 msgstr ""
 "Jika Anda ingin menghapus klik yang cocok ini, klik tombol untuk melanjutkan."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:117
+#: lib/core/class-affiliates-settings-general.php:118
 msgid ""
 "If your affiliates are using affiliate links based on the previous Affiliate "
 "URL parameter name, they <strong>NEED</strong> to update their affiliate "
@@ -1776,15 +1780,15 @@ msgstr "Termasuk affiliasi yang tertunda"
 msgid "Include removed affiliates"
 msgstr "Ikutkan afiliasi yang sudah dihapus"
 
-#: lib/core/affiliates-admin-add-ons.php:218
+#: lib/core/affiliates-admin-add-ons.php:327
 msgid "Includes all additional features available in Affiliates Pro."
 msgstr "Termasuk semua fitur tambahan yang tersedia di Affiliates Pro."
 
-#: lib/core/class-affiliates.php:120
+#: lib/core/class-affiliates.php:141
 msgid "India Rupee"
 msgstr ""
 
-#: lib/core/class-affiliates.php:117
+#: lib/core/class-affiliates.php:138
 msgid "Indonesia Rupiah"
 msgstr ""
 
@@ -1796,7 +1800,7 @@ msgstr "Memasang integrasi"
 msgid "Integrations"
 msgstr "Integrasi"
 
-#: lib/core/class-affiliates-settings-integrations.php:186
+#: lib/core/class-affiliates-settings-integrations.php:166
 msgid ""
 "Integrations link the affiliate system to e-commerce plugins and other "
 "platforms."
@@ -1804,27 +1808,27 @@ msgstr ""
 "Integrasi menghubungkan sistem afiliasi ke plugin e-commerce dan platform "
 "lainnya."
 
-#: lib/core/class-affiliates.php:212
+#: lib/core/class-affiliates.php:233
 msgid "International Monetary Fund (IMF) Special Drawing Rights"
 msgstr ""
 
-#: lib/core/class-affiliates.php:122
+#: lib/core/class-affiliates.php:143
 msgid "Iran Rial"
 msgstr ""
 
-#: lib/core/class-affiliates.php:121
+#: lib/core/class-affiliates.php:142
 msgid "Iraq Dinar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:119
+#: lib/core/class-affiliates.php:140
 msgid "Isle of Man Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:118
+#: lib/core/class-affiliates.php:139
 msgid "Israel Shekel"
 msgstr ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:229
+#: lib/core/class-affiliates-robot-cleaner.php:228
 msgid "It can take a while to clean up a large number of hits."
 msgstr "Butuh beberapa saat untuk membersihkan sejumlah besar klik."
 
@@ -1837,43 +1841,43 @@ msgstr "Ini memiliki dua fungsi :"
 msgid "It seems that you do not have any pages set up for your affiliates yet."
 msgstr "Tampaknya Anda belum memiliki halaman yang diatur untuk afiliasi Anda."
 
-#: lib/core/class-affiliates.php:125
+#: lib/core/class-affiliates.php:146
 msgid "Jamaica Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:127
+#: lib/core/class-affiliates.php:148
 msgid "Japan Yen"
 msgstr ""
 
-#: lib/core/class-affiliates.php:124
+#: lib/core/class-affiliates.php:145
 msgid "Jersey Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:126
+#: lib/core/class-affiliates.php:147
 msgid "Jordan Dinar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:136
+#: lib/core/class-affiliates.php:157
 msgid "Kazakhstan Tenge"
 msgstr ""
 
-#: lib/core/class-affiliates.php:128
+#: lib/core/class-affiliates.php:149
 msgid "Kenya Shilling"
 msgstr ""
 
-#: lib/core/class-affiliates.php:132
+#: lib/core/class-affiliates.php:153
 msgid "Korea (North) Won"
 msgstr ""
 
-#: lib/core/class-affiliates.php:133
+#: lib/core/class-affiliates.php:154
 msgid "Korea (South) Won"
 msgstr ""
 
-#: lib/core/class-affiliates.php:134
+#: lib/core/class-affiliates.php:155
 msgid "Kuwait Dinar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:129
+#: lib/core/class-affiliates.php:150
 msgid "Kyrgyzstan Som"
 msgstr ""
 
@@ -1884,7 +1888,7 @@ msgstr ""
 msgid "Landing URI"
 msgstr ""
 
-#: lib/core/class-affiliates.php:137
+#: lib/core/class-affiliates.php:158
 msgid "Laos Kip"
 msgstr ""
 
@@ -1893,20 +1897,26 @@ msgstr ""
 msgid "Last Name"
 msgstr "Nama Belakang"
 
-#: lib/core/class-affiliates.php:138
+#: lib/core/class-affiliates.php:159
 msgid "Lebanon Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:141
+#: lib/core/class-affiliates.php:162
 msgid "Lesotho Loti"
 msgstr ""
 
-#: lib/core/class-affiliates.php:140
+#: lib/core/class-affiliates.php:161
 msgid "Liberia Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:142
+#: lib/core/class-affiliates.php:163
 msgid "Libya Dinar"
+msgstr ""
+
+#: lib/core/affiliates-admin-add-ons.php:73
+msgid ""
+"Limit the use of Payment Methods by Group Memberships, Roles, Countries, and "
+"Order Amounts."
 msgstr ""
 
 # @ affiliates
@@ -1927,7 +1937,7 @@ msgid "Log in <a href=\"%s\">here</a>."
 msgstr "Masuk <a href=\"%s\">di sini</a>."
 
 # @ default
-#: lib/core/class-affiliates-shortcodes.php:934
+#: lib/core/class-affiliates-shortcodes.php:946
 #: templates/dashboard/overview.php:100
 msgid "Log out"
 msgstr "Keluar"
@@ -1939,19 +1949,19 @@ msgid "Login"
 msgstr "Masuk"
 
 # @ affiliates
-#: lib/core/wp-init.php:1658
+#: lib/core/wp-init.php:1662
 msgid "MD5"
 msgstr "MD5"
 
-#: lib/core/class-affiliates.php:149
+#: lib/core/class-affiliates.php:170
 msgid "Macau Pataca"
 msgstr ""
 
-#: lib/core/class-affiliates.php:146
+#: lib/core/class-affiliates.php:167
 msgid "Macedonia Denar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:145
+#: lib/core/class-affiliates.php:166
 msgid "Madagascar Ariary"
 msgstr ""
 
@@ -1962,27 +1972,26 @@ msgstr ""
 "Pastikan Anda telah melakukan backup data atau jangan mengaktifkan opsi ini."
 
 #: lib/core/class-affiliates-settings-integrations.php:119
-#: lib/core/class-affiliates-settings-integrations.php:128
 msgid "Makes it even easier to share using affiliate links automatically."
 msgstr ""
 "Membuatnya lebih mudah untuk dibagikan menggunakan tautan afiliasi secara "
 "otomatis."
 
-#: lib/core/class-affiliates.php:153
+#: lib/core/class-affiliates.php:174
 msgid "Malawi Kwacha"
 msgstr ""
 
-#: lib/core/class-affiliates.php:155
+#: lib/core/class-affiliates.php:176
 msgid "Malaysia Ringgit"
 msgstr ""
 
-#: lib/core/class-affiliates.php:152
+#: lib/core/class-affiliates.php:173
 msgid "Maldives (Maldive Islands) Rufiyaa"
 msgstr ""
 
 # @ affiliates
-#: lib/core/affiliates-admin-affiliates.php:325 lib/core/wp-init.php:1812
-#: lib/core/wp-init.php:1813
+#: lib/core/affiliates-admin-affiliates.php:325 lib/core/wp-init.php:1816
+#: lib/core/wp-init.php:1817
 msgid "Manage Affiliates"
 msgstr "Kelola Afiliasi"
 
@@ -1990,11 +1999,11 @@ msgstr "Kelola Afiliasi"
 msgid "Many thanks for using <strong>Affiliates</strong>!"
 msgstr "Terima kasih banyak telah menggunakan <strong>Afiliasi</strong>!"
 
-#: lib/core/class-affiliates.php:150
+#: lib/core/class-affiliates.php:171
 msgid "Mauritania Ouguiya"
 msgstr ""
 
-#: lib/core/class-affiliates.php:151
+#: lib/core/class-affiliates.php:172
 msgid "Mauritius Rupee"
 msgstr ""
 
@@ -2003,7 +2012,7 @@ msgstr ""
 msgid "Message"
 msgstr "Pesan"
 
-#: lib/core/class-affiliates.php:154
+#: lib/core/class-affiliates.php:175
 msgid "Mexico Peso"
 msgstr ""
 
@@ -2015,31 +2024,31 @@ msgstr ""
 msgid "Minimum number of referrals"
 msgstr "Minimum dari rujukan"
 
-#: lib/core/class-affiliates.php:144
+#: lib/core/class-affiliates.php:165
 msgid "Moldova Leu"
 msgstr ""
 
-#: lib/core/class-affiliates.php:148
+#: lib/core/class-affiliates.php:169
 msgid "Mongolia Tughrik"
 msgstr ""
 
-#: lib/core/class-affiliates-shortcodes.php:608
+#: lib/core/class-affiliates-shortcodes.php:618
 msgid "Month"
 msgstr ""
 
-#: lib/core/class-affiliates.php:143
+#: lib/core/class-affiliates.php:164
 msgid "Morocco Dirham"
 msgstr ""
 
-#: lib/core/class-affiliates.php:156
+#: lib/core/class-affiliates.php:177
 msgid "Mozambique Metical"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:228
+#: lib/core/affiliates-admin-add-ons.php:337
 msgid "Multi-tier capability with unlimited levels and rates."
 msgstr ""
 
-#: lib/core/class-affiliates.php:147
+#: lib/core/class-affiliates.php:168
 msgid "Myanmar (Burma) Kyat"
 msgstr ""
 
@@ -2063,15 +2072,15 @@ msgstr "Nama : %s"
 msgid "Name can not be empty."
 msgstr "Nama tidak boleh kosong."
 
-#: lib/core/class-affiliates.php:157
+#: lib/core/class-affiliates.php:178
 msgid "Namibia Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:161
+#: lib/core/class-affiliates.php:182
 msgid "Nepal Rupee"
 msgstr ""
 
-#: lib/core/class-affiliates.php:61
+#: lib/core/class-affiliates.php:82
 msgid "Netherlands Antilles Guilder"
 msgstr ""
 
@@ -2084,7 +2093,7 @@ msgstr "Afiliasi Baru"
 msgid "New Referral"
 msgstr ""
 
-#: lib/core/class-affiliates.php:162
+#: lib/core/class-affiliates.php:183
 msgid "New Zealand Dollar"
 msgstr ""
 
@@ -2120,17 +2129,24 @@ msgstr ""
 "E-mail: [user_email]<br/>\n"
 "Persetujuan ditunda untuk afiliasi ini<br/>"
 
-#: lib/core/class-affiliates-shortcodes.php:756
+#: lib/core/affiliates-admin-add-ons.php:126
+msgid ""
+"Newsletter Campaigns for Subscribers and Groups. Groups Newsletters helps "
+"you to communicate efficiently, providing targeted information to groups of "
+"recipients through automated campaigns."
+msgstr ""
+
+#: lib/core/class-affiliates-shortcodes.php:766
 #: templates/dashboard/earnings.php:182
 msgctxt "Label used to show next page of affiliate earnings results"
 msgid "Next"
 msgstr "Selanjutnya"
 
-#: lib/core/class-affiliates.php:159
+#: lib/core/class-affiliates.php:180
 msgid "Nicaragua Cordoba"
 msgstr ""
 
-#: lib/core/class-affiliates.php:158
+#: lib/core/class-affiliates.php:179
 msgid "Nigeria Naira"
 msgstr ""
 
@@ -2139,11 +2155,11 @@ msgid "Ninja Forms"
 msgstr ""
 
 # @ affiliates
-#: lib/core/wp-init.php:1657
+#: lib/core/wp-init.php:1661
 msgid "No encoding"
 msgstr "Tanpa encoding"
 
-#: lib/core/class-affiliates-robot-cleaner.php:249
+#: lib/core/class-affiliates-robot-cleaner.php:247
 msgid "No matching hits have been found."
 msgstr "Tidak ada hit sama yang ditemukan."
 
@@ -2158,26 +2174,32 @@ msgstr ""
 msgid "No such affiliate."
 msgstr "Tidak ada afiliasi tersebut."
 
-#: lib/core/class-affiliates-shortcodes.php:707
-#: lib/core/class-affiliates-shortcodes.php:731
+#: lib/core/class-affiliates-shortcodes.php:717
+#: lib/core/class-affiliates-shortcodes.php:741
 #: lib/core/class-affiliates-dashboard-widget.php:131
 msgid "None"
 msgstr ""
 
-#: lib/core/class-affiliates.php:160
+#: lib/core/class-affiliates.php:181
 msgid "Norway Krone"
 msgstr ""
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1918 lib/core/wp-init.php:1919
+#: lib/core/wp-init.php:1922 lib/core/wp-init.php:1923
 msgid "Notifications"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:194
+#: lib/core/affiliates-admin-add-ons.php:303
 msgid "Notifications including customizable messages"
 msgstr ""
 
-#: lib/core/class-affiliates.php:163
+#: lib/core/affiliates-admin-add-ons.php:81
+msgid ""
+"Offer exclusive, automatic and targeted coupon discounts for your customers! "
+"Use group memberships and roles to control the validity of coupons."
+msgstr ""
+
+#: lib/core/class-affiliates.php:184
 msgid "Oman Rial"
 msgstr ""
 
@@ -2185,7 +2207,7 @@ msgstr ""
 msgid "Omitted"
 msgstr ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:227
+#: lib/core/class-affiliates-robot-cleaner.php:226
 msgid "Once you click the button, the hits will be deleted immediately."
 msgstr "Setelah Anda mengklik tombol, klik akan segera dihapus."
 
@@ -2204,24 +2226,24 @@ msgstr "Ikhtisar"
 msgid "Pages"
 msgstr "Halaman"
 
-#: lib/core/class-affiliates-shortcodes.php:616
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:196
+#: lib/core/class-affiliates-shortcodes.php:626
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:206
 msgid "Paid"
 msgstr "Dibayar"
 
-#: lib/core/class-affiliates.php:168
+#: lib/core/class-affiliates.php:189
 msgid "Pakistan Rupee"
 msgstr ""
 
-#: lib/core/class-affiliates.php:164
+#: lib/core/class-affiliates.php:185
 msgid "Panama Balboa"
 msgstr ""
 
-#: lib/core/class-affiliates.php:166
+#: lib/core/class-affiliates.php:187
 msgid "Papua New Guinea Kina"
 msgstr ""
 
-#: lib/core/class-affiliates.php:170
+#: lib/core/class-affiliates.php:191
 msgid "Paraguay Guarani"
 msgstr ""
 
@@ -2234,14 +2256,14 @@ msgstr ""
 msgid "Password: %s"
 msgstr ""
 
-#: lib/core/class-affiliates-settings-integrations.php:135
+#: lib/core/class-affiliates-settings-integrations.php:126
 #, fuzzy
 #| msgid ""
 #| "Pay affiliate commissions based on clicks or visits to affiliate links. "
 #| "This plugin adds the possibility to grant commissions based on Pay per "
 #| "Click, Pay per Visit and Pay per Daily Visit with <a href=\"http://www."
-#| "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> and <a href="
-#| "\"http://www.itthinx.com/shop/affiliates-enterprise/\">Affiliates "
+#| "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> and <a "
+#| "href=\"http://www.itthinx.com/shop/affiliates-enterprise/\">Affiliates "
 #| "Enterprise</a>."
 msgid ""
 "Pay affiliate commissions based on clicks or visits to affiliate links. This "
@@ -2257,13 +2279,9 @@ msgstr ""
 "<a href=“http://www.itthinx.com/shop/affiliates-enterprise/“> Affiliates "
 "Enterprise</a>."
 
-#: lib/core/class-affiliates-settings-integrations.php:134
+#: lib/core/class-affiliates-settings-integrations.php:125
 msgid "Pay per Click"
 msgstr "Bayar per klik"
-
-#: lib/core/class-affiliates-settings-integrations.php:149
-msgid "PayPal"
-msgstr ""
 
 # @ affiliates
 #: lib/core/affiliates-admin-referral-edit.php:232
@@ -2288,24 +2306,24 @@ msgstr ""
 msgid "Pending"
 msgstr "Ditunda"
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:188
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:198
 msgid "Period"
 msgstr "Periode"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:288
+#: lib/core/class-affiliates-settings-general.php:289
 msgid "Permissions"
 msgstr "Hak akses"
 
-#: lib/core/class-affiliates.php:165
+#: lib/core/class-affiliates.php:186
 msgid "Peru Sol"
 msgstr ""
 
-#: lib/core/class-affiliates.php:167
+#: lib/core/class-affiliates.php:188
 msgid "Philippines Peso"
 msgstr ""
 
-#: lib/core/affiliates-admin-add-ons.php:232
+#: lib/core/affiliates-admin-add-ons.php:341
 msgid ""
 "Pixel Tracking makes it even easier for Affiliates to refer customers, as "
 "they do not even need to click an affiliate link. Supported methods are "
@@ -2315,7 +2333,7 @@ msgstr ""
 "bahkan tidak perlu mengklik tautan afiliasi. Metode yang didukung adalah "
 "piksel pelacakan gambar dan iframe."
 
-#: lib/core/class-affiliates-settings-integrations.php:180
+#: lib/core/class-affiliates-settings-integrations.php:160
 #, php-format
 msgid ""
 "Please also refer to the <a href=\"%s\">Add-Ons</a> for additional "
@@ -2340,20 +2358,13 @@ msgstr ""
 "Harap konfirmasi penghapusan afiliasi berikut. Tindakan ini tidak bisa "
 "dibatalkan."
 
-#: lib/core/affiliates-admin-add-ons.php:162
-msgid ""
-"Please consult the Shop pages for an updated list of included integrations."
-msgstr ""
-"Silakan baca halaman Toko untuk daftar terbaru dari integrasi yang "
-"disertakan."
-
 #: lib/core/class-affiliates-registration.php:285
-#: lib/core/class-affiliates-shortcodes.php:1026
+#: lib/core/class-affiliates-shortcodes.php:1038
 #, php-format
 msgid "Please fill out the field <em>%s</em>."
 msgstr "Silakan isi bidang <em>% s </em>."
 
-#: lib/core/wp-init.php:1987
+#: lib/core/wp-init.php:1991
 #, php-format
 msgid "Please give it a %s rating!"
 msgstr ""
@@ -2375,6 +2386,16 @@ msgstr ""
 "Silakan merujuk ke <a href=“http://docs.itthinx.com/document/affiliates/“> "
 "Dokumentasi </a> untuk detail lebih lanjut."
 
+#: lib/core/affiliates-admin-add-ons.php:271
+#, fuzzy
+#| msgid ""
+#| "Please consult the Shop pages for an updated list of included "
+#| "integrations."
+msgid "Please refer to the Shop pages for included integrations."
+msgstr ""
+"Silakan baca halaman Toko untuk daftar terbaru dari integrasi yang "
+"disertakan."
+
 #: lib/core/class-affiliates-settings.php:114
 msgid ""
 "Please review the following suggested steps to set up the affiliate system."
@@ -2386,7 +2407,7 @@ msgstr ""
 msgid "Please review the list of referrals that will be <em>closed</em>."
 msgstr "Harap tinjau daftar rujukan yang akan <em> ditutup </em>."
 
-#: lib/core/class-affiliates.php:169
+#: lib/core/class-affiliates.php:190
 msgid "Poland Zloty"
 msgstr ""
 
@@ -2399,7 +2420,7 @@ msgid "Post"
 msgstr "Pos"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-integrations.php:290
+#: lib/core/class-affiliates-settings-integrations.php:270
 msgid "Premium Integrations"
 msgstr "Integrasi Premium"
 
@@ -2411,7 +2432,7 @@ msgstr ""
 msgid "Pretty pointless ..."
 msgstr "Tidak ada gunanya …"
 
-#: lib/core/class-affiliates-shortcodes.php:753
+#: lib/core/class-affiliates-shortcodes.php:763
 #: templates/dashboard/earnings.php:179
 msgctxt "Label used to show previous page of affiliate earnings results"
 msgid "Previous"
@@ -2423,7 +2444,19 @@ msgstr "Ke halaman sebelumnya"
 msgid "Profile"
 msgstr "Profil"
 
-#: lib/core/class-affiliates.php:171
+#: lib/core/affiliates-admin-add-ons.php:119
+msgid ""
+"Provide exclusive access to files for members. The ideal companion to "
+"provide exclusive access to resources for group members."
+msgstr ""
+
+#: lib/core/affiliates-admin-add-ons.php:97
+msgid ""
+"Provides automatic discounts and coupons based on the quantities of products "
+"in the cart."
+msgstr ""
+
+#: lib/core/class-affiliates.php:192
 msgid "Qatar Riyal"
 msgstr ""
 
@@ -2452,6 +2485,16 @@ msgstr "Rujukan terkini"
 msgid "Recent Visits"
 msgstr "Kunjungan terkini"
 
+#: lib/core/affiliates-admin-add-ons.php:160
+#, fuzzy
+#| msgid "Recommended plugins and extensions"
+msgid "Recommended Extensions"
+msgstr "Rekomendasi plugin dan ekstensi"
+
+#: lib/core/affiliates-admin-add-ons.php:51
+msgid "Recommended Tools"
+msgstr ""
+
 #: lib/core/affiliates-admin-user-registration.php:223
 msgid ""
 "Recommended choices for the referral status are <em>Accepted</em> and "
@@ -2460,15 +2503,11 @@ msgstr ""
 "Pilihan yang disarankan untuk status rujukan adalah <em> Diterima </em> dan "
 "<em> Menunggu </em>."
 
-#: lib/core/affiliates-admin-add-ons.php:51
-msgid "Recommended plugins and extensions"
-msgstr "Rekomendasi plugin dan ekstensi"
-
-#: lib/core/class-affiliates-settings-general.php:268
+#: lib/core/class-affiliates-settings-general.php:269
 msgid "Redirect"
 msgstr "Dialihkan"
 
-#: lib/core/class-affiliates-settings-general.php:272
+#: lib/core/class-affiliates-settings-general.php:273
 msgid ""
 "Redirect to destination without Affiliate URL parameter, after a hit on an "
 "affiliate link has been detected."
@@ -2476,7 +2515,7 @@ msgstr ""
 "Redirect ke tujuan tanpa parameter URL Afiliasi, setelah klik pada tautan "
 "afiliasi telah terdeteksi."
 
-#: lib/core/class-affiliates-settings-general.php:263
+#: lib/core/class-affiliates-settings-general.php:264
 msgid "Redirection"
 msgstr "Dilaihkan"
 
@@ -2505,8 +2544,8 @@ msgstr "Batas waktu rujukan"
 #: lib/core/affiliates-admin-hits.php:472
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:97
 #: lib/core/affiliates-admin-hits-uri.php:488
-#: lib/core/affiliates-admin-referrals.php:276 lib/core/wp-init.php:1864
-#: lib/core/wp-init.php:1865 lib/core/class-affiliates-settings.php:62
+#: lib/core/affiliates-admin-referrals.php:276 lib/core/wp-init.php:1868
+#: lib/core/wp-init.php:1869 lib/core/class-affiliates-settings.php:62
 #: lib/core/affiliates-admin.php:490
 #: lib/core/affiliates-admin-hits-affiliate.php:341
 #: lib/core/affiliates-admin-hits-affiliate.php:539
@@ -2582,7 +2621,7 @@ msgstr "Hapus afiliasi"
 msgid "Remove this referral? This action can not be undone."
 msgstr "Hapus rujukan ini? tindakan ini tidak dapat dikembalikan."
 
-#: lib/core/class-affiliates-shortcodes.php:1153
+#: lib/core/class-affiliates-shortcodes.php:1165
 #, php-format
 msgid "Repeat %s"
 msgstr "Ulang %s"
@@ -2611,49 +2650,56 @@ msgid "Review General Settings"
 msgstr "Tinjau Pengaturan Umum"
 
 #: lib/core/class-affiliates-robot-cleaner.php:131
-#: lib/core/class-affiliates-settings-general.php:319
+#: lib/core/class-affiliates-settings-general.php:320
 msgid "Robot Cleaner"
 msgstr ""
 
 # @ default
-#: lib/core/class-affiliates-settings-general.php:302
+#: lib/core/class-affiliates-settings-general.php:303
 msgid "Robots"
 msgstr ""
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:207
+#: lib/core/class-affiliates-settings-general.php:208
 msgid "Role"
 msgstr "Peran"
 
-#: lib/core/class-affiliates.php:172
+#: lib/core/class-affiliates.php:193
 msgid "Romania Leu"
 msgstr ""
 
-#: lib/core/class-affiliates.php:174
+#: lib/core/class-affiliates.php:195
 msgid "Russia Ruble"
 msgstr ""
 
-#: lib/core/class-affiliates.php:175
+#: lib/core/class-affiliates.php:196
 msgid "Rwanda Franc"
 msgstr ""
 
-#: lib/core/class-affiliates.php:182
+#: lib/core/class-affiliates.php:203
 msgid "Saint Helena Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:209
+#: lib/core/affiliates-admin-add-ons.php:89
+msgid ""
+"Sales Analysis oriented at Marketing & Management. Get in-depth views on "
+"fundamental Business Intelligence, focused on Sales and net Revenue Trends, "
+"International Sales Reports, Product Market and Customer Trends."
+msgstr ""
+
+#: lib/core/class-affiliates.php:230
 msgid "Samoa Tala"
 msgstr ""
 
-#: lib/core/class-affiliates.php:176
+#: lib/core/class-affiliates.php:197
 msgid "Saudi Arabia Riyal"
 msgstr ""
 
 # @ affiliates
 #: lib/core/affiliates-admin-referral-edit.php:272
 #: lib/core/class-affiliates-settings-registration.php:267
-#: lib/core/class-affiliates-shortcodes.php:1172
-#: lib/core/class-affiliates-settings-general.php:342
+#: lib/core/class-affiliates-shortcodes.php:1184
+#: lib/core/class-affiliates-settings-general.php:343
 #: lib/core/class-affiliates-admin-notifications.php:160
 #: lib/core/class-affiliates-admin-notifications.php:219
 #: lib/core/affiliates-admin-affiliates-edit.php:210
@@ -2663,7 +2709,7 @@ msgstr ""
 msgid "Save"
 msgstr "Simpan"
 
-#: lib/core/class-affiliates-shortcodes.php:1068
+#: lib/core/class-affiliates-shortcodes.php:1080
 msgid "Saved"
 msgstr "Tersimpan"
 
@@ -2672,8 +2718,15 @@ msgstr "Tersimpan"
 msgid "Search"
 msgstr "Cari"
 
-#: lib/core/class-affiliates.php:185
+#: lib/core/class-affiliates.php:206
 msgid "Seborga Luigino"
+msgstr ""
+
+#: lib/core/affiliates-admin-add-ons.php:65
+msgid ""
+"Sell Memberships with Groups and WooCommerce! Groups WooCommerce grants "
+"memberships based on products. It automatically assigns a customer to one or "
+"more groups based on the products ordered."
 msgstr ""
 
 # @ affiliates
@@ -2690,7 +2743,7 @@ msgid ""
 "Send the administrator an email when a new affiliate user account is created."
 msgstr "Kirim email ke admin ketika afiliasi pengguna membuat akun."
 
-#: lib/core/class-affiliates.php:173
+#: lib/core/class-affiliates.php:194
 msgid "Serbia Dinar"
 msgstr ""
 
@@ -2702,7 +2755,7 @@ msgstr ""
 msgid "Set status to Pending"
 msgstr ""
 
-#: lib/core/class-affiliates-admin.php:74 lib/core/wp-init.php:1893
+#: lib/core/class-affiliates-admin.php:74 lib/core/wp-init.php:1897
 #: lib/core/class-affiliates-settings.php:195
 msgid "Settings"
 msgstr "Pengaturan"
@@ -2711,7 +2764,7 @@ msgstr "Pengaturan"
 msgid "Settings saved."
 msgstr "Pengaturan tersimpan."
 
-#: lib/core/class-affiliates.php:178
+#: lib/core/class-affiliates.php:199
 msgid "Seychelles Rupee"
 msgstr ""
 
@@ -2735,7 +2788,7 @@ msgstr ""
 "Menunjukkan akumulasi total referensi untuk semua waktu ketika dibiarkan "
 "kosong, atau untuk jumlah hari terakhir yang ditetapkan."
 
-#: lib/core/class-affiliates.php:183
+#: lib/core/class-affiliates.php:204
 msgid "Sierra Leone Leone"
 msgstr ""
 
@@ -2744,15 +2797,15 @@ msgstr ""
 msgid "Sign Up"
 msgstr "Daftar"
 
-#: lib/core/class-affiliates.php:181
+#: lib/core/class-affiliates.php:202
 msgid "Singapore Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:177
+#: lib/core/class-affiliates.php:198
 msgid "Solomon Islands Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:184
+#: lib/core/class-affiliates.php:205
 msgid "Somalia Shilling"
 msgstr ""
 
@@ -2768,11 +2821,11 @@ msgstr "Ada sesuatu yang salah."
 msgid "Source URI"
 msgstr ""
 
-#: lib/core/class-affiliates.php:216
+#: lib/core/class-affiliates.php:237
 msgid "South Africa Rand"
 msgstr ""
 
-#: lib/core/class-affiliates.php:139
+#: lib/core/class-affiliates.php:160
 msgid "Sri Lanka Rupee"
 msgstr ""
 
@@ -2800,39 +2853,39 @@ msgstr "Status"
 msgid "Store direct referrals"
 msgstr "Simpan referal Direct"
 
-#: lib/core/class-affiliates.php:179
+#: lib/core/class-affiliates.php:200
 msgid "Sudan Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:186
+#: lib/core/class-affiliates.php:207
 msgid "Suriname Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:180
+#: lib/core/class-affiliates.php:201
 msgid "Sweden Krona"
 msgstr ""
 
-#: lib/core/class-affiliates.php:84
+#: lib/core/class-affiliates.php:105
 msgid "Switzerland Franc"
 msgstr ""
 
-#: lib/core/class-affiliates.php:189
+#: lib/core/class-affiliates.php:210
 msgid "Syria Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:187
+#: lib/core/class-affiliates.php:208
 msgid "São Tomé and Príncipe Dobra"
 msgstr ""
 
-#: lib/core/class-affiliates.php:199
+#: lib/core/class-affiliates.php:220
 msgid "Taiwan New Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:192
+#: lib/core/class-affiliates.php:213
 msgid "Tajikistan Somoni"
 msgstr ""
 
-#: lib/core/class-affiliates.php:200
+#: lib/core/class-affiliates.php:221
 msgid "Tanzania Shilling"
 msgstr ""
 
@@ -2857,11 +2910,11 @@ msgstr "Syarat dan Kondisi"
 msgid "Terms page: <em>%s</em>"
 msgstr "Halaman syarat: <em>%s</em>"
 
-#: lib/core/class-affiliates.php:191
+#: lib/core/class-affiliates.php:212
 msgid "Thailand Baht"
 msgstr ""
 
-#: lib/core/wp-init.php:1980
+#: lib/core/wp-init.php:1984
 #, php-format
 msgid "Thank you for using the %1$s plugin by %2$s."
 msgstr "Terima kasih telah menggunakan plugin %1$s oleh %2$s."
@@ -2876,22 +2929,22 @@ msgstr "Terima kasih telah mendaftar!"
 msgid "Thanks!"
 msgstr "Terima kasih !"
 
-#: lib/core/class-affiliates-settings-integrations.php:249
+#: lib/core/class-affiliates-settings-integrations.php:229
 #, php-format
 msgid "The <a href=\"%s\">%s</a> plugin is installed and activated."
 msgstr "<a href=“%s”>%s</a> Plugin telah diinstal dan aktif."
 
-#: lib/core/class-affiliates-settings-integrations.php:240
+#: lib/core/class-affiliates-settings-integrations.php:220
 #, php-format
 msgid "The <a href=\"%s\">%s</a> plugin is installed but not activated."
 msgstr "<a href=“%s”>%s</a> plugin telah diinstal dan belum aktif."
 
-#: lib/core/class-affiliates-settings-integrations.php:231
+#: lib/core/class-affiliates-settings-integrations.php:211
 #, php-format
 msgid "The <a href=\"%s\">%s</a> plugin is not installed."
 msgstr "<a href=“%s”>%s</a> plugin belum terinstal."
 
-#: lib/core/affiliates-admin-add-ons.php:202
+#: lib/core/affiliates-admin-add-ons.php:311
 #, fuzzy
 #| msgid ""
 #| "The <a href=\"http://docs.itthinx.com/\">Documentation</a> site also "
@@ -2907,7 +2960,7 @@ msgstr ""
 "fitur dari plugin."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:111
+#: lib/core/class-affiliates-settings-general.php:112
 #, php-format
 msgid ""
 "The Affiliate URL parameter name <strong>has been changed</strong> from "
@@ -2917,7 +2970,7 @@ msgstr ""
 "<em><strong>%s</strong></em> to <em><strong>%s</strong></em>."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:102
+#: lib/core/class-affiliates-settings-general.php:103
 msgid ""
 "The Affiliate URL parameter name <strong>has not been changed</strong>, the "
 "suggested name <em>is forbidden</em>."
@@ -2926,7 +2979,7 @@ msgstr ""
 "diusulkan <em> terlarang</em>."
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:99
+#: lib/core/class-affiliates-settings-general.php:100
 msgid ""
 "The Affiliate URL parameter name <strong>has not been changed</strong>, the "
 "suggested name <em>is not valid</em>. Only lower case letters and the "
@@ -2942,19 +2995,19 @@ msgid ""
 msgstr ""
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:253
+#: lib/core/class-affiliates-settings-general.php:254
 #, php-format
 msgid "The current Affiliate URL parameter name is: <b>%s</b>"
 msgstr "Nama parameter URL afiliase yang saat ini digunakan adalah <b>%s</b>"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:281
+#: lib/core/class-affiliates-settings-general.php:282
 #, php-format
 msgid "The current encoding in effect is: <b>%s</b>"
 msgstr "Encoding yang digunakan saat ini adalah <b>%s</b>"
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:256
+#: lib/core/class-affiliates-settings-general.php:257
 #, php-format
 msgid "The default Affiliate URL parameter name is <em>%s</em>."
 msgstr "Nama parameter default untuk URL afiliasi adalah <em>%s</em>."
@@ -2970,23 +3023,30 @@ msgstr ""
 "Anda melalui tautan afiliasi, rujukan yang disarankan akan berlaku hingga% d "
 "hari setelah dia mengklik tautan afiliasi itu."
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:193
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:203
 msgid "The earnings for the period covered."
 msgstr "Penghasilan untuk periode yang dicakup."
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:197
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:207
 msgid "The earnings paid for the period covered."
 msgstr "Penghasilan yang dibayarkan untuk periode yang dicakup."
 
-#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:189
+#: lib/core/dashboard/class-affiliates-dashboard-earnings.php:199
 msgid "The earnings period for the amounts earned."
 msgstr "Periode penghasilan untuk jumlah yang diperoleh."
+
+#: lib/core/affiliates-admin-add-ons.php:57
+msgid ""
+"The essential extension for every WooCommerce store! The perfect Search "
+"Engine for your store helps your customers to find and buy the right "
+"products quickly."
+msgstr ""
 
 #: lib/core/class-affiliates-settings-registration.php:205
 msgid "The following fields are provided on the affiliate registration form."
 msgstr "Bidang-bidang berikut disediakan pada formulir pendaftaran afiliasi."
 
-#: lib/core/class-affiliates-robot-cleaner.php:193
+#: lib/core/class-affiliates-robot-cleaner.php:192
 msgid "The following matching hits have been found and can be cleaned up."
 msgstr "Hit yang cocok berikut telah ditemukan dan dapat dibersihkan."
 
@@ -3000,7 +3060,7 @@ msgstr ""
 "sebagai area afiliasi out-of-the-box atau sebagai kerangka kerja untuk area "
 "dan halaman afiliasi khusus."
 
-#: lib/core/class-affiliates-settings-integrations.php:188
+#: lib/core/class-affiliates-settings-integrations.php:168
 msgid ""
 "The integrations are required to record referrals, as these award affiliates "
 "with commissions based on referred purchases or platform-specific actions."
@@ -3009,12 +3069,12 @@ msgstr ""
 "berafiliasi dengan komisi berdasarkan pembelian yang dirujuk atau tindakan "
 "khusus platform."
 
-#: lib/core/class-affiliates-shortcodes.php:1042
+#: lib/core/class-affiliates-shortcodes.php:1054
 #, php-format
 msgid "The passwords for the field <em>%s</em> do not match."
 msgstr "Kata sandi untuk bidang <em>% s </em> tidak cocok."
 
-#: lib/core/wp-init.php:876
+#: lib/core/wp-init.php:879
 msgid "The plugin is configured to delete its data on deactivation."
 msgstr "Plugin ini dikonfigurasi untuk menghapus data pada penonaktifan."
 
@@ -3063,7 +3123,7 @@ msgstr ""
 msgid "There are no affiliates."
 msgstr "Tidak ada afiliasi."
 
-#: lib/core/class-affiliates-shortcodes.php:741
+#: lib/core/class-affiliates-shortcodes.php:751
 msgid "There are no earnings yet."
 msgstr "Tidak ada penghasilan."
 
@@ -3080,11 +3140,11 @@ msgid "There are no results."
 msgstr "Tidak ada hasil."
 
 # @ affiliates
-#: lib/core/class-affiliates-robot-cleaner.php:164
+#: lib/core/class-affiliates-robot-cleaner.php:163
 msgid "There are no robots defined."
 msgstr "Tidak ada robot ditentukan."
 
-#: lib/core/class-affiliates-robot-cleaner.php:166
+#: lib/core/class-affiliates-robot-cleaner.php:165
 msgid ""
 "There must be at least one entry to proceed to clean up existing hits from "
 "robots."
@@ -3092,7 +3152,7 @@ msgstr ""
 "Harus ada setidaknya satu entri untuk melanjutkan untuk membersihkan hit "
 "yang ada dari robot."
 
-#: lib/core/class-affiliates-settings-integrations.php:294
+#: lib/core/class-affiliates-settings-integrations.php:274
 #, php-format
 msgid ""
 "These integrations are available with <a href=\"%s\">Affiliates Pro</a> and "
@@ -3112,8 +3172,8 @@ msgid ""
 "These referrals have been omitted because their status must not be changed "
 "to <em>%s</em>."
 msgstr ""
-"Rujukan ini telah dihapus karena statusnya tidak boleh diubah menjadi <em>"
-"% s </em>."
+"Rujukan ini telah dihapus karena statusnya tidak boleh diubah menjadi "
+"<em>% s </em>."
 
 #: lib/core/class-affiliates-totals.php:805
 #, php-format
@@ -3124,11 +3184,11 @@ msgstr "Rujukan ini telah diperbarui ke <em>% s </em>."
 msgid "This action can not be undone*."
 msgstr "Aksi ini tidak dapat dikembalikan*."
 
-#: lib/core/class-affiliates-robot-cleaner.php:231
+#: lib/core/class-affiliates-robot-cleaner.php:230
 msgid "This action cannot be undone."
 msgstr "Aksi ini tidak dapat dikembalikan."
 
-#: lib/core/affiliates-admin-add-ons.php:224
+#: lib/core/affiliates-admin-add-ons.php:333
 msgid ""
 "This allows affiliates to distinguish between income they generate by "
 "placing affiliate links on Facebook, from that generated through Twitter and "
@@ -3154,7 +3214,7 @@ msgstr ""
 "Ini menentukan apakah aplikasi afiliasi baru memerlukan persetujuan manual "
 "atau apakah mereka diterima secara otomatis."
 
-#: lib/core/class-affiliates-settings-integrations.php:143
+#: lib/core/class-affiliates-settings-integrations.php:134
 msgid ""
 "This extension allows to record referrals for form submissions and to create "
 "affiliate accounts (requires the Gravity Forms User Registation Add-On) for "
@@ -3164,12 +3224,19 @@ msgstr ""
 "dan membuat akun afiliasi (memerlukan Add-On Registrasi Pengguna Gravity "
 "Form) untuk pengguna baru berdasarkan pada Gravity Form."
 
+#: lib/core/affiliates-admin-add-ons.php:112
+msgid ""
+"This extension for WordPress is used to release content on a schedule. It "
+"can be used with the popular Groups membership solution or without it. "
+"Content dripping can be based on user account creation, group memberships "
+"and specific dates and times."
+msgstr ""
+
 # @ affiliates
 #: lib/core/class-affiliates-settings-integrations.php:112
 #: lib/core/class-affiliates-settings-integrations.php:121
-#: lib/core/class-affiliates-settings-integrations.php:130
+#: lib/core/class-affiliates-settings-integrations.php:127
 #: lib/core/class-affiliates-settings-integrations.php:136
-#: lib/core/class-affiliates-settings-integrations.php:145
 #, fuzzy
 #| msgid ""
 #| "This integration is suitable to be used with <a href=\"http://www.itthinx."
@@ -3183,27 +3250,6 @@ msgstr ""
 "Terima kasih telah menggunakan <a href=“http://www.itthinx.com/plugins/"
 "affiliates” target=“_blank”> Afiliasi </a> plugin dengan <a href = “http://"
 "www.itthinx.com “target =“ _ blank “> itthinx </a>."
-
-#: lib/core/class-affiliates-settings-integrations.php:156
-#, fuzzy
-#| msgid ""
-#| "This integration is suitable to be used with <a href=\"http://www.itthinx."
-#| "com/shop/affiliates-pro/\">Affiliates Pro</a> or <a href=\"http://www."
-#| "itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a>. Note "
-#| "that this integration is not intended to be used for e-commerce systems "
-#| "that provide their own PayPal Payments Standard gateway."
-msgid ""
-"This integration is suitable to be used with <a href=\"https://www.itthinx."
-"com/shop/affiliates-pro/\">Affiliates Pro</a> or <a href=\"https://www."
-"itthinx.com/shop/affiliates-enterprise/\">Affiliates Enterprise</a>. Note "
-"that this integration is not intended to be used for e-commerce systems that "
-"provide their own PayPal Payments Standard gateway."
-msgstr ""
-"Integrasi ini cocok untuk digunakan dengan <a href=“http://www.itthinx.com/"
-"shop/affiliates-pro/“> Affiliates Pro</a> atau <a href = “http: //www."
-"itthinx .com / toko / afiliasi-perusahaan / “> Affiliates Enterprise</a>. "
-"Perhatikan bahwa integrasi ini tidak dimaksudkan untuk digunakan untuk "
-"sistem e-commerce yang menyediakan gateway Standar Pembayaran PayPal sendiri."
 
 #: lib/core/class-affiliates-settings.php:116
 msgid ""
@@ -3256,13 +3302,13 @@ msgstr[1] "Halaman ini berisi shortcode Afiliasi telah terdeteksi:"
 #: lib/core/class-affiliates-settings-integrations.php:107
 #, php-format
 msgid ""
-"This plugin integrates <a href=\"%s\">Affiliates Pro</a> and <a href=\"%s"
-"\">Affiliates Enterprise</a> with <a href=\"%s\">WooCommerce</a>. With this "
-"advanced integration plugin, referrals are created and synchronized "
-"automatically for your affiliates when sales are made. This integration also "
-"supports referrals on recurring payments related to subscriptions and "
-"coupons related to affiliates to grant referrals when customers use them to "
-"credit the corresponding affiliate."
+"This plugin integrates <a href=\"%s\">Affiliates Pro</a> and <a "
+"href=\"%s\">Affiliates Enterprise</a> with <a href=\"%s\">WooCommerce</a>. "
+"With this advanced integration plugin, referrals are created and "
+"synchronized automatically for your affiliates when sales are made. This "
+"integration also supports referrals on recurring payments related to "
+"subscriptions and coupons related to affiliates to grant referrals when "
+"customers use them to credit the corresponding affiliate."
 msgstr ""
 "Plugin ini mengintegrasikan <a href=“%s”> Affiliates Pro</a> dan <a "
 "href=“%s”> Affiliates Enterprise</a> dengan <a href=“%s”> WooCommerce </a>. "
@@ -3275,9 +3321,9 @@ msgstr ""
 #: lib/core/class-affiliates-settings-integrations.php:41
 #, php-format
 msgid ""
-"This plugin integrates <a href=\"%s\">Affiliates</a> with <a href=\"%s"
-"\">WooCommerce</a>. With this integration plugin, referrals are created "
-"automatically for your affiliates when sales are made."
+"This plugin integrates <a href=\"%s\">Affiliates</a> with <a "
+"href=\"%s\">WooCommerce</a>. With this integration plugin, referrals are "
+"created automatically for your affiliates when sales are made."
 msgstr ""
 "Plugin ini mengintegrasikan <a href=“%s”>Affiliasi</a> dengan <a "
 "href=“%s”>WooCommerce</a>. Dengan plugin integrasi ini, rujukan dibuat "
@@ -3386,32 +3432,6 @@ msgstr ""
 "Formulir pengiriman yang dirujuk melalui afiliasi, dapat memberikan komisi "
 "kepada afiliasi dan mencatat rincian rujukan."
 
-#: lib/core/class-affiliates-settings-integrations.php:126
-#, fuzzy
-#| msgid ""
-#| "This plugin integrates <a href=\"http://www.itthinx.com/shop/affiliates-"
-#| "pro/\">Affiliates Pro</a> and <a href=\"http://www.itthinx.com/shop/"
-#| "affiliates-enterprise/\">Affiliates Enterprise</a> with <a href=\"http://"
-#| "www.addthis.com/\">AddThis</a> &hellip; <em>&ldquo;Website tools that "
-#| "drive more shares, follows and conversions&rdquo;</em>. The <a href="
-#| "\"https://wordpress.org/plugins/addthis/\">Smart Website Tools</a> by "
-#| "AddThis are required."
-msgid ""
-"This plugin integrates <a href=\"https://www.itthinx.com/shop/affiliates-pro/"
-"\">Affiliates Pro</a> and <a href=\"https://www.itthinx.com/shop/affiliates-"
-"enterprise/\">Affiliates Enterprise</a> with <a href=\"https://www.addthis."
-"com/\">AddThis</a> &hellip; <em>&ldquo;Website tools that drive more shares, "
-"follows and conversions&rdquo;</em>. The <a href=\"https://wordpress.org/"
-"plugins/addthis/\">Smart Website Tools</a> by AddThis are required."
-msgstr ""
-"Plugin ini mengintegrasikan <a href=“http://www.itthinx.com/shop/affiliates-"
-"pro/“> Affiliates Pro </a> dan <a href = “http://www.itthinx.com/shop/ "
-"afiliasi perusahaan / “> Affiliates Enterprise</a> dengan <a href=“http://"
-"www.addthis.com/“> AddThis </a> & hellip; <em> & ldquo; Alat situs web yang "
-"mendorong lebih banyak saham, mengikuti, dan konversi & rdquo; </em>. <a "
-"href=“https://wordpress.org/plugins/addthis/“> Smart Website Tools </a> oleh "
-"AddThis diperlukan."
-
 #: lib/core/class-affiliates-settings-integrations.php:117
 #, fuzzy
 #| msgid ""
@@ -3436,7 +3456,7 @@ msgstr ""
 "Universal & rdquo; </em>. Diperlukan <a href=“https://wordpress.org/plugins/"
 "add-to-any/“> Tombol Bagikan oleh AddToAny </a>."
 
-#: lib/core/class-affiliates-settings-integrations.php:141
+#: lib/core/class-affiliates-settings-integrations.php:132
 #, fuzzy
 #| msgid ""
 #| "This plugin integrates <a href=\"http://www.itthinx.com/shop/affiliates-"
@@ -3454,33 +3474,12 @@ msgstr ""
 "Affiliate Enterprise / “> Perusahaan afiliasi </a> dengan <a href=“https://"
 "www.e-junkie.com/ecom/gb.php?cl=54585&c=ib&aff=290919”> Gravity Form</ a >."
 
-#: lib/core/class-affiliates-settings-integrations.php:155
-#, fuzzy
-#| msgid ""
-#| "This plugin integrates <a href=\"http://www.itthinx.com/shop/affiliates-"
-#| "pro/\">Affiliates Pro</a> and <a href=\"http://www.itthinx.com/shop/"
-#| "affiliates-enterprise/\">Affiliates Enterprise</a> with PayPal Payments "
-#| "Standard. With this advanced integration plugin, referrals are created "
-#| "and synchronized automatically for your affiliates when sales are made."
-msgid ""
-"This plugin integrates <a href=\"https://www.itthinx.com/shop/affiliates-pro/"
-"\">Affiliates Pro</a> and <a href=\"https://www.itthinx.com/shop/affiliates-"
-"enterprise/\">Affiliates Enterprise</a> with PayPal Payments Standard. With "
-"this advanced integration plugin, referrals are created and synchronized "
-"automatically for your affiliates when sales are made."
-msgstr ""
-"Plugin ini mengintegrasikan <a href=“http://www.itthinx.com/shop/affiliates-"
-"pro/“> Afiliasi Pro </a> dan <a href = “http://www.itthinx.com/shop/ "
-"afiliasi-perusahaan / “> Perusahaan Afiliasi </a> dengan Standar Pembayaran "
-"PayPal. Dengan plugin integrasi lanjutan ini, rujukan dibuat dan "
-"disinkronkan secara otomatis untuk afiliasi Anda ketika penjualan dilakukan."
-
 #: lib/core/affiliates-admin-referral-remove.php:159
 #: lib/core/affiliates-admin-referral-remove.php:162
 msgid "This referral does not exist."
 msgstr "Referensi ini tidak tersedia."
 
-#: lib/core/class-affiliates-settings-general.php:292
+#: lib/core/class-affiliates-settings-general.php:293
 msgid ""
 "This section is only intended to grant administrative access on affiliate "
 "management functions to privileged roles."
@@ -3529,42 +3528,42 @@ msgid ""
 msgstr ""
 "Sebagai contoh cara menggunakan API yang disediakan oleh plugin Afiliasi ini"
 
-#: lib/core/class-affiliates.php:195
+#: lib/core/class-affiliates.php:216
 msgid "Tonga Pa'anga"
 msgstr ""
 
-#: lib/core/class-affiliates-robot-cleaner.php:219
+#: lib/core/class-affiliates-robot-cleaner.php:218
 #: lib/core/class-affiliates-totals.php:319
 msgid "Total"
 msgstr "Total"
 
-#: lib/core/class-affiliates-totals.php:176 lib/core/wp-init.php:1878
-#: lib/core/wp-init.php:1879
+#: lib/core/class-affiliates-totals.php:176 lib/core/wp-init.php:1882
+#: lib/core/wp-init.php:1883
 msgid "Totals"
 msgstr "Lalu lintas"
 
-#: lib/core/affiliates-admin-hits-uri.php:250 lib/core/wp-init.php:1851
-#: lib/core/wp-init.php:1852
+#: lib/core/affiliates-admin-hits-uri.php:250 lib/core/wp-init.php:1855
+#: lib/core/wp-init.php:1856
 msgid "Traffic"
 msgstr ""
 
-#: lib/core/class-affiliates.php:197
+#: lib/core/class-affiliates.php:218
 msgid "Trinidad and Tobago Dollar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:194
+#: lib/core/class-affiliates.php:215
 msgid "Tunisia Dinar"
 msgstr ""
 
-#: lib/core/class-affiliates.php:196
+#: lib/core/class-affiliates.php:217
 msgid "Turkey Lira"
 msgstr ""
 
-#: lib/core/class-affiliates.php:193
+#: lib/core/class-affiliates.php:214
 msgid "Turkmenistan Manat"
 msgstr ""
 
-#: lib/core/class-affiliates.php:198
+#: lib/core/class-affiliates.php:219
 msgid "Tuvalu Dollar"
 msgstr ""
 
@@ -3573,28 +3572,28 @@ msgstr ""
 msgid "URL Parameter"
 msgstr "Parameter URL"
 
-#: lib/core/class-affiliates.php:202
+#: lib/core/class-affiliates.php:223
 msgid "Uganda Shilling"
 msgstr ""
 
-#: lib/core/class-affiliates.php:201
+#: lib/core/class-affiliates.php:222
 msgid "Ukraine Hryvnia"
 msgstr ""
 
-#: lib/core/class-affiliates.php:57
+#: lib/core/class-affiliates.php:78
 msgid "United Arab Emirates Dirham"
 msgstr ""
 
-#: lib/core/class-affiliates.php:103
+#: lib/core/class-affiliates.php:124
 msgid "United Kingdom Pound"
 msgstr ""
 
-#: lib/core/class-affiliates.php:203
+#: lib/core/class-affiliates.php:224
 msgid "United States Dollar"
 msgstr ""
 
 # @ affiliates
-#: lib/core/class-affiliates-settings-general.php:120
+#: lib/core/class-affiliates-settings-general.php:121
 msgid ""
 "Unless the incoming affiliate links reflect the current Affiliate URL "
 "parameter name, no affiliate hits, visits or referrals will be recorded."
@@ -3632,7 +3631,7 @@ msgstr "Naik"
 msgid "Updated"
 msgstr "Perbaharui"
 
-#: lib/core/class-affiliates.php:204
+#: lib/core/class-affiliates.php:225
 msgid "Uruguay Peso"
 msgstr ""
 
@@ -3645,12 +3644,12 @@ msgstr ""
 "Gunakan bagian <a href=“%s”> Pengaturan </a> untuk meninjau atau "
 "menyesuaikan sistem kapan saja."
 
-#: lib/core/class-affiliates-settings-general.php:312
+#: lib/core/class-affiliates-settings-general.php:313
 #, php-format
 msgid "Use the robot cleaner to remove existing hits from robots: %s"
 msgstr "Gunakan pembersih robot untuk menghapus hit yang ada dari robot:% s"
 
-#: lib/core/class-affiliates-robot-cleaner.php:198
+#: lib/core/class-affiliates-robot-cleaner.php:197
 #: lib/core/affiliates-admin-hits.php:548
 #: lib/core/affiliates-admin-hits-uri.php:491
 #: lib/core/affiliates-admin-hits-uri.php:605
@@ -3658,12 +3657,12 @@ msgstr "Gunakan pembersih robot untuk menghapus hit yang ada dari robot:% s"
 msgid "User Agent"
 msgstr "Agen Pengguna"
 
-#: lib/core/wp-init.php:1905 lib/core/wp-init.php:1906
+#: lib/core/wp-init.php:1909 lib/core/wp-init.php:1910
 #: lib/core/affiliates-admin-user-registration.php:35
 msgid "User Registration"
 msgstr "Registrasi Pengguna"
 
-#: lib/core/class-affiliates-settings-integrations.php:203
+#: lib/core/class-affiliates-settings-integrations.php:183
 msgid ""
 "User registrations do not require a specific integration to be installed."
 msgstr "Registrasi pengguna tidak memerlukan integrasi khusus untuk diinstal."
@@ -3731,15 +3730,15 @@ msgstr ""
 "<em> ditutup </em>. Jika ada rujukan yang tidak diinginkan atau terlalu "
 "banyak ditampilkan, batasi pengaturan filter Anda."
 
-#: lib/core/class-affiliates.php:205
+#: lib/core/class-affiliates.php:226
 msgid "Uzbekistan Som"
 msgstr ""
 
-#: lib/core/class-affiliates.php:208
+#: lib/core/class-affiliates.php:229
 msgid "Vanuatu Vatu"
 msgstr ""
 
-#: lib/core/class-affiliates.php:206
+#: lib/core/class-affiliates.php:227
 msgid "Venezuela Bolívar"
 msgstr ""
 
@@ -3747,7 +3746,7 @@ msgstr ""
 msgid "Verification is supported for coupons managed through WooCommerce."
 msgstr "Verifikasi didukung untuk kupon yang dikelola melalui WooCommerce."
 
-#: lib/core/class-affiliates.php:207
+#: lib/core/class-affiliates.php:228
 msgid "Viet Nam Dong"
 msgstr ""
 
@@ -3764,12 +3763,12 @@ msgid "Visits"
 msgstr "Kunjungan"
 
 # @ affiliates
-#: lib/core/affiliates-admin-hits.php:173 lib/core/wp-init.php:1825
-#: lib/core/wp-init.php:1826
+#: lib/core/affiliates-admin-hits.php:173 lib/core/wp-init.php:1829
+#: lib/core/wp-init.php:1830
 msgid "Visits & Referrals"
 msgstr "Kunjungan & Referal"
 
-#: lib/core/wp-init.php:872
+#: lib/core/wp-init.php:875
 msgid "Warning!"
 msgstr "Peringatan!"
 
@@ -3827,7 +3826,7 @@ msgstr ""
 "Tuliskan judul atau post ID. Jika kosong, tidak ada terms disclaimer yang "
 "akan ditampilkan."
 
-#: lib/core/class-affiliates.php:215
+#: lib/core/class-affiliates.php:236
 msgid "Yemen Rial"
 msgstr ""
 
@@ -3860,7 +3859,7 @@ msgstr ""
 "Twitter atau mengunjungi <a href=“%s” target=“_blank”> itthinx.com </a> ke "
 "lihat plugin gratis dan premium lainnya yang kami sediakan."
 
-#: lib/core/class-affiliates-settings-integrations.php:196
+#: lib/core/class-affiliates-settings-integrations.php:176
 #, php-format
 msgid ""
 "You can install available integrations in the <a href=\"%s\">Plugins</a> "
@@ -3869,7 +3868,7 @@ msgstr ""
 "Anda dapat menginstal integrasi yang telah tersedia di bagian <a href=“%s”> "
 "Plugin </a>."
 
-#: lib/core/class-affiliates-settings-integrations.php:192
+#: lib/core/class-affiliates-settings-integrations.php:172
 msgid ""
 "You can manage available integrations here, this includes the installation "
 "and activation of integrations with e-commerce and other systems."
@@ -3900,7 +3899,7 @@ msgstr ""
 "Anda dapat menggunakan opsi pembuatan halaman untuk membuat area afiliasi "
 "default untuk afiliasi Anda."
 
-#: lib/core/class-affiliates-settings-integrations.php:200
+#: lib/core/class-affiliates-settings-integrations.php:180
 msgid ""
 "You only need to install integrations with plugins that are actually used on "
 "the site."
@@ -3921,11 +3920,11 @@ msgstr "Akun afiliasi Anda ditutup."
 msgid "Your affiliate application is pending approval."
 msgstr "Aplikasi afiliasi Anda sedang menunggu persetujuan."
 
-#: lib/core/class-affiliates.php:217
+#: lib/core/class-affiliates.php:238
 msgid "Zambia Kwacha"
 msgstr ""
 
-#: lib/core/class-affiliates.php:218
+#: lib/core/class-affiliates.php:239
 msgid "Zimbabwe Dollar"
 msgstr ""
 
@@ -3959,9 +3958,92 @@ msgstr "[[site_title]] Selamat Datang di program affiliasi"
 msgid "[[site_title]] Your username and password"
 msgstr "Username dan sandi anda"
 
-#: lib/core/class-affiliates.php:190
+#: lib/core/class-affiliates.php:211
 msgid "eSwatini Lilangeni"
 msgstr ""
+
+#~ msgid ""
+#~ "Additional and advanced integrations accessible with Affiliates Pro and "
+#~ "Affiliates Enterprise include social sharing integrations with AddToAny "
+#~ "and AddThis, support for affiliate commissions based on Pay Per Click "
+#~ "(PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms "
+#~ "integrations."
+#~ msgstr ""
+#~ "Integrasi tambahan dan lanjutan yang dapat diakses dengan Affiliates Pro "
+#~ "dan Affiliates Enterprise mencakup integrasi berbagi sosial dengan "
+#~ "AddToAny dan AddThis, dukungan untuk komisi afiliasi berdasarkan Pay Per "
+#~ "Click (PPC), Events Manager, Formidable Forms, Formidable Pro and "
+#~ "integrasi Gravity Forms ."
+
+#, fuzzy
+#~| msgid ""
+#~| "This integration is suitable to be used with <a href=\"http://www."
+#~| "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> or <a "
+#~| "href=\"http://www.itthinx.com/shop/affiliates-enterprise/\">Affiliates "
+#~| "Enterprise</a>. Note that this integration is not intended to be used "
+#~| "for e-commerce systems that provide their own PayPal Payments Standard "
+#~| "gateway."
+#~ msgid ""
+#~ "This integration is suitable to be used with <a href=\"https://www."
+#~ "itthinx.com/shop/affiliates-pro/\">Affiliates Pro</a> or <a "
+#~ "href=\"https://www.itthinx.com/shop/affiliates-enterprise/\">Affiliates "
+#~ "Enterprise</a>. Note that this integration is not intended to be used for "
+#~ "e-commerce systems that provide their own PayPal Payments Standard "
+#~ "gateway."
+#~ msgstr ""
+#~ "Integrasi ini cocok untuk digunakan dengan <a href=“http://www.itthinx."
+#~ "com/shop/affiliates-pro/“> Affiliates Pro</a> atau <a href = “http: //www."
+#~ "itthinx .com / toko / afiliasi-perusahaan / “> Affiliates Enterprise</a>. "
+#~ "Perhatikan bahwa integrasi ini tidak dimaksudkan untuk digunakan untuk "
+#~ "sistem e-commerce yang menyediakan gateway Standar Pembayaran PayPal "
+#~ "sendiri."
+
+#, fuzzy
+#~| msgid ""
+#~| "This plugin integrates <a href=\"http://www.itthinx.com/shop/affiliates-"
+#~| "pro/\">Affiliates Pro</a> and <a href=\"http://www.itthinx.com/shop/"
+#~| "affiliates-enterprise/\">Affiliates Enterprise</a> with <a href=\"http://"
+#~| "www.addthis.com/\">AddThis</a> &hellip; <em>&ldquo;Website tools that "
+#~| "drive more shares, follows and conversions&rdquo;</em>. The <a "
+#~| "href=\"https://wordpress.org/plugins/addthis/\">Smart Website Tools</a> "
+#~| "by AddThis are required."
+#~ msgid ""
+#~ "This plugin integrates <a href=\"https://www.itthinx.com/shop/affiliates-"
+#~ "pro/\">Affiliates Pro</a> and <a href=\"https://www.itthinx.com/shop/"
+#~ "affiliates-enterprise/\">Affiliates Enterprise</a> with <a href=\"https://"
+#~ "www.addthis.com/\">AddThis</a> &hellip; <em>&ldquo;Website tools that "
+#~ "drive more shares, follows and conversions&rdquo;</em>. The <a "
+#~ "href=\"https://wordpress.org/plugins/addthis/\">Smart Website Tools</a> "
+#~ "by AddThis are required."
+#~ msgstr ""
+#~ "Plugin ini mengintegrasikan <a href=“http://www.itthinx.com/shop/"
+#~ "affiliates-pro/“> Affiliates Pro </a> dan <a href = “http://www.itthinx."
+#~ "com/shop/ afiliasi perusahaan / “> Affiliates Enterprise</a> dengan <a "
+#~ "href=“http://www.addthis.com/“> AddThis </a> & hellip; <em> & ldquo; Alat "
+#~ "situs web yang mendorong lebih banyak saham, mengikuti, dan konversi & "
+#~ "rdquo; </em>. <a href=“https://wordpress.org/plugins/addthis/“> Smart "
+#~ "Website Tools </a> oleh AddThis diperlukan."
+
+#, fuzzy
+#~| msgid ""
+#~| "This plugin integrates <a href=\"http://www.itthinx.com/shop/affiliates-"
+#~| "pro/\">Affiliates Pro</a> and <a href=\"http://www.itthinx.com/shop/"
+#~| "affiliates-enterprise/\">Affiliates Enterprise</a> with PayPal Payments "
+#~| "Standard. With this advanced integration plugin, referrals are created "
+#~| "and synchronized automatically for your affiliates when sales are made."
+#~ msgid ""
+#~ "This plugin integrates <a href=\"https://www.itthinx.com/shop/affiliates-"
+#~ "pro/\">Affiliates Pro</a> and <a href=\"https://www.itthinx.com/shop/"
+#~ "affiliates-enterprise/\">Affiliates Enterprise</a> with PayPal Payments "
+#~ "Standard. With this advanced integration plugin, referrals are created "
+#~ "and synchronized automatically for your affiliates when sales are made."
+#~ msgstr ""
+#~ "Plugin ini mengintegrasikan <a href=“http://www.itthinx.com/shop/"
+#~ "affiliates-pro/“> Afiliasi Pro </a> dan <a href = “http://www.itthinx.com/"
+#~ "shop/ afiliasi-perusahaan / “> Perusahaan Afiliasi </a> dengan Standar "
+#~ "Pembayaran PayPal. Dengan plugin integrasi lanjutan ini, rujukan dibuat "
+#~ "dan disinkronkan secara otomatis untuk afiliasi Anda ketika penjualan "
+#~ "dilakukan."
 
 #, php-format
 #~ msgid ""
@@ -3974,8 +4056,8 @@ msgstr ""
 #~ msgid ""
 #~ "Thank you for using the <a style=\"text-decoration:none;\" href=\"http://"
 #~ "www.itthinx.com/plugins/affiliates\" target=\"_blank\">Affiliates</a> "
-#~ "plugin by <a style=\"text-decoration:none;\" href=\"http://www.itthinx.com"
-#~ "\" target=\"_blank\">itthinx</a>."
+#~ "plugin by <a style=\"text-decoration:none;\" href=\"http://www.itthinx."
+#~ "com\" target=\"_blank\">itthinx</a>."
 #~ msgstr ""
 #~ "Terima kasih telah menggunakan <a style=“text-decoration:none;” "
 #~ "href=“http://www.itthinx.com/plugins/affiliates” "
@@ -4137,9 +4219,10 @@ msgstr ""
 # @ affiliates
 #~ msgid ""
 #~ "Your site is not using pretty <a href=\"%s\">permalinks</a>. You will "
-#~ "only be able to use URL parameter based <span class=\"affiliate-link"
-#~ "\">affiliate links</span> but not pretty <span class=\"affiliate-permalink"
-#~ "\">affiliate permalinks</span>, unless you change your permalink settings."
+#~ "only be able to use URL parameter based <span class=\"affiliate-"
+#~ "link\">affiliate links</span> but not pretty <span class=\"affiliate-"
+#~ "permalink\">affiliate permalinks</span>, unless you change your permalink "
+#~ "settings."
 #~ msgstr ""
 #~ "Situs Anda tidak menggunakan pretty <a href=\"%s\">permalinks</a>. Anda "
 #~ "hanya bisa menggunakan <span class=\"affiliate-link\">link afiliasi</"

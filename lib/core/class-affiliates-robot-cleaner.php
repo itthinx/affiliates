@@ -58,7 +58,7 @@ class Affiliates_Robot_Cleaner {
 		}
 
 		if ( check_ajax_referer( 'affiliates-robot-cleaner-ajax-nonce', 'affiliates_robot_cleaner_ajax_nonce' ) ) {
-			set_time_limit( 0 );
+			affiliates_request_execution_unlimited();
 			// remove all hits that are related to robots and don't have a referral related
 			$hits_table = _affiliates_get_tablename( 'hits' );
 			$referrals_table = _affiliates_get_tablename( 'referrals' );
@@ -152,12 +152,11 @@ class Affiliates_Robot_Cleaner {
 					echo '<p>';
 					esc_html_e( 'Check for hits from robots that can be removed &hellip;', 'affiliates' );
 					echo '</p>';
-					echo
-						'<form action="" name="robot-cleaner" method="post">' .
-							'<input class="button button-primary" name="robot-cleaner" type="submit" value="' . __( 'Check', 'affiliates' ) .'" />' .
-							'<input type="hidden" name="action" value="confirm"/>' .
-							wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false ) .
-						'</form>';
+					echo '<form action="" name="robot-cleaner" method="post">';
+					printf( '<button class="button button-primary" name="robot-cleaner" type="submit" >%s</button>', esc_html__( 'Check', 'affiliates' ) );
+					echo '<input type="hidden" name="action" value="confirm"/>';
+					echo wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false );
+					echo '</form>';
 					echo '<p>';
 				} else {
 					echo '<p>' .
@@ -231,18 +230,17 @@ class Affiliates_Robot_Cleaner {
 					esc_html_e( 'This action cannot be undone.', 'affiliates' );
 					echo '</p>';
 					echo '<p>';
-					echo
-						'<form action="" name="robot-cleaner" method="post">' .
-							'<input id="affiliates-robot-cleaner-clean" class="button button-primary" name="robot-cleaner" type="submit" value="' . __( 'Delete', 'affiliates' ) .'" />' .
-							'<input type="hidden" name="action" value="clean"/>' .
-							wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false ) .
-							'<span style="padding: 4px">' .
-							sprintf(
-								'<img id="affiliates-robot-cleaner-throbber" src="%s" style="display:none" />',
-								esc_url( AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif' )
-							) .
-							'</span>' .
-						'</form>';
+					echo '<form action="" name="robot-cleaner" method="post">';
+					printf( '<button id="affiliates-robot-cleaner-clean" class="button button-primary" name="robot-cleaner" type="submit">%s</button>', esc_html__( 'Delete', 'affiliates' ) );
+					echo '<input type="hidden" name="action" value="clean"/>';
+					echo wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false );
+					echo '<span style="padding: 4px">';
+					printf(
+						'<img id="affiliates-robot-cleaner-throbber" src="%s" style="display:none" />',
+						esc_url( AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif' )
+					);
+					echo '</span>';
+					echo '</form>';
 					echo '<div id="affiliates-robot-cleaner-result" style="margin: 8px 0;"></div>';
 					echo '</p>';
 				} else {

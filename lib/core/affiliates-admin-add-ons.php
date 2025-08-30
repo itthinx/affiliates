@@ -70,7 +70,7 @@ function affiliates_admin_add_ons() {
 		),
 		'restrict-payment-methods' => array(
 			'title'    => 'Restrict Payment Methods for WooCommerce',
-			'content'  => esc_html__( 'Limit the use of Payment Methods by Group Memberships, Roles, Countries, and Order Amounts. ', 'affiliates' ),
+			'content'  => esc_html__( 'Limit the use of Payment Methods by Group Memberships, Roles, Countries, and Order Amounts.', 'affiliates' ),
 			'image'    => AFFILIATES_PLUGIN_URL . 'images/add-ons/restrict-payment-methods.png',
 			'url'      => 'https://woocommerce.com/products/restrict-payment-methods/',
 			'featured' => true,
@@ -112,6 +112,20 @@ function affiliates_admin_add_ons() {
 			'content' => esc_html__( 'This extension for WordPress is used to release content on a schedule. It can be used with the popular Groups membership solution or without it. Content dripping can be based on user account creation, group memberships and specific dates and times.', 'affiliates' ),
 			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-drip-content.png',
 			'url'     => 'https://www.itthinx.com/shop/groups-drip-content/',
+			'index'   => 100
+		),
+		'groups-file-access' => array(
+			'title'   => 'Groups File Access',
+			'content' => esc_html__( 'Provide exclusive access to files for members. The ideal companion to provide exclusive access to resources for group members.', 'affiliates' ),
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-file-access.png',
+			'url'     => 'https://www.itthinx.com/shop/groups-file-access/',
+			'index'   => 100
+		),
+		'groups-newsletters' => array(
+			'title'   => 'Groups Newsletters',
+			'content' => esc_html__( 'Newsletter Campaigns for Subscribers and Groups. Groups Newsletters helps you to communicate efficiently, providing targeted information to groups of recipients through automated campaigns.', 'affiliates' ),
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-newsletters.png',
+			'url'     => 'https://www.itthinx.com/shop/groups-newsletters/',
 			'index'   => 100
 		),
 		'groups-restrict-categories' => array(
@@ -252,9 +266,9 @@ function affiliates_admin_add_ons() {
 	echo '<ul class="feature-listing">';
 
 	echo '<li>';
-	echo esc_html__( 'Additional and advanced integrations accessible with Affiliates Pro and Affiliates Enterprise include social sharing integrations with AddToAny and AddThis, support for affiliate commissions based on Pay Per Click (PPC), Events Manager, Formidable Forms, Formidable Pro and Gravity Forms integrations.', 'affiliates' );
+	echo esc_html__( 'Advanced and additional integrations are provided with Affiliates Pro and Affiliates Enterprise.', 'affiliates' );
 	echo ' ';
-	echo esc_html__( 'Please consult the Shop pages for an updated list of included integrations.', 'affiliates' );
+	echo esc_html__( 'Please refer to the Shop pages for included integrations.', 'affiliates' );
 	echo '</li>';
 
 	echo '<li>';

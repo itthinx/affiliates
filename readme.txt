@@ -5,7 +5,7 @@ Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing
 Requires at least: 6.5
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 5.1.0
+Stable tag: 5.2.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
@@ -71,7 +71,6 @@ E-Commerce and Events
 
 Social Sharing Platforms ... make it even easier for affiliates to share their links
 
-- [Affiliates AddThis](https://www.itthinx.com/plugins/affiliates-addthis) : This integration with [AddThis](https://www.addthis.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
 - [Affiliates AddToAny](https://www.itthinx.com/plugins/affiliates-addtoany) : This integration with [AddToAny](https://www.addtoany.com) converts URLs to share into affiliate links automatically for affiliates who are logged in.
 
 Advertising
