@@ -2613,3 +2613,23 @@ function affiliates_format_referral_amount( $amount, $context = '' ) {
 	}
 	return Affiliates_Math::add( '0', $amount, affiliates_get_referral_amount_decimals( $context ) );
 }
+
+/**
+ * Attempt lifting the execution time limit.
+ *
+ * @since 5.2.0
+ *
+ * @return boolean
+ */
+function affiliates_request_execution_unlimited() {
+	$set = false;
+	if ( function_exists( 'set_time_limit' ) ) {
+		$set = @set_time_limit( 0 );
+	}
+	if ( !$set ) {
+		if ( function_exists( 'ini_set' ) ) {
+			$set = @ini_set( 'max_execution_time', 0 ) !== false;
+		}
+	}
+	return $set;
+}

@@ -34,16 +34,17 @@
 			}
 
 			var ajaxing = $( '#affiliates-robot-cleaner-clean' ).data( 'ajaxing' );
-			if ( !( typeof ajaxing === 'undefined' || !ajaxing ) ) {
+			if ( typeof ajaxing !== 'undefined' && ajaxing ) {
 				return;
 			}
-			$( '#affiliates-robot-cleaner-clean' ).data( 'ajaxing', true );
-			$( '#affiliates-robot-cleaner-throbber' ).show();
 
 			if (
 				( typeof ajaxurl !== 'undefined' ) &&
 				( typeof affiliates_robot_cleaner_ajax_nonce !== 'undefined' )
 			) {
+				$( '#affiliates-robot-cleaner-clean' ).prop( 'disabled', true );
+				$( '#affiliates-robot-cleaner-clean' ).data( 'ajaxing', true );
+				$( '#affiliates-robot-cleaner-throbber' ).show();
 				var data = {
 					action : 'affiliates_robot_cleaner_clean',
 					affiliates_robot_cleaner_ajax_nonce : affiliates_robot_cleaner_ajax_nonce
@@ -59,11 +60,14 @@
 					},
 					error : function( data, textStatus, jqXHR ) {
 						$( '#affiliates-robot-cleaner-result' ).html( affiliates_robot_cleaner.failed );
+					},
+					complete : function( data, textStatus, jqXHR ) {
+						$( '#affiliates-robot-cleaner-clean' ).prop( 'disabled', false );
+						$( '#affiliates-robot-cleaner-clean' ).data( 'ajaxing', false );
+						$( '#affiliates-robot-cleaner-throbber' ).fadeOut( 1000 );
 					}
 				} );
 			}
-			$( '#affiliates-robot-cleaner-clean' ).data( 'ajaxing', false );
-			$( '#affiliates-robot-cleaner-throbber' ).hide();
 		});
 	} );
 } )( jQuery );
