@@ -114,6 +114,20 @@ function affiliates_admin_add_ons() {
 			'url'     => 'https://www.itthinx.com/shop/groups-drip-content/',
 			'index'   => 100
 		),
+		'groups-file-access' => array(
+			'title'   => 'Groups File Access',
+			'content' => esc_html__( 'Provide exclusive access to files for members. The ideal companion to provide exclusive access to resources for group members.', 'affiliates' ),
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-file-access.png',
+			'url'     => 'https://www.itthinx.com/shop/groups-file-access/',
+			'index'   => 100
+		),
+		'groups-newsletters' => array(
+			'title'   => 'Groups Newsletters',
+			'content' => esc_html__( 'Newsletter Campaigns for Subscribers and Groups. Groups Newsletters helps you to communicate efficiently, providing targeted information to groups of recipients through automated campaigns.', 'affiliates' ),
+			'image'   => AFFILIATES_PLUGIN_URL . 'images/add-ons/groups-newsletters.png',
+			'url'     => 'https://www.itthinx.com/shop/groups-newsletters/',
+			'index'   => 100
+		),
 		'groups-restrict-categories' => array(
 			'title'   => 'Groups Restrict Categories',
 			'content' => esc_html__( 'An extension based on Groups, provides access restrictions for categories and tags, custom post types and taxonomies. Very useful to restrict whole sets of documents based on their document categories or tags.', 'affiliates' ),
