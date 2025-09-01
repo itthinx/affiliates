@@ -7,6 +7,7 @@
 * Fixed the Affiliates Dashboard Login block preview.
 * Fixed the Affiliates Dashboard Overview block preview.
 * Fixed the Affiliates Dashboard Profile block preview.
+* Fixed the Affiliates Dashboard Registration block preview.
 
 = 5.2.0 =
 * WordPress 6.8 compatible.
