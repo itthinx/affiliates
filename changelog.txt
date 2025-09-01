@@ -5,6 +5,7 @@
 * Fixed Affiliates Dashboard block preview.
 * Fixed Affiliates Dashboard Earnings block preview.
 * Fixed Affiliates Dashboard Login block preview.
+* Fixed Affiliates Dashboard Overview block preview.
 
 = 5.2.0 =
 * WordPress 6.8 compatible.
