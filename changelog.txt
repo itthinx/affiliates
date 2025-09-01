@@ -2,10 +2,11 @@
 
 = 5.3.0 =
 * WordPress 6.8 compatible.
-* Fixed Affiliates Dashboard block preview.
-* Fixed Affiliates Dashboard Earnings block preview.
-* Fixed Affiliates Dashboard Login block preview.
-* Fixed Affiliates Dashboard Overview block preview.
+* Fixed the Affiliates Dashboard block preview.
+* Fixed the Affiliates Dashboard Earnings block preview.
+* Fixed the Affiliates Dashboard Login block preview.
+* Fixed the Affiliates Dashboard Overview block preview.
+* Fixed the Affiliates Dashboard Profile block preview.
 
 = 5.2.0 =
 * WordPress 6.8 compatible.

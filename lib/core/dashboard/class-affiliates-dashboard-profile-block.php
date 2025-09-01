@@ -75,6 +75,11 @@ class Affiliates_Dashboard_Profile_Block extends Affiliates_Dashboard_Profile {
 		//	array(),
 		//	AFFILIATES_CORE_VERSION
 		// );
+
+		if ( !wp_script_is( 'affiliates-fields' ) ) {
+			wp_register_style( 'affiliates-fields', AFFILIATES_PLUGIN_URL . 'css/affiliates-fields.css', array(), AFFILIATES_CORE_VERSION, 'all' );
+		}
+		wp_enqueue_style( 'affiliates-fields' );
 	}
 
 	/**
