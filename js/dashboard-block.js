@@ -62,30 +62,46 @@ if ( typeof wp !== 'undefined' ) {
 			},
 			// Add some inspector controls, use ServerSideRender to preview the block.
 			edit : function( props ) {
-				var header_tag = props.attributes.header_tag || 'h2',
-					content_tag = props.attributes.content_tag || 'p',
-					fields = [
-						// render the content via our PHP callback
-						wp.element.createElement(
-							wp.components.ServerSideRender,
-							{
-								block : 'affiliates/dashboard',
-								attributes : props.attributes
-							}
-						),
-						wp.element.createElement(
-							'div',
-							{
-								style : {
-									color: '#999',
-									padding: '1em',
-									backgroundColor : '#eee'
-								}
-							},
-							affiliates_dashboard_block.dashboard_notice
-						)
-					];
-				return fields;
+				// let header_tag = props.attributes.header_tag || 'h2';
+				// let content_tag = props.attributes.content_tag || 'p';
+				// info for preview
+				let info = wp.element.createElement(
+					'div',
+					{
+						style : {
+							color: '#666',
+							padding: '4px',
+							backgroundColor : '#eee',
+							fontSize: '14px'
+						},
+						key : 'info'
+					},
+					affiliates_dashboard_block.dashboard_notice
+				);
+				let ssr_type = null;
+				if ( typeof wp.serverSideRender !== 'undefined' ) {
+					ssr_type = wp.serverSideRender;
+				} else if ( typeof wp.components.ServerSideRender !== 'undefined' ) {
+					ssr_type = wp.components.ServerSideRender;
+				}
+				let fields = [ info ];
+				if ( ssr_type !== null ) {
+					// render the content preview via our PHP callback
+					let ssr = wp.element.createElement(
+						ssr_type,
+						{
+							block : 'affiliates/dashboard',
+							attributes : props.attributes,
+							key : 'block'
+						}
+					);
+					fields.unshift( ssr );
+				}
+				return wp.element.createElement(
+					wp.components.Disabled,
+					{},
+					fields
+				);
 			},
 			// It's rendered via our PHP callback so this returns simply null.
 			save : function( props ) {
