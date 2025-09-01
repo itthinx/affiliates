@@ -76,12 +76,12 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 		//	AFFILIATES_CORE_VERSION
 		// );
 
-		if ( !wp_script_is( 'affiliates' ) ) {
+		if ( !wp_style_is( 'affiliates', 'registered' ) ) {
 			affiliates_wp_enqueue_scripts();
 		}
 		wp_enqueue_style( 'affiliates' );
 
-		if ( !wp_script_is( 'affiliates-fields' ) ) {
+		if ( !wp_style_is( 'affiliates-fields', 'registered' ) ) {
 			wp_register_style( 'affiliates-fields', AFFILIATES_PLUGIN_URL . 'css/affiliates-fields.css', array(), AFFILIATES_CORE_VERSION, 'all' );
 		}
 		wp_enqueue_style( 'affiliates-fields' );

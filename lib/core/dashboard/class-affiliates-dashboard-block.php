@@ -115,7 +115,7 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 		//	AFFILIATES_CORE_VERSION
 		// );
 
-		// if ( !wp_script_is( 'affiliates' ) ) {
+		// if ( !wp_style_is( 'affiliates', 'registered' ) ) {
 		// 	affiliates_wp_enqueue_scripts();
 		// }
 		// wp_enqueue_style( 'affiliates' );
@@ -130,7 +130,7 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 		//	AFFILIATES_CORE_VERSION
 		// );
 
-		// if ( !wp_script_is( 'affiliates' ) ) {
+		// if ( !wp_style_is( 'affiliates', 'registered' ) ) {
 		// 	affiliates_wp_enqueue_scripts();
 		// }
 		// wp_enqueue_style( 'affiliates' );
