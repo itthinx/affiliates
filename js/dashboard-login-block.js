@@ -47,30 +47,44 @@ if ( typeof wp !== 'undefined' ) {
 			},
 			// Add some inspector controls, use ServerSideRender to preview the block.
 			edit : function( props ) {
-				var header_tag = props.attributes.header_tag || 'h2',
-					content_tag = props.attributes.content_tag || 'p',
-					fields = [
-						// render the content via our PHP callback
-						wp.element.createElement(
-							wp.components.ServerSideRender,
-							{
-								block : 'affiliates/dashboard-login',
-								attributes : props.attributes
-							}
-						),
-						wp.element.createElement(
-							'div',
-							{
-								style : {
-									color: '#999',
-									padding: '1em',
-									backgroundColor : '#eee'
-								}
-							},
-							affiliates_dashboard_login_block.dashboard_login_notice
-						)
-					];
-				return fields;
+				// let header_tag = props.attributes.header_tag || 'h2';
+				// let content_tag = props.attributes.content_tag || 'p';
+				let info = wp.element.createElement(
+					'div',
+					{
+						style : {
+							color: '#666',
+							padding: '4px',
+							backgroundColor : '#eee',
+							fontSize: '14px'
+						},
+						key : 'info'
+					},
+					affiliates_dashboard_login_block.dashboard_login_notice
+				);
+				let fields = [ info ];
+				let ssr_type = null;
+				if ( typeof wp.serverSideRender !== 'undefined' ) {
+					ssr_type = wp.serverSideRender;
+				} else if ( typeof wp.components.ServerSideRender !== 'undefined' ) {
+					ssr_type = wp.components.ServerSideRender;
+				}
+				if ( ssr_type !== null ) {
+					let ssr = wp.element.createElement(
+						ssr_type,
+						{
+							block : 'affiliates/dashboard-login',
+							attributes : props.attributes,
+							key : 'block'
+						}
+					);
+					fields.unshift( ssr );
+				}
+				return wp.element.createElement(
+					wp.components.Disabled,
+					{},
+					fields
+				);
 			},
 			// It's rendered via our PHP callback so this returns simply null.
 			save : function( props ) {
