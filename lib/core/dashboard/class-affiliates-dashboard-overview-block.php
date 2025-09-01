@@ -86,7 +86,8 @@ class Affiliates_Dashboard_Overview_Block extends Affiliates_Dashboard_Overview 
 				'affiliates/dashboard-overview',
 				array(
 					'editor_script' => 'affiliates-dashboard-overview-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

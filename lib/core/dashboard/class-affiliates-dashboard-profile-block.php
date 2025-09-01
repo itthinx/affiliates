@@ -91,7 +91,8 @@ class Affiliates_Dashboard_Profile_Block extends Affiliates_Dashboard_Profile {
 				'affiliates/dashboard-profile',
 				array(
 					'editor_script' => 'affiliates-dashboard-profile-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

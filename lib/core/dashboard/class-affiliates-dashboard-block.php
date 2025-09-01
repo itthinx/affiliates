@@ -145,7 +145,8 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 				'affiliates/dashboard',
 				array(
 					'editor_script' => 'affiliates-dashboard-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

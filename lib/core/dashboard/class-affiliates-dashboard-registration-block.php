@@ -96,7 +96,8 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 				'affiliates/dashboard-registration',
 				array(
 					'editor_script' => 'affiliates-dashboard-registration-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

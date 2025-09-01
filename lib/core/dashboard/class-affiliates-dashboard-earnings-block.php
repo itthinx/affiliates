@@ -86,7 +86,8 @@ class Affiliates_Dashboard_Earnings_Block extends Affiliates_Dashboard_Earnings 
 				'affiliates/dashboard-earnings',
 				array(
 					'editor_script' => 'affiliates-dashboard-earnings-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}
