@@ -78,13 +78,13 @@ if ( typeof wp !== 'undefined' ) {
 					},
 					affiliates_dashboard_block.dashboard_notice
 				);
+				let fields = [ info ];
 				let ssr_type = null;
 				if ( typeof wp.serverSideRender !== 'undefined' ) {
 					ssr_type = wp.serverSideRender;
 				} else if ( typeof wp.components.ServerSideRender !== 'undefined' ) {
 					ssr_type = wp.components.ServerSideRender;
 				}
-				let fields = [ info ];
 				if ( ssr_type !== null ) {
 					// render the content preview via our PHP callback
 					let ssr = wp.element.createElement(
