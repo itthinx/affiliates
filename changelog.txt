@@ -8,6 +8,7 @@
 * Fixed the Affiliates Dashboard Overview block preview.
 * Fixed the Affiliates Dashboard Profile block preview.
 * Fixed the Affiliates Dashboard Registration block preview.
+* Revised overview template and using full width to display URL textarea.
 
 = 5.2.0 =
 * WordPress 6.8 compatible.
