@@ -114,6 +114,11 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 		//	array( 'wp-edit-blocks' ),
 		//	AFFILIATES_CORE_VERSION
 		// );
+
+		// if ( !wp_style_is( 'affiliates', 'registered' ) ) {
+		// 	affiliates_wp_enqueue_scripts();
+		// }
+		// wp_enqueue_style( 'affiliates' );
 	}
 
 	public static function enqueue_block_assets() {
@@ -124,6 +129,11 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 		//	array(),
 		//	AFFILIATES_CORE_VERSION
 		// );
+
+		// if ( !wp_style_is( 'affiliates', 'registered' ) ) {
+		// 	affiliates_wp_enqueue_scripts();
+		// }
+		// wp_enqueue_style( 'affiliates' );
 	}
 
 	/**
@@ -135,7 +145,8 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 				'affiliates/dashboard',
 				array(
 					'editor_script' => 'affiliates-dashboard-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

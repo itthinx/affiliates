@@ -75,6 +75,16 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 		//	array(),
 		//	AFFILIATES_CORE_VERSION
 		// );
+
+		if ( !wp_style_is( 'affiliates', 'registered' ) ) {
+			affiliates_wp_enqueue_scripts();
+		}
+		wp_enqueue_style( 'affiliates' );
+
+		if ( !wp_style_is( 'affiliates-fields', 'registered' ) ) {
+			wp_register_style( 'affiliates-fields', AFFILIATES_PLUGIN_URL . 'css/affiliates-fields.css', array(), AFFILIATES_CORE_VERSION, 'all' );
+		}
+		wp_enqueue_style( 'affiliates-fields' );
 	}
 
 	/**
@@ -86,7 +96,8 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 				'affiliates/dashboard-registration',
 				array(
 					'editor_script' => 'affiliates-dashboard-registration-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

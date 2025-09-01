@@ -88,7 +88,8 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 				'affiliates/dashboard-login',
 				array(
 					'editor_script' => 'affiliates-dashboard-login-block',
-					'render_callback' => array( __CLASS__, 'block' )
+					'render_callback' => array( __CLASS__, 'block' ),
+					'example' => array()
 				)
 			);
 		}

@@ -159,6 +159,10 @@ $link_info  = wp_kses(
 	display:inline-block;
 	vertical-align:middle;
 }
+.dashboard-section-overview .affiliates-dashboard-overview-link input.affiliate-url,
+.dashboard-section-overview .affiliates-dashboard-overview-link textarea.affiliate-url {
+	width: 100%;
+}
 .dashboard-section-overview .affiliates-dashboard-logout {
 	margin: 4px;
 	padding: 4px;
