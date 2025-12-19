@@ -3,9 +3,9 @@ Contributors: itthinx, proaktion
 Donate link: https://www.itthinx.com/shop/
 Tags: affiliate, affiliates, affiliate marketing, referral, growth marketing
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 5.3.0
+Stable tag: 5.4.0
 License: GPLv3
 
 The Affiliates system provides the most powerful growth-oriented tools to run a successful Affiliate Marketing Program.
