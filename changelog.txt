@@ -2,7 +2,6 @@
 
 = 5.4.1 =
 * WordPress 6.9 compatible.
-* WooCommerce 10.4 compatible.
 * Fixed incorrect function call parameters. [#127](https://github.com/itthinx/affiliates/pull/127)
 * Fixed stored registration field labels translation.
 * Fixed translation calls made too early causing deprecated notices.
