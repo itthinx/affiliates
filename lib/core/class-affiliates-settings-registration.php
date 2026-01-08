@@ -58,8 +58,8 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				'last_name'  => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Last Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
 				'user_login' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Username', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
 				'user_email' => array( 'obligatory' => true, 'enabled' => true, 'label' => __( 'Email', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-				'user_url'	 => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'text' ),
-				'password'	 => array( 'obligatory' => false, 'enabled' => false, 'label' => __( 'Password', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'password' )
+				'user_url'   => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'text' ),
+				'password'   => array( 'obligatory' => false, 'enabled' => false, 'label' => __( 'Password', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'password' )
 			);
 		}
 		return self::$default_fields;
