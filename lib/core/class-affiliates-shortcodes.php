@@ -1106,6 +1106,10 @@ class Affiliates_Shortcodes {
 								// original value, domain, name, language code (optional and not used here)
 								$label = apply_filters( 'wpml_translate_single_string', $field['label'], 'affiliates', Affiliates_Registration::get_wpml_string_name( $name ) );
 							}
+							// @since 5.4.1 translate stored labels
+							if ( $label === $field['label'] ) {
+								$label = __( $label, 'affiliates' );
+							}
 							$n++;
 							$output .= '<div class="field">';
 							$output .= '<label>';
