@@ -41,29 +41,41 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 	 * @return array
 	 */
 	public static function get_fields() {
-		return get_option( 'aff_registration_fields', self::$default_fields );
+		return get_option( 'aff_registration_fields', self::get_default_fields() );
+	}
+
+	/**
+	 * Provide the default fields.
+	 *
+	 * @since 5.4.1 so translation calls are not made too early
+	 *
+	 * @return array
+	 */
+	public static function get_default_fields() {
+		if ( self::$default_fields === null ) {
+			self::$default_fields = array(
+				'first_name' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'First Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+				'last_name'  => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Last Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+				'user_login' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Username', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+				'user_email' => array( 'obligatory' => true, 'enabled' => true, 'label' => __( 'Email', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
+				'user_url'	 => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'text' ),
+				'password'	 => array( 'obligatory' => false, 'enabled' => false, 'label' => __( 'Password', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'password' )
+			);
+		}
+		return self::$default_fields;
 	}
 
 	/**
 	 * Settings initialization.
 	 */
 	public static function init() {
-		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
-		self::$default_fields = array(
-			'first_name' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'First Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'last_name'  => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Last Name', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'user_login' => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Username', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'user_email' => array( 'obligatory' => true, 'enabled' => true, 'label' => __( 'Email', 'affiliates' ), 'required' => true, 'is_default' => true, 'type' => 'text' ),
-			'user_url'	 => array( 'obligatory' => false, 'enabled' => true, 'label' => __( 'Website', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'text' ),
-			'password'	 => array( 'obligatory' => false, 'enabled' => false, 'label' => __( 'Password', 'affiliates' ), 'required' => false, 'is_default' => true, 'type' => 'password' )
-		);
+		// add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 	}
 
 	/**
 	 * Registers an admin_notices action.
 	 */
 	public static function admin_init() {
-
 	}
 
 	/**
@@ -98,7 +110,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 				}
 
 				if ( !get_option( 'aff_registration_fields' ) ) {
-					add_option( 'aff_registration_fields', self::$default_fields, '', 'no' );
+					add_option( 'aff_registration_fields', self::get_default_fields(), '', 'no' );
 				}
 				$field_enabled  = isset( $_POST['field-enabled'] ) ? $_POST['field-enabled'] : array();
 				$field_name     = isset( $_POST['field-name'] ) ? $_POST['field-name'] : array();
@@ -112,6 +124,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 					max( array_keys( $field_required ) ),
 					max( array_keys( $field_type ) )
 				) );
+				$default_fields = self::get_default_fields();
 				$fields = array();
 				for( $i = 0; $i <= $max_index; $i++ ) {
 					if ( !empty( $field_name[$i] ) ) {
@@ -121,11 +134,11 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 						$name = preg_replace( '/[_]+/', '_', $name );
 						if ( !empty( $name ) && !isset( $fields[$name] ) ) {
 							$fields[$name] = array(
-								'obligatory' => false || isset( self::$default_fields[$name] ) && self::$default_fields[$name]['obligatory'],
-								'enabled'    => !empty( $field_enabled[$i] ) || isset( self::$default_fields[$name] ) && self::$default_fields[$name]['obligatory'],
+								'obligatory' => false || isset( $default_fields[$name] ) && $default_fields[$name]['obligatory'],
+								'enabled'    => !empty( $field_enabled[$i] ) || isset( $default_fields[$name] ) && $default_fields[$name]['obligatory'],
 								'label'      => !empty( $field_label[$i] ) ? strip_tags( $field_label[$i] ) : '',
 								'required'   => !empty( $field_required[$i]),
-								'is_default' => key_exists( $field_name[$i], self::$default_fields ),
+								'is_default' => key_exists( $field_name[$i], $default_fields ),
 								'type'       => !empty( $field_type[$i] ) ? $field_type[$i] : 'text'
 							);
 						}
@@ -204,7 +217,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '<p class="description">';
 		esc_html_e( 'The following fields are provided on the affiliate registration form.', 'affiliates' );
 		echo '</p>';
-		$registration_fields = get_option( 'aff_registration_fields', self::$default_fields );
+		$registration_fields = get_option( 'aff_registration_fields', self::get_default_fields() );
 		echo '<div id="registration-fields">';
 		echo '<table>';
 		echo '<thead>';
@@ -272,4 +285,5 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			affiliates_footer();
 	}
 }
+
 Affiliates_Settings_Registration::init();

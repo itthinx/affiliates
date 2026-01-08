@@ -495,7 +495,11 @@ class Affiliates_Registration {
 					// original value, domain, name, language code (optional and not used here)
 					$label = apply_filters( 'wpml_translate_single_string', $field['label'], 'affiliates', self::get_wpml_string_name( $name ) );
 				}
-				$output .= stripslashes( $label );
+				// @since 5.4.1 translate stored labels
+				if ( $label === $field['label'] ) {
+					$label = __( $label, 'affiliates' );
+				}
+				$output .= wp_kses_post( stripslashes( $label ) );
 				$output .= ' ';
 				$type = isset( $field['type'] ) ? $field['type'] : 'text';
 				$readonly = is_user_logged_in() && ( ( $name == 'user_login' ) || ( $name == 'user_email' ) ) ? ' readonly="readonly" ' : '';
