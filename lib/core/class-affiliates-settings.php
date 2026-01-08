@@ -183,9 +183,8 @@ class Affiliates_Settings {
 
 		self::init_sections();
 
-		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
-
-		if ( !key_exists( $section, self::$sections ) ) {
+		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : '';
+		if ( !array_key_exists( $section, self::$sections ) ) {
 			$section = 'general';
 		}
 		$section_title = self::$sections[$section];

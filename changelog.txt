@@ -5,6 +5,7 @@
 * Fixed incorrect function call parameters. [#127](https://github.com/itthinx/affiliates/pull/127)
 * Fixed stored registration field labels translation.
 * Fixed translation calls made too early causing deprecated notices.
+* Fixed deprecated using null as key parameter for an instance of a call to array_key_exists().
 * Revised several instances of missing output escaping.
 * Revised code formatting.
 
