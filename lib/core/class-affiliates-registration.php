@@ -431,9 +431,9 @@ class Affiliates_Registration {
 				}
 				$terms_post = get_post( $terms_post_id );
 				if ( $terms_post ) {
-					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . get_the_title( $terms_post->ID ) . '</a>';
+					$terms_post_link = '<a target="_blank" href="' . esc_url( get_permalink( $terms_post->ID ) ) . '">' . esc_html( get_the_title( $terms_post->ID ) ) . '</a>';
 					$terms = sprintf(
-						apply_filters( 'affiliates_terms_post_link_text', __( 'By signing up, you indicate that you have read and agree to the %s.', 'affiliates' ) ),
+						apply_filters( 'affiliates_terms_post_link_text', esc_html__( 'By signing up, you indicate that you have read and agree to the %s.', 'affiliates' ) ),
 						$terms_post_link
 					);
 				}
@@ -460,7 +460,7 @@ class Affiliates_Registration {
 			}
 
 			$output .= '<div class="sign-up">';
-			$output .= '<input type="submit" name="' . $submit_name . '" value="'. self::$submit_button_label . '" />';
+			$output .= '<input type="submit" name="' . esc_attr( $submit_name ) . '" value="'. esc_attr( self::$submit_button_label ) . '" />';
 			$output .= '</div>';
 
 			$output .= '</div>';
@@ -495,7 +495,11 @@ class Affiliates_Registration {
 					// original value, domain, name, language code (optional and not used here)
 					$label = apply_filters( 'wpml_translate_single_string', $field['label'], 'affiliates', self::get_wpml_string_name( $name ) );
 				}
-				$output .= stripslashes( $label );
+				// @since 5.4.1 translate stored labels
+				if ( $label === $field['label'] ) {
+					$label = __( $label, 'affiliates' );
+				}
+				$output .= wp_kses_post( stripslashes( $label ) );
 				$output .= ' ';
 				$type = isset( $field['type'] ) ? $field['type'] : 'text';
 				$readonly = is_user_logged_in() && ( ( $name == 'user_login' ) || ( $name == 'user_email' ) ) ? ' readonly="readonly" ' : '';
