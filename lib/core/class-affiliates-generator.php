@@ -55,7 +55,7 @@ class Affiliates_Generator {
 		);
 		$post_id = wp_insert_post( $postarr );
 		if ( $post_id instanceof WP_Error ) {
-			$affiliates_admin_messages[] = '<div class="error">' . __( sprintf( 'The affiliate area page could not be created. Error: %s', $post_id->get_error_message() ), 'affiliates' ) . '</div>';
+			$affiliates_admin_messages[] = '<div class="error">' . sprintf( __( 'The affiliate area page could not be created. Error: %s', 'affiliates' ), $post_id->get_error_message() ) . '</div>';
 		} else {
 			$post_ids[] = $post_id;
 		}
