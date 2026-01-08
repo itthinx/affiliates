@@ -1,5 +1,9 @@
 == Affiliates - Changelog ==
 
+= 5.4.1 =
+* WordPress 6.9 compatible.
+* WooCommerce 10.4 compatible.
+
 = 5.4.0 =
 * WordPress 6.9 compatible.
 
