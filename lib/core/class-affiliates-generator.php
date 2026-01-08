@@ -35,8 +35,6 @@ class Affiliates_Generator {
 	 */
 	public static function setup_pages() {
 
-		global $affiliates_admin_messages;
-
 		do_action( 'affiliates_before_setup_pages' );
 
 		$post_ids = array();
@@ -53,9 +51,15 @@ class Affiliates_Generator {
 			'post_title'     => __( 'Affiliate Area', 'affiliates' ),
 			'post_type'      => 'page'
 		);
-		$post_id = wp_insert_post( $postarr );
+		$post_id = wp_insert_post( $postarr, true ); // @since 5.4.1 cause error to be returned instead of 0
 		if ( $post_id instanceof WP_Error ) {
-			$affiliates_admin_messages[] = '<div class="error">' . sprintf( __( 'The affiliate area page could not be created. Error: %s', 'affiliates' ), $post_id->get_error_message() ) . '</div>';
+			wp_admin_notice( // wp_kses_post's the message output so we do not escape here
+				sprintf(
+					__( 'The affiliate area page could not be created. Error: %s', 'affiliates' ),
+					$post_id->get_error_message()
+				),
+				array( 'type' => 'error' )
+			);
 		} else {
 			$post_ids[] = $post_id;
 		}
