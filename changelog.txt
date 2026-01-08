@@ -6,6 +6,7 @@
 * Fixed incorrect function call parameters. [#127](https://github.com/itthinx/affiliates/pull/127)
 * Fixed stored registration field labels translation.
 * Fixed translation calls made too early causing deprecated notices.
+* Revised several instances of missing output escaping.
 
 = 5.4.0 =
 * WordPress 6.9 compatible.
