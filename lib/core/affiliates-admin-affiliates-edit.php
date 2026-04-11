@@ -53,7 +53,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 			// user edit link
 			if ( current_user_can( 'edit_user', $affiliate_user->ID ) ) {
-				$affiliate_user_edit = sprintf( __( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
+				$affiliate_user_edit = sprintf( esc_html__( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . esc_html( $affiliate_user->user_login ) . '</a>' );
 			}
 
 			// user meta fields
@@ -102,13 +102,13 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		foreach ( $_POST['errors'] as $error ) {
 			switch ( $error ) {
 				case AFFILIATES_ADMIN_AFFILIATES_ERROR_NAME_EMPTY :
-					$notice_msg[] = __( 'Name can not be empty.', 'affiliates' );
+					$notice_msg[] = esc_html__( 'Name can not be empty.', 'affiliates' );
 					break;
 				case AFFILIATES_ADMIN_AFFILIATES_ERROR_USERNAME :
-					$notice_msg[] = __( 'The username does not exist.', 'affiliates' );
+					$notice_msg[] = esc_html__( 'The username does not exist.', 'affiliates' );
 					break;
 				default:
-					$notice_msg[] = __( 'Something went wrong.', 'affiliates' );
+					$notice_msg[] = esc_html__( 'Something went wrong.', 'affiliates' );
 					break;
 			}
 		}
@@ -197,9 +197,9 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'</span>' .
 		' ' .
 		'<select id="status" name="status" class="datafield">' .
-		'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . __( 'Active', 'affiliates' ) . '</option>' .
-		'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . __( 'Pending', 'affiliates' ) . '</option>' .
-		'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . __( 'Deleted', 'affiliates' ) . '</option>' .
+		'<option value="active" ' . ( $status == 'active' ? 'selected="selected"' : '' ) . ' >' . esc_html__( 'Active', 'affiliates' ) . '</option>' .
+		'<option value="pending" ' . ( $status == 'pending' ? 'selected="selected"' : '' ) . ' >' . esc_html__( 'Pending', 'affiliates' ) . '</option>' .
+		'<option value="deleted" ' . ( $status == 'deleted' ? 'selected="selected"' : '' ) . ' >' . esc_html__( 'Deleted', 'affiliates' ) . '</option>' .
 		'</select>' .
 		'</label>' .
 		'</div>';
@@ -207,10 +207,10 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 	$output .=
 		'<div class="field">' .
 		wp_nonce_field( 'affiliates-edit', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . esc_attr__( 'Save', 'affiliates' ) . '"/>' .
 		'<input type="hidden" value="edit" name="action"/>' .
 		' ' .
-		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . __( 'Cancel', 'affiliates' ) . '</a>' .
+		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . esc_html__( 'Cancel', 'affiliates' ) . '</a>' .
 		'</div>' .
 		'</div>' . // .affiliate.edit
 		'</form>' .
@@ -393,14 +393,14 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 	$result = false;
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
 		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE] ) ||
 		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' )
 	) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -446,14 +446,14 @@ function affiliates_admin_affiliates_bulk_status_pending_submit() {
 	$result = false;
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
 		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE] ) ||
 		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' )
 	) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
