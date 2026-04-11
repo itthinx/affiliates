@@ -10,6 +10,7 @@
 * Rendering affiliate link references as real HTML anchors in affiliates admin view.
 * Revised affiliates admin styling.
 * Revised affiliate add, edit and remove admin sections.
+* Including version info in admin footer.
 
 = 5.4.1 =
 * WordPress 6.9 compatible.

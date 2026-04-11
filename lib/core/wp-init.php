@@ -1977,6 +1977,7 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-admin-help.php';
  * @return string or nothing
  */
 function affiliates_footer( $render = true ) {
+	global $affiliates_version;
 	$footer = '<div class="affiliates-footer">' .
 		'<p>' .
 		sprintf(
@@ -1985,6 +1986,8 @@ function affiliates_footer( $render = true ) {
 			'<a style="text-decoration:none;" href="https://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a>',
 			'<a style="text-decoration:none;" href="https://www.itthinx.com" target="_blank">itthinx</a>'
 		) .
+		' ' .
+		sprintf( 'v%s', esc_html( $affiliates_version ) ) .
 		' ' .
 		sprintf(
 			/* translators: link */
