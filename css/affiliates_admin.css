@@ -56,11 +56,13 @@ a.removefromaffiliate {
 }
 
 .affiliate-link {
+	font-family: monospace;
 	font-weight: bold;
 	font-style: italic;
 	color: #339;
 }
 .affiliate-link-param {
+	font-family: monospace;
 	font-weight: bold;
 	font-style: italic;
 	color: #993;

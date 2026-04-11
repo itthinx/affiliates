@@ -7,6 +7,8 @@
 * Revised deprecated use of null parameters.
 * Revised code formatting.
 * Revised translatable strings.
+* Rendering affiliate link references as real HTML anchors in affiliates admin view.
+* Revised affiliates admin styling.
 
 = 5.4.1 =
 * WordPress 6.9 compatible.
