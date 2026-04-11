@@ -2,6 +2,9 @@
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
+* Added instances of missing output escaping.
+* Revised instances for input sanitation.
+* Revised deprecated use of null parameters.
 
 = 5.4.1 =
 * WordPress 6.9 compatible.
