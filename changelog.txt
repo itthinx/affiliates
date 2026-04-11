@@ -1,5 +1,8 @@
 == Affiliates - Changelog ==
 
+= 6.0.0 =
+* WordPress 7.0 compatible.
+
 = 5.4.1 =
 * WordPress 6.9 compatible.
 * Fixed incorrect function call parameters. [#127](https://github.com/itthinx/affiliates/pull/127)
