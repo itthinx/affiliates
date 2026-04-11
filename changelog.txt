@@ -5,6 +5,7 @@
 * Added instances of missing output escaping.
 * Revised instances for input sanitation.
 * Revised deprecated use of null parameters.
+* Revised code formatting.
 * Revised translatable strings.
 
 = 5.4.1 =
