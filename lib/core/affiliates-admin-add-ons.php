@@ -42,13 +42,17 @@ function affiliates_admin_add_ons() {
 
 	echo '<p>';
 	printf(
-		__( 'Please also refer to the available <a href="%s">Integrations</a>.', 'affiliates' ),
-		esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) )
-	);
+		sprintf(
+			esc_html__( 'Please also refer to the available %s.', 'affiliates' ),
+			sprintf( '<a href="%s">%s</a>',
+				esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
+				esc_html__( 'Integrations', 'affiliates' )
+			)
+	) );
 	echo '</p>';
 
 	echo '<h2 class="add-ons-sub-title">';
-	echo __( 'Recommended Tools', 'affiliates' );
+	echo esc_html__( 'Recommended Tools', 'affiliates' );
 	echo '</h2>';
 
 	$entries = array(
@@ -259,89 +263,92 @@ function affiliates_admin_add_ons() {
 
 	if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
 
-	echo '<h2>';
-	echo esc_html__( 'Affiliates Pro', 'affiliates' );
-	echo '</h2>';
+		echo '<h2>';
+		echo esc_html__( 'Affiliates Pro', 'affiliates' );
+		echo '</h2>';
 
-	echo '<ul class="feature-listing">';
+		echo '<ul class="feature-listing">';
 
-	echo '<li>';
-	echo esc_html__( 'Advanced and additional integrations are provided with Affiliates Pro and Affiliates Enterprise.', 'affiliates' );
-	echo ' ';
-	echo esc_html__( 'Please refer to the Shop pages for included integrations.', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Advanced and additional integrations are provided with Affiliates Pro and Affiliates Enterprise.', 'affiliates' );
+		echo ' ';
+		echo esc_html__( 'Please refer to the Shop pages for included integrations.', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Affiliate attributes for individual commission rates, coupons, ...', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Affiliate attributes for individual commission rates, coupons, ...', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Fixed, percentage or formula based commissions', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Fixed, percentage or formula based commissions', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Extended totals report with additional filters', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Extended totals report with additional filters', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Export Totals and Mass Payment File generation', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Export Totals and Mass Payment File generation', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Advanced shortcodes including banners and graphs', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Advanced shortcodes including banners and graphs', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Banner management', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Banner management', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Customizable affiliate registration email', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Customizable affiliate registration email', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Notifications including customizable messages', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Notifications including customizable messages', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Affiliate link generator form', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Affiliate link generator form', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo __( 'The <a href="https://docs.itthinx.com/">Documentation</a> site also provides up-to-date information on the Affiliates, Affiliates Pro and Affiliates Enterprise plugin features.', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		printf(
+			esc_html__( 'The %s site also provides up-to-date information on the Affiliates, Affiliates Pro and Affiliates Enterprise plugin features.', 'affiliates' ),
+			sprintf( '<a href="https://docs.itthinx.com/">%s</a>', esc_html__( 'Documentation', 'affiliates' ) )
+		);
+		echo '</li>';
 
-	echo '</ul>';
+		echo '</ul>';
 
 	}
 
 	if ( ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) || ( AFFILIATES_PLUGIN_NAME == 'affiliates-pro' ) ) {
 
-	echo '<h2>';
-	echo esc_html__( 'Affiliates Enterprise', 'affiliates' );
-	echo '</h2>';
+		echo '<h2>';
+		echo esc_html__( 'Affiliates Enterprise', 'affiliates' );
+		echo '</h2>';
 
-	echo '<ul class="feature-listing">';
+		echo '<ul class="feature-listing">';
 
-	echo '<li>';
-	echo esc_html__( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Includes all additional features available in Affiliates Pro.', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Affiliate campaign management and tracking.', 'affiliates' );
-	echo ' ';
-	echo esc_html__( 'This allows affiliates to distinguish between income they generate by placing affiliate links on Facebook, from that generated through Twitter and other sources.', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Affiliate campaign management and tracking.', 'affiliates' );
+		echo ' ';
+		echo esc_html__( 'This allows affiliates to distinguish between income they generate by placing affiliate links on Facebook, from that generated through Twitter and other sources.', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Multi-tier capability with unlimited levels and rates.', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Multi-tier capability with unlimited levels and rates.', 'affiliates' );
+		echo '</li>';
 
-	echo '<li>';
-	echo esc_html__( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', 'affiliates' );
-	echo '</li>';
+		echo '<li>';
+		echo esc_html__( 'Pixel Tracking makes it even easier for Affiliates to refer customers, as they do not even need to click an affiliate link. Supported methods are image and iframe tracking pixels.', 'affiliates' );
+		echo '</li>';
 
-	echo '</ul>';
+		echo '</ul>';
 
 	}
 
@@ -350,7 +357,11 @@ function affiliates_admin_add_ons() {
 	echo '</h2>';
 
 	echo '<p>';
-	echo __( 'Free and premium extensions are listed on the <a href="https://www.itthinx.com/plugins-overview/">Overview</a> page and in the <a href="https://www.itthinx.com/shop/">Shop</a>.', 'affiliates' );
+	printf(
+		esc_html__( 'Free and premium extensions are listed on the %1$s page and in the %2$s.', 'affiliates' ),
+		sprintf( '<a href="https://www.itthinx.com/plugins-overview/">%s</a>', esc_html__( 'Overview', 'affiliates' ) ),
+		sprintf( '<a href="https://www.itthinx.com/shop/">%s</a>', esc_html__( 'Shop', 'affiliates' ) )
+	);
 	echo '</p>';
 
 	echo '</div>';
