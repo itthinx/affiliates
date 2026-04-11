@@ -490,19 +490,19 @@ function affiliates_admin_affiliates() {
 				'<label class="affiliate-name-filter">' .
 					esc_html__( 'Name', 'affiliates' ) .
 					' ' .
-					'<input class="affiliate-name-filter" name="affiliate_name" type="text" value="' . $affiliate_name . '"/>' .
+					'<input class="affiliate-name-filter" name="affiliate_name" type="text" value="' . esc_attr( $affiliate_name ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-email-filter">' .
 					esc_html__( 'Email', 'affiliates' ) .
 					' ' .
-					'<input class="affiliate-email-filter" name="affiliate_email" type="text" value="' . $affiliate_email . '"/>' .
+					'<input class="affiliate-email-filter" name="affiliate_email" type="text" value="' . esc_attr( $affiliate_email ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-user-login-filter">' .
 					esc_html__( 'Username', 'affiliates' ) .
 					' ' .
-					'<input class="affiliate-user-login-filter" name="affiliate_user_login" type="text" value="' . $affiliate_user_login . '" />' .
+					'<input class="affiliate-user-login-filter" name="affiliate_user_login" type="text" value="' . esc_attr( $affiliate_user_login ) . '" />' .
 				'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
@@ -670,7 +670,7 @@ function affiliates_admin_affiliates() {
 			} else {
 				$output .= $result->affiliate_id;
 			}
-			$output .= "</td>";
+			$output .= '</td>';
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . "</td>";
 			$output .= "<td class='affiliate-email'>" . $result->email;
 			if ( isset( $result->email ) && isset( $result->user_email ) && strcmp( $result->email, $result->user_email ) !== 0 ) {
@@ -687,12 +687,12 @@ function affiliates_admin_affiliates() {
 			}
 
 			$output .= "</td>";
-			$output .= "<td class='from-date'>$result->from_date</td>";
-			$output .= "<td class='thru-date'>$result->thru_date</td>";
+			$output .= sprintf( "<td class='from-date'>%s</td>", esc_html( $result->from_date ) );
+			$output .= sprintf( "<td class='thru-date'>%s</td>", esc_html( $result->thru_date ) );
 
-			$output .= "<td class='status'>$result->status</td>";
+			$output .= sprintf( "<td class='status'>%s</td>", esc_html( $result->status ) );
 
-			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . $result->affiliate_id . "' alt='" . esc_attr__( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
+			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . esc_url( $result->affiliate_id ) . "' alt='" . esc_attr__( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
 			$output .= "<td class='remove'>" .
 				( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE )  ) ?
 				"<a href='" . esc_url( $current_url ) . "&action=remove&affiliate_id=" . $result->affiliate_id . "' alt='" . esc_attr__( 'Remove', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/remove.png'/></a>"
@@ -712,7 +712,7 @@ function affiliates_admin_affiliates() {
 				': ' .
 				sprintf( '<span class="affiliate-link-param">?%1$s=%2$s</span>', esc_html( $pname ), esc_html( $encoded_id ) ) .
 				'</div>';
-			$output .= "</td>";
+			$output .= '</td>';
 			$output .= '</tr>';
 
 			if ( $show_totals ) {
@@ -775,7 +775,8 @@ function affiliates_admin_affiliates() {
 						foreach ( $total as $currency => $amount ) {
 							$output .= '<li>';
 							$output .= sprintf(
-								esc_html__( '%1$s %2$s', 'affiliates' ), // translators: first is a three-letter currency code, second is a monetary amount
+								/* translators: first is a three-letter currency code, second is a monetary amount */
+								esc_html__( '%1$s %2$s', 'affiliates' ),
 								esc_html( $currency ),
 								esc_html( affiliates_format_referral_amount( $amount, 'display' ) )
 							);
