@@ -5,6 +5,7 @@
 * Added instances of missing output escaping.
 * Revised instances for input sanitation.
 * Revised deprecated use of null parameters.
+* Revised translatable strings.
 
 = 5.4.1 =
 * WordPress 6.9 compatible.
