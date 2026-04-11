@@ -11,6 +11,7 @@
 * Revised affiliates admin styling.
 * Revised affiliate add, edit and remove admin sections.
 * Including version info in admin footer.
+* Updated the translation template.
 
 = 5.4.1 =
 * WordPress 6.9 compatible.
