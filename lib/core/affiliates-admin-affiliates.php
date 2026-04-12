@@ -478,82 +478,82 @@ function affiliates_admin_affiliates() {
 
 	$output .= sprintf( '<div id="filters-container" class="filters" style="%s">', $show_filters ? '' : 'display:none' );
 	$output .=
-			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
+			'<label class="description" for="setfilters">' . esc_html__( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
 				'<div class="filter-section">' .
 				'<label class="affiliate-id-filter shrink">' .
-					__( 'Id', 'affiliates' ) .
+					esc_html__( 'Id', 'affiliates' ) .
 					' ' .
 					'<input class="affiliate-id-filter" name="affiliate_id" type="text" value="' . esc_attr( $affiliate_id ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-name-filter">' .
-				__( 'Name', 'affiliates' ) .
-				' ' .
-				'<input class="affiliate-name-filter" name="affiliate_name" type="text" value="' . $affiliate_name . '"/>' .
+					esc_html__( 'Name', 'affiliates' ) .
+					' ' .
+					'<input class="affiliate-name-filter" name="affiliate_name" type="text" value="' . esc_attr( $affiliate_name ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-email-filter">' .
-				__( 'Email', 'affiliates' ) .
-				' ' .
-				'<input class="affiliate-email-filter" name="affiliate_email" type="text" value="' . $affiliate_email . '"/>' .
+					esc_html__( 'Email', 'affiliates' ) .
+					' ' .
+					'<input class="affiliate-email-filter" name="affiliate_email" type="text" value="' . esc_attr( $affiliate_email ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="affiliate-user-login-filter">' .
-				__( 'Username', 'affiliates' ) .
-				' ' .
-				'<input class="affiliate-user-login-filter" name="affiliate_user_login" type="text" value="' . $affiliate_user_login . '" />' .
+					esc_html__( 'Username', 'affiliates' ) .
+					' ' .
+					'<input class="affiliate-user-login-filter" name="affiliate_user_login" type="text" value="' . esc_attr( $affiliate_user_login ) . '" />' .
 				'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
 				'<label class="from-date-filter">' .
-				__( 'From', 'affiliates' ) .
-				' ' .
-				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>' .
+					esc_html__( 'From', 'affiliates' ) .
+					' ' .
+					'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>' .
 				'</label>' .
 				' ' .
 				'<label class="thru-date-filter">' .
-				__( 'Until', 'affiliates' ) .
-				' ' .
-				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>' .
+					esc_html__( 'Until', 'affiliates' ) .
+					' ' .
+					'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>' .
 				'</label>' .
 				'</div>' .
 				'<div class="filter-section">' .
 				'<label class="show-inoperative-filter">' .
 					'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
 					' ' .
-					__( 'Include inoperative affiliates', 'affiliates' ) .
+					esc_html__( 'Include inoperative affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-active-filter">' .
-				'<input class="show-active-filter" name="show_active" type="checkbox" ' . ( $show_active ? 'checked="checked"' : '' ) . '/>' .
-				' ' .
-				__( 'Include active affiliates', 'affiliates' ) .
+					'<input class="show-active-filter" name="show_active" type="checkbox" ' . ( $show_active ? 'checked="checked"' : '' ) . '/>' .
+					' ' .
+					esc_html__( 'Include active affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-pending-filter">' .
-				'<input class="show-pending-filter" name="show_pending" type="checkbox" ' . ( $show_pending ? 'checked="checked"' : '' ) . '/>' .
-				' ' .
-				__( 'Include pending affiliates', 'affiliates' ) .
+					'<input class="show-pending-filter" name="show_pending" type="checkbox" ' . ( $show_pending ? 'checked="checked"' : '' ) . '/>' .
+					' ' .
+					esc_html__( 'Include pending affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-deleted-filter">' .
 					'<input class="show-deleted-filter" name="show_deleted" type="checkbox" ' . ( $show_deleted ? 'checked="checked"' : '' ) . '/>' .
 					' ' .
-					__( 'Include removed affiliates', 'affiliates' ) .
+					esc_html__( 'Include removed affiliates', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-totals-filter">' .
 					'<input class="show-totals-filter" name="show_totals" type="checkbox" ' . ( $show_totals ? 'checked="checked"' : '' ) . '/>' .
 					' ' .
-					__( 'Show accumulated referral totals', 'affiliates' ) .
+					esc_html__( 'Show accumulated referral totals', 'affiliates' ) .
 				'</label>' .
 				'</div>
 				<div class="filter-buttons">' .
-				wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-				'<input type="hidden" value="submitted" name="submitted"/>' .
+					wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE, true, false ) .
+					'<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" name="clear_filters" value="' . esc_attr__( 'Clear', 'affiliates' ) . '"/>' .
+					'<input type="hidden" value="submitted" name="submitted"/>' .
 				'</div>' .
 			'</form>' .
 		'</div>';
@@ -562,10 +562,10 @@ function affiliates_admin_affiliates() {
 		<div class="page-options right">
 			<form id="setrowcount" action="" method="post">
 				<div>
-					<label for="row_count">' . __( 'Results per page', 'affiliates' ) . '</label>' .
+					<label for="row_count">' . esc_html__( 'Results per page', 'affiliates' ) . '</label>' .
 					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) . '" />
 					' . wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_NONCE_1, true, false ) . '
-					<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
+					<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>
 				</div>
 			</form>
 		</div>
@@ -589,12 +589,12 @@ function affiliates_admin_affiliates() {
 	$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE, true, false );
 	$output .= '<div class="affiliates-bulk-container">';
 	$output .= '<select class="bulk-action" name="bulk-action">';
-	$output .= '<option selected="selected" value="-1">' . esc_html( __( 'Bulk Actions', 'affiliates' ) ) . '</option>';
-	$output .= '<option value="remove-affiliate">' . esc_html( __( 'Remove affiliate', 'affiliates' ) ) . '</option>';
-	$output .= '<option value="status-pending">' . esc_html( __( 'Set status to Pending', 'affiliates' ) ) . '</option>';
-	$output .= '<option value="status-active">' . esc_html( __( 'Set status to Active', 'affiliates' ) ) . '</option>';
+	$output .= '<option selected="selected" value="-1">' . esc_html__( 'Bulk Actions', 'affiliates' ) . '</option>';
+	$output .= '<option value="remove-affiliate">' . esc_html__( 'Remove affiliate', 'affiliates' ) . '</option>';
+	$output .= '<option value="status-pending">' . esc_html__( 'Set status to Pending', 'affiliates' ) . '</option>';
+	$output .= '<option value="status-active">' . esc_html__( 'Set status to Active', 'affiliates' ) . '</option>';
 	$output .= '</select>';
-	$output .= sprintf( '<input class="button" type="submit" name="bulk" value="%s" />', esc_attr( __( 'Apply', 'affiliates' ) ) );
+	$output .= sprintf( '<input class="button" type="submit" name="bulk" value="%s" />', esc_attr__( 'Apply', 'affiliates' ) );
 	$output .= '<input type="hidden" name="action" value="affiliate-action"/>';
 	$output .= '</div>';
 
@@ -618,9 +618,17 @@ function affiliates_admin_affiliates() {
 			} else {
 				$class = "$key manage-column sortable";
 			}
-			$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
+			$column_display_name = sprintf(
+				'<a href="%1$s"><span>%2$s</span><span class="sorting-indicator"></span></a>',
+				esc_url( add_query_arg( $options, $current_url ) ),
+				esc_html( $column_display_name )
+			);
 		}
-		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
+		$output .= sprintf(
+			'<th scope="col" class="%1$s">%2$s</th>',
+			esc_attr( $class ),
+			$column_display_name
+		);
 		$num_columns++;
 	}
 	$num_columns++; // ID
@@ -644,7 +652,8 @@ function affiliates_admin_affiliates() {
 			}
 
 			$class_inoperative = '';
-			if ( $is_inoperative = ! ( ( $result->from_date <= $today ) && ( $result->thru_date == null || $result->thru_date >= $today ) ) ) {
+			$is_inoperative = ! ( ( $result->from_date <= $today ) && ( $result->thru_date == null || $result->thru_date >= $today ) );
+			if ( $is_inoperative ) {
 				$class_inoperative = ' inoperative ';
 				$name_suffix .= " " . esc_html__( '(inoperative)', 'affiliates' );
 			}
@@ -657,15 +666,15 @@ function affiliates_admin_affiliates() {
 
 			$output .= "<td class='affiliate-id'>";
 			if ( affiliates_encode_affiliate_id( $result->affiliate_id ) != $result->affiliate_id ) {
-				$output .= '<span class="encoded-hint" title="' . affiliates_encode_affiliate_id( $result->affiliate_id ) . '">' . $result->affiliate_id . '</span>';
+				$output .= '<span class="encoded-hint" title="' . esc_attr( affiliates_encode_affiliate_id( $result->affiliate_id ) ) . '">' . esc_html( $result->affiliate_id ) . '</span>';
 			} else {
 				$output .= $result->affiliate_id;
 			}
-			$output .= "</td>";
+			$output .= '</td>';
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . "</td>";
 			$output .= "<td class='affiliate-email'>" . $result->email;
 			if ( isset( $result->email ) && isset( $result->user_email ) && strcmp( $result->email, $result->user_email ) !== 0 ) {
-				$output .= '<span title="' . sprintf( esc_html__( 'There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s', 'affiliates' ), $result->user_email ) . '" class="warning"> [&nbsp;!&nbsp]</span>';
+				$output .= '<span title="' . sprintf( esc_html__( 'There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s', 'affiliates' ), esc_html( $result->user_email ) ) . '" class="warning"> [&nbsp;!&nbsp]</span>';
 			}
 			$output .= "</td>";
 			$output .= "<td class='affiliate-user-login'>";
@@ -678,28 +687,32 @@ function affiliates_admin_affiliates() {
 			}
 
 			$output .= "</td>";
-			$output .= "<td class='from-date'>$result->from_date</td>";
-			$output .= "<td class='thru-date'>$result->thru_date</td>";
+			$output .= sprintf( "<td class='from-date'>%s</td>", esc_html( $result->from_date ) );
+			$output .= sprintf( "<td class='thru-date'>%s</td>", esc_html( $result->thru_date ) );
 
-			$output .= "<td class='status'>$result->status</td>";
+			$output .= sprintf( "<td class='status'>%s</td>", esc_html( $result->status ) );
 
-			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . $result->affiliate_id . "' alt='" . __( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
+			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . esc_url( $result->affiliate_id ) . "' alt='" . esc_attr__( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
 			$output .= "<td class='remove'>" .
 				( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE )  ) ?
-				"<a href='" . esc_url( $current_url ) . "&action=remove&affiliate_id=" . $result->affiliate_id . "' alt='" . __( 'Remove', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/remove.png'/></a>"
+				"<a href='" . esc_url( $current_url ) . "&action=remove&affiliate_id=" . $result->affiliate_id . "' alt='" . esc_attr__( 'Remove', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/remove.png'/></a>"
 				: "" ) .
 				"</td>";
 			$output .= "<td class='links'>";
 			$encoded_id = affiliates_encode_affiliate_id( $result->affiliate_id );
+			$link_url = affiliates_get_affiliate_url( home_url(), $result->affiliate_id );
 			$output .=
-				__( 'Link', 'affiliates' ) .
+				'<div>' .
+				esc_html__( 'Link', 'affiliates' ) .
 				': ' .
-				'<span class="affiliate-link">' . affiliates_get_affiliate_url( home_url(), $result->affiliate_id ) . '</span>' .
-				'<br/>' .
-				__( 'URL Parameter', 'affiliates' ) .
+				sprintf( '<span class="affiliate-link"><a href="%1$s" target="_blank">%2$s</a></span>', esc_url( $link_url ), esc_html( $link_url ) ) .
+				'</div>' .
+				'<div>' .
+				esc_html__( 'URL Parameter', 'affiliates' ) .
 				': ' .
-				'<span class="affiliate-link-param">' . '?' . $pname . '=' . $encoded_id . '</span>';
-			$output .= "</td>";
+				sprintf( '<span class="affiliate-link-param">?%1$s=%2$s</span>', esc_html( $pname ), esc_html( $encoded_id ) ) .
+				'</div>';
+			$output .= '</td>';
 			$output .= '</tr>';
 
 			if ( $show_totals ) {
@@ -719,16 +732,32 @@ function affiliates_admin_affiliates() {
 						$output .= '<strong>';
 						switch( $status ) {
 							case AFFILIATES_REFERRAL_STATUS_CLOSED :
-								$output .= sprintf( __( '<span style="cursor:help" title="%s">Closed</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for closed referrals (commissions paid).', 'affiliates' ) ) );
+								$output .= sprintf(
+									'<span style="cursor:help" title="%1$s">%2$s</span>',
+									esc_attr__( 'Accumulated total for closed referrals (commissions paid).', 'affiliates' ),
+									esc_html__( 'Closed', 'affiliates' )
+								);
 								break;
 							case AFFILIATES_REFERRAL_STATUS_ACCEPTED :
-								$output .= sprintf( __( '<span style="cursor:help" title="%s">Accepted</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for accepted referrals (commissions unpaid).', 'affiliates' ) ) );
+								$output .= sprintf(
+									'<span style="cursor:help" title="%1$s">%2$s</span>',
+									esc_attr__( 'Accumulated total for accepted referrals (commissions unpaid).', 'affiliates' ),
+									esc_html__( 'Accepted', 'affiliates' )
+								);
 								break;
 							case AFFILIATES_REFERRAL_STATUS_PENDING :
-								$output .= sprintf( __( '<span style="cursor:help" title="%s">Pending</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for pending referrals.', 'affiliates' ) ) );
+								$output .= sprintf(
+									'<span style="cursor:help" title="%1$s">%2$s</span>',
+									esc_attr__( 'Accumulated total for pending referrals.', 'affiliates' ),
+									esc_html__( 'Pending', 'affiliates' )
+								);
 								break;
 							case AFFILIATES_REFERRAL_STATUS_REJECTED :
-								$output .= sprintf( __( '<span style="cursor:help" title="%s">Rejected</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for rejected referrals.', 'affiliates' ) ) );
+								$output .= sprintf(
+									'<span style="cursor:help" title="%1$s">%2$s</span>',
+									esc_attr__( 'Accumulated total for rejected referrals.', 'affiliates' ),
+									esc_html__( 'Rejected', 'affiliates' )
+								);
 								break;
 						}
 						$output .= '</strong>';
@@ -746,7 +775,8 @@ function affiliates_admin_affiliates() {
 						foreach ( $total as $currency => $amount ) {
 							$output .= '<li>';
 							$output .= sprintf(
-								esc_html__( '%1$s %2$s', 'affiliates' ), // translators: first is a three-letter currency code, second is a monetary amount
+								/* translators: first is a three-letter currency code, second is a monetary amount */
+								esc_html__( '%1$s %2$s', 'affiliates' ),
 								esc_html( $currency ),
 								esc_html( affiliates_format_referral_amount( $amount, 'display' ) )
 							);
@@ -764,7 +794,7 @@ function affiliates_admin_affiliates() {
 			}
 		}
 	} else {
-		$output .= '<tr><td colspan="' . $num_columns . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="' . esc_attr( $num_columns ) . '">' . esc_html__( 'There are no results.', 'affiliates' ) . '</td></tr>';
 	}
 
 	$output .= '</tbody>';

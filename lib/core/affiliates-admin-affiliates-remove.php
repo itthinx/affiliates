@@ -32,13 +32,13 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 	global $wpdb;
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	$affiliate = affiliates_get_affiliate( intval( $affiliate_id ) );
 
 	if ( empty( $affiliate ) ) {
-		wp_die( __( 'No such affiliate.', 'affiliates' ) );
+		wp_die( esc_html__( 'No such affiliate.', 'affiliates' ) );
 	}
 
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
@@ -50,7 +50,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		$affiliate_user = get_user_by( 'id', intval( $affiliate_user_id ) );
 		if ( $affiliate_user ) {
 			if ( current_user_can( 'edit_user',  $affiliate_user->ID ) ) {
-				$affiliate_user_edit = sprintf( __( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . $affiliate_user->user_login . '</a>' );
+				$affiliate_user_edit = sprintf( esc_html__( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . esc_html( $affiliate_user->user_login ) . '</a>' );
 			} else {
 				$affiliate_user_edit = $affiliate_user->user_login;
 			}
@@ -79,7 +79,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		'<li>' . sprintf( esc_html__( 'Until : %s', 'affiliates' ), wp_filter_kses( $affiliate['from_date'] ) ) . '</li>' .
 		'</ul> ' .
 		wp_nonce_field( 'affiliates-remove', AFFILIATES_ADMIN_AFFILIATES_NONCE, true, false ) .
-		'<input class="button button-primary" type="submit" value="' . esc_html__( 'Remove', 'affiliates' ) . '"/>' .
+		'<input class="button button-primary" type="submit" value="' . esc_attr__( 'Remove', 'affiliates' ) . '"/>' .
 		'<input type="hidden" value="remove" name="action"/>' .
 		' ' .
 		'<a class="cancel button" href="' . esc_url( $current_url ) . '">' . esc_html__( 'Cancel', 'affiliates' ) . '</a>' .

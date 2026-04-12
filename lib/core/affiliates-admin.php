@@ -31,10 +31,12 @@ function affiliates_admin() {
 	global $wpdb, $affiliates_options;
 
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	echo '<h1>' . __( 'Affiliates Overview', 'affiliates' ) . '</h1>';
+	echo '<h1>';
+	echo esc_html__( 'Affiliates Overview', 'affiliates' );
+	echo '</h1>';
 
 	$today = date( 'Y-m-d', time() );
 	$day_interval  = 7;
@@ -52,7 +54,7 @@ function affiliates_admin() {
 			!isset( $_POST[AFFILIATES_ADMIN_OVERVIEW_NONCE] ) ||
 			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_OVERVIEW_NONCE], 'admin' )
 		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 	$from_date = $affiliates_options->get_option( 'overview_from_date', null );
@@ -146,26 +148,26 @@ function affiliates_admin() {
 	// fill this in before the final $from_date and $thru_date are set
 	$filters_form =
 		'<div class="filters">' .
-			'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
+			'<label class="description" for="setfilters">' . esc_html__( 'Filters', 'affiliates' ) . '</label>' .
 			'<form id="setfilters" action="" method="post">' .
 				'<div class="filter-section">' .
 					'<label class="from-date-filter" for="from_date">' .
-						__( 'From', 'affiliates' ) .
+						esc_html__( 'From', 'affiliates' ) .
 						'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
 					'</label>' .
 					'<label class="thru-date-filter" for="thru_date">' .
-						__( 'Until', 'affiliates' ) .
+						esc_html__( 'Until', 'affiliates' ) .
 						'<input class="datefield thru-date-filter" name="thru_date" type="text" value="' . esc_attr( $thru_date ) . '"/>'.
 					'</label>' .
 					'<label class="days-back-filter" for="days_back">' .
-						__( 'Days back', 'affiliates' ) .
+						esc_html__( 'Days back', 'affiliates' ) .
 						'<input class="days-back-filter" name="days_back" type="text" value="' . esc_attr( $days_back ) . '"/>'.
 					'</label>' .
 				'</div>' .
 				'<div class="filter-buttons">' .
 					wp_nonce_field( 'admin', AFFILIATES_ADMIN_OVERVIEW_NONCE, true, false ) .
-					'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-					'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" value="' . esc_html__( 'Apply', 'affiliates' ) . '"/>' .
+					'<input class="button" type="submit" name="clear_filters" value="' . esc_html__( 'Clear', 'affiliates' ) . '"/>' .
 					'<input type="hidden" value="submitted" name="submitted"/>' .
 				'</div>' .
 			'</form>' .
@@ -297,7 +299,7 @@ function affiliates_admin() {
 	$ticks_json           = json_encode( $ticks );
 	$dates_json           = json_encode( $dates );
 
-	echo '<h2>' . sprintf( __( '%d Day Charts', 'affiliates' ), $days_back ) . '</h2>';
+	echo '<h2>' . sprintf( esc_html__( '%d Day Charts', 'affiliates' ), $days_back ) . '</h2>';
 	echo '<div class="manage" style="margin-right:1em">';
 	?>
 	<div id="stats" class="" style="width:100%;height:400px;"></div>
@@ -422,7 +424,9 @@ function affiliates_admin() {
 	echo $filters_form;
 	echo '</div>';
 
-	echo '<h2>' . __( 'Statistics Summary', 'affiliates' ) . '</h2>';
+	echo '<h2>';
+	echo esc_html__( 'Statistics Summary', 'affiliates' );
+	echo '</h2>';
 
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	$hits = $wpdb->get_var(
@@ -472,10 +476,10 @@ function affiliates_admin() {
 		}
 	}
 
-	$accepted_icon = "<img class='icon' alt='" . __( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>";
-	$closed_icon = "<img class='icon' alt='" . __( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>";
-	$pending_icon = "<img class='icon' alt='" . __( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>";
-	$rejected_icon = "<img class='icon' alt='" . __( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>";
+	$accepted_icon = "<img class='icon' alt='" . esc_attr__( 'Accepted', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/accepted.png'/>";
+	$closed_icon = "<img class='icon' alt='" . esc_attr__( 'Closed', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/closed.png'/>";
+	$pending_icon = "<img class='icon' alt='" . esc_attr__( 'Pending', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/pending.png'/>";
+	$rejected_icon = "<img class='icon' alt='" . esc_attr__( 'Rejected', 'affiliates') . "' src='" . AFFILIATES_PLUGIN_URL . "images/rejected.png'/>";
 
 	$statuses = array(
 		AFFILIATES_REFERRAL_STATUS_ACCEPTED => array( 'name' => __( 'Accepted', 'affiliates' ), 'icon' => $accepted_icon ),
@@ -501,7 +505,7 @@ function affiliates_admin() {
 					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
 					printf(
 						'<div class="status">%s %s</div><div class="count">%d</div><div class="amount">%s %s</div>',
-						$status['icon'],
+						$status['icon'], // attributes are already escaped
 						esc_html( $status['name'] ),
 						esc_html( $stats[$status_id]['count'] ),
 						esc_html( $currency_id ),

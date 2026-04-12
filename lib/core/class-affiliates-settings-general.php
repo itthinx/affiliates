@@ -58,6 +58,29 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			return;
 		}
 
+		if ( isset( $_REQUEST['subsection'] ) && $_REQUEST['subsection'] === 'data-cleaner' ) {
+			Affiliates_Data_Cleaner::admin();
+			echo '<p style="border-top: 1px solid #ccc; margin: 8px 0; padding: 8px 0;">';
+			if ( !isset( $_REQUEST['action'] ) ) {
+				$url = add_query_arg(
+					array( 'section' => 'general' ),
+					admin_url( 'admin.php?page=affiliates-admin-settings' )
+				);
+			} else {
+				$url = add_query_arg(
+					array( 'section' => 'general', 'subsection' => 'data-cleaner' ),
+					admin_url( 'admin.php?page=affiliates-admin-settings' )
+				);
+			}
+			printf(
+				'<a class="button" href="%s">%s</a>',
+				esc_url( $url ),
+				esc_html__( 'Back', 'affiliates' )
+				);
+			echo '</p>';
+			return;
+		}
+
 		$robots_table = _affiliates_get_tablename( 'robots' );
 
 		if ( isset( $_POST['submit'] ) ) {
@@ -302,7 +325,6 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 		echo
 			'<h3>' . __( 'Robots', 'affiliates' ) . '</h3>' .
 			'<p>' .
-			//'<label for="robots">' . __( 'Robots', 'affiliates' ) . '</label>' .
 			'<textarea id="robots" name="robots" rows="10" cols="45">' . wp_filter_nohtml_kses( $robots ) . '</textarea>' .
 			'</p>' .
 			'<p>' .
@@ -320,6 +342,21 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					esc_html__( 'Robot Cleaner', 'affiliates' )
 				)
 			);
+		echo '</p>';
+
+		echo '<h3>' . __( 'Data', 'affiliates' ) . '</h3>';
+		echo '<p>';
+		printf(
+			esc_html__( 'Use the data cleaner to remove data on unused hits, URIs and user agents: %s', 'affiliates' ),
+			sprintf(
+				'<a class="button" href="%s">%s</a>',
+				add_query_arg(
+					array( 'section' => 'general', 'subsection' => 'data-cleaner' ),
+					admin_url( 'admin.php?page=affiliates-admin-settings' )
+				),
+				esc_html__( 'Data Cleaner', 'affiliates' )
+			)
+		);
 		echo '</p>';
 
 		if ( !affiliates_is_sitewide_plugin() ) {

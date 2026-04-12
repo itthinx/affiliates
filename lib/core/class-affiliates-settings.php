@@ -183,16 +183,15 @@ class Affiliates_Settings {
 
 		self::init_sections();
 
-		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : '';
+		$section = isset( $_REQUEST['section'] ) ? sanitize_text_field( $_REQUEST['section'] ) : '';
 		if ( !array_key_exists( $section, self::$sections ) ) {
 			$section = 'general';
 		}
 		$section_title = self::$sections[$section];
 
-		echo
-			'<h1>' .
-			__( 'Settings', 'affiliates' ) .
-			'</h1>';
+		echo '<h1>';
+		echo esc_html__( 'Settings', 'affiliates' );
+		echo '</h1>';
 
 		$section_links = '';
 		foreach( self::$sections as $sec => $title ) {

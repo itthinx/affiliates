@@ -1,5 +1,20 @@
 == Affiliates - Changelog ==
 
+= 6.0.0 =
+* WordPress 7.0 compatible.
+* Added the Data Cleaner.
+* Added instances of missing output escaping.
+* Revised instances for input sanitation.
+* Revised deprecated use of null parameters.
+* Revised code formatting.
+* Revised translatable strings.
+* Rendering affiliate link references as real HTML anchors in affiliates admin view.
+* Revised affiliates admin styling.
+* Revised affiliate add, edit and remove admin sections.
+* Including version info in admin footer.
+* Updated the translation template.
+* Updated translations.
+
 = 5.4.1 =
 * WordPress 6.9 compatible.
 * Fixed incorrect function call parameters. [#127](https://github.com/itthinx/affiliates/pull/127)
