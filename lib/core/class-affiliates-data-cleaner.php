@@ -99,9 +99,7 @@ class Affiliates_Data_Cleaner {
 			if ( is_numeric( $count_uris ) ) {
 				$count_uris = intval( $count_uris );
 				if ( $count_uris > 0 ) {
-					$query = $wpdb->prepare(
-						"DELETE FROM $uris_table WHERE uri_id NOT IN (SELECT src_uri_id FROM $hits_table WHERE src_uri_id IS NOT NULL) AND uri_id NOT IN (SELECT dest_uri_id FROM $hits_table WHERE dest_uri_id IS NOT NULL)"
-					);
+					$query = "DELETE FROM $uris_table WHERE uri_id NOT IN (SELECT src_uri_id FROM $hits_table WHERE src_uri_id IS NOT NULL) AND uri_id NOT IN (SELECT dest_uri_id FROM $hits_table WHERE dest_uri_id IS NOT NULL)";
 					$result = $wpdb->query( $query );
 					if ( $result ) {
 						$uris_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
@@ -114,9 +112,7 @@ class Affiliates_Data_Cleaner {
 			if ( is_numeric( $count_user_agents ) ) {
 				$count_user_agents = intval( $count_user_agents );
 				if ( $count_user_agents > 0 ) {
-					$query = $wpdb->prepare(
-						"DELETE FROM $user_agents_table WHERE user_agent_id NOT IN (SELECT user_agent_id FROM $hits_table WHERE user_agent_id IS NOT NULL)"
-					);
+					$query = "DELETE FROM $user_agents_table WHERE user_agent_id NOT IN (SELECT user_agent_id FROM $hits_table WHERE user_agent_id IS NOT NULL)";
 					$result = $wpdb->query( $query );
 					if ( $result ) {
 						$user_agents_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
