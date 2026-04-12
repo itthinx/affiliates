@@ -2,6 +2,7 @@
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
+* Added the Data Cleaner.
 * Added instances of missing output escaping.
 * Revised instances for input sanitation.
 * Revised deprecated use of null parameters.

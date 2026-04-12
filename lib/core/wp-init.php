@@ -56,6 +56,9 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-ajax.php';
 // robot cleaner
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-robot-cleaner.php';
 
+// data cleaner
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-data-cleaner.php';
+
 // forms, shortcodes, widgets
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-contact.php';
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-registration.php';
