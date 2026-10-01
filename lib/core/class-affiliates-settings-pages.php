@@ -123,7 +123,11 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 		esc_html_e( 'You can modify the default affiliate area and also create customized pages for your affiliates using shortcodes.', 'affiliates' );
 		echo '</p>';
 		echo '<p>';
-		echo wp_kses( __( 'Please refer to the <a href="https://docs.itthinx.com/document/affiliates/">Documentation</a> for more details.', 'affiliates' ), array( 'a' => array( 'href' => array() ) ) );
+		printf(
+			/* translators: documentation link */
+			esc_html__( 'Please refer to the %s for more details.', 'affiliates' ),
+			'<a href="https://docs.itthinx.com/document/affiliates/">' . esc_html__( 'Documentation', 'affiliates' ) . '</a>'
+		);
 		echo '</p>';
 
 		affiliates_footer();

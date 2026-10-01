@@ -117,6 +117,7 @@ class Affiliates_Notice {
 
 			$output .= '<div class="updated affiliates-rating">';
 			$output .= '<p>';
+			/* translators: plugin name */
 			$output .= sprintf( esc_html__( 'Many thanks for using %s!', 'affiliates' ), '<strong>Affiliates</strong>' );
 			$output .= ' ';
 			$output .= esc_html__( 'Could you please spare a minute and give it a review over at WordPress.org?', 'affiliates' );

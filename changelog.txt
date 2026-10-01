@@ -4,6 +4,9 @@
 * WordPress 7.1 compatible.
 * Revised review notice.
 * Fixed instances of missing output escaping.
+* Revised documentation reference in Settings > Pages.
+* Added translators comments.
+* Updated the translation template.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
