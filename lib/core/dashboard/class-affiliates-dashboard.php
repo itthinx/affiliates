@@ -132,7 +132,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 		$section = null;
 		if ( $this->sections !== null ) {
 			if ( isset( $_REQUEST[self::SECTION_URL_PARAMETER] ) ) {
-				$key = $_REQUEST[self::SECTION_URL_PARAMETER];
+				$key = sanitize_text_field( wp_unslash( $_REQUEST[self::SECTION_URL_PARAMETER] ) );
 				if ( isset( $this->sections[$key] ) ) {
 					$section = $this->get_section( $key );
 				}

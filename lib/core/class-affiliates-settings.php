@@ -183,7 +183,7 @@ class Affiliates_Settings {
 
 		self::init_sections();
 
-		$section = isset( $_REQUEST['section'] ) ? sanitize_text_field( $_REQUEST['section'] ) : '';
+		$section = sanitize_text_field( wp_unslash( $_REQUEST['section'] ?? '' ) );
 		if ( !array_key_exists( $section, self::$sections ) ) {
 			$section = 'general';
 		}
