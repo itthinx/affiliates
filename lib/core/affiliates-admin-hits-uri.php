@@ -677,7 +677,16 @@ function affiliates_admin_hits_uri() {
 			}
 		}
 		if ( $key !== '' ) { // * see above
-			$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . esc_html( $column_display_name ) . '</span><span class="sorting-indicator"></span></a>';
+			$column_display_name = sprintf(
+				'<a href="%1$s"><span>%2$s</span>'.
+				'<span class="sorting-indicators">' .
+				'<span class="sorting-indicator asc" aria-hidden="true"></span>'.
+				'<span class="sorting-indicator desc" aria-hidden="true"></span>'.
+				'</span>' .
+				'</a>',
+				esc_url( add_query_arg( $options, $current_url ) ),
+				esc_html( $column_display_name )
+			);
 		} else {
 			$column_display_name = esc_html( $column_display_name );
 		}

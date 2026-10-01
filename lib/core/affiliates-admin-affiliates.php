@@ -619,7 +619,12 @@ function affiliates_admin_affiliates() {
 				$class = "$key manage-column sortable";
 			}
 			$column_display_name = sprintf(
-				'<a href="%1$s"><span>%2$s</span><span class="sorting-indicator"></span></a>',
+				'<a href="%1$s"><span>%2$s</span>' .
+				'<span class="sorting-indicators">' .
+				'<span class="sorting-indicator asc" aria-hidden="true"></span>' .
+				'<span class="sorting-indicator desc" aria-hidden="true"></span>' .
+				'</span>' .
+				'</a>',
 				esc_url( add_query_arg( $options, $current_url ) ),
 				esc_html( $column_display_name )
 			);

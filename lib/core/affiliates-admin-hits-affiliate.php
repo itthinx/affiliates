@@ -477,7 +477,16 @@ function affiliates_admin_hits_affiliate() {
 		} else {
 			$class = "$key manage-column sortable";
 		}
-		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
+		$column_display_name = sprintf(
+			'<a href="%1$s"><span>%2$s</span>'.
+			'<span class="sorting-indicators">' .
+			'<span class="sorting-indicator asc" aria-hidden="true"></span>'.
+			'<span class="sorting-indicator desc" aria-hidden="true"></span>'.
+			'</span>' .
+			'</a>',
+			esc_url( add_query_arg( $options, $current_url ) ),
+			esc_html( $column_display_name )
+		);
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
 
