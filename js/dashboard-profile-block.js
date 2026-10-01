@@ -28,6 +28,7 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-profile',
 		{
+			apiVersion  : 3,
 			title       : affiliates_dashboard_profile_block.title,
 			description : affiliates_dashboard_profile_block.description,
 			icon        : 'id-alt',

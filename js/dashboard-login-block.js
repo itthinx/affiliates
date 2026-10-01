@@ -28,6 +28,7 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-login',
 		{
+			apiVersion  : 3,
 			title       : affiliates_dashboard_login_block.title,
 			description : affiliates_dashboard_login_block.description,
 			icon        : 'admin-users',

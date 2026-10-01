@@ -8,6 +8,7 @@
 * Added translators comments.
 * Updated the translation template.
 * Revised Settings > Integrations.
+* Updated block registrations to declare API version 3.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.

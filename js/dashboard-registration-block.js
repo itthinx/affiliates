@@ -28,6 +28,7 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-registration',
 		{
+			apiVersion  : 3,
 			title       : affiliates_dashboard_registration_block.title,
 			description : affiliates_dashboard_registration_block.description,
 			icon        : 'id',

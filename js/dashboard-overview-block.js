@@ -28,6 +28,7 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-overview',
 		{
+			apiVersion  : 3,
 			title       : affiliates_dashboard_overview_block.title,
 			description : affiliates_dashboard_overview_block.description,
 			icon        : 'chart-line',

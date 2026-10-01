@@ -90,9 +90,10 @@ class Affiliates_Dashboard_Profile_Block extends Affiliates_Dashboard_Profile {
 			register_block_type(
 				'affiliates/dashboard-profile',
 				array(
-					'editor_script' => 'affiliates-dashboard-profile-block',
+					'api_version'     => '3',
+					'editor_script'   => 'affiliates-dashboard-profile-block',
 					'render_callback' => array( __CLASS__, 'block' ),
-					'example' => array()
+					'example'         => array()
 				)
 			);
 		}
