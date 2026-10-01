@@ -293,9 +293,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			}
 			$button = apply_filters( 'affiliates_settings_integration_button', $button, $action, $key, $integration );
 			$explanation = apply_filters( 'affiliates_settings_integration_explanation', $explanation, $action, $key, $integration );
-			$list .= sprintf( '<li id="integration-%s">', $key );
-			$list .= sprintf( '<div class="integration %s">', $integration_class );
-			$list .= '<h3>' . $integration['title'] . '</h3>';
+			$list .= sprintf( '<li id="integration-%s">', esc_attr( $key ) );
+			$list .= sprintf( '<div class="integration %s">', esc_attr( $integration_class ) );
+			$list .= '<h3>' . esc_html( $integration['title'] ) . '</h3>';
 			$list .= '<p class="description">';
 			$list .= $integration['description'];
 			$list .= '</p>';
@@ -334,9 +334,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$list = '<ul class="integrations">';
 			foreach( self::$premium_integrations as $key => $integration ) {
 				$integration_class = isset( $integration['class'] ) ? $integration['class'] : '';
-				$list .= sprintf( '<li id="integration-%s">', $key );
-				$list .= sprintf( '<div class="integration %s">', $integration_class );
-				$list .= '<h3>' . $integration['title'] . '</h3>';
+				$list .= sprintf( '<li id="integration-%s">', esc_attr( $key ) );
+				$list .= sprintf( '<div class="integration %s">', esc_attr( $integration_class ) );
+				$list .= '<h3>' . esc_html( $integration['title'] ) . '</h3>';
 				$list .= '<p class="description">';
 				$list .= $integration['description'];
 				$list .= '</p>';
