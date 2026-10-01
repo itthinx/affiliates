@@ -37,13 +37,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'WooCommerce (light)', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates WooCommerce Integration Light', 'affiliates' ),
 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-woocommerce-light/',
-				'description'  => sprintf(
-					__( 'This plugin integrates <a href="%s">Affiliates</a> with <a href="%s">WooCommerce</a>. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
-					'https://wordpress.org/plugins/affiliates/',
-					'https://woocommerce.com/?aff=7223&cid=1656523'
-				),
+				'description'  => __( 'This plugin integrates Affiliates with WooCommerce. With this integration plugin, referrals are created automatically for your affiliates when sales are made.', 'affiliates' ),
 				'plugin_file'  => 'affiliates-woocommerce-light/affiliates-woocommerce-light.php',
-				'notes'        => __( 'This light integration is suitable to be used with the <a href="https://wordpress.org/plugins/affiliates/">Affiliates</a> plugin.', 'affiliates' ),
+				'notes'        => __( 'This light integration is suitable to be used with the Affiliates plugin.', 'affiliates' ),
 				'repository'   => 'wordpress',
 				'access'       => 'free',
 				'targets'      => array( 'affiliates' ),
@@ -53,7 +49,11 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'Contact Form 7', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Contact Form 7 Integration', 'affiliates' ),
 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-contact-form-7/',
-				'description'  => __( 'This plugin integrates <a href="https://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Contact Form 7. This integration stores data from submitted forms and tracks form submissions to the referring affiliate.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates Affiliates, %1$s and %2$s with Contact Form 7. This integration stores data from submitted forms and tracks form submissions to the referring affiliate.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
+				),
 				'plugin_file'  => 'affiliates-contact-form-7/affiliates-contact-form-7.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
@@ -65,7 +65,11 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'Events Manager', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Events Manager Integration', 'affiliates' ),
 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-events-manager/',
-				'description'  => __( 'This plugin integrates <a href="https://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Events Manager. This integration allows to record referrals to grant affiliates commissions on referred bookings.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates Affiliates, %1$s and %2$s with Events Manager. This integration allows to record referrals to grant affiliates commissions on referred bookings.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
+				),
 				'plugin_file'  => 'affiliates-events-manager/affiliates-events-manager.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
@@ -77,7 +81,11 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'Formidable Forms', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Formidable Forms Integration', 'affiliates' ),
 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-formidable/',
-				'description'  => __( 'This plugin integrates <a href="https://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Formidable Forms. Affiliates can sign up through forms handled with Formidable Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates Affiliates, %1$s and %2$s with Formidable Forms. Affiliates can sign up through forms handled with Formidable Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
+				),
 				'plugin_file'  => 'affiliates-formidable/affiliates-formidable.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
@@ -89,7 +97,11 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'Ninja Forms', 'affiliates' ),
 				'plugin_title' => __( 'Affiliates Ninja Forms Integration', 'affiliates' ),
 				'plugin_url'   => 'https://wordpress.org/plugins/affiliates-ninja-forms/',
-				'description'  => __( 'This plugin integrates <a href="https://wordpress.org/plugins/affiliates/">Affiliates</a>, <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with Ninja Forms. Affiliates can sign up through forms handled with Ninja Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates Affiliates, %1$s and %2$s with Ninja Forms. Affiliates can sign up through forms handled with Ninja Forms. Form submissions that are referred through affiliates, can grant commissions to affiliates and record referral details.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
+				),
 				'plugin_file'  => 'affiliates-ninja-forms/affiliates-ninja-forms.php',
 				'notes'        => '',
 				'repository'   => 'wordpress',
@@ -104,36 +116,67 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				'title'        => __( 'WooCommerce', 'affiliates' ),
 				'description'  =>
 					sprintf(
-						__( 'This plugin integrates <a href="%s">Affiliates Pro</a> and <a href="%s">Affiliates Enterprise</a> with <a href="%s">WooCommerce</a>. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made. This integration also supports referrals on recurring payments related to subscriptions and coupons related to affiliates to grant referrals when customers use them to credit the corresponding affiliate.', 'affiliates' ),
-						'https://www.itthinx.com/shop/affiliates-pro/',
-						'https://www.itthinx.com/shop/affiliates-enterprise/',
-						'https://woocommerce.com/?aff=7223&cid=1656523'
+						__( 'This plugin integrates %1$s and %2$s with WooCommerce. With this advanced integration plugin, referrals are created and synchronized automatically for your affiliates when sales are made. This integration also supports referrals on recurring payments related to subscriptions and coupons related to affiliates to grant referrals when customers use them to credit the corresponding affiliate.', 'affiliates' ),
+						'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+						'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
 					),
-				'notes'        => __( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'notes'        => sprintf(
+					__( 'This integration is suitable to be used with %1$s or %2$s.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
+				),
 				'class'        => 'ext',
 			),
 			'affiliates-addtoany' => array(
 				'title'        => __( 'AddToAny', 'affiliates' ),
-				'description'  => __( 'This plugin integrates <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="https://www.addtoany.com/">AddToAny</a> &hellip; <em>&ldquo;The Universal Sharing Platform&rdquo;</em>. The <a href="https://wordpress.org/plugins/add-to-any/">Share Buttons by AddToAny</a> are required.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates %1$s and %2$s with %3$s. The %4$s are required.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>',
+					'<a href="https://www.addtoany.com/">AddToAny</a>',
+					'<a href="https://wordpress.org/plugins/add-to-any/">Share Buttons by AddToAny</a>'
+					
+				),
 				'notes'        =>
 					__( 'Makes it even easier to share using affiliate links automatically.', 'affiliates' ) .
 					' ' .
-					__( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+					sprintf(
+						__( 'This integration is suitable to be used with %1$s or %2$s.', 'affiliates' ),
+						'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+						'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>'
+					),
 				'class'        => 'ext'
 			),
 			'affiliates-ppc' => array(
 				'title'        => __( 'Pay per Click', 'affiliates' ),
-				'description'  => __( 'Pay affiliate commissions based on clicks or visits to affiliate links. This plugin adds the possibility to grant commissions based on Pay per Click, Pay per Visit and Pay per Daily Visit with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
-				'notes'        => __( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'Pay affiliate commissions based on clicks or visits to affiliate links. This plugin adds the possibility to grant commissions based on Pay per Click, Pay per Visit and Pay per Daily Visit with %1$s and %2$s.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>',
+				),
+				'notes'        => sprintf(
+					__( 'This integration is suitable to be used with %1$s or %2$s.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>',
+				),
 				'class'        => 'ext'
 			),
 			'affiliates-gravityforms' => array(
 				'title'        => __( 'Gravity Forms', 'affiliates' ),
-				'description'  => __( 'This plugin integrates <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> and <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> with <a href="https://www.e-junkie.com/ecom/gb.php?cl=54585&c=ib&aff=290919">Gravity Forms</a>.', 'affiliates' ),
+				'description'  => sprintf(
+					__( 'This plugin integrates %1$s and %2$s with %3$s.', 'affiliates' ),
+					'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+					'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>',
+					'<a href="https://www.e-junkie.com/ecom/gb.php?cl=54585&c=ib&aff=290919">Gravity Forms</a>'
+				),
 				'notes'        =>
 					__( 'This extension allows to record referrals for form submissions and to create affiliate accounts (requires the Gravity Forms User Registation Add-On) for new users based on Gravity Forms.', 'affiliates' ) .
 					' ' .
-					__( 'This integration is suitable to be used with <a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> or <a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>.', 'affiliates' ),
+					sprintf(
+						__( 'This integration is suitable to be used with %1$s or %2$s.', 'affiliates' ),
+						'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+						'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>',
+					),
 				'class'        => 'ext'
 			)
 		);
