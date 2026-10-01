@@ -47,9 +47,9 @@ class Affiliates_Admin_Notifications {
 		self::init_sections();
 
 		// Section
-		$section = isset( $_REQUEST['section'] ) ? $_REQUEST['section'] : null;
+		$section = sanitize_text_field( wp_unslash( $_REQUEST['section'] ?? '' ) );
 
-		if ( !key_exists( $section, self::$sections ) ) {
+		if ( !array_key_exists( $section, self::$sections ) ) {
 			$section = 'affiliates';
 		}
 		$section_title = self::$sections[$section];

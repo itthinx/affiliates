@@ -250,7 +250,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$action      = '';
 			$button      = '';
 			$explanation = '';
-			if ( !key_exists( $integration['plugin_file'], $all_plugins ) ) {
+			if ( !array_key_exists( $integration['plugin_file'], $all_plugins ) ) {
 				$action = 'install';
 				$button = sprintf( '<a class="button" href="%s">Install</a>', esc_url( $install_url ) );
 				$explanation = sprintf(

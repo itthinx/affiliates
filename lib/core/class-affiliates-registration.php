@@ -672,7 +672,7 @@ class Affiliates_Registration {
 
 				// add user meta from remaining fields
 				foreach( $userdata as $meta_key => $meta_value ) {
-					if ( !key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
+					if ( !array_key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
 						update_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 					}
 				}
@@ -731,7 +731,7 @@ class Affiliates_Registration {
 		if ( !is_wp_error( $user_id ) ) {
 			// add user meta from remaining fields
 			foreach( $userdata as $meta_key => $meta_value ) {
-				if ( !key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
+				if ( !array_key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
 					add_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 				}
 			}
