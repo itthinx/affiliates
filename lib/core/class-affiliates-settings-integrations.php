@@ -200,38 +200,41 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 
 		$output .= '<p class="description">';
 		$output .= sprintf(
-			__( 'Please also refer to the <a href="%s">Add-Ons</a> for additional extensions.', 'affiliates' ),
-			esc_url( admin_url( 'admin.php?page=affiliates-admin-add-ons' ) )
+			esc_html__( 'Please also refer to the %s for additional extensions.', 'affiliates' ),
+			sprintf( '<a href="%s">Add-Ons</a>', esc_url( admin_url( 'admin.php?page=affiliates-admin-add-ons' ) ) )
 		);
 		$output .= '</p>';
 
 		$output .= '<p class="description">';
-		$output .= __( 'Integrations link the affiliate system to e-commerce plugins and other platforms.', 'affiliates' );
+		$output .= esc_html__( 'Integrations link the affiliate system to e-commerce plugins and other platforms.', 'affiliates' );
 		$output .= ' ';
-		$output .= __( 'The integrations are required to record referrals, as these award affiliates with commissions based on referred purchases or platform-specific actions.', 'affiliates' );
+		$output .= esc_html__( 'The integrations are required to record referrals, as these award affiliates with commissions based on referred purchases or platform-specific actions.', 'affiliates' );
 		$output .= '</p>';
 		if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
 			$output .= '<p class="description">';
-			$output .= __( 'You can manage available integrations here, this includes the installation and activation of integrations with e-commerce and other systems.', 'affiliates' );
+			$output .= esc_html__( 'You can manage available integrations here, this includes the installation and activation of integrations with e-commerce and other systems.', 'affiliates' );
 			$output .= '</p>';
 		} else {
 			$output .= '<p class="description">';
-			$output .= sprintf( __( 'You can install available integrations in the <a href="%s">Plugins</a> section.', 'affiliates' ), esc_url( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) );
+			$output .= sprintf(
+				esc_html__( 'You can install available integrations in the %s section.', 'affiliates' ),
+				sprintf( '<a href="%s">Plugins</a>', esc_url( admin_url( 'plugin-install.php?tab=search&type=author&s=itthinx' ) ) )
+			);
 			$output .= '</p>';
 		}
 		$output .= '<p class="description">';
 		$output .= __( 'You only need to install integrations with plugins that are actually used on the site.', 'affiliates' );
 		$output .= '</p>';
 		$output .= '<p class="description">';
-		$output .= __( 'User registrations do not require a specific integration to be installed.', 'affiliates' );
+		$output .= esc_html__( 'User registrations do not require a specific integration to be installed.', 'affiliates' );
 		$output .= ' ';
 		$output .= sprintf(
-			__( 'Enable the built-in integration if the options provided under <a href="%s">User Registration</a> are sufficient.', 'affiliates' ),
-			esc_url( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) )
+			esc_html__( 'Enable the built-in integration if the options provided under %s are sufficient.', 'affiliates' ),
+			sprintf( '<a href="%s">User Registration</a>', esc_url( admin_url( 'admin.php?page=affiliates-admin-user-registration' ) ) )
 		);
 		$output .= '</p>';
 
-		$active_plugins = apply_filters( 'active_plugins', get_option('active_plugins' ) );
+		$active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
 		$all_plugins    = get_plugins();
 
 		$list = '<ul class="integrations">';
@@ -251,32 +254,41 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 				$action = 'install';
 				$button = sprintf( '<a class="button" href="%s">Install</a>', esc_url( $install_url ) );
 				$explanation = sprintf(
-					__( 'The <a href="%s">%s</a> plugin is not installed.', 'affiliates' ),
-					esc_attr( $integration['plugin_url'] ),
-					esc_html( $integration['plugin_title'] )
+					esc_html__( 'The %s plugin is not installed.', 'affiliates' ),
+					sprintf(
+						'<a href="%s">%s</a>',
+						esc_attr( $integration['plugin_url'] ),
+						esc_html( $integration['plugin_title'] )
+					)
 				);
 			} else {
 				if ( is_plugin_inactive( $integration['plugin_file'] ) ) {
 					$action = 'activate';
-					$button = sprintf( '<a class="button" href="%s">Activate</a>', esc_url( $activate_url ) );
+					$button = sprintf( '<a class="button" href="%1$s">%2$s</a>', esc_url( $activate_url ), esc_html__( 'Activate', 'affiliates' ) );
 					$explanation = sprintf(
-						__( 'The <a href="%s">%s</a> plugin is installed but not activated.', 'affiliates' ),
-						esc_attr( $integration['plugin_url'] ),
-						esc_html( $integration['plugin_title'] )
+						esc_html__( 'The %s plugin is installed but not activated.', 'affiliates' ),
+						sprintf(
+							'<a href="%s">%s</a>',
+							esc_attr( $integration['plugin_url'] ),
+							esc_html( $integration['plugin_title'] )
+						)
 					);
 					$integration_class .= ' inactive';
 				} else {
 					$action = 'deactivate';
-					$button = sprintf( '<a class="button" href="%s">Deactivate</a>', esc_url( $deactivate_url ) );
+					$button = sprintf( '<a class="button" href="%1$s">%2$s</a>', esc_url( $deactivate_url ), esc_html__( 'Deactivate', 'affiliates' ) );
 					$explanation = sprintf(
-						__( 'The <a href="%s">%s</a> plugin is installed and activated.', 'affiliates' ),
-						esc_attr( $integration['plugin_url'] ),
-						esc_html( $integration['plugin_title'] )
+						esc_html__( 'The %s plugin is installed and activated.', 'affiliates' ),
+						sprintf(
+							'<a href="%s">%s</a>',
+							esc_attr( $integration['plugin_url'] ),
+							esc_html( $integration['plugin_title'] )
+						)
 					);
 					$integration_class .= ' active';
 				}
 			}
-			if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
+			if ( AFFILIATES_PLUGIN_NAME === 'affiliates' ) {
 				$button = '';
 			}
 			$button = apply_filters( 'affiliates_settings_integration_button', $button, $action, $key, $integration );
@@ -314,9 +326,9 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$output .= '</h2>';
 			$output .= '<p>';
 			$output .= sprintf(
-				__( 'These integrations are available with <a href="%s">Affiliates Pro</a> and <a href="%s">Affiliates Enterprise</a>.', 'affiliates' ),
-				esc_url( 'https://www.itthinx.com/shop/affiliates-pro/' ),
-				esc_url( 'https://www.itthinx.com/shop/affiliates-enterprise/' )
+				esc_html__( 'These integrations are available with %1$s and %2$s.', 'affiliates' ),
+				'<a href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a>',
+				'<a href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a>',
 			);
 			$output .= '</p>';
 			$list = '<ul class="integrations">';

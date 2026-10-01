@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2026-10-01 14:30+0200\n"
+        "POT-Creation-Date: 2026-10-01 14:39+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -270,6 +270,10 @@ msgstr  ""
 #: lib/core/affiliates-admin-affiliates.php:758
 #: lib/core/class-affiliates-dashboard-widget.php:108
 msgid   "Accumulated total for rejected referrals."
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-integrations.php:267
+msgid   "Activate"
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-registration.php:178
@@ -1034,6 +1038,10 @@ msgstr  ""
 msgid   "Days back"
 msgstr  ""
 
+#: lib/core/class-affiliates-settings-integrations.php:279
+msgid   "Deactivate"
+msgstr  ""
+
 #: lib/core/class-affiliates-settings-general.php:364
 msgid   "Deactivation and data persistence"
 msgstr  ""
@@ -1215,10 +1223,10 @@ msgstr  ""
 msgid   "Enable the WooCommerce customer registration integration"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-integrations.php:229
+#: lib/core/class-affiliates-settings-integrations.php:232
 #, php-format
-msgid   "Enable the built-in integration if the options provided under <a "
-        "href=\"%s\">User Registration</a> are sufficient."
+msgid   "Enable the built-in integration if the options provided under %s are "
+        "sufficient."
 msgstr  ""
 
 #: lib/core/affiliates-admin-user-registration.php:121
@@ -2115,8 +2123,7 @@ msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:203
 #, php-format
-msgid   "Please also refer to the <a href=\"%s\">Add-Ons</a> for additional "
-        "extensions."
+msgid   "Please also refer to the %s for additional extensions."
 msgstr  ""
 
 #: lib/core/affiliates-admin-add-ons.php:46
@@ -2177,7 +2184,7 @@ msgstr  ""
 msgid   "Post"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-integrations.php:313
+#: lib/core/class-affiliates-settings-integrations.php:325
 msgid   "Premium Integrations"
 msgstr  ""
 
@@ -2653,25 +2660,25 @@ msgstr  ""
 msgid   "Thanks!"
 msgstr  ""
 
+#: lib/core/class-affiliates-settings-integrations.php:281
+#, php-format
+msgid   "The %s plugin is installed and activated."
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-integrations.php:269
+#, php-format
+msgid   "The %s plugin is installed but not activated."
+msgstr  ""
+
+#: lib/core/class-affiliates-settings-integrations.php:257
+#, php-format
+msgid   "The %s plugin is not installed."
+msgstr  ""
+
 #: lib/core/affiliates-admin-add-ons.php:316
 #, php-format
 msgid   "The %s site also provides up-to-date information on the Affiliates, "
         "Affiliates Pro and Affiliates Enterprise plugin features."
-msgstr  ""
-
-#: lib/core/class-affiliates-settings-integrations.php:272
-#, php-format
-msgid   "The <a href=\"%s\">%s</a> plugin is installed and activated."
-msgstr  ""
-
-#: lib/core/class-affiliates-settings-integrations.php:263
-#, php-format
-msgid   "The <a href=\"%s\">%s</a> plugin is installed but not activated."
-msgstr  ""
-
-#: lib/core/class-affiliates-settings-integrations.php:254
-#, php-format
-msgid   "The <a href=\"%s\">%s</a> plugin is not installed."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-general.php:135
@@ -2831,10 +2838,9 @@ msgid   "There must be at least one entry to proceed to clean up existing "
         "hits from robots."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-integrations.php:317
+#: lib/core/class-affiliates-settings-integrations.php:329
 #, php-format
-msgid   "These integrations are available with <a href=\"%s\">Affiliates Pro</"
-        "a> and <a href=\"%s\">Affiliates Enterprise</a>."
+msgid   "These integrations are available with %1$s and %2$s."
 msgstr  ""
 
 #: lib/core/class-affiliates-totals.php:820
@@ -3175,7 +3181,7 @@ msgstr  ""
 msgid   "User Registration"
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-integrations.php:226
+#: lib/core/class-affiliates-settings-integrations.php:229
 msgid   "User registrations do not require a specific integration to be "
         "installed."
 msgstr  ""
@@ -3319,10 +3325,9 @@ msgid   "You can also add <code>?%s=%s</code> to any link on %s to track "
         "referrals from your account."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-integrations.php:219
+#: lib/core/class-affiliates-settings-integrations.php:220
 #, php-format
-msgid   "You can install available integrations in the <a "
-        "href=\"%s\">Plugins</a> section."
+msgid   "You can install available integrations in the %s section."
 msgstr  ""
 
 #: lib/core/class-affiliates-settings-integrations.php:215
@@ -3346,7 +3351,7 @@ msgid   "You can use the page generation option to create the default "
         "affiliate area for your affiliates."
 msgstr  ""
 
-#: lib/core/class-affiliates-settings-integrations.php:223
+#: lib/core/class-affiliates-settings-integrations.php:226
 msgid   "You only need to install integrations with plugins that are actually "
         "used on the site."
 msgstr  ""
