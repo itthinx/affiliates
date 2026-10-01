@@ -101,35 +101,48 @@ class Affiliates_Notice {
 			$output .= '<style type="text/css">';
 			$output .= 'div.affiliates-rating {';
 			$output .= sprintf( 'background: url(%s) #fff no-repeat 8px 8px;', AFFILIATES_PLUGIN_URL . '/images/affiliates-256x256.png' );
-			$output .= 'padding-left: 76px ! important;';
+			$output .= 'padding: 8px 8px 8px 84px ! important;';
 			$output .= 'background-size: 64px 64px;';
+			$output .= '}';
+			$output .= 'div.affiliates-rating a.rating-skip {';
+			$output .= 'color: #c99;';
+			$output .= 'text-decoration: none;';
+			$output .= '}';
+			$output .= 'div.affiliates-rating a.rating-skip:before {';
+			$output .= 'font-family: dashicons;';
+			$output .= 'content: "\f335";';
+			$output .= 'vertical-align: center;';
 			$output .= '}';
 			$output .= '</style>';
 
 			$output .= '<div class="updated affiliates-rating">';
 			$output .= '<p>';
-			$output .= __( 'Many thanks for using <strong>Affiliates</strong>!', 'affiliates' );
+			$output .= sprintf( esc_html__( 'Many thanks for using %s!', 'affiliates' ), '<strong>Affiliates</strong>' );
 			$output .= ' ';
-			$output .= __( 'Could you please spare a minute and give it a review over at WordPress.org?', 'affiliates' );
+			$output .= esc_html__( 'Could you please spare a minute and give it a review over at WordPress.org?', 'affiliates' );
+			$output .= ' ';
+			$output .= sprintf(
+				'<a class="rating-skip" href="%s">%s</a>',
+				esc_url( $current_url ),
+				esc_html__( 'Skip', 'affiliates' )
+				);
 			$output .= '</p>';
 			$output .= '<p>';
 			$output .= sprintf(
 				'<a class="button button-primary" href="%s" target="_blank">%s</a>',
 				esc_url( 'https://wordpress.org/support/view/plugin-reviews/affiliates?filter=5#postform' ),
-				__( 'Yes, here we go!', 'affiliates' )
-			);
-			$output .= ' ';
-			$output .= sprintf(
-				'<a style="margin:1em" href="%s">%s</a>',
-				esc_url( $current_url ),
-				__( 'I have already done that.', 'affiliates' )
+				esc_html__( 'Yes, here we go!', 'affiliates' )
 			);
 			$output .= '</p>';
 			$output .= '<p>';
 			$output .= sprintf(
-				__( 'You can also follow <a href="%s" target="_blank">@itthinx</a> on Twitter or visit <a href="%s" target="_blank">itthinx.com</a> to check out other free and premium plugins we provide.', 'affiliates' ),
-				esc_url( 'https://twitter.com/itthinx' ),
-				esc_url( 'https://www.itthinx.com' )
+				'Follow @‌itthinx on %s, %s, %s, %s, %s, %s for related news.',
+				'<a href="https://github.com/itthinx/">GitHub</a>',
+				'<a href="https://twitter.com/itthinx">X – Twitter</a>',
+				'<a href="https://www.reddit.com/r/itthinx/">Reddit</a>',
+				'<a href="https://mastodon.social/@itthinx">Mastodon</a>',
+				'<a href="https://rumble.com/user/itthinx">Rumble</a>',
+				'<a href="https://www.youtube.com/@itthinx_official">YouTube</a>'
 			);
 			$output .= '</p>';
 			$output .= '</div>';
