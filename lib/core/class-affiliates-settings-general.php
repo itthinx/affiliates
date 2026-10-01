@@ -87,11 +87,11 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 			if (
 				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) &&
-				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' )
+				wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) ), 'admin' )
 			) {
 
 				// robots
-				$robots = wp_filter_nohtml_kses( trim ( $_POST['robots'] ) );
+				$robots = wp_filter_nohtml_kses( trim ( sanitize_text_field( wp_unslash( $_POST['robots'] ) ) ) );
 				$wpdb->query( "DELETE FROM $robots_table" );
 				if ( !empty( $robots ) ) {
 					$robots = str_replace( ",", "\n", $robots );
@@ -107,7 +107,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					}
 				}
 
-				$pname = !empty( $_POST['pname'] ) ? trim( $_POST['pname'] ) : get_option( 'aff_pname', AFFILIATES_PNAME );
+				$pname = !empty( $_POST['pname'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['pname'] ) ) ) : get_option( 'aff_pname', AFFILIATES_PNAME );
 				$forbidden_names = array();
 				if ( !empty( $wp->public_query_vars ) ) {
 					$forbidden_names += $wp->public_query_vars;
@@ -157,7 +157,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					delete_option( 'aff_redirect' );
 				}
 
-				$encoding_id = $_POST['id_encoding'] ?? '';
+				$encoding_id = sanitize_text_field( wp_unslash( $_POST['id_encoding'] ?? '' ) );
 				if ( key_exists( $encoding_id, affiliates_get_id_encodings() ) ) {
 					// important: must use normal update_option/get_option otherwise we'd have a per-user encoding
 					update_option( 'aff_id_encoding', $encoding_id );
@@ -173,7 +173,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					$role = $wp_roles->get_role( $rolekey );
 					foreach ( $caps as $capkey => $capname ) {
 						$role_cap_id = $rolekey.'-'.$capkey;
-						if ( !empty($_POST[$role_cap_id] ) ) {
+						if ( !empty( $_POST[$role_cap_id] ) ) {
 							$role->add_cap( $capkey );
 						} else {
 							$role->remove_cap( $capkey );
