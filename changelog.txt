@@ -12,6 +12,7 @@
 * Added missing input sanitation in general settings.
 * Replaced uses of alias function key_exists.
 * Fixed checkbox background color clash.
+* Revised table sorting indicators for various sections.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
