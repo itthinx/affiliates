@@ -138,7 +138,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 								'enabled'    => !empty( $field_enabled[$i] ) || isset( $default_fields[$name] ) && $default_fields[$name]['obligatory'],
 								'label'      => !empty( $field_label[$i] ) ? strip_tags( $field_label[$i] ) : '',
 								'required'   => !empty( $field_required[$i]),
-								'is_default' => key_exists( $field_name[$i], $default_fields ),
+								'is_default' => array_key_exists( $field_name[$i], $default_fields ),
 								'type'       => !empty( $field_type[$i] ) ? $field_type[$i] : 'text'
 							);
 						}

@@ -581,7 +581,7 @@ E-mail: [user_email]<br/>',
 	 */
 	private static function substitute_tokens( $s, $tokens ) {
 		foreach ( $tokens as $key => $value ) {
-			if ( key_exists( $key, $tokens ) ) {
+			if ( array_key_exists( $key, $tokens ) ) {
 				$substitute = $tokens[$key];
 				if ( $substitute === null ) {
 					$substitute = '';

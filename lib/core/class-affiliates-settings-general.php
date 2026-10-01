@@ -158,7 +158,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 				}
 
 				$encoding_id = sanitize_text_field( wp_unslash( $_POST['id_encoding'] ?? '' ) );
-				if ( key_exists( $encoding_id, affiliates_get_id_encodings() ) ) {
+				if ( array_key_exists( $encoding_id, affiliates_get_id_encodings() ) ) {
 					// important: must use normal update_option/get_option otherwise we'd have a per-user encoding
 					update_option( 'aff_id_encoding', $encoding_id );
 				}

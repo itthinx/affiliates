@@ -112,7 +112,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 */
 	public function get_section( $key ) {
 		$section = null;
-		if ( key_exists( $key, $this->sections ) ) {
+		if ( array_key_exists( $key, $this->sections ) ) {
 			if ( !isset( $this->section_objects[$key] ) ) {
 				$section = Affiliates_Dashboard_Section_Factory::get_section_instance( $key, $this->sections[$key]['parameters'] );
 				$this->section_objects[$key] = $section;
