@@ -121,15 +121,15 @@ function affiliates_admin_affiliates_remove_submit() {
 		$valid_affiliate = false;
 		// do not mark the pseudo-affiliate as deleted: type != ...
 		$check = $wpdb->prepare(
-			"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+			"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			intval( $affiliate_id ) );
-		if ( $wpdb->query( $check ) ) {
+		if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			$valid_affiliate = true;
 		}
 
 		if ( $valid_affiliate ) {
 			$result = false !== $wpdb->query(
-				$query = $wpdb->prepare(
+				$query = $wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 					intval( $affiliate_id )
 				)
@@ -259,16 +259,16 @@ function affiliates_admin_affiliates_bulk_remove_submit() {
 			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				intval( $affiliate_id )
 			);
-			if ( $wpdb->query( $check ) ) {
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$valid_affiliate = true;
 			}
 
 			if ( $valid_affiliate ) {
 				$result = false !== $wpdb->query(
-					$query = $wpdb->prepare(
+					$query = $wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 						intval( $affiliate_id )
 					)

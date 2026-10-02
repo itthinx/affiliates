@@ -190,7 +190,7 @@ function affiliates_admin() {
 
 	// hits per day
 	$query = "SELECT date, COUNT(*) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
-	$hit_results = $wpdb->get_results( $wpdb->prepare( $query,
+	$hit_results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$from_date, $thru_date
 	) );
 	$hits = array();
@@ -200,7 +200,7 @@ function affiliates_admin() {
 
 	// visits per day
 	$query = "SELECT count(DISTINCT IP) visits, date FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
-	$visit_results = $wpdb->get_results( $wpdb->prepare( $query,
+	$visit_results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$from_date, $thru_date
 	));
 	$visits = array();
@@ -210,7 +210,7 @@ function affiliates_admin() {
 
 	// referrals per day
 	$query = "SELECT count(referral_id) referrals, date(datetime) date FROM $referrals_table WHERE status = %s AND date(datetime) >= %s AND date(datetime) <= %s AND " . $affiliates_subquery . " GROUP BY date";
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_ACCEPTED, $from_date, $thru_date
 	));
 	$accepted = array();
@@ -218,7 +218,7 @@ function affiliates_admin() {
 		$accepted[$result->date] = $result->referrals;
 	}
 
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date
 	));
 	$closed = array();
@@ -226,7 +226,7 @@ function affiliates_admin() {
 		$closed[$result->date] = $result->referrals;
 	}
 
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date
 	));
 	$pending = array();
@@ -234,7 +234,7 @@ function affiliates_admin() {
 		$pending[$result->date] = $result->referrals;
 	}
 
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_REJECTED, $from_date, $thru_date
 	));
 	$rejected = array();

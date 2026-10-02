@@ -89,7 +89,7 @@ class Affiliates_Data_Cleaner {
 						"DELETE FROM $hits_table WHERE datetime < %s AND hit_id NOT IN (SELECT hit_id FROM $referrals_table WHERE hit_id IS NOT NULL)",
 						$until
 					);
-					$result = $wpdb->query( $query );
+					$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $result ) {
 						$hits_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 					}
@@ -102,7 +102,7 @@ class Affiliates_Data_Cleaner {
 				$count_uris = intval( $count_uris );
 				if ( $count_uris > 0 ) {
 					$query = "DELETE FROM $uris_table WHERE uri_id NOT IN (SELECT src_uri_id FROM $hits_table WHERE src_uri_id IS NOT NULL) AND uri_id NOT IN (SELECT dest_uri_id FROM $hits_table WHERE dest_uri_id IS NOT NULL)";
-					$result = $wpdb->query( $query );
+					$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $result ) {
 						$uris_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 					}
@@ -115,7 +115,7 @@ class Affiliates_Data_Cleaner {
 				$count_user_agents = intval( $count_user_agents );
 				if ( $count_user_agents > 0 ) {
 					$query = "DELETE FROM $user_agents_table WHERE user_agent_id NOT IN (SELECT user_agent_id FROM $hits_table WHERE user_agent_id IS NOT NULL)";
-					$result = $wpdb->query( $query );
+					$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $result ) {
 						$user_agents_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 					}

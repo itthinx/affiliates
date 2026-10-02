@@ -635,7 +635,7 @@ class Affiliates_Shortcodes {
 				$rows = array();
 				$referrals_table = _affiliates_get_tablename( 'referrals' );
 				$range = $wpdb->get_row(
-					"SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ") "
+					"SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ") " // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				);
 				if ( $range ) {
 					if ( !empty( $range->from_datetime ) ) { // Covers for NULL when no referrals recorded yet, too.

@@ -434,7 +434,7 @@ function affiliates_admin_hits_uri() {
 			"h.datetime, " .
 			"h.hit_id, " .
 			"h.campaign_id, " .
-			( $campaigns ? "c.name AS campaign, " : '' ) .
+			( $campaigns ? "c.name AS campaign, " : '' ) . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"h.ip, " .
 			"h.affiliate_id, " .
 			"a.name, " .
@@ -451,14 +451,14 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table $status_condition GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
-			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"$filters " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
 
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		$count = intval( $wpdb->get_var( $wpdb->prepare(
 			"SELECT COUNT(*) FROM $hits_table h " .
@@ -467,7 +467,7 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
-			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"$filters ",
 			$filter_params
 		) ) );

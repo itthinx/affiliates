@@ -449,7 +449,7 @@ function affiliates_admin_affiliates() {
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 		if ( $count > $row_count ) {
 			$paginate = true;

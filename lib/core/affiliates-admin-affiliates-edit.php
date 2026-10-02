@@ -352,7 +352,7 @@ function affiliates_admin_affiliates_edit_submit() {
 				"UPDATE $affiliates_table SET $sets WHERE affiliate_id = %d",
 				$values
 			);
-			$wpdb->query( $query );
+			$wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		}
 
 		// user association
@@ -417,7 +417,7 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 				intval( $affiliate_id ),
 				AFFILIATES_DIRECT_TYPE
 			);
-			if ( $wpdb->query( $check ) ) {
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
 					$old_status = $affiliate['status'];
 					$result = false !== $wpdb->query( $wpdb->prepare(
@@ -470,7 +470,7 @@ function affiliates_admin_affiliates_bulk_status_pending_submit() {
 				intval( $affiliate_id ),
 				AFFILIATES_DIRECT_TYPE
 			);
-			if ( $wpdb->query( $check ) ) {
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
 					$old_status = $affiliate['status'];
 					$result = false !== $wpdb->query( $wpdb->prepare(

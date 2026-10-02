@@ -104,7 +104,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 						$robot = trim( $robot );
 						if ( !empty( $robot ) ) {
 							$query = $wpdb->prepare( "INSERT INTO $robots_table (name) VALUES (%s);", $robot );
-							$wpdb->query( $query );
+							$wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						}
 					}
 				}

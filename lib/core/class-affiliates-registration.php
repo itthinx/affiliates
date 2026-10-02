@@ -697,7 +697,7 @@ class Affiliates_Registration {
 						$_userdata['user_email'],
 						intval( $affiliate_id )
 					);
-					if ( $wpdb->query( $query ) ) {
+					if ( $wpdb->query( $query ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						do_action( 'affiliates_updated_affiliate', $affiliate_id );
 					}
 				}
@@ -830,9 +830,10 @@ class Affiliates_Registration {
 			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
-				intval( $affiliate_id ) );
-			if ( $wpdb->query( $check ) ) {
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				intval( $affiliate_id )
+			);
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$valid_affiliate = true;
 			}
 
@@ -841,7 +842,7 @@ class Affiliates_Registration {
 				// clean up the association even if the affiliate was already
 				// marked as deleted
 				$wpdb->query(
-					$query = $wpdb->prepare(
+					$wpdb->prepare(
 						"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 						intval( $affiliate_id )
 					)
@@ -850,7 +851,7 @@ class Affiliates_Registration {
 				// the user is removed from the users table, it wouldn't make sense to maintain
 				// a dangling reference to a non-existent user so release the association as well
 				$wpdb->query(
-					$query = $wpdb->prepare(
+					$wpdb->prepare(
 						"DELETE FROM $affiliates_users_table WHERE affiliate_id = %d AND user_id = %d",
 						intval( $affiliate_id ), intval( $user_id )
 					)

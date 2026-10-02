@@ -116,7 +116,7 @@ class Affiliates_Admin_Notifications {
 
 		$notifications = get_option( 'affiliates_notifications', null );
 		if ( $notifications === null ) {
-			add_option( 'affiliates_notifications', array(), null, 'no' );
+			add_option( 'affiliates_notifications', array(), '', 'no' );
 		}
 
 		if ( isset( $_POST['submit'] ) ) {

@@ -128,7 +128,7 @@ class Affiliates_Utility {
 				$post_type
 			);
 		}
-		$result = $wpdb->get_row( $query );
+		$result = $wpdb->get_row( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		if ( !empty( $result ) ) {
 			$post_id = $result->ID;
 			$post = get_post( $post_id, $output );

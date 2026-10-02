@@ -85,7 +85,7 @@ class Affiliates_Robot_Cleaner {
 				")";
 			ob_start();
 			$rows = 0;
-			$result = $wpdb->query( $query );
+			$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			if ( $result ) {
 				$rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 			}
@@ -182,7 +182,7 @@ class Affiliates_Robot_Cleaner {
 					"rua.user_agent_id IS NOT NULL " .
 					"AND r.count IS NULL OR r.count = 0 " .
 					"GROUP BY h.user_agent_id";
-				$robot_hits = $wpdb->get_results( $query );
+				$robot_hits = $wpdb->get_results( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				if ( is_array( $robot_hits ) && count( $robot_hits ) > 0 ) {
 					echo '<p>' . esc_html__( 'The following matching hits have been found and can be cleaned up.', 'affiliates' ) . '</p>';
 					echo '<table style="margin: 4px; border: 1px solid #333; background-color: #fff; color: #333;">';

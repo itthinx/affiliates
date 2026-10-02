@@ -316,13 +316,13 @@ function affiliates_admin_hits_affiliate() {
 			"$affiliates_table a " .
 			"LEFT JOIN (SELECT affiliate_id, COUNT(DISTINCT ip) AS visits, COUNT(*) AS hits FROM $hits_table $hits_subquery_where GROUP BY affiliate_id ) AS hits ON hits.affiliate_id = a.affiliate_id " .
 			"LEFT JOIN (SELECT affiliate_id, COUNT(*) AS count FROM $referrals_table r $referrals_subquery_where GROUP BY affiliate_id ) AS referrals ON  referrals.affiliate_id = a.affiliate_id " .
-			$filters . " " .
+			$filters . " " . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
 
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 		if ( $count > $row_count ) {
 			$paginate = true;
@@ -541,7 +541,7 @@ function affiliates_admin_hits_affiliate() {
 						"LIMIT $maximum_referrals", // maximum most recent referrals displayed
 						$referrals_filter_params
 					);
-					$referrals = $wpdb->get_results( $referrals_query, OBJECT );
+					$referrals = $wpdb->get_results( $referrals_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$referrals_count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 					if ( count($referrals) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
@@ -614,7 +614,7 @@ function affiliates_admin_hits_affiliate() {
 						"LIMIT $maximum_hits", // maximum most recent hits displayed
 						$details_filter_params
 					);
-					$hits = $wpdb->get_results( $details_query, OBJECT );
+					$hits = $wpdb->get_results( $details_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$hits_count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 					if ( count( $hits ) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';

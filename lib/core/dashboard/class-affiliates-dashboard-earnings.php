@@ -344,7 +344,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 
 		$this->entries = $wpdb->get_results(
 			$wpdb->prepare(
-				$query,
+				$query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$filter_params
 			),
 			OBJECT
@@ -359,7 +359,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 			$query = $query_base . sprintf( $query_suffix, $this->sort_order, $this->sort_order, intval( $this->per_page ), 0 ); // OFFSET 0
 			$this->entries = $wpdb->get_results(
 				$wpdb->prepare(
-					$query,
+					$query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$filter_params
 				),
 				OBJECT

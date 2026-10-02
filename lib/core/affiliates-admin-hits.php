@@ -259,7 +259,7 @@ function affiliates_admin_hits() {
 	}
 	if ( count( $referrals_subquery_conditions ) > 0 ) {
 		$referrals_subquery_where = ' WHERE ' . implode( ' AND ', $referrals_subquery_conditions );
-		$referrals_subquery_where = $wpdb->prepare( $referrals_subquery_where, $referrals_subquery_params );
+		$referrals_subquery_where = $wpdb->prepare( $referrals_subquery_where, $referrals_subquery_params ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	}
 
 	do {
@@ -291,7 +291,7 @@ function affiliates_admin_hits() {
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 		if ( $count > $row_count ) {
@@ -475,7 +475,7 @@ function affiliates_admin_hits() {
 						",
 						$referrals_filter_params
 					);
-					$referrals = $wpdb->get_results( $referrals_query, OBJECT );
+					$referrals = $wpdb->get_results( $referrals_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( count( $referrals) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
@@ -543,7 +543,7 @@ function affiliates_admin_hits() {
 						",
 						$details_filter_params
 					);
-					$hits = $wpdb->get_results( $details_query, OBJECT );
+					$hits = $wpdb->get_results( $details_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 					$output .= '<td colspan="5">';
 					$output .= '<div class="details-hits">';

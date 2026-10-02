@@ -332,7 +332,7 @@ function affiliates_setup() {
 	}
 
 	$affiliates_table = _affiliates_get_tablename('affiliates');
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_table . "'" ) != $affiliates_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_table . "'" ) != $affiliates_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $affiliates_table . "(
 				affiliate_id bigint(20) unsigned NOT NULL auto_increment,
 				name         varchar(100) NOT NULL,
@@ -376,7 +376,7 @@ function affiliates_setup() {
 	// Note also, that currently Affiliates does NOT use ipv6.
 
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referrals_table . "'" ) != $referrals_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referrals_table . "'" ) != $referrals_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $referrals_table . "(
 				referral_id  BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 				affiliate_id BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
@@ -411,7 +411,7 @@ function affiliates_setup() {
 	}
 
 	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $referral_items_table . "(
 			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
@@ -438,7 +438,7 @@ function affiliates_setup() {
 	// in accordance to the user's date and time.
 	// @todo ip/ipv6 (also for referrals table) : create new table and map hits.ip_id to ip.ip_id instead of storing those
 	$hits_table = _affiliates_get_tablename( 'hits' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $hits_table . "'" ) != $hits_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $hits_table . "'" ) != $hits_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $hits_table . "(
 				hit_id          BIGINT(20) UNSIGNED NOT NULL auto_increment,
 				hash            CHAR(64) DEFAULT NULL,
@@ -464,7 +464,7 @@ function affiliates_setup() {
 	}
 
 	$uris_table = _affiliates_get_tablename( 'uris' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $uris_table . "'" ) != $uris_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $uris_table . "'" ) != $uris_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $uris_table . "(
 				uri_id      BIGINT(20) UNSIGNED NOT NULL auto_increment,
 				uri         VARCHAR(2048) NOT NULL,
@@ -476,7 +476,7 @@ function affiliates_setup() {
 	}
 	// add the user_agents table
 	$user_agents_table = _affiliates_get_tablename( 'user_agents' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $user_agents_table . "'" ) != $user_agents_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $user_agents_table . "'" ) != $user_agents_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $user_agents_table . "(
 				user_agent_id BIGINT(20) UNSIGNED NOT NULL auto_increment,
 				user_agent    VARCHAR(255) NOT NULL,
@@ -485,7 +485,7 @@ function affiliates_setup() {
 				) $charset_collate;";
 	}
 	$robots_table = _affiliates_get_tablename( 'robots' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $robots_table . "'" ) != $robots_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $robots_table . "'" ) != $robots_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $robots_table . "(
 				robot_id    BIGINT(20) UNSIGNED NOT NULL auto_increment,
 				name        VARCHAR(100) NOT NULL,
@@ -494,7 +494,7 @@ function affiliates_setup() {
 			) $charset_collate;";
 	}
 	$affiliates_users_table = _affiliates_get_tablename( 'affiliates_users' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_users_table . "'" ) != $affiliates_users_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_users_table . "'" ) != $affiliates_users_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $affiliates_users_table . "(
 				affiliate_id BIGINT(20) UNSIGNED NOT NULL,
 				user_id      BIGINT(20) UNSIGNED NOT NULL,
@@ -505,11 +505,11 @@ function affiliates_setup() {
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		dbDelta( $queries );
 	}
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_table . "'" ) == $affiliates_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $affiliates_table . "'" ) == $affiliates_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$today = date( 'Y-m-d', time() );
-		$direct = intval( $wpdb->get_var( "SELECT COUNT(affiliate_id) FROM $affiliates_table WHERE type = '" . AFFILIATES_DIRECT_TYPE . "';" ) );
+		$direct = intval( $wpdb->get_var( "SELECT COUNT(affiliate_id) FROM $affiliates_table WHERE type = '" . AFFILIATES_DIRECT_TYPE . "';" ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		if ( $direct <= 0 ) {
-			$wpdb->query( "INSERT INTO $affiliates_table (name, from_date, type) VALUES ('" . AFFILIATES_DIRECT_NAME . "','$today','" . AFFILIATES_DIRECT_TYPE . "');" );
+			$wpdb->query( "INSERT INTO $affiliates_table (name, from_date, type) VALUES ('" . AFFILIATES_DIRECT_NAME . "','$today','" . AFFILIATES_DIRECT_TYPE . "');" ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		}
 	}
 
@@ -655,7 +655,7 @@ function affiliates_update( $previous_version = null ) {
 	// URIs ... from 2.17.0
 	// add the uris table
 	$uris_table = _affiliates_get_tablename( 'uris' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $uris_table . "'" ) != $uris_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $uris_table . "'" ) != $uris_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $uris_table . "(
 		uri_id      BIGINT(20) UNSIGNED NOT NULL auto_increment,
 		uri         VARCHAR(2048) NOT NULL,
@@ -677,7 +677,7 @@ function affiliates_update( $previous_version = null ) {
 	}
 	// add the user_agents table
 	$user_agents_table = _affiliates_get_tablename( 'user_agents' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $user_agents_table . "'" ) != $user_agents_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $user_agents_table . "'" ) != $user_agents_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $user_agents_table . "(
 		user_agent_id BIGINT(20) UNSIGNED NOT NULL auto_increment,
 		user_agent    VARCHAR(255) NOT NULL,
@@ -727,7 +727,7 @@ function affiliates_update( $previous_version = null ) {
 
 	// add the referral_items table ... from 3.0.0
 	$referral_items_table = _affiliates_get_tablename( 'referral_items' );
-	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) {
+	if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $referral_items_table . "'" ) != $referral_items_table ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$queries[] = "CREATE TABLE " . $referral_items_table . "(
 			referral_item_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 			referral_id      BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
@@ -753,7 +753,7 @@ function affiliates_update( $previous_version = null ) {
 
 	foreach ( $queries as $query ) {
 		// don't use dbDelta, it doesn't handle ALTER
-		if ( $wpdb->query( $query ) === false ) {
+		if ( $wpdb->query( $query ) === false ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			$result = false;
 		}
 	}
@@ -800,14 +800,14 @@ function affiliates_cleanup( $delete = false ) {
 			$role->remove_cap( AFFILIATES_ADMINISTER_AFFILIATES );
 			$role->remove_cap( AFFILIATES_ADMINISTER_OPTIONS );
 		}
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referral_items' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referrals' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'hits' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'uris' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'user_agents' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'affiliates' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'robots' ) );
-		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'affiliates_users' ) );
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referral_items' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'referrals' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'hits' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'uris' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'user_agents' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'affiliates' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'robots' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query('DROP TABLE IF EXISTS ' . _affiliates_get_tablename( 'affiliates_users' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		flush_rewrite_rules();
 		$affiliates_options->flush_options();
 		delete_option( 'affiliates_plugin_version' );
@@ -846,7 +846,7 @@ add_action( 'init', 'affiliates_init' );
  * Loads the plugin's translations.
  */
 function affiliates_init() {
-	load_plugin_textdomain( 'affiliates', null, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
+	load_plugin_textdomain( 'affiliates', '', AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
 	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
 	}
@@ -1101,7 +1101,7 @@ function affiliates_maybe_record_uri( $type = null, $uri = null ) {
 			$columns .= ')';
 			$formats .= ')';
 			$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats", $values );
-			if ( $wpdb->query( $query ) ) {
+			if ( $wpdb->query( $query ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				if ( $uri_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" ) ) {
 					do_action(
 						'affiliates_uri_added',
@@ -1133,10 +1133,10 @@ function affiliates_maybe_record_user_agent_id( $user_agent ) {
 
 	$user_agents_table = _affiliates_get_tablename( 'user_agents' );
 	$q = $wpdb->prepare( "SELECT user_agent_id FROM $user_agents_table WHERE user_agent = %s", $user_agent );
-	$user_agent_id = $wpdb->get_var( $q );
+	$user_agent_id = $wpdb->get_var( $q ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	if ( !$user_agent_id ) {
 		$q = $wpdb->prepare( "INSERT INTO $user_agents_table (user_agent) VALUES (%s)", $user_agent );
-		$wpdb->query( $q );
+		$wpdb->query( $q ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		if ( $user_agent_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" ) ) {
 			do_action(
 				'affiliates_user_agent_added',
@@ -1270,7 +1270,7 @@ function affiliates_record_hit( $affiliate_id, $now = null, $type = null ) {
 
 	if ( $robot === 0 || apply_filters( 'affiliates_record_robot_hits', AFFILIATES_RECORD_ROBOT_HITS ) ) {
 		$query = $wpdb->prepare( "INSERT INTO $hits_table $columns VALUES $formats", $values );
-		if ( $wpdb->query( $query ) ) {
+		if ( $wpdb->query( $query ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			$hit_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" );
 			$result = array(
 				'hit_id'        => $hit_id,
@@ -1477,7 +1477,7 @@ function affiliates_add_referral( $affiliate_id, $post_id, $description = '', $d
 		if ( $record_referral ) {
 			if ( !affiliates_is_duplicate_referral( compact( 'affiliate_id', 'amount', 'currency_id', 'type', 'reference', 'data' ) ) ) {
 				$query = $wpdb->prepare( "INSERT INTO $table $columns VALUES $formats", $values );
-				if ( $wpdb->query( $query ) !== false ) {
+				if ( $wpdb->query( $query ) !== false ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $referral_id = $wpdb->get_var( "SELECT LAST_INSERT_ID()" ) ) {
 						do_action(
 							'affiliates_referral',
@@ -1558,7 +1558,7 @@ function affiliates_is_duplicate_referral( $atts ) {
 			} else {
 				$query .= " AND ( data IS NULL OR data = '' ) ";
 			}
-			if ( $wpdb->get_results( $wpdb->prepare( $query, $args ) ) ) {
+			if ( $wpdb->get_results( $wpdb->prepare( $query, $args ) ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$is_duplicate = true;
 			}
 		}
@@ -1726,7 +1726,7 @@ function affiliates_check_affiliate_id( $affiliate_id ) {
 	$today = date( 'Y-m-d', time() );
 	$table = _affiliates_get_tablename( 'affiliates' );
 	$query = $wpdb->prepare( "SELECT * FROM $table WHERE affiliate_id = %d AND from_date <= %s AND ( thru_date IS NULL OR thru_date >= %s ) AND status = 'active'", intval( $affiliate_id ), $today, $today );
-	$affiliate = $wpdb->get_row( $query, OBJECT );
+	$affiliate = $wpdb->get_row( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	if ( !empty( $affiliate ) ) {
 		$result = $affiliate->affiliate_id;
 	}
@@ -1746,7 +1746,7 @@ function affiliates_check_affiliate_id_md5( $affiliate_id_md5 ) {
 	$today = date( 'Y-m-d', time() );
 	$table = _affiliates_get_tablename( 'affiliates' );
 	$query = $wpdb->prepare( "SELECT * FROM (SELECT *, md5(affiliate_id) as affiliate_id_md5 FROM $table) md5d WHERE affiliate_id_md5 = %s AND from_date <= %s AND ( thru_date IS NULL OR thru_date >= %s ) AND status = 'active'", $affiliate_id_md5, $today, $today );
-	$affiliate = $wpdb->get_row( $query, OBJECT );
+	$affiliate = $wpdb->get_row( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	if ( !empty( $affiliate ) ) {
 		$result = $affiliate->affiliate_id;
 	}
@@ -1764,7 +1764,7 @@ function affiliates_get_direct_id() {
 	$today = date( 'Y-m-d', time() );
 	$table = _affiliates_get_tablename( 'affiliates' );
 	$query = $wpdb->prepare( "SELECT * FROM $table WHERE type = %s AND from_date <= %s AND ( thru_date IS NULL OR thru_date >= %s ) AND status = 'active'", AFFILIATES_DIRECT_TYPE, $today, $today );
-	$affiliate = $wpdb->get_row( $query, OBJECT );
+	$affiliate = $wpdb->get_row( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	if ( !empty( $affiliate ) ) {
 		$result = $affiliate->affiliate_id;
 	}
@@ -2234,7 +2234,7 @@ function affiliates_get_affiliates( $active = true, $valid = true ) {
 			$query = "SELECT * FROM $table ORDER BY NAME";
 		}
 	}
-	if ( $affiliates = $wpdb->get_results( $query, ARRAY_A ) ) {
+	if ( $affiliates = $wpdb->get_results( $query, ARRAY_A ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$results = $affiliates;
 	}
 	return $results;
@@ -2300,7 +2300,7 @@ function affiliates_get_affiliate_hits( $affiliate_id, $from_date = null , $thru
 	$query = $wpdb->prepare( "SELECT COUNT(*) FROM $hits_table $where",
 		$values
 	);
-	$result = intval( $wpdb->get_var( $query) );
+	$result = intval( $wpdb->get_var( $query) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	return $result;
 }
 
@@ -2384,7 +2384,7 @@ function affiliates_get_affiliate_visits( $affiliate_id, $from_date = null , $th
 		"(SELECT COUNT(DISTINCT IP) visits FROM $hits_table $where GROUP BY DATE) tmp",
 		$values
 	);
-	$result = intval( $wpdb->get_var( $query) );
+	$result = intval( $wpdb->get_var( $query) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	return $result;
 }
 
@@ -2439,7 +2439,7 @@ function affiliates_get_affiliate_referrals( $affiliate_id, $from_date = null , 
 	$query = $wpdb->prepare( "SELECT COUNT(*) FROM $referrals_table $where",
 		$values
 	);
-	$result = intval( $wpdb->get_var( $query) );
+	$result = intval( $wpdb->get_var( $query) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	return $result;
 }
 
