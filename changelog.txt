@@ -14,6 +14,8 @@
 * Fixed checkbox background color clash.
 * Revised table sorting indicators for various sections.
 * Revised totals section including output escaping and structure.
+* Added the nonce verification API.
+* Added the input sanitation API.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.

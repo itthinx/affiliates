@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter,  WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+
 if ( !class_exists( 'Affiliates_Totals' ) ) {
 
 /**
@@ -43,14 +45,15 @@ class Affiliates_Totals {
 		global $wpdb, $affiliates_options;
 
 		$output = '';
-		$today = date( 'Y-m-d', time() );
+		$today = date( 'Y-m-d', time() ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 
 		if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
-		if ( isset ( $_GET['action'] ) ) {
-			switch( $_GET['action'] ) {
+		$action = affiliates_sanitize_get( 'action' );
+		if ( $action !== null ) {
+			switch( $action ) {
 				case 'close_referrals' :
 					$params = array(
 						'tables' => array(
@@ -60,8 +63,8 @@ class Affiliates_Totals {
 							'users' => $wpdb->users,
 						)
 					);
-					$params = array_merge( $_GET, $params );
-					echo self::update_status( AFFILIATES_REFERRAL_STATUS_CLOSED, $params );
+					$params = array_merge( $_GET, $params ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					echo self::update_status( AFFILIATES_REFERRAL_STATUS_CLOSED, $params ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					die();
 					break;
 			}
@@ -75,16 +78,13 @@ class Affiliates_Totals {
 		$referral_status      = $affiliates_options->get_option( 'totals_referral_status', null );
 		$currency_id          = $affiliates_options->get_option( 'totals_currency_id', null );
 
-		if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
-			if (
-				!isset( $_POST[self::NONCE] ) ||
-				!wp_verify_nonce( $_POST[self::NONCE], self::SET_FILTERS )
-			) {
+		if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( !affiliates_verify_post_nonce( self::NONCE, self::SET_FILTERS ) ) {
 				wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
-		if ( isset( $_POST['clear_filters'] ) ) {
+		if ( isset( $_POST['clear_filters'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$affiliates_options->delete_option( 'totals_from_date' );
 			$affiliates_options->delete_option( 'totals_thru_date' );
 			$affiliates_options->delete_option( 'totals_affiliate_status' );
@@ -99,17 +99,17 @@ class Affiliates_Totals {
 			$referral_status = null;
 			$currency_id     = null;
 
-		} else if ( isset( $_POST['submitted'] ) ) {
+		} else if ( isset( $_POST['submitted'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-			if ( !empty( $_POST['from_date'] ) ) {
-				$from_date = date( 'Y-m-d', strtotime( $_POST['from_date'] ) );
+			if ( !empty( $_POST['from_date'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				$from_date = date( 'Y-m-d', strtotime( affiliates_sanitize_post( 'from_date' ) ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 				$affiliates_options->update_option( 'totals_from_date', $from_date );
 			} else {
 				$from_date = null;
 				$affiliates_options->delete_option( 'totals_from_date' );
 			}
-			if ( !empty( $_POST['thru_date'] ) ) {
-				$thru_date = date( 'Y-m-d', strtotime( $_POST['thru_date'] ) );
+			if ( !empty( $_POST['thru_date'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				$thru_date = date( 'Y-m-d', strtotime( affiliates_sanitize_post( 'thru_date' ) ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 				$affiliates_options->update_option( 'totals_thru_date', $thru_date );
 			} else {
 				$thru_date = null;
@@ -122,21 +122,21 @@ class Affiliates_Totals {
 				}
 			}
 
-			if ( !empty( $_POST['affiliate_status'] ) && ( $affiliate_status = Affiliates_Utility::verify_affiliate_status( $_POST['affiliate_status'] ) ) ) {
+			if ( !empty( $_POST['affiliate_status'] ) && ( $affiliate_status = Affiliates_Utility::verify_affiliate_status( affiliates_sanitize_post( 'affiliate_status' ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				$affiliates_options->update_option( 'totals_affiliate_status', $affiliate_status );
 			} else {
 				$affiliate_status = null;
 				$affiliates_options->delete_option( 'totals_affiliate_status' );
 			}
 
-			if ( !empty( $_POST['referral_status'] ) && ( $referral_status = Affiliates_Utility::verify_referral_status_transition( $_POST['referral_status'], $_POST['referral_status'] ) ) ) {
+			if ( !empty( $_POST['referral_status'] ) && ( $referral_status = Affiliates_Utility::verify_referral_status_transition( affiliates_sanitize_post( 'referral_status' ), affiliates_sanitize_post( 'referral_status' ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				$affiliates_options->update_option( 'totals_referral_status', $referral_status );
 			} else {
 				$referral_status = null;
 				$affiliates_options->delete_option( 'totals_referral_status' );
 			}
 
-			if ( !empty( $_POST['currency_id'] ) && ( $currency_id = Affiliates_Utility::verify_currency_id( $_POST['currency_id'] ) ) ) {
+			if ( !empty( $_POST['currency_id'] ) && ( $currency_id = Affiliates_Utility::verify_currency_id( affiliates_sanitize_post( 'currency_id' ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				$affiliates_options->update_option( 'totals_currency_id', $currency_id );
 			} else {
 				$currency_id = null;
@@ -144,25 +144,19 @@ class Affiliates_Totals {
 			}
 		}
 
-		if ( isset( $_POST['row_count'] ) ) {
-			if (
-				!isset( $_POST[self::NONCE_1] ) ||
-				!wp_verify_nonce( $_POST[self::NONCE_1], self::SET_RPP )
-			) {
+		if ( isset( $_POST['row_count'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( !affiliates_verify_post_nonce( self::NONCE_1, self::SET_RPP ) ) {
 				wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
-		if ( isset( $_POST['paged'] ) ) {
-			if (
-				!isset( $_POST[self::NONCE_2] ) ||
-				!wp_verify_nonce( $_POST[self::NONCE_2], self::SET_PAGE )
-			) {
+		if ( isset( $_POST['paged'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( !affiliates_verify_post_nonce( self::NONCE_2, self::SET_PAGE ) ) {
 				wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = affiliates_get_current_url();
 		$current_url = remove_query_arg( 'paged', $current_url );
 		$current_url = remove_query_arg( 'action', $current_url );
 		$current_url = remove_query_arg( 'affiliate_id', $current_url );
@@ -176,23 +170,23 @@ class Affiliates_Totals {
 		$output .= esc_html__( 'Totals', 'affiliates' );
 		$output .= '</h1>';
 
-		$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
+		$row_count = intval( affiliates_sanitize_post( 'row_count' ) ?? 0 );
 
 		if ( $row_count <= 0 ) {
 			$row_count = $affiliates_options->get_option( 'totals_per_page', self::TOTALS_PER_PAGE );
 		} else {
 			$affiliates_options->update_option( 'totals_per_page', $row_count );
 		}
-		$offset = isset( $_GET['offset'] ) ? intval( $_GET['offset'] ) : 0;
+		$offset = intval( affiliates_sanitize_get( 'offset' ) ?? 0 );
 		if ( $offset < 0 ) {
 			$offset = 0;
 		}
-		$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 0;
+		$paged = intval( affiliates_sanitize_request( 'paged' ) ?? 0 );
 		if ( $paged < 0 ) {
 			$paged = 0;
 		}
 
-		$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
+		$orderby = affiliates_sanitize_get( 'orderby' );
 		switch ( $orderby ) {
 			case 'affiliate_id' :
 			case 'name' :
@@ -205,7 +199,7 @@ class Affiliates_Totals {
 				$orderby = 'name';
 		}
 
-		$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
+		$order = affiliates_sanitize_get( 'order' );
 		switch ( $order ) {
 			case 'asc' :
 			case 'ASC' :
@@ -565,7 +559,7 @@ class Affiliates_Totals {
 
 		$output .= '</div>'; // .totals-overview
 		$output .= '</div>'; // .totals
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		affiliates_footer();
 	}
 
@@ -729,7 +723,7 @@ class Affiliates_Totals {
 
 						$output .= '<div class="manage confirm">';
 
-						$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+						$current_url = affiliates_get_current_url();
 						$current_url = remove_query_arg( 'paged', $current_url );
 						$current_url = remove_query_arg( 'action', $current_url );
 						$current_url = remove_query_arg( 'affiliate_id', $current_url );
@@ -821,6 +815,7 @@ class Affiliates_Totals {
 					$output .= '<h2>' . esc_html__( 'Updated', 'affiliates' ) . '</h2>';
 					$output .= '<p>';
 					$output .= sprintf(
+						/* translators: status */
 						esc_html__( 'These referrals have been updated to %s.', 'affiliates' ),
 						'<em>' . ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) . '</em>'
 					);
@@ -831,6 +826,7 @@ class Affiliates_Totals {
 						$output .= '<h2>' . esc_html__( 'Omitted', 'affiliates' ) . '</h2>';
 						$output .= '<p>';
 						$output .= sprintf(
+							/* translators: status */
 							esc_html__( 'These referrals have been omitted because their status must not be changed to %s.', 'affiliates' ),
 							'<em>' . ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) . '</em>'
 						);
@@ -842,6 +838,7 @@ class Affiliates_Totals {
 						$output .= '<h2>' . esc_html__( 'Failed', 'affiliates' ) . '</h2>';
 						$output .= '<p>';
 						$output .= sprintf(
+							/* translators: status */
 							esc_html__( 'These referrals could not be updated to %s.', 'affiliates' ),
 							'<em>' . ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) . '</em>'
 						);
