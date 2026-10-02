@@ -23,7 +23,7 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date, WordPress.WP.AlternativeFunctions.parse_url_parse_url
 
 global $affiliates_options, $affiliates_version, $affiliates_admin_messages;
 
@@ -846,7 +846,7 @@ add_action( 'init', 'affiliates_init' );
  * Loads the plugin's translations.
  */
 function affiliates_init() {
-	load_plugin_textdomain( 'affiliates', '', AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
+	load_plugin_textdomain( 'affiliates', false, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
 	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
 	}

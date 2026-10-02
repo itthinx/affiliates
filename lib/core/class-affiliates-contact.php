@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+
 /**
  * This contact form is an example of how referrals are stored.
  *

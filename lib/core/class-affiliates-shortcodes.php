@@ -23,7 +23,7 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date, WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 
 /**
  * Shortcode handler.

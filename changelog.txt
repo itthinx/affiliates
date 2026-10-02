@@ -26,6 +26,8 @@
 * Resolved validation false positive on resource jquery-ui renamed to datepicker.
 * Resolved validation WordPress.DateTime.RestrictedFunctions.date_date.
 * Resolved validation WordPress.DB.PreparedSQL.NotPrepared.
+* Resolved validation WordPress.WP.AlternativeFunctions.strip_tags_strip_tags.
+* Resolved validation WordPress.WP.AlternativeFunctions.parse_url_parse_url.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
