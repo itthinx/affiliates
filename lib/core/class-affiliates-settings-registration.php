@@ -198,7 +198,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			array(
 				'name'              => 'terms_post_id',
 				'echo'              => true,
-				'show_option_none'  => __( '&mdash; Select &mdash;' ),
+				'show_option_none'  => '&mdash; ' . __( 'Select', 'affiliates' ) . ' &mdash;',
 				'option_none_value' => '',
 				'selected'          => $terms_post_id
 			)
