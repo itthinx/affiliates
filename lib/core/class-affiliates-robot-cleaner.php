@@ -101,7 +101,7 @@ class Affiliates_Robot_Cleaner {
 		global $wpdb, $affiliates_version;
 
 		if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
 		add_action( 'admin_footer', array( __CLASS__, 'admin_footer' ) );
@@ -116,16 +116,10 @@ class Affiliates_Robot_Cleaner {
 			)
 		);
 
-		$action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : null;
+		$action = affiliates_sanitize_request( 'action' );
 
-		if (
-			$action !== null &&
-			(
-				!isset( $_REQUEST['robot-cleaner-nonce'] ) ||
-				!wp_verify_nonce( $_REQUEST['robot-cleaner-nonce'], 'robot-cleaner-action' )
-			)
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( $action !== null && !affiliates_verify_request_nonce( 'robot-cleaner-nonce', 'robot-cleaner-action' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
 		echo '<h3>' . esc_html__( 'Robot Cleaner', 'affiliates' ) . '</h3>';
@@ -134,6 +128,7 @@ class Affiliates_Robot_Cleaner {
 			case null :
 				// ask if you want to check for robot hits and clean them up
 				printf(
+					/* translators: link */
 					esc_html__( 'Current list of robots defined under %s:', 'affiliates' ),
 					sprintf(
 						'<a href="%s">%s</a>',

@@ -51,6 +51,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				foreach ( $post_ids as $post_id ) {
 					$link = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( get_permalink( $post_id ) ), esc_html( get_the_title( $post_id ) ) );
 					$pages_generated_info .= '<div class="info">';
+					/* translators: link */
 					$pages_generated_info .= sprintf( esc_html__( 'The %s page has been created.', 'affiliates' ),  $link );
 					$pages_generated_info .= '</div>';
 				}
