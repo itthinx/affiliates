@@ -322,27 +322,27 @@ class Affiliates_Totals {
 
 		$output .= '<div class="totals-overview">';
 
-		$mp_params = "";
+		$mp_params = '';
 		if ( !empty( $from_date ) ) {
-			$mp_params .= "&from_date=" . urlencode( $from_date );
+			$mp_params .= '&from_date=' . urlencode( $from_date );
 		}
 		if ( !empty( $thru_date ) ) {
-			$mp_params .= "&thru_date=" . urlencode( $thru_date );
+			$mp_params .= '&thru_date=' . urlencode( $thru_date );
 		}
 		if ( !empty( $affiliate_status ) ) {
-			$mp_params .= "&affiliate_status=" . urlencode( $affiliate_status );
+			$mp_params .= '&affiliate_status=' . urlencode( $affiliate_status );
 		}
 		if ( !empty( $referral_status ) ) {
-			$mp_params .= "&referral_status=" . urlencode( $referral_status );
+			$mp_params .= '&referral_status=' . urlencode( $referral_status );
 		}
 		if ( !empty( $currency_id ) ) {
-			$mp_params .= "&currency_id=" . urlencode( $currency_id );
+			$mp_params .= '&currency_id=' . urlencode( $currency_id );
 		}
 		if ( !empty( $orderby ) ) {
-			$mp_params .= "&orderby=" . urlencode( $orderby );
+			$mp_params .= '&orderby=' . urlencode( $orderby );
 		}
 		if ( !empty( $order ) ) {
-			$mp_params .= "&order=" . urlencode( $order );
+			$mp_params .= '&order=' . urlencode( $order );
 		}
 
 		$output .= '<style type="text/css">';
@@ -351,14 +351,18 @@ class Affiliates_Totals {
 
 		$output .= '<div class="manage">';
 		$output .= '<p>';
-		$output .=
-			"<a title='" . esc_attr__( 'Click to close these referrals', 'affiliates' ) . "' " .
-			"class='button close-referrals' " .
-			"href='" . esc_url( $current_url ) . "&action=close_referrals" . $mp_params . "'>" .
-			"<img class='icon' alt='" . esc_attr__( 'Close referrals', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
-			"<span class='label'>" . esc_html__( 'Close Referrals', 'affiliates') . "</span>" .
-			"</a>";
-		$output .= "</p>";
+		$output .= sprintf(
+			'<a title="%1$s" class="button close-referrals" href="%2$s">' .
+			'<img class="icon" alt="%3$s" src="%4$s"/>' .
+			'<span class="label">%5$s</span>' .
+			'</a>',
+			esc_attr__( 'Click to close these referrals', 'affiliates' ),
+			esc_url( $current_url . '&action=close_referrals' . $mp_params ),
+			esc_attr__( 'Close referrals', 'affiliates' ),
+			AFFILIATES_PLUGIN_URL . 'images/closed.png',
+			esc_html__( 'Close Referrals', 'affiliates' )
+		);
+		$output .= '</p>';
 		$output .= '</div>';
 
 		$affiliate_status_descriptions = array(
