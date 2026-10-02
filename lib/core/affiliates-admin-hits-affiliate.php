@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 // Shows hits by affiliate
 
 define( 'AFFILIATES_HITS_AFFILIATE_PER_PAGE', 10 );

@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Show edit affiliate form.
  * @param int $affiliate_id affiliate id

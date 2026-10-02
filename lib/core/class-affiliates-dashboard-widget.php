@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Shows referral totals on the dashboard.
  */

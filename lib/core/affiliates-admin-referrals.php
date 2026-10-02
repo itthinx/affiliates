@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
 
 /**

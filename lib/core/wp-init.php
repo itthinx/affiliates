@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 global $affiliates_options, $affiliates_version, $affiliates_admin_messages;
 
 if ( !isset( $affiliates_admin_messages ) ) {

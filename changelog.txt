@@ -24,6 +24,7 @@
 * Resolved validation issues WordPress.WP.I18n.TextDomainMismatch.
 * Resolved validation issues WordPress.WP.I18n.MissingTranslatorsComment.
 * Resolved validation false positive on resource jquery-ui renamed to datepicker.
+* Resolved validation WordPress.DateTime.RestrictedFunctions.date_date.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
