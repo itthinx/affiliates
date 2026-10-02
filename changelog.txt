@@ -28,6 +28,7 @@
 * Resolved validation WordPress.DB.PreparedSQL.NotPrepared.
 * Resolved validation WordPress.WP.AlternativeFunctions.strip_tags_strip_tags.
 * Resolved validation WordPress.WP.AlternativeFunctions.parse_url_parse_url.
+* Resolved validation WordPress.Security.EscapeOutput.UnsafePrintingFunction.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.

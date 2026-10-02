@@ -293,26 +293,26 @@ class Affiliates_Contact extends WP_Widget {
 		$currency_id = isset( $instance['currency_id'] ) ? esc_attr( $instance['currency_id'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'affiliates' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'amount' ); ?>"><?php _e( 'Amount (use . for decimals):', 'affiliates' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'amount' ); ?>"><?php esc_html_e( 'Amount (use . for decimals):', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'amount' ); ?>" name="<?php echo $this->get_field_name( 'amount' ); ?>" type="text" value="<?php echo $amount; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php _e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php esc_html_e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'currency_id' ); ?>" name="<?php echo $this->get_field_name( 'currency_id' ); ?>" type="text" value="<?php echo $currency_id; ?>" />
 		</p>
 		<p>
-			<?php _e( 'This contact form will request a referral and store the data that has been submitted.', 'affiliates' ); ?>
+			<?php esc_html_e( 'This contact form will request a referral and store the data that has been submitted.', 'affiliates' ); ?>
 		</p>
 		<p>
-			<?php _e( 'It has two purposes:', 'affiliates' ); ?>
+			<?php esc_html_e( 'It has two purposes:', 'affiliates' ); ?>
 		</p>
 		<ul>
-			<li><?php _e( 'To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate.', 'affiliates' ); ?></li>
-			<li><?php _e( 'To serve as an example on how to use the API provided by the Affiliates plugin', 'affiliates' ); ?></li>
+			<li><?php esc_html_e( 'To be used as an entry-level referral tool (e.g. in lead generation), if you want to track who has contacted you and has visited your site through an affiliate.', 'affiliates' ); ?></li>
+			<li><?php esc_html_e( 'To serve as an example on how to use the API provided by the Affiliates plugin', 'affiliates' ); ?></li>
 		</ul>
 		<?php
 	}

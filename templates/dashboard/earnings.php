@@ -45,7 +45,7 @@ if ( !defined( 'ABSPATH' ) ) {
 <div class="dashboard-section dashboard-section-earnings">
 	<form id="setfilters" class="filters capsule-container" action="" method="post">
 		<div class="capsule half left">
-			<label for="from_date" class="from-date-filter"><?php _e( 'From', 'affiliates' ); ?></label>
+			<label for="from_date" class="from-date-filter"><?php esc_html_e( 'From', 'affiliates' ); ?></label>
 			<input class="datefield from-date-filter" name="from_date" type="date" value="<?php echo esc_attr( $section->get_from_date() ); ?>"/>
 		</div>
 		<div class="capsule half right">

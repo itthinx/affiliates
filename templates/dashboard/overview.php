@@ -60,15 +60,15 @@ $link_info  = sprintf(
 <div class="dashboard-section dashboard-section-overview">
 	<div class="stats-container">
 		<div class="stats-item">
-			<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
+			<div class="stats-item-heading"><?php esc_html_e( 'Recent Visits', 'affiliates' ); ?></div>
 			<div class="stats-item-value"><?php echo esc_html( $visits ); ?></div>
 		</div>
 		<div class="stats-item">
-			<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
+			<div class="stats-item-heading"><?php esc_html_e( 'Recent Referrals', 'affiliates' ); ?></div>
 			<div class="stats-item-value"><?php echo esc_html( $referrals ); ?></div>
 		</div>
 		<div class="stats-item">
-			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
+			<div class="stats-item-heading"><?php esc_html_e( 'Recent Earnings', 'affiliates' )?></div>
 			<?php if ( count( $amounts ) > 0 ) :?>
 				<?php foreach ( $amounts as $currency_id => $amount ) : ?>
 					<div class="stats-item-value">

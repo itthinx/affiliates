@@ -311,21 +311,21 @@ function affiliates_admin() {
 			$(document).ready(function(){
 				var data = [
 					{
-						label : "<?php _e( 'Hits', 'affiliates' ); ?>",
+						label : "<?php esc_html_e( 'Hits', 'affiliates' ); ?>",
 						data : <?php echo $hits_series_json; ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ccddff'
 					},
 					{
-						label : "<?php _e( 'Visits', 'affiliates' ); ?>",
+						label : "<?php esc_html_e( 'Visits', 'affiliates' ); ?>",
 						data : <?php echo $visits_series_json; ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ffddcc'
 					},
 					{
-						label : "<?php _e( 'Accepted', 'affiliates' ); ?>",
+						label : "<?php esc_html_e( 'Accepted', 'affiliates' ); ?>",
 						data : <?php echo $accepted_series_json; ?>,
 						color : '#009900',
 						bars : { align : "center", show : true, barWidth : 1 },
@@ -333,21 +333,21 @@ function affiliates_admin() {
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Pending', 'affiliates' ); ?>",
+						label : "<?php esc_html_e( 'Pending', 'affiliates' ); ?>",
 						data : <?php echo $pending_series_json; ?>,
 						color : '#0000ff',
 						bars : { align : "center", show : true, barWidth : 0.6 },
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Rejected', 'affiliates' ); ?>",
+						label : "<?php esc_html_e( 'Rejected', 'affiliates' ); ?>",
 						data : <?php echo $rejected_series_json; ?>,
 						color : '#ff0000',
 						bars : { align : "center", show : true, barWidth : .3 },
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Closed', 'affiliates' ); ?>",
+						label : "<?php esc_html_e( 'Closed', 'affiliates' ); ?>",
 						data : <?php echo $closed_series_json; ?>,
 						color : '#333333',
 						points : { show : true },
