@@ -13,6 +13,7 @@
 * Replaced uses of alias function key_exists.
 * Fixed checkbox background color clash.
 * Revised table sorting indicators for various sections.
+* Revised totals section including output escaping and structure.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
