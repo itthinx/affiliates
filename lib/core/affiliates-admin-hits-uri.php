@@ -759,7 +759,7 @@ function affiliates_admin_hits_uri() {
 	$output .= '<p>';
 	$output .= sprintf(
 		/* translators: 1 time zone, 2 offset */
-		__( "* Date is given for the server's time zone : %1$s, which has an offset of %2$s hours with respect to GMT.", 'affiliates' ),
+		__( '* Date is given for the server\'s time zone : %1$s, which has an offset of %2$s hours with respect to GMT.', 'affiliates' ),
 		$server_dtz->getName(),
 		$server_dtz->getOffset( new DateTime() ) / 3600.0
 	);
