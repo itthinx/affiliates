@@ -348,7 +348,7 @@ function affiliates_admin_affiliates() {
 		$affiliates_options->update_option('affiliates_per_page', $row_count );
 	}
 	// current page
-	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 1;
+	$paged = intval( affiliates_sanitize_request( 'paged' ) ?? 1 );
 	if ( $paged < 1 ) {
 		$paged = 1;
 	}
@@ -700,12 +700,26 @@ function affiliates_admin_affiliates() {
 
 			$output .= sprintf( "<td class='status'>%s</td>", esc_html( $result->status ) );
 
-			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . esc_url( $result->affiliate_id ) . "' alt='" . esc_attr__( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
-			$output .= "<td class='remove'>" .
-				( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE )  ) ?
-				"<a href='" . esc_url( $current_url ) . "&action=remove&affiliate_id=" . $result->affiliate_id . "' alt='" . esc_attr__( 'Remove', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/remove.png'/></a>"
-				: "" ) .
-				"</td>";
+			$output .= '<td class="edit">';
+			$output .= sprintf(
+				'<a href="%1$s" alt="%2$s"><img src="%3$s" /></a>',
+				esc_url( add_query_arg( array( 'action' => 'edit', 'affiliate_id' => $result->affiliate_id, 'paged' => $paged ), $current_url ) ),
+				esc_attr__( 'Edit', 'affiliates' ),
+				esc_url( AFFILIATES_PLUGIN_URL . 'images/edit.png' )
+			);
+			$output .= '</td>';
+
+			$output .= '<td class="remove">';
+			if ( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE ) ) ) {
+				$output .= sprintf(
+					'<a href="%1$s" alt="%2$s"><img src="%3$s"/></a>',
+					esc_url( add_query_arg( array( 'action' => 'remove', 'affiliate_id' => $result->affiliate_id ), $current_url ) ),
+					esc_attr__( 'Remove', 'affiliates' ),
+					esc_url( AFFILIATES_PLUGIN_URL . 'images/remove.png' )
+				);
+			}
+			$output .= '</td>';
+
 			$output .= "<td class='links'>";
 			$encoded_id = affiliates_encode_affiliate_id( $result->affiliate_id );
 			$link_url = affiliates_get_affiliate_url( home_url(), $result->affiliate_id );
