@@ -49,8 +49,10 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-generator.php';
 				$post_ids = Affiliates_Generator::setup_pages();
 				foreach ( $post_ids as $post_id ) {
-					$link = '<a href="' . get_permalink( $post_id ) . '" target="_blank">' . esc_html( get_the_title( $post_id ) ) . '</a>';
-					$pages_generated_info .= '<div class="info">' . wp_kses( __( sprintf( 'The %s page has been created.', $link ), 'affiliates' ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ) . '</div>';
+					$link = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( get_permalink( $post_id ) ), esc_html( get_the_title( $post_id ) ) );
+					$pages_generated_info .= '<div class="info">';
+					$pages_generated_info .= sprintf( esc_html__( 'The %s page has been created.', 'affiliates' ),  $link );
+					$pages_generated_info .= '</div>';
 				}
 			}
 		}

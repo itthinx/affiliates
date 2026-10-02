@@ -16,6 +16,8 @@
 * Revised totals section including output escaping and structure.
 * Added the nonce verification API.
 * Added the input sanitation API.
+* Resolved validation issues WordPress.WP.I18n.NonSingularStringLiteralText.
+* Resolved validation issues WordPress.WP.I18n.NonSingularStringLiteralDomain.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.

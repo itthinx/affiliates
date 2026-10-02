@@ -1108,7 +1108,7 @@ class Affiliates_Shortcodes {
 							}
 							// @since 5.4.1 translate stored labels
 							if ( $label === $field['label'] ) {
-								$label = __( $label, 'affiliates' );
+								$label = __( $label, 'affiliates' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 							}
 							$n++;
 							$output .= '<div class="field">';

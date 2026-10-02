@@ -695,7 +695,7 @@ function affiliates_admin_referrals() {
 					$output .= '<table class="referral-data wp-list-table widefat fixed" cellspacing="0">';
 					if ( is_array( $data ) ) {
 						foreach ( $data as $key => $info ) {
-							$title = __( $info['title'], $info['domain'] );
+							$title = __( $info['title'], $info['domain'] ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText, WordPress.WP.I18n.NonSingularStringLiteralDomain
 							$value = $info['value'];
 							$output .= "<tr id='referral-data-$i'>";
 							$output .= '<td class="referral-data-title">';
