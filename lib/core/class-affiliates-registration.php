@@ -584,7 +584,14 @@ class Affiliates_Registration {
 		$user_id = self::create_affiliate( $userdata );
 
 		if ( ! $user_id ) {
-			$errors->add( 'registerfail', sprintf( __( '<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href="mailto:%s">webmaster</a> !' ), get_option( 'admin_email' ) ) );
+			$errors->add(
+				'registerfail',
+				sprintf(
+					esc_html__( '%1$s: Couldn&#8217;t register you... please contact the %2$s !', 'affiliates' ),
+					esc_html( 'ERROR', 'affiliates' ),
+					sprintf( '<a href="mailto:%s">webmaster</a>', esc_attr( get_option( 'admin_email' ) ) )
+				)
+			);
 			return $errors;
 		}
 

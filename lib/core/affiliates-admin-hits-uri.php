@@ -746,7 +746,9 @@ function affiliates_admin_hits_uri() {
 	} else {
 		if ( $count > 0 ) {
 			$output .= '<div class="tablenav bottom">';
-			$output .= '<span class="displaying-num">' . sprintf( _n( '1 item', '%s items', $count ), number_format_i18n( $count ) ) . '</span>';
+			$output .= '<span class="displaying-num">';
+			$output .= esc_html( sprintf( _n( '1 item', '%s items', $count, 'affiliates' ), number_format_i18n( $count ) ) );
+			$output .= '</span>';
 			$output .= '</div>';
 		}
 	}
