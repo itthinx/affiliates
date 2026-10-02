@@ -35,16 +35,19 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$cancel_url  = remove_query_arg( 'referral_id', remove_query_arg( 'action', $current_url ) );
 	$current_url = remove_query_arg( 'paged', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
 
 	if ( $referral_id === null ) {
-		$referral_id  = isset( $_POST['referral_id'] ) ? intval( $_POST['referral_id'] ) : null;
+		$referral_id = affiliates_sanitize_post( 'referral_id' );
+		if ( $referral_id !== null ) {
+			$referral_id = intval( $referral_id );
+		}
 	}
 	$affiliate_id = isset( $_POST['affiliate_id'] ) ? intval( $_POST['affiliate_id'] ) : null;
 	$datetime     = isset( $_POST['datetime'] ) ? date( 'Y-m-d H:i:s', strtotime( $_POST['datetime'] ) ) : date( 'Y-m-d H:i:s', time() );
@@ -63,15 +66,12 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 				break;
 		}
 	}
-	$reference  = isset( $_POST['reference'] ) ? wp_strip_all_tags( $_POST['reference'] ) : '';
+	$reference = isset( $_POST['reference'] ) ? wp_strip_all_tags( $_POST['reference'] ) : '';
 
 	$saved = false;
 	if ( isset( $_POST['save'] ) ) {
-		if (
-			!isset( $_POST['referral-nonce'] ) ||
-			!wp_verify_nonce( $_POST['referral-nonce'], 'save' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( 'referral-nonce', 'save' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		} else {
 			if ( !empty( $affiliate_id ) ) {
 				if ( empty( $referral_id ) ) {
@@ -95,11 +95,11 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 					}
 					if ( !empty( $referral_id ) ) {
 						$output .= '<br/>';
-						$output .= '<div class="info">' . __( 'The referral has been created.', 'affiliates' ) . '</div>';
+						$output .= '<div class="info">' . esc_html__( 'The referral has been created.', 'affiliates' ) . '</div>';
 						$saved = true;
 					} else {
 						$output .= '<br/>';
-						$output .= '<div class="warning">' . __( 'The referral has not been created. Duplicate?', 'affiliates' ) . '</div>';
+						$output .= '<div class="warning">' . esc_html__( 'The referral has not been created. Duplicate?', 'affiliates' ) . '</div>';
 					}
 				} else {
 					$action = apply_filters(
@@ -120,7 +120,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 							'reference'    => $reference
 						) ) ) {
 							$output .= '<br/>';
-							$output .= '<div class="info">' . __( 'The referral has been saved.', 'affiliates' ) . '</div>';
+							$output .= '<div class="info">' . esc_html__( 'The referral has been saved.', 'affiliates' ) . '</div>';
 							$saved = true;
 						}
 					}
@@ -149,9 +149,9 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	$output .= sprintf( '<div class="referral %s referrals-overview">', empty( $referral_id ) ? 'new-referral' : 'edit-referral' );
 	$output .= '<h1>';
 	if ( empty( $referral_id ) ) {
-		$output .= __( 'New Referral', 'affiliates' );
+		$output .= esc_html__( 'New Referral', 'affiliates' );
 	} else {
-		$output .= __( 'Edit Referral', 'affiliates' );
+		$output .= esc_html__( 'Edit Referral', 'affiliates' );
 	}
 	$output .= '</h1>';
 
@@ -166,7 +166,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Affiliate', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Affiliate', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$affiliates = affiliates_get_affiliates( true, true );
 	$output .= sprintf( '<select name="affiliate_id" class="affiliates-uie" placeholder="%s">', esc_attr( '&mdash;' ) );
@@ -178,12 +178,12 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 			$selected = '';
 		}
 		$output .= sprintf(
-				'<option value="%s" %s>%s [%d]</option>',
-				esc_attr( $affiliate['affiliate_id'] ),
-				$selected,
-				esc_html( stripslashes( $affiliate['name'] ) ),
-				esc_html( $affiliate['affiliate_id'] )
-			);
+			'<option value="%s" %s>%s [%d]</option>',
+			esc_attr( $affiliate['affiliate_id'] ),
+			$selected,
+			esc_html( stripslashes( $affiliate['name'] ) ),
+			esc_html( $affiliate['affiliate_id'] )
+		);
 	}
 	$output .= '</select>';
 	$output .= '</label>';
@@ -192,17 +192,17 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Date & Time', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Date & Time', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="datetime" value="%s" />', esc_attr( $datetime ) );
 	$output .= ' ';
-	$output .= '<span class="description">' . __( 'Format : YYYY-MM-DD HH:MM:SS', 'affiliates' ) . '</span>';
+	$output .= '<span class="description">' . esc_html__( 'Format : YYYY-MM-DD HH:MM:SS', 'affiliates' ) . '</span>';
 	$output .= '</label>';
 	$output .= '</p>';
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Description', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Description', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= '<textarea name="description">';
 	$output .= stripslashes( $description );
@@ -212,7 +212,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Amount', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Amount', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="amount" value="%s" />', esc_attr( $amount ) );
 	$output .= '</label>';
@@ -220,11 +220,11 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Currency ID', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Currency ID', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="currency_id" value="%s" />', esc_attr( $currency_id ) );
 	$output .= ' ';
-	$output .= '<span class="description">' . __( '* Required when an amount is provided. Examples: USD, GBP, EUR, ...', 'affiliates' ) . '</span>';
+	$output .= '<span class="description">' . esc_html__( '* Required when an amount is provided. Examples: USD, GBP, EUR, ...', 'affiliates' ) . '</span>';
 	$output .= '</label>';
 	$output .= '</p>';
 
@@ -236,12 +236,12 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 	);
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Status', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Status', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= '<select name="status">';
 	foreach ( $status_descriptions as $key => $label ) {
 		$selected = $key == $status ? ' selected="selected" ' : '';
-		$output .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . $label . '</option>';
+		$output .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 	}
 	$output .= '</select>';
 	$output .= '</label>';
@@ -249,7 +249,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Reference', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Reference', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="reference" value="%s" />', esc_attr( $reference ) );
 	$output .= '</label>';
@@ -257,7 +257,7 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= '<p>';
 	$output .= '<label>';
-	$output .= '<span class="title">' . __( 'Reference Amount', 'affiliates' ) . '</span>';
+	$output .= '<span class="title">' . esc_html__( 'Reference Amount', 'affiliates' ) . '</span>';
 	$output .= ' ';
 	$output .= sprintf( '<input type="text" name="reference_amount" value="%s" />', esc_attr( $reference_amount ) );
 	$output .= '</label>';
@@ -271,16 +271,16 @@ function affiliates_admin_referral_edit( $referral_id = null ) {
 
 	$output .= wp_nonce_field( 'save', 'referral-nonce', true, false );
 
-	$output .= sprintf( '<input class="button button-primary" type="submit" name="save" value="%s"/>', __( 'Save', 'affiliates' ) );
+	$output .= sprintf( '<input class="button button-primary" type="submit" name="save" value="%s"/>', esc_attr__( 'Save', 'affiliates' ) );
 	$output .= ' ';
-	$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, $saved ? __( 'Back', 'affiliates' ) : __( 'Cancel', 'affiliates' ) );
+	$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, $saved ? esc_html__( 'Back', 'affiliates' ) : esc_html__( 'Cancel', 'affiliates' ) );
 
 	$output .= '</div>';
 	$output .= '</form>';
 
 	$output .= '</div>';
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 }
