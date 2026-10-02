@@ -556,7 +556,8 @@ function affiliates_admin_hits_uri() {
 		$status_checkboxes .= '</label>';
 	}
 
-	$use_and_or = sprintf( __( 'You can use %s and %s to search for multiple terms in combination.', 'affiliates' ), 'AND', 'OR' );
+	/* translators: 1 literal, 2 literal */
+	$use_and_or = sprintf( __( 'You can use %1$s and %2$s to search for multiple terms in combination.', 'affiliates' ), 'AND', 'OR' );
 
 	$output .=
 		'<div class="filters">' .
@@ -747,7 +748,8 @@ function affiliates_admin_hits_uri() {
 		if ( $count > 0 ) {
 			$output .= '<div class="tablenav bottom">';
 			$output .= '<span class="displaying-num">';
-			$output .= esc_html( sprintf( _n( '1 item', '%s items', $count, 'affiliates' ), number_format_i18n( $count ) ) );
+			/* translators: count */
+			$output .= esc_html( sprintf( _n( '1 item', '%s items', $count, 'affiliates' ), number_format_i18n( $count ) ) ); // phpcs:ignore WordPress.WP.I18n.MissingSingularPlaceholder
 			$output .= '</span>';
 			$output .= '</div>';
 		}
@@ -756,7 +758,8 @@ function affiliates_admin_hits_uri() {
 	$server_dtz = DateHelper::getServerDateTimeZone();
 	$output .= '<p>';
 	$output .= sprintf(
-		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		/* translators: 1 time zone, 2 offset */
+		__( "* Date is given for the server's time zone : %1$s, which has an offset of %2$s hours with respect to GMT.", 'affiliates' ),
 		$server_dtz->getName(),
 		$server_dtz->getOffset( new DateTime() ) / 3600.0
 	);

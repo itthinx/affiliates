@@ -96,15 +96,19 @@ class Affiliates_Dashboard_Widget {
 			$output .= '<strong>';
 			switch( $status ) {
 				case AFFILIATES_REFERRAL_STATUS_CLOSED :
+					/* translators: title */
 					$output .= sprintf( __( '<span style="cursor:help" title="%s">Closed</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for closed referrals (commissions paid).', 'affiliates' ) ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_ACCEPTED :
+					/* translators: title */
 					$output .= sprintf( __( '<span style="cursor:help" title="%s">Accepted</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for accepted referrals (commissions unpaid).', 'affiliates' ) ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_PENDING :
+					/* translators: title */
 					$output .= sprintf( __( '<span style="cursor:help" title="%s">Pending</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for pending referrals.', 'affiliates' ) ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_REJECTED :
+					/* translators: title */
 					$output .= sprintf( __( '<span style="cursor:help" title="%s">Rejected</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for rejected referrals.', 'affiliates' ) ) );
 					break;
 			}
@@ -123,7 +127,7 @@ class Affiliates_Dashboard_Widget {
 				foreach( $total as $currency => $amount ) {
 					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $amount );
 					$output .= '<li>';
-					$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $display_amount ); // translators: first is a three-letter currency code, second is a monetary amount
+					$output .= sprintf( '%1$s %2$s', $currency, $display_amount );
 					$output .= '</li>';
 				}
 			} else {

@@ -1035,6 +1035,7 @@ class Affiliates_Shortcodes {
 										$output .= '<div class="error">';
 										$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 										$output .= ' : ';
+										/* translators: field name */
 										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
 										$output .= '</div>';
 									}
@@ -1051,6 +1052,7 @@ class Affiliates_Shortcodes {
 												$output .= '<div class="error">';
 												$output .= __( '<strong>ERROR</strong>', 'affiliates' );
 												$output .= ' : ';
+												/* translators: field name */
 												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', 'affiliates' ), $field['label'] );
 												$output .= '</div>';
 											}
@@ -1166,6 +1168,7 @@ class Affiliates_Shortcodes {
 								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
+								/* translators: label */
 								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $label ) ) );
 								$output .= sprintf(
 									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',

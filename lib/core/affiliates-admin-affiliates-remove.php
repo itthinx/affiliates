@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment
+
 /**
  * Show form to remove an affiliate.
  * @param int $affiliate_id affiliate id

@@ -115,7 +115,8 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 				'</p>' .
 				'<p>' .
 				sprintf(
-					__( 'The default value is %d. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until %d days after she or he clicked that affiliate link.', 'affiliates' ),
+					/* translators: default value, count days */
+					__( 'The default value is %1$d. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until %2$d days after she or he clicked that affiliate link.', 'affiliates' ),
 					AFFILIATES_COOKIE_TIMEOUT_DAYS,
 					AFFILIATES_COOKIE_TIMEOUT_DAYS
 				) .

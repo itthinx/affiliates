@@ -154,7 +154,7 @@ function affiliates_admin_print_scripts() {
 	global $post_type, $affiliates_version;
 
 	// load datepicker scripts for all
-	wp_enqueue_script( 'datepicker', AFFILIATES_PLUGIN_URL . 'js/jquery-ui.min.js', array( 'jquery', 'jquery-ui-core' ), $affiliates_version );
+	wp_enqueue_script( 'datepicker', AFFILIATES_PLUGIN_URL . 'js/datepicker.min.js', array( 'jquery', 'jquery-ui-core' ), $affiliates_version );
 	wp_enqueue_script( 'datepickers', AFFILIATES_PLUGIN_URL . 'js/datepickers.js', array( 'jquery', 'jquery-ui-core', 'datepicker' ), $affiliates_version );
 	// add more dates used for trips and events
 	wp_enqueue_script( 'affiliates', AFFILIATES_PLUGIN_URL . 'js/affiliates.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ), $affiliates_version );

@@ -49,9 +49,11 @@ if ( isset( $totals['amounts_by_currency'] ) ) {
 }
 $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
 $encoded_id = affiliates_encode_affiliate_id( $section->get_affiliate_id() );
-$link_info  = wp_kses(
-	sprintf( __( 'You can also add <code>?%s=%s</code> to any link on %s to track referrals from your account.', 'affiliates' ), $pname, $encoded_id, esc_url( home_url() ) ),
-	array( 'code' => array(), 'a' => array( 'href' => array() ) )
+$link_info  = sprintf(
+	/* translators: parameter, URL */
+	__( 'You can also add %1$s to any link on %2$s to track referrals from your account.', 'affiliates' ),
+	sprintf( '<code>?%s=%s</code>', esc_html( $pname ), esc_html( $encoded_id ) ),
+	esc_url( home_url() )
 );
 ?>
 <h2><?php esc_html_e( 'Overview', 'affiliates' ); ?></h2>

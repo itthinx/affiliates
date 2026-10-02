@@ -105,6 +105,7 @@ class Affiliates_Settings {
 		echo '<p>';
 		echo
 			sprintf(
+				/* translators: literal */
 				__( '<strong>Welcome to %s</strong>', 'affiliates' ),
 				ucwords( str_replace('-', ' ', AFFILIATES_PLUGIN_NAME ) )
 			);
@@ -116,6 +117,7 @@ class Affiliates_Settings {
 		echo __( 'This is intended as a guidance and you can safely hide this message when finished.', 'affiliates' );
 		echo ' ';
 		echo sprintf(
+			/* translators: URL */
 			__( 'Use the <a href="%s">Settings</a> section to review or adjust the system anytime.', 'affiliates' ),
 			admin_url( 'admin.php?page=affiliates-admin-settings' )
 		);

@@ -299,6 +299,7 @@ function affiliates_admin() {
 	$ticks_json           = json_encode( $ticks );
 	$dates_json           = json_encode( $dates );
 
+	/* translators: count */
 	echo '<h2>' . sprintf( esc_html__( '%d Day Charts', 'affiliates' ), $days_back ) . '</h2>';
 	echo '<div class="manage" style="margin-right:1em">';
 	?>
@@ -497,7 +498,7 @@ function affiliates_admin() {
 	if ( count( $referral_stats ) > 0 ) {
 		foreach ( $referral_stats as $currency_id => $stats ) {
 			echo '<div class="referral-stats-container">';
-			echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+			echo '<div class="status heading">' . esc_html__( 'Status', 'affiliates' ) . '</div>';
 			echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
 			echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 			foreach ( $statuses as $status_id => $status ) {
@@ -517,7 +518,7 @@ function affiliates_admin() {
 		}
 	} else {
 		echo '<div class="referral-stats-container">';
-		echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+		echo '<div class="status heading">' . esc_html__( 'Status', 'affiliates' ) . '</div>';
 		echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
 		echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 		echo '<div class="status">&mdash;</div>';
@@ -540,9 +541,11 @@ function affiliates_admin() {
 	echo '<div class="time-span-container">';
 	echo esc_html(
 		sprintf(
-			__( 'Data for the date range %s &ndash; %s (%s)', 'affiliates' ),
+			/* translators: from date, thru date, days count */
+			esc_html__( 'Data for the date range %1$s &ndash; %2$s (%3$s)', 'affiliates' ),
 			date_i18n( 'Y-m-d', strtotime( $from_date ) ),
 			date_i18n( 'Y-m-d', strtotime( $thru_date ) ),
+			/* translators: count */
 			sprintf( _n( '%d day', '%d days', $days_back, 'affiliates' ), $days_back )
 		)
 	);

@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment
+
 /**
  * Affiliate registration form.
  *

@@ -43,6 +43,7 @@ function affiliates_admin_add_ons() {
 	echo '<p>';
 	printf(
 		sprintf(
+			/* translators: link */
 			esc_html__( 'Please also refer to the available %s.', 'affiliates' ),
 			sprintf( '<a href="%s">%s</a>',
 				esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
@@ -313,6 +314,7 @@ function affiliates_admin_add_ons() {
 
 		echo '<li>';
 		printf(
+			/* translators: link */
 			esc_html__( 'The %s site also provides up-to-date information on the Affiliates, Affiliates Pro and Affiliates Enterprise plugin features.', 'affiliates' ),
 			sprintf( '<a href="https://docs.itthinx.com/">%s</a>', esc_html__( 'Documentation', 'affiliates' ) )
 		);
@@ -358,6 +360,7 @@ function affiliates_admin_add_ons() {
 
 	echo '<p>';
 	printf(
+		/* translators: 1 link, 2 link */
 		esc_html__( 'Free and premium extensions are listed on the %1$s page and in the %2$s.', 'affiliates' ),
 		sprintf( '<a href="https://www.itthinx.com/plugins-overview/">%s</a>', esc_html__( 'Overview', 'affiliates' ) ),
 		sprintf( '<a href="https://www.itthinx.com/shop/">%s</a>', esc_html__( 'Shop', 'affiliates' ) )

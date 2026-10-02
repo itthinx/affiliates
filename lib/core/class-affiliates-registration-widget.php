@@ -125,6 +125,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 			echo '<br/>';
 			echo '<span class="description"> ';
 			printf(
+				/* translators: link */
 				esc_html__( 'Terms page: %s', 'affiliates' ) ,
 				'<a target="_blank" href="'. esc_url( get_permalink( $terms_post_id ) ) .'">' . esc_html( $post_title ) . '</a>'
 			);

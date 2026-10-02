@@ -112,7 +112,8 @@ class Affiliates_Pagination {
 
 		$output = '<span class="displaying-num">';
 		$output .= esc_html( sprintf(
-			_n( '1 item', '%s items', $total_items, 'affiliates' ),
+			/* translators: count */
+			_n( '1 item', '%s items', $total_items, 'affiliates' ), // phpcs:ignore WordPress.WP.I18n.MissingSingularPlaceholder
 			number_format_i18n( $total_items )
 		) );
 		$output .= '</span>';
@@ -158,7 +159,9 @@ class Affiliates_Pagination {
 				strlen( $total_pages )
 			);
 
-		$html_total_pages = sprintf( "<span class='total-pages'>%s</span>", number_format_i18n( $total_pages ) );
+		/* translators: count */
+		$html_total_pages = sprintf( "<span class='total-pages'>%s</span>", esc_html( number_format_i18n( $total_pages ) ) );
+		/* translators: 1 count, 2 count */
 		$page_links[] = '<span class="paging-input">' . sprintf( esc_html_x( '%1$s of %2$s', 'paging', 'affiliates' ), $html_current_page, $html_total_pages ) . '</span>';
 
 		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",

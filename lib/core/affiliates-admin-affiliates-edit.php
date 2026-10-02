@@ -53,6 +53,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 			// user edit link
 			if ( current_user_can( 'edit_user', $affiliate_user->ID ) ) {
+				/* translators: name */
 				$affiliate_user_edit = sprintf( esc_html__( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . esc_html( $affiliate_user->user_login ) . '</a>' );
 			}
 

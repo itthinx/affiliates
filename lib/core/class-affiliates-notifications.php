@@ -618,6 +618,7 @@ E-mail: [user_email]<br/>',
 					$params = apply_filters( 'affiliates_updated_affiliate_status_params', $params );
 					@wp_mail(
 						$user->user_email,
+						/* translators: blog name */
 						apply_filters( 'affiliates_updated_affiliate_status_subject', sprintf( __( '[%s] Affiliate program', 'affiliates' ), $blogname ), $params, $old_status, $new_status ),
 						apply_filters( 'affiliates_updated_affiliate_status_message', $message, $params, $old_status, $new_status ),
 						apply_filters( 'affiliates_updated_affiliate_status_headers', '', $params, $old_status, $new_status )

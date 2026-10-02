@@ -217,7 +217,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	public function render() {
 		global $wpdb, $affiliates_options, $affiliates_version;
 
-		wp_enqueue_script( 'datepicker', AFFILIATES_PLUGIN_URL . 'js/jquery-ui.min.js', array( 'jquery', 'jquery-ui-core' ), $affiliates_version );
+		wp_enqueue_script( 'datepicker', AFFILIATES_PLUGIN_URL . 'js/datepicker.min.js', array( 'jquery', 'jquery-ui-core' ), $affiliates_version );
 		wp_enqueue_script( 'datepickers', AFFILIATES_PLUGIN_URL . 'js/datepickers.js', array( 'jquery', 'jquery-ui-core', 'datepicker' ), $affiliates_version );
 		wp_enqueue_style( 'smoothness', AFFILIATES_PLUGIN_URL . 'css/smoothness/jquery-ui.min.css', array(), $affiliates_version );
 

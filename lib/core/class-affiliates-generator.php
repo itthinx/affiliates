@@ -55,6 +55,7 @@ class Affiliates_Generator {
 		if ( $post_id instanceof WP_Error ) {
 			wp_admin_notice( // wp_kses_post's the message output so we do not escape here
 				sprintf(
+					/* translators: error message */
 					__( 'The affiliate area page could not be created. Error: %s', 'affiliates' ),
 					$post_id->get_error_message()
 				),
