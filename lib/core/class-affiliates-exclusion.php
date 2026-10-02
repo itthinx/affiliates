@@ -19,6 +19,10 @@
  * @since affiliates 2.8.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Affiliates_Exclusion {
 
 	private static $ap_priority = false;

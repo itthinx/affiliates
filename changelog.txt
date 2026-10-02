@@ -20,6 +20,7 @@
 * Resolved validation issues WordPress.WP.I18n.NonSingularStringLiteralDomain.
 * Fixed instances of missing language domain.
 * Resolved validation issues WordPress.WP.I18n.MissingArgDomain.
+* Resolved validation missing_direct_file_access_protection.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
