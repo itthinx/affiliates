@@ -41,6 +41,7 @@
 * Revised network settings section output escaping.
 * Revised overview output escaping.
 * Revised referrals settings section output escaping and input sanitation.
+* Revised user registration settings section output escaping and input sanitation.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
