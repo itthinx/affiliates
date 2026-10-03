@@ -69,8 +69,8 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 			'<p>' .
 			esc_html__( 'Press the button to generate a default affiliate area.', 'affiliates' ) .
 			' ' .
-			'<input class="generate button" name="generate" type="submit" value="' . __( 'Generate', 'affiliates' ) .'" />' .
-			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_GEN_NONCE, true, false ) .
+			'<input class="generate button" name="generate" type="submit" value="' . esc_attr__( 'Generate', 'affiliates' ) .'" />' .
+			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_GEN_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</p>' .
 			$pages_generated_info . // @codingStandardsIgnoreLine
 			'</div>' .
@@ -119,7 +119,7 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				);
 			}
 			$post_list .= '</ul>';
-			echo $post_list;
+			echo $post_list; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		echo '<p>';
