@@ -44,6 +44,7 @@
 * Revised user registration settings section output escaping and input sanitation.
 * Revised affiliates referrals section output escaping and input sanitation.
 * Revised dashboard templates.
+* Updated the translation template.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
