@@ -66,9 +66,10 @@ class Affiliates_Contact extends WP_Widget {
 
 		// output
 
-		echo $before_widget;
+		echo $before_widget; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
 		if ( !empty( $title ) ) {
-			echo $before_title . $title . $after_title;
+			echo $before_title . $title . $after_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		if ( $this->is_singleton ) {
 			$ext = '';
@@ -81,7 +82,7 @@ class Affiliates_Contact extends WP_Widget {
 		} else {
 			Affiliates_Contact::render_form( $widget_id, isset( $instance['amount'] ) ? $instance['amount'] : null, isset( $instance['currency_id'] ) ? $instance['currency_id'] : null );
 		}
-		echo $after_widget;
+		echo $after_widget; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -134,15 +135,15 @@ class Affiliates_Contact extends WP_Widget {
 
 
 			if ( empty( $sender ) ) {
-				$sender_class .= ' class="missing" ';
+				$sender_class .= 'missing';
 				$error = true;
 			}
 			if ( empty( $email )  || !is_email( $email ) ) {
-				$email_class .= ' class="missing" ';
+				$email_class .= 'missing';
 				$error = true;
 			}
 			if ( empty( $message ) ) {
-				$message_class .= ' class="missing" ';
+				$message_class .= 'missing';
 				$error = true;
 			}
 
@@ -173,24 +174,24 @@ class Affiliates_Contact extends WP_Widget {
 		}
 
 		if ( !$send ) {
-			echo '<div class="affiliates-contact" id="affiliates-contact' . $ext . '">';
-			echo '<img id="affiliates-contact-throbber' . $ext . '" src="' . AFFILIATES_PLUGIN_URL . 'images/affiliates-throbber.gif" style="display:none" />';
-			echo '<form id="affiliates-contact-form' . $ext . '" action="' . $action . '" method="' . $method . '">';
+			echo '<div class="affiliates-contact" id="affiliates-contact' . esc_attr( $ext ) . '">';
+			echo '<img id="affiliates-contact-throbber' . esc_attr( $ext ) . '" src="' . esc_url( AFFILIATES_PLUGIN_URL ) . 'images/affiliates-throbber.gif" style="display:none" />';
+			echo '<form id="affiliates-contact-form' . esc_attr( $ext ) . '" action="' . esc_attr( $action ) . '" method="' . esc_attr( $method ) . '">';
 			echo '<div>';
-			echo '<label ' . $sender_class . ' id="affiliates-contact-form' . $ext . '-sender-label" for="sender">' . __( 'Name', 'affiliates' ) . '</label>';
-			echo '<input id="affiliates-contact-form' . $ext . '-sender" name="sender" type="text" value="' . esc_attr( $sender ) . '"/>';
-			echo '<label ' . $email_class . ' id="affiliates-contact-form' . $ext . '-email-label" for="email">' . __( 'Email', 'affiliates' ) . '</label>';
-			echo '<input id="affiliates-contact-form' . $ext . '-email" name="email" type="text" value="' . esc_attr( $email ) . '"/>';
-			echo '<label ' . $message_class . 'id="affiliates-contact-form' . $ext . '-message-label" for="message">' . __( 'Message', 'affiliates' ) . '</label>';
-			echo '<textarea id="affiliates-contact-form' . $ext . '-message" name="message">' . $message . '</textarea>';
-			echo Affiliates_Contact::captcha_get( $captcha );
-			echo wp_nonce_field( $nonce_action, $nonce, true, false );
-			echo '<input type="submit" name="' . $submit_name . '" value="'. __( 'Send', 'affiliates' ) . '" />';
+			echo '<label class="' . esc_attr( $sender_class ) . '" id="affiliates-contact-form' . esc_attr( $ext ) . '-sender-label" for="sender">' . esc_html__( 'Name', 'affiliates' ) . '</label>';
+			echo '<input id="affiliates-contact-form' . esc_attr( $ext ) . '-sender" name="sender" type="text" value="' . esc_attr( $sender ) . '"/>';
+			echo '<label class="' . esc_attr( $email_class ) . '" id="affiliates-contact-form' . esc_attr( $ext ) . '-email-label" for="email">' . esc_html__( 'Email', 'affiliates' ) . '</label>';
+			echo '<input id="affiliates-contact-form' . esc_attr( $ext ) . '-email" name="email" type="text" value="' . esc_attr( $email ) . '"/>';
+			echo '<label class="' . esc_attr( $message_class ) . '" id="affiliates-contact-form' . esc_attr( $ext ) . '-message-label" for="message">' . esc_html__( 'Message', 'affiliates' ) . '</label>';
+			echo '<textarea id="affiliates-contact-form' . esc_attr( $ext ) . '-message" name="message">' . esc_html( $message ) . '</textarea>';
+			echo Affiliates_Contact::captcha_get( $captcha ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo wp_nonce_field( $nonce_action, $nonce, true, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<input type="submit" name="' . esc_attr( $submit_name ) . '" value="'. esc_attr__( 'Send', 'affiliates' ) . '" />';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';
 		} else {
-			echo '<p>' . __( 'Thanks!', 'affiliates' ) . '</p>';
+			echo '<p>' . esc_html__( 'Thanks!', 'affiliates' ) . '</p>';
 		}
 	}
 
@@ -293,16 +294,16 @@ class Affiliates_Contact extends WP_Widget {
 		$currency_id = isset( $instance['currency_id'] ) ? esc_attr( $instance['currency_id'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'affiliates' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'affiliates' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'amount' ); ?>"><?php esc_html_e( 'Amount (use . for decimals):', 'affiliates' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'amount' ); ?>" name="<?php echo $this->get_field_name( 'amount' ); ?>" type="text" value="<?php echo $amount; ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'amount' ) ); ?>"><?php esc_html_e( 'Amount (use . for decimals):', 'affiliates' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'amount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'amount' ) ); ?>" type="text" value="<?php echo esc_attr( $amount ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'currency_id' ); ?>"><?php esc_html_e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'currency_id' ); ?>" name="<?php echo $this->get_field_name( 'currency_id' ); ?>" type="text" value="<?php echo $currency_id; ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'currency_id' ) ); ?>"><?php esc_html_e( 'Currency - 3 letter code, e.g. USD, EUR:', 'affiliates' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'currency_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'currency_id' ) ); ?>" type="text" value="<?php echo esc_attr( $currency_id ); ?>" />
 		</p>
 		<p>
 			<?php esc_html_e( 'This contact form will request a referral and store the data that has been submitted.', 'affiliates' ); ?>
