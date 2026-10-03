@@ -142,7 +142,7 @@ if ( !defined( 'ABSPATH' ) ) {
 		<div class="cell heading <?php echo esc_attr( $class ); ?>">
 			<?php if ( $key === 'period' ) :?>
 			<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_html( $column['description'] ); ?>">
-				<span><?php echo esc_html( $column['title'] ); ?></span><span class="sorting-indicator"><?php echo $arrow; ?></span>
+				<span><?php echo esc_html( $column['title'] ); ?></span><span class="sorting-indicator"><?php echo esc_html( $arrow ); ?></span>
 			</a>
 			<?php else : ?>
 				<span><?php echo esc_html( $column['title'] ); ?></span>

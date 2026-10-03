@@ -95,7 +95,7 @@ $link_info  = sprintf(
 			<span class="button copy-to-clipboard-trigger" data-source="copy-to-clipboard-source"><?php esc_html_e( 'Copy to Clipboard', 'affiliates' ); ?></span>
 		</p>
 		<p>
-			<?php echo $link_info; ?>
+			<?php echo $link_info; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</p>
 	</div>
 	<div class="affiliates-dashboard-logout">

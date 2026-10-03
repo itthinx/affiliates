@@ -39,7 +39,7 @@ if ( !defined( 'ABSPATH' ) ) {
 <?php if ( affiliates_user_is_affiliate() ) : ?>
 	<h2><?php esc_html_e( 'Profile', 'affiliates' ); ?></h2>
 	<div class="dashboard-section dashboard-section-profile">
-		<?php echo Affiliates_Shortcodes::affiliates_fields( array() ); ?>
+		<?php echo Affiliates_Shortcodes::affiliates_fields( array() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div><?php // .dashboard-section-profile ?>
 <?php endif; ?>
 <style type="text/css">

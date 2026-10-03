@@ -59,7 +59,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
 
@@ -90,7 +90,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 } // function affiliates_admin_affiliates_remove
@@ -107,10 +107,7 @@ function affiliates_admin_affiliates_remove_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if (
-		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE] ) ||
-		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-remove' )
-	) {
+	if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_NONCE, 'affiliates-remove' ) ) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
@@ -129,7 +126,7 @@ function affiliates_admin_affiliates_remove_submit() {
 
 		if ( $valid_affiliate ) {
 			$result = false !== $wpdb->query(
-				$query = $wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 					intval( $affiliate_id )
 				)
@@ -224,7 +221,7 @@ function affiliates_admin_affiliates_bulk_remove() {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 
@@ -244,10 +241,7 @@ function affiliates_admin_affiliates_bulk_remove_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if (
-		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE] ) ||
-		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' )
-	) {
+	if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE, 'admin' ) ) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
@@ -268,7 +262,7 @@ function affiliates_admin_affiliates_bulk_remove_submit() {
 
 			if ( $valid_affiliate ) {
 				$result = false !== $wpdb->query(
-					$query = $wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+					$wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 						intval( $affiliate_id )
 					)
