@@ -30,7 +30,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 class Affiliates_Translations {
 
-	private static $mofile = null;
+	private static $mofiles = array();
 
 	public static function boot() {
 		add_action( 'init', array( __CLASS__, 'init' ) );
@@ -46,10 +46,14 @@ class Affiliates_Translations {
 	 *
 	 * @return string mofile
 	 */
-	private static function get_mofile() {
+	public static function get_mofile( $location = null ) {
 
-		if ( self::$mofile !== null ) {
-			return self::$mofile;
+		if ( $location === null ) {
+			$location = AFFILIATES_CORE_LIB . '/languages/';
+		}
+
+		if ( isset( self::$mofiles[$location] ) ) {
+			return self::$mofiles[$location];
 		}
 
 		$locale = get_locale();
@@ -57,7 +61,7 @@ class Affiliates_Translations {
 			$locale = get_user_locale();
 		}
 		$locale = apply_filters( 'plugin_locale', $locale, 'affiliates' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-		$mofile = AFFILIATES_CORE_LIB . '/languages/affiliates-' . $locale . '.mo';
+		$mofile = $location . 'affiliates-' . $locale . '.mo';
 
 		if ( !file_exists( $mofile ) ) {
 			$parts = explode( '_', $locale );
@@ -78,13 +82,13 @@ class Affiliates_Translations {
 			}
 			$the_mofile = null;
 			if ( $form !== '' ) {
-				$the_mofile = AFFILIATES_CORE_LIB . '/languages/affiliates' . '-' . $language . '_' . $form . '.mo';
+				$the_mofile = $location . 'affiliates' . '-' . $language . '_' . $form . '.mo';
 				if ( !file_exists( $the_mofile ) ) {
 					$the_mofile = null;
 				}
 			}
 			if ( $the_mofile === null ) {
-				$the_mofile = AFFILIATES_CORE_LIB . '/languages/affiliates' . '-' . $language . '.mo';
+				$the_mofile = $location . 'affiliates' . '-' . $language . '.mo';
 				if ( !file_exists( $the_mofile ) ) {
 					$the_mofile = null;
 				}
@@ -94,7 +98,7 @@ class Affiliates_Translations {
 			}
 		}
 
-		self::$mofile = $mofile;
+		self::$mofiles[$location] = $mofile;
 
 		return $mofile;
 	}
