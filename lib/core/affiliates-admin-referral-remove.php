@@ -36,7 +36,7 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$cancel_url  = remove_query_arg( 'referral_id', remove_query_arg( 'action', $current_url ) );
 	$current_url = remove_query_arg( 'paged', $current_url );
 

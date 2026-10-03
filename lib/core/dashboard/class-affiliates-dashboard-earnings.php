@@ -76,7 +76,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	 */
 	public function get_url( $params = array() ) {
 
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = affiliates_get_current_url();
 		$current_url = remove_query_arg( 'clear_filters', $current_url );
 		$current_url = remove_query_arg( 'apply_filters', $current_url );
 

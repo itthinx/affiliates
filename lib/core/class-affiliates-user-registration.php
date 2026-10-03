@@ -89,7 +89,7 @@ class Affiliates_User_Registration {
 			// The same applies for $post = get_post(); and $post->ID.
 			// And also for $permalink = get_permalink(); and $post_id = url_to_postid( $permalink ) );
 			// The folllowing obtains the shop's ID on checkout and corresponding page IDs for normal other cases.
-			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$current_url = affiliates_get_current_url();
 			$post_id = url_to_postid( $current_url );
 			if ( $post_id === 0 ) {
 				$post_id = null;

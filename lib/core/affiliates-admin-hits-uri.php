@@ -229,7 +229,7 @@ function affiliates_admin_hits_uri() {
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'uris_paged', $current_url );
 
 	$affiliates_table  = _affiliates_get_tablename( 'affiliates' );

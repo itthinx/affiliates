@@ -157,7 +157,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 * @return string
 	 */
 	public function get_url( $params = array() ) {
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = affiliates_get_current_url();
 		// Common filter parameters ...
 		$url_parameters = array(
 			'clear_filters',

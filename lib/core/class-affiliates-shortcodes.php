@@ -757,7 +757,7 @@ class Affiliates_Shortcodes {
 				$output .= '</tbody>';
 				$output .= '</table>';
 
-				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$current_url = affiliates_get_current_url();
 				$url = remove_query_arg( 'earnings-page', $current_url );
 
 				if ( count( $rows ) > 0 ) {
@@ -859,7 +859,7 @@ class Affiliates_Shortcodes {
 				break;
 			case 'current' :
 				$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$current_url = affiliates_get_current_url();
 				$url = remove_query_arg( $pname, $current_url );
 				break;
 			case 'permalink' :
