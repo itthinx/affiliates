@@ -9,7 +9,7 @@
 * Updated the translation template.
 * Revised Settings > Integrations.
 * Updated block registrations to declare API version 3.
-* Added missing input sanitation in general settings.
+* Revised general settings, structure, output escaping, input sanitation.
 * Replaced uses of alias function key_exists.
 * Fixed checkbox background color clash.
 * Revised table sorting indicators for various sections.
