@@ -41,7 +41,7 @@ class Affiliates_Robot_Cleaner {
 	public static function admin_footer() {
 		echo
 			'<script type="text/javascript">' .
-			'affiliates_robot_cleaner_ajax_nonce = \'' . wp_create_nonce( 'affiliates-robot-cleaner-ajax-nonce' ) . '\';' .
+			'affiliates_robot_cleaner_ajax_nonce = \'' . wp_create_nonce( 'affiliates-robot-cleaner-ajax-nonce' ) . '\';' . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</script>';
 	}
 
@@ -132,7 +132,7 @@ class Affiliates_Robot_Cleaner {
 					esc_html__( 'Current list of robots defined under %s:', 'affiliates' ),
 					sprintf(
 						'<a href="%s">%s</a>',
-						add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
+						esc_url( add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
 						esc_html__( 'General', 'affiliates' )
 					)
 				);
@@ -150,7 +150,7 @@ class Affiliates_Robot_Cleaner {
 					echo '<form action="" name="robot-cleaner" method="post">';
 					printf( '<button class="button button-primary" name="robot-cleaner" type="submit" >%s</button>', esc_html__( 'Check', 'affiliates' ) );
 					echo '<input type="hidden" name="action" value="confirm"/>';
-					echo wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false );
+					echo wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo '</form>';
 					echo '<p>';
 				} else {
@@ -198,7 +198,7 @@ class Affiliates_Robot_Cleaner {
 						$count += $robot_hit->count;
 						echo '<tr>';
 						echo '<td style="text-align:right; width:10%; padding: 4px;">';
-						echo $robot_hit->count;
+						echo esc_html( $robot_hit->count );
 						echo '</td>';
 						echo '<td style="padding: 4px;">';
 						echo esc_html( $robot_hit->user_agent );
@@ -207,7 +207,7 @@ class Affiliates_Robot_Cleaner {
 					}
 					echo '<tr>';
 					echo '<td style="text-align:right; width:10%; padding: 4px; border-top: 1px solid #999;">';
-					printf( '<strong>%d</strong>', $count );
+					printf( '<strong>%d</strong>', esc_html( $count ) );
 					echo '</td>';
 					echo '<td style="padding: 4px; border-top: 1px solid #999;">';
 					echo esc_html__( 'Total', 'affiliates' );
@@ -228,7 +228,7 @@ class Affiliates_Robot_Cleaner {
 					echo '<form action="" name="robot-cleaner" method="post">';
 					printf( '<button id="affiliates-robot-cleaner-clean" class="button button-primary" name="robot-cleaner" type="submit">%s</button>', esc_html__( 'Delete', 'affiliates' ) );
 					echo '<input type="hidden" name="action" value="clean"/>';
-					echo wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false );
+					echo wp_nonce_field( 'robot-cleaner-action', 'robot-cleaner-nonce', true, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo '<span style="padding: 4px">';
 					printf(
 						'<img id="affiliates-robot-cleaner-throbber" src="%s" style="display:none" />',

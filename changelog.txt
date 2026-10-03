@@ -12,6 +12,7 @@
 * Revised general settings, structure, output escaping, input sanitation.
 * Revised pages settings, structure, output escaping, input sanitation.
 * Revised contact example output escaping and input sanitation.
+* Revised robot cleaner output escaping.
 * Replaced uses of alias function key_exists.
 * Fixed checkbox background color clash.
 * Revised table sorting indicators for various sections.
