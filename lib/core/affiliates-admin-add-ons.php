@@ -150,7 +150,7 @@ function affiliates_admin_add_ons() {
 		echo '<h3 class="add-ons-sub-sub-title">';
 		echo sprintf( '<img src="%s"/>', esc_url( $entry['image'] ) );
 		echo '<span class="title">';
-		echo esc_html( $entry['title'] );
+		echo wp_kses_post( $entry['title'] );
 		echo '</span>';
 		echo '</h3>';
 		echo '<p>';
@@ -252,7 +252,7 @@ function affiliates_admin_add_ons() {
 		echo sprintf( '<a href="%s">', esc_url( $entry['url'] ) );
 		echo '<h3>';
 		echo sprintf( '<img src="%s"/>', esc_url( $entry['image'] ) );
-		echo esc_html( $entry['title'] );
+		echo wp_kses_post( $entry['title'] );
 		echo '</h3>';
 		echo '<p>';
 		echo $entry['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
