@@ -78,7 +78,7 @@ class Affiliates_Admin_User_Profile {
 		$output = '';
 
 		$output .= '<h3>';
-		$output .= __( 'Affiliate Information', 'affiliates' );
+		$output .= esc_html__( 'Affiliate Information', 'affiliates' );
 		$output .= '</h3>';
 
 		require_once AFFILIATES_CORE_LIB . '/class-affiliates-settings.php';
@@ -124,10 +124,10 @@ class Affiliates_Admin_User_Profile {
 		}
 		if ( $n == 0 ) {
 			$output .= '<p>';
-			$output .= __( 'No specific affiliate information is available.', 'affiliates' );
+			$output .= esc_html__( 'No specific affiliate information is available.', 'affiliates' );
 			$output .= '</p>';
 		}
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

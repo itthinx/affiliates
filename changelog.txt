@@ -30,6 +30,7 @@
 * Resolved validation WordPress.WP.AlternativeFunctions.parse_url_parse_url.
 * Resolved validation WordPress.Security.EscapeOutput.UnsafePrintingFunction.
 * Resolved validation WordPress.Security.EscapeOutput.OutputNotEscaped.
+* Revised user profile additions.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
