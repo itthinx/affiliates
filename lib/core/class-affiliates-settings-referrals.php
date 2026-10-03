@@ -35,10 +35,7 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 
 		if ( isset( $_POST['submit'] ) ) {
 
-			if (
-				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) &&
-				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' )
-			) {
+			if ( affiliates_verify_post_nonce( AFFILIATES_ADMIN_SETTINGS_NONCE, 'admin' ) ) {
 
 				// timeout
 				$timeout = intval ( $_POST['timeout'] );
@@ -92,101 +89,101 @@ class Affiliates_Settings_Referrals extends Affiliates_Settings {
 			} else {
 				$selected = "";
 			}
-			$status_select .= "<option value='$status_key' $selected>$status_value</option>";
+			$status_select .= sprintf( '<option value="%1$s" %2$s>%3$s</option>', esc_attr( $status_key ), $selected, esc_html( $status_value ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		$status_select .= "</select>";
 
 		echo
 			'<form action="" name="options" method="post">' .
 				'<div>' .
-				'<h3>' . __( 'Referral timeout', 'affiliates' ) . '</h3>' .
+				'<h3>' . esc_html__( 'Referral timeout', 'affiliates' ) . '</h3>' .
 				'<p>' .
 				'<label>' .
 				'<input class="timeout" name="timeout" type="text" value="' . esc_attr( intval( $timeout ) ) . '" />' .
 				' ' .
-				__( 'Days', 'affiliates' ) .
+				esc_html__( 'Days', 'affiliates' ) .
 				'</label>' .
 				'</p>' .
 				'<p class="description">' .
-				__( 'This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid.', 'affiliates' ) .
+				esc_html__( 'This is the number of days since a visitor accessed your site via an affiliate link, for which a suggested referral will be valid.', 'affiliates' ) .
 				'</p>' .
 				'<p>' .
-				__( 'If you enter 0, referrals will only be valid until the visitor closes the browser (session).', 'affiliates' ) .
+				esc_html__( 'If you enter 0, referrals will only be valid until the visitor closes the browser (session).', 'affiliates' ) .
 				'</p>' .
 				'<p>' .
 				sprintf(
 					/* translators: default value, count days */
-					__( 'The default value is %1$d. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until %2$d days after she or he clicked that affiliate link.', 'affiliates' ),
-					AFFILIATES_COOKIE_TIMEOUT_DAYS,
-					AFFILIATES_COOKIE_TIMEOUT_DAYS
+					esc_html__( 'The default value is %1$d. In this case, if a visitor comes to your site via an affiliate link, a suggested referral will be valid until %2$d days after she or he clicked that affiliate link.', 'affiliates' ),
+					esc_html( AFFILIATES_COOKIE_TIMEOUT_DAYS ),
+					esc_html( AFFILIATES_COOKIE_TIMEOUT_DAYS )
 				) .
 				'</p>';
 
 		echo
-			'<h3>' . __( 'Direct referrals', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Direct referrals', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="use-direct" type="checkbox" ' . ( $use_direct ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
-			__( 'Store direct referrals', 'affiliates' ) .
+			esc_html__( 'Store direct referrals', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct.', 'affiliates' ) .
+			esc_html__( 'If this option is enabled, whenever a referral is suggested and no affiliate is attributable to it, the referral will be attributed to Direct.', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Default referral status', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Default referral status', 'affiliates' ) . '</h3>' .
 			'<p>' .
-			$status_select .
+			$status_select . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Duplicate referrals', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Duplicate referrals', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			'<input name="duplicates" type="checkbox" ' . ( $duplicates ? 'checked="checked"' : '' ) . '/>' .
 			' ' .
-			__( 'Allow duplicate referrals', 'affiliates' ) .
+			esc_html__( 'Allow duplicate referrals', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'Allow to record duplicate referrals for the same affiliate (based on amount, currency, internal type and reference).', 'affiliates' ) .
+			esc_html__( 'Allow to record duplicate referrals for the same affiliate (based on amount, currency, internal type and reference).', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Auto-referrals', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Auto-referrals', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			sprintf( '<input type="checkbox" name="allow_auto" %s" />', $allow_auto == 'yes' ? ' checked="checked" ' : '' ) .
 			' ' .
-			__( 'Allow auto-referrals', 'affiliates' ) .
+			esc_html__( 'Allow auto-referrals', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'If this option is enabled, affiliates are allowed to refer themselves.', 'affiliates' ) .
+			esc_html__( 'If this option is enabled, affiliates are allowed to refer themselves.', 'affiliates' ) .
 			' ' .
-			__( 'This option allows an affiliate to earn a commission on a transaction that involves the affiliate as a customer or lead.', 'affiliates' ) .
+			esc_html__( 'This option allows an affiliate to earn a commission on a transaction that involves the affiliate as a customer or lead.', 'affiliates' ) .
 			' ' .
-			__( 'Auto-referrals are identified as such, when a transaction is processed for the same user or user email as the affiliate’s, or when it involves the use of a coupon assigned to the affiliate.', 'affiliates' ) .
+			esc_html__( 'Auto-referrals are identified as such, when a transaction is processed for the same user or user email as the affiliate’s, or when it involves the use of a coupon assigned to the affiliate.', 'affiliates' ) .
 			'</p>' .
 			'<p>' .
 			'<label>' .
 			sprintf( '<input type="checkbox" name="allow_auto_coupons" %s" />', $allow_auto_coupons ? ' checked="checked" ' : '' ) .
 			' ' .
-			__( 'Allow auto-coupons', 'affiliates' ) .
+			esc_html__( 'Allow auto-coupons', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'Allow affiliates to apply coupons that are assigned to them.', 'affiliates' ) .
+			esc_html__( 'Allow affiliates to apply coupons that are assigned to them.', 'affiliates' ) .
 			' ' .
-			__( 'Verification is supported for coupons managed through WooCommerce.', 'affiliates' ) .
+			esc_html__( 'Verification is supported for coupons managed through WooCommerce.', 'affiliates' ) .
 			'</p>';
 
 		echo
 			'<p>' .
-			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) .
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
+			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			'<input class="button button-primary" type="submit" name="submit" value="' . esc_attr__( 'Save', 'affiliates' ) . '"/>' .
 			'</p>' .
 			'</div>' .
 			'</form>';
