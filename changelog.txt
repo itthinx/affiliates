@@ -45,6 +45,8 @@
 * Revised affiliates referrals section output escaping and input sanitation.
 * Revised dashboard templates.
 * Updated the translation template.
+* Added generic translations.
+* Removed identical specific translations.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.

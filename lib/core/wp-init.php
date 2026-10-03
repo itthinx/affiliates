@@ -35,6 +35,8 @@ if ( !isset( $affiliates_version ) ) {
 	$affiliates_version = AFFILIATES_CORE_VERSION;
 }
 
+require_once AFFILIATES_CORE_LIB . '/class-affiliates-translations.php';
+
 // base class
 require_once AFFILIATES_CORE_LIB . '/class-affiliates.php';
 
@@ -846,7 +848,6 @@ add_action( 'init', 'affiliates_init' );
  * Loads the plugin's translations.
  */
 function affiliates_init() {
-	load_plugin_textdomain( 'affiliates', false, AFFILIATES_PLUGIN_NAME . '/lib/core/languages' );
 	if ( class_exists( 'Affiliates_Affiliate' ) && method_exists( 'Affiliates_Affiliate', 'register_attribute_filter' ) ) {
 		Affiliates_Affiliate::register_attribute_filter( 'affiliates_attribute_filter' );
 	}
