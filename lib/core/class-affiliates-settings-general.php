@@ -204,7 +204,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 		$id_encoding_select = '';
 		$encodings = affiliates_get_id_encodings();
 		if ( !empty( $encodings ) ) {
-			$id_encoding_select .= '<label class="id-encoding" for="id_encoding">' . __('Affiliate ID Encoding', 'affiliates' ) . '</label>';
+			$id_encoding_select .= '<label class="id-encoding" for="id_encoding">' . esc_html__('Affiliate ID Encoding', 'affiliates' ) . '</label>';
 			$id_encoding_select .= '<select class="id-encoding" name="id_encoding">';
 			foreach ( $encodings as $key => $value ) {
 				if ( $id_encoding == $key ) {
@@ -300,7 +300,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 		echo
 			'<h3>' . esc_html__( 'Affiliate ID encoding', 'affiliates' ) . '</h3>' .
 			'<p>' .
-			$id_encoding_select .
+			$id_encoding_select . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</p>' .
 			'<p>' .
 			sprintf( esc_html__( 'The current encoding in effect is: %s', 'affiliates' ), '<strong>' . esc_html( $encodings[$id_encoding] ) . '</strong>' ) .
@@ -316,7 +316,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			' ' .
 			esc_html__( 'This section is only intended to grant administrative access on affiliate management functions to privileged roles.', 'affiliates' ) .
 			'</p>' .
-			$caps_table .
+			$caps_table . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'<p class="description">' .
 			esc_html__( 'A minimum set of permissions will be preserved.', 'affiliates' ) .
 			'<br/>' .
@@ -336,10 +336,10 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 				esc_html__( 'Use the robot cleaner to remove existing hits from robots: %s', 'affiliates' ),
 				sprintf(
 					'<a class="button" href="%s">%s</a>',
-					add_query_arg(
+					esc_url( add_query_arg(
 						array( 'section' => 'general', 'subsection' => 'robot-cleaner' ),
 						admin_url( 'admin.php?page=affiliates-admin-settings' )
-					),
+					) ),
 					esc_html__( 'Robot Cleaner', 'affiliates' )
 				)
 			);
@@ -351,10 +351,10 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			esc_html__( 'Use the data cleaner to remove data on unused hits, URIs and user agents: %s', 'affiliates' ),
 			sprintf(
 				'<a class="button" href="%s">%s</a>',
-				add_query_arg(
+				esc_url( add_query_arg(
 					array( 'section' => 'general', 'subsection' => 'data-cleaner' ),
 					admin_url( 'admin.php?page=affiliates-admin-settings' )
-				),
+				) ),
 				esc_html__( 'Data Cleaner', 'affiliates' )
 			)
 		);
@@ -377,7 +377,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		echo
 			'<p>' .
-			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) .
+			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'<input class="button button-primary" type="submit" name="submit" value="' . esc_attr__( 'Save', 'affiliates' ) . '"/>' .
 			'</p>' .
 			'</div>' .
