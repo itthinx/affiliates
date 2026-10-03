@@ -117,7 +117,7 @@ class Affiliates_Admin_Notifications {
 		}
 
 		if ( isset( $_POST['submit'] ) ) {
-			if ( affiliates_verify_post_nonce( $_POST[self::NONCE], self::NOTIFICATIONS ) ) {
+			if ( affiliates_verify_post_nonce( self::NONCE, self::NOTIFICATIONS ) ) {
 				$notifications[Affiliates_Notifications::REGISTRATION_ENABLED] = !empty( $_POST[Affiliates_Notifications::REGISTRATION_ENABLED] );
 				update_option( 'affiliates_notifications', $notifications );
 			}
