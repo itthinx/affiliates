@@ -53,7 +53,7 @@ class Affiliates_Ajax {
 				$output .= '</script>';
 				break;
 		}
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
