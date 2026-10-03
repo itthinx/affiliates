@@ -144,7 +144,7 @@ function affiliates_admin_affiliates_add() {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 } // function affiliates_admin_affiliates_add

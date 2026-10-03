@@ -88,7 +88,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
 
@@ -219,7 +219,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 } // function affiliates_admin_affiliates_edit

@@ -106,20 +106,21 @@ class Affiliates_Settings {
 		echo
 			sprintf(
 				/* translators: literal */
-				__( '<strong>Welcome to %s</strong>', 'affiliates' ),
-				ucwords( str_replace('-', ' ', AFFILIATES_PLUGIN_NAME ) )
+				'<strong>' . esc_html__( 'Welcome to %s', 'affiliates' ) . '</strong>',
+				esc_html( ucwords( str_replace( '-', ' ', AFFILIATES_PLUGIN_NAME ) ) )
 			);
 		echo '</p>';
 
 		echo '<p>';
-		echo __( 'Please review the following suggested steps to set up the affiliate system.', 'affiliates' );
+		echo esc_html__( 'Please review the following suggested steps to set up the affiliate system.', 'affiliates' );
 		echo ' ';
-		echo __( 'This is intended as a guidance and you can safely hide this message when finished.', 'affiliates' );
+		echo esc_html__( 'This is intended as a guidance and you can safely hide this message when finished.', 'affiliates' );
 		echo ' ';
 		echo sprintf(
-			/* translators: URL */
-			__( 'Use the <a href="%s">Settings</a> section to review or adjust the system anytime.', 'affiliates' ),
-			admin_url( 'admin.php?page=affiliates-admin-settings' )
+			/* translators: link */
+			esc_html__( 'Use the %s section to review or adjust the system anytime.', 'affiliates' ),
+			/* translators: URL, name */
+			sprintf( '<a href="%1$s">%2$s</a>', esc_html__( 'Settings', 'affiliates' ), esc_url( admin_url( 'admin.php?page=affiliates-admin-settings' ) ) )
 		);
 		echo '</p>';
 
@@ -128,23 +129,23 @@ class Affiliates_Settings {
 			array(
 				'general' => sprintf(
 					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Review General Settings', 'affiliates' )
+					esc_url( add_query_arg( 'section', 'general', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
+					esc_html__( 'Review General Settings', 'affiliates' )
 				),
 				'registration' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Enable Affiliate Registration', 'affiliates' )
+					esc_url( add_query_arg( 'section', 'registration', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
+					esc_html__( 'Enable Affiliate Registration', 'affiliates' )
 				),
 				'pages' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'pages', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Create an Affiliate Area', 'affiliates' )
+					esc_url( add_query_arg( 'section', 'pages', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
+					esc_html__( 'Create an Affiliate Area', 'affiliates' )
 				),
 				'integrations' => sprintf (
 					'<a href="%s" class="button-primary">%s</a>',
-					add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
-					__( 'Install an Integration', 'affiliates' )
+					esc_url( add_query_arg( 'section', 'integrations', admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
+					esc_html__( 'Install an Integration', 'affiliates' )
 				)
 			)
 		);
@@ -153,15 +154,15 @@ class Affiliates_Settings {
 
 		// render the buttons
 		echo '<p class="submit">';
-		echo implode( ' ', $buttons );
+		echo implode( ' ', $buttons ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo ' ';
 		printf( '<a class="hide button" href="%s">%s</a>',
-			wp_nonce_url(
+			esc_url( wp_nonce_url(
 				add_query_arg( 'aff_setup_hide', 'true', admin_url( 'admin.php?page=affiliates-admin-settings' ) ),
 				'aff_setup_hide',
 				'aff_setup_nonce'
-			),
-			__( 'Hide this', 'affiliates' )
+			) ),
+			esc_html__( 'Hide this', 'affiliates' )
 		);
 		echo '</p>';
 
@@ -177,7 +178,7 @@ class Affiliates_Settings {
 		global $wp, $wpdb, $affiliates_options, $wp_roles;
 
 		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
 		wp_enqueue_style( 'affiliates-admin-settings' );
@@ -201,15 +202,15 @@ class Affiliates_Settings {
 				'<a class="section-link nav-tab %s" href="%s">%s</a>',
 				$section == $sec ? 'active nav-tab-active' : '',
 				esc_url( add_query_arg( 'section', $sec, admin_url( 'admin.php?page=affiliates-admin-settings' ) ) ),
-				$title
+				esc_html( $title )
 			);
 		}
 		echo '<div class="section-links nav-tab-wrapper">';
-		echo $section_links;
+		echo $section_links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</div>';
 
 		echo '<h2>';
-		echo $section_title;
+		echo esc_html( $section_title );
 		echo '</h2>';
 
 		do_action( 'affiliates_settings_before_section', $section );
@@ -247,7 +248,7 @@ class Affiliates_Settings {
 	 */
 	public static function settings_saved_notice() {
 		echo '<div class="updated">';
-		echo __( 'Settings saved.', 'affiliates' );
+		echo esc_html__( 'Settings saved.', 'affiliates' );
 		echo '</div>';
 	}
 

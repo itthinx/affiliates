@@ -38,7 +38,7 @@ function affiliates_admin_hits_uri() {
 	$output = '';
 
 	if ( is_admin() && !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
@@ -54,11 +54,8 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['status'] ) ||
 		isset( $_POST['min_referrals'] )
 	) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_FILTER_NONCE, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -221,20 +218,14 @@ function affiliates_admin_hits_uri() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_1, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['uris_paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_2, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -768,6 +759,6 @@ function affiliates_admin_hits_uri() {
 	$output .= '</p>';
 	$output .= '</div>'; // .hits-uris-overview
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	affiliates_footer();
 } // function affiliates_admin_hits_uri()

@@ -1035,10 +1035,10 @@ class Affiliates_Shortcodes {
 									if ( $field['required'] && empty( $value ) && !( is_user_logged_in() && isset( $field['type'] ) && $field['type'] == 'password' ) ) {
 										$error = true;
 										$output .= '<div class="error">';
-										$output .= __( '<strong>ERROR</strong>', 'affiliates' );
+										$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 										$output .= ' : ';
 										/* translators: field name */
-										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
+										$output .= sprintf( esc_html__( 'Please fill out the field %s.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 										$output .= '</div>';
 									}
 									$registration_fields[$name]['value'] = $value;
@@ -1052,10 +1052,10 @@ class Affiliates_Shortcodes {
 											if ( $value !== $value2 ) {
 												$error = true;
 												$output .= '<div class="error">';
-												$output .= __( '<strong>ERROR</strong>', 'affiliates' );
+												$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 												$output .= ' : ';
 												/* translators: field name */
-												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', 'affiliates' ), $field['label'] );
+												$output .= sprintf( esc_html__( 'The passwords for the field %s do not match.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 												$output .= '</div>';
 											}
 										}

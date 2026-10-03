@@ -53,9 +53,9 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		extract( $args );
 		$title = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
 		$widget_id = !empty( $args['widget_id'] ) ? $args['widget_id'] : '';
-		echo $before_widget;
+		echo $before_widget; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( !empty( $title ) ) {
-			echo $before_title . $title . $after_title;
+			echo $before_title . $title . $after_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		$ext = '-' . $widget_id;
 
@@ -65,8 +65,8 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		if ( isset( $instance['terms_post_id'] ) ) {
 			$options['terms_post_id'] = $instance['terms_post_id'];
 		}
-		echo Affiliates_Registration::render_form( $options );
-		echo $after_widget;
+		echo Affiliates_Registration::render_form( $options ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $after_widget; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -105,7 +105,7 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'affiliates' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'affiliates' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<?php

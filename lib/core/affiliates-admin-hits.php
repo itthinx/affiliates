@@ -36,7 +36,7 @@ function affiliates_admin_hits() {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
@@ -49,11 +49,8 @@ function affiliates_admin_hits() {
 		isset( $_POST['expanded_referrals'] ) ||
 		isset( $_POST['show_inoperative'] )
 	) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_FILTER_NONCE, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -147,24 +144,18 @@ function affiliates_admin_hits() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_1, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_2, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'paged', $current_url );
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -578,7 +569,7 @@ function affiliates_admin_hits() {
 			} // expanded
 		}
 	} else {
-		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="5">' . esc_html__( 'There are no results.', 'affiliates' ) . '</td></tr>';
 	}
 
 	$output .= '</tbody>';
@@ -596,12 +587,12 @@ function affiliates_admin_hits() {
 	$output .= '<p>';
 	$output .= sprintf(
 		/* translators: 1 time zone, 2 offset */
-		__( '* Date is given for the server\'s time zone : %1$s, which has an offset of %2$s hours with respect to GMT.', 'affiliates' ),
+		esc_html__( '* Date is given for the server\'s time zone : %1$s, which has an offset of %2$s hours with respect to GMT.', 'affiliates' ),
 		$server_dtz->getName(),
 		$server_dtz->getOffset( new DateTime() ) / 3600.0
 	);
 	$output .= '</p>';
 	$output .= '</div>'; // .visits-overview
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	affiliates_footer();
 } // function affiliates_admin_hits()

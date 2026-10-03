@@ -37,7 +37,7 @@ function affiliates_admin_referrals() {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	// $_GET actions
@@ -72,11 +72,8 @@ function affiliates_admin_referrals() {
 		isset( $_POST['expanded_description'] ) ||
 		isset( $_POST['show_inoperative'] )
 	) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_FILTER_NONCE, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -84,35 +81,6 @@ function affiliates_admin_referrals() {
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$hits_table = _affiliates_get_tablename( 'hits' );
 	$posts_table = $wpdb->prefix . 'posts';
-
-	// actions
-// 	if ( isset( $_POST['affiliate_id'] ) && isset( $_POST['post_id'] ) && isset( $_POST['datetime'] ) && isset( $_POST['action'] ) ) {
-
-// 		if ( isset( $_POST['status'] ) ) {
-// 			$referral = $wpdb->get_row(
-// 				$wpdb->prepare(
-// 					"SELECT * FROM $referrals_table WHERE affiliate_id = %d AND post_id = %d AND datetime = %s",
-// 					intval( $_POST['affiliate_id'] ),
-// 					intval( $_POST['post_id'] ),
-// 					$_POST['datetime']
-// 				)
-// 			);
-// 			if ( $referral ) {
-// 				if ( Affiliates_Utility::verify_referral_status_transition( $referral->status, $_POST['status'] ) ) {
-// 					$wpdb->query(
-// 						$wpdb->prepare(
-// 							"UPDATE $referrals_table SET status = %s WHERE affiliate_id = %d AND post_id = %d AND datetime = %s AND status = %s",
-// 							$_POST['status'],
-// 							intval( $referral->affiliate_id ),
-// 							intval( $referral->post_id ),
-// 							$referral->datetime,
-// 							$referral->status
-// 						)
-// 					);
-// 				}
-// 			}
-// 		}
-// 	}
 
 	// filters
 	$from_date            = $affiliates_options->get_option( 'referrals_from_date', null );
@@ -252,20 +220,14 @@ function affiliates_admin_referrals() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_1, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_2, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -531,25 +493,23 @@ function affiliates_admin_referrals() {
 
 				'<div class="filter-buttons">' .
 				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" name="clear_filters" value="' . esc_attr__( 'Clear', 'affiliates' ) . '"/>' .
 				'<input type="hidden" value="submitted" name="submitted"/>' .
 				'</div>' .
 			'</form>' .
 		'</div>';
 
-	$output .= '
-		<div class="page-options">
-			<form id="setrowcount" action="" method="post">
-				<div>
-					<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
-					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
-					' . wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_NONCE_1, true, false ) . '
-					<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
-				</div>
-			</form>
-		</div>
-		';
+	$output .= '<div class="page-options">';
+	$output .= '<form id="setrowcount" action="" method="post">';
+	$output .= '<div>';
+	$output .= '<label for="row_count">' . esc_html__('Results per page', 'affiliates' ) . '</label>';
+	$output .= '<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />';
+	$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_NONCE_1, true, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	$output .= '<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>';
+	$output .= '</div>';
+	$output .= '</form>';
+	$output .= '</div>';
 
 	if ( $paginate ) {
 		require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
@@ -564,11 +524,7 @@ function affiliates_admin_referrals() {
 		$output .= '</form>';
 	}
 
-	$output .= '
-		<table id="referrals" class="referrals wp-list-table widefat fixed" cellspacing="0">
-		<thead>
-			<tr>
-			';
+	$output .= '<table id="referrals" class="referrals wp-list-table widefat fixed" cellspacing="0"><thead><tr>';
 
 	foreach ( $column_display_names as $key => $column_display_name ) {
 		$options = array(
@@ -595,10 +551,7 @@ function affiliates_admin_referrals() {
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
 
-	$output .= '</tr>
-		</thead>
-		<tbody>
-		';
+	$output .= '</tr></thead><tbody>';
 
 	if ( count( $results ) > 0 ) {
 
@@ -639,39 +592,19 @@ function affiliates_admin_referrals() {
 			$output .= isset( $status_icons[$result->status] ) ? $status_icons[$result->status] : '';
 			$output .= ' ';
 			$output .= isset( $status_descriptions[$result->status] ) ? $status_descriptions[$result->status] : '';
-// 			$output .= "<form method='post' action=''>";
-// 			$output .= "<div>";
-// 			$output .= "<select name='status'>";
-// 			foreach ( $status_descriptions as $status_key => $status_value ) {
-// 				if ( $status_key == $result->status ) {
-// 					$selected = "selected='selected'";
-// 				} else {
-// 					$selected = "";
-// 				}
-// 				$output .= "<option value='$status_key' $selected>$status_value</option>";
-// 			}
-// 			$output .= "</select>";
-// 			$output .= '<input class="button" type="submit" value="' . __( 'Set', 'affiliates' ) . '"/>';
-// 			$output .= '<input name="affiliate_id" type="hidden" value="' . esc_attr( $result->affiliate_id ) . '"/>';
-// 			$output .= '<input name="post_id" type="hidden" value="' . esc_attr( $result->post_id ) . '"/>';
-// 			$output .= '<input name="datetime" type="hidden" value="' . esc_attr( $result->datetime ) . '"/>';
-// 			$output .= '<input name="action" type="hidden" value="set_status"/>';
-// 			$output .= wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_FILTER_NONCE, true, false );
-// 			$output .= "</div>";
-// 			$output .= "</form>";
 			$output .= "</td>";
 
 			$output .= '<td class="edit">';
 			$edit_url = add_query_arg( 'referral_id', $result->referral_id, add_query_arg( 'action', 'edit', $current_url ) );
 			$output .= sprintf( '<a href="%s">', esc_url( add_query_arg( 'paged', $paged, $edit_url ) ) );
-			$output .= sprintf( '<img src="%s" alt="%s"/>', AFFILIATES_PLUGIN_URL . 'images/edit.png', __( 'Edit', 'affiliates' ) );
+			$output .= sprintf( '<img src="%s" alt="%s"/>', esc_url( AFFILIATES_PLUGIN_URL . 'images/edit.png' ), esc_attr__( 'Edit', 'affiliates' ) );
 			$output .= '</a>';
 			$output .= '</td>';
 
 			$output .= '<td class="remove">';
 			$remove_url = add_query_arg( 'referral_id', $result->referral_id, add_query_arg( 'action', 'remove', $current_url ) );
 			$output .= sprintf( '<a href="%s">', esc_url( add_query_arg( 'paged', $paged, $remove_url ) ) );
-			$output .= sprintf( '<img src="%s" alt="%s"/>', AFFILIATES_PLUGIN_URL . 'images/remove.png', __( 'Remove', 'affiliates' ) );
+			$output .= sprintf( '<img src="%s" alt="%s"/>', esc_url( AFFILIATES_PLUGIN_URL . 'images/remove.png' ), esc_attr__( 'Remove', 'affiliates' ) );
 			$output .= '</a>';
 			$output .= '</td>';
 
@@ -748,7 +681,7 @@ function affiliates_admin_referrals() {
 					'<td colspan="' . $column_count . '">' .
 						'<div class="view-toggle">' .
 							"<div class='expander'>$expander</div>" .
-							'<div class="view-toggle-label">' . __('Description', 'affiliates' ) . '</div>' .
+							'<div class="view-toggle-label">' . esc_html__( 'Description', 'affiliates' ) . '</div>' .
 							"<div class='view' $description_view_style>" .
 								wp_filter_kses( addslashes( $result->description ) ) .
 							'</div>' .
@@ -758,7 +691,7 @@ function affiliates_admin_referrals() {
 			}
 		}
 	} else {
-		$output .= '<tr><td colspan="' . $column_count . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="' . $column_count . '">' . esc_html__( 'There are no results.', 'affiliates' ) . '</td></tr>';
 	}
 
 	$output .= '</tbody>';
@@ -773,6 +706,6 @@ function affiliates_admin_referrals() {
 	}
 
 	$output .= '</div>'; // .referrals-overview
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	affiliates_footer();
 } // function affiliates_admin_referrals()

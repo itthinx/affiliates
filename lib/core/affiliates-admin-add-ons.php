@@ -146,15 +146,15 @@ function affiliates_admin_add_ons() {
 	echo '<ul class="add-ons">';
 	foreach( $entries as $key => $entry ) {
 		echo '<li class="add-on">';
-		echo sprintf( '<a href="%s" target="_blank">', $entry['url'] );
+		echo sprintf( '<a href="%s" target="_blank">', esc_url( $entry['url'] ) );
 		echo '<h3 class="add-ons-sub-sub-title">';
-		echo sprintf( '<img src="%s"/>', $entry['image'] );
+		echo sprintf( '<img src="%s"/>', esc_url( $entry['image'] ) );
 		echo '<span class="title">';
-		echo $entry['title'];
+		echo esc_html( $entry['title'] );
 		echo '</span>';
 		echo '</h3>';
 		echo '<p>';
-		echo $entry['content'];
+		echo $entry['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</p>';
 		echo '</a>';
 		echo '</li>'; // .add-on
@@ -249,13 +249,13 @@ function affiliates_admin_add_ons() {
 	echo '<ul class="add-ons">';
 	foreach( $entries as $key => $entry ) {
 		echo sprintf( '<li class="add-on %s">', esc_attr( $key ) );
-		echo sprintf( '<a href="%s">', $entry['url'] );
+		echo sprintf( '<a href="%s">', esc_url( $entry['url'] ) );
 		echo '<h3>';
-		echo sprintf( '<img src="%s"/>', $entry['image'] );
-		echo $entry['title'];
+		echo sprintf( '<img src="%s"/>', esc_url( $entry['image'] ) );
+		echo esc_html( $entry['title'] );
 		echo '</h3>';
 		echo '<p>';
-		echo $entry['content'];
+		echo $entry['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</p>';
 		echo '</a>';
 		echo '</li>'; // .add-on

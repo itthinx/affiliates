@@ -282,9 +282,9 @@ class Affiliates_Registration {
 					if ( $field['required'] && empty( $value ) ) {
 						$error = true;
 						$output .= '<div class="error">';
-						$output .= __( '<strong>ERROR</strong>', 'affiliates' );
+						$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 						$output .= ' : ';
-						$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
+						$output .= sprintf( __( 'Please fill out the field %s.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 						$output .= '</div>';
 					}
 					$registration_fields[$name]['value'] = $value;

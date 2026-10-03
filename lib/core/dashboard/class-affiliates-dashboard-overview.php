@@ -239,13 +239,13 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 			'affiliates_dashboard_overview_graph.render( "%s", "%s", %s, %s, %s, %s, %s, %s, %s );',
 			'affiliates-dashboard-overview-graph',
 			'affiliates-dashboard-overview-legend',
-			$hits_series_json,
-			$visits_series_json,
-			$referrals_series_json,
-			$amounts_by_currency_series_json,
-			$span_series_json,
-			$ticks_json,
-			$dates_json
+			$hits_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$visits_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$referrals_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$amounts_by_currency_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$span_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$ticks_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$dates_json // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
 		echo '}'; // affiliates_dashboard_overview_graph
 		echo '}'; // jQuery

@@ -302,7 +302,7 @@ function affiliates_admin() {
 	$dates_json           = json_encode( $dates );
 
 	/* translators: count */
-	echo '<h2>' . sprintf( esc_html__( '%d Day Charts', 'affiliates' ), $days_back ) . '</h2>';
+	echo '<h2>' . sprintf( esc_html__( '%d Day Charts', 'affiliates' ), esc_html( $days_back ) ) . '</h2>';
 	echo '<div class="manage" style="margin-right:1em">';
 	?>
 	<div id="stats" class="" style="width:100%;height:400px;"></div>
@@ -312,21 +312,21 @@ function affiliates_admin() {
 				var data = [
 					{
 						label : "<?php esc_html_e( 'Hits', 'affiliates' ); ?>",
-						data : <?php echo $hits_series_json; ?>,
+						data : <?php echo $hits_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ccddff'
 					},
 					{
 						label : "<?php esc_html_e( 'Visits', 'affiliates' ); ?>",
-						data : <?php echo $visits_series_json; ?>,
+						data : <?php echo $visits_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ffddcc'
 					},
 					{
 						label : "<?php esc_html_e( 'Accepted', 'affiliates' ); ?>",
-						data : <?php echo $accepted_series_json; ?>,
+						data : <?php echo $accepted_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#009900',
 						bars : { align : "center", show : true, barWidth : 1 },
 						hoverable : true,
@@ -334,27 +334,27 @@ function affiliates_admin() {
 					},
 					{
 						label : "<?php esc_html_e( 'Pending', 'affiliates' ); ?>",
-						data : <?php echo $pending_series_json; ?>,
+						data : <?php echo $pending_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#0000ff',
 						bars : { align : "center", show : true, barWidth : 0.6 },
 						yaxis : 1
 					},
 					{
 						label : "<?php esc_html_e( 'Rejected', 'affiliates' ); ?>",
-						data : <?php echo $rejected_series_json; ?>,
+						data : <?php echo $rejected_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#ff0000',
 						bars : { align : "center", show : true, barWidth : .3 },
 						yaxis : 1
 					},
 					{
 						label : "<?php esc_html_e( 'Closed', 'affiliates' ); ?>",
-						data : <?php echo $closed_series_json; ?>,
+						data : <?php echo $closed_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#333333',
 						points : { show : true },
 						yaxis : 1
 					},
 					{
-						data : <?php echo $span_series_json; ?>,
+						data : <?php echo $span_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						lines : { show : false },
 						yaxis : 1
 					}
@@ -362,7 +362,7 @@ function affiliates_admin() {
 
 				var options = {
 					xaxis : {
-						ticks : <?php echo $ticks_json; ?>
+						ticks : <?php echo $ticks_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					},
 					yaxis : {
 						min : 0,
@@ -400,7 +400,7 @@ function affiliates_admin() {
 				}
 
 				var tooltipItem = null;
-				var statsDates = <?php echo $dates_json; ?>;
+				var statsDates = <?php echo $dates_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
 				$("#stats").bind("plothover", function (event, pos, item) {
 					if (item) {
 						if (tooltipItem === null || item.dataIndex != tooltipItem.dataIndex || item.seriesIndex != tooltipItem.seriesIndex) {
@@ -424,7 +424,7 @@ function affiliates_admin() {
 	</script>
 	<?php
 	echo '<br class="clear"/>';
-	echo $filters_form;
+	echo $filters_form; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</div>';
 
 	echo '<h2>';
@@ -508,7 +508,7 @@ function affiliates_admin() {
 					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
 					printf(
 						'<div class="status">%s %s</div><div class="count">%d</div><div class="amount">%s %s</div>',
-						$status['icon'], // attributes are already escaped
+						$status['icon'], // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, attributes are already escaped
 						esc_html( $status['name'] ),
 						esc_html( $stats[$status_id]['count'] ),
 						esc_html( $currency_id ),

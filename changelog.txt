@@ -13,6 +13,8 @@
 * Revised pages settings, structure, output escaping, input sanitation.
 * Revised contact example output escaping and input sanitation.
 * Revised robot cleaner output escaping.
+* Revised registration widget output escaping.
+* Revised dashboard widget output escaping.
 * Replaced uses of alias function key_exists.
 * Fixed checkbox background color clash.
 * Revised table sorting indicators for various sections.
@@ -34,6 +36,10 @@
 * Resolved validation WordPress.Security.EscapeOutput.UnsafePrintingFunction.
 * Resolved validation WordPress.Security.EscapeOutput.OutputNotEscaped.
 * Revised user profile additions.
+* Revised referrals section output escaping and sanitation.
+* Revised notifications settings section output escaping.
+* Revised network settings section output escaping.
+* Revised overview output escaping.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.

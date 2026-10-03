@@ -93,7 +93,7 @@ class Affiliates_Notice {
 	public static function admin_notices() {
 
 		if ( AFFILIATES_PLUGIN_NAME == 'affiliates' ) {
-			$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$current_url = affiliates_get_current_url();
 			$current_url = add_query_arg( self::HIDE_REVIEW_NOTICE, true, $current_url );
 
 			$output = '';
@@ -137,7 +137,7 @@ class Affiliates_Notice {
 			$output .= '</p>';
 			$output .= '<p>';
 			$output .= sprintf(
-				'Follow @‌itthinx on %s, %s, %s, %s, %s, %s for related news.',
+				'Follow @itthinx on %s, %s, %s, %s, %s, %s for related news.',
 				'<a href="https://github.com/itthinx/">GitHub</a>',
 				'<a href="https://twitter.com/itthinx">X – Twitter</a>',
 				'<a href="https://www.reddit.com/r/itthinx/">Reddit</a>',
@@ -148,7 +148,7 @@ class Affiliates_Notice {
 			$output .= '</p>';
 			$output .= '</div>';
 
-			echo $output;
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 }

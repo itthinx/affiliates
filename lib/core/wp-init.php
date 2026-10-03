@@ -218,7 +218,7 @@ function affiliates_admin_notices() {
 	global $affiliates_admin_messages;
 	if ( !empty( $affiliates_admin_messages ) ) {
 		foreach ( $affiliates_admin_messages as $msg ) {
-			echo $msg;
+			echo $msg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 }
@@ -1987,7 +1987,7 @@ function affiliates_footer( $render = true ) {
 		'<p>' .
 		sprintf(
 			/* translators: 1: link 2: link */
-			__( 'Thank you for using the %1$s plugin by %2$s.', 'affiliates' ),
+			esc_html__( 'Thank you for using the %1$s plugin by %2$s.', 'affiliates' ),
 			'<a style="text-decoration:none;" href="https://www.itthinx.com/plugins/affiliates" target="_blank">Affiliates</a>',
 			'<a style="text-decoration:none;" href="https://www.itthinx.com" target="_blank">itthinx</a>'
 		) .
@@ -1996,7 +1996,7 @@ function affiliates_footer( $render = true ) {
 		' ' .
 		sprintf(
 			/* translators: link */
-			__( 'Please give it a %s rating!', 'affiliates' ),
+			esc_html__( 'Please give it a %s rating!', 'affiliates' ),
 			sprintf( '<a style="text-decoration:none;" href="%s">&#9733;&#9733;&#9733;&#9733;&#9733;</a>',
 				'https://wordpress.org/support/view/plugin-reviews/affiliates?filter=5#postform'
 			)
@@ -2008,7 +2008,7 @@ function affiliates_footer( $render = true ) {
 		'</div>';
 	$footer = apply_filters( 'affiliates_footer', $footer );
 	if ( $render ) {
-		echo $footer;
+		echo $footer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		return $footer;
 	}
@@ -2032,7 +2032,7 @@ function affiliates_donate( $render = true, $small = false ) {
 		'<a class="button affiliates-premium-button" href="https://www.itthinx.com/shop/affiliates-pro/">Affiliates Pro</a> <a class="button affiliates-premium-button" href="https://www.itthinx.com/shop/affiliates-enterprise/">Affiliates Enterprise</a> <a class="button affiliates-shop-button" href="https://www.itthinx.com/shop/">Shop</a>'
 	);
 	if ( $render ) {
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		return $output;
 	}

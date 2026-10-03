@@ -354,7 +354,7 @@ class Affiliates_Settings_Integrations extends Affiliates_Settings {
 			$output .= $list;
 		}
 
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		affiliates_footer();
 	}
