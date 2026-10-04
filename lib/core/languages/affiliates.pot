@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2026-10-03 20:09+0200\n"
+        "POT-Creation-Date: 2026-10-03 21:24+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,7 +260,7 @@ msgstr  ""
 msgid   "Add a new affiliate"
 msgstr  ""
 
-#: lib/core/wp-init.php:1942 lib/core/wp-init.php:1943
+#: lib/core/wp-init.php:1943 lib/core/wp-init.php:1944
 #: lib/core/affiliates-admin-add-ons.php:358
 msgid   "Add-Ons"
 msgstr  ""
@@ -372,12 +372,12 @@ msgstr  ""
 #: lib/core/dashboard/class-affiliates-dashboard-login-block.php:56
 #: lib/core/dashboard/class-affiliates-dashboard-block.php:103
 #: lib/core/class-affiliates-admin-notifications.php:99
-#: lib/core/class-affiliates-settings-network.php:47 lib/core/wp-init.php:1962
-#: lib/core/wp-init.php:1963
+#: lib/core/class-affiliates-settings-network.php:47 lib/core/wp-init.php:1963
+#: lib/core/wp-init.php:1964
 msgid   "Affiliates"
 msgstr  ""
 
-#: lib/core/wp-init.php:1847 lib/core/wp-init.php:1848
+#: lib/core/wp-init.php:1848 lib/core/wp-init.php:1849
 #: lib/core/affiliates-admin-hits-affiliate.php:187
 msgid   "Affiliates & Referrals"
 msgstr  ""
@@ -471,7 +471,7 @@ msgstr  ""
 msgid   "Affiliates Ninja Forms Integration"
 msgstr  ""
 
-#: lib/core/wp-init.php:1806 lib/core/affiliates-admin.php:40
+#: lib/core/wp-init.php:1807 lib/core/affiliates-admin.php:40
 msgid   "Affiliates Overview"
 msgstr  ""
 
@@ -479,7 +479,7 @@ msgstr  ""
 msgid   "Affiliates Pro"
 msgstr  ""
 
-#: lib/core/wp-init.php:1901
+#: lib/core/wp-init.php:1902
 msgid   "Affiliates Settings"
 msgstr  ""
 
@@ -1047,7 +1047,7 @@ msgstr  ""
 msgid   "Descriptions"
 msgstr  ""
 
-#: lib/core/wp-init.php:856
+#: lib/core/wp-init.php:857
 msgctxt "pseudo-affiliate name"
 msgid   "Direct"
 msgstr  ""
@@ -1744,7 +1744,7 @@ msgstr  ""
 msgid   "Login"
 msgstr  ""
 
-#: lib/core/wp-init.php:1667
+#: lib/core/wp-init.php:1668
 msgid   "MD5"
 msgstr  ""
 
@@ -1780,8 +1780,8 @@ msgstr  ""
 msgid   "Maldives (Maldive Islands) Rufiyaa"
 msgstr  ""
 
-#: lib/core/affiliates-admin-affiliates.php:318 lib/core/wp-init.php:1821
-#: lib/core/wp-init.php:1822
+#: lib/core/affiliates-admin-affiliates.php:318 lib/core/wp-init.php:1822
+#: lib/core/wp-init.php:1823
 msgid   "Manage Affiliates"
 msgstr  ""
 
@@ -1928,7 +1928,7 @@ msgstr  ""
 msgid   "Ninja Forms"
 msgstr  ""
 
-#: lib/core/wp-init.php:1666
+#: lib/core/wp-init.php:1667
 msgid   "No encoding"
 msgstr  ""
 
@@ -1957,7 +1957,7 @@ msgid   "Norway Krone"
 msgstr  ""
 
 #: lib/core/class-affiliates-admin-notifications.php:59
-#: lib/core/wp-init.php:1927 lib/core/wp-init.php:1928
+#: lib/core/wp-init.php:1928 lib/core/wp-init.php:1929
 msgid   "Notifications"
 msgstr  ""
 
@@ -2118,7 +2118,7 @@ msgstr  ""
 msgid   "Please fill out the field %s."
 msgstr  ""
 
-#: lib/core/wp-init.php:1999
+#: lib/core/wp-init.php:2000
 #, php-format
 msgid   "Please give it a %s rating!"
 msgstr  ""
@@ -2264,8 +2264,8 @@ msgstr  ""
 #: lib/core/affiliates-admin-hits.php:474
 #: lib/core/dashboard/class-affiliates-dashboard-overview.php:99
 #: lib/core/affiliates-admin-hits-uri.php:481
-#: lib/core/affiliates-admin-referrals.php:240 lib/core/wp-init.php:1873
-#: lib/core/wp-init.php:1874 lib/core/class-affiliates-settings.php:62
+#: lib/core/affiliates-admin-referrals.php:240 lib/core/wp-init.php:1874
+#: lib/core/wp-init.php:1875 lib/core/class-affiliates-settings.php:62
 #: lib/core/affiliates-admin.php:497
 #: lib/core/affiliates-admin-hits-affiliate.php:329
 #: lib/core/affiliates-admin-hits-affiliate.php:536
@@ -2471,7 +2471,7 @@ msgstr  ""
 msgid   "Set status to Pending"
 msgstr  ""
 
-#: lib/core/class-affiliates-admin.php:74 lib/core/wp-init.php:1902
+#: lib/core/class-affiliates-admin.php:74 lib/core/wp-init.php:1903
 #: lib/core/class-affiliates-settings.php:123
 #: lib/core/class-affiliates-settings.php:196
 msgid   "Settings"
@@ -2626,7 +2626,7 @@ msgstr  ""
 msgid   "Thailand Baht"
 msgstr  ""
 
-#: lib/core/wp-init.php:1990
+#: lib/core/wp-init.php:1991
 #, php-format
 msgid   "Thank you for using the %1$s plugin by %2$s."
 msgstr  ""
@@ -2756,7 +2756,7 @@ msgstr  ""
 msgid   "The passwords for the field %s do not match."
 msgstr  ""
 
-#: lib/core/wp-init.php:884
+#: lib/core/wp-init.php:885
 msgid   "The plugin is configured to delete its data on deactivation."
 msgstr  ""
 
@@ -3027,13 +3027,13 @@ msgstr  ""
 msgid   "Total"
 msgstr  ""
 
-#: lib/core/class-affiliates-totals.php:170 lib/core/wp-init.php:1887
-#: lib/core/wp-init.php:1888
+#: lib/core/class-affiliates-totals.php:170 lib/core/wp-init.php:1888
+#: lib/core/wp-init.php:1889
 msgid   "Totals"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits-uri.php:243 lib/core/wp-init.php:1860
-#: lib/core/wp-init.php:1861
+#: lib/core/affiliates-admin-hits-uri.php:243 lib/core/wp-init.php:1861
+#: lib/core/wp-init.php:1862
 msgid   "Traffic"
 msgstr  ""
 
@@ -3163,7 +3163,7 @@ msgctxt "data cleaner"
 msgid   "User Agents deleted:"
 msgstr  ""
 
-#: lib/core/wp-init.php:1914 lib/core/wp-init.php:1915
+#: lib/core/wp-init.php:1915 lib/core/wp-init.php:1916
 #: lib/core/affiliates-admin-user-registration.php:35
 msgid   "User Registration"
 msgstr  ""
@@ -3246,12 +3246,12 @@ msgstr  ""
 msgid   "Visits"
 msgstr  ""
 
-#: lib/core/affiliates-admin-hits.php:166 lib/core/wp-init.php:1834
-#: lib/core/wp-init.php:1835
+#: lib/core/affiliates-admin-hits.php:166 lib/core/wp-init.php:1835
+#: lib/core/wp-init.php:1836
 msgid   "Visits & Referrals"
 msgstr  ""
 
-#: lib/core/wp-init.php:880
+#: lib/core/wp-init.php:881
 msgid   "Warning!"
 msgstr  ""
 
