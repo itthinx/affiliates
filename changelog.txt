@@ -47,6 +47,7 @@
 * Updated the translation template.
 * Added generic translations.
 * Removed identical specific translations.
+* Updated translations.
 
 = 6.0.0 =
 * WordPress 7.0 compatible.
