@@ -234,7 +234,7 @@ class Affiliates_Utility {
 	/**
 	 * Unslash, sanitize and verify nonce.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @see wp_unslash()
 	 * @see sanitize_text_field()
@@ -252,7 +252,7 @@ class Affiliates_Utility {
 	/**
 	 * Unslash, sanitize and verify named nonce provided via $_POST.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string $name nonce name
 	 * @param string|number $action
@@ -272,7 +272,7 @@ class Affiliates_Utility {
 	/**
 	 * Unslash, sanitize and verify named nonce provided via $_GET.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string $name nonce name
 	 * @param string|number $action
@@ -292,7 +292,7 @@ class Affiliates_Utility {
 	/**
 	 * Unslash, sanitize and verify named nonce provided via $_REQUEST.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string $name nonce name
 	 * @param string|number $action
@@ -312,7 +312,7 @@ class Affiliates_Utility {
 	/**
 	 * Provide the current URL, sanitized.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @return string
 	 */
@@ -329,7 +329,7 @@ class Affiliates_Utility {
 	 *
 	 * Preserves the original type of the value.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string|number|boolean|array $value
 	 *
@@ -356,7 +356,7 @@ class Affiliates_Utility {
 	/**
 	 * Sanitize form data from $_POST.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string $name
 	 *
@@ -375,7 +375,7 @@ class Affiliates_Utility {
 	/**
 	 * Sanitize form data from $_GET.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string $name
 	 *
@@ -394,7 +394,7 @@ class Affiliates_Utility {
 	/**
 	 * Sanitize form data from $_REQUEST.
 	 *
-	 * @since 6.1.0
+	 * @since 7.0.0
 	 *
 	 * @param string $name
 	 *
@@ -415,7 +415,7 @@ class Affiliates_Utility {
 /**
  * Unslash, sanitize and verify nonce.
  *
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @param string $nonce
  * @param string|number $action
@@ -429,7 +429,7 @@ function affiliates_verify_nonce( $nonce, $action = -1 ) {
 /**
  * Unslash, sanitize and verify named nonce provided via $_POST.
  *
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @param string $name nonce name
  * @param string|number $action
@@ -443,7 +443,7 @@ function affiliates_verify_post_nonce( $name, $action = -1 ) {
 /**
  * Unslash, sanitize and verify named nonce provided via $_GET.
  *
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @param string $name nonce name
  * @param string|number $action
@@ -457,7 +457,7 @@ function affiliates_verify_get_nonce( $name, $action = -1 ) {
 /**
  * Unslash, sanitize and verify named nonce provided via $_GET.
  *
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @param string $name nonce name
  * @param string|number $action
@@ -471,7 +471,7 @@ function affiliates_verify_request_nonce( $name, $action = -1 ) {
 /**
  * Provide the current URL, sanitized.
  *
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @return string
  */
@@ -480,7 +480,7 @@ function affiliates_get_current_url() {
 }
 
 /**
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @see Affiliates_Utility::sanitize_input()
  *
@@ -493,7 +493,7 @@ function affiliates_sanitize_input( $value ) {
 }
 
 /**
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @see Affiliates_Utility::sanitize_post()
  *
@@ -506,7 +506,7 @@ function affiliates_sanitize_post( $name ) {
 }
 
 /**
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @see Affiliates_Utility::sanitize_get()
  *
@@ -519,7 +519,7 @@ function affiliates_sanitize_get( $name ) {
 }
 
 /**
- * @since 6.1.0
+ * @since 7.0.0
  *
  * @see Affiliates_Utility::sanitize_request()
  *
