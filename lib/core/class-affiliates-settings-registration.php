@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+
 /**
  * Registration settings section.
  */
@@ -138,7 +140,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 								'enabled'    => !empty( $field_enabled[$i] ) || isset( $default_fields[$name] ) && $default_fields[$name]['obligatory'],
 								'label'      => !empty( $field_label[$i] ) ? strip_tags( $field_label[$i] ) : '',
 								'required'   => !empty( $field_required[$i]),
-								'is_default' => key_exists( $field_name[$i], $default_fields ),
+								'is_default' => array_key_exists( $field_name[$i], $default_fields ),
 								'type'       => !empty( $field_type[$i] ) ? $field_type[$i] : 'text'
 							);
 						}
@@ -198,9 +200,9 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 			array(
 				'name'              => 'terms_post_id',
 				'echo'              => true,
-				'show_option_none'  => __( '&mdash; Select &mdash;' ),
+				'show_option_none'  => '&mdash; ' . esc_html__( 'Select', 'affiliates' ) . ' &mdash;',
 				'option_none_value' => '',
-				'selected'          => $terms_post_id
+				'selected'          => esc_attr( $terms_post_id )
 			)
 		);
 		echo '</label>';
@@ -213,7 +215,7 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '</p>';
 
 		// registration fields
-		echo '<h3>' . __( 'Affiliate Registration Form', 'affiliates' ) . '</h3>';
+		echo '<h3>' . esc_html__( 'Affiliate Registration Form', 'affiliates' ) . '</h3>';
 		echo '<p class="description">';
 		esc_html_e( 'The following fields are provided on the affiliate registration form.', 'affiliates' );
 		echo '</p>';
@@ -243,23 +245,23 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		foreach( $registration_fields as $name => $field ) {
 			echo '<tr>';
 			echo '<td>';
-			echo sprintf( '<input type="checkbox" name="field-enabled[%d]" %s %s />', $i, $field['enabled'] ? ' checked="checked" ' : '', $field['obligatory'] ? ' readonly="readonly" disabled="disabled" ' : '' );
+			echo sprintf( '<input type="checkbox" name="field-enabled[%d]" %s %s />', esc_attr( $i ), $field['enabled'] ? ' checked="checked" ' : '', $field['obligatory'] ? ' readonly="readonly" disabled="disabled" ' : '' );
 			echo '</td>';
 			echo '<td>';
-			echo sprintf( '<input type="text" name="field-name[%d]" value="%s" %s />', $i, esc_attr( $name ), $field['is_default'] ? ' readonly="readonly" ' : '' );
+			echo sprintf( '<input type="text" name="field-name[%d]" value="%s" %s />', esc_attr( $i ), esc_attr( $name ), $field['is_default'] ? ' readonly="readonly" ' : '' );
 			echo '</td>';
 			echo '<td>';
-			echo sprintf( '<input type="text" name="field-label[%d]" value="%s" />', $i, esc_attr( stripslashes( $field['label'] ) ) );
+			echo sprintf( '<input type="text" name="field-label[%d]" value="%s" />', esc_attr( $i ), esc_attr( stripslashes( $field['label'] ) ) );
 			echo '</td>';
 			echo '<td>';
-			echo sprintf( '<input type="checkbox" name="field-required[%d]" %s />', $i, $field['required'] ? ' checked="checked" ' : '' );
+			echo sprintf( '<input type="checkbox" name="field-required[%d]" %s />', esc_attr( $i ), $field['required'] ? ' checked="checked" ' : '' );
 			echo '</td>';
 			echo '<td>';
-			echo sprintf( '<input type="hidden" name="field-type[%d]" value="%s" />', $i, $field['type'] );
-			echo sprintf( '<button class="field-up button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Up', 'affiliates' ) ) );
-			echo sprintf( '<button class="field-down button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Down', 'affiliates' ) ) );
+			echo sprintf( '<input type="hidden" name="field-type[%d]" value="%s" />', esc_attr( $i ), esc_attr( $field['type'] ) );
+			echo sprintf( '<button class="field-up button" type="button" value="%d">%s</button>', esc_attr( $i ), esc_html__( 'Up', 'affiliates' ) );
+			echo sprintf( '<button class="field-down button" type="button" value="%d">%s</button>', esc_attr( $i ), esc_html__( 'Down', 'affiliates' ) );
 			if ( !$field['is_default'] ) {
-				echo sprintf( '<button class="field-remove button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Remove', 'affiliates' ) ) );
+				echo sprintf( '<button class="field-remove button" type="button" value="%d">%s</button>', esc_attr( $i ), esc_html__( 'Remove', 'affiliates' ) );
 			}
 			echo '</td>';
 			echo '</tr>';
@@ -269,15 +271,15 @@ class Affiliates_Settings_Registration extends Affiliates_Settings {
 		echo '</table>';
 
 		echo '<p>';
-		echo sprintf( '<button class="field-add button" type="button" value="%d">%s</button>', $i, esc_html( __( 'Add a field', 'affiliates' ) ) );
+		echo sprintf( '<button class="field-add button" type="button" value="%d">%s</button>', esc_attr( $i ), esc_html__( 'Add a field', 'affiliates' ) );
 		echo '</p>';
 
 		echo '</div>'; // #registration-fields
 
 		echo
 			'<p>' .
-			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) .
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
+			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			'<input class="button button-primary" type="submit" name="submit" value="' . esc_html__( 'Save', 'affiliates' ) . '"/>' .
 			'</p>' .
 			'</div>' .
 			'</form>';

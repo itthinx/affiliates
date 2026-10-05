@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 // Shows hits by date
 
 require_once AFFILIATES_CORE_LIB . '/class-affiliates-date-helper.php';
@@ -34,7 +36,7 @@ function affiliates_admin_hits() {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
@@ -47,11 +49,8 @@ function affiliates_admin_hits() {
 		isset( $_POST['expanded_referrals'] ) ||
 		isset( $_POST['show_inoperative'] )
 	) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_FILTER_NONCE, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -145,24 +144,18 @@ function affiliates_admin_hits() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_1, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_2, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'paged', $current_url );
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
@@ -257,7 +250,7 @@ function affiliates_admin_hits() {
 	}
 	if ( count( $referrals_subquery_conditions ) > 0 ) {
 		$referrals_subquery_where = ' WHERE ' . implode( ' AND ', $referrals_subquery_conditions );
-		$referrals_subquery_where = $wpdb->prepare( $referrals_subquery_where, $referrals_subquery_params );
+		$referrals_subquery_where = $wpdb->prepare( $referrals_subquery_where, $referrals_subquery_params ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	}
 
 	do {
@@ -289,7 +282,7 @@ function affiliates_admin_hits() {
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 		if ( $count > $row_count ) {
@@ -421,7 +414,16 @@ function affiliates_admin_hits() {
 		} else {
 			$class = "$key manage-column sortable";
 		}
-		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
+		$column_display_name = sprintf(
+			'<a href="%1$s"><span>%2$s</span>' .
+			'<span class="sorting-indicators">' .
+			'<span class="sorting-indicator asc" aria-hidden="true"></span>'.
+			'<span class="sorting-indicator desc" aria-hidden="true"></span>'.
+			'</span>' .
+			'</a>',
+			esc_url( add_query_arg( $options, $current_url ) ),
+			esc_html( $column_display_name )
+		);
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
 
@@ -464,7 +466,7 @@ function affiliates_admin_hits() {
 						",
 						$referrals_filter_params
 					);
-					$referrals = $wpdb->get_results( $referrals_query, OBJECT );
+					$referrals = $wpdb->get_results( $referrals_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( count( $referrals) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
@@ -532,7 +534,7 @@ function affiliates_admin_hits() {
 						",
 						$details_filter_params
 					);
-					$hits = $wpdb->get_results( $details_query, OBJECT );
+					$hits = $wpdb->get_results( $details_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 					$output .= '<td colspan="5">';
 					$output .= '<div class="details-hits">';
@@ -567,7 +569,7 @@ function affiliates_admin_hits() {
 			} // expanded
 		}
 	} else {
-		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="5">' . esc_html__( 'There are no results.', 'affiliates' ) . '</td></tr>';
 	}
 
 	$output .= '</tbody>';
@@ -584,12 +586,13 @@ function affiliates_admin_hits() {
 	$server_dtz = DateHelper::getServerDateTimeZone();
 	$output .= '<p>';
 	$output .= sprintf(
-		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		/* translators: 1 time zone, 2 offset */
+		esc_html__( '* Date is given for the server\'s time zone : %1$s, which has an offset of %2$s hours with respect to GMT.', 'affiliates' ),
 		$server_dtz->getName(),
 		$server_dtz->getOffset( new DateTime() ) / 3600.0
 	);
 	$output .= '</p>';
 	$output .= '</div>'; // .visits-overview
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	affiliates_footer();
 } // function affiliates_admin_hits()

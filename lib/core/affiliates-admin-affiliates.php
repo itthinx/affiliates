@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 // Shows hits by affiliate
 
 define( 'AFFILIATES_AFFILIATES_PER_PAGE', 10 );
@@ -157,10 +159,7 @@ function affiliates_admin_affiliates() {
 	// affiliate table
 	//
 	if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE], 'admin' )
-		) {
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_FILTER_NONCE, 'admin' ) ) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
@@ -294,24 +293,18 @@ function affiliates_admin_affiliates() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_1], 'admin' )
-		) {
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_NONCE_1, 'admin' ) ) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE_2], 'admin' )
-		) {
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_NONCE_2, 'admin' ) ) {
 			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'paged', $current_url );
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
@@ -346,7 +339,7 @@ function affiliates_admin_affiliates() {
 		$affiliates_options->update_option('affiliates_per_page', $row_count );
 	}
 	// current page
-	$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 1;
+	$paged = intval( affiliates_sanitize_request( 'paged' ) ?? 1 );
 	if ( $paged < 1 ) {
 		$paged = 1;
 	}
@@ -447,7 +440,7 @@ function affiliates_admin_affiliates() {
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 		if ( $count > $row_count ) {
 			$paginate = true;
@@ -619,7 +612,12 @@ function affiliates_admin_affiliates() {
 				$class = "$key manage-column sortable";
 			}
 			$column_display_name = sprintf(
-				'<a href="%1$s"><span>%2$s</span><span class="sorting-indicator"></span></a>',
+				'<a href="%1$s"><span>%2$s</span>' .
+				'<span class="sorting-indicators">' .
+				'<span class="sorting-indicator asc" aria-hidden="true"></span>' .
+				'<span class="sorting-indicator desc" aria-hidden="true"></span>' .
+				'</span>' .
+				'</a>',
 				esc_url( add_query_arg( $options, $current_url ) ),
 				esc_html( $column_display_name )
 			);
@@ -674,6 +672,7 @@ function affiliates_admin_affiliates() {
 			$output .= "<td class='affiliate-name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . "</td>";
 			$output .= "<td class='affiliate-email'>" . $result->email;
 			if ( isset( $result->email ) && isset( $result->user_email ) && strcmp( $result->email, $result->user_email ) !== 0 ) {
+				/* translators: email */
 				$output .= '<span title="' . sprintf( esc_html__( 'There are different email addresses on record for the affiliate and the associated user. This might be ok, but if in doubt please check. The email address on file for the user is %s', 'affiliates' ), esc_html( $result->user_email ) ) . '" class="warning"> [&nbsp;!&nbsp]</span>';
 			}
 			$output .= "</td>";
@@ -692,12 +691,26 @@ function affiliates_admin_affiliates() {
 
 			$output .= sprintf( "<td class='status'>%s</td>", esc_html( $result->status ) );
 
-			$output .= "<td class='edit'><a href='" . esc_url( add_query_arg( 'paged', $paged, $current_url ) ) . "&action=edit&affiliate_id=" . esc_url( $result->affiliate_id ) . "' alt='" . esc_attr__( 'Edit', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/edit.png'/></a></td>";
-			$output .= "<td class='remove'>" .
-				( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE )  ) ?
-				"<a href='" . esc_url( $current_url ) . "&action=remove&affiliate_id=" . $result->affiliate_id . "' alt='" . esc_attr__( 'Remove', 'affiliates') . "'><img src='". AFFILIATES_PLUGIN_URL ."images/remove.png'/></a>"
-				: "" ) .
-				"</td>";
+			$output .= '<td class="edit">';
+			$output .= sprintf(
+				'<a href="%1$s" alt="%2$s"><img src="%3$s" /></a>',
+				esc_url( add_query_arg( array( 'action' => 'edit', 'affiliate_id' => $result->affiliate_id, 'paged' => $paged ), $current_url ) ),
+				esc_attr__( 'Edit', 'affiliates' ),
+				esc_url( AFFILIATES_PLUGIN_URL . 'images/edit.png' )
+			);
+			$output .= '</td>';
+
+			$output .= '<td class="remove">';
+			if ( !$is_deleted && ( !isset( $result->type ) || ( $result->type != AFFILIATES_DIRECT_TYPE ) ) ) {
+				$output .= sprintf(
+					'<a href="%1$s" alt="%2$s"><img src="%3$s"/></a>',
+					esc_url( add_query_arg( array( 'action' => 'remove', 'affiliate_id' => $result->affiliate_id ), $current_url ) ),
+					esc_attr__( 'Remove', 'affiliates' ),
+					esc_url( AFFILIATES_PLUGIN_URL . 'images/remove.png' )
+				);
+			}
+			$output .= '</td>';
+
 			$output .= "<td class='links'>";
 			$encoded_id = affiliates_encode_affiliate_id( $result->affiliate_id );
 			$link_url = affiliates_get_affiliate_url( home_url(), $result->affiliate_id );
@@ -811,6 +824,6 @@ function affiliates_admin_affiliates() {
 
 	$output .= '</div>'; // .affiliates-overview
 	$output .= '</div>'; // .manage-affiliates
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	affiliates_footer();
 } // function affiliates_admin_affiliates()

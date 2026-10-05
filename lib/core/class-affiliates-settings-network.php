@@ -34,56 +34,55 @@ class Affiliates_Settings_Network {
 	 * Settings initialization.
 	 */
 	public static function init() {
-
 	}
 
 	/**
 	 * Network options.
 	 */
 	public static function network_admin_settings() {
-			global $wp, $wpdb, $affiliates_options, $wp_roles;
-			if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-				wp_die( __( 'Access denied.', 'affiliates' ) );
-			}
-			echo '<h1>' . __( 'Affiliates', 'affiliates' ) . '</h1>';
-			if ( affiliates_is_sitewide_plugin() ) {
-				if ( isset( $_POST['submit'] ) ) {
-					if (
-						isset( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE] ) &&
-						wp_verify_nonce( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE], 'admin' )
-					) {
-						if ( !empty( $_POST['delete-network-data'] ) ) {
-							update_option( 'aff_delete_network_data', true );
-						} else {
-							update_option( 'aff_delete_network_data', false );
-						}
+		global $wp, $wpdb, $affiliates_options, $wp_roles;
+		if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
+		}
+		echo '<h1>' . esc_html__( 'Affiliates', 'affiliates' ) . '</h1>';
+		if ( affiliates_is_sitewide_plugin() ) {
+			if ( isset( $_POST['submit'] ) ) {
+				if (
+					isset( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE] ) &&
+					wp_verify_nonce( $_POST[AFFILIATES_MS_ADMIN_SETTINGS_NONCE], 'admin' )
+				) {
+					if ( !empty( $_POST['delete-network-data'] ) ) {
+						update_option( 'aff_delete_network_data', true );
+					} else {
+						update_option( 'aff_delete_network_data', false );
 					}
 				}
-				$delete_network_data = get_option( 'aff_delete_network_data', false );
-				echo
-				'<form action="" name="options" method="post">' .
-				'<div>' .
-				'<h3>' . __( 'Affiliates network data', 'affiliates' ) . '</h3>' .
-				'<p>' .
-				'<input name="delete-network-data" type="checkbox" ' . ( $delete_network_data ? 'checked="checked"' : '' ) . '/>' .
-				'<label for="delete-network-data">' . __( 'Delete all affiliate data on network deactivation', 'affiliates' ) . '</label>' .
-				'</p>' .
-				'<p class="description warning">' .
-				__( 'READ AND UNDERSTAND the following before activating this option:', 'affiliates' ) .
-				'</p>' .
-				'<ol class="description warning">' .
-				'<li>' . __( 'CAUTION: If this option is active while the plugin is network deactivated, <strong>ALL affiliate and referral data will be DELETED on all sites of the network</strong>.', 'affiliates' ) . '</li>' .
-				'<li>' . __( 'This option should only be used to clean up after testing.', 'affiliates' ) . '</li>' .
-				'<li>' . __( 'Make sure to back up your data or do not enable this option.', 'affiliates' ) . '</li>' .
-				'<li>' . __( 'By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof.', 'affiliates' ) . '</li>' .
-				'</ol>' .
-				'<p>' .
-				wp_nonce_field( 'admin', AFFILIATES_MS_ADMIN_SETTINGS_NONCE, true, false ) .
-				'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
-				'</p>' .
-				'</div>' .
-				'</form>';
 			}
+			$delete_network_data = get_option( 'aff_delete_network_data', false );
+			echo
+			'<form action="" name="options" method="post">' .
+			'<div>' .
+			'<h3>' . esc_html__( 'Affiliates network data', 'affiliates' ) . '</h3>' .
+			'<p>' .
+			'<input name="delete-network-data" type="checkbox" ' . ( $delete_network_data ? 'checked="checked"' : '' ) . '/>' .
+			'<label for="delete-network-data">' . esc_html__( 'Delete all affiliate data on network deactivation', 'affiliates' ) . '</label>' .
+			'</p>' .
+			'<p class="description warning">' .
+			esc_html__( 'READ AND UNDERSTAND the following before activating this option:', 'affiliates' ) .
+			'</p>' .
+			'<ol class="description warning">' .
+			'<li>' . esc_html__( 'CAUTION: If this option is active while the plugin is network deactivated, ALL affiliate and referral data will be DELETED on all sites of the network.', 'affiliates' ) . '</li>' .
+			'<li>' . esc_html__( 'This option should only be used to clean up after testing.', 'affiliates' ) . '</li>' .
+			'<li>' . esc_html__( 'Make sure to back up your data or do not enable this option.', 'affiliates' ) . '</li>' .
+			'<li>' . esc_html__( 'By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof.', 'affiliates' ) . '</li>' .
+			'</ol>' .
+			'<p>' .
+			wp_nonce_field( 'admin', AFFILIATES_MS_ADMIN_SETTINGS_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			'<input class="button button-primary" type="submit" name="submit" value="' . esc_html__( 'Save', 'affiliates' ) . '"/>' .
+			'</p>' .
+			'</div>' .
+			'</form>';
+		}
 	}
 
 }

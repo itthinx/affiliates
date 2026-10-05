@@ -28,6 +28,7 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard-earnings',
 		{
+			apiVersion  : 3,
 			title       : affiliates_dashboard_earnings_block.title,
 			description : affiliates_dashboard_earnings_block.description,
 			icon        : 'chart-bar',

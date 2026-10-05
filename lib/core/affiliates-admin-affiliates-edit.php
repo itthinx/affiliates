@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Show edit affiliate form.
  * @param int $affiliate_id affiliate id
@@ -53,6 +55,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 
 			// user edit link
 			if ( current_user_can( 'edit_user', $affiliate_user->ID ) ) {
+				/* translators: name */
 				$affiliate_user_edit = sprintf( esc_html__( 'Edit %s', 'affiliates' ) , '<a target="_blank" href="' . esc_url( "user-edit.php?user_id=$affiliate_user->ID" ) . '">' . esc_html( $affiliate_user->user_login ) . '</a>' );
 			}
 
@@ -85,7 +88,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
 
@@ -216,7 +219,7 @@ function affiliates_admin_affiliates_edit( $affiliate_id ) {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 } // function affiliates_admin_affiliates_edit
@@ -349,7 +352,7 @@ function affiliates_admin_affiliates_edit_submit() {
 				"UPDATE $affiliates_table SET $sets WHERE affiliate_id = %d",
 				$values
 			);
-			$wpdb->query( $query );
+			$wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		}
 
 		// user association
@@ -414,7 +417,7 @@ function affiliates_admin_affiliates_bulk_status_active_submit() {
 				intval( $affiliate_id ),
 				AFFILIATES_DIRECT_TYPE
 			);
-			if ( $wpdb->query( $check ) ) {
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
 					$old_status = $affiliate['status'];
 					$result = false !== $wpdb->query( $wpdb->prepare(
@@ -467,7 +470,7 @@ function affiliates_admin_affiliates_bulk_status_pending_submit() {
 				intval( $affiliate_id ),
 				AFFILIATES_DIRECT_TYPE
 			);
-			if ( $wpdb->query( $check ) ) {
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				if ( $affiliate = affiliates_get_affiliate( $affiliate_id ) ) {
 					$old_status = $affiliate['status'];
 					$result = false !== $wpdb->query( $wpdb->prepare(

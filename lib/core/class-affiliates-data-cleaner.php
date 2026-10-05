@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Clean-up.
  */
@@ -43,7 +45,7 @@ class Affiliates_Data_Cleaner {
 	public static function admin_footer() {
 		echo
 			'<script type="text/javascript">' .
-			'affiliates_data_cleaner_ajax_nonce = \'' . wp_create_nonce( 'affiliates-data-cleaner-ajax-nonce' ) . '\';' .
+			'affiliates_data_cleaner_ajax_nonce = \'' . wp_create_nonce( 'affiliates-data-cleaner-ajax-nonce' ) . '\';' . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</script>';
 	}
 
@@ -87,7 +89,7 @@ class Affiliates_Data_Cleaner {
 						"DELETE FROM $hits_table WHERE datetime < %s AND hit_id NOT IN (SELECT hit_id FROM $referrals_table WHERE hit_id IS NOT NULL)",
 						$until
 					);
-					$result = $wpdb->query( $query );
+					$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $result ) {
 						$hits_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 					}
@@ -100,7 +102,7 @@ class Affiliates_Data_Cleaner {
 				$count_uris = intval( $count_uris );
 				if ( $count_uris > 0 ) {
 					$query = "DELETE FROM $uris_table WHERE uri_id NOT IN (SELECT src_uri_id FROM $hits_table WHERE src_uri_id IS NOT NULL) AND uri_id NOT IN (SELECT dest_uri_id FROM $hits_table WHERE dest_uri_id IS NOT NULL)";
-					$result = $wpdb->query( $query );
+					$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $result ) {
 						$uris_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 					}
@@ -113,7 +115,7 @@ class Affiliates_Data_Cleaner {
 				$count_user_agents = intval( $count_user_agents );
 				if ( $count_user_agents > 0 ) {
 					$query = "DELETE FROM $user_agents_table WHERE user_agent_id NOT IN (SELECT user_agent_id FROM $hits_table WHERE user_agent_id IS NOT NULL)";
-					$result = $wpdb->query( $query );
+					$result = $wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					if ( $result ) {
 						$user_agents_rows = $wpdb->get_var( "SELECT ROW_COUNT()" );
 					}
@@ -148,7 +150,7 @@ class Affiliates_Data_Cleaner {
 		global $wpdb, $affiliates_version;
 
 		if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
 		add_action( 'admin_footer', array( __CLASS__, 'admin_footer' ) );
@@ -165,16 +167,10 @@ class Affiliates_Data_Cleaner {
 			)
 		);
 
-		$action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : null;
+		$action = affiliates_sanitize_request( 'action' );
 
-		if (
-			$action !== null &&
-			(
-				!isset( $_REQUEST['data-cleaner-nonce'] ) ||
-				!wp_verify_nonce( $_REQUEST['data-cleaner-nonce'], 'data-cleaner-action' )
-			)
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( $action !== null && !affiliates_verify_request_nonce( 'data-cleaner-nonce', 'data-cleaner-action' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
 		echo '<h3>' . esc_html__( 'Data Cleaner', 'affiliates' ) . '</h3>';
@@ -200,7 +196,7 @@ class Affiliates_Data_Cleaner {
 				echo '<form action="" name="data-cleaner" method="post">';
 				printf( '<button class="button button-primary" name="data-cleaner" type="submit" >%s</button>', esc_html__( 'Check', 'affiliates' ) );
 				echo '<input type="hidden" name="action" value="confirm"/>';
-				echo wp_nonce_field( 'data-cleaner-action', 'data-cleaner-nonce', true, false );
+				echo wp_nonce_field( 'data-cleaner-action', 'data-cleaner-nonce', true, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '</form>';
 				echo '<p>';
 				break;
@@ -236,7 +232,7 @@ class Affiliates_Data_Cleaner {
 				echo '<form action="" name="data-cleaner" method="post">';
 				printf( '<button id="affiliates-data-cleaner-clean" class="button button-primary" name="data-cleaner" type="submit">%s</button>', esc_html__( 'Delete', 'affiliates' ) );
 				echo '<input type="hidden" name="action" value="clean"/>';
-				echo wp_nonce_field( 'data-cleaner-action', 'data-cleaner-nonce', true, false );
+				echo wp_nonce_field( 'data-cleaner-action', 'data-cleaner-nonce', true, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '<span style="padding: 4px">';
 				printf(
 					'<img id="affiliates-data-cleaner-throbber" src="%s" style="display:none" />',

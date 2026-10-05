@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter,  WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+
 if ( !class_exists( 'Affiliates_Totals' ) ) {
 
 /**
@@ -43,14 +45,15 @@ class Affiliates_Totals {
 		global $wpdb, $affiliates_options;
 
 		$output = '';
-		$today = date( 'Y-m-d', time() );
+		$today = date( 'Y-m-d', time() ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 
 		if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 
-		if ( isset ( $_GET['action'] ) ) {
-			switch( $_GET['action'] ) {
+		$action = affiliates_sanitize_get( 'action' );
+		if ( $action !== null ) {
+			switch( $action ) {
 				case 'close_referrals' :
 					$params = array(
 						'tables' => array(
@@ -60,8 +63,8 @@ class Affiliates_Totals {
 							'users' => $wpdb->users,
 						)
 					);
-					$params = array_merge( $_GET, $params );
-					echo self::update_status( AFFILIATES_REFERRAL_STATUS_CLOSED, $params );
+					$params = array_merge( $_GET, $params ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					echo self::update_status( AFFILIATES_REFERRAL_STATUS_CLOSED, $params ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					die();
 					break;
 			}
@@ -75,16 +78,13 @@ class Affiliates_Totals {
 		$referral_status      = $affiliates_options->get_option( 'totals_referral_status', null );
 		$currency_id          = $affiliates_options->get_option( 'totals_currency_id', null );
 
-		if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) {
-			if (
-				!isset( $_POST[self::NONCE] ) ||
-				!wp_verify_nonce( $_POST[self::NONCE], self::SET_FILTERS )
-			) {
-				wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( isset( $_POST['clear_filters'] ) || isset( $_POST['submitted'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( !affiliates_verify_post_nonce( self::NONCE, self::SET_FILTERS ) ) {
+				wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
-		if ( isset( $_POST['clear_filters'] ) ) {
+		if ( isset( $_POST['clear_filters'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$affiliates_options->delete_option( 'totals_from_date' );
 			$affiliates_options->delete_option( 'totals_thru_date' );
 			$affiliates_options->delete_option( 'totals_affiliate_status' );
@@ -99,17 +99,17 @@ class Affiliates_Totals {
 			$referral_status = null;
 			$currency_id     = null;
 
-		} else if ( isset( $_POST['submitted'] ) ) {
+		} else if ( isset( $_POST['submitted'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-			if ( !empty( $_POST['from_date'] ) ) {
-				$from_date = date( 'Y-m-d', strtotime( $_POST['from_date'] ) );
+			if ( !empty( $_POST['from_date'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				$from_date = date( 'Y-m-d', strtotime( affiliates_sanitize_post( 'from_date' ) ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 				$affiliates_options->update_option( 'totals_from_date', $from_date );
 			} else {
 				$from_date = null;
 				$affiliates_options->delete_option( 'totals_from_date' );
 			}
-			if ( !empty( $_POST['thru_date'] ) ) {
-				$thru_date = date( 'Y-m-d', strtotime( $_POST['thru_date'] ) );
+			if ( !empty( $_POST['thru_date'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				$thru_date = date( 'Y-m-d', strtotime( affiliates_sanitize_post( 'thru_date' ) ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 				$affiliates_options->update_option( 'totals_thru_date', $thru_date );
 			} else {
 				$thru_date = null;
@@ -122,21 +122,21 @@ class Affiliates_Totals {
 				}
 			}
 
-			if ( !empty( $_POST['affiliate_status'] ) && ( $affiliate_status = Affiliates_Utility::verify_affiliate_status( $_POST['affiliate_status'] ) ) ) {
+			if ( !empty( $_POST['affiliate_status'] ) && ( $affiliate_status = Affiliates_Utility::verify_affiliate_status( affiliates_sanitize_post( 'affiliate_status' ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				$affiliates_options->update_option( 'totals_affiliate_status', $affiliate_status );
 			} else {
 				$affiliate_status = null;
 				$affiliates_options->delete_option( 'totals_affiliate_status' );
 			}
 
-			if ( !empty( $_POST['referral_status'] ) && ( $referral_status = Affiliates_Utility::verify_referral_status_transition( $_POST['referral_status'], $_POST['referral_status'] ) ) ) {
+			if ( !empty( $_POST['referral_status'] ) && ( $referral_status = Affiliates_Utility::verify_referral_status_transition( affiliates_sanitize_post( 'referral_status' ), affiliates_sanitize_post( 'referral_status' ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				$affiliates_options->update_option( 'totals_referral_status', $referral_status );
 			} else {
 				$referral_status = null;
 				$affiliates_options->delete_option( 'totals_referral_status' );
 			}
 
-			if ( !empty( $_POST['currency_id'] ) && ( $currency_id = Affiliates_Utility::verify_currency_id( $_POST['currency_id'] ) ) ) {
+			if ( !empty( $_POST['currency_id'] ) && ( $currency_id = Affiliates_Utility::verify_currency_id( affiliates_sanitize_post( 'currency_id' ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				$affiliates_options->update_option( 'totals_currency_id', $currency_id );
 			} else {
 				$currency_id = null;
@@ -144,25 +144,19 @@ class Affiliates_Totals {
 			}
 		}
 
-		if ( isset( $_POST['row_count'] ) ) {
-			if (
-				!isset( $_POST[self::NONCE_1] ) ||
-				!wp_verify_nonce( $_POST[self::NONCE_1], self::SET_RPP )
-			) {
-				wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( isset( $_POST['row_count'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( !affiliates_verify_post_nonce( self::NONCE_1, self::SET_RPP ) ) {
+				wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
-		if ( isset( $_POST['paged'] ) ) {
-			if (
-				!isset( $_POST[self::NONCE_2] ) ||
-				!wp_verify_nonce( $_POST[self::NONCE_2], self::SET_PAGE )
-			) {
-				wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( isset( $_POST['paged'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( !affiliates_verify_post_nonce( self::NONCE_2, self::SET_PAGE ) ) {
+				wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 			}
 		}
 
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = affiliates_get_current_url();
 		$current_url = remove_query_arg( 'paged', $current_url );
 		$current_url = remove_query_arg( 'action', $current_url );
 		$current_url = remove_query_arg( 'affiliate_id', $current_url );
@@ -173,26 +167,26 @@ class Affiliates_Totals {
 
 		$output .= '<div class="totals">';
 		$output .= '<h1>';
-		$output .= __( 'Totals', 'affiliates' );
+		$output .= esc_html__( 'Totals', 'affiliates' );
 		$output .= '</h1>';
 
-		$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
+		$row_count = intval( affiliates_sanitize_post( 'row_count' ) ?? 0 );
 
-		if ($row_count <= 0) {
+		if ( $row_count <= 0 ) {
 			$row_count = $affiliates_options->get_option( 'totals_per_page', self::TOTALS_PER_PAGE );
 		} else {
-			$affiliates_options->update_option('totals_per_page', $row_count );
+			$affiliates_options->update_option( 'totals_per_page', $row_count );
 		}
-		$offset = isset( $_GET['offset'] ) ? intval( $_GET['offset'] ) : 0;
+		$offset = intval( affiliates_sanitize_get( 'offset' ) ?? 0 );
 		if ( $offset < 0 ) {
 			$offset = 0;
 		}
-		$paged = isset( $_REQUEST['paged'] ) ? intval( $_REQUEST['paged'] ) : 0;
+		$paged = intval( affiliates_sanitize_request( 'paged' ) ?? 0 );
 		if ( $paged < 0 ) {
 			$paged = 0;
 		}
 
-		$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
+		$orderby = affiliates_sanitize_get( 'orderby' );
 		switch ( $orderby ) {
 			case 'affiliate_id' :
 			case 'name' :
@@ -205,7 +199,7 @@ class Affiliates_Totals {
 				$orderby = 'name';
 		}
 
-		$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
+		$order = affiliates_sanitize_get( 'order' );
 		switch ( $order ) {
 			case 'asc' :
 			case 'ASC' :
@@ -322,27 +316,27 @@ class Affiliates_Totals {
 
 		$output .= '<div class="totals-overview">';
 
-		$mp_params = "";
+		$mp_params = '';
 		if ( !empty( $from_date ) ) {
-			$mp_params .= "&from_date=" . urlencode( $from_date );
+			$mp_params .= '&from_date=' . urlencode( $from_date );
 		}
 		if ( !empty( $thru_date ) ) {
-			$mp_params .= "&thru_date=" . urlencode( $thru_date );
+			$mp_params .= '&thru_date=' . urlencode( $thru_date );
 		}
 		if ( !empty( $affiliate_status ) ) {
-			$mp_params .= "&affiliate_status=" . urlencode( $affiliate_status );
+			$mp_params .= '&affiliate_status=' . urlencode( $affiliate_status );
 		}
 		if ( !empty( $referral_status ) ) {
-			$mp_params .= "&referral_status=" . urlencode( $referral_status );
+			$mp_params .= '&referral_status=' . urlencode( $referral_status );
 		}
 		if ( !empty( $currency_id ) ) {
-			$mp_params .= "&currency_id=" . urlencode( $currency_id );
+			$mp_params .= '&currency_id=' . urlencode( $currency_id );
 		}
 		if ( !empty( $orderby ) ) {
-			$mp_params .= "&orderby=" . urlencode( $orderby );
+			$mp_params .= '&orderby=' . urlencode( $orderby );
 		}
 		if ( !empty( $order ) ) {
-			$mp_params .= "&order=" . urlencode( $order );
+			$mp_params .= '&order=' . urlencode( $order );
 		}
 
 		$output .= '<style type="text/css">';
@@ -351,14 +345,18 @@ class Affiliates_Totals {
 
 		$output .= '<div class="manage">';
 		$output .= '<p>';
-		$output .=
-			"<a title='" . __( 'Click to close these referrals', 'affiliates' ) . "' " .
-			"class='button close-referrals' " .
-			"href='" . esc_url( $current_url ) . "&action=close_referrals" . $mp_params . "'>" .
-			"<img class='icon' alt='" . __( 'Close referrals', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
-			"<span class='label'>" . __( 'Close Referrals', 'affiliates') . "</span>" .
-			"</a>";
-		$output .= "</p>";
+		$output .= sprintf(
+			'<a title="%1$s" class="button close-referrals" href="%2$s">' .
+			'<img class="icon" alt="%3$s" src="%4$s"/>' .
+			'<span class="label">%5$s</span>' .
+			'</a>',
+			esc_attr__( 'Click to close these referrals', 'affiliates' ),
+			esc_url( $current_url . '&action=close_referrals' . $mp_params ),
+			esc_attr__( 'Close referrals', 'affiliates' ),
+			AFFILIATES_PLUGIN_URL . 'images/closed.png',
+			esc_html__( 'Close Referrals', 'affiliates' )
+		);
+		$output .= '</p>';
 		$output .= '</div>';
 
 		$affiliate_status_descriptions = array(
@@ -368,7 +366,7 @@ class Affiliates_Totals {
 		);
 
 		$affiliate_status_select = '<label class="affiliate-status-filter" for="affiliate_status">';
-		$affiliate_status_select .= __('Affiliate Status', 'affiliates' );
+		$affiliate_status_select .= esc_html__('Affiliate Status', 'affiliates' );
 		$affiliate_status_select .= ' ';
 		$affiliate_status_select .= '<select class="affiliate-status-filter" name="affiliate_status">';
 		$affiliate_status_select .= '<option value="" ' . ( empty( $affiliate_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -387,7 +385,7 @@ class Affiliates_Totals {
 		);
 
 		$status_select = '<label class="referral-status-filter" for="referral_status">';
-		$status_select .= __('Referral Status', 'affiliates' );
+		$status_select .= esc_html__('Referral Status', 'affiliates' );
 		$status_select .= ' ';
 		$status_select .= '<select class="referral-status-filter" name="referral_status">';
 		$status_select .= '<option value="" ' . ( empty( $referral_status ) ? ' selected="selected" ' : '' ) . '>--</option>';
@@ -400,59 +398,56 @@ class Affiliates_Totals {
 
 		$currencies = $wpdb->get_results( "SELECT DISTINCT(currency_id) FROM $referrals_table WHERE currency_id IS NOT NULL" );
 		$currency_select = '<label class="currency-id-filter" for="currency_id">';
-		$currency_select .= __( 'Currency', 'affiliates' );
+		$currency_select .= esc_html__( 'Currency', 'affiliates' );
 		$currency_select .= ' ';
 		$currency_select .= '<select class="currency-id-filter" name="currency_id">';
 		$currency_select .= '<option value="" ' . ( empty( $currency_id ) ? ' selected="selected" ' : '' ) . '>--</option>';
 		foreach ( $currencies as $currency ) {
 			$selected = $currency->currency_id == $currency_id ? ' selected="selected" ' : '';
-			$currency_select .= '<option ' . $selected . ' value="' . esc_attr( $currency->currency_id ) . '">' . $currency->currency_id . '</option>';
+			$currency_select .= '<option ' . $selected . ' value="' . esc_attr( $currency->currency_id ) . '">' . esc_html( $currency->currency_id ) . '</option>';
 		}
 		$currency_select .= '</select>';
 		$currency_select .= '</label>';
 
-		$output .=
-			'<div class="filters">' .
-				'<label class="description" for="setfilters">' . __( 'Filters', 'affiliates' ) . '</label>' .
-				'<form id="setfilters" action="" method="post">' .
-					'<div class="filter-section">' .
-					$status_select .
-					' ' .
-					$currency_select .
-					' ' .
-					$affiliate_status_select .
-					'</div>' .
-					'<div class="filter-section">' .
-						'<label class="from-date-filter" for="from_date">' .
-							__( 'From', 'affiliates' ) .
-							'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
-						'</label>' .
-						'<label class="thru-date-filter" for="thru_date">' .
-							__( 'Until', 'affiliates' ) .
-							'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
-						'</label>' .
-					'</div>' .
-					'<div class="filter-buttons">' .
-						wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false ) .
-						'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-						'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
-						'<input type="hidden" value="submitted" name="submitted"/>' .
-					'</div>' .
-				'</form>' .
-			'</div>';
+		$output .= '<div class="filters">';
+		$output .= '<label class="description" for="setfilters">' . esc_html__( 'Filters', 'affiliates' ) . '</label>';
+		$output .= '<form id="setfilters" action="" method="post">';
+		$output .= '<div class="filter-section">';
+		$output .= $status_select;
+		$output .= ' ';
+		$output .= $currency_select;
+		$output .= ' ';
+		$output .= $affiliate_status_select;
+		$output .= '</div>';
+		$output .= '<div class="filter-section">';
+		$output .= '<label class="from-date-filter" for="from_date">';
+		$output .= esc_html__( 'From', 'affiliates' );
+		$output .= '<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>';
+		$output .= '</label>';
+		$output .= '<label class="thru-date-filter" for="thru_date">';
+		$output .= esc_html__( 'Until', 'affiliates' );
+		$output .= '<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>';
+		$output .= '</label>';
+		$output .= '</div>';
+		$output .= '<div class="filter-buttons">';
+		$output .= wp_nonce_field( self::SET_FILTERS, self::NONCE, true, false );
+		$output .= '<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>';
+		$output .= '<input class="button" type="submit" name="clear_filters" value="' . esc_attr__( 'Clear', 'affiliates' ) . '"/>';
+		$output .= '<input type="hidden" value="submitted" name="submitted"/>';
+		$output .= '</div>';
+		$output .= '</form>';
+		$output .= '</div>';
 
-		$output .= '
-			<div class="page-options">
-				<form id="setrowcount" action="" method="post">
-					<div>
-						<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
-						'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
-						' . wp_nonce_field( self::SET_RPP, self::NONCE_1, true, false ) . '
-						<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
-					</div>
-				</form>
-			</div>
-			';
+		$output .= '<div class="page-options">';
+		$output .= '<form id="setrowcount" action="" method="post">';
+		$output .= '<div>';
+		$output .= '<label for="row_count">' . esc_html__( 'Results per page', 'affiliates' ) . '</label>';
+		$output .= '<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />';
+		$output .= wp_nonce_field( self::SET_RPP, self::NONCE_1, true, false );
+		$output .= '<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>';
+		$output .= '</div>';
+		$output .= '</form>';
+		$output .= '</div>';
 
 		if ( $paginate ) {
 			require_once( AFFILIATES_CORE_LIB . '/class-affiliates-pagination.php' );
@@ -467,11 +462,9 @@ class Affiliates_Totals {
 			$output .= '</form>';
 		}
 
-		$output .= '
-			<table class="wp-list-table widefat fixed" cellspacing="0">
-			<thead>
-				<tr>
-				';
+		$output .= '<table class="wp-list-table widefat fixed" cellspacing="0">';
+		$output .= '<thead>';
+		$output .= '<tr>';
 
 		foreach ( $column_display_names as $key => $column_display_name ) {
 			$options = array(
@@ -486,15 +479,27 @@ class Affiliates_Totals {
 				} else {
 					$class = "$key manage-column sortable";
 				}
-				$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
+				$column_display_name = sprintf(
+					'<a href="%1$s"><span>%2$s</span>' .
+					'<span class="sorting-indicators">' .
+					'<span class="sorting-indicator asc" aria-hidden="true"></span>'.
+					'<span class="sorting-indicator desc" aria-hidden="true"></span>'.
+					'</span>' .
+					'</a>',
+					esc_url( add_query_arg( $options, $current_url ) ),
+					esc_html( $column_display_name )
+				);
 			}
-			$output .= "<th scope='col' class='$class'>$column_display_name</th>";
+			$output .= sprintf(
+				'<th scope="col" class="%1$s">%2$s</th>',
+				esc_attr( $class ),
+				$column_display_name // phpcs:ignore
+			);
 		}
 
-		$output .= '</tr>
-			</thead>
-			<tbody>
-			';
+		$output .= '</tr>';
+		$output .= '</thead>';
+		$output .=  '<tbody>';
 
 		if ( count( $results ) > 0 ) {
 			for ( $i = 0; $i < count( $results ); $i++ ) {
@@ -522,7 +527,7 @@ class Affiliates_Totals {
 					$output .= esc_html( $result->affiliate_id );
 				}
 				$output .= '</td>';
-				$output .= '<td class="affiliate-name">' . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . $name_suffix . '</td>';
+				$output .= '<td class="affiliate-name">' . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . esc_html( $name_suffix ) . '</td>';
 				$output .= '<td class="affiliate-email">' . esc_html( $result->email ) . '</td>';
 				$output .= '<td class="affiliate-user-login">' . esc_html( $result->user_login ) . '</td>';
 
@@ -537,7 +542,7 @@ class Affiliates_Totals {
 		} else {
 			$output .= '<tr>';
 			$output .= '<td colspan="' . count( $column_display_names ) . '">';
-			$output .= __( 'There are no results.', 'affiliates' );
+			$output .= esc_html__( 'There are no results.', 'affiliates' );
 			$output .= '</td>';
 			$output .= '</tr>';
 		}
@@ -554,7 +559,7 @@ class Affiliates_Totals {
 
 		$output .= '</div>'; // .totals-overview
 		$output .= '</div>'; // .totals
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		affiliates_footer();
 	}
 
@@ -604,8 +609,8 @@ class Affiliates_Totals {
 
 		if ( isset( $params['tables'] ) ) {
 
-			$output .= "<h1>" . __( "Closing referrals", 'affiliates' ) . "</h1>";
-			$output .= "<div class='closing-referrals-overview'>";
+			$output .= '<h1>' . esc_html__( "Closing referrals", 'affiliates' ) . '</h1>';
+			$output .= '<div class="closing-referrals-overview">';
 
 			$affiliates_table       = $params['tables']['affiliates'];
 			$affiliates_users_table = $params['tables']['affiliates_users'];
@@ -670,23 +675,23 @@ class Affiliates_Totals {
 						$filter_params
 					) );
 
-					$output .= "<div class='manage'>";
-					$output .= "<div class='warning'>";
-					$output .= "<p>";
-					$output .= "<strong>";
-					$output .= __( "Please review the list of referrals that will be <em>closed</em>.", 'affiliates' );
-					$output .= "</strong>";
-					$output .= "</p>";
-					$output .= "</div>"; // .warning
+					$output .= '<div class="manage">';
+					$output .= '<div class="warning">';
+					$output .= '<p>';
+					$output .= '<strong>';
+					$output .= esc_html__( 'Please review the list of referrals that will be closed.', 'affiliates' );
+					$output .= '</strong>';
+					$output .= '</p>';
+					$output .= '</div>'; // .warning
 
-					$output .= "<p>";
-					$output .= __( "Usually only referrals that are <em>accepted</em> and have been paid out should be <em>closed</em>. If there are unwanted or too many referrals shown, restrict your filter settings.", 'affiliates' );
-					$output .= "</p>";
+					$output .= '<p>';
+					$output .= esc_html__( 'Usually only referrals that are accepted and have been paid out should be closed. If there are unwanted or too many referrals shown, restrict your filter settings.', 'affiliates' );
+					$output .= '</p>';
 
-					$output .= "<p>";
-					$output .= __( "If these referrals can be closed, click the confirmation button below.", 'affiliates' );
-					$output .= "</p>";
-					$output .= "</div>";
+					$output .= '<p>';
+					$output .= esc_html__( 'If these referrals can be closed, click the confirmation button below.', 'affiliates' );
+					$output .= '</p>';
+					$output .= '</div>';
 
 					$output .= '<div id="referrals-overview" class="referrals-overview">';
 					$output .= self::render_results( $results );
@@ -718,7 +723,7 @@ class Affiliates_Totals {
 
 						$output .= '<div class="manage confirm">';
 
-						$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+						$current_url = affiliates_get_current_url();
 						$current_url = remove_query_arg( 'paged', $current_url );
 						$current_url = remove_query_arg( 'action', $current_url );
 						$current_url = remove_query_arg( 'affiliate_id', $current_url );
@@ -727,29 +732,36 @@ class Affiliates_Totals {
 						$output .= '.close-referrals img, .close-referrals .label { vertical-align: middle; }';
 						$output .= '</style>';
 
-						$output .= "<p>";
-						$output .= __( "Close these referrals by clicking:", 'affiliates' );
-						$output .= "</p>";
-						$output .=
-							"<a title='" . __( 'Click to close these referrals', 'affiliates' ) . "' " .
-							"class='close-referrals button' " .
-							"href='" . esc_url( $current_url ) . "&action=close_referrals&step=2" . $mp_params . "'>" .
-							"<img class='icon' alt='" . __( 'Close referrals', 'affiliates') . "' src='". AFFILIATES_PLUGIN_URL ."images/closed.png'/>" .
-							"<span class='label'>" . __( 'Close Referrals', 'affiliates') . "</span>" .
-							"</a>";
+						$output .= '<p>';
+						$output .= esc_html__( 'Close these referrals by clicking:', 'affiliates' );
+						$output .= '</p>';
+						$output .= sprintf(
+							'<a title="%1$s" class="close-referrals button" href="%2$s">',
+							esc_attr__( 'Click to close these referrals', 'affiliates' ),
+							esc_url( $current_url . "&action=close_referrals&step=2" . $mp_params )
+						);
+						$output .= sprintf(
+							'<img class="icon" alt="%1$s" src="%2$s"/>',
+							esc_attr__( 'Close referrals', 'affiliates' ),
+							AFFILIATES_PLUGIN_URL . 'images/closed.png'
+						);
+						$output .= '<span class="label">';
+						$output .= esc_html__( 'Close Referrals', 'affiliates' );
+						$output .= '</span>';
+						$output .= '</a>';
 
-						$output .= "<div class='warning'>";
-						$output .= "<p>";
-						$output .= "<strong>";
-						$output .= __( "This action can not be undone*.", 'affiliates' );
-						$output .= "</strong>";
-						$output .= "</p>";
-						$output .= "<p>";
-						$output .= "<span style='font-size:0.8em;'>";
-						$output .= __( "*To undo, each referral would have to be set to the desired status individually.", 'affiliates' );
-						$output .= "</span>";
-						$output .= "</p>";
-						$output .= "</div>"; // .warning
+						$output .= '<div class="warning">';
+						$output .= '<p>';
+						$output .= '<strong>';
+						$output .= esc_html__( 'This action can not be undone.', 'affiliates' ) . ' <sup>*</sup>';
+						$output .= '</strong>';
+						$output .= '</p>';
+						$output .= '<p>';
+						$output .= '<span style="font-size:0.8em;">';
+						$output .= '<sup>*</sup> ' . esc_html__( 'To undo, each referral would have to be set to the desired status individually.', 'affiliates' );
+						$output .= '</span>';
+						$output .= '</p>';
+						$output .= '</div>'; // .warning
 
 						$output .= '</div>'; // .manage.confirm
 					}
@@ -800,31 +812,43 @@ class Affiliates_Totals {
 						AFFILIATES_REFERRAL_STATUS_PENDING  => __( 'Pending', 'affiliates' ),
 						AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 					);
-					$output .= "<h2>" . __( "Updated", 'affiliates' ) . "</h2>";
-					$output .= "<p>";
-					$output .= sprintf( __( "These referrals have been updated to <em>%s</em>.", 'affiliates' ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
-					$output .= "</p>";
+					$output .= '<h2>' . esc_html__( 'Updated', 'affiliates' ) . '</h2>';
+					$output .= '<p>';
+					$output .= sprintf(
+						/* translators: status */
+						esc_html__( 'These referrals have been updated to %s.', 'affiliates' ),
+						'<em>' . ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) . '</em>'
+					);
+					$output .= '</p>';
 					$output .= self::render_results( $updated );
 
 					if ( count( $omitted ) > 0 ) {
-						$output .= "<h2>" . __( "Omitted", 'affiliates' ) . "</h2>";
-						$output .= "<p>";
-						$output .= sprintf( __( "These referrals have been omitted because their status must not be changed to <em>%s</em>.", 'affiliates' ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
-						$output .= "</p>";
+						$output .= '<h2>' . esc_html__( 'Omitted', 'affiliates' ) . '</h2>';
+						$output .= '<p>';
+						$output .= sprintf(
+							/* translators: status */
+							esc_html__( 'These referrals have been omitted because their status must not be changed to %s.', 'affiliates' ),
+							'<em>' . ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) . '</em>'
+						);
+						$output .= '</p>';
 						$output .= self::render_results( $omitted );
 					}
 
 					if ( count( $failed ) > 0 ) {
-						$output .= "<h2>" . __( "Failed", 'affiliates' ) . "</h2>";
-						$output .= "<p>";
-						$output .= sprintf( __( "These referrals could not be updated to <em>%s</em>.", 'affiliates' ), ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) );
-						$output .= "</p>";
+						$output .= '<h2>' . esc_html__( 'Failed', 'affiliates' ) . '</h2>';
+						$output .= '<p>';
+						$output .= sprintf(
+							/* translators: status */
+							esc_html__( 'These referrals could not be updated to %s.', 'affiliates' ),
+							'<em>' . ( isset( $status_descriptions[$new_status] ) ? $status_descriptions[$new_status] : $new_status ) . '</em>'
+						);
+						$output .= '</p>';
 						$output .= self::render_results( $failed );
 					}
 					break; // step 2 -commit changes
 			}
 
-			$output .= "</div>";// .closing-referrals-overview
+			$output .= '</div>';// .closing-referrals-overview
 		}
 
 		return $output;
@@ -854,14 +878,14 @@ class Affiliates_Totals {
 		);
 
 		$output .= '<table id="referrals" class="referrals wp-list-table widefat fixed" cellspacing="0">';
-		$output .= "<thead>";
-		$output .= "<tr>";
+		$output .= '<thead>';
+		$output .= '<tr>';
 		foreach ( $column_display_names as $key => $column_display_name ) {
-			$output .= "<th scope='col'>$column_display_name</th>";
+			$output .= sprintf( '<th scope="col">%s</th>', esc_html( $column_display_name ) );
 		}
-		$output .= "</tr>";
-		$output .= "</thead>";
-		$output .= "<tbody>";
+		$output .= '</tr>';
+		$output .= '</thead>';
+		$output .= '<tbody>';
 
 		if ( count( $results ) > 0 ) {
 			for ( $i = 0; $i < count( $results ); $i++ ) {
@@ -869,18 +893,22 @@ class Affiliates_Totals {
 				$output .= '<tr class="details-referrals ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 				$output .= '<td class="datetime">' . DateHelper::s2u( $result->datetime ) . '</td>';
 				$title = get_the_title( $result->post_id );
-				$output .= '<td class="post_title">' . wp_filter_nohtml_kses( $title ) . '</td>';
-				$output .= "<td class='name'>" . stripslashes( wp_filter_nohtml_kses( $result->name ) ) . "</td>";
-				$output .= "<td class='amount'>" . stripslashes( wp_filter_nohtml_kses( affiliates_format_referral_amount( $result->amount, 'display' ) ) ) . "</td>";
-				$output .= "<td class='currency_id'>" . stripslashes( wp_filter_nohtml_kses( $result->currency_id ) ) . "</td>";
-				$output .= "<td class='status'>";
+				$output .= sprintf( '<td class="post_title">%s</td>', esc_html( $title ) );
+				$output .= sprintf( '<td class="name">%s</td>', stripslashes( wp_filter_nohtml_kses( $result->name ) ) );
+				$output .= sprintf( '<td class="amount">%s</td>', stripslashes( wp_filter_nohtml_kses( affiliates_format_referral_amount( $result->amount, 'display' ) ) ) );
+				$output .= sprintf( '<td class="currency_id">%s</td>', stripslashes( wp_filter_nohtml_kses( $result->currency_id ) ) );
+				$output .= '<td class="status">';
 				$output .= isset( $status_icons[$result->status] ) ? $status_icons[$result->status] : '';
 				$output .= isset( $status_descriptions[$result->status] ) ? $status_descriptions[$result->status] : '';
-				$output .= "</td>";
+				$output .= '</td>';
 				$output .= '</tr>';
 			}
 		} else {
-			$output .= '<tr><td colspan="' . count( $column_display_names ) . '">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+			$output .= sprintf(
+				'<tr><td colspan="%d">%s</td></tr>',
+				count( $column_display_names ),
+				esc_html__( 'There are no results.', 'affiliates' )
+			);
 		}
 		$output .= '</tbody>';
 		$output .= '</table>';

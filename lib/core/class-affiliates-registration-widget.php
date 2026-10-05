@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+
 /**
  * Affiliate registration form as a widget.
  *
@@ -51,9 +53,9 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		extract( $args );
 		$title = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
 		$widget_id = !empty( $args['widget_id'] ) ? $args['widget_id'] : '';
-		echo $before_widget;
+		echo $before_widget; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( !empty( $title ) ) {
-			echo $before_title . $title . $after_title;
+			echo $before_title . $title . $after_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		$ext = '-' . $widget_id;
 
@@ -63,8 +65,8 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		if ( isset( $instance['terms_post_id'] ) ) {
 			$options['terms_post_id'] = $instance['terms_post_id'];
 		}
-		echo Affiliates_Registration::render_form( $options );
-		echo $after_widget;
+		echo Affiliates_Registration::render_form( $options ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $after_widget; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -103,22 +105,33 @@ class Affiliates_Registration_Widget extends WP_Widget {
 		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'affiliates' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'affiliates' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<?php
 
 		// terms_post_id
 		// post_id
 		$terms_post_id = isset( $instance['terms_post_id'] ) ? $instance['terms_post_id'] : '';
-		echo "<p>";
-		echo '<label class="title" title="' . __( "Terms and conditions", 'affiliates' ) . '" for="' .$this->get_field_id( 'terms_post_id' ) . '">' . __( 'Terms Page or Post ID', 'affiliates' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'terms_post_id' ) . '" name="' . $this->get_field_name( 'terms_post_id' ) . '" type="text" value="' . esc_attr( $terms_post_id ) . '" />';
+		echo '<p>';
+		printf(
+			'<label class="title" title="%1$s" for="%2$s">%3$s</label>',
+			esc_attr__( 'Terms and conditions', 'affiliates' ),
+			esc_attr( $this->get_field_id( 'terms_post_id' ) ),
+			esc_html__( 'Terms Page or Post ID', 'affiliates' )
+		);
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'terms_post_id' ) ) . '" name="' . esc_attr( $this->get_field_name( 'terms_post_id' ) ) . '" type="text" value="' . esc_attr( $terms_post_id ) . '" />';
 		echo '<br/>';
-		echo '<span class="description">' . __( "Write part of the title or the post ID. If left empty, no terms disclaimer will be shown.", 'affiliates' ) . '</span>';
+		echo '<span class="description">' . esc_html__( "Write part of the title or the post ID. If left empty, no terms disclaimer will be shown.", 'affiliates' ) . '</span>';
 		if ( !empty( $terms_post_id ) && ( $post_title = get_the_title( $terms_post_id ) ) ) {
 			echo '<br/>';
-			echo '<span class="description"> ' . sprintf( __( "Terms page: <em>%s</em>", 'affiliates' ) , '<a target="_blank" href="'. esc_url( get_permalink( $terms_post_id ) ) .'">' . $post_title . '</a>' ) . '</span>';
+			echo '<span class="description"> ';
+			printf(
+				/* translators: link */
+				esc_html__( 'Terms page: %s', 'affiliates' ) ,
+				'<a target="_blank" href="'. esc_url( get_permalink( $terms_post_id ) ) .'">' . esc_html( $post_title ) . '</a>'
+			);
+			echo '</span>';
 		}
 		echo '</p>';
 	}

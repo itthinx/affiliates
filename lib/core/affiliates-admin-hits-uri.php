@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 // Shows traffic section
 
 /**
@@ -36,7 +38,7 @@ function affiliates_admin_hits_uri() {
 	$output = '';
 
 	if ( is_admin() && !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
@@ -52,11 +54,8 @@ function affiliates_admin_hits_uri() {
 		isset( $_POST['status'] ) ||
 		isset( $_POST['min_referrals'] )
 	) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_FILTER_NONCE], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_FILTER_NONCE, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -219,24 +218,18 @@ function affiliates_admin_hits_uri() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_1], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_1, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['uris_paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_NONCE_2], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_NONCE_2, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'uris_paged', $current_url );
 
 	$affiliates_table  = _affiliates_get_tablename( 'affiliates' );
@@ -432,7 +425,7 @@ function affiliates_admin_hits_uri() {
 			"h.datetime, " .
 			"h.hit_id, " .
 			"h.campaign_id, " .
-			( $campaigns ? "c.name AS campaign, " : '' ) .
+			( $campaigns ? "c.name AS campaign, " : '' ) . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"h.ip, " .
 			"h.affiliate_id, " .
 			"a.name, " .
@@ -449,14 +442,14 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table $status_condition GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
-			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"$filters " .
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
 
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		$count = intval( $wpdb->get_var( $wpdb->prepare(
 			"SELECT COUNT(*) FROM $hits_table h " .
@@ -465,7 +458,7 @@ function affiliates_admin_hits_uri() {
 			"LEFT JOIN $uris_table du ON h.dest_uri_id = du.uri_id " .
 			"LEFT JOIN $user_agents_table ua ON h.user_agent_id = ua.user_agent_id " .
 			"LEFT JOIN (SELECT COUNT(*) AS count, hit_id FROM $referrals_table GROUP BY hit_id) AS referrals ON referrals.hit_id = h.hit_id " .
-			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) .
+			( $campaigns ? "LEFT JOIN $campaigns_table c ON h.campaign_id = c.campaign_id " : '' ) . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"$filters ",
 			$filter_params
 		) ) );
@@ -556,7 +549,8 @@ function affiliates_admin_hits_uri() {
 		$status_checkboxes .= '</label>';
 	}
 
-	$use_and_or = sprintf( __( 'You can use %s and %s to search for multiple terms in combination.', 'affiliates' ), 'AND', 'OR' );
+	/* translators: 1 literal, 2 literal */
+	$use_and_or = sprintf( __( 'You can use %1$s and %2$s to search for multiple terms in combination.', 'affiliates' ), 'AND', 'OR' );
 
 	$output .=
 		'<div class="filters">' .
@@ -677,7 +671,16 @@ function affiliates_admin_hits_uri() {
 			}
 		}
 		if ( $key !== '' ) { // * see above
-			$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . esc_html( $column_display_name ) . '</span><span class="sorting-indicator"></span></a>';
+			$column_display_name = sprintf(
+				'<a href="%1$s"><span>%2$s</span>'.
+				'<span class="sorting-indicators">' .
+				'<span class="sorting-indicator asc" aria-hidden="true"></span>'.
+				'<span class="sorting-indicator desc" aria-hidden="true"></span>'.
+				'</span>' .
+				'</a>',
+				esc_url( add_query_arg( $options, $current_url ) ),
+				esc_html( $column_display_name )
+			);
 		} else {
 			$column_display_name = esc_html( $column_display_name );
 		}
@@ -737,7 +740,10 @@ function affiliates_admin_hits_uri() {
 	} else {
 		if ( $count > 0 ) {
 			$output .= '<div class="tablenav bottom">';
-			$output .= '<span class="displaying-num">' . sprintf( _n( '1 item', '%s items', $count ), number_format_i18n( $count ) ) . '</span>';
+			$output .= '<span class="displaying-num">';
+			/* translators: count */
+			$output .= esc_html( sprintf( _n( '1 item', '%s items', $count, 'affiliates' ), number_format_i18n( $count ) ) ); // phpcs:ignore WordPress.WP.I18n.MissingSingularPlaceholder
+			$output .= '</span>';
 			$output .= '</div>';
 		}
 	}
@@ -745,13 +751,14 @@ function affiliates_admin_hits_uri() {
 	$server_dtz = DateHelper::getServerDateTimeZone();
 	$output .= '<p>';
 	$output .= sprintf(
-		__( "* Date is given for the server's time zone : %s, which has an offset of %s hours with respect to GMT.", 'affiliates' ),
+		/* translators: 1 time zone, 2 offset */
+		__( '* Date is given for the server\'s time zone : %1$s, which has an offset of %2$s hours with respect to GMT.', 'affiliates' ),
 		$server_dtz->getName(),
 		$server_dtz->getOffset( new DateTime() ) / 3600.0
 	);
 	$output .= '</p>';
 	$output .= '</div>'; // .hits-uris-overview
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	affiliates_footer();
 } // function affiliates_admin_hits_uri()

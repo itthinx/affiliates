@@ -114,15 +114,15 @@ class Affiliates_Admin_Help {
 	public static function affiliates_help_tab_footer( $render = true ) {
 
 		$prefix = '<p>';
-		$prefix .= __( 'The complete documentation is available on the Documentation pages &hellip;', 'affiliates' );
+		$prefix .= esc_html__( 'The complete documentation is available on the Documentation pages &hellip;', 'affiliates' );
 		$prefix .= '</p>';
 
 		$footer =
 			'<div class="affiliates-documentation">' .
 			sprintf(
 				'<a href="%s">%s</a>',
-				esc_attr( 'https://docs.itthinx.com/document/affiliates/' ),
-				esc_html( __( 'Online documentation', 'affiliates' ) )
+				esc_url( 'https://docs.itthinx.com/document/affiliates/' ),
+				esc_html__( 'Online documentation', 'affiliates' )
 			) .
 			'</div>';
 		$footer = apply_filters( 'affiliates_help_tab_footer', $footer );
@@ -130,7 +130,7 @@ class Affiliates_Admin_Help {
 		$footer = $prefix . $footer;
 
 		if ( $render ) {
-			echo $footer;
+			echo $footer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		} else {
 			return $footer;
 		}

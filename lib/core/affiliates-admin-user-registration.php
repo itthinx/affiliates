@@ -28,15 +28,15 @@ require_once AFFILIATES_CORE_LIB . '/class-affiliates-user-registration.php';
 function affiliates_admin_user_registration() {
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_OPTIONS ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	echo '<h1>';
-	echo __( 'User Registration', 'affiliates' );
+	echo esc_html__( 'User Registration', 'affiliates' );
 	echo '</h1>';
 
 	echo '<p class="description">';
-	echo __( 'Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.', 'affiliates' );
+	echo esc_html__( 'Here you can enable the built-in User Registration integration which allows to grant commissions to affiliates when they refer new users.', 'affiliates' );
 	echo '</p>';
 
 	// save
@@ -87,15 +87,15 @@ function affiliates_admin_user_registration() {
 		}
 	}
 
-	$user_registration_enabled     = get_option( 'aff_user_registration_enabled', 'no' );
+	$user_registration_enabled = get_option( 'aff_user_registration_enabled', 'no' );
 	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		$customer_registration_enabled = get_option( 'aff_customer_registration_enabled', 'no' );
 	}
 	if ( AFFILIATES_PLUGIN_NAME != 'affiliates' ) {
 		$user_registration_base_amount = get_option( 'aff_user_registration_base_amount', '' );
 	}
-	$user_registration_amount      = get_option( 'aff_user_registration_amount', '0' );
-	$user_registration_currency    = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
+	$user_registration_amount = get_option( 'aff_user_registration_amount', '0' );
+	$user_registration_currency = get_option( 'aff_user_registration_currency', Affiliates::DEFAULT_CURRENCY );
 	$user_registration_referral_status = get_option(
 		'aff_user_registration_referral_status',
 		get_option( 'aff_default_referral_status', AFFILIATES_REFERRAL_STATUS_ACCEPTED )
@@ -105,7 +105,7 @@ function affiliates_admin_user_registration() {
 	echo 'div.field { padding: 0 1em 1em 0; }';
 	echo 'div.field.user-registration-base-amount input { width: 5em; text-align: right;}';
 	echo 'div.field.user-registration-amount input { width: 5em; text-align: right;}';
-	echo 'div.field span.label { display: inline-block; width: 20%; }';
+	echo 'div.field span.label { display: inline-block; width: 10%; min-width: 128px; }';
 	echo 'div.field span.description { display: block; }';
 	echo 'div.buttons { padding-top: 1em; }';
 	echo '</style>';
@@ -118,7 +118,7 @@ function affiliates_admin_user_registration() {
 	echo '<label>';
 	printf( '<input type="checkbox" name="enabled" value="1" %s />', $user_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
 	echo ' ';
-	echo __( 'Enable the user registration integration', 'affiliates' );
+	echo esc_html__( 'Enable the user registration integration', 'affiliates' );
 	echo '</label>';
 	echo '</div>';
 
@@ -128,11 +128,11 @@ function affiliates_admin_user_registration() {
 		echo '<label>';
 		printf( '<input type="checkbox" name="customer_enabled" value="1" %s />', $customer_registration_enabled == 'yes' ? ' checked="checked" ' : '' );
 		echo ' ';
-		echo __( 'Enable the WooCommerce customer registration integration', 'affiliates' );
+		echo esc_html__( 'Enable the WooCommerce customer registration integration', 'affiliates' );
 		echo '</label>';
 		echo ' ';
 		echo '<span class="description">';
-		echo __( 'If the user registration integration should create referrals for new customers that register at checkout, this option should be enabled.', 'affiliates' );
+		echo esc_html__( 'If the user registration integration should create referrals for new customers that register at checkout, this option should be enabled.', 'affiliates' );
 		echo '</span>';
 		echo '</div>';
 	}
@@ -142,18 +142,18 @@ function affiliates_admin_user_registration() {
 		echo '<div class="field user-registration-base-amount">';
 		echo '<label>';
 		echo '<span class="label">';
-		echo __( 'Base Amount', 'affiliates' );
+		echo esc_html__( 'Base Amount', 'affiliates' );
 		echo '</span>';
 		echo ' ';
 		printf( '<input type="text" name="base_amount" value="%s"/>', esc_attr( $user_registration_base_amount ) );
 		echo '</label>';
 		echo '<span class="description">';
-		echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate.', 'affiliates' );
+		echo esc_html__( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate an amount in the chosen currency. The amount is calculated taking this base amount into account. For example, if a general referral rate is set, the referral amount equals this base amount multipied by the referral rate.', 'affiliates' );
 		echo ' ';
-		echo __( 'If set, this <strong>Base Amount</strong> takes precedence over the <strong>Amount</strong>.', 'affiliates' );
+		echo esc_html__( 'If set, this Base Amount takes precedence over the Amount.', 'affiliates' );
 		if ( AFFILIATES_PLUGIN_NAME == 'affiliates-enterprise' ) {
 			echo ' ';
-			echo __( 'If multi-tiered referrals are enabled and level rates are not relative, this <strong>Base Amount</strong> must be used instead of the <strong>Amount</strong>.', 'affiliates' );
+			echo esc_html__( 'If multi-tiered referrals are enabled and level rates are not relative, this Base Amount must be used instead of the Amount.', 'affiliates' );
 		}
 		echo '</span>';
 		echo '</div>';
@@ -163,13 +163,13 @@ function affiliates_admin_user_registration() {
 	echo '<div class="field user-registration-amount">';
 	echo '<label>';
 	echo '<span class="label">';
-	echo __( 'Amount', 'affiliates' );
+	echo esc_html__( 'Amount', 'affiliates' );
 	echo '</span>';
 	echo ' ';
 	printf( '<input type="text" name="amount" value="%s"/>', esc_attr( $user_registration_amount ) );
 	echo '</label>';
 	echo '<span class="description">';
-	echo __( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate this amount in the chosen currency.', 'affiliates' );
+	echo esc_html__( 'When an affiliate refers a new user, a referral is recorded, granting the affiliate this amount in the chosen currency.', 'affiliates' );
 	echo '</span>';
 	echo '</div>';
 
@@ -177,16 +177,16 @@ function affiliates_admin_user_registration() {
 	$currency_select = '<select name="currency">';
 	foreach( apply_filters( 'affiliates_supported_currencies', Affiliates::$supported_currencies ) as $cid ) {
 		$selected = ( $user_registration_currency == $cid ) ? ' selected="selected" ' : '';
-		$currency_select .= '<option ' . $selected . ' value="' .esc_attr( $cid ).'">' . $cid . '</option>';
+		$currency_select .= '<option ' . $selected . ' value="' . esc_attr( $cid ) . '">' . esc_html( $cid ) . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 	$currency_select .= '</select>';
 	echo '<div class="field user-registration-currency">';
 	echo '<label>';
 	echo '<span class="label">';
-	echo __( 'Currency', 'affiliates' );
+	echo esc_html__( 'Currency', 'affiliates' );
 	echo '</span>';
 	echo ' ';
-	echo $currency_select;
+	echo $currency_select; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</label>';
 	echo '</div>';
 
@@ -203,39 +203,57 @@ function affiliates_admin_user_registration() {
 		} else {
 			$selected = "";
 		}
-		$status_select .= "<option value='$status_key' $selected>$status_value</option>";
+		$status_select .= sprintf(
+			'<option value="%1$s" %2$s>%3$s</option>',
+			esc_attr( $status_key ),
+			$selected, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			esc_html( $status_value )
+		);
 	}
 	$status_select .= "</select>";
 	echo '<div class="field user-registration-referral-status">';
 	echo '<label>';
 	echo '<span class="label">';
-	echo __( 'Referral Status', 'affiliates' );
+	echo esc_html__( 'Referral Status', 'affiliates' );
 	echo '</span>';
 	echo ' ';
-	echo $status_select;
+	echo $status_select; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</label>';
 	echo '<p class="description">';
-	echo __( 'The status for referrals that record commissions when affiliates refer new users.', 'affiliates' );
+	echo esc_html__( 'The status for referrals that record commissions when affiliates refer new users.', 'affiliates' );
 	echo '</p>';
 	echo '</div>';
 
 	echo '<p>';
-	echo __( 'Recommended choices for the referral status are <em>Accepted</em> and <em>Pending</em>.', 'affiliates' );
+	printf(
+		/* translators: status, status */
+		esc_html__( 'Recommended choices for the referral status are %1$s and %2$s.', 'affiliates' ),
+		'<em>' . esc_html__( 'Accepted', 'affiliates' ) . '</em>',
+		'<em>' . esc_html__( 'Pending', 'affiliates' ) . '</em>'
+	);
 	echo '</p>';
 
 	echo '<ul>';
 	echo '<li>';
-	echo __( '<strong>Accepted</strong> if these referrals should grant payable commissions to affiliates without the need for further review.', 'affiliates' );
+	printf(
+		/* translators: status */
+		esc_html__( '%s if these referrals should grant payable commissions to affiliates without the need for further review.', 'affiliates' ),
+		'<strong>' . esc_html__( 'Accepted', 'affiliates' ) . '</strong>'
+	);
 	echo '</li>';
 
 	echo '<li>';
-	echo __( '<strong>Pending</strong> if these referrals are to be reviewed before the commissions should be taken into account for affiliate payouts.', 'affiliates' );
+	printf(
+		/* translators: status */
+		esc_html__( '%s if these referrals are to be reviewed before the commissions should be taken into account for affiliate payouts.', 'affiliates' ),
+		'<strong>' . esc_html__( 'Pending', 'affiliates' ) . '</strong>'
+	);
 	echo '</li>';
 	echo '</ul>';
 
 	echo '<div class="buttons">';
 	wp_nonce_field( 'save', 'affiliates-user-registraton-admin', true, true );
-	echo '<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>';
+	echo '<input class="button button-primary" type="submit" name="submit" value="' . esc_attr__( 'Save', 'affiliates' ) . '"/>';
 	echo '<input type="hidden" name="action" value="save"/>';
 	echo '</div>';
 

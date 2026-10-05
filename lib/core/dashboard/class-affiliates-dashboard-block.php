@@ -144,9 +144,10 @@ class Affiliates_Dashboard_Block extends Affiliates_Dashboard {
 			register_block_type(
 				'affiliates/dashboard',
 				array(
-					'editor_script' => 'affiliates-dashboard-block',
+					'api_version'     => '3',
+					'editor_script'   => 'affiliates-dashboard-block',
 					'render_callback' => array( __CLASS__, 'block' ),
-					'example' => array()
+					'example'         => array()
 				)
 			);
 		}

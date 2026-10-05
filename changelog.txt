@@ -1,5 +1,54 @@
 == Affiliates - Changelog ==
 
+= 7.0.0 =
+* WordPress 7.1 compatible.
+* Revised review notice.
+* Fixed instances of missing output escaping.
+* Revised documentation reference in Settings > Pages.
+* Added translators comments.
+* Updated the translation template.
+* Revised Settings > Integrations.
+* Updated block registrations to declare API version 3.
+* Revised general settings, structure, output escaping, input sanitation.
+* Revised pages settings, structure, output escaping, input sanitation.
+* Revised contact example output escaping and input sanitation.
+* Revised robot cleaner output escaping.
+* Revised registration widget output escaping.
+* Revised dashboard widget output escaping.
+* Replaced uses of alias function key_exists.
+* Fixed checkbox background color clash.
+* Revised table sorting indicators for various sections.
+* Revised totals section including output escaping and structure.
+* Added the nonce verification API.
+* Added the input sanitation API.
+* Resolved validation issues WordPress.WP.I18n.NonSingularStringLiteralText.
+* Resolved validation issues WordPress.WP.I18n.NonSingularStringLiteralDomain.
+* Fixed instances of missing language domain.
+* Resolved validation issues WordPress.WP.I18n.MissingArgDomain.
+* Resolved validation missing_direct_file_access_protection.
+* Resolved validation issues WordPress.WP.I18n.TextDomainMismatch.
+* Resolved validation issues WordPress.WP.I18n.MissingTranslatorsComment.
+* Resolved validation false positive on resource jquery-ui renamed to datepicker.
+* Resolved validation WordPress.DateTime.RestrictedFunctions.date_date.
+* Resolved validation WordPress.DB.PreparedSQL.NotPrepared.
+* Resolved validation WordPress.WP.AlternativeFunctions.strip_tags_strip_tags.
+* Resolved validation WordPress.WP.AlternativeFunctions.parse_url_parse_url.
+* Resolved validation WordPress.Security.EscapeOutput.UnsafePrintingFunction.
+* Resolved validation WordPress.Security.EscapeOutput.OutputNotEscaped.
+* Revised user profile additions.
+* Revised referrals section output escaping and sanitation.
+* Revised notifications settings section output escaping.
+* Revised network settings section output escaping.
+* Revised overview output escaping.
+* Revised referrals settings section output escaping and input sanitation.
+* Revised user registration settings section output escaping and input sanitation.
+* Revised affiliates referrals section output escaping and input sanitation.
+* Revised dashboard templates.
+* Updated the translation template.
+* Added generic translations.
+* Removed identical specific translations.
+* Updated translations.
+
 = 6.0.0 =
 * WordPress 7.0 compatible.
 * Added the Data Cleaner.

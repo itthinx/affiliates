@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 // Shows hits by affiliate
 
 define( 'AFFILIATES_HITS_AFFILIATE_PER_PAGE', 10 );
@@ -40,7 +42,7 @@ function affiliates_admin_hits_affiliate() {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ACCESS_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
 	if (
@@ -52,11 +54,8 @@ function affiliates_admin_hits_affiliate() {
 		isset( $_POST['expanded_referrals'] ) ||
 		isset( $_POST['show_inoperative'] )
 	) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
@@ -167,36 +166,25 @@ function affiliates_admin_hits_affiliate() {
 	}
 
 	if ( isset( $_POST['row_count'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_1] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_1], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_AFF_NONCE_1, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
 	if ( isset( $_POST['paged'] ) ) {
-		if (
-			!isset( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_2] ) ||
-			!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_HITS_AFF_NONCE_2], 'admin' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_HITS_AFF_NONCE_2, 'admin' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'paged', $current_url );
 
 	$affiliates_table = _affiliates_get_tablename( 'affiliates' );
 	$referrals_table = _affiliates_get_tablename( 'referrals' );
 	$hits_table = _affiliates_get_tablename( 'hits' );
 
-	$output .=
-		'<div>' .
-			'<h1>' .
-				__( 'Affiliates & Referrals', 'affiliates' ) .
-			'</h1>' .
-		'</div>';
+	$output .= '<h1>' . esc_html__( 'Affiliates & Referrals', 'affiliates' ) . '</h1>';
 
 	$row_count = isset( $_POST['row_count'] ) ? intval( $_POST['row_count'] ) : 0;
 
@@ -314,13 +302,13 @@ function affiliates_admin_hits_affiliate() {
 			"$affiliates_table a " .
 			"LEFT JOIN (SELECT affiliate_id, COUNT(DISTINCT ip) AS visits, COUNT(*) AS hits FROM $hits_table $hits_subquery_where GROUP BY affiliate_id ) AS hits ON hits.affiliate_id = a.affiliate_id " .
 			"LEFT JOIN (SELECT affiliate_id, COUNT(*) AS count FROM $referrals_table r $referrals_subquery_where GROUP BY affiliate_id ) AS referrals ON  referrals.affiliate_id = a.affiliate_id " .
-			$filters . " " .
+			$filters . " " . // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			"ORDER BY $orderby $order " .
 			"LIMIT $row_count OFFSET $offset",
 			$filter_params
 		);
 
-		$results = $wpdb->get_results( $query, OBJECT );
+		$results = $wpdb->get_results( $query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 		if ( $count > $row_count ) {
 			$paginate = true;
@@ -387,13 +375,13 @@ function affiliates_admin_hits_affiliate() {
 
 				'<div class="filter-section">' .
 				'<label class="from-date-filter">' .
-				__('From', 'affiliates' ) .
+				esc_html__( 'From', 'affiliates' ) .
 				' ' .
 				'<input class="datefield from-date-filter" name="from_date" type="text" value="' . esc_attr( $from_date ) . '"/>'.
 				'</label>' .
 				' ' .
 				'<label class="thru-date-filter">' .
-				__( 'Until', 'affiliates' ) .
+				esc_html__( 'Until', 'affiliates' ) .
 				' ' .
 				'<input class="datefield thru-date-filter" name="thru_date" type="text" class="datefield" value="' . esc_attr( $thru_date ) . '"/>'.
 				'</label>' .
@@ -410,26 +398,26 @@ function affiliates_admin_hits_affiliate() {
 				'<label class="expanded-filter">' .
 				'<input class="expanded-filter" name="expanded_referrals" type="checkbox" ' . ( $expanded_referrals ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Expand referrals', 'affiliates' ) .
+				esc_html__( 'Expand referrals', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="expanded-filter">' .
 				'<input class="expanded-filter" name="expanded_hits" type="checkbox" ' . ( $expanded_hits ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Expand hits', 'affiliates' ) .
+				esc_html__( 'Expand hits', 'affiliates' ) .
 				'</label>' .
 				' ' .
 				'<label class="show-inoperative-filter">' .
 				'<input class="show-inoperative-filter" name="show_inoperative" type="checkbox" ' . ( $show_inoperative ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Include inoperative affiliates', 'affiliates' ) .
+				esc_html__( 'Include inoperative affiliates', 'affiliates' ) .
 				'</label>' .
 				'</div>' .
 
 				'<div class="filter-buttons">' .
 				wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_AFF_FILTER_NONCE, true, false ) .
-				'<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>' .
-				'<input class="button" type="submit" name="clear_filters" value="' . __( 'Clear', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>' .
+				'<input class="button" type="submit" name="clear_filters" value="' . esc_attr__( 'Clear', 'affiliates' ) . '"/>' .
 				'<input type="hidden" value="submitted" name="submitted"/>' .
 				'</div>' .
 			'</form>' .
@@ -439,10 +427,10 @@ function affiliates_admin_hits_affiliate() {
 		<div class="page-options">
 			<form id="setrowcount" action="" method="post">
 				<div>
-					<label for="row_count">' . __('Results per page', 'affiliates' ) . '</label>' .
+					<label for="row_count">' . esc_html__( 'Results per page', 'affiliates' ) . '</label>' .
 					'<input name="row_count" type="text" size="2" value="' . esc_attr( $row_count ) .'" />
 					' . wp_nonce_field( 'admin', AFFILIATES_ADMIN_HITS_AFF_NONCE_1, true, false ) . '
-					<input class="button" type="submit" value="' . __( 'Apply', 'affiliates' ) . '"/>
+					<input class="button" type="submit" value="' . esc_attr__( 'Apply', 'affiliates' ) . '"/>
 				</div>
 			</form>
 		</div>
@@ -477,7 +465,16 @@ function affiliates_admin_hits_affiliate() {
 		} else {
 			$class = "$key manage-column sortable";
 		}
-		$column_display_name = '<a href="' . esc_url( add_query_arg( $options, $current_url ) ) . '"><span>' . $column_display_name . '</span><span class="sorting-indicator"></span></a>';
+		$column_display_name = sprintf(
+			'<a href="%1$s"><span>%2$s</span>'.
+			'<span class="sorting-indicators">' .
+			'<span class="sorting-indicator asc" aria-hidden="true"></span>'.
+			'<span class="sorting-indicator desc" aria-hidden="true"></span>'.
+			'</span>' .
+			'</a>',
+			esc_url( add_query_arg( $options, $current_url ) ),
+			esc_html( $column_display_name )
+		);
 		$output .= "<th scope='col' class='$class'>$column_display_name</th>";
 	}
 
@@ -530,18 +527,18 @@ function affiliates_admin_hits_affiliate() {
 						"LIMIT $maximum_referrals", // maximum most recent referrals displayed
 						$referrals_filter_params
 					);
-					$referrals = $wpdb->get_results( $referrals_query, OBJECT );
+					$referrals = $wpdb->get_results( $referrals_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$referrals_count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 					if ( count($referrals) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
 						$output .= '<div class="details-referrals">';
-						$output .= '<p class="description">' . __( 'Referrals', 'affiliates' ) .  sprintf( ' (%d/%d)', count( $referrals ), $referrals_count ) . '</p>';
+						$output .= '<p class="description">' . esc_html__( 'Referrals', 'affiliates' ) .  sprintf( ' (%d/%d)', count( $referrals ), $referrals_count ) . '</p>';
 						$output .= '<table id="details-referrals-' . esc_attr( $result->affiliate_id ) . '" class="details-referrals" cellspacing="0">';
 						$output .= '<thead>';
 						$output .= '<tr>';
-						$output .= '<th scope="col" class="datetime">' . __( 'Date', 'affiliates' ) . '</th>';
-						$output .= '<th scope="col" class="post-id">' . __( 'Post', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="datetime">' . esc_html__( 'Date', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="post-id">' . esc_html__( 'Post', 'affiliates' ) . '</th>';
 						$output .= '</tr>';
 						$output .= '</thead>';
 						$output .= '<tbody>';
@@ -603,22 +600,22 @@ function affiliates_admin_hits_affiliate() {
 						"LIMIT $maximum_hits", // maximum most recent hits displayed
 						$details_filter_params
 					);
-					$hits = $wpdb->get_results( $details_query, OBJECT );
+					$hits = $wpdb->get_results( $details_query, OBJECT ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$hits_count = intval( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
 					if ( count( $hits ) > 0 ) {
 						$output .= '<tr class=" ' . ( $i % 2 == 0 ? 'even' : 'odd' ) . '">';
 						$output .= '<td colspan="5">';
 						$output .= '<div class="details-hits">';
-						$output .= '<p class="description">' . __( 'Hits', 'affiliates' ) . sprintf( ' (%d/%d)', count( $hits ), $hits_count ) . '</p>';
+						$output .= '<p class="description">' . esc_html__( 'Hits', 'affiliates' ) . sprintf( ' (%d/%d)', count( $hits ), $hits_count ) . '</p>';
 						$output .= '<table id="details-hits-' . esc_attr( $result->affiliate_id ) . '" class="details-hits" cellspacing="0">';
 						$output .= '<thead>';
 						$output .= '<tr>';
-						$output .= '<th scope="col" class="datetime">' . __( 'Date', 'affiliates' ) . '</th>';
-						$output .= '<th scope="col" class="ip">' . __( 'IP', 'affiliates' ) . '</th>';
-						$output .= '<th scope="col" class="affiliate-id">' . __( 'Affiliate', 'affiliates' ) . '</th>';
-						$output .= '<th scrope="col" class="src-uri">' . __( 'Source URI', 'affiliates' ) . '</th>';
-						$output .= '<th scrope="col" class="src-uri">' . __( 'Landing URI', 'affiliates' ) . '</th>';
-						$output .= '<th scope="col" class="hit-user-agent">' . __( 'User Agent', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="datetime">' . esc_html__( 'Date', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="ip">' . esc_html__( 'IP', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="affiliate-id">' . esc_html__( 'Affiliate', 'affiliates' ) . '</th>';
+						$output .= '<th scrope="col" class="src-uri">' . esc_html__( 'Source URI', 'affiliates' ) . '</th>';
+						$output .= '<th scrope="col" class="src-uri">' . esc_html__( 'Landing URI', 'affiliates' ) . '</th>';
+						$output .= '<th scope="col" class="hit-user-agent">' . esc_html__( 'User Agent', 'affiliates' ) . '</th>';
 						$output .= '</tr>';
 						$output .= '</thead>';
 						$output .= '<tbody>';
@@ -640,7 +637,7 @@ function affiliates_admin_hits_affiliate() {
 			} // expanded
 		}
 	} else {
-		$output .= '<tr><td colspan="5">' . __('There are no results.', 'affiliates' ) . '</td></tr>';
+		$output .= '<tr><td colspan="5">' . esc_html__( 'There are no results.', 'affiliates' ) . '</td></tr>';
 	}
 
 	$output .= '</tbody>';
@@ -655,6 +652,6 @@ function affiliates_admin_hits_affiliate() {
 	}
 
 	$output .= '</div>'; // .visits-overview
-	echo $output;
+	echo $output; // phpcs:ignore  WordPress.Security.EscapeOutput.OutputNotEscaped 
 	affiliates_footer();
 } // function affiliates_admin_hits()

@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Dashboard section: Earnings
  */
@@ -74,7 +76,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	 */
 	public function get_url( $params = array() ) {
 
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = affiliates_get_current_url();
 		$current_url = remove_query_arg( 'clear_filters', $current_url );
 		$current_url = remove_query_arg( 'apply_filters', $current_url );
 
@@ -217,7 +219,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 	public function render() {
 		global $wpdb, $affiliates_options, $affiliates_version;
 
-		wp_enqueue_script( 'datepicker', AFFILIATES_PLUGIN_URL . 'js/jquery-ui.min.js', array( 'jquery', 'jquery-ui-core' ), $affiliates_version );
+		wp_enqueue_script( 'datepicker', AFFILIATES_PLUGIN_URL . 'js/datepicker.min.js', array( 'jquery', 'jquery-ui-core' ), $affiliates_version );
 		wp_enqueue_script( 'datepickers', AFFILIATES_PLUGIN_URL . 'js/datepickers.js', array( 'jquery', 'jquery-ui-core', 'datepicker' ), $affiliates_version );
 		wp_enqueue_style( 'smoothness', AFFILIATES_PLUGIN_URL . 'css/smoothness/jquery-ui.min.css', array(), $affiliates_version );
 
@@ -342,7 +344,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 
 		$this->entries = $wpdb->get_results(
 			$wpdb->prepare(
-				$query,
+				$query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$filter_params
 			),
 			OBJECT
@@ -357,7 +359,7 @@ class Affiliates_Dashboard_Earnings extends Affiliates_Dashboard_Section_Table {
 			$query = $query_base . sprintf( $query_suffix, $this->sort_order, $this->sort_order, intval( $this->per_page ), 0 ); // OFFSET 0
 			$this->entries = $wpdb->get_results(
 				$wpdb->prepare(
-					$query,
+					$query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					$filter_params
 				),
 				OBJECT

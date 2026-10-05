@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment
+
 /**
  * Show form to remove an affiliate.
  * @param int $affiliate_id affiliate id
@@ -57,7 +59,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		}
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$current_url = remove_query_arg( 'action', $current_url );
 	$current_url = remove_query_arg( 'affiliate_id', $current_url );
 
@@ -88,7 +90,7 @@ function affiliates_admin_affiliates_remove( $affiliate_id ) {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 } // function affiliates_admin_affiliates_remove
@@ -105,10 +107,7 @@ function affiliates_admin_affiliates_remove_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if (
-		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE] ) ||
-		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_NONCE], 'affiliates-remove' )
-	) {
+	if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_NONCE, 'affiliates-remove' ) ) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
@@ -119,15 +118,15 @@ function affiliates_admin_affiliates_remove_submit() {
 		$valid_affiliate = false;
 		// do not mark the pseudo-affiliate as deleted: type != ...
 		$check = $wpdb->prepare(
-			"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+			"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			intval( $affiliate_id ) );
-		if ( $wpdb->query( $check ) ) {
+		if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			$valid_affiliate = true;
 		}
 
 		if ( $valid_affiliate ) {
 			$result = false !== $wpdb->query(
-				$query = $wpdb->prepare(
+				$wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 					"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 					intval( $affiliate_id )
 				)
@@ -222,7 +221,7 @@ function affiliates_admin_affiliates_bulk_remove() {
 		'</form>' .
 		'</div>'; // .manage-affiliates
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 
@@ -242,10 +241,7 @@ function affiliates_admin_affiliates_bulk_remove_submit() {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	if (
-		!isset( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE] ) ||
-		!wp_verify_nonce( $_POST[AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE], 'admin' )
-	) {
+	if ( !affiliates_verify_post_nonce( AFFILIATES_ADMIN_AFFILIATES_ACTION_NONCE, 'admin' ) ) {
 		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
@@ -257,16 +253,16 @@ function affiliates_admin_affiliates_bulk_remove_submit() {
 			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				intval( $affiliate_id )
 			);
-			if ( $wpdb->query( $check ) ) {
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$valid_affiliate = true;
 			}
 
 			if ( $valid_affiliate ) {
 				$result = false !== $wpdb->query(
-					$query = $wpdb->prepare(
+					$wpdb->prepare( // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 						intval( $affiliate_id )
 					)

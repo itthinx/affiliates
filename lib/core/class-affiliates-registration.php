@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment, WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Affiliate registration form.
  *
@@ -280,9 +282,9 @@ class Affiliates_Registration {
 					if ( $field['required'] && empty( $value ) ) {
 						$error = true;
 						$output .= '<div class="error">';
-						$output .= __( '<strong>ERROR</strong>', 'affiliates' );
+						$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 						$output .= ' : ';
-						$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
+						$output .= sprintf( __( 'Please fill out the field %s.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 						$output .= '</div>';
 					}
 					$registration_fields[$name]['value'] = $value;
@@ -497,7 +499,7 @@ class Affiliates_Registration {
 				}
 				// @since 5.4.1 translate stored labels
 				if ( $label === $field['label'] ) {
-					$label = __( $label, 'affiliates' );
+					$label = __( $label, 'affiliates' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 				}
 				$output .= wp_kses_post( stripslashes( $label ) );
 				$output .= ' ';
@@ -584,7 +586,14 @@ class Affiliates_Registration {
 		$user_id = self::create_affiliate( $userdata );
 
 		if ( ! $user_id ) {
-			$errors->add( 'registerfail', sprintf( __( '<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href="mailto:%s">webmaster</a> !' ), get_option( 'admin_email' ) ) );
+			$errors->add(
+				'registerfail',
+				sprintf(
+					esc_html__( '%1$s: Couldn&#8217;t register you... please contact the %2$s !', 'affiliates' ),
+					esc_html( 'ERROR', 'affiliates' ),
+					sprintf( '<a href="mailto:%s">webmaster</a>', esc_attr( get_option( 'admin_email' ) ) )
+				)
+			);
 			return $errors;
 		}
 
@@ -672,7 +681,7 @@ class Affiliates_Registration {
 
 				// add user meta from remaining fields
 				foreach( $userdata as $meta_key => $meta_value ) {
-					if ( !key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
+					if ( !array_key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
 						update_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 					}
 				}
@@ -688,7 +697,7 @@ class Affiliates_Registration {
 						$_userdata['user_email'],
 						intval( $affiliate_id )
 					);
-					if ( $wpdb->query( $query ) ) {
+					if ( $wpdb->query( $query ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						do_action( 'affiliates_updated_affiliate', $affiliate_id );
 					}
 				}
@@ -731,7 +740,7 @@ class Affiliates_Registration {
 		if ( !is_wp_error( $user_id ) ) {
 			// add user meta from remaining fields
 			foreach( $userdata as $meta_key => $meta_value ) {
-				if ( !key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
+				if ( !array_key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
 					add_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
 				}
 			}
@@ -821,9 +830,10 @@ class Affiliates_Registration {
 			$valid_affiliate = false;
 			// do not mark the pseudo-affiliate as deleted: type != ...
 			$check = $wpdb->prepare(
-				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')",
-				intval( $affiliate_id ) );
-			if ( $wpdb->query( $check ) ) {
+				"SELECT affiliate_id FROM $affiliates_table WHERE affiliate_id = %d AND (type IS NULL OR type != '" . AFFILIATES_DIRECT_TYPE . "')", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				intval( $affiliate_id )
+			);
+			if ( $wpdb->query( $check ) ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				$valid_affiliate = true;
 			}
 
@@ -832,7 +842,7 @@ class Affiliates_Registration {
 				// clean up the association even if the affiliate was already
 				// marked as deleted
 				$wpdb->query(
-					$query = $wpdb->prepare(
+					$wpdb->prepare(
 						"UPDATE $affiliates_table SET status = 'deleted' WHERE affiliate_id = %d",
 						intval( $affiliate_id )
 					)
@@ -841,7 +851,7 @@ class Affiliates_Registration {
 				// the user is removed from the users table, it wouldn't make sense to maintain
 				// a dangling reference to a non-existent user so release the association as well
 				$wpdb->query(
-					$query = $wpdb->prepare(
+					$wpdb->prepare(
 						"DELETE FROM $affiliates_users_table WHERE affiliate_id = %d AND user_id = %d",
 						intval( $affiliate_id ), intval( $user_id )
 					)

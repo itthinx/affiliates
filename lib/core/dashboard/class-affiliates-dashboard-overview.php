@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Dashboard section: Overview
  */
@@ -116,7 +118,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		// hits per day
 		$query = "SELECT date, COUNT(*) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND affiliate_id = %d GROUP BY date";
-		$hit_results = $wpdb->get_results( $wpdb->prepare( $query, $from_date, $thru_date, intval( $affiliate_id ) ) );
+		$hit_results = $wpdb->get_results( $wpdb->prepare( $query, $from_date, $thru_date, intval( $affiliate_id ) ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$hits = array();
 		foreach ( $hit_results as $hit_result ) {
 			$hits[$hit_result->date] = $hit_result->hits;
@@ -125,7 +127,7 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		// visits per day
 		$query = "SELECT count(DISTINCT IP) visits, date FROM $hits_table WHERE date >= %s AND date <= %s AND affiliate_id = %d GROUP BY date";
-		$visit_results = $wpdb->get_results( $wpdb->prepare( $query, $from_date, $thru_date, intval( $affiliate_id ) ) );
+		$visit_results = $wpdb->get_results( $wpdb->prepare( $query, $from_date, $thru_date, intval( $affiliate_id ) ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$visits = array();
 		foreach ( $visit_results as $visit_result ) {
 			$visits[$visit_result->date] = $visit_result->visits;
@@ -134,8 +136,8 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		// accepted and closed referrals per day
 		$query = "SELECT count(referral_id) referrals, date(datetime) date FROM $referrals_table WHERE status IN (%s,%s) AND date(datetime) >= %s AND date(datetime) <= %s AND affiliate_id = %d GROUP BY date";
-		$query = $wpdb->prepare( $query, AFFILIATES_REFERRAL_STATUS_ACCEPTED, AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date, intval( $affiliate_id ) );
-		$results = $wpdb->get_results( $query );
+		$query = $wpdb->prepare( $query, AFFILIATES_REFERRAL_STATUS_ACCEPTED, AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date, intval( $affiliate_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$results = $wpdb->get_results( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$referrals = array();
 		foreach ( $results as $result ) {
 			$referrals[$result->date] = $result->referrals;
@@ -144,8 +146,8 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 
 		// amounts by currency
 		$query = "SELECT sum(amount) amount, currency_id, date(datetime) date FROM $referrals_table WHERE status IN (%s,%s) AND date(datetime) >= %s AND date(datetime) <= %s AND affiliate_id = %d GROUP BY date, currency_id";
-		$query = $wpdb->prepare( $query, AFFILIATES_REFERRAL_STATUS_ACCEPTED, AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date, intval( $affiliate_id ) );
-		$results = $wpdb->get_results( $query );
+		$query = $wpdb->prepare( $query, AFFILIATES_REFERRAL_STATUS_ACCEPTED, AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date, intval( $affiliate_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$results = $wpdb->get_results( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$amounts_by_currency = array();
 		foreach ( $results as $result ) {
 			$amounts_by_currency[$result->currency_id][$result->date] = $result->amount;
@@ -237,13 +239,13 @@ class Affiliates_Dashboard_Overview extends Affiliates_Dashboard_Section {
 			'affiliates_dashboard_overview_graph.render( "%s", "%s", %s, %s, %s, %s, %s, %s, %s );',
 			'affiliates-dashboard-overview-graph',
 			'affiliates-dashboard-overview-legend',
-			$hits_series_json,
-			$visits_series_json,
-			$referrals_series_json,
-			$amounts_by_currency_series_json,
-			$span_series_json,
-			$ticks_json,
-			$dates_json
+			$hits_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$visits_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$referrals_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$amounts_by_currency_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$span_series_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$ticks_json, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$dates_json // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
 		echo '}'; // affiliates_dashboard_overview_graph
 		echo '}'; // jQuery

@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+
 /**
  * Provides utility methods.
  */
@@ -128,7 +130,7 @@ class Affiliates_Utility {
 				$post_type
 			);
 		}
-		$result = $wpdb->get_row( $query );
+		$result = $wpdb->get_row( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		if ( !empty( $result ) ) {
 			$post_id = $result->ID;
 			$post = get_post( $post_id, $output );
@@ -229,4 +231,302 @@ class Affiliates_Utility {
 		return $result;
 	}
 
+	/**
+	 * Unslash, sanitize and verify nonce.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @see wp_unslash()
+	 * @see sanitize_text_field()
+	 * @see wp_verify_nonce()
+	 *
+	 * @param string $nonce nonce value
+	 * @param string|number $action
+	 *
+	 * @return int|boolean
+	 */
+	public static function verify_nonce( $nonce, $action = -1 ) {
+		return wp_verify_nonce( sanitize_text_field( wp_unslash( $nonce ) ), $action );
+	}
+	
+	/**
+	 * Unslash, sanitize and verify named nonce provided via $_POST.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string $name nonce name
+	 * @param string|number $action
+	 *
+	 * @return int|boolean
+	 */
+	public static function verify_post_nonce( $name, $action = -1 ) {
+		$result = false;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_POST[$name] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			$result = self::verify_nonce( $_POST[$name], $action );
+		}
+		return $result;
+	}
+	
+	/**
+	 * Unslash, sanitize and verify named nonce provided via $_GET.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string $name nonce name
+	 * @param string|number $action
+	 *
+	 * @return int|boolean
+	 */
+	public static function verify_get_nonce( $name, $action = -1 ) {
+		$result = false;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET[$name] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			$result = self::verify_nonce( $_GET[$name], $action );
+		}
+		return $result;
+	}
+	
+	/**
+	 * Unslash, sanitize and verify named nonce provided via $_REQUEST.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string $name nonce name
+	 * @param string|number $action
+	 *
+	 * @return int|boolean
+	 */
+	public static function verify_request_nonce( $name, $action = -1 ) {
+		$result = false;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_REQUEST[$name] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			$result = self::verify_nonce( $_REQUEST[$name], $action );
+		}
+		return $result;
+	}
+
+	/**
+	 * Provide the current URL, sanitized.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @return string
+	 */
+	public static function get_current_url() {
+		$host = wp_unslash( $_SERVER['HTTP_HOST'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$uri  = wp_unslash( $_SERVER['REQUEST_URI'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		return sanitize_url( ( is_ssl() ? 'https://' : 'http://' ) . $host . $uri );
+	}
+
+	/**
+	 * Sanitize the given input value.
+	 *
+	 * Applies wp_unslash() and then sanitize_text_field().
+	 *
+	 * Preserves the original type of the value.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string|number|boolean|array $value
+	 *
+	 * @return null|string|boolean|array
+	 */
+	public static function sanitize_input( $value ) {
+		$result = null;
+		if ( is_numeric( $value ) || is_string( $value ) ) {
+			$original_value = $value;
+			$result = sanitize_text_field( wp_unslash( $value ) );
+			if ( is_int( $original_value ) ) {
+				$result = intval( $result );
+			} else if ( is_float( $original_value ) ) {
+				$result = floatval( $result );
+			} else if ( is_bool( $original_value ) ) {
+				$result = boolval( $result );
+			}
+		} else if ( is_array( $value ) ) {
+			$result = array_map( array( __CLASS__, 'sanitize_input' ), $value );
+		}
+		return $result;
+	}
+
+	/**
+	 * Sanitize form data from $_POST.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string $name
+	 *
+	 * @return null|string
+	 */
+	public static function sanitize_post( $name ) {
+		$result = null;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing,  WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_POST[$name] ) && ( is_numeric( $_POST[$name] ) || is_string( $_POST[$name] ) || is_array( $_POST[$name] ) ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
+			$result = self::sanitize_input( $_POST[$name] );
+		}
+		return $result;
+	}
+
+	/**
+	 * Sanitize form data from $_GET.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string $name
+	 *
+	 * @return null|string
+	 */
+	public static function sanitize_get( $name ) {
+		$result = null;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing,  WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET[$name] ) && ( is_numeric( $_GET[$name] ) || is_string( $_GET[$name] ) || is_array( $_GET[$name] ) ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
+			$result = self::sanitize_input( $_GET[$name] );
+		}
+		return $result;
+	}
+
+	/**
+	 * Sanitize form data from $_REQUEST.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @param string $name
+	 *
+	 * @return null|string
+	 */
+	public static function sanitize_request( $name ) {
+		$result = null;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing,  WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_REQUEST[$name] ) && ( is_numeric( $_REQUEST[$name] ) || is_string( $_REQUEST[$name] ) || is_array( $_REQUEST[$name] ) ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
+			$result = self::sanitize_input( $_REQUEST[$name] );
+		}
+		return $result;
+	}
+
 }// class Affiliates_Utility
+
+/**
+ * Unslash, sanitize and verify nonce.
+ *
+ * @since 7.0.0
+ *
+ * @param string $nonce
+ * @param string|number $action
+ *
+ * @return int|boolean
+ */
+function affiliates_verify_nonce( $nonce, $action = -1 ) {
+	return Affiliates_Utility::verify_nonce( $nonce, $action );
+}
+
+/**
+ * Unslash, sanitize and verify named nonce provided via $_POST.
+ *
+ * @since 7.0.0
+ *
+ * @param string $name nonce name
+ * @param string|number $action
+ *
+ * @return int|boolean
+ */
+function affiliates_verify_post_nonce( $name, $action = -1 ) {
+	return Affiliates_Utility::verify_post_nonce( $name, $action );
+}
+
+/**
+ * Unslash, sanitize and verify named nonce provided via $_GET.
+ *
+ * @since 7.0.0
+ *
+ * @param string $name nonce name
+ * @param string|number $action
+ *
+ * @return int|boolean
+ */
+function affiliates_verify_get_nonce( $name, $action = -1 ) {
+	return Affiliates_Utility::verify_get_nonce( $name, $action );
+}
+
+/**
+ * Unslash, sanitize and verify named nonce provided via $_GET.
+ *
+ * @since 7.0.0
+ *
+ * @param string $name nonce name
+ * @param string|number $action
+ *
+ * @return int|boolean
+ */
+function affiliates_verify_request_nonce( $name, $action = -1 ) {
+	return Affiliates_Utility::verify_request_nonce( $name, $action );
+}
+
+/**
+ * Provide the current URL, sanitized.
+ *
+ * @since 7.0.0
+ *
+ * @return string
+ */
+function affiliates_get_current_url() {
+	return Affiliates_Utility::get_current_url();
+}
+
+/**
+ * @since 7.0.0
+ *
+ * @see Affiliates_Utility::sanitize_input()
+ *
+ * @param string|number|boolean|array $value
+ *
+ * @return null|string|boolean|array
+ */
+function affiliates_sanitize_input( $value ) {
+	return Affiliates_Utility::sanitize_input( $value );
+}
+
+/**
+ * @since 7.0.0
+ *
+ * @see Affiliates_Utility::sanitize_post()
+ *
+ * @param string $name
+ *
+ * @return null|string
+ */
+function affiliates_sanitize_post( $name ) {
+	return Affiliates_Utility::sanitize_post( $name );
+}
+
+/**
+ * @since 7.0.0
+ *
+ * @see Affiliates_Utility::sanitize_get()
+ *
+ * @param string $name
+ *
+ * @return null|string
+ */
+function affiliates_sanitize_get( $name ) {
+	return Affiliates_Utility::sanitize_get( $name );
+}
+
+/**
+ * @since 7.0.0
+ *
+ * @see Affiliates_Utility::sanitize_request()
+ *
+ * @param string $name
+ *
+ * @return null|string
+ */
+function affiliates_sanitize_request( $name ) {
+	return Affiliates_Utility::sanitize_request( $name );
+}

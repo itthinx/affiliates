@@ -95,9 +95,10 @@ class Affiliates_Dashboard_Registration_Block extends Affiliates_Dashboard_Regis
 			register_block_type(
 				'affiliates/dashboard-registration',
 				array(
-					'editor_script' => 'affiliates-dashboard-registration-block',
+					'api_version'     => '3',
+					'editor_script'   => 'affiliates-dashboard-registration-block',
 					'render_callback' => array( __CLASS__, 'block' ),
-					'example' => array()
+					'example'         => array()
 				)
 			);
 		}

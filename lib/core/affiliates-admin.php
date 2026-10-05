@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Affiliates overview and summarized statistics.
  */
@@ -188,7 +190,7 @@ function affiliates_admin() {
 
 	// hits per day
 	$query = "SELECT date, COUNT(*) as hits FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
-	$hit_results = $wpdb->get_results( $wpdb->prepare( $query,
+	$hit_results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$from_date, $thru_date
 	) );
 	$hits = array();
@@ -198,7 +200,7 @@ function affiliates_admin() {
 
 	// visits per day
 	$query = "SELECT count(DISTINCT IP) visits, date FROM $hits_table WHERE date >= %s AND date <= %s AND " . $affiliates_subquery . " GROUP BY date";
-	$visit_results = $wpdb->get_results( $wpdb->prepare( $query,
+	$visit_results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$from_date, $thru_date
 	));
 	$visits = array();
@@ -208,7 +210,7 @@ function affiliates_admin() {
 
 	// referrals per day
 	$query = "SELECT count(referral_id) referrals, date(datetime) date FROM $referrals_table WHERE status = %s AND date(datetime) >= %s AND date(datetime) <= %s AND " . $affiliates_subquery . " GROUP BY date";
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_ACCEPTED, $from_date, $thru_date
 	));
 	$accepted = array();
@@ -216,7 +218,7 @@ function affiliates_admin() {
 		$accepted[$result->date] = $result->referrals;
 	}
 
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_CLOSED, $from_date, $thru_date
 	));
 	$closed = array();
@@ -224,7 +226,7 @@ function affiliates_admin() {
 		$closed[$result->date] = $result->referrals;
 	}
 
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_PENDING, $from_date, $thru_date
 	));
 	$pending = array();
@@ -232,7 +234,7 @@ function affiliates_admin() {
 		$pending[$result->date] = $result->referrals;
 	}
 
-	$results = $wpdb->get_results( $wpdb->prepare( $query,
+	$results = $wpdb->get_results( $wpdb->prepare( $query, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		AFFILIATES_REFERRAL_STATUS_REJECTED, $from_date, $thru_date
 	));
 	$rejected = array();
@@ -299,7 +301,8 @@ function affiliates_admin() {
 	$ticks_json           = json_encode( $ticks );
 	$dates_json           = json_encode( $dates );
 
-	echo '<h2>' . sprintf( esc_html__( '%d Day Charts', 'affiliates' ), $days_back ) . '</h2>';
+	/* translators: count */
+	echo '<h2>' . sprintf( esc_html__( '%d Day Charts', 'affiliates' ), esc_html( $days_back ) ) . '</h2>';
 	echo '<div class="manage" style="margin-right:1em">';
 	?>
 	<div id="stats" class="" style="width:100%;height:400px;"></div>
@@ -308,50 +311,50 @@ function affiliates_admin() {
 			$(document).ready(function(){
 				var data = [
 					{
-						label : "<?php _e( 'Hits', 'affiliates' ); ?>",
-						data : <?php echo $hits_series_json; ?>,
+						label : "<?php esc_html_e( 'Hits', 'affiliates' ); ?>",
+						data : <?php echo $hits_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ccddff'
 					},
 					{
-						label : "<?php _e( 'Visits', 'affiliates' ); ?>",
-						data : <?php echo $visits_series_json; ?>,
+						label : "<?php esc_html_e( 'Visits', 'affiliates' ); ?>",
+						data : <?php echo $visits_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						lines : { show : true },
 						yaxis : 2,
 						color : '#ffddcc'
 					},
 					{
-						label : "<?php _e( 'Accepted', 'affiliates' ); ?>",
-						data : <?php echo $accepted_series_json; ?>,
+						label : "<?php esc_html_e( 'Accepted', 'affiliates' ); ?>",
+						data : <?php echo $accepted_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#009900',
 						bars : { align : "center", show : true, barWidth : 1 },
 						hoverable : true,
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Pending', 'affiliates' ); ?>",
-						data : <?php echo $pending_series_json; ?>,
+						label : "<?php esc_html_e( 'Pending', 'affiliates' ); ?>",
+						data : <?php echo $pending_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#0000ff',
 						bars : { align : "center", show : true, barWidth : 0.6 },
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Rejected', 'affiliates' ); ?>",
-						data : <?php echo $rejected_series_json; ?>,
+						label : "<?php esc_html_e( 'Rejected', 'affiliates' ); ?>",
+						data : <?php echo $rejected_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#ff0000',
 						bars : { align : "center", show : true, barWidth : .3 },
 						yaxis : 1
 					},
 					{
-						label : "<?php _e( 'Closed', 'affiliates' ); ?>",
-						data : <?php echo $closed_series_json; ?>,
+						label : "<?php esc_html_e( 'Closed', 'affiliates' ); ?>",
+						data : <?php echo $closed_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						color : '#333333',
 						points : { show : true },
 						yaxis : 1
 					},
 					{
-						data : <?php echo $span_series_json; ?>,
+						data : <?php echo $span_series_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>,
 						lines : { show : false },
 						yaxis : 1
 					}
@@ -359,7 +362,7 @@ function affiliates_admin() {
 
 				var options = {
 					xaxis : {
-						ticks : <?php echo $ticks_json; ?>
+						ticks : <?php echo $ticks_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					},
 					yaxis : {
 						min : 0,
@@ -397,7 +400,7 @@ function affiliates_admin() {
 				}
 
 				var tooltipItem = null;
-				var statsDates = <?php echo $dates_json; ?>;
+				var statsDates = <?php echo $dates_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
 				$("#stats").bind("plothover", function (event, pos, item) {
 					if (item) {
 						if (tooltipItem === null || item.dataIndex != tooltipItem.dataIndex || item.seriesIndex != tooltipItem.seriesIndex) {
@@ -421,7 +424,7 @@ function affiliates_admin() {
 	</script>
 	<?php
 	echo '<br class="clear"/>';
-	echo $filters_form;
+	echo $filters_form; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</div>';
 
 	echo '<h2>';
@@ -497,7 +500,7 @@ function affiliates_admin() {
 	if ( count( $referral_stats ) > 0 ) {
 		foreach ( $referral_stats as $currency_id => $stats ) {
 			echo '<div class="referral-stats-container">';
-			echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+			echo '<div class="status heading">' . esc_html__( 'Status', 'affiliates' ) . '</div>';
 			echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
 			echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 			foreach ( $statuses as $status_id => $status ) {
@@ -505,7 +508,7 @@ function affiliates_admin() {
 					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $stats[$status_id]['amount'] );
 					printf(
 						'<div class="status">%s %s</div><div class="count">%d</div><div class="amount">%s %s</div>',
-						$status['icon'], // attributes are already escaped
+						$status['icon'], // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, attributes are already escaped
 						esc_html( $status['name'] ),
 						esc_html( $stats[$status_id]['count'] ),
 						esc_html( $currency_id ),
@@ -517,7 +520,7 @@ function affiliates_admin() {
 		}
 	} else {
 		echo '<div class="referral-stats-container">';
-		echo '<div class="status heading">' . esc_html__( 'Status', 'affiliaes' ) . '</div>';
+		echo '<div class="status heading">' . esc_html__( 'Status', 'affiliates' ) . '</div>';
 		echo '<div class="count heading">' . esc_html__( 'Count', 'affiliates' ) . '</div>';
 		echo '<div class="amount heading">' . esc_html__( 'Amount', 'affiliates' ) . '</div>';
 		echo '<div class="status">&mdash;</div>';
@@ -540,9 +543,11 @@ function affiliates_admin() {
 	echo '<div class="time-span-container">';
 	echo esc_html(
 		sprintf(
-			__( 'Data for the date range %s &ndash; %s (%s)', 'affiliates' ),
+			/* translators: from date, thru date, days count */
+			esc_html__( 'Data for the date range %1$s &ndash; %2$s (%3$s)', 'affiliates' ),
 			date_i18n( 'Y-m-d', strtotime( $from_date ) ),
 			date_i18n( 'Y-m-d', strtotime( $thru_date ) ),
+			/* translators: count */
 			sprintf( _n( '%d day', '%d days', $days_back, 'affiliates' ), $days_back )
 		)
 	);

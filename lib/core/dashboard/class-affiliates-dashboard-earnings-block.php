@@ -85,9 +85,10 @@ class Affiliates_Dashboard_Earnings_Block extends Affiliates_Dashboard_Earnings 
 			register_block_type(
 				'affiliates/dashboard-earnings',
 				array(
-					'editor_script' => 'affiliates-dashboard-earnings-block',
+					'api_version'     => '3',
+					'editor_script'   => 'affiliates-dashboard-earnings-block',
 					'render_callback' => array( __CLASS__, 'block' ),
-					'example' => array()
+					'example'         => array()
 				)
 			);
 		}

@@ -49,8 +49,11 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				require_once AFFILIATES_CORE_LIB . '/class-affiliates-generator.php';
 				$post_ids = Affiliates_Generator::setup_pages();
 				foreach ( $post_ids as $post_id ) {
-					$link = '<a href="' . get_permalink( $post_id ) . '" target="_blank">' . esc_html( get_the_title( $post_id ) ) . '</a>';
-					$pages_generated_info .= '<div class="info">' . wp_kses( __( sprintf( 'The %s page has been created.', $link ), 'affiliates' ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ) . '</div>';
+					$link = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( get_permalink( $post_id ) ), esc_html( get_the_title( $post_id ) ) );
+					$pages_generated_info .= '<div class="info">';
+					/* translators: link */
+					$pages_generated_info .= sprintf( esc_html__( 'The %s page has been created.', 'affiliates' ),  $link );
+					$pages_generated_info .= '</div>';
 				}
 			}
 		}
@@ -66,8 +69,8 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 			'<p>' .
 			esc_html__( 'Press the button to generate a default affiliate area.', 'affiliates' ) .
 			' ' .
-			'<input class="generate button" name="generate" type="submit" value="' . __( 'Generate', 'affiliates' ) .'" />' .
-			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_GEN_NONCE, true, false ) .
+			'<input class="generate button" name="generate" type="submit" value="' . esc_attr__( 'Generate', 'affiliates' ) .'" />' .
+			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_GEN_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</p>' .
 			$pages_generated_info . // @codingStandardsIgnoreLine
 			'</div>' .
@@ -116,14 +119,18 @@ class Affiliates_Settings_Pages extends Affiliates_Settings {
 				);
 			}
 			$post_list .= '</ul>';
-			echo $post_list;
+			echo $post_list; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		echo '<p>';
 		esc_html_e( 'You can modify the default affiliate area and also create customized pages for your affiliates using shortcodes.', 'affiliates' );
 		echo '</p>';
 		echo '<p>';
-		echo wp_kses( __( 'Please refer to the <a href="https://docs.itthinx.com/document/affiliates/">Documentation</a> for more details.', 'affiliates' ), array( 'a' => array( 'href' => array() ) ) );
+		printf(
+			/* translators: documentation link */
+			esc_html__( 'Please refer to the %s for more details.', 'affiliates' ),
+			'<a href="https://docs.itthinx.com/document/affiliates/">' . esc_html__( 'Documentation', 'affiliates' ) . '</a>'
+		);
 		echo '</p>';
 
 		affiliates_footer();

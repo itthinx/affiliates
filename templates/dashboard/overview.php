@@ -49,24 +49,26 @@ if ( isset( $totals['amounts_by_currency'] ) ) {
 }
 $pname      = get_option( 'aff_pname', AFFILIATES_PNAME );
 $encoded_id = affiliates_encode_affiliate_id( $section->get_affiliate_id() );
-$link_info  = wp_kses(
-	sprintf( __( 'You can also add <code>?%s=%s</code> to any link on %s to track referrals from your account.', 'affiliates' ), $pname, $encoded_id, esc_url( home_url() ) ),
-	array( 'code' => array(), 'a' => array( 'href' => array() ) )
+$link_info  = sprintf(
+	/* translators: parameter, URL */
+	__( 'You can also add %1$s to any link on %2$s to track referrals from your account.', 'affiliates' ),
+	sprintf( '<code>?%s=%s</code>', esc_html( $pname ), esc_html( $encoded_id ) ),
+	esc_url( home_url() )
 );
 ?>
 <h2><?php esc_html_e( 'Overview', 'affiliates' ); ?></h2>
 <div class="dashboard-section dashboard-section-overview">
 	<div class="stats-container">
 		<div class="stats-item">
-			<div class="stats-item-heading"><?php _e( 'Recent Visits', 'affiliates' ); ?></div>
+			<div class="stats-item-heading"><?php esc_html_e( 'Recent Visits', 'affiliates' ); ?></div>
 			<div class="stats-item-value"><?php echo esc_html( $visits ); ?></div>
 		</div>
 		<div class="stats-item">
-			<div class="stats-item-heading"><?php _e( 'Recent Referrals', 'affiliates' ); ?></div>
+			<div class="stats-item-heading"><?php esc_html_e( 'Recent Referrals', 'affiliates' ); ?></div>
 			<div class="stats-item-value"><?php echo esc_html( $referrals ); ?></div>
 		</div>
 		<div class="stats-item">
-			<div class="stats-item-heading"><?php _e( 'Recent Earnings', 'affiliates' )?></div>
+			<div class="stats-item-heading"><?php esc_html_e( 'Recent Earnings', 'affiliates' )?></div>
 			<?php if ( count( $amounts ) > 0 ) :?>
 				<?php foreach ( $amounts as $currency_id => $amount ) : ?>
 					<div class="stats-item-value">
@@ -93,7 +95,7 @@ $link_info  = wp_kses(
 			<span class="button copy-to-clipboard-trigger" data-source="copy-to-clipboard-source"><?php esc_html_e( 'Copy to Clipboard', 'affiliates' ); ?></span>
 		</p>
 		<p>
-			<?php echo $link_info; ?>
+			<?php echo $link_info; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</p>
 	</div>
 	<div class="affiliates-dashboard-logout">

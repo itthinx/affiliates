@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment
+
 /**
  * General settings section.
  */
@@ -85,13 +87,10 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		if ( isset( $_POST['submit'] ) ) {
 
-			if (
-				isset( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE] ) &&
-				wp_verify_nonce( $_POST[AFFILIATES_ADMIN_SETTINGS_NONCE], 'admin' )
-			) {
+			if ( affiliates_verify_post_nonce( AFFILIATES_ADMIN_SETTINGS_NONCE, 'admin' ) ) {
 
 				// robots
-				$robots = wp_filter_nohtml_kses( trim ( $_POST['robots'] ) );
+				$robots = sanitize_textarea_field( wp_unslash( $_POST['robots'] ?? '' ) ); // preserve newlines
 				$wpdb->query( "DELETE FROM $robots_table" );
 				if ( !empty( $robots ) ) {
 					$robots = str_replace( ",", "\n", $robots );
@@ -102,12 +101,12 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 						$robot = trim( $robot );
 						if ( !empty( $robot ) ) {
 							$query = $wpdb->prepare( "INSERT INTO $robots_table (name) VALUES (%s);", $robot );
-							$wpdb->query( $query );
+							$wpdb->query( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 						}
 					}
 				}
 
-				$pname = !empty( $_POST['pname'] ) ? trim( $_POST['pname'] ) : get_option( 'aff_pname', AFFILIATES_PNAME );
+				$pname = !empty( $_POST['pname'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['pname'] ) ) ) : get_option( 'aff_pname', AFFILIATES_PNAME );
 				$forbidden_names = array();
 				if ( !empty( $wp->public_query_vars ) ) {
 					$forbidden_names += $wp->public_query_vars;
@@ -120,10 +119,10 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 				}
 				if ( !preg_match( '/[a-z_]+/', $pname, $matches ) || !isset( $matches[0] ) || $pname !== $matches[0] ) {
 					$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-					echo '<div class="error">' . __( 'The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is not valid</em>. Only lower case letters and the underscore _ are allowed.', 'affiliates' ) . '</div>';
+					echo '<div class="error">' . esc_html__( 'The Affiliate URL parameter name has not been changed, the suggested name is not valid. Only lower case letters and the underscore _ are allowed.', 'affiliates' ) . '</div>';
 				} else if ( in_array( $pname, $forbidden_names ) ) {
 					$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-					echo '<div class="error">' . __( 'The Affiliate URL parameter name <strong>has not been changed</strong>, the suggested name <em>is forbidden</em>.', 'affiliates' ) . '</div>';
+					echo '<div class="error">' . esc_html__( 'The Affiliate URL parameter name has not been changed, the suggested name is forbidden.', 'affiliates' ) . '</div>';
 				}
 				$old_pname = get_option( 'aff_pname', AFFILIATES_PNAME );
 				if ( $pname !== $old_pname ) {
@@ -132,16 +131,16 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					echo '<div class="info">' .
 						'<p>' .
 						sprintf(
-							__( 'The Affiliate URL parameter name <strong>has been changed</strong> from <em><strong>%s</strong></em> to <em><strong>%s</strong></em>.', 'affiliates' ),
-							$old_pname,
-							$pname
+							esc_html__( 'The Affiliate URL parameter name has been changed from %1$s to %2$s.', 'affiliates' ),
+							'<code>' . esc_html( $old_pname ) . '</code>',
+							'<code>' . esc_html( $pname ) . '</code>'
 						) .
 						'</p>' .
 						'<p class="warning">' .
-						__( 'If your affiliates are using affiliate links based on the previous Affiliate URL parameter name, they <strong>NEED</strong> to update their affiliate links.', 'affiliates' ) .
+						esc_html__( 'If your affiliates are using affiliate links based on the previous Affiliate URL parameter name, they NEED to update their affiliate links.', 'affiliates' ) .
 						'</p>' .
 						'<p class="warning">' .
-						__( 'Unless the incoming affiliate links reflect the current Affiliate URL parameter name, no affiliate hits, visits or referrals will be recorded.', 'affiliates' ) .
+						esc_html__( 'Unless the incoming affiliate links reflect the current Affiliate URL parameter name, no affiliate hits, visits or referrals will be recorded.', 'affiliates' ) .
 						'</p>' .
 						'</div>';
 				}
@@ -157,8 +156,8 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					delete_option( 'aff_redirect' );
 				}
 
-				$encoding_id = $_POST['id_encoding'];
-				if ( key_exists( $encoding_id, affiliates_get_id_encodings() ) ) {
+				$encoding_id = sanitize_text_field( wp_unslash( $_POST['id_encoding'] ?? '' ) );
+				if ( array_key_exists( $encoding_id, affiliates_get_id_encodings() ) ) {
 					// important: must use normal update_option/get_option otherwise we'd have a per-user encoding
 					update_option( 'aff_id_encoding', $encoding_id );
 				}
@@ -173,7 +172,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 					$role = $wp_roles->get_role( $rolekey );
 					foreach ( $caps as $capkey => $capname ) {
 						$role_cap_id = $rolekey.'-'.$capkey;
-						if ( !empty($_POST[$role_cap_id] ) ) {
+						if ( !empty( $_POST[$role_cap_id] ) ) {
 							$role->add_cap( $capkey );
 						} else {
 							$role->remove_cap( $capkey );
@@ -194,8 +193,8 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		$robots = '';
 		$db_robots = $wpdb->get_results( "SELECT name FROM $robots_table", OBJECT );
-		foreach ($db_robots as $db_robot ) {
-				$robots .= $db_robot->name . "\n";
+		foreach ( $db_robots as $db_robot ) {
+			$robots .= $db_robot->name . "\n";
 		}
 
 		$pname    = get_option( 'aff_pname', AFFILIATES_PNAME );
@@ -205,7 +204,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 		$id_encoding_select = '';
 		$encodings = affiliates_get_id_encodings();
 		if ( !empty( $encodings ) ) {
-			$id_encoding_select .= '<label class="id-encoding" for="id_encoding">' . __('Affiliate ID Encoding', 'affiliates' ) . '</label>';
+			$id_encoding_select .= '<label class="id-encoding" for="id_encoding">' . esc_html__('Affiliate ID Encoding', 'affiliates' ) . '</label>';
 			$id_encoding_select .= '<select class="id-encoding" name="id_encoding">';
 			foreach ( $encodings as $key => $value ) {
 				if ( $id_encoding == $key ) {
@@ -228,7 +227,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 		$caps_table .= '<thead>';
 		$caps_table .= '<tr>';
 		$caps_table .= '<td class="role">';
-		$caps_table .= __( 'Role', 'affiliates' );
+		$caps_table .= esc_html__( 'Role', 'affiliates' );
 		$caps_table .= '</td>';
 		foreach ( $caps as $cap ) {
 			$caps_table .= '<td class="cap">';
@@ -252,7 +251,7 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 				}
 				$caps_table .= '<td class="checkbox">';
 				$role_cap_id = $rolekey.'-'.$capkey;
-				$caps_table .= '<input type="checkbox" name="' . $role_cap_id . '" id="' . $role_cap_id . '" ' . $checked . '/>';
+				$caps_table .= '<input type="checkbox" name="' . esc_attr( $role_cap_id ) . '" id="' . esc_attr( $role_cap_id ) . '" ' . $checked . '/>';
 				$caps_table .= '</td>';
 			}
 			$caps_table .= '</tr>';
@@ -269,91 +268,93 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 			'<div>';
 
 		echo
-			'<h3>' . __( 'Affiliate URL parameter name', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Affiliate URL parameter name', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<input class="pname" name="pname" type="text" value="' . esc_attr( $pname ) . '" />' .
 			'</p>' .
-			'<p>' .
-			sprintf( __( 'The current Affiliate URL parameter name is: <b>%s</b>', 'affiliates' ), $pname ) .
-			'</p>' .
-			'<p>' .
-			sprintf( __( 'The default Affiliate URL parameter name is <em>%s</em>.', 'affiliates' ), AFFILIATES_PNAME ) .
-			'</p>' .
+			'<ul>' .
+			'<li>' .
+			sprintf( esc_html__( 'The current Affiliate URL parameter name is: %s', 'affiliates' ), '<code>' . esc_html( $pname ) . '</code>' ) .
+			'</li>' .
+			'<li>' .
+			sprintf( esc_html__( 'The default Affiliate URL parameter name is: %s', 'affiliates' ), '<code>' . esc_html( AFFILIATES_PNAME ) . '</code>' ) .
+			'</li>' .
+			'</ul>' .
 			'<p class="description warning">' .
-			__( 'CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current URL parameter name, no affiliate hits, visits or referrals will be recorded.', 'affiliates' ) .
+			esc_html__( 'CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current URL parameter name, no affiliate hits, visits or referrals will be recorded.', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Redirection', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Redirection', 'affiliates' ) . '</h3>' .
 			'<p>' .
 			'<label>' .
 			sprintf( '<input class="redirect" name="redirect" type="checkbox" %s/>', $redirect ? ' checked="checked" ' : '' ) .
 			' ' .
-			__( 'Redirect', 'affiliates' ) .
+			esc_html__( 'Redirect', 'affiliates' ) .
 			'</label>' .
 			'</p>' .
 			'<p class="description">' .
-			__( 'Redirect to destination without Affiliate URL parameter, after a hit on an affiliate link has been detected.', 'affiliates' ) .
+			esc_html__( 'Redirect to destination without Affiliate URL parameter, after a hit on an affiliate link has been detected.', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Affiliate ID encoding', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Affiliate ID encoding', 'affiliates' ) . '</h3>' .
 			'<p>' .
-			$id_encoding_select .
+			$id_encoding_select . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'</p>' .
 			'<p>' .
-			sprintf( __( 'The current encoding in effect is: <b>%s</b>', 'affiliates' ), $encodings[$id_encoding] ) .
+			sprintf( esc_html__( 'The current encoding in effect is: %s', 'affiliates' ), '<strong>' . esc_html( $encodings[$id_encoding] ) . '</strong>' ) .
 			'</p>' .
 			'<p class="description warning">' .
-			__( 'CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current encoding, no affiliate hits, visits or referrals will be recorded.', 'affiliates' ) .
+			esc_html__( 'CAUTION: If you change this setting and have distributed affiliate links or permalinks, make sure that these are updated. Unless the incoming affiliate links reflect the current encoding, no affiliate hits, visits or referrals will be recorded.', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Permissions', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Permissions', 'affiliates' ) . '</h3>' .
 			'<p>' .
-			__( 'Do not assign permissions to open access for affiliates here.', 'affiliates' ) .
+			esc_html__( 'Do not assign permissions to open access for affiliates here.', 'affiliates' ) .
 			' ' .
-			__( 'This section is only intended to grant administrative access on affiliate management functions to privileged roles.', 'affiliates' ) .
+			esc_html__( 'This section is only intended to grant administrative access on affiliate management functions to privileged roles.', 'affiliates' ) .
 			'</p>' .
-			$caps_table .
+			$caps_table . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'<p class="description">' .
-			__( 'A minimum set of permissions will be preserved.', 'affiliates' ) .
+			esc_html__( 'A minimum set of permissions will be preserved.', 'affiliates' ) .
 			'<br/>' .
-			__( 'If you lock yourself out, please ask an administrator to help.', 'affiliates' ) .
+			esc_html__( 'If you lock yourself out, please ask an administrator to help.', 'affiliates' ) .
 			'</p>';
 
 		echo
-			'<h3>' . __( 'Robots', 'affiliates' ) . '</h3>' .
+			'<h3>' . esc_html__( 'Robots', 'affiliates' ) . '</h3>' .
 			'<p>' .
-			'<textarea id="robots" name="robots" rows="10" cols="45">' . wp_filter_nohtml_kses( $robots ) . '</textarea>' .
+			'<textarea id="robots" name="robots" rows="10" cols="45">' . esc_html( $robots ) . '</textarea>' .
 			'</p>' .
 			'<p>' .
-			__( 'Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line.', 'affiliates' ) .
+			esc_html__( 'Hits on affiliate links from these robots will be marked or not recorded. Put one entry on each line.', 'affiliates' ) .
 			'</p>';
 		echo '<p>' .
 			sprintf(
 				esc_html__( 'Use the robot cleaner to remove existing hits from robots: %s', 'affiliates' ),
 				sprintf(
 					'<a class="button" href="%s">%s</a>',
-					add_query_arg(
+					esc_url( add_query_arg(
 						array( 'section' => 'general', 'subsection' => 'robot-cleaner' ),
 						admin_url( 'admin.php?page=affiliates-admin-settings' )
-					),
+					) ),
 					esc_html__( 'Robot Cleaner', 'affiliates' )
 				)
 			);
 		echo '</p>';
 
-		echo '<h3>' . __( 'Data', 'affiliates' ) . '</h3>';
+		echo '<h3>' . esc_html__( 'Data', 'affiliates' ) . '</h3>';
 		echo '<p>';
 		printf(
 			esc_html__( 'Use the data cleaner to remove data on unused hits, URIs and user agents: %s', 'affiliates' ),
 			sprintf(
 				'<a class="button" href="%s">%s</a>',
-				add_query_arg(
+				esc_url( add_query_arg(
 					array( 'section' => 'general', 'subsection' => 'data-cleaner' ),
 					admin_url( 'admin.php?page=affiliates-admin-settings' )
-				),
+				) ),
 				esc_html__( 'Data Cleaner', 'affiliates' )
 			)
 		);
@@ -361,23 +362,23 @@ class Affiliates_Settings_General extends Affiliates_Settings {
 
 		if ( !affiliates_is_sitewide_plugin() ) {
 			echo
-				'<h3>' . __( 'Deactivation and data persistence', 'affiliates' ) . '</h3>' .
+				'<h3>' . esc_html__( 'Deactivation and data persistence', 'affiliates' ) . '</h3>' .
 				'<p>' .
 				'<label>' .
 				'<input name="delete-data" type="checkbox" ' . ( $delete_data ? 'checked="checked"' : '' ) . '/>' .
 				' ' .
-				__( 'Delete all plugin data on deactivation', 'affiliates' ) .
+				esc_html__( 'Delete all plugin data on deactivation', 'affiliates' ) .
 				'</label>' .
 				'</p>' .
 				'<p class="description warning">' .
-				__( 'CAUTION: If this option is active while the plugin is deactivated, ALL affiliate and referral data will be DELETED. If you want to retrieve data about your affiliates and their referrals and are going to deactivate the plugin, make sure to back up your data or do not enable this option. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof.', 'affiliates' ) .
+				esc_html__( 'CAUTION: If this option is active while the plugin is deactivated, ALL affiliate and referral data will be DELETED. If you want to retrieve data about your affiliates and their referrals and are going to deactivate the plugin, make sure to back up your data or do not enable this option. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof.', 'affiliates' ) .
 				'</p>';
 		}
 
 		echo
 			'<p>' .
-			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) .
-			'<input class="button button-primary" type="submit" name="submit" value="' . __( 'Save', 'affiliates' ) . '"/>' .
+			wp_nonce_field( 'admin', AFFILIATES_ADMIN_SETTINGS_NONCE, true, false ) . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			'<input class="button button-primary" type="submit" name="submit" value="' . esc_attr__( 'Save', 'affiliates' ) . '"/>' .
 			'</p>' .
 			'</div>' .
 			'</form>';

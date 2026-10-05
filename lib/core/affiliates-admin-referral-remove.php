@@ -33,24 +33,21 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 	$output = '';
 
 	if ( !current_user_can( AFFILIATES_ADMINISTER_AFFILIATES ) ) {
-		wp_die( __( 'Access denied.', 'affiliates' ) );
+		wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 	}
 
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url = affiliates_get_current_url();
 	$cancel_url  = remove_query_arg( 'referral_id', remove_query_arg( 'action', $current_url ) );
 	$current_url = remove_query_arg( 'paged', $current_url );
 
 	$output .= '<div class="referral remove">';
 	$output .= '<h1>';
-	$output .= __( 'Remove a Referral', 'affiliates' );
+	$output .= esc_html__( 'Remove a Referral', 'affiliates' );
 	$output .= '</h1>';
 
 	if ( isset( $_POST['submit'] ) ) {
-		if (
-			!isset( $_POST['referral-nonce'] ) ||
-			!wp_verify_nonce( $_POST['referral-nonce'], 'remove' )
-		) {
-			wp_die( __( 'Access denied.', 'affiliates' ) );
+		if ( !affiliates_verify_post_nonce( 'referral-nonce', 'remove' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'affiliates' ) );
 		} else {
 			if ( !empty( $_POST['referral_id'] ) ) {
 				// remove the referral
@@ -62,14 +59,14 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					do_action( 'affiliates_deleted_referral', intval( $_POST['referral_id'] ) );
 					$output .= '<br/>';
 					$output .= '<div class="info">';
-					$output .= __( 'The referral has been removed.', 'affiliates' );
+					$output .= esc_html__( 'The referral has been removed.', 'affiliates' );
 					$output .= ' ';
-					$output .= sprintf( '<a href="%s">%s</a>', $cancel_url, __( 'Return', 'affiliates' ) );
+					$output .= sprintf( '<a href="%s">%s</a>', esc_url( $cancel_url ), esc_html__( 'Return', 'affiliates' ) );
 					$output .= '</div>';
 					$output .= '<br/>';
 
 				} else {
-					$output .= '<div class="error">' . __( 'I do not know how to delete what does not exist.', 'affiliates' ) . '</div>';
+					$output .= '<div class="error">' . esc_html__( 'I do not know how to delete what does not exist.', 'affiliates' ) . '</div>';
 				}
 			}
 		}
@@ -95,32 +92,32 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					$output .= '<input type="hidden" name="action" value="edit" />';
 
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Affiliate', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Affiliate', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$affiliate = affiliates_get_affiliate( $affiliate_id );
 					$output .= stripslashes( $affiliate['name'] );
 					$output .= '</p>';
 
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Date & Time', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Date & Time', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $datetime;
 					$output .= '</p>';
 
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Description', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Description', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $description;
 					$output .= '</p>';
 
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Amount', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Amount', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $amount;
 					$output .= '</p>';
 
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Currency ID', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Currency ID', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $currency_id;
 					$output .= '</p>';
@@ -132,13 +129,13 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 						AFFILIATES_REFERRAL_STATUS_REJECTED => __( 'Rejected', 'affiliates' ),
 					);
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Status', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Status', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $status_descriptions[$status];
 					$output .= '</p>';
 
 					$output .= '<p>';
-					$output .= '<span class="title">' . __( 'Reference', 'affiliates' ) . '</span>';
+					$output .= '<span class="title">' . esc_html__( 'Reference', 'affiliates' ) . '</span>';
 					$output .= ' ';
 					$output .= $reference;
 					$output .= '</p>';
@@ -146,29 +143,29 @@ function affiliates_admin_referral_remove( $referral_id = null ) {
 					$output .= wp_nonce_field( 'remove', 'referral-nonce', true, false );
 
 					$output .= '<p class="description">';
-					$output .= __( 'Remove this referral? This action can not be undone.', 'affiliates' );
+					$output .= esc_html__( 'Remove this referral? This action can not be undone.', 'affiliates' );
 					$output .= '</p>';
 
-					$output .= sprintf( '<input class="button button-primary" type="submit" name="submit" value="%s"/>', __( 'Remove', 'affiliates' ) );
+					$output .= sprintf( '<input class="button button-primary" type="submit" name="submit" value="%s"/>', esc_attr__( 'Remove', 'affiliates' ) );
 					$output .= ' ';
-					$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, __( 'Cancel', 'affiliates' ) );
+					$output .= sprintf( '<a class="cancel button" href="%s">%s</a>', $cancel_url, esc_html__( 'Cancel', 'affiliates' ) );
 
 					$output .= '</div>';
 					$output .= '</form>';
 				} else {
-					$output .= '<div class="error">' . __( 'This referral does not exist.', 'affiliates' ) . '</div>';
+					$output .= '<div class="error">' . esc_html__( 'This referral does not exist.', 'affiliates' ) . '</div>';
 				}
 			} else {
-				$output .= '<div class="error">' . __( 'This referral does not exist.', 'affiliates' ) . '</div>';
+				$output .= '<div class="error">' . esc_html__( 'This referral does not exist.', 'affiliates' ) . '</div>';
 			}
 		} else {
-			$output .= '<div class="error">' . __( 'Pretty pointless ...', 'affiliates' ) . '</div>';
+			$output .= '<div class="error">' . esc_html__( 'Pretty pointless ...', 'affiliates' ) . '</div>';
 		}
 	}
 
 	$output .= '</div>';
 
-	echo $output;
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	affiliates_footer();
 }

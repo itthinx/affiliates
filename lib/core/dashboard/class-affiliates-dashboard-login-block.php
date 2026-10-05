@@ -87,9 +87,10 @@ class Affiliates_Dashboard_Login_Block extends Affiliates_Dashboard_Login {
 			register_block_type(
 				'affiliates/dashboard-login',
 				array(
-					'editor_script' => 'affiliates-dashboard-login-block',
+					'api_version'     => '3',
+					'editor_script'   => 'affiliates-dashboard-login-block',
 					'render_callback' => array( __CLASS__, 'block' ),
-					'example' => array()
+					'example'         => array()
 				)
 			);
 		}

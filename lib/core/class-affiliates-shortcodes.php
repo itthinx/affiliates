@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date, WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+
 /**
  * Shortcode handler.
  */
@@ -633,7 +635,7 @@ class Affiliates_Shortcodes {
 				$rows = array();
 				$referrals_table = _affiliates_get_tablename( 'referrals' );
 				$range = $wpdb->get_row(
-					"SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ") "
+					"SELECT MIN(datetime) from_datetime, MAX(datetime) thru_datetime FROM $referrals_table WHERE affiliate_id IN (" . implode( ',', $affiliate_ids ) . ") " // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 				);
 				if ( $range ) {
 					if ( !empty( $range->from_datetime ) ) { // Covers for NULL when no referrals recorded yet, too.
@@ -755,7 +757,7 @@ class Affiliates_Shortcodes {
 				$output .= '</tbody>';
 				$output .= '</table>';
 
-				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$current_url = affiliates_get_current_url();
 				$url = remove_query_arg( 'earnings-page', $current_url );
 
 				if ( count( $rows ) > 0 ) {
@@ -857,7 +859,7 @@ class Affiliates_Shortcodes {
 				break;
 			case 'current' :
 				$pname = get_option( 'aff_pname', AFFILIATES_PNAME );
-				$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$current_url = affiliates_get_current_url();
 				$url = remove_query_arg( $pname, $current_url );
 				break;
 			case 'permalink' :
@@ -1033,9 +1035,10 @@ class Affiliates_Shortcodes {
 									if ( $field['required'] && empty( $value ) && !( is_user_logged_in() && isset( $field['type'] ) && $field['type'] == 'password' ) ) {
 										$error = true;
 										$output .= '<div class="error">';
-										$output .= __( '<strong>ERROR</strong>', 'affiliates' );
+										$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 										$output .= ' : ';
-										$output .= sprintf( __( 'Please fill out the field <em>%s</em>.', 'affiliates' ), $field['label'] );
+										/* translators: field name */
+										$output .= sprintf( esc_html__( 'Please fill out the field %s.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 										$output .= '</div>';
 									}
 									$registration_fields[$name]['value'] = $value;
@@ -1049,9 +1052,10 @@ class Affiliates_Shortcodes {
 											if ( $value !== $value2 ) {
 												$error = true;
 												$output .= '<div class="error">';
-												$output .= __( '<strong>ERROR</strong>', 'affiliates' );
+												$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 												$output .= ' : ';
-												$output .= sprintf( __( 'The passwords for the field <em>%s</em> do not match.', 'affiliates' ), $field['label'] );
+												/* translators: field name */
+												$output .= sprintf( esc_html__( 'The passwords for the field %s do not match.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 												$output .= '</div>';
 											}
 										}
@@ -1108,7 +1112,7 @@ class Affiliates_Shortcodes {
 							}
 							// @since 5.4.1 translate stored labels
 							if ( $label === $field['label'] ) {
-								$label = __( $label, 'affiliates' );
+								$label = __( $label, 'affiliates' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 							}
 							$n++;
 							$output .= '<div class="field">';
@@ -1166,6 +1170,7 @@ class Affiliates_Shortcodes {
 								// the second passwort field is also not required
 								$output .= '<div class="field">';
 								$output .= '<label>';
+								/* translators: label */
 								$output .= sprintf( __( 'Repeat %s', 'affiliates' ), esc_html( stripslashes( $label ) ) );
 								$output .= sprintf(
 									'<input type="%s" class="%s" name="%s" value="%s" %s %s />',

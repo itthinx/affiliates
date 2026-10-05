@@ -112,7 +112,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 */
 	public function get_section( $key ) {
 		$section = null;
-		if ( key_exists( $key, $this->sections ) ) {
+		if ( array_key_exists( $key, $this->sections ) ) {
 			if ( !isset( $this->section_objects[$key] ) ) {
 				$section = Affiliates_Dashboard_Section_Factory::get_section_instance( $key, $this->sections[$key]['parameters'] );
 				$this->section_objects[$key] = $section;
@@ -132,7 +132,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 		$section = null;
 		if ( $this->sections !== null ) {
 			if ( isset( $_REQUEST[self::SECTION_URL_PARAMETER] ) ) {
-				$key = $_REQUEST[self::SECTION_URL_PARAMETER];
+				$key = sanitize_text_field( wp_unslash( $_REQUEST[self::SECTION_URL_PARAMETER] ) );
 				if ( isset( $this->sections[$key] ) ) {
 					$section = $this->get_section( $key );
 				}
@@ -157,7 +157,7 @@ class Affiliates_Dashboard implements I_Affiliates_Dashboard {
 	 * @return string
 	 */
 	public function get_url( $params = array() ) {
-		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = affiliates_get_current_url();
 		// Common filter parameters ...
 		$url_parameters = array(
 			'clear_filters',

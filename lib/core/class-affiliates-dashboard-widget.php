@@ -23,6 +23,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.DateTime.RestrictedFunctions.date_date
+
 /**
  * Shows referral totals on the dashboard.
  */
@@ -96,16 +98,20 @@ class Affiliates_Dashboard_Widget {
 			$output .= '<strong>';
 			switch( $status ) {
 				case AFFILIATES_REFERRAL_STATUS_CLOSED :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Closed</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for closed referrals (commissions paid).', 'affiliates' ) ) );
+					/* translators: title, label */
+					$output .= sprintf( '<span style="cursor:help" title="%1$s">%2$s</span>', esc_attr__( 'Accumulated total for closed referrals (commissions paid).', 'affiliates' ), esc_html__( 'Closed', 'affiliates' ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_ACCEPTED :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Accepted</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for accepted referrals (commissions unpaid).', 'affiliates' ) ) );
+					/* translators: title, label */
+					$output .= sprintf( '<span style="cursor:help" title="%1$s">%2$s</span>', esc_attr__( 'Accumulated total for accepted referrals (commissions unpaid).', 'affiliates' ), esc_html__( 'Accepted', 'affiliates' ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_PENDING :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Pending</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for pending referrals.', 'affiliates' ) ) );
+					/* translators: title, label */
+					$output .= sprintf( '<span style="cursor:help" title="%1$s">%2$s</span>', esc_attr__( 'Accumulated total for pending referrals.', 'affiliates' ), esc_html__( 'Pending', 'affiliates' ) );
 					break;
 				case AFFILIATES_REFERRAL_STATUS_REJECTED :
-					$output .= sprintf( __( '<span style="cursor:help" title="%s">Rejected</span>', 'affiliates' ), esc_attr( __( 'Accumulated total for rejected referrals.', 'affiliates' ) ) );
+					/* translators: title, label */
+					$output .= sprintf( '<span style="cursor:help" title="%1$s">%2$s</span>', esc_attr__( 'Accumulated total for rejected referrals.', 'affiliates' ), esc_html__( 'Rejected', 'affiliates' ) );
 					break;
 			}
 			$output .= '</strong>';
@@ -123,12 +129,12 @@ class Affiliates_Dashboard_Widget {
 				foreach( $total as $currency => $amount ) {
 					$display_amount = sprintf( '%.' .affiliates_get_referral_amount_decimals( 'display' ) . 'f', $amount );
 					$output .= '<li>';
-					$output .= sprintf( __( '%1$s %2$s', 'affiliates' ), $currency, $display_amount ); // translators: first is a three-letter currency code, second is a monetary amount
+					$output .= sprintf( '%1$s %2$s', $currency, $display_amount );
 					$output .= '</li>';
 				}
 			} else {
 				$output .= '<li>';
-				$output .= __( 'None', 'affiliates' );
+				$output .= esc_html__( 'None', 'affiliates' );
 				$output .= '</li>';
 			}
 			$output .= '</ul>';
@@ -141,7 +147,7 @@ class Affiliates_Dashboard_Widget {
 		$output .= '<form id="affiliates-dashboard-widget-form" action="" method="post">';
 		$output .= '<div>';
 		$output .= '<label>';
-		$output .= __( 'Days back', 'affiliates' );
+		$output .= esc_html__( 'Days back', 'affiliates' );
 		$output .= ' ';
 		$output .= '<input name="days_back" style="width:5em" type="text" value="' . esc_attr( $days_back > self::MIN_DAYS_BACK ? $days_back : '' ) . '"/>';
 		$output .= '</label>';
@@ -153,10 +159,10 @@ class Affiliates_Dashboard_Widget {
 		$output .= '</form>';
 
 		$output .= '<p class="description">';
-		$output .= __( 'Shows accumulated referral totals for all time when left empty, or for the last number of days set.', 'affiliates' );
+		$output .= esc_html__( 'Shows accumulated referral totals for all time when left empty, or for the last number of days set.', 'affiliates' );
 		$output .= '</p>';
 
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

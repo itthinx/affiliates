@@ -43,6 +43,7 @@ if ( typeof wp !== 'undefined' ) {
 	wp.blocks.registerBlockType(
 		'affiliates/dashboard',
 		{
+			apiVersion  : 3,
 			title       : affiliates_dashboard_block.title,
 			description : affiliates_dashboard_block.description,
 			icon        : 'performance',
