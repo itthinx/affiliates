@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-03 21:24+0200\n"
-"PO-Revision-Date: 2026-10-05 11:20+0200\n"
+"PO-Revision-Date: 2026-10-05 13:26+0200\n"
 "Last-Translator: itthinx.com <support@itthinx.com>\n"
 "Language-Team: itthinx.com <support@itthinx.com>\n"
 "Language: de_DE\n"
@@ -2619,7 +2619,7 @@ msgstr "Seychellen-Rupie"
 
 #: lib/core/class-affiliates-admin.php:119 lib/core/affiliates-admin-add-ons.php:366
 msgid "Shop"
-msgstr "Geschäft"
+msgstr "Shop"
 
 #: lib/core/affiliates-admin-affiliates.php:542
 msgid "Show accumulated referral totals"
