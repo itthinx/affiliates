@@ -2,6 +2,7 @@
 
 = 7.0.1 =
 * WordPress 7.1 compatible.
+* Fixed mistakenly switched parameters in settings guide.
 
 = 7.0.0 =
 * WordPress 7.1 compatible.

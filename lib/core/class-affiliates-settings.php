@@ -120,7 +120,7 @@ class Affiliates_Settings {
 			/* translators: link */
 			esc_html__( 'Use the %s section to review or adjust the system anytime.', 'affiliates' ),
 			/* translators: URL, name */
-			sprintf( '<a href="%1$s">%2$s</a>', esc_html__( 'Settings', 'affiliates' ), esc_url( admin_url( 'admin.php?page=affiliates-admin-settings' ) ) )
+			sprintf( '<a href="%1$s">%2$s</a>', esc_url( admin_url( 'admin.php?page=affiliates-admin-settings' ) ), esc_html__( 'Settings', 'affiliates' ) )
 		);
 		echo '</p>';
 
