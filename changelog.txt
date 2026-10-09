@@ -7,7 +7,9 @@
 * Revised instances of input sanitiation to use own API functions.
 * Revised instances of missing output escaping.
 * Revised instances of nonce verification to use own API functions.
-* Adds the affiliates_registration_meta_value filter.
+* Updated the affiliate registration process.
+* Added the affiliates_registration_meta_value filter.
+* Added the affiliates_registration_meta_value_error filter.
 
 = 7.0.1 =
 * WordPress 7.1 compatible.
