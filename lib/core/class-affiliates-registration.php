@@ -965,7 +965,10 @@ class Affiliates_Registration {
 	 * @return WP_Error|mixed
 	 */
 	public static function validate_meta_value( $meta_value, $meta_key ) {
-		if ( !is_string( $meta_value ) || is_serialized( $meta_value ) ) {
+		if (
+			!( is_bool( $meta_value ) || is_int( $meta_value ) || is_string( $meta_value ) ) ||
+			is_serialized( $meta_value )
+		) {
 			if ( apply_filters( 'affiliates_registration_meta_value_error', true, $meta_value, $meta_key ) ) {
 				return new WP_Error(
 					'affiliates_registration_meta_value_error',
