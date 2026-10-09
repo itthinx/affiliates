@@ -1,5 +1,16 @@
 == Affiliates - Changelog ==
 
+= 7.1.0 =
+* WordPress 7.1 compatible.
+* Security update.
+* Fixes potential security issues related to stored object instances.
+* Revised instances of input sanitiation to use own API functions.
+* Revised instances of missing output escaping.
+* Revised instances of nonce verification to use own API functions.
+* Updated the affiliate registration process.
+* Added the affiliates_registration_meta_value filter.
+* Added the affiliates_registration_meta_value_error filter.
+
 = 7.0.1 =
 * WordPress 7.1 compatible.
 * Fixed mistakenly switched parameters in settings guide.

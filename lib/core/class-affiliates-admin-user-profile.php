@@ -108,12 +108,12 @@ class Affiliates_Admin_User_Profile {
 					$type = isset( $field['type'] ) ? $field['type'] : 'text';
 					$value = get_user_meta( $user->ID, $name , true );
 					$output .= sprintf(
-							'<input type="%s" class="%s" name="%s" value="%s" %s />',
-							esc_attr( $type ),
-							'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
-							esc_attr( $name ),
-							esc_attr( stripslashes( $value ) ),
-							$field['required'] ? ' required="required" ' : ''
+						'<input type="%s" class="%s" name="%s" value="%s" %s />',
+						esc_attr( $type ),
+						'regular-text ' . esc_attr( $name ) . ( $field['required'] ? ' required ' : '' ),
+						esc_attr( $name ),
+						esc_attr( stripslashes( $value ) ),
+						$field['required'] ? ' required="required" ' : ''
 					);
 					$output .= '</td>';
 					$output .= '</tr>';
@@ -166,9 +166,13 @@ class Affiliates_Admin_User_Profile {
 		// update user meta
 		if ( !empty( $registration_fields ) ) {
 			foreach( $registration_fields as $name => $field ) {
-				$meta_value = isset( $_POST[$name] ) ? $_POST[$name] : '';
+				$meta_value = affiliates_sanitize_post( $name ) ?? '';
 				$meta_value = Affiliates_Utility::filter( $meta_value );
-				update_user_meta( $user_id, $name, maybe_unserialize( $meta_value ) );
+				$meta_value = Affiliates_Registration::validate_meta_value( $meta_value, $name );
+				if ( $meta_value instanceof WP_Error ) {
+					$meta_value = '';
+				}
+				update_user_meta( $user_id, $name, $meta_value );
 			}
 		}
 
