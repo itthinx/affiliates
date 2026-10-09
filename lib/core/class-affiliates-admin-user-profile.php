@@ -166,9 +166,20 @@ class Affiliates_Admin_User_Profile {
 		// update user meta
 		if ( !empty( $registration_fields ) ) {
 			foreach( $registration_fields as $name => $field ) {
-				$meta_value = isset( $_POST[$name] ) ? $_POST[$name] : '';
+				$meta_value = affiliates_sanitize_post( $name ) ?? '';
 				$meta_value = Affiliates_Utility::filter( $meta_value );
-				update_user_meta( $user_id, $name, maybe_unserialize( $meta_value ) );
+				/**
+				 * Allow to filter the value that is about to be stored as user meta.
+				 *
+				 * @since 7.1.0
+				 *
+				 * @param string $meta_value user meta value to be stored
+				 * @param string $meta_key user meta key
+				 *
+				 * @return string
+				 */
+				$meta_value = apply_filters( 'affiliates_registration_meta_value', $meta_value, $name );
+				update_user_meta( $user_id, $name, $meta_value );
 			}
 		}
 

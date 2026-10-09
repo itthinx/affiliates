@@ -2,6 +2,12 @@
 
 = 7.1.0 =
 * WordPress 7.1 compatible.
+* Security update.
+* Fixes potential security issues related to stored object instances.
+* Revised instances of input sanitiation to use own API functions.
+* Revised instances of missing output escaping.
+* Revised instances of nonce verification to use own API functions.
+* Adds the affiliates_registration_meta_value filter.
 
 = 7.0.1 =
 * WordPress 7.1 compatible.

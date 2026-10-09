@@ -162,7 +162,7 @@ class Affiliates_Registration {
 		if ( affiliates_user_is_affiliate_status( null, 'pending' ) ) {
 			$output .= '<div class="affiliates-registration registered pending">';
 			$output .= '<p>';
-			$output .= __( 'Your affiliate application is pending approval.', 'affiliates' );
+			$output .= esc_html__( 'Your affiliate application is pending approval.', 'affiliates' );
 			$output .= '</p>';
 			$output .= '</div>';
 			return $output;
@@ -174,7 +174,7 @@ class Affiliates_Registration {
 		if ( affiliates_user_is_affiliate_status( null, 'deleted' ) ) {
 			$output .= '<div class="affiliates-registration registered pending">';
 			$output .= '<p>';
-			$output .= __( 'Your affiliate account is closed.', 'affiliates' );
+			$output .= esc_html__( 'Your affiliate account is closed.', 'affiliates' );
 			$output .= '</p>';
 			$output .= '</div>';
 			return $output;
@@ -183,10 +183,10 @@ class Affiliates_Registration {
 		//
 		// Existing affiliate
 		//
-		if ( $is_affiliate = affiliates_user_is_affiliate() ) {
+		if ( affiliates_user_is_affiliate() ) {
 			$output .= '<div class="affiliates-registration registered">';
 			$output .= '<p>';
-			$output .= __( 'You are already registered as an affiliate.', 'affiliates' );
+			$output .= esc_html__( 'You are already registered as an affiliate.', 'affiliates' );
 			$output .= '</p>';
 			if ( isset( $options['registered_profile_link_url'] ) ) {
 				$output .= '<p>';
@@ -194,7 +194,7 @@ class Affiliates_Registration {
 				if ( isset( $options['registered_profile_link_text'] ) ) {
 					$output .= wp_filter_kses( $options['registered_profile_link_text'] );
 				} else {
-					$output .= __( 'Access your profile', 'affiliates' );
+					$output .= esc_html__( 'Access your profile', 'affiliates' );
 				}
 				$output .= '</a>';
 				$output .= '</p>';
@@ -207,7 +207,7 @@ class Affiliates_Registration {
 		// Registration closed
 		//
 		if ( !get_option( 'aff_registration', get_option( 'users_can_register', false ) ) ) {
-			$output .= '<p>' . __( 'Registration is currently closed.', 'affiliates' ) . '</p>';
+			$output .= '<p>' . esc_html__( 'Registration is currently closed.', 'affiliates' ) . '</p>';
 			return $output;
 		}
 
@@ -262,14 +262,11 @@ class Affiliates_Registration {
 
 		if ( !empty( $_POST[$submit_name] ) ) {
 
-			if (
-				!isset( $_POST[$nonce] ) ||
-				!wp_verify_nonce( $_POST[$nonce], $nonce_action )
-			) {
+			if ( !affiliates_verify_post_nonce( $nonce, $nonce_action ) ) {
 				$error = true; // fail but don't give clues
 			}
 
-			$captcha = !empty( $_POST[Affiliates_Utility::get_captcha_field_id()] ) ? $_POST[Affiliates_Utility::get_captcha_field_id()] : null;
+			$captcha = affiliates_sanitize_post( Affiliates_Utility::get_captcha_field_id() ) ?? null;
 			if ( !Affiliates_Utility::captcha_validates( $captcha ) ) {
 				$error = true; // dumbot
 			}
@@ -277,14 +274,14 @@ class Affiliates_Registration {
 			// gather field values
 			foreach( $registration_fields as $name => $field ) {
 				if ( $field['enabled'] ) {
-					$value = isset( $_POST[$name] ) ? $_POST[$name] : '';
+					$value = affiliates_sanitize_post( $name ) ?? '';
 					$value = Affiliates_Utility::filter( $value );
 					if ( $field['required'] && empty( $value ) ) {
 						$error = true;
 						$output .= '<div class="error">';
 						$output .= '<strong>' . esc_html__( 'ERROR', 'affiliates' ) . '</strong>';
 						$output .= ' : ';
-						$output .= sprintf( __( 'Please fill out the field %s.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
+						$output .= sprintf( esc_html__( 'Please fill out the field %s.', 'affiliates' ), '<em>' . esc_html( $field['label'] ) . '</em>' );
 						$output .= '</div>';
 					}
 					$registration_fields[$name]['value'] = $value;
@@ -682,7 +679,18 @@ class Affiliates_Registration {
 				// add user meta from remaining fields
 				foreach( $userdata as $meta_key => $meta_value ) {
 					if ( !array_key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
-						update_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
+						/**
+						 * Allow to filter the value that is about to be stored as user meta.
+						 *
+						 * @since 7.1.0
+						 *
+						 * @param string $meta_value user meta value to be stored
+						 * @param string $meta_key user meta key
+						 *
+						 * @return string
+						 */
+						$meta_value = apply_filters( 'affiliates_registration_meta_value', $meta_value, $meta_key );
+						update_user_meta( $user_id, $meta_key, $meta_value );
 					}
 				}
 
@@ -741,7 +749,18 @@ class Affiliates_Registration {
 			// add user meta from remaining fields
 			foreach( $userdata as $meta_key => $meta_value ) {
 				if ( !array_key_exists( $meta_key, $_userdata ) && ( !in_array( $meta_key, self::$skip_meta_fields) ) ) {
-					add_user_meta( $user_id, $meta_key, maybe_unserialize( $meta_value ) );
+					/**
+					 * Allow to filter the value that is about to be stored as user meta.
+					 *
+					 * @since 7.1.0
+					 *
+					 * @param string $meta_value user meta value to be stored
+					 * @param string $meta_key user meta key
+					 *
+					 * @return string
+					 */
+					$meta_value = apply_filters( 'affiliates_registration_meta_value', $meta_value, $meta_key );
+					add_user_meta( $user_id, $meta_key, $meta_value );
 				}
 			}
 		}
